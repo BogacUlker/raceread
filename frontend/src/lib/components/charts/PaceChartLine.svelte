@@ -140,7 +140,7 @@
 <style>
 	:global(.pit-tooltip) {
 		font-family: var(--font-mono);
-		font-size: 10px;
+		font-size: 12px;
 		color: var(--text-primary);
 		background: var(--bg-secondary);
 		border: 1px solid var(--border);

@@ -157,7 +157,7 @@
 		align-items: center;
 		gap: 4px;
 		font-family: var(--font-mono);
-		font-size: 10px;
+		font-size: 12px;
 		color: var(--text-secondary);
 	}
 	.legend__dot {
@@ -187,7 +187,7 @@
 	}
 	.bar-row__driver {
 		font-family: var(--font-mono);
-		font-size: 12px;
+		font-size: 13px;
 		font-weight: 600;
 		width: 36px;
 		flex-shrink: 0;
@@ -229,11 +229,11 @@
 		min-width: 140px;
 		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 		font-family: var(--font-mono);
-		font-size: 10px;
+		font-size: 12px;
 		color: var(--text-secondary);
 	}
 	.energy-tooltip__header {
-		font-size: 11px;
+		font-size: 13px;
 		font-weight: 600;
 		color: var(--text-primary);
 		margin-bottom: 4px;

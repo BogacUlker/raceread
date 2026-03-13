@@ -74,7 +74,7 @@
 	}
 	.row__driver {
 		font-family: var(--font-mono);
-		font-size: 12px;
+		font-size: 13px;
 		font-weight: 600;
 		width: 36px;
 		flex-shrink: 0;
@@ -94,7 +94,7 @@
 	}
 	.row__time {
 		font-family: var(--font-mono);
-		font-size: 11px;
+		font-size: 13px;
 		color: var(--text-secondary);
 		width: 54px;
 		text-align: right;
@@ -102,7 +102,7 @@
 	}
 	.row__delta {
 		font-family: var(--font-mono);
-		font-size: 10px;
+		font-size: 11px;
 		color: var(--text-muted);
 		width: 48px;
 		text-align: right;

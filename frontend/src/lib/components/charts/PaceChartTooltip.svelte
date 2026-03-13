@@ -186,7 +186,7 @@
 	}
 	.tooltip__header {
 		font-family: var(--font-mono);
-		font-size: 11px;
+		font-size: 13px;
 		font-weight: 600;
 		color: var(--text-secondary);
 		margin-bottom: 4px;
@@ -219,7 +219,7 @@
 	}
 	.tooltip__driver {
 		font-family: var(--font-mono);
-		font-size: 11px;
+		font-size: 13px;
 		font-weight: 500;
 		color: var(--text-primary);
 		flex: 1;
@@ -238,7 +238,7 @@
 	}
 	.tooltip__value {
 		font-family: var(--font-mono);
-		font-size: 11px;
+		font-size: 13px;
 		color: var(--text-secondary);
 	}
 	.tooltip__annotations {
@@ -255,20 +255,20 @@
 	}
 	.tooltip__ann-cat {
 		font-family: var(--font-mono);
-		font-size: 8px;
+		font-size: 11px;
 		font-weight: 700;
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
 	}
 	.tooltip__ann-driver {
 		font-family: var(--font-mono);
-		font-size: 9px;
+		font-size: 11px;
 		color: var(--text-muted);
 		margin-left: 4px;
 	}
 	.tooltip__ann-text {
 		font-family: var(--font-mono);
-		font-size: 10px;
+		font-size: 13px;
 		line-height: 1.4;
 		color: var(--text-secondary);
 		max-width: 240px;

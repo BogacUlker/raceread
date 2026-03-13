@@ -36,7 +36,7 @@
 					text-anchor="middle"
 					fill="var(--text-muted)"
 					font-family="var(--font-mono)"
-					font-size="10"
+					font-size="12"
 				>
 					{tick}
 				</text>
@@ -49,7 +49,7 @@
 			text-anchor="middle"
 			fill="var(--text-muted)"
 			font-family="var(--font-mono)"
-			font-size="10"
+			font-size="12"
 		>
 			Lap
 		</text>
@@ -66,7 +66,7 @@
 					dominant-baseline="middle"
 					fill="var(--text-muted)"
 					font-family="var(--font-mono)"
-					font-size="10"
+					font-size="12"
 				>
 					{viewMode === 'gap'
 						? tick === 0

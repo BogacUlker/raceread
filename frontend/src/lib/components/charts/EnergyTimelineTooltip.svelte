@@ -126,7 +126,7 @@
 	}
 	.tooltip__header {
 		font-family: var(--font-mono);
-		font-size: 11px;
+		font-size: 13px;
 		font-weight: 600;
 		color: var(--text-secondary);
 		margin-bottom: 4px;
@@ -147,13 +147,13 @@
 	}
 	.tooltip__label {
 		font-family: var(--font-mono);
-		font-size: 11px;
+		font-size: 13px;
 		color: var(--text-primary);
 		flex: 1;
 	}
 	.tooltip__value {
 		font-family: var(--font-mono);
-		font-size: 11px;
+		font-size: 13px;
 		color: var(--text-secondary);
 	}
 </style>

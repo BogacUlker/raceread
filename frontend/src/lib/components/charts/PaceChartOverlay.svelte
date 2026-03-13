@@ -111,7 +111,7 @@
 <style>
 	.vsc-tooltip {
 		font-family: var(--font-mono);
-		font-size: 10px;
+		font-size: 12px;
 		color: #000;
 		background: #F59E0B;
 		padding: 3px 8px;

@@ -160,12 +160,12 @@
 	}
 	.matrix__col-header {
 		font-weight: 600;
-		font-size: 11px;
+		font-size: 12px;
 		padding-bottom: 8px;
 	}
 	.matrix__row-header {
 		font-weight: 600;
-		font-size: 11px;
+		font-size: 12px;
 		text-align: right;
 		padding-right: 10px;
 	}
@@ -194,7 +194,7 @@
 	.delta-tooltip {
 		position: absolute;
 		font-family: var(--font-mono);
-		font-size: 12px;
+		font-size: 13px;
 		color: var(--text-primary);
 		background: var(--bg-secondary);
 		border: 1px solid var(--border);

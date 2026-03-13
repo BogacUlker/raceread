@@ -58,7 +58,7 @@
 	}
 	.insights-panel__title {
 		font-family: var(--font-mono);
-		font-size: 14px;
+		font-size: 18px;
 		font-weight: 600;
 		color: var(--text-primary);
 		letter-spacing: -0.01em;
@@ -83,19 +83,19 @@
 	}
 	.insight-card__category {
 		font-family: var(--font-mono);
-		font-size: 9px;
+		font-size: 11px;
 		font-weight: 700;
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
 	}
 	.insight-card__chart {
 		font-family: var(--font-mono);
-		font-size: 9px;
+		font-size: 11px;
 		color: var(--text-muted);
 	}
 	.insight-card__text {
 		font-family: var(--font-mono);
-		font-size: 11px;
+		font-size: 13px;
 		line-height: 1.55;
 		color: var(--text-secondary);
 	}

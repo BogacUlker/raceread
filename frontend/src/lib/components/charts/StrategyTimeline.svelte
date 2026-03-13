@@ -191,7 +191,7 @@
 					dominant-baseline="middle"
 					fill={color}
 					font-family="var(--font-mono)"
-					font-size="11"
+					font-size="13"
 					font-weight="600"
 					style="pointer-events: none;"
 				>
@@ -287,7 +287,7 @@
 						text-anchor="middle"
 						fill="var(--text-muted)"
 						font-family="var(--font-mono)"
-						font-size="10"
+						font-size="12"
 					>
 						{tick}
 					</text>
@@ -327,7 +327,7 @@
 	}
 	:global(.strategy-tooltip) {
 		font-family: var(--font-mono);
-		font-size: 10px;
+		font-size: 12px;
 		line-height: 1.4;
 		color: var(--text-primary);
 		background: var(--bg-secondary);

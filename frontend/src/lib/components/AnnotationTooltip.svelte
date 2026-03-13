@@ -57,7 +57,7 @@
 	}
 	.annotation-tooltip__category {
 		font-family: var(--font-mono);
-		font-size: 9px;
+		font-size: 11px;
 		font-weight: 600;
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
@@ -66,7 +66,7 @@
 	}
 	.annotation-tooltip__text {
 		font-family: var(--font-mono);
-		font-size: 11px;
+		font-size: 13px;
 		line-height: 1.5;
 		color: var(--text-primary);
 	}

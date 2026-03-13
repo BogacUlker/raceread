@@ -157,7 +157,7 @@
 	}
 	.toggle-btn {
 		font-family: var(--font-mono);
-		font-size: 11px;
+		font-size: 13px;
 		padding: 3px 10px;
 		border: none;
 		border-radius: 3px;

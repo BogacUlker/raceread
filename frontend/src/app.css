@@ -37,6 +37,14 @@
 	--radius-sm: 4px;
 	--radius-md: 8px;
 	--radius-lg: 12px;
+
+	/* Typography scale */
+	--font-size-title: 18px;
+	--font-size-label: 13px;
+	--font-size-small: 12px;
+	--font-size-compact: 11px;
+	--font-size-badge: 11px;
+	--font-size-micro: 9px;
 }
 
 * {
@@ -79,7 +87,7 @@ a:hover {
 
 .chart-card__title {
 	font-family: var(--font-body);
-	font-size: 14px;
+	font-size: var(--font-size-title);
 	font-weight: 600;
 	color: var(--text-primary);
 	letter-spacing: 0.02em;

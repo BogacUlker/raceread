@@ -146,7 +146,7 @@
 	}
 	.driver-select select {
 		font-family: var(--font-mono);
-		font-size: 12px;
+		font-size: 13px;
 		padding: 3px 8px;
 		background: var(--bg-primary);
 		color: var(--text-primary);
@@ -164,7 +164,7 @@
 		align-items: center;
 		gap: 4px;
 		font-family: var(--font-mono);
-		font-size: 10px;
+		font-size: 12px;
 		color: var(--text-secondary);
 	}
 	.legend__dot {

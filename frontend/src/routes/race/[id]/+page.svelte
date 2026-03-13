@@ -1,14 +1,16 @@
 <!--
 	Race Dashboard - assembles all 7 MVP-1 charts.
-	Responsive grid layout with driver filter and bilingual support.
+	Responsive grid layout with driver filter, collapsible sections, and bilingual support.
 -->
 <script>
 	import { t } from '$lib/i18n/index.js';
 	import { selectedDrivers } from '$lib/stores/race.js';
+	import { collapsedSections } from '$lib/stores/dashboard.js';
 	import { TEAM_COLORS } from '$lib/constants.js';
 	import { api } from '$lib/api.js';
 
 	import DriverFilter from '$lib/components/layout/DriverFilter.svelte';
+	import ChartNav from '$lib/components/layout/ChartNav.svelte';
 	import RaceInsightsPanel from '$lib/components/RaceInsightsPanel.svelte';
 	import PaceChart from '$lib/components/charts/PaceChart.svelte';
 	import SummarizedPace from '$lib/components/charts/SummarizedPace.svelte';
@@ -26,6 +28,10 @@
 	let delta = $derived(data.delta);
 	let annotations = $derived(data.annotations);
 	let energyComparison = $derived(data.energyComparison);
+
+	// Collapsed sections state
+	let collapsed = $state({});
+	const unsubCollapsed = collapsedSections.subscribe((v) => { collapsed = v; });
 
 	// Build driver list with teams from laps data
 	let driverList = $derived(laps.map((d) => ({ driver: d.driver, team: d.team })));
@@ -118,57 +124,95 @@
 		/>
 	</div>
 
+	<!-- Quick Nav -->
+	<ChartNav />
+
 	<!-- Race Insights -->
-	<RaceInsightsPanel annotations={annotations.annotations || []} />
+	<div id="section-insights" class="dashboard-section">
+		<button class="section-toggle" onclick={() => collapsedSections.toggle('insights')}>
+			<span class="chevron" class:rotated={collapsed['insights']}>&#9660;</span>
+		</button>
+		<div class="section-body" class:collapsed={collapsed['insights']}>
+			<RaceInsightsPanel annotations={annotations.annotations || []} />
+		</div>
+	</div>
 
 	<!-- Charts Grid -->
 	<div class="dashboard__grid">
 		<!-- Row 1: Pace Chart (wide) + Summarized Pace (sidebar) -->
-		<div class="grid-row grid-row--pace">
-			<div class="grid-cell grid-cell--wide">
-				<PaceChart
-					{laps}
-					selectedDrivers={$selectedDrivers}
-					{vscLaps}
-					annotations={annotations.annotations || []}
-					{strategy}
-				/>
-			</div>
-			<div class="grid-cell grid-cell--sidebar">
-				<SummarizedPace {laps} />
+		<div id="section-pace" class="dashboard-section">
+			<button class="section-toggle" onclick={() => collapsedSections.toggle('pace')}>
+				<span class="chevron" class:rotated={collapsed['pace']}>&#9660;</span>
+			</button>
+			<div class="section-body" class:collapsed={collapsed['pace']}>
+				<div class="grid-row grid-row--pace">
+					<div class="grid-cell grid-cell--wide">
+						<PaceChart
+							{laps}
+							selectedDrivers={$selectedDrivers}
+							{vscLaps}
+							annotations={annotations.annotations || []}
+							{strategy}
+						/>
+					</div>
+					<div class="grid-cell grid-cell--sidebar">
+						<SummarizedPace {laps} />
+					</div>
+				</div>
 			</div>
 		</div>
 
 		<!-- Row 2: Strategy Timeline (full width) -->
-		<div class="grid-row grid-row--full">
-			<StrategyTimeline
-				drivers={strategySorted}
-				totalLaps={raceInfo.total_laps}
-				{vscLaps}
-			/>
+		<div id="section-strategy" class="dashboard-section">
+			<button class="section-toggle" onclick={() => collapsedSections.toggle('strategy')}>
+				<span class="chevron" class:rotated={collapsed['strategy']}>&#9660;</span>
+			</button>
+			<div class="section-body" class:collapsed={collapsed['strategy']}>
+				<div class="grid-row grid-row--full">
+					<StrategyTimeline
+						drivers={strategySorted}
+						totalLaps={raceInfo.total_laps}
+						{vscLaps}
+					/>
+				</div>
+			</div>
 		</div>
 
 		<!-- Row 3: Energy Bars + Delta Matrix -->
-		<div class="grid-row grid-row--split">
-			<div class="grid-cell">
-				<EnergyBars entries={energyComparison.entries || []} />
-			</div>
-			<div class="grid-cell">
-				<DeltaMatrix
-					drivers={delta.drivers || []}
-					matrix={delta.matrix || []}
-					teams={teamsMap}
-				/>
+		<div id="section-energy" class="dashboard-section">
+			<button class="section-toggle" onclick={() => collapsedSections.toggle('energy')}>
+				<span class="chevron" class:rotated={collapsed['energy']}>&#9660;</span>
+			</button>
+			<div class="section-body" class:collapsed={collapsed['energy']}>
+				<div class="grid-row grid-row--split">
+					<div class="grid-cell">
+						<EnergyBars entries={energyComparison.entries || []} />
+					</div>
+					<div class="grid-cell">
+						<DeltaMatrix
+							drivers={delta.drivers || []}
+							matrix={delta.matrix || []}
+							teams={teamsMap}
+						/>
+					</div>
+				</div>
 			</div>
 		</div>
 
 		<!-- Row 4: Energy Timeline (full width, per-driver) -->
-		<div class="grid-row grid-row--full">
-			<EnergyTimeline
-				{raceId}
-				drivers={driverList}
-				defaultDriver={raceInfo.winner}
-			/>
+		<div id="section-energy-timeline" class="dashboard-section">
+			<button class="section-toggle" onclick={() => collapsedSections.toggle('energy-timeline')}>
+				<span class="chevron" class:rotated={collapsed['energy-timeline']}>&#9660;</span>
+			</button>
+			<div class="section-body" class:collapsed={collapsed['energy-timeline']}>
+				<div class="grid-row grid-row--full">
+					<EnergyTimeline
+						{raceId}
+						drivers={driverList}
+						defaultDriver={raceInfo.winner}
+					/>
+				</div>
+			</div>
 		</div>
 	</div>
 </section>
@@ -221,6 +265,45 @@
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		gap: var(--space-lg);
+	}
+
+	/* Collapsible sections */
+	.dashboard-section {
+		position: relative;
+	}
+	.section-toggle {
+		position: absolute;
+		top: 4px;
+		right: 4px;
+		z-index: 5;
+		background: transparent;
+		border: none;
+		cursor: pointer;
+		padding: 4px 6px;
+		line-height: 1;
+	}
+	.chevron {
+		display: inline-block;
+		font-size: 10px;
+		color: var(--text-muted);
+		transition: transform 0.2s ease;
+	}
+	.chevron.rotated {
+		transform: rotate(-90deg);
+	}
+	.section-toggle:hover .chevron {
+		color: var(--text-secondary);
+	}
+	.section-body {
+		max-height: 2000px;
+		opacity: 1;
+		overflow: visible;
+		transition: max-height 0.35s ease, opacity 0.25s ease;
+	}
+	.section-body.collapsed {
+		max-height: 0;
+		opacity: 0;
+		overflow: hidden;
 	}
 
 	/* Responsive */
