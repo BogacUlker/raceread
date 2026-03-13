@@ -97,13 +97,32 @@ def _write_json(path: Path, data: Any) -> None:
 # "Chinese Grand Prix" -> "china", "Japanese Grand Prix" -> "japan"
 # Also handle special cases like "Emilia Romagna Grand Prix" -> "emilia-romagna"
 _COUNTRY_OVERRIDES = {
-    "emilia romagna": "emilia-romagna",
+    "australian": "australia",
+    "chinese": "china",
+    "japanese": "japan",
+    "british": "great-britain",
+    "spanish": "spain",
+    "belgian": "belgium",
+    "italian": "italy",
+    "hungarian": "hungary",
+    "dutch": "netherlands",
+    "mexican": "mexico",
+    "brazilian": "brazil",
+    "canadian": "canada",
+    "bahrain": "bahrain",
     "saudi arabian": "saudi-arabia",
+    "emilia romagna": "emilia-romagna",
     "las vegas": "las-vegas",
     "abu dhabi": "abu-dhabi",
     "united states": "usa",
     "great britain": "great-britain",
     "sao paulo": "sao-paulo",
+    "monaco": "monaco",
+    "singapore": "singapore",
+    "qatar": "qatar",
+    "austrian": "austria",
+    "azerbaijan": "azerbaijan",
+    "miami": "miami",
 }
 
 
@@ -154,7 +173,7 @@ def _collect_driver_info(session: fastf1.core.Session) -> dict:
     teams: dict[str, str] = {}
 
     for drv in all_drivers:
-        drv_laps = laps.pick_driver(drv)
+        drv_laps = laps.pick_drivers(drv)
         lap_count = len(drv_laps)
 
         # Get team name
@@ -216,18 +235,12 @@ def export_race_info(
     # Event name
     event_name = str(event["EventName"]) if "EventName" in event.index else str(event)
 
-    # Circuit name
+    # Circuit name: prefer Location from event, fallback to Country
     circuit = "Unknown"
-    try:
-        circuit_info = session.get_circuit_info()
-        if hasattr(circuit_info, "name"):
-            circuit = circuit_info.name
-    except Exception:
-        # Fallback: try event location
-        if "Location" in event.index and pd.notna(event["Location"]):
-            circuit = str(event["Location"])
-        elif "OfficialEventName" in event.index:
-            circuit = str(event["OfficialEventName"])
+    if "Location" in event.index and pd.notna(event["Location"]):
+        circuit = str(event["Location"])
+    elif "Country" in event.index and pd.notna(event["Country"]):
+        circuit = str(event["Country"])
 
     race_info = {
         "id": race_id,
@@ -259,7 +272,7 @@ def export_laps(
     laps_by_driver: dict[str, list[dict]] = {}
 
     for drv in all_drivers:
-        drv_laps = laps.pick_driver(drv).sort_values("LapNumber")
+        drv_laps = laps.pick_drivers(drv).sort_values("LapNumber")
 
         if drv in drivers_info["drivers_dns"]:
             laps_by_driver[drv] = []
@@ -320,7 +333,7 @@ def export_strategy(
     strategy_entries = []
 
     for drv in sorted(valid_drivers):
-        drv_laps = laps.pick_driver(drv).sort_values("LapNumber")
+        drv_laps = laps.pick_drivers(drv).sort_values("LapNumber")
 
         # Detect pit laps: laps where PitInTime is not null
         pit_laps = []
@@ -547,12 +560,29 @@ def export_energy(
     for drv in valid_drivers:
         print(f"  Processing energy for {drv}...")
         try:
-            drv_laps = session.laps.pick_driver(drv)
-            telemetry = drv_laps.get_telemetry()
+            drv_laps = session.laps.pick_drivers(drv)
 
-            if telemetry is None or len(telemetry) == 0:
+            # Build combined telemetry with LapNumber column
+            # get_telemetry() on multi-lap doesn't include LapNumber,
+            # so we iterate per lap and concatenate
+            telemetry_frames = []
+            for _, lap_row in drv_laps.iterrows():
+                lap_num = int(lap_row["LapNumber"])
+                try:
+                    lap_tel = lap_row.get_telemetry()
+                    if lap_tel is not None and len(lap_tel) > 0:
+                        lap_tel = lap_tel.copy()
+                        lap_tel["LapNumber"] = lap_num
+                        telemetry_frames.append(lap_tel)
+                except Exception:
+                    continue
+
+            if not telemetry_frames:
                 print(f"    [WARN] No telemetry for {drv}, skipping energy export")
                 continue
+
+            telemetry = pd.concat(telemetry_frames, ignore_index=True)
+            print(f"    {len(telemetry)} telemetry samples, {len(telemetry_frames)} laps")
 
             team = teams.get(drv, "Unknown")
             energy_result = infer_energy_states(
@@ -566,6 +596,8 @@ def export_energy(
 
         except Exception as exc:
             print(f"    [ERROR] Energy inference failed for {drv}: {exc}")
+            import traceback
+            traceback.print_exc()
             continue
 
 
