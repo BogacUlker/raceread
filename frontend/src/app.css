@@ -1,0 +1,110 @@
+:root {
+	/* Dark theme (default) */
+	--bg-primary: #0F1117;
+	--bg-secondary: #1A1D27;
+	--bg-card: #22252F;
+	--text-primary: #E8E8ED;
+	--text-secondary: #9CA3AF;
+	--text-muted: #6B7280;
+	--border: #2E3240;
+	--accent: #E24B4A;
+
+	/* Fonts */
+	--font-mono: 'JetBrains Mono', monospace;
+	--font-body: 'DM Sans', sans-serif;
+
+	/* Energy colors */
+	--energy-deploy: #22C55E;
+	--energy-harvest: #3B82F6;
+	--energy-clip: #F59E0B;
+	--energy-neutral: #6B7280;
+
+	/* Compound colors */
+	--compound-soft: #FF3333;
+	--compound-medium: #FFC300;
+	--compound-hard: #F0F0F0;
+	--compound-intermediate: #39B54A;
+	--compound-wet: #0067FF;
+
+	/* Spacing */
+	--space-xs: 4px;
+	--space-sm: 8px;
+	--space-md: 16px;
+	--space-lg: 24px;
+	--space-xl: 32px;
+
+	/* Border radius */
+	--radius-sm: 4px;
+	--radius-md: 8px;
+	--radius-lg: 12px;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: var(--font-body);
+	background: var(--bg-primary);
+	color: var(--text-primary);
+	line-height: 1.5;
+	-webkit-font-smoothing: antialiased;
+}
+
+a {
+	color: var(--accent);
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+/* Chart card wrapper */
+.chart-card {
+	background: var(--bg-card);
+	border: 1px solid var(--border);
+	border-radius: var(--radius-lg);
+	padding: var(--space-lg);
+}
+
+.chart-card__header {
+	display: flex;
+	align-items: center;
+	gap: var(--space-sm);
+	margin-bottom: var(--space-md);
+}
+
+.chart-card__title {
+	font-family: var(--font-body);
+	font-size: 14px;
+	font-weight: 600;
+	color: var(--text-primary);
+	letter-spacing: 0.02em;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+	width: 6px;
+	height: 6px;
+}
+
+::-webkit-scrollbar-track {
+	background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--border);
+	border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: var(--text-muted);
+}
+
+/* Interactive chart cursor */
+.chart-interactive {
+	cursor: crosshair;
+}

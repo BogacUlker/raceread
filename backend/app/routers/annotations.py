@@ -50,7 +50,7 @@ def get_annotations(
         driver_upper = driver.upper()
         annotations_raw = [
             a for a in annotations_raw
-            if a.get("driver", "").upper() == driver_upper
+            if (a.get("driver") or "").upper() == driver_upper
         ]
 
     if chart_type:

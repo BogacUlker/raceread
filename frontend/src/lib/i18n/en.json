@@ -1,0 +1,76 @@
+{
+	"nav": {
+		"home": "Home",
+		"about": "About"
+	},
+	"home": {
+		"title": "RaceRead",
+		"subtitle": "F1 Post-Race Telemetry Analysis",
+		"select_race": "Select Race"
+	},
+	"race": {
+		"title": "Race Dashboard",
+		"laps": "Laps",
+		"driver": "Driver",
+		"team": "Team",
+		"winner": "Winner",
+		"total_laps": "Total Laps",
+		"date": "Date",
+		"circuit": "Circuit"
+	},
+	"charts": {
+		"pace": "Race Pace",
+		"pace_desc": "Lap-by-lap pace comparison",
+		"summarized_pace": "Summarized Pace",
+		"summarized_pace_desc": "Median pace distribution",
+		"delta_matrix": "Delta Matrix",
+		"delta_matrix_desc": "Driver-to-driver median gap",
+		"strategy": "Strategy Timeline",
+		"strategy_desc": "Tyre strategy and pit stops",
+		"energy_bars": "Energy Profile",
+		"energy_bars_desc": "Normalized energy distribution",
+		"energy_timeline": "Energy Timeline",
+		"energy_timeline_desc": "Lap-by-lap energy state changes",
+		"inferred": "inferred",
+		"dc_ratio": "D/C Ratio",
+		"deploy": "Deploy",
+		"harvest": "Harvest",
+		"clip": "Clip",
+		"gap_mode": "Gap",
+		"raw_mode": "Raw Time"
+	},
+	"filter": {
+		"all_drivers": "All Drivers",
+		"select_driver": "Select Driver"
+	},
+	"tooltip": {
+		"lap": "Lap",
+		"compound": "Compound",
+		"tire_age": "Tire Age",
+		"pit_stop": "Pit Stop",
+		"stint": "Stint",
+		"vsc_active": "VSC Active",
+		"click_to_pin": "Click to pin",
+		"pinned": "Pinned",
+		"laps": "laps"
+	},
+	"annotations": {
+		"race_insights": "Race Insights",
+		"pace_anomaly": "Pace Anomaly",
+		"energy_shift": "Energy Shift",
+		"safety_car": "Safety Car",
+		"pit_stop": "Pit Stop",
+		"position_change": "Position Change",
+		"fastest_lap": "Fastest Lap",
+		"race_insight": "Race Insight",
+		"energy_insight": "Energy Insight"
+	},
+	"common": {
+		"loading": "Loading...",
+		"error": "An error occurred",
+		"no_data": "No data found",
+		"lap": "Lap",
+		"position": "Position",
+		"compound": "Compound"
+	}
+}

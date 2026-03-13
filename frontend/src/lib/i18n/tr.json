@@ -1,0 +1,76 @@
+{
+	"nav": {
+		"home": "Ana Sayfa",
+		"about": "Hakkında"
+	},
+	"home": {
+		"title": "RaceRead",
+		"subtitle": "F1 Yarış Sonrası Telemetri Analizi",
+		"select_race": "Yarış Seç"
+	},
+	"race": {
+		"title": "Yarış Panosu",
+		"laps": "Tur",
+		"driver": "Pilot",
+		"team": "Takım",
+		"winner": "Kazanan",
+		"total_laps": "Toplam Tur",
+		"date": "Tarih",
+		"circuit": "Pist"
+	},
+	"charts": {
+		"pace": "Yarış Temposu",
+		"pace_desc": "Tur tur tempo karşılaştırması",
+		"summarized_pace": "Özet Tempo",
+		"summarized_pace_desc": "Medyan tempo dağılımı",
+		"delta_matrix": "Delta Matrisi",
+		"delta_matrix_desc": "Pilot-pilot medyan fark",
+		"strategy": "Strateji Zaman Çizelgesi",
+		"strategy_desc": "Lastik stratejisi ve pit stopları",
+		"energy_bars": "Enerji Profili",
+		"energy_bars_desc": "Normalize edilmiş enerji dağılımı",
+		"energy_timeline": "Enerji Zaman Çizelgesi",
+		"energy_timeline_desc": "Tur tur enerji durumu değişimi",
+		"inferred": "çıkarımsal",
+		"dc_ratio": "D/C Oranı",
+		"deploy": "Deploy",
+		"harvest": "Harvest",
+		"clip": "Clip",
+		"gap_mode": "Fark",
+		"raw_mode": "Ham Süre"
+	},
+	"filter": {
+		"all_drivers": "Tüm Pilotlar",
+		"select_driver": "Pilot Seç"
+	},
+	"tooltip": {
+		"lap": "Tur",
+		"compound": "Lastik",
+		"tire_age": "Lastik Yaşı",
+		"pit_stop": "Pit Stop",
+		"stint": "Stint",
+		"vsc_active": "VSC Aktif",
+		"click_to_pin": "Sabitlemek için tıkla",
+		"pinned": "Sabitlendi",
+		"laps": "tur"
+	},
+	"annotations": {
+		"race_insights": "Yarış Değerlendirmesi",
+		"pace_anomaly": "Tempo Anomalisi",
+		"energy_shift": "Enerji Değişimi",
+		"safety_car": "Güvenlik Aracı",
+		"pit_stop": "Pit Stop",
+		"position_change": "Pozisyon Değişimi",
+		"fastest_lap": "En Hızlı Tur",
+		"race_insight": "Yarış Değerlendirmesi",
+		"energy_insight": "Enerji Değerlendirmesi"
+	},
+	"common": {
+		"loading": "Yükleniyor...",
+		"error": "Hata oluştu",
+		"no_data": "Veri bulunamadı",
+		"lap": "Tur",
+		"position": "Pozisyon",
+		"compound": "Lastik"
+	}
+}

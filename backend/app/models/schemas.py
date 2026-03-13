@@ -112,8 +112,8 @@ class DeltaMatrixResponse(BaseModel):
 
 
 class Annotation(BaseModel):
-    driver: str
-    lap: int
+    driver: str | None = None
+    lap: int | None = None
     chart_type: str
     text_tr: str
     text_en: str
