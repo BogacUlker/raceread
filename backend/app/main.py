@@ -8,7 +8,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from backend.app.config import CORS_ORIGINS
-from backend.app.routers import annotations, delta, energy, laps, races, strategy
+from backend.app.routers import annotations, delta, energy, laps, qualifying, races, strategy
 
 app = FastAPI(
     title="RaceRead API",
@@ -35,6 +35,7 @@ app.include_router(energy.router, prefix="/api")
 app.include_router(strategy.router, prefix="/api")
 app.include_router(delta.router, prefix="/api")
 app.include_router(annotations.router, prefix="/api")
+app.include_router(qualifying.router, prefix="/api")
 
 
 @app.get("/health")

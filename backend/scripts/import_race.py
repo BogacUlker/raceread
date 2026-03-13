@@ -649,6 +649,135 @@ def export_annotations_placeholder(output_dir: Path) -> None:
 
 
 # ---------------------------------------------------------------------------
+# Qualifying export
+# ---------------------------------------------------------------------------
+
+def _format_timedelta_str(td: pd.Timedelta | None) -> str | None:
+    """Format a Timedelta as 'm:ss.SSS' string. Returns None for NaT/None."""
+    if td is None or pd.isna(td):
+        return None
+    total = td.total_seconds()
+    mins = int(total // 60)
+    secs = total % 60
+    return f"{mins}:{secs:06.3f}"
+
+
+def export_qualifying(
+    year: int,
+    event: str,
+    race_id: str,
+    output_dir: Path,
+) -> None:
+    """Export qualifying.json with Q1/Q2/Q3 times, positions, and sector data.
+
+    Loads the qualifying session separately from the race session.
+    Uses session.results for authoritative Q times and session.laps for sectors.
+    """
+    print("  Loading qualifying session...")
+    quali_session = fastf1.get_session(year, event, "Q")
+    quali_session.load()
+
+    results = quali_session.results
+    if results is None or len(results) == 0:
+        print("  [WARN] No qualifying results available, skipping")
+        return
+
+    quali_laps = quali_session.laps
+
+    drivers_out = []
+    for _, row in results.iterrows():
+        driver = str(row.get("Abbreviation", ""))
+        if not driver:
+            continue
+
+        team = str(row.get("TeamName", "Unknown"))
+        position = _clean_value(row.get("Position"))
+        if position is not None:
+            position = int(position)
+        grid_position = _clean_value(row.get("GridPosition"))
+        if grid_position is not None:
+            grid_position = int(grid_position)
+
+        q1_td = row.get("Q1")
+        q2_td = row.get("Q2")
+        q3_td = row.get("Q3")
+
+        q1_str = _format_timedelta_str(q1_td)
+        q2_str = _format_timedelta_str(q2_td)
+        q3_str = _format_timedelta_str(q3_td)
+
+        q1_s = _clean_value(q1_td)
+        q2_s = _clean_value(q2_td)
+        q3_s = _clean_value(q3_td)
+
+        # Determine elimination round
+        eliminated_in = None
+        if q2_s is None and q1_s is not None:
+            eliminated_in = "Q1"
+        elif q3_s is None and q2_s is not None:
+            eliminated_in = "Q2"
+
+        # Find sector times by matching the best Q time in session.laps
+        sectors = {"s1": None, "s2": None, "s3": None}
+        best_q_td = q3_td if pd.notna(q3_td) else (q2_td if pd.notna(q2_td) else q1_td)
+
+        if best_q_td is not None and pd.notna(best_q_td) and len(quali_laps) > 0:
+            drv_laps = quali_laps[quali_laps["Driver"] == driver]
+            if len(drv_laps) > 0:
+                # Find lap matching best Q time within 50ms tolerance
+                tolerance = pd.Timedelta(milliseconds=50)
+                for _, lap_row in drv_laps.iterrows():
+                    lt = lap_row.get("LapTime")
+                    if lt is not None and pd.notna(lt):
+                        if abs(lt - best_q_td) <= tolerance:
+                            sectors["s1"] = _clean_value(lap_row.get("Sector1Time"))
+                            sectors["s2"] = _clean_value(lap_row.get("Sector2Time"))
+                            sectors["s3"] = _clean_value(lap_row.get("Sector3Time"))
+                            break
+
+        drivers_out.append({
+            "driver": driver,
+            "team": team,
+            "position": position,
+            "grid_position": grid_position,
+            "q1": q1_str,
+            "q1_s": q1_s,
+            "q2": q2_str,
+            "q2_s": q2_s,
+            "q3": q3_str,
+            "q3_s": q3_s,
+            "eliminated_in": eliminated_in,
+            "sectors": sectors,
+        })
+
+    # Sort by position
+    drivers_out.sort(key=lambda d: d["position"] if d["position"] is not None else 99)
+
+    # Compute gap to pole (P1's best time)
+    pole_time = None
+    if drivers_out and drivers_out[0].get("q3_s") is not None:
+        pole_time = drivers_out[0]["q3_s"]
+    elif drivers_out and drivers_out[0].get("q2_s") is not None:
+        pole_time = drivers_out[0]["q2_s"]
+    elif drivers_out and drivers_out[0].get("q1_s") is not None:
+        pole_time = drivers_out[0]["q1_s"]
+
+    for d in drivers_out:
+        best_time = d["q3_s"] or d["q2_s"] or d["q1_s"]
+        if best_time is not None and pole_time is not None:
+            d["gap_to_pole"] = round(best_time - pole_time, 3)
+        else:
+            d["gap_to_pole"] = None
+
+    output = {
+        "race_id": race_id,
+        "drivers": drivers_out,
+    }
+
+    _write_json(output_dir / "qualifying.json", output)
+
+
+# ---------------------------------------------------------------------------
 # Main pipeline
 # ---------------------------------------------------------------------------
 
@@ -747,6 +876,12 @@ def run_import(year: int, event: str, energy_only: bool = False) -> None:
 
     print("  Writing annotations placeholder...")
     export_annotations_placeholder(output_dir)
+
+    print("  Exporting qualifying data...")
+    try:
+        export_qualifying(year, event, race_id, output_dir)
+    except Exception as exc:
+        print(f"  [WARN] Qualifying export failed (non-fatal): {exc}")
 
     # Summary
     print(f"\n{'=' * 60}")

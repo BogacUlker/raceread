@@ -1,15 +1,16 @@
 <!--
-	Race Dashboard - assembles all 7 MVP-1 charts.
+	Race Dashboard - assembles all 7 MVP-1 charts + qualifying session.
 	Responsive grid layout with driver filter, collapsible sections, and bilingual support.
 -->
 <script>
 	import { t } from '$lib/i18n/index.js';
-	import { selectedDrivers } from '$lib/stores/race.js';
+	import { selectedDrivers, activeSession } from '$lib/stores/race.js';
 	import { collapsedSections } from '$lib/stores/dashboard.js';
 	import { TEAM_COLORS } from '$lib/constants.js';
 	import { api } from '$lib/api.js';
 
 	import DriverFilter from '$lib/components/layout/DriverFilter.svelte';
+	import SessionToggle from '$lib/components/layout/SessionToggle.svelte';
 	import ChartNav from '$lib/components/layout/ChartNav.svelte';
 	import RaceInsightsPanel from '$lib/components/RaceInsightsPanel.svelte';
 	import PaceChart from '$lib/components/charts/PaceChart.svelte';
@@ -18,6 +19,9 @@
 	import EnergyBars from '$lib/components/charts/EnergyBars.svelte';
 	import DeltaMatrix from '$lib/components/charts/DeltaMatrix.svelte';
 	import EnergyTimeline from '$lib/components/charts/EnergyTimeline.svelte';
+	import QualifyingResults from '$lib/components/charts/QualifyingResults.svelte';
+	import SectorComparison from '$lib/components/charts/SectorComparison.svelte';
+	import QualifyingDelta from '$lib/components/charts/QualifyingDelta.svelte';
 
 	let { data } = $props();
 
@@ -32,6 +36,33 @@
 	// Collapsed sections state
 	let collapsed = $state({});
 	const unsubCollapsed = collapsedSections.subscribe((v) => { collapsed = v; });
+
+	// Active session state
+	let session = $state('race');
+	const unsubSession = activeSession.subscribe((v) => { session = v; });
+
+	// Qualifying data - lazy loaded on first tab switch
+	let qualifyingData = $state(null);
+	let qualifyingLoading = $state(false);
+	let qualifyingError = $state(false);
+
+	$effect(() => {
+		if (session === 'qualifying' && qualifyingData === null && !qualifyingLoading) {
+			loadQualifying();
+		}
+	});
+
+	async function loadQualifying() {
+		qualifyingLoading = true;
+		qualifyingError = false;
+		try {
+			qualifyingData = await api(`/api/races/${raceId}/qualifying`);
+		} catch {
+			qualifyingError = true;
+		} finally {
+			qualifyingLoading = false;
+		}
+	}
 
 	// Build driver list with teams from laps data
 	let driverList = $derived(laps.map((d) => ({ driver: d.driver, team: d.team })));
@@ -115,106 +146,156 @@
 		</div>
 	</div>
 
-	<!-- Driver Filter -->
-	<div class="dashboard__filter">
-		<DriverFilter
-			drivers={driverList}
-			selected={$selectedDrivers}
-			onchange={(v) => selectedDrivers.set(v)}
-		/>
-	</div>
+	<!-- Session Toggle -->
+	<SessionToggle />
+
+	<!-- Driver Filter (race mode only) -->
+	{#if session === 'race'}
+		<div class="dashboard__filter">
+			<DriverFilter
+				drivers={driverList}
+				selected={$selectedDrivers}
+				onchange={(v) => selectedDrivers.set(v)}
+			/>
+		</div>
+	{/if}
 
 	<!-- Quick Nav -->
 	<ChartNav />
 
-	<!-- Race Insights -->
-	<div id="section-insights" class="dashboard-section">
-		<button class="section-toggle" onclick={() => collapsedSections.toggle('insights')}>
-			<span class="chevron" class:rotated={collapsed['insights']}>&#9660;</span>
-		</button>
-		<div class="section-body" class:collapsed={collapsed['insights']}>
-			<RaceInsightsPanel annotations={annotations.annotations || []} />
-		</div>
-	</div>
-
-	<!-- Charts Grid -->
-	<div class="dashboard__grid">
-		<!-- Row 1: Pace Chart (wide) + Summarized Pace (sidebar) -->
-		<div id="section-pace" class="dashboard-section">
-			<button class="section-toggle" onclick={() => collapsedSections.toggle('pace')}>
-				<span class="chevron" class:rotated={collapsed['pace']}>&#9660;</span>
+	{#if session === 'race'}
+		<!-- Race Insights -->
+		<div id="section-insights" class="dashboard-section">
+			<button class="section-toggle" onclick={() => collapsedSections.toggle('insights')}>
+				<span class="chevron" class:rotated={collapsed['insights']}>&#9660;</span>
 			</button>
-			<div class="section-body" class:collapsed={collapsed['pace']}>
-				<div class="grid-row grid-row--pace">
-					<div class="grid-cell grid-cell--wide">
-						<PaceChart
-							{laps}
-							selectedDrivers={$selectedDrivers}
+			<div class="section-body" class:collapsed={collapsed['insights']}>
+				<RaceInsightsPanel annotations={annotations.annotations || []} />
+			</div>
+		</div>
+
+		<!-- Charts Grid -->
+		<div class="dashboard__grid">
+			<!-- Row 1: Pace Chart (wide) + Summarized Pace (sidebar) -->
+			<div id="section-pace" class="dashboard-section">
+				<button class="section-toggle" onclick={() => collapsedSections.toggle('pace')}>
+					<span class="chevron" class:rotated={collapsed['pace']}>&#9660;</span>
+				</button>
+				<div class="section-body" class:collapsed={collapsed['pace']}>
+					<div class="grid-row grid-row--pace">
+						<div class="grid-cell grid-cell--wide">
+							<PaceChart
+								{laps}
+								selectedDrivers={$selectedDrivers}
+								{vscLaps}
+								annotations={annotations.annotations || []}
+								{strategy}
+							/>
+						</div>
+						<div class="grid-cell grid-cell--sidebar">
+							<SummarizedPace {laps} />
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Row 2: Strategy Timeline (full width) -->
+			<div id="section-strategy" class="dashboard-section">
+				<button class="section-toggle" onclick={() => collapsedSections.toggle('strategy')}>
+					<span class="chevron" class:rotated={collapsed['strategy']}>&#9660;</span>
+				</button>
+				<div class="section-body" class:collapsed={collapsed['strategy']}>
+					<div class="grid-row grid-row--full">
+						<StrategyTimeline
+							drivers={strategySorted}
+							totalLaps={raceInfo.total_laps}
 							{vscLaps}
-							annotations={annotations.annotations || []}
-							{strategy}
 						/>
 					</div>
-					<div class="grid-cell grid-cell--sidebar">
-						<SummarizedPace {laps} />
+				</div>
+			</div>
+
+			<!-- Row 3: Energy Bars + Delta Matrix -->
+			<div id="section-energy" class="dashboard-section">
+				<button class="section-toggle" onclick={() => collapsedSections.toggle('energy')}>
+					<span class="chevron" class:rotated={collapsed['energy']}>&#9660;</span>
+				</button>
+				<div class="section-body" class:collapsed={collapsed['energy']}>
+					<div class="grid-row grid-row--split">
+						<div class="grid-cell">
+							<EnergyBars entries={energyComparison.entries || []} />
+						</div>
+						<div class="grid-cell">
+							<DeltaMatrix
+								drivers={delta.drivers || []}
+								matrix={delta.matrix || []}
+								teams={teamsMap}
+							/>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 
-		<!-- Row 2: Strategy Timeline (full width) -->
-		<div id="section-strategy" class="dashboard-section">
-			<button class="section-toggle" onclick={() => collapsedSections.toggle('strategy')}>
-				<span class="chevron" class:rotated={collapsed['strategy']}>&#9660;</span>
-			</button>
-			<div class="section-body" class:collapsed={collapsed['strategy']}>
-				<div class="grid-row grid-row--full">
-					<StrategyTimeline
-						drivers={strategySorted}
-						totalLaps={raceInfo.total_laps}
-						{vscLaps}
-					/>
-				</div>
-			</div>
-		</div>
-
-		<!-- Row 3: Energy Bars + Delta Matrix -->
-		<div id="section-energy" class="dashboard-section">
-			<button class="section-toggle" onclick={() => collapsedSections.toggle('energy')}>
-				<span class="chevron" class:rotated={collapsed['energy']}>&#9660;</span>
-			</button>
-			<div class="section-body" class:collapsed={collapsed['energy']}>
-				<div class="grid-row grid-row--split">
-					<div class="grid-cell">
-						<EnergyBars entries={energyComparison.entries || []} />
-					</div>
-					<div class="grid-cell">
-						<DeltaMatrix
-							drivers={delta.drivers || []}
-							matrix={delta.matrix || []}
-							teams={teamsMap}
+			<!-- Row 4: Energy Timeline (full width, per-driver) -->
+			<div id="section-energy-timeline" class="dashboard-section">
+				<button class="section-toggle" onclick={() => collapsedSections.toggle('energy-timeline')}>
+					<span class="chevron" class:rotated={collapsed['energy-timeline']}>&#9660;</span>
+				</button>
+				<div class="section-body" class:collapsed={collapsed['energy-timeline']}>
+					<div class="grid-row grid-row--full">
+						<EnergyTimeline
+							{raceId}
+							drivers={driverList}
+							defaultDriver={raceInfo.winner}
 						/>
 					</div>
 				</div>
 			</div>
 		</div>
+	{:else}
+		<!-- Qualifying Session -->
+		{#if qualifyingLoading}
+			<div class="quali-loading">
+				<span>{$t('common.loading')}</span>
+			</div>
+		{:else if qualifyingError}
+			<div class="quali-error">
+				<span>{$t('common.no_data')}</span>
+			</div>
+		{:else if qualifyingData}
+			<div class="dashboard__grid">
+				<!-- Qualifying Results Table -->
+				<div id="section-qualifying-results" class="dashboard-section">
+					<button class="section-toggle" onclick={() => collapsedSections.toggle('qualifying-results')}>
+						<span class="chevron" class:rotated={collapsed['qualifying-results']}>&#9660;</span>
+					</button>
+					<div class="section-body" class:collapsed={collapsed['qualifying-results']}>
+						<QualifyingResults drivers={qualifyingData.drivers || []} />
+					</div>
+				</div>
 
-		<!-- Row 4: Energy Timeline (full width, per-driver) -->
-		<div id="section-energy-timeline" class="dashboard-section">
-			<button class="section-toggle" onclick={() => collapsedSections.toggle('energy-timeline')}>
-				<span class="chevron" class:rotated={collapsed['energy-timeline']}>&#9660;</span>
-			</button>
-			<div class="section-body" class:collapsed={collapsed['energy-timeline']}>
-				<div class="grid-row grid-row--full">
-					<EnergyTimeline
-						{raceId}
-						drivers={driverList}
-						defaultDriver={raceInfo.winner}
-					/>
+				<!-- Sector Comparison -->
+				<div id="section-sector-comparison" class="dashboard-section">
+					<button class="section-toggle" onclick={() => collapsedSections.toggle('sector-comparison')}>
+						<span class="chevron" class:rotated={collapsed['sector-comparison']}>&#9660;</span>
+					</button>
+					<div class="section-body" class:collapsed={collapsed['sector-comparison']}>
+						<SectorComparison drivers={qualifyingData.drivers || []} />
+					</div>
+				</div>
+
+				<!-- Qualifying Delta -->
+				<div id="section-qualifying-delta" class="dashboard-section">
+					<button class="section-toggle" onclick={() => collapsedSections.toggle('qualifying-delta')}>
+						<span class="chevron" class:rotated={collapsed['qualifying-delta']}>&#9660;</span>
+					</button>
+					<div class="section-body" class:collapsed={collapsed['qualifying-delta']}>
+						<QualifyingDelta drivers={qualifyingData.drivers || []} />
+					</div>
 				</div>
 			</div>
-		</div>
-	</div>
+		{/if}
+	{/if}
 </section>
 
 <style>
@@ -304,6 +385,18 @@
 		max-height: 0;
 		opacity: 0;
 		overflow: hidden;
+	}
+
+	/* Qualifying loading/error states */
+	.quali-loading,
+	.quali-error {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: var(--space-xl);
+		font-family: var(--font-mono);
+		font-size: 14px;
+		color: var(--text-muted);
 	}
 
 	/* Responsive */

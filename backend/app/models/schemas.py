@@ -124,3 +124,30 @@ class Annotation(BaseModel):
 class AnnotationsResponse(BaseModel):
     race_id: str
     annotations: list[Annotation]
+
+
+class QualifyingSessionResult(BaseModel):
+    s1: float | None = None
+    s2: float | None = None
+    s3: float | None = None
+
+
+class QualifyingDriver(BaseModel):
+    driver: str
+    team: str
+    position: int | None = None
+    grid_position: int | None = None
+    q1: str | None = None
+    q1_s: float | None = None
+    q2: str | None = None
+    q2_s: float | None = None
+    q3: str | None = None
+    q3_s: float | None = None
+    eliminated_in: str | None = None
+    sectors: QualifyingSessionResult = QualifyingSessionResult()
+    gap_to_pole: float | None = None
+
+
+class QualifyingResponse(BaseModel):
+    race_id: str
+    drivers: list[QualifyingDriver]

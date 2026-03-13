@@ -1,24 +1,33 @@
 <!--
 	Quick navigation pill bar for dashboard sections.
 	Click a pill to expand (if collapsed) and scroll to that section.
+	Session-aware: shows race or qualifying sections based on activeSession.
 -->
 <script>
 	import { tick } from 'svelte';
 	import { t } from '$lib/i18n/index.js';
-	import { collapsedSections, SECTIONS } from '$lib/stores/dashboard.js';
+	import { collapsedSections, SECTIONS, QUALIFYING_SECTIONS } from '$lib/stores/dashboard.js';
+	import { activeSession } from '$lib/stores/race.js';
 
 	const LABELS = {
 		insights: 'chart_nav.insights',
 		pace: 'chart_nav.pace',
 		strategy: 'chart_nav.strategy',
 		energy: 'chart_nav.energy',
-		'energy-timeline': 'chart_nav.energy_timeline'
+		'energy-timeline': 'chart_nav.energy_timeline',
+		'qualifying-results': 'chart_nav.qualifying_results',
+		'sector-comparison': 'chart_nav.sector_comparison',
+		'qualifying-delta': 'chart_nav.qualifying_delta'
 	};
 
 	let collapsed = $state({});
 	const unsub = collapsedSections.subscribe((v) => { collapsed = v; });
 
-	let allCollapsed = $derived(SECTIONS.every((s) => collapsed[s]));
+	let session = $state('race');
+	const unsubSession = activeSession.subscribe((v) => { session = v; });
+
+	let activeSections = $derived(session === 'qualifying' ? QUALIFYING_SECTIONS : SECTIONS);
+	let allCollapsed = $derived(activeSections.every((s) => collapsed[s]));
 
 	async function navigateTo(sectionId) {
 		if (collapsed[sectionId]) {
@@ -42,7 +51,7 @@
 
 <nav class="chart-nav">
 	<div class="chart-nav__pills">
-		{#each SECTIONS as sectionId}
+		{#each activeSections as sectionId}
 			<button
 				class="chart-nav__pill"
 				class:muted={collapsed[sectionId]}

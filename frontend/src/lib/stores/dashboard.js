@@ -5,6 +5,8 @@ const STORAGE_KEY = 'raceread:collapsed';
 
 const SECTIONS = ['insights', 'pace', 'strategy', 'energy', 'energy-timeline'];
 
+const QUALIFYING_SECTIONS = ['qualifying-results', 'sector-comparison', 'qualifying-delta'];
+
 function loadFromStorage() {
 	if (!browser) return {};
 	try {
@@ -51,4 +53,4 @@ function createCollapsedSections() {
 }
 
 export const collapsedSections = createCollapsedSections();
-export { SECTIONS };
+export { SECTIONS, QUALIFYING_SECTIONS };

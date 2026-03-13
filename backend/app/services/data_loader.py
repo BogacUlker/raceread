@@ -83,3 +83,8 @@ def load_annotations(race_id: str) -> dict:
     if not path.exists():
         return {"annotations": []}
     return load_json(str(path))
+
+
+def load_qualifying(race_id: str) -> dict:
+    """Load qualifying session data for a race."""
+    return load_json(str(get_race_dir(race_id) / "qualifying.json"))
