@@ -1,0 +1,80 @@
+{
+  "messages": [
+    {
+      "time": 1150.0,
+      "category": "SafetyCar",
+      "message": "VIRTUAL SAFETY CAR DEPLOYED",
+      "status": null,
+      "flag": "VSC",
+      "scope": "Track",
+      "sector": null,
+      "racing_number": null,
+      "lap": 12
+    },
+    {
+      "time": 1380.0,
+      "category": "SafetyCar",
+      "message": "VIRTUAL SAFETY CAR ENDING",
+      "status": null,
+      "flag": null,
+      "scope": "Track",
+      "sector": null,
+      "racing_number": null,
+      "lap": 14
+    },
+    {
+      "time": 1720.0,
+      "category": "SafetyCar",
+      "message": "VIRTUAL SAFETY CAR DEPLOYED",
+      "status": null,
+      "flag": "VSC",
+      "scope": "Track",
+      "sector": null,
+      "racing_number": null,
+      "lap": 18
+    },
+    {
+      "time": 1950.0,
+      "category": "SafetyCar",
+      "message": "VIRTUAL SAFETY CAR ENDING",
+      "status": null,
+      "flag": null,
+      "scope": "Track",
+      "sector": null,
+      "racing_number": null,
+      "lap": 20
+    },
+    {
+      "time": 3280.0,
+      "category": "SafetyCar",
+      "message": "VIRTUAL SAFETY CAR DEPLOYED",
+      "status": null,
+      "flag": "VSC",
+      "scope": "Track",
+      "sector": null,
+      "racing_number": null,
+      "lap": 34
+    },
+    {
+      "time": 3380.0,
+      "category": "SafetyCar",
+      "message": "VIRTUAL SAFETY CAR ENDING",
+      "status": null,
+      "flag": null,
+      "scope": "Track",
+      "sector": null,
+      "racing_number": null,
+      "lap": 34
+    }
+  ],
+  "vsc_laps": [
+    12,
+    13,
+    14,
+    18,
+    19,
+    20,
+    34
+  ],
+  "sc_laps": []
+}
