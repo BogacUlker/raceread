@@ -66,6 +66,7 @@
 	{#each driverData as { driver, team, laps }}
 		{@const color = TEAM_COLORS[team] || '#888'}
 		{@const d = buildPath(laps)}
+		{@const isSecondTeammate = driverData.filter(dd => dd.team === team).findIndex(dd => dd.driver === driver) > 0}
 		{#if d}
 			<path
 				class="pace-line"
@@ -76,6 +77,7 @@
 				stroke-linejoin="round"
 				stroke-linecap="round"
 				opacity={getOpacity(driver)}
+				stroke-dasharray={isSecondTeammate ? '6,3' : 'none'}
 				style="transition: opacity 0.15s, stroke-width 0.15s;"
 			/>
 			<!-- svelte-ignore a11y_click_events_have_key_events -->
