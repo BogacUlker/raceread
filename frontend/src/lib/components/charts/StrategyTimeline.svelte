@@ -1,6 +1,7 @@
 <!--
-	Strategy Timeline - horizontal bar chart showing tire stints per driver.
-	SVG-based with compound colors, pit stop markers, and cross-chart sync line.
+	Strategy Timeline - F1 broadcast-style horizontal bar chart.
+	Tire stints per driver, sorted by finishing position.
+	Compound colors, tire life circles, pit gap markers, cross-chart sync.
 -->
 <script>
 	import { t } from '$lib/i18n/index.js';
@@ -17,9 +18,10 @@
 	 */
 	let { drivers, totalLaps, vscLaps = [] } = $props();
 
-	const rowHeight = 32;
-	const rowGap = 4;
-	const padding = { top: 24, right: 16, bottom: 32, left: 54 };
+	const rowHeight = 28;
+	const rowGap = 3;
+	const barHeight = 22;
+	const padding = { top: 30, right: 24, bottom: 28, left: 94 };
 
 	let svgHeight = $derived(padding.top + drivers.length * (rowHeight + rowGap) + padding.bottom);
 	let svgWidth = $state(800);
@@ -66,6 +68,9 @@
 	let syncLap = $state(null);
 	const unsubLap = hoveredLapStore.subscribe((v) => { syncLap = v; });
 
+	// Hover state
+	let hoveredRow = $state(null);
+
 	// Local tooltip state
 	let tooltip = $state(null);
 	let tooltipX = $state(0);
@@ -75,9 +80,7 @@
 		const svg = e.currentTarget;
 		const rect = svg.getBoundingClientRect();
 		const x = e.clientX - rect.left;
-		const y = e.clientY - rect.top;
 
-		// Only track lap from svg background (not from stint rects)
 		if (e.target === svg || e.target.classList.contains('strategy-bg')) {
 			const lap = Math.round(xScale.invert(x));
 			if (lap >= 0 && lap <= totalLaps) {
@@ -85,13 +88,14 @@
 			}
 		}
 
-		tooltipX = x;
-		tooltipY = y;
+		tooltipX = e.clientX - rect.left;
+		tooltipY = e.clientY - rect.top;
 	}
 
 	function handleSvgMouseLeave() {
 		hoveredLapStore.set(null);
 		tooltip = null;
+		hoveredRow = null;
 	}
 
 	function handleStintEnter(driver, stint, e) {
@@ -103,6 +107,7 @@
 			endLap: stint.end_lap,
 			laps: stint.laps
 		};
+		hoveredRow = driver;
 		updateTooltipFromEvent(e);
 	}
 
@@ -112,12 +117,12 @@
 			driver,
 			lap: pitLap
 		};
+		hoveredRow = driver;
 		updateTooltipFromEvent(e);
 	}
 
 	function handleElementMove(e) {
 		updateTooltipFromEvent(e);
-		// Also update hoveredLap for cross-chart sync
 		const svg = e.currentTarget.closest('svg');
 		if (!svg) return;
 		const rect = svg.getBoundingClientRect();
@@ -132,12 +137,27 @@
 		tooltip = null;
 	}
 
+	function handleRowEnter(driver) {
+		hoveredRow = driver;
+	}
+
+	function handleRowLeave() {
+		hoveredRow = null;
+	}
+
 	function updateTooltipFromEvent(e) {
 		const svg = e.currentTarget.closest('svg');
 		if (!svg) return;
 		const rect = svg.getBoundingClientRect();
 		tooltipX = e.clientX - rect.left;
 		tooltipY = e.clientY - rect.top;
+	}
+
+	// Compound text color - dark text on light compounds
+	function compoundTextColor(compound) {
+		if (compound === 'HARD') return '#333';
+		if (compound === 'MEDIUM') return '#333';
+		return '#fff';
 	}
 </script>
 
@@ -165,6 +185,22 @@
 				fill="transparent"
 			/>
 
+			<!-- X axis ticks at TOP -->
+			{#each xTicks as tick}
+				<g transform="translate({xScale(tick)}, {padding.top})">
+					<line y1="-4" y2="0" stroke="var(--border)" stroke-width="1" />
+					<text
+						y="-10"
+						text-anchor="middle"
+						fill="var(--text-muted)"
+						font-family="var(--font-mono)"
+						font-size="11"
+					>
+						{tick}
+					</text>
+				</g>
+			{/each}
+
 			<!-- VSC shading -->
 			{#each vscRanges as range}
 				<rect
@@ -173,7 +209,22 @@
 					width={xScale(range.end + 0.5) - xScale(range.start - 0.5)}
 					height={svgHeight - padding.top - padding.bottom}
 					fill="#F59E0B"
-					fill-opacity="0.06"
+					fill-opacity="0.05"
+					style="pointer-events: none;"
+				/>
+			{/each}
+
+			<!-- Subtle horizontal grid lines -->
+			{#each drivers as d, i}
+				{@const y = padding.top + i * (rowHeight + rowGap) + rowHeight}
+				<line
+					x1={padding.left}
+					y1={y + 1}
+					x2={svgWidth - padding.right}
+					y2={y + 1}
+					stroke="var(--border)"
+					stroke-width="0.5"
+					opacity="0.3"
 					style="pointer-events: none;"
 				/>
 			{/each}
@@ -182,66 +233,160 @@
 			{#each drivers as d, i}
 				{@const y = padding.top + i * (rowHeight + rowGap)}
 				{@const color = TEAM_COLORS[d.team] || '#888'}
+				{@const isHovered = hoveredRow === d.driver}
+				{@const isDimmed = hoveredRow != null && hoveredRow !== d.driver}
+				{@const barY = y + (rowHeight - barHeight) / 2}
 
-				<!-- Driver label -->
+				<!-- Row hover background -->
+				<!-- svelte-ignore a11y_no_static_element_interactions -->
+				<rect
+					x="0"
+					{y}
+					width={svgWidth}
+					height={rowHeight}
+					fill={isHovered ? 'var(--bg-secondary)' : 'transparent'}
+					opacity={isHovered ? 0.5 : 0}
+					style="pointer-events: none;"
+				/>
+
+				<!-- Position number -->
 				<text
-					x={padding.left - 8}
+					x="16"
 					y={y + rowHeight / 2}
-					text-anchor="end"
+					text-anchor="start"
 					dominant-baseline="middle"
+					fill="var(--text-muted)"
+					font-family="var(--font-mono)"
+					font-size="12"
+					font-weight="500"
+					opacity={isDimmed ? 0.3 : 0.6}
+					style="pointer-events: none;"
+				>
+					P{i + 1}
+				</text>
+
+				<!-- Team color bar -->
+				<rect
+					x="36"
+					y={y + 5}
+					width="3"
+					height={rowHeight - 10}
+					rx="1"
 					fill={color}
+					opacity={isDimmed ? 0.3 : 1}
+					style="pointer-events: none;"
+				/>
+
+				<!-- Driver code -->
+				<text
+					x="44"
+					y={y + rowHeight / 2}
+					text-anchor="start"
+					dominant-baseline="middle"
+					fill="var(--text-primary)"
 					font-family="var(--font-mono)"
 					font-size="13"
 					font-weight="600"
+					opacity={isDimmed ? 0.3 : 1}
 					style="pointer-events: none;"
 				>
 					{d.driver}
 				</text>
 
+				<!-- Pit stop count -->
+				<text
+					x={padding.left - 6}
+					y={y + rowHeight / 2}
+					text-anchor="end"
+					dominant-baseline="middle"
+					fill="var(--text-muted)"
+					font-family="var(--font-mono)"
+					font-size="10"
+					opacity={isDimmed ? 0.3 : 0.5}
+					style="pointer-events: none;"
+				>
+					{d.pit_laps?.length || 0}s
+				</text>
+
 				<!-- Stints -->
-				{#each d.stints as stint}
-					{@const sx = xScale(stint.start_lap - 1)}
-					{@const sw = xScale(stint.end_lap) - sx}
+				{#each d.stints as stint, si}
+					{@const sx = xScale(stint.start_lap - 1) + (si > 0 ? 1.5 : 0)}
+					{@const sw = xScale(stint.end_lap) - xScale(stint.start_lap - 1) - (si > 0 ? 1.5 : 0)}
 					{@const compoundColor = COMPOUND_COLORS[stint.compound] || '#888'}
+					{@const isLastStint = si === d.stints.length - 1}
+					{@const circleR = 11}
+					{@const circleX = sx + sw}
+
+					<!-- Stint bar -->
 					<rect
 						x={sx}
-						y={y + 2}
-						width={sw}
-						height={rowHeight - 4}
+						y={barY}
+						width={Math.max(sw, 2)}
+						height={barHeight}
 						fill={compoundColor}
-						rx="3"
-						opacity="0.75"
+						rx="2"
+						opacity={isDimmed ? 0.25 : 0.85}
 						style="cursor: pointer;"
 						onmouseenter={(e) => handleStintEnter(d.driver, stint, e)}
 						onmousemove={handleElementMove}
 						onmouseleave={handleElementLeave}
 					/>
-					<!-- Compound label inside bar -->
-					{#if sw > 30}
+
+					<!-- Compound letter inside bar (if wide enough) -->
+					{#if sw > 40}
 						<text
 							x={sx + sw / 2}
-							y={y + rowHeight / 2}
+							y={barY + barHeight / 2}
 							text-anchor="middle"
 							dominant-baseline="middle"
-							fill={stint.compound === 'HARD' ? '#333' : '#000'}
+							fill={compoundTextColor(stint.compound)}
 							font-family="var(--font-mono)"
-							font-size="9"
-							font-weight="600"
+							font-size="11"
+							font-weight="700"
+							opacity={isDimmed ? 0.3 : 0.9}
 							style="pointer-events: none;"
 						>
 							{stint.compound.charAt(0)}
 						</text>
 					{/if}
+
+					<!-- Tire life circle at end of last stint -->
+					{#if isLastStint && stint.laps > 0}
+						<circle
+							cx={circleX}
+							cy={barY + barHeight / 2}
+							r={circleR}
+							fill={compoundColor}
+							stroke="var(--bg-primary)"
+							stroke-width="2"
+							opacity={isDimmed ? 0.3 : 1}
+							style="pointer-events: none;"
+						/>
+						<text
+							x={circleX}
+							y={barY + barHeight / 2}
+							text-anchor="middle"
+							dominant-baseline="middle"
+							fill={compoundTextColor(stint.compound)}
+							font-family="var(--font-mono)"
+							font-size="10"
+							font-weight="700"
+							opacity={isDimmed ? 0.3 : 1}
+							style="pointer-events: none;"
+						>
+							{stint.laps}
+						</text>
+					{/if}
 				{/each}
 
-				<!-- Pit stop markers -->
-				{#each d.pit_laps as pitLap}
+				<!-- Pit stop markers (subtle dashes) -->
+				{#each d.pit_laps || [] as pitLap}
 					<!-- Invisible wider hit area -->
 					<line
 						x1={xScale(pitLap)}
-						y1={y}
+						y1={barY - 2}
 						x2={xScale(pitLap)}
-						y2={y + rowHeight}
+						y2={barY + barHeight + 2}
 						stroke="transparent"
 						stroke-width="8"
 						style="cursor: pointer;"
@@ -249,18 +394,20 @@
 						onmousemove={handleElementMove}
 						onmouseleave={handleElementLeave}
 					/>
-					<!-- Visible pit line -->
-					<line
-						x1={xScale(pitLap)}
-						y1={y}
-						x2={xScale(pitLap)}
-						y2={y + rowHeight}
-						stroke="var(--text-muted)"
-						stroke-width="1"
-						stroke-dasharray="2,2"
-						style="pointer-events: none;"
-					/>
 				{/each}
+
+				<!-- Row hover area -->
+				<!-- svelte-ignore a11y_no_static_element_interactions -->
+				<rect
+					x="0"
+					{y}
+					width={padding.left}
+					height={rowHeight}
+					fill="transparent"
+					style="cursor: pointer;"
+					onmouseenter={() => handleRowEnter(d.driver)}
+					onmouseleave={handleRowLeave}
+				/>
 			{/each}
 
 			<!-- Cross-chart sync line -->
@@ -273,44 +420,40 @@
 					stroke="var(--text-muted)"
 					stroke-width="1"
 					stroke-dasharray="4,3"
-					opacity="0.5"
+					opacity="0.4"
 					style="pointer-events: none;"
 				/>
 			{/if}
 
-			<!-- X axis -->
-			{#each xTicks as tick}
-				<g transform="translate({xScale(tick)}, {svgHeight - padding.bottom})">
-					<line y1="0" y2="5" stroke="var(--border)" />
-					<text
-						y="16"
-						text-anchor="middle"
-						fill="var(--text-muted)"
-						font-family="var(--font-mono)"
-						font-size="12"
-					>
-						{tick}
-					</text>
-				</g>
-			{/each}
-
-			<!-- Tooltip via foreignObject -->
+			<!-- Tooltip -->
 			{#if tooltip}
-				{@const tx = tooltipX + 14 > svgWidth - 180 ? tooltipX - 170 : tooltipX + 14}
+				{@const tx = tooltipX + 14 > svgWidth - 200 ? tooltipX - 190 : tooltipX + 14}
 				<foreignObject
 					x={tx}
-					y={tooltipY - 36}
-					width="170"
-					height="40"
+					y={tooltipY - 40}
+					width="190"
+					height="48"
 					style="pointer-events: none; overflow: visible;"
 				>
 					<div class="strategy-tooltip">
 						{#if tooltip.type === 'stint'}
-							<strong>{tooltip.driver}</strong> {tooltip.compound}
-							<br />{$t('tooltip.lap')} {tooltip.startLap}-{tooltip.endLap} ({tooltip.laps} {$t('tooltip.laps')})
+							<div class="strategy-tooltip__row">
+								<strong>{tooltip.driver}</strong>
+								<span class="strategy-tooltip__compound" style="background: {COMPOUND_COLORS[tooltip.compound] || '#888'}; color: {compoundTextColor(tooltip.compound)}">
+									{tooltip.compound}
+								</span>
+							</div>
+							<div class="strategy-tooltip__detail">
+								{$t('tooltip.lap')} {tooltip.startLap}-{tooltip.endLap} &middot; {tooltip.laps} {$t('tooltip.laps')}
+							</div>
 						{:else}
-							<strong>{tooltip.driver}</strong> {$t('tooltip.pit_stop')}
-							<br />{$t('tooltip.lap')} {tooltip.lap}
+							<div class="strategy-tooltip__row">
+								<strong>{tooltip.driver}</strong>
+								<span class="strategy-tooltip__pit">{$t('tooltip.pit_stop')}</span>
+							</div>
+							<div class="strategy-tooltip__detail">
+								{$t('tooltip.lap')} {tooltip.lap}
+							</div>
 						{/if}
 					</div>
 				</foreignObject>
@@ -327,14 +470,37 @@
 	}
 	:global(.strategy-tooltip) {
 		font-family: var(--font-mono);
-		font-size: 12px;
+		font-size: 11px;
 		line-height: 1.4;
 		color: var(--text-primary);
 		background: var(--bg-secondary);
 		border: 1px solid var(--border);
-		padding: 5px 8px;
-		border-radius: 4px;
+		padding: 6px 10px;
+		border-radius: var(--radius-sm);
 		white-space: nowrap;
-		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+	}
+	:global(.strategy-tooltip__row) {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+	}
+	:global(.strategy-tooltip__compound) {
+		font-size: 9px;
+		font-weight: 700;
+		padding: 1px 5px;
+		border-radius: 2px;
+		text-transform: uppercase;
+	}
+	:global(.strategy-tooltip__pit) {
+		font-size: 9px;
+		font-weight: 600;
+		color: var(--text-muted);
+		text-transform: uppercase;
+	}
+	:global(.strategy-tooltip__detail) {
+		font-size: 10px;
+		color: var(--text-secondary);
+		margin-top: 2px;
 	}
 </style>
