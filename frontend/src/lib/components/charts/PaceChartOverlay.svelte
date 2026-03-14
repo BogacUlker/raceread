@@ -84,8 +84,8 @@
 			text-anchor="middle"
 			fill="#F59E0B"
 			font-family="var(--font-mono)"
-			font-size="9"
-			opacity="0.6"
+			font-size="11"
+			opacity="0.8"
 			style="pointer-events: none;"
 		>
 			VSC

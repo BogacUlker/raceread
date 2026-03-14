@@ -94,7 +94,7 @@
 		)
 	);
 
-	// Default: top 5 drivers by position on final lap
+	// Default: top 10 drivers by position on final lap
 	let defaultSelected = $derived(
 		laps
 			.map((d) => {
@@ -102,7 +102,7 @@
 				return { driver: d.driver, pos: lastLap?.position ?? 99 };
 			})
 			.sort((a, b) => a.pos - b.pos)
-			.slice(0, 5)
+			.slice(0, 10)
 			.map((d) => d.driver)
 	);
 
