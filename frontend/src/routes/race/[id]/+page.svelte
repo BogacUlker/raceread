@@ -4,7 +4,7 @@
 -->
 <script>
 	import { t } from '$lib/i18n/index.js';
-	import { selectedDrivers, activeSession } from '$lib/stores/race.js';
+	import { selectedDrivers, activeSession, showAnnotations } from '$lib/stores/race.js';
 	import { collapsedSections } from '$lib/stores/dashboard.js';
 	import { TEAM_COLORS } from '$lib/constants.js';
 	import { api } from '$lib/api.js';
@@ -193,6 +193,14 @@
 				/>
 			</div>
 			<div class="dashboard__actions">
+				<button
+					class="dashboard__action-btn"
+					class:active={$showAnnotations}
+					onclick={() => showAnnotations.update(v => !v)}
+				>
+					{$t('annotations.toggle_label')}
+					{$showAnnotations ? 'ON' : 'OFF'}
+				</button>
 				{#if driverList.length >= 2}
 					<a href="/race/{raceId}/compare/{driverList[0].driver}/{driverList[1].driver}" class="dashboard__action-btn">
 						{$t('charts.compare')}
@@ -215,7 +223,9 @@
 				<span class="chevron" class:rotated={collapsed['insights']}>&#9660;</span>
 			</button>
 			<div class="section-body" class:collapsed={collapsed['insights']}>
-				<RaceInsightsPanel annotations={annotations.annotations || []} />
+				{#if $showAnnotations}
+				<RaceInsightsPanel annotations={$showAnnotations ? (annotations.annotations || []) : []} />
+				{/if}
 			</div>
 		</div>
 
@@ -233,7 +243,7 @@
 								{laps}
 								selectedDrivers={$selectedDrivers}
 								{vscLaps}
-								annotations={annotations.annotations || []}
+								annotations={$showAnnotations ? (annotations.annotations || []) : []}
 								{strategy}
 							/>
 						</div>
@@ -510,6 +520,11 @@
 		color: var(--text-primary);
 		border-color: var(--text-muted);
 		text-decoration: none;
+	}
+	.dashboard__action-btn.active {
+		background: var(--bg-secondary);
+		color: var(--text-primary);
+		border-color: var(--text-muted);
 	}
 	.dashboard__action-btn--broadcast:hover {
 		background: var(--accent);

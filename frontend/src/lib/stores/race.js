@@ -23,3 +23,6 @@ export const comparedDrivers = writable([]);
 
 /** Speed trace: compared lap number */
 export const comparedLap = writable(null);
+
+/** Whether to show AI-generated annotations on charts */
+export const showAnnotations = writable(true);
