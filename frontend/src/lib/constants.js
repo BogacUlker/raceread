@@ -1,15 +1,16 @@
-/** Team colors - mirrors backend/app/config.py */
+/** Team colors - from FastF1 2026 session.results.TeamColor */
 export const TEAM_COLORS = {
-	'Mercedes': '#27F4D2',
-	'Red Bull Racing': '#3671C6',
-	'Ferrari': '#E8002D',
-	'McLaren': '#FF8000',
+	'Mercedes': '#00D7B6',
+	'Red Bull Racing': '#4781D7',
+	'Ferrari': '#ED1131',
+	'McLaren': '#F47600',
 	'Aston Martin': '#229971',
-	'Alpine': '#FF87BC',
-	'Williams': '#64C4FF',
-	'RB': '#6692FF',
-	'Kick Sauber': '#52E252',
-	'Haas F1 Team': '#B6BABD',
+	'Alpine': '#00A1E8',
+	'Williams': '#1868DB',
+	'Racing Bulls': '#6C98FF',
+	'Audi': '#F50537',
+	'Haas F1 Team': '#9C9FA2',
+	'Cadillac': '#909090',
 };
 
 /** Energy state colors */

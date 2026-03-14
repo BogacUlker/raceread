@@ -21,7 +21,16 @@
 	const rowHeight = 28;
 	const rowGap = 3;
 	const barHeight = 22;
-	const padding = { top: 30, right: 24, bottom: 28, left: 94 };
+	const padding = { top: 30, right: 24, bottom: 28, left: 82 };
+
+	// Determine if text should be light or dark on team color background
+	function textOnColor(hex) {
+		const r = parseInt(hex.slice(1, 3), 16);
+		const g = parseInt(hex.slice(3, 5), 16);
+		const b = parseInt(hex.slice(5, 7), 16);
+		const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+		return luminance > 0.5 ? '#000' : '#fff';
+	}
 
 	let svgHeight = $derived(padding.top + drivers.length * (rowHeight + rowGap) + padding.bottom);
 	let svgWidth = $state(800);
@@ -251,61 +260,44 @@
 
 				<!-- Position number -->
 				<text
-					x="16"
+					x="6"
 					y={y + rowHeight / 2}
 					text-anchor="start"
 					dominant-baseline="middle"
 					fill="var(--text-muted)"
 					font-family="var(--font-mono)"
-					font-size="12"
+					font-size="11"
 					font-weight="500"
 					opacity={isDimmed ? 0.3 : 0.6}
 					style="pointer-events: none;"
 				>
-					P{i + 1}
+					{i + 1}
 				</text>
 
-				<!-- Team color bar -->
+				<!-- Team color badge with driver code -->
 				<rect
-					x="36"
-					y={y + 5}
-					width="3"
-					height={rowHeight - 10}
-					rx="1"
+					x="22"
+					y={y + 3}
+					width="38"
+					height={rowHeight - 6}
+					rx="3"
 					fill={color}
-					opacity={isDimmed ? 0.3 : 1}
+					opacity={isDimmed ? 0.2 : 0.9}
 					style="pointer-events: none;"
 				/>
-
-				<!-- Driver code -->
 				<text
-					x="44"
+					x="41"
 					y={y + rowHeight / 2}
-					text-anchor="start"
+					text-anchor="middle"
 					dominant-baseline="middle"
-					fill="var(--text-primary)"
+					fill={textOnColor(color)}
 					font-family="var(--font-mono)"
-					font-size="13"
-					font-weight="600"
+					font-size="11"
+					font-weight="700"
 					opacity={isDimmed ? 0.3 : 1}
 					style="pointer-events: none;"
 				>
 					{d.driver}
-				</text>
-
-				<!-- Pit stop count -->
-				<text
-					x={padding.left - 6}
-					y={y + rowHeight / 2}
-					text-anchor="end"
-					dominant-baseline="middle"
-					fill="var(--text-muted)"
-					font-family="var(--font-mono)"
-					font-size="10"
-					opacity={isDimmed ? 0.3 : 0.5}
-					style="pointer-events: none;"
-				>
-					{d.pit_laps?.length || 0}s
 				</text>
 
 				<!-- Stints -->
