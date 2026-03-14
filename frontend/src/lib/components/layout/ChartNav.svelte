@@ -61,9 +61,11 @@
 			</button>
 		{/each}
 	</div>
-	<button class="chart-nav__toggle" onclick={toggleAll}>
-		{allCollapsed ? $t('chart_nav.expand_all') : $t('chart_nav.collapse_all')}
-	</button>
+	{#if session === 'race'}
+		<button class="chart-nav__toggle" onclick={toggleAll}>
+			{allCollapsed ? $t('chart_nav.expand_all') : $t('chart_nav.collapse_all')}
+		</button>
+	{/if}
 </nav>
 
 <style>
