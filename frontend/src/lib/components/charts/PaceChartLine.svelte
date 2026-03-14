@@ -1,7 +1,7 @@
 <!--
 	SVG line layer for PaceChart.
 	Renders one path per selected driver, colored by team.
-	Supports hover highlighting, pinning via shared stores, and pit stop markers.
+	Supports hover highlighting, multi-pin (up to 5) via shared stores, and pit stop markers.
 -->
 <script>
 	import { getContext } from 'svelte';
@@ -11,17 +11,10 @@
 
 	const { xScale, yScale } = getContext('LayerCake');
 
-	/**
-	 * @type {{
-	 *   driverData: Array<{driver: string, team: string, laps: Array}>,
-	 *   yKey: string,
-	 *   pitMarkers: Array<{driver: string, team: string, lap: number, yVal: number, newCompound: string, oldCompound: string}> | undefined
-	 * }}
-	 */
 	let { driverData, yKey, pitMarkers = [] } = $props();
 
 	let hovered = $state(null);
-	let pinned = $state(null);
+	let pinned = $state([]);
 	let hoveredPit = $state(null);
 	let pitTooltipX = $state(0);
 	let pitTooltipY = $state(0);
@@ -37,13 +30,13 @@
 	}
 
 	function getOpacity(driver) {
-		if (pinned) return driver === pinned ? 1 : 0.15;
+		if (pinned.length > 0) return pinned.includes(driver) ? 1 : 0.12;
 		if (hovered) return driver === hovered ? 1 : 0.2;
 		return 0.85;
 	}
 
 	function getStrokeWidth(driver) {
-		if (pinned) return driver === pinned ? 3 : 1.5;
+		if (pinned.length > 0) return pinned.includes(driver) ? 2.8 : 1.2;
 		if (hovered) return driver === hovered ? 3 : 1.5;
 		return 1.8;
 	}
@@ -57,11 +50,13 @@
 	}
 
 	function handleClick(driver) {
-		if (pinned === driver) {
-			pinnedDriver.set(null);
-		} else {
-			pinnedDriver.set(driver);
-		}
+		pinnedDriver.update(arr => {
+			if (arr.includes(driver)) {
+				return arr.filter(d => d !== driver);
+			}
+			if (arr.length >= 5) return arr; // max 5
+			return [...arr, driver];
+		});
 	}
 </script>
 
@@ -71,7 +66,6 @@
 		{@const color = TEAM_COLORS[team] || '#888'}
 		{@const d = buildPath(laps)}
 		{#if d}
-			<!-- Visible path -->
 			<path
 				class="pace-line"
 				{d}
@@ -84,7 +78,6 @@
 				style="transition: opacity 0.15s, stroke-width 0.15s;"
 			/>
 			<!-- svelte-ignore a11y_click_events_have_key_events -->
-			<!-- Invisible hit area for easier hover targeting -->
 			<path
 				{d}
 				stroke="transparent"
@@ -97,7 +90,6 @@
 		{/if}
 	{/each}
 
-	<!-- Pit stop markers -->
 	{#each pitMarkers as pm}
 		{@const cx = $xScale(pm.lap)}
 		{@const cy = $yScale(pm.yVal)}
@@ -121,7 +113,6 @@
 		/>
 	{/each}
 
-	<!-- Pit tooltip -->
 	{#if hoveredPit}
 		<foreignObject
 			x={pitTooltipX + 10}

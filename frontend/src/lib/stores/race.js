@@ -13,7 +13,7 @@ export const hoveredLap = writable(null);
 export const hoveredDriver = writable(null);
 
 /** Driver clicked/pinned in PaceChart - stays highlighted */
-export const pinnedDriver = writable(null);
+export const pinnedDriver = writable([]);
 
 /** Active session tab: 'race' or 'qualifying' */
 export const activeSession = writable('race');

@@ -2,7 +2,7 @@
 	Race Pace Chart - main LayerCake multi-line chart.
 	Gap-to-leader (default) with raw time toggle.
 	SC/VSC overlays, hover tooltips, pit stop markers.
-	Interactive legend for driver selection.
+	Interactive legend with multi-pin (up to 5 drivers).
 -->
 <script>
 	import { LayerCake, Svg, Html } from 'layercake';
@@ -23,9 +23,8 @@
 
 	let viewMode = $state('gap');
 
-	// Reactive store values for legend
 	let hovered = $state(null);
-	let pinned = $state(null);
+	let pinned = $state([]);
 	const unsubH = hoveredDriver.subscribe(v => { hovered = v; });
 	const unsubP = pinnedDriver.subscribe(v => { pinned = v; });
 
@@ -52,8 +51,6 @@
 			);
 			if (!allVals.length) return [0, 5];
 			if (viewMode === 'gap') {
-				// Use 95th percentile to prevent outliers (pit laps, incidents) from
-				// stretching the scale. Most racing action is in the lower range.
 				const sorted = [...allVals].sort((a, b) => a - b);
 				const p95 = sorted[Math.floor(sorted.length * 0.95)];
 				return [0, Math.max(p95 * 1.15, 1)];
@@ -109,7 +106,13 @@
 		hoveredDriver.set(null);
 	}
 	function legendClick(driver) {
-		pinnedDriver.update(v => v === driver ? null : driver);
+		pinnedDriver.update(arr => {
+			if (arr.includes(driver)) {
+				return arr.filter(d => d !== driver);
+			}
+			if (arr.length >= 5) return arr; // max 5
+			return [...arr, driver];
+		});
 	}
 </script>
 
@@ -162,20 +165,24 @@
 			{/if}
 		</div>
 
-		<!-- Interactive driver legend -->
+		<!-- Interactive driver legend (multi-select up to 5) -->
 		{#if filteredData.length > 0}
 			<div class="pace-legend">
+				<div class="pace-legend__hint">
+					{pinned.length > 0 ? `${pinned.length}/5` : ''}
+				</div>
 				{#each legendDrivers as { driver, team }}
 					{@const color = TEAM_COLORS[team] || '#888'}
-					{@const isActive = pinned === driver}
-					{@const isDimmed = pinned && pinned !== driver}
+					{@const isActive = pinned.includes(driver)}
+					{@const isDimmed = pinned.length > 0 && !pinned.includes(driver)}
 					<!-- svelte-ignore a11y_no_static_element_interactions -->
 					<!-- svelte-ignore a11y_click_events_have_key_events -->
 					<div
 						class="pace-legend__item"
 						class:active={isActive}
 						class:dimmed={isDimmed}
-						class:hovered={hovered === driver && !pinned}
+						class:hovered={hovered === driver && pinned.length === 0}
+						class:at-limit={pinned.length >= 5 && !isActive}
 						onmouseenter={() => legendEnter(driver)}
 						onmouseleave={legendLeave}
 						onclick={() => legendClick(driver)}
@@ -184,8 +191,8 @@
 						<span class="pace-legend__name">{driver}</span>
 					</div>
 				{/each}
-				{#if pinned}
-					<button class="pace-legend__clear" onclick={() => pinnedDriver.set(null)}>
+				{#if pinned.length > 0}
+					<button class="pace-legend__clear" onclick={() => pinnedDriver.set([])}>
 						Clear
 					</button>
 				{/if}
@@ -205,6 +212,7 @@
 		position: relative;
 		flex: 1;
 		min-width: 0;
+		overflow: hidden;
 	}
 	.view-toggle {
 		display: flex;
@@ -248,6 +256,13 @@
 		max-height: 420px;
 		overflow-y: auto;
 	}
+	.pace-legend__hint {
+		font-family: var(--font-mono);
+		font-size: 9px;
+		color: var(--text-muted);
+		text-align: center;
+		min-height: 14px;
+	}
 	.pace-legend__item {
 		display: flex;
 		align-items: center;
@@ -271,6 +286,10 @@
 	}
 	.pace-legend__item.dimmed {
 		opacity: 0.3;
+	}
+	.pace-legend__item.at-limit {
+		cursor: not-allowed;
+		opacity: 0.2;
 	}
 	.pace-legend__dot {
 		width: 8px;
