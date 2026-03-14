@@ -231,7 +231,7 @@
 		background: var(--bg-secondary);
 		border-radius: 1px;
 		min-width: 3px;
-		cursor: help;
+		cursor: default;
 		transition: background 0.15s;
 	}
 	.traffic__heatmap-cell.in-traffic {
