@@ -127,3 +127,11 @@ a:hover {
 .chart-interactive {
 	cursor: crosshair;
 }
+
+/* Broadcast mode overrides */
+.broadcast-layout .chart-card {
+	font-size: calc(1em * var(--broadcast-font-scale, 1));
+}
+.broadcast-layout .chart-card__title {
+	font-size: calc(var(--font-size-title) * var(--broadcast-font-scale, 1));
+}

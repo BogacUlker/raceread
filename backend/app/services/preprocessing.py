@@ -256,3 +256,127 @@ def compute_vsc_comparison(
     # Sort by driver code for consistent ordering
     entries.sort(key=lambda e: e["driver"])
     return entries
+
+
+def compute_traffic_analysis(
+    all_telemetry: dict[str, dict],
+    laps_data: dict,
+    race_control_data: dict,
+) -> dict[str, Any]:
+    """Compute traffic analysis from telemetry gap_ahead data.
+
+    A lap is "in traffic" if the median gap to the car ahead is < 1.5s
+    for > 50% of valid samples on that lap.
+
+    Returns per-driver summary and per-lap details.
+    """
+    traffic_threshold = 1.5  # seconds gap
+    sample_threshold = 0.5  # proportion of lap in traffic
+
+    vsc_laps = set(_extract_vsc_laps(race_control_data))
+    sc_laps = set(_extract_sc_laps(race_control_data))
+    neutralized = vsc_laps | sc_laps
+
+    # Build a map of lap times for pace degradation
+    lap_times: dict[str, dict[int, float]] = {}
+    drivers_list = []
+    if isinstance(laps_data, dict) and "laps" in laps_data and isinstance(laps_data["laps"], dict):
+        for drv, drv_laps in laps_data["laps"].items():
+            drivers_list.append({"driver": drv, "laps": drv_laps if isinstance(drv_laps, list) else []})
+    elif isinstance(laps_data, list):
+        drivers_list = laps_data
+
+    for d in drivers_list:
+        drv = d.get("driver", "")
+        lap_times[drv] = {}
+        for lap in d.get("laps", []):
+            if lap.get("time_s") is not None and lap.get("is_accurate") is not False:
+                lap_times[drv][lap["lap"]] = lap["time_s"]
+
+    driver_results = []
+
+    for driver, tel_data in sorted(all_telemetry.items()):
+        team = tel_data.get("team", "Unknown")
+        tel_laps = tel_data.get("laps", [])
+
+        total_laps = 0
+        traffic_laps = 0
+        clean_times = []
+        traffic_times = []
+        lap_details = []
+
+        for lap_entry in tel_laps:
+            lap_num = lap_entry.get("lap", 0)
+
+            # Skip lap 1, SC/VSC laps
+            if lap_num <= 1 or lap_num in neutralized:
+                continue
+
+            samples = lap_entry.get("samples", [])
+            if not samples:
+                continue
+
+            total_laps += 1
+
+            # Compute proportion of samples with gap < threshold
+            # gap_ahead is in meters (DistanceToDriverAhead from FastF1)
+            # Convert to seconds: gap_s = gap_m / (speed_kmh / 3.6)
+            valid_gaps_s = []
+            for s in samples:
+                gap_m = s.get("gap_ahead")
+                speed = s.get("speed", 0)
+                if gap_m is not None and gap_m > 0 and speed and speed > 30:
+                    gap_s = gap_m / (speed / 3.6)
+                    valid_gaps_s.append(gap_s)
+
+            if not valid_gaps_s:
+                # Race leader or no gap data - treat as clean air
+                in_traffic = False
+                median_gap = None
+            else:
+                median_gap = sorted(valid_gaps_s)[len(valid_gaps_s) // 2]
+                close_count = sum(1 for g in valid_gaps_s if g < traffic_threshold)
+                in_traffic = (close_count / len(valid_gaps_s)) > sample_threshold
+
+            if in_traffic:
+                traffic_laps += 1
+
+            # Track pace for degradation calc
+            t = lap_times.get(driver, {}).get(lap_num)
+            if t is not None:
+                if in_traffic:
+                    traffic_times.append(t)
+                else:
+                    clean_times.append(t)
+
+            lap_details.append({
+                "lap": lap_num,
+                "in_traffic": in_traffic,
+                "median_gap": _round(median_gap),
+            })
+
+        traffic_pct = round((traffic_laps / total_laps) * 100, 1) if total_laps > 0 else 0.0
+
+        # Pace degradation: median lap time in traffic - median in clean air
+        pace_degradation = None
+        if clean_times and traffic_times:
+            clean_median = statistics.median(clean_times)
+            traffic_median = statistics.median(traffic_times)
+            pace_degradation = _round(traffic_median - clean_median)
+
+        driver_results.append({
+            "driver": driver,
+            "team": team,
+            "total_laps": total_laps,
+            "traffic_laps": traffic_laps,
+            "traffic_pct": traffic_pct,
+            "pace_degradation": pace_degradation,
+            "lap_details": lap_details,
+        })
+
+    # Sort by traffic_pct descending
+    driver_results.sort(key=lambda d: d["traffic_pct"], reverse=True)
+
+    return {
+        "drivers": driver_results,
+    }

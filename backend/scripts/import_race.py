@@ -40,6 +40,19 @@ if str(_PROJECT_ROOT) not in sys.path:
 
 from backend.app.config import DATA_DIR, FASTF1_CACHE_DIR, MIN_LAPS_THRESHOLD
 
+# Energy inference imports (needed for telemetry export)
+try:
+    from backend.app.services.energy_inference import (
+        EnergyState,
+        EnergyThresholds,
+        build_ice_baseline,
+        classify_samples,
+        _prepare_telemetry,
+    )
+    _HAS_ENERGY = True
+except ImportError:
+    _HAS_ENERGY = False
+
 
 # ---------------------------------------------------------------------------
 # JSON serialization helpers
@@ -530,6 +543,264 @@ def export_weather(
 
 
 # ---------------------------------------------------------------------------
+# 6a. Telemetry export (per-sample data for speed traces / track maps)
+# ---------------------------------------------------------------------------
+
+# Energy state short codes for compact JSON
+_ENERGY_SHORT = {
+    "DEPLOYING": "D",
+    "HARVESTING": "H",
+    "CLIPPING": "C",
+    "NEUTRAL": "N",
+}
+
+
+def export_telemetry(
+    session: fastf1.core.Session,
+    drivers_info: dict,
+    vsc_laps: list[int],
+    output_dir: Path,
+    target_samples: int = 150,
+) -> None:
+    """Export downsampled per-lap telemetry with energy states for each driver.
+
+    Each driver gets a JSON file at data/{race}/telemetry/{driver}.json with
+    ~target_samples samples per lap including speed, throttle, brake, gear,
+    RPM, X/Y coordinates, gap to driver ahead, and inferred energy state.
+    """
+    telemetry_dir = output_dir / "telemetry"
+    telemetry_dir.mkdir(parents=True, exist_ok=True)
+
+    valid_drivers = drivers_info["drivers_valid"]
+    teams = drivers_info["teams"]
+
+    for drv in valid_drivers:
+        print(f"  Exporting telemetry for {drv}...")
+        try:
+            drv_laps = session.laps.pick_drivers(drv).sort_values("LapNumber")
+            team = teams.get(drv, "Unknown")
+
+            # Collect full telemetry per lap for energy baseline
+            all_tel_frames = []
+            lap_tel_map: dict[int, pd.DataFrame] = {}
+
+            for _, lap_row in drv_laps.iterrows():
+                lap_num = int(lap_row["LapNumber"])
+                try:
+                    lap_tel = lap_row.get_telemetry()
+                    if lap_tel is not None and len(lap_tel) > 0:
+                        lap_tel = lap_tel.copy()
+                        lap_tel["LapNumber"] = lap_num
+                        all_tel_frames.append(lap_tel)
+                        lap_tel_map[lap_num] = lap_tel
+                except Exception:
+                    continue
+
+            if not all_tel_frames:
+                print(f"    [WARN] No telemetry for {drv}, skipping")
+                continue
+
+            # Build energy baseline from all laps combined
+            energy_states_per_lap: dict[int, np.ndarray] = {}
+            if _HAS_ENERGY:
+                try:
+                    combined_tel = pd.concat(all_tel_frames, ignore_index=True)
+                    thresholds = EnergyThresholds()
+                    prepared = _prepare_telemetry(combined_tel, thresholds)
+                    baseline = build_ice_baseline(prepared, thresholds)
+
+                    if baseline:
+                        # Classify per lap using the prepared telemetry
+                        for lap_num, lap_tel in lap_tel_map.items():
+                            lap_prep = _prepare_telemetry(lap_tel, thresholds)
+                            states = classify_samples(lap_prep, baseline, thresholds)
+                            energy_states_per_lap[lap_num] = states
+                except Exception as exc:
+                    print(f"    [WARN] Energy classification failed for {drv}: {exc}")
+
+            # Build output per lap with downsampling
+            laps_out = []
+            total_samples = 0
+
+            for lap_num in sorted(lap_tel_map.keys()):
+                lap_tel = lap_tel_map[lap_num]
+                n = len(lap_tel)
+
+                if n < 10:
+                    continue
+
+                # Downsample via linspace index selection
+                if n > target_samples:
+                    indices = np.linspace(0, n - 1, target_samples, dtype=int)
+                else:
+                    indices = np.arange(n)
+
+                samples = []
+                energy_states = energy_states_per_lap.get(lap_num)
+
+                for idx in indices:
+                    row = lap_tel.iloc[idx]
+
+                    # Distance - prefer Distance column, fall back to 0
+                    dist = _clean_value(row.get("Distance"))
+                    if dist is not None:
+                        dist = round(float(dist), 1)
+                    else:
+                        dist = 0.0
+
+                    speed = _clean_value(row.get("Speed"))
+                    if speed is not None:
+                        speed = round(float(speed), 1)
+
+                    throttle = _clean_value(row.get("Throttle"))
+                    if throttle is not None:
+                        throttle = round(float(throttle), 0)
+
+                    brake = bool(row.get("Brake")) if pd.notna(row.get("Brake")) else False
+
+                    gear = _clean_value(row.get("nGear"))
+                    if gear is not None:
+                        gear = int(gear)
+
+                    rpm = _clean_value(row.get("RPM"))
+                    if rpm is not None:
+                        rpm = int(rpm)
+
+                    x = _clean_value(row.get("X"))
+                    if x is not None:
+                        x = round(float(x), 1)
+
+                    y = _clean_value(row.get("Y"))
+                    if y is not None:
+                        y = round(float(y), 1)
+
+                    driver_ahead = _clean_value(row.get("DriverAhead"))
+                    if driver_ahead is not None:
+                        driver_ahead = str(driver_ahead)
+
+                    gap_ahead = _clean_value(row.get("DistanceToDriverAhead"))
+                    if gap_ahead is not None:
+                        gap_ahead = round(float(gap_ahead), 2)
+
+                    # Energy state short code
+                    energy = "N"
+                    if energy_states is not None and idx < len(energy_states):
+                        energy = _ENERGY_SHORT.get(str(energy_states[idx]), "N")
+
+                    sample = {
+                        "dist": dist,
+                        "speed": speed,
+                        "throttle": throttle,
+                        "brake": brake,
+                        "gear": gear,
+                        "rpm": rpm,
+                        "x": x,
+                        "y": y,
+                        "driver_ahead": driver_ahead,
+                        "gap_ahead": gap_ahead,
+                        "energy": energy,
+                    }
+                    samples.append(sample)
+
+                laps_out.append({
+                    "lap": lap_num,
+                    "samples": samples,
+                })
+                total_samples += len(samples)
+
+            output = {
+                "driver": drv,
+                "team": team,
+                "laps": laps_out,
+            }
+
+            _write_json(telemetry_dir / f"{drv.lower()}.json", output)
+            print(f"    {len(laps_out)} laps, {total_samples} total samples")
+
+        except Exception as exc:
+            print(f"    [ERROR] Telemetry export failed for {drv}: {exc}")
+            import traceback
+            traceback.print_exc()
+            continue
+
+
+def export_circuit(
+    session: fastf1.core.Session,
+    output_dir: Path,
+) -> None:
+    """Export circuit.json with corner positions and track outline.
+
+    Uses session.get_circuit_info() for corner data and the fastest
+    clean lap's telemetry X/Y for the track outline.
+    """
+    print("  Exporting circuit info...")
+
+    corners_out = []
+    outline_out = []
+    track_length = 0
+
+    try:
+        circuit_info = session.get_circuit_info()
+
+        if circuit_info is not None:
+            # Corners
+            if hasattr(circuit_info, "corners") and circuit_info.corners is not None:
+                for _, corner in circuit_info.corners.iterrows():
+                    corners_out.append({
+                        "number": int(corner.get("Number", 0)),
+                        "x": round(float(corner.get("X", 0)), 1),
+                        "y": round(float(corner.get("Y", 0)), 1),
+                        "angle": round(float(corner.get("Angle", 0)), 1),
+                        "distance": round(float(corner.get("Distance", 0)), 1),
+                        "letter": str(corner.get("Letter", "")),
+                    })
+
+            # Track length from circuit info or approximate from telemetry
+            if hasattr(circuit_info, "circuit_length"):
+                track_length = round(float(circuit_info.circuit_length), 0)
+
+    except Exception as exc:
+        print(f"    [WARN] Circuit info not available: {exc}")
+
+    # Track outline from fastest lap's X/Y
+    try:
+        laps = session.laps
+        fastest = laps.pick_fastest()
+        if fastest is not None:
+            tel = fastest.get_telemetry()
+            if tel is not None and len(tel) > 0:
+                # Downsample outline to ~200 points
+                n = len(tel)
+                step = max(1, n // 200)
+                for i in range(0, n, step):
+                    row = tel.iloc[i]
+                    x_val = row.get("X")
+                    y_val = row.get("Y")
+                    if pd.notna(x_val) and pd.notna(y_val):
+                        outline_out.append({
+                            "x": round(float(x_val), 1),
+                            "y": round(float(y_val), 1),
+                        })
+
+                # Estimate track length from Distance if not available
+                if track_length == 0 and "Distance" in tel.columns:
+                    max_dist = tel["Distance"].max()
+                    if pd.notna(max_dist):
+                        track_length = round(float(max_dist), 0)
+    except Exception as exc:
+        print(f"    [WARN] Could not extract track outline: {exc}")
+
+    output = {
+        "corners": corners_out,
+        "outline": outline_out,
+        "track_length": int(track_length),
+    }
+
+    _write_json(output_dir / "circuit.json", output)
+    print(f"    {len(corners_out)} corners, {len(outline_out)} outline points")
+
+
+# ---------------------------------------------------------------------------
 # 6. Energy inference export
 # ---------------------------------------------------------------------------
 
@@ -781,7 +1052,7 @@ def export_qualifying(
 # Main pipeline
 # ---------------------------------------------------------------------------
 
-def run_import(year: int, event: str, energy_only: bool = False) -> None:
+def run_import(year: int, event: str, energy_only: bool = False, telemetry_only: bool = False) -> None:
     """Execute the full import pipeline for a race."""
     print(f"\n{'=' * 60}")
     print(f"RaceRead Import Pipeline")
@@ -789,6 +1060,7 @@ def run_import(year: int, event: str, energy_only: bool = False) -> None:
     print(f"Year: {year}")
     print(f"Event: {event}")
     print(f"Energy only: {energy_only}")
+    print(f"Telemetry only: {telemetry_only}")
     print(f"Data dir: {DATA_DIR}")
     print(f"Cache dir: {FASTF1_CACHE_DIR}")
     print()
@@ -824,36 +1096,49 @@ def run_import(year: int, event: str, energy_only: bool = False) -> None:
         print(f"  All-inaccurate drivers: {', '.join(drivers_info['inaccurate_drivers'])}")
     print()
 
-    if energy_only:
-        # Only re-run energy inference - still need VSC laps
-        print("[--energy-only] Loading existing race control for VSC laps...")
+    # Helper to load VSC laps from existing race control data
+    def _load_vsc_laps() -> list[int]:
         rc_path = output_dir / "race_control.json"
-        vsc_laps: list[int] = []
         if rc_path.exists():
             with open(rc_path, "r", encoding="utf-8") as f:
                 rc_data = json.load(f)
-                vsc_laps = rc_data.get("vsc_laps", [])
-        else:
-            print("  [WARN] race_control.json not found, running export first")
-            safety_car_data = export_race_control(session, output_dir)
-            vsc_laps = safety_car_data["vsc_laps"]
+                return rc_data.get("vsc_laps", [])
+        print("  [WARN] race_control.json not found, running export first")
+        safety_car_data = export_race_control(session, output_dir)
+        return safety_car_data["vsc_laps"]
+
+    if energy_only:
+        # Only re-run energy inference - still need VSC laps
+        print("[--energy-only] Loading existing race control for VSC laps...")
+        vsc_laps: list[int] = _load_vsc_laps()
 
         print("[--energy-only] Running energy inference...")
         export_energy(session, drivers_info, vsc_laps, output_dir)
         print("\nEnergy-only import complete.")
         return
 
+    if telemetry_only:
+        # Only export telemetry + circuit data
+        print("[--telemetry-only] Loading existing race control for VSC laps...")
+        vsc_laps = _load_vsc_laps()
+
+        print("[--telemetry-only] Exporting telemetry...")
+        export_telemetry(session, drivers_info, vsc_laps, output_dir)
+        export_circuit(session, output_dir)
+        print("\nTelemetry-only import complete.")
+        return
+
     # Full pipeline
-    print("[3/8] Exporting race info...")
+    print("[3/10] Exporting race info...")
     race_info = export_race_info(session, session.event, race_id, output_dir)
 
-    print("[4/8] Exporting laps...")
+    print("[4/10] Exporting laps...")
     export_laps(session, drivers_info, output_dir)
 
-    print("[5/8] Exporting strategy...")
+    print("[5/10] Exporting strategy...")
     export_strategy(session, drivers_info, output_dir)
 
-    print("[6/8] Exporting race control messages...")
+    print("[6/10] Exporting race control messages...")
     safety_car_data = export_race_control(session, output_dir)
     vsc_laps = safety_car_data["vsc_laps"]
     sc_laps = safety_car_data["sc_laps"]
@@ -862,11 +1147,17 @@ def run_import(year: int, event: str, energy_only: bool = False) -> None:
     if sc_laps:
         print(f"  SC laps detected: {sc_laps}")
 
-    print("[7/8] Exporting weather...")
+    print("[7/10] Exporting weather...")
     export_weather(session, output_dir)
 
-    print("[8/8] Exporting energy inference...")
+    print("[8/10] Exporting energy inference...")
     export_energy(session, drivers_info, vsc_laps, output_dir)
+
+    print("[9/10] Exporting telemetry...")
+    export_telemetry(session, drivers_info, vsc_laps, output_dir)
+
+    print("[10/10] Exporting circuit info...")
+    export_circuit(session, output_dir)
 
     # Post-pipeline steps
     print("\nPost-pipeline steps:")
@@ -930,9 +1221,20 @@ def main() -> None:
         default=False,
         help="Only re-run energy inference (skip other exports)",
     )
+    parser.add_argument(
+        "--telemetry-only",
+        action="store_true",
+        default=False,
+        help="Only export telemetry and circuit data (skip other exports)",
+    )
 
     args = parser.parse_args()
-    run_import(year=args.year, event=args.event, energy_only=args.energy_only)
+    run_import(
+        year=args.year,
+        event=args.event,
+        energy_only=args.energy_only,
+        telemetry_only=args.telemetry_only,
+    )
 
 
 if __name__ == "__main__":

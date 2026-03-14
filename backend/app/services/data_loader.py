@@ -88,3 +88,15 @@ def load_annotations(race_id: str) -> dict:
 def load_qualifying(race_id: str) -> dict:
     """Load qualifying session data for a race."""
     return load_json(str(get_race_dir(race_id) / "qualifying.json"))
+
+
+def load_telemetry(race_id: str, driver: str) -> dict:
+    """Load per-sample telemetry data for a single driver."""
+    return load_json(
+        str(get_race_dir(race_id) / "telemetry" / f"{driver.lower()}.json")
+    )
+
+
+def load_circuit(race_id: str) -> dict:
+    """Load circuit info (corners, outline, track length)."""
+    return load_json(str(get_race_dir(race_id) / "circuit.json"))

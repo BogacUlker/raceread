@@ -15,6 +15,9 @@
 		strategy: 'chart_nav.strategy',
 		energy: 'chart_nav.energy',
 		'energy-timeline': 'chart_nav.energy_timeline',
+		'speed-trace': 'chart_nav.speed_trace',
+		'track-map': 'chart_nav.track_map',
+		'traffic': 'chart_nav.traffic',
 		'qualifying-results': 'chart_nav.qualifying_results',
 		'sector-comparison': 'chart_nav.sector_comparison',
 		'qualifying-delta': 'chart_nav.qualifying_delta'

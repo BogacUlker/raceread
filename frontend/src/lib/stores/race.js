@@ -17,3 +17,9 @@ export const pinnedDriver = writable(null);
 
 /** Active session tab: 'race' or 'qualifying' */
 export const activeSession = writable('race');
+
+/** Speed trace: compared drivers [driver1, driver2] */
+export const comparedDrivers = writable([]);
+
+/** Speed trace: compared lap number */
+export const comparedLap = writable(null);

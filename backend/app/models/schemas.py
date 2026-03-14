@@ -151,3 +151,48 @@ class QualifyingDriver(BaseModel):
 class QualifyingResponse(BaseModel):
     race_id: str
     drivers: list[QualifyingDriver]
+
+
+# ---------------------------------------------------------------------------
+# Telemetry schemas (MVP-2)
+# ---------------------------------------------------------------------------
+
+
+class TelemetrySample(BaseModel):
+    dist: float | None = None
+    speed: float | None = None
+    throttle: float | None = None
+    brake: bool = False
+    gear: int | None = None
+    rpm: int | None = None
+    x: float | None = None
+    y: float | None = None
+    driver_ahead: str | None = None
+    gap_ahead: float | None = None
+    energy: str = "N"
+
+
+class LapTelemetry(BaseModel):
+    lap: int
+    samples: list[TelemetrySample]
+
+
+class DriverTelemetry(BaseModel):
+    driver: str
+    team: str
+    laps: list[LapTelemetry]
+
+
+class CircuitCorner(BaseModel):
+    number: int
+    x: float
+    y: float
+    angle: float
+    distance: float
+    letter: str = ""
+
+
+class CircuitInfo(BaseModel):
+    corners: list[CircuitCorner]
+    outline: list[dict]
+    track_length: int

@@ -22,6 +22,9 @@
 	import QualifyingResults from '$lib/components/charts/QualifyingResults.svelte';
 	import SectorComparison from '$lib/components/charts/SectorComparison.svelte';
 	import QualifyingDelta from '$lib/components/charts/QualifyingDelta.svelte';
+	import SpeedTrace from '$lib/components/charts/SpeedTrace.svelte';
+	import TrackMap from '$lib/components/charts/TrackMap.svelte';
+	import TrafficAnalysis from '$lib/components/charts/TrafficAnalysis.svelte';
 
 	let { data } = $props();
 
@@ -123,6 +126,32 @@
 	}
 
 	loadVscLaps();
+
+	// Circuit data for speed trace + track map
+	let circuitData = $state(null);
+
+	async function loadCircuit() {
+		try {
+			circuitData = await api(`/api/races/${raceId}/circuit`);
+		} catch {
+			circuitData = null;
+		}
+	}
+
+	loadCircuit();
+
+	// Traffic analysis
+	let trafficData = $state(null);
+
+	async function loadTraffic() {
+		try {
+			trafficData = await api(`/api/races/${raceId}/traffic`);
+		} catch {
+			trafficData = null;
+		}
+	}
+
+	loadTraffic();
 </script>
 
 <svelte:head>
@@ -251,6 +280,64 @@
 					</div>
 				</div>
 			</div>
+
+			<!-- Row 5: Speed Trace (full width) -->
+			<div id="section-speed-trace" class="dashboard-section">
+				<button class="section-toggle" onclick={() => collapsedSections.toggle('speed-trace')}>
+					<span class="chevron" class:rotated={collapsed['speed-trace']}>&#9660;</span>
+				</button>
+				<div class="section-body" class:collapsed={collapsed['speed-trace']}>
+					<div class="grid-row grid-row--full">
+						<SpeedTrace
+							{raceId}
+							drivers={driverList}
+							circuit={circuitData}
+							totalLaps={raceInfo?.total_laps || 58}
+						/>
+					</div>
+				</div>
+			</div>
+
+			<!-- Row 6: Track Map + Traffic Analysis -->
+			<div id="section-track-map" class="dashboard-section">
+				<button class="section-toggle" onclick={() => collapsedSections.toggle('track-map')}>
+					<span class="chevron" class:rotated={collapsed['track-map']}>&#9660;</span>
+				</button>
+				<div class="section-body" class:collapsed={collapsed['track-map']}>
+					<div class="grid-row grid-row--full">
+						<TrackMap
+							{raceId}
+							drivers={driverList}
+							circuit={circuitData}
+							totalLaps={raceInfo?.total_laps || 58}
+						/>
+					</div>
+				</div>
+			</div>
+
+			<!-- Row 7: Traffic Analysis -->
+			<div id="section-traffic" class="dashboard-section">
+				<button class="section-toggle" onclick={() => collapsedSections.toggle('traffic')}>
+					<span class="chevron" class:rotated={collapsed['traffic']}>&#9660;</span>
+				</button>
+				<div class="section-body" class:collapsed={collapsed['traffic']}>
+					<div class="grid-row grid-row--full">
+						<TrafficAnalysis {trafficData} />
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Compare & Broadcast links -->
+		<div class="dashboard__links">
+			{#if driverList.length >= 2}
+				<a href="/race/{raceId}/compare/{driverList[0].driver}/{driverList[1].driver}" class="dashboard__link">
+					{$t('charts.compare')} →
+				</a>
+			{/if}
+			<a href="/race/{raceId}/broadcast" class="dashboard__link">
+				{$t('charts.broadcast')} →
+			</a>
 		</div>
 	{:else}
 		<!-- Qualifying Session -->
@@ -385,6 +472,30 @@
 		max-height: 0;
 		opacity: 0;
 		overflow: hidden;
+	}
+
+	/* Compare/Broadcast links */
+	.dashboard__links {
+		display: flex;
+		gap: var(--space-md);
+		margin-top: var(--space-lg);
+		padding-top: var(--space-md);
+		border-top: 1px solid var(--border);
+	}
+	.dashboard__link {
+		font-family: var(--font-mono);
+		font-size: var(--font-size-label);
+		color: var(--accent);
+		padding: 6px 14px;
+		border: 1px solid var(--accent);
+		border-radius: var(--radius-sm);
+		text-decoration: none;
+		transition: all 0.15s;
+	}
+	.dashboard__link:hover {
+		background: var(--accent);
+		color: var(--bg-primary);
+		text-decoration: none;
 	}
 
 	/* Qualifying loading/error states */
