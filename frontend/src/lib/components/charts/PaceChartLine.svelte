@@ -9,9 +9,11 @@
 	import { hoveredDriver, pinnedDriver } from '$lib/stores/race.js';
 	import { t } from '$lib/i18n/index.js';
 
-	const { xScale, yScale } = getContext('LayerCake');
+	const { xScale, yScale, width, height, padding } = getContext('LayerCake');
 
 	let { driverData, yKey, pitMarkers = [] } = $props();
+
+	const clipId = 'pace-clip-' + Math.random().toString(36).slice(2, 8);
 
 	let hovered = $state(null);
 	let pinned = $state([]);
@@ -62,6 +64,12 @@
 
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <g class="pace-lines" onmouseleave={handleLeave}>
+	<defs>
+		<clipPath id={clipId}>
+			<rect x="0" y="0" width={$width} height={$height} />
+		</clipPath>
+	</defs>
+	<g clip-path="url(#{clipId})">
 	{#each driverData as { driver, team, laps }}
 		{@const color = TEAM_COLORS[team] || '#888'}
 		{@const d = buildPath(laps)}
@@ -89,6 +97,8 @@
 			/>
 		{/if}
 	{/each}
+
+	</g>
 
 	{#each pitMarkers as pm}
 		{@const cx = $xScale(pm.lap)}
