@@ -18,9 +18,9 @@
 	 */
 	let { drivers, totalLaps, vscLaps = [] } = $props();
 
-	const rowHeight = 28;
+	const rowHeight = 30;
 	const rowGap = 3;
-	const barHeight = 22;
+	const barHeight = 24;
 	const padding = { top: 30, right: 24, bottom: 28, left: 82 };
 
 	// Determine if text should be light or dark on team color background
@@ -260,14 +260,14 @@
 
 				<!-- Position number -->
 				<text
-					x="6"
+					x="18"
 					y={y + rowHeight / 2}
-					text-anchor="start"
+					text-anchor="end"
 					dominant-baseline="middle"
 					fill="var(--text-muted)"
 					font-family="var(--font-mono)"
-					font-size="11"
-					font-weight="500"
+					font-size="12"
+					font-weight="600"
 					opacity={isDimmed ? 0.3 : 0.6}
 					style="pointer-events: none;"
 				>
@@ -292,7 +292,7 @@
 					dominant-baseline="middle"
 					fill={textOnColor(color)}
 					font-family="var(--font-mono)"
-					font-size="11"
+					font-size="12"
 					font-weight="700"
 					opacity={isDimmed ? 0.3 : 1}
 					style="pointer-events: none;"
@@ -306,7 +306,7 @@
 					{@const sw = xScale(stint.end_lap) - xScale(stint.start_lap - 1) - (si > 0 ? 1.5 : 0)}
 					{@const compoundColor = COMPOUND_COLORS[stint.compound] || '#888'}
 					{@const isLastStint = si === d.stints.length - 1}
-					{@const circleR = 11}
+					{@const circleR = 12}
 					{@const circleX = sx + sw}
 
 					<!-- Stint bar -->
@@ -325,7 +325,7 @@
 					/>
 
 					<!-- Compound letter inside bar (if wide enough) -->
-					{#if sw > 40}
+					{#if sw > 30}
 						<text
 							x={sx + sw / 2}
 							y={barY + barHeight / 2}
@@ -333,9 +333,9 @@
 							dominant-baseline="middle"
 							fill={compoundTextColor(stint.compound)}
 							font-family="var(--font-mono)"
-							font-size="11"
-							font-weight="700"
-							opacity={isDimmed ? 0.3 : 0.9}
+							font-size="13"
+							font-weight="800"
+							opacity={isDimmed ? 0.3 : 0.95}
 							style="pointer-events: none;"
 						>
 							{stint.compound.charAt(0)}
@@ -361,7 +361,7 @@
 							dominant-baseline="middle"
 							fill={compoundTextColor(stint.compound)}
 							font-family="var(--font-mono)"
-							font-size="10"
+							font-size="11"
 							font-weight="700"
 							opacity={isDimmed ? 0.3 : 1}
 							style="pointer-events: none;"
