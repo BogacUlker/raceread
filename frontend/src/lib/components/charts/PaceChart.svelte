@@ -51,9 +51,8 @@
 			);
 			if (!allVals.length) return [0, 5];
 			if (viewMode === 'gap') {
-				const sorted = [...allVals].sort((a, b) => a - b);
-				const p95 = sorted[Math.floor(sorted.length * 0.95)];
-				return [0, Math.max(p95 * 1.15, 1)];
+				const hi = Math.max(...allVals);
+				return [0, Math.max(hi * 1.08, 1)];
 			}
 			const [lo, hi] = extent(allVals);
 			const pad = (hi - lo) * 0.05;
