@@ -307,7 +307,7 @@
 	}
 	.dashboard__title {
 		font-family: var(--font-mono);
-		font-size: 24px;
+		font-size: 26px;
 		font-weight: 700;
 		letter-spacing: -0.02em;
 		margin-bottom: var(--space-xs);
@@ -316,7 +316,7 @@
 		display: flex;
 		align-items: center;
 		gap: var(--space-xs);
-		font-size: 13px;
+		font-size: var(--font-size-label);
 		color: var(--text-secondary);
 	}
 	.sep {

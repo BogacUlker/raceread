@@ -61,7 +61,7 @@
 	}
 	.filter-btn {
 		font-family: var(--font-mono);
-		font-size: 13px;
+		font-size: var(--font-size-label);
 		padding: 2px 8px;
 		background: transparent;
 		color: var(--text-muted);
@@ -104,7 +104,7 @@
 	}
 	.driver-chip__name {
 		font-family: var(--font-mono);
-		font-size: 13px;
+		font-size: var(--font-size-label);
 		font-weight: 500;
 		color: var(--text-primary);
 	}

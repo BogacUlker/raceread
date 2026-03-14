@@ -152,26 +152,26 @@
 	.matrix th,
 	.matrix td {
 		font-family: var(--font-mono);
-		font-size: 11px;
-		padding: 6px 8px;
+		font-size: var(--font-size-compact);
+		padding: 5px 6px;
 		text-align: center;
 		white-space: nowrap;
 		transition: background 0.1s;
 	}
 	.matrix__col-header {
 		font-weight: 600;
-		font-size: 12px;
+		font-size: var(--font-size-small);
 		padding-bottom: 8px;
 	}
 	.matrix__row-header {
 		font-weight: 600;
-		font-size: 12px;
+		font-size: var(--font-size-small);
 		text-align: right;
 		padding-right: 10px;
 	}
 	.matrix__cell {
 		border-radius: 3px;
-		min-width: 52px;
+		min-width: 48px;
 		cursor: default;
 	}
 	.matrix__cell.diagonal {

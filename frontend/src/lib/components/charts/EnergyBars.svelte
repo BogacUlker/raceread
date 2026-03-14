@@ -157,7 +157,7 @@
 		align-items: center;
 		gap: 4px;
 		font-family: var(--font-mono);
-		font-size: 12px;
+		font-size: var(--font-size-small);
 		color: var(--text-secondary);
 	}
 	.legend__dot {
@@ -187,14 +187,14 @@
 	}
 	.bar-row__driver {
 		font-family: var(--font-mono);
-		font-size: 13px;
+		font-size: var(--font-size-label);
 		font-weight: 600;
-		width: 36px;
+		width: 38px;
 		flex-shrink: 0;
 	}
 	.bar-row__stack {
 		flex: 1;
-		height: 20px;
+		height: 22px;
 		display: flex;
 		border-radius: 3px;
 		overflow: hidden;
@@ -210,7 +210,7 @@
 	}
 	.bar-row__ratio {
 		font-family: var(--font-mono);
-		font-size: 11px;
+		font-size: var(--font-size-compact);
 		font-weight: 600;
 		color: var(--text-secondary);
 		width: 42px;

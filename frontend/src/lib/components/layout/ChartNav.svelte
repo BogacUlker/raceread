@@ -83,8 +83,8 @@
 	}
 	.chart-nav__pill {
 		font-family: var(--font-mono);
-		font-size: 13px;
-		padding: 4px 12px;
+		font-size: var(--font-size-label);
+		padding: 5px 14px;
 		border: 1px solid var(--border);
 		border-radius: 999px;
 		background: transparent;
@@ -101,8 +101,8 @@
 	}
 	.chart-nav__toggle {
 		font-family: var(--font-mono);
-		font-size: 13px;
-		padding: 4px 12px;
+		font-size: var(--font-size-label);
+		padding: 5px 14px;
 		border: 1px solid var(--border);
 		border-radius: 999px;
 		background: transparent;

@@ -17,9 +17,9 @@
 	 */
 	let { drivers, totalLaps, vscLaps = [] } = $props();
 
-	const rowHeight = 28;
+	const rowHeight = 32;
 	const rowGap = 4;
-	const padding = { top: 24, right: 16, bottom: 32, left: 50 };
+	const padding = { top: 24, right: 16, bottom: 32, left: 54 };
 
 	let svgHeight = $derived(padding.top + drivers.length * (rowHeight + rowGap) + padding.bottom);
 	let svgWidth = $state(800);

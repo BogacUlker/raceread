@@ -47,6 +47,17 @@
 	--font-size-micro: 9px;
 }
 
+/* Large screen scale-up */
+@media (min-width: 1400px) {
+	:root {
+		--font-size-title: 20px;
+		--font-size-label: 14px;
+		--font-size-small: 13px;
+		--font-size-compact: 12px;
+		--font-size-badge: 12px;
+	}
+}
+
 * {
 	margin: 0;
 	padding: 0;

@@ -65,7 +65,7 @@
 	.summarized {
 		display: flex;
 		flex-direction: column;
-		gap: 6px;
+		gap: 8px;
 	}
 	.row {
 		display: flex;
@@ -74,14 +74,14 @@
 	}
 	.row__driver {
 		font-family: var(--font-mono);
-		font-size: 13px;
+		font-size: var(--font-size-label);
 		font-weight: 600;
-		width: 36px;
+		width: 38px;
 		flex-shrink: 0;
 	}
 	.row__bar-wrap {
 		flex: 1;
-		height: 16px;
+		height: 18px;
 		background: var(--bg-primary);
 		border-radius: 3px;
 		overflow: hidden;
@@ -94,17 +94,17 @@
 	}
 	.row__time {
 		font-family: var(--font-mono);
-		font-size: 13px;
+		font-size: var(--font-size-label);
 		color: var(--text-secondary);
-		width: 54px;
+		width: 58px;
 		text-align: right;
 		flex-shrink: 0;
 	}
 	.row__delta {
 		font-family: var(--font-mono);
-		font-size: 11px;
+		font-size: var(--font-size-compact);
 		color: var(--text-muted);
-		width: 48px;
+		width: 50px;
 		text-align: right;
 		flex-shrink: 0;
 	}
