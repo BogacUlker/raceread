@@ -42,10 +42,12 @@
 		[...(strategy.drivers || [])].sort((a, b) => (finalPosMap[a.driver] ?? 99) - (finalPosMap[b.driver] ?? 99))
 	);
 
-	// Default select all drivers
+	// Select all drivers once (don't reset on every render)
+	let _broadcastInitialized = false;
 	$effect(() => {
-		if (laps.length > 0) {
+		if (!_broadcastInitialized && laps.length > 0) {
 			selectedDrivers.set(laps.map(d => d.driver));
+			_broadcastInitialized = true;
 		}
 	});
 
@@ -61,13 +63,13 @@
 
 	// Chart cycling
 	const CHARTS = ['pace', 'strategy', 'energy', 'speed-trace', 'track-map'];
-	const CHART_LABELS = {
-		pace: 'Race Pace',
-		strategy: 'Strategy Timeline',
-		energy: 'Energy Profile',
-		'speed-trace': 'Speed Trace',
-		'track-map': 'Track Map',
-	};
+	let CHART_LABELS = $derived({
+		pace: $t('charts.pace'),
+		strategy: $t('charts.strategy'),
+		energy: $t('charts.energy_bars'),
+		'speed-trace': $t('charts.speed_trace'),
+		'track-map': $t('charts.track_map'),
+	});
 
 	let activeChart = $state(0);
 	let autoCycle = $state(true);
@@ -120,7 +122,10 @@
 
 	onMount(() => {
 		startCycle();
-		return () => stopCycle();
+		return () => {
+			stopCycle();
+			if (overlayTimeout) clearTimeout(overlayTimeout);
+		};
 	});
 </script>
 

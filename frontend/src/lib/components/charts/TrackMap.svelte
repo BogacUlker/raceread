@@ -3,6 +3,7 @@
 	Single driver, single lap. SVG with aspect-ratio-preserving scale.
 -->
 <script>
+	import { onMount } from 'svelte';
 	import { t } from '$lib/i18n/index.js';
 	import { scaleLinear } from 'd3-scale';
 	import { interpolateRdYlBu } from 'd3-scale-chromatic';
@@ -16,6 +17,8 @@
 		totalLaps = 58,
 	} = $props();
 
+	let containerEl = $state(null);
+	let containerWidth = $state(500);
 	let selectedDriver = $state('');
 	let selectedLap = $state(5);
 	let colorMode = $state('speed');
@@ -79,7 +82,7 @@
 	});
 
 	// SVG dimensions preserving aspect ratio
-	const svgWidth = 500;
+	let svgWidth = $derived(Math.max(300, containerWidth));
 	let svgHeight = $derived.by(() => {
 		const aspect = (bounds.maxY - bounds.minY) / (bounds.maxX - bounds.minX);
 		return Math.max(300, Math.min(600, svgWidth * aspect));
@@ -148,9 +151,20 @@
 	}
 
 	let hoverSample = $derived(hoverIdx !== null ? samples[hoverIdx] : null);
+
+	onMount(() => {
+		if (!containerEl) return;
+		const ro = new ResizeObserver((entries) => {
+			for (const entry of entries) {
+				containerWidth = entry.contentRect.width;
+			}
+		});
+		ro.observe(containerEl);
+		return () => ro.disconnect();
+	});
 </script>
 
-<div class="chart-card">
+<div class="chart-card" bind:this={containerEl}>
 	<div class="chart-card__header">
 		<h3 class="chart-card__title">{$t('charts.track_map')}</h3>
 		{#if colorMode === 'energy'}
@@ -220,9 +234,9 @@
 					<div>{$t('charts.speed')}: {hoverSample.speed?.toFixed(0)} km/h</div>
 					<div>{$t('charts.gear')}: {hoverSample.gear}</div>
 					<div>{$t('charts.throttle')}: {hoverSample.throttle?.toFixed(0)}%</div>
-					<div>{$t('charts.brake')}: {hoverSample.brake ? 'ON' : '-'}</div>
+					<div>{$t('charts.brake')}: {hoverSample.brake ? $t('charts.brake_on') : '-'}</div>
 					{#if hoverSample.energy}
-						<div>Energy: {hoverSample.energy}</div>
+						<div>{$t('charts.energy_state')}: {hoverSample.energy}</div>
 					{/if}
 				</div>
 			{/if}

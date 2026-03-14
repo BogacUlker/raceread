@@ -6,7 +6,7 @@
 	import { scaleLinear, scaleBand } from 'd3-scale';
 	import { TEAM_COLORS } from '$lib/constants.js';
 
-	let { trafficData = null } = $props();
+	let { trafficData = null, loading: isLoading = false } = $props();
 
 	let viewMode = $state('summary');
 
@@ -44,7 +44,9 @@
 		</div>
 	</div>
 
-	{#if !trafficData || drivers.length === 0}
+	{#if isLoading}
+		<div class="traffic__empty">{$t('common.loading')}</div>
+	{:else if !trafficData || drivers.length === 0}
 		<div class="traffic__empty">{$t('common.no_data')}</div>
 	{:else if viewMode === 'summary'}
 		<!-- Summary bars -->

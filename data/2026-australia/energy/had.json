@@ -1,0 +1,137 @@
+{
+  "driver": "HAD",
+  "team": "Red Bull Racing",
+  "laps": [
+    {
+      "lap": 1,
+      "deploy_pct": 3.38,
+      "harvest_pct": 24.05,
+      "clip_pct": 1.49,
+      "neutral_pct": 71.08,
+      "normalized_deploy": 11.69,
+      "normalized_harvest": 83.16,
+      "normalized_clip": 5.15,
+      "is_vsc": false
+    },
+    {
+      "lap": 2,
+      "deploy_pct": 5.81,
+      "harvest_pct": 21.25,
+      "clip_pct": 2.6,
+      "neutral_pct": 70.34,
+      "normalized_deploy": 19.59,
+      "normalized_harvest": 71.65,
+      "normalized_clip": 8.77,
+      "is_vsc": false
+    },
+    {
+      "lap": 3,
+      "deploy_pct": 2.19,
+      "harvest_pct": 21.63,
+      "clip_pct": 3.45,
+      "neutral_pct": 72.73,
+      "normalized_deploy": 8.03,
+      "normalized_harvest": 79.32,
+      "normalized_clip": 12.65,
+      "is_vsc": false
+    },
+    {
+      "lap": 4,
+      "deploy_pct": 2.32,
+      "harvest_pct": 21.05,
+      "clip_pct": 1.39,
+      "neutral_pct": 75.23,
+      "normalized_deploy": 9.37,
+      "normalized_harvest": 85.02,
+      "normalized_clip": 5.61,
+      "is_vsc": false
+    },
+    {
+      "lap": 5,
+      "deploy_pct": 2.31,
+      "harvest_pct": 18.21,
+      "clip_pct": 1.08,
+      "neutral_pct": 78.4,
+      "normalized_deploy": 10.69,
+      "normalized_harvest": 84.31,
+      "normalized_clip": 5.0,
+      "is_vsc": false
+    },
+    {
+      "lap": 6,
+      "deploy_pct": 1.68,
+      "harvest_pct": 18.32,
+      "clip_pct": 1.07,
+      "neutral_pct": 78.93,
+      "normalized_deploy": 7.97,
+      "normalized_harvest": 86.95,
+      "normalized_clip": 5.08,
+      "is_vsc": false
+    },
+    {
+      "lap": 7,
+      "deploy_pct": 2.48,
+      "harvest_pct": 20.31,
+      "clip_pct": 2.33,
+      "neutral_pct": 74.88,
+      "normalized_deploy": 9.87,
+      "normalized_harvest": 80.85,
+      "normalized_clip": 9.28,
+      "is_vsc": false
+    },
+    {
+      "lap": 8,
+      "deploy_pct": 2.21,
+      "harvest_pct": 18.14,
+      "clip_pct": 1.42,
+      "neutral_pct": 78.23,
+      "normalized_deploy": 10.15,
+      "normalized_harvest": 83.33,
+      "normalized_clip": 6.52,
+      "is_vsc": false
+    },
+    {
+      "lap": 9,
+      "deploy_pct": 2.02,
+      "harvest_pct": 18.85,
+      "clip_pct": 1.71,
+      "neutral_pct": 77.41,
+      "normalized_deploy": 8.95,
+      "normalized_harvest": 83.48,
+      "normalized_clip": 7.57,
+      "is_vsc": false
+    },
+    {
+      "lap": 10,
+      "deploy_pct": 1.08,
+      "harvest_pct": 18.36,
+      "clip_pct": 2.01,
+      "neutral_pct": 78.55,
+      "normalized_deploy": 5.03,
+      "normalized_harvest": 85.59,
+      "normalized_clip": 9.37,
+      "is_vsc": false
+    },
+    {
+      "lap": 11,
+      "deploy_pct": 0.19,
+      "harvest_pct": 54.25,
+      "clip_pct": 3.09,
+      "neutral_pct": 42.47,
+      "normalized_deploy": 0.33,
+      "normalized_harvest": 94.3,
+      "normalized_clip": 5.37,
+      "is_vsc": true
+    }
+  ],
+  "summary": {
+    "avg_deploy": 2.33,
+    "avg_harvest": 23.13,
+    "avg_clip": 1.97,
+    "avg_neutral": 72.57,
+    "normalized_deploy": 8.49,
+    "normalized_harvest": 84.32,
+    "normalized_clip": 7.18,
+    "dc_ratio": 1.18
+  }
+}

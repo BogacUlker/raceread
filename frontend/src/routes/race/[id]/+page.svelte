@@ -142,12 +142,16 @@
 
 	// Traffic analysis
 	let trafficData = $state(null);
+	let trafficLoading = $state(true);
 
 	async function loadTraffic() {
+		trafficLoading = true;
 		try {
 			trafficData = await api(`/api/races/${raceId}/traffic`);
 		} catch {
 			trafficData = null;
+		} finally {
+			trafficLoading = false;
 		}
 	}
 
@@ -180,12 +184,24 @@
 
 	<!-- Driver Filter (race mode only) -->
 	{#if session === 'race'}
-		<div class="dashboard__filter">
-			<DriverFilter
-				drivers={driverList}
-				selected={$selectedDrivers}
-				onchange={(v) => selectedDrivers.set(v)}
-			/>
+		<div class="dashboard__toolbar">
+			<div class="dashboard__filter">
+				<DriverFilter
+					drivers={driverList}
+					selected={$selectedDrivers}
+					onchange={(v) => selectedDrivers.set(v)}
+				/>
+			</div>
+			<div class="dashboard__actions">
+				{#if driverList.length >= 2}
+					<a href="/race/{raceId}/compare/{driverList[0].driver}/{driverList[1].driver}" class="dashboard__action-btn">
+						{$t('charts.compare')}
+					</a>
+				{/if}
+				<a href="/race/{raceId}/broadcast" class="dashboard__action-btn dashboard__action-btn--broadcast">
+					{$t('charts.broadcast')}
+				</a>
+			</div>
 		</div>
 	{/if}
 
@@ -322,23 +338,13 @@
 				</button>
 				<div class="section-body" class:collapsed={collapsed['traffic']}>
 					<div class="grid-row grid-row--full">
-						<TrafficAnalysis {trafficData} />
+						<TrafficAnalysis {trafficData} loading={trafficLoading} />
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<!-- Compare & Broadcast links -->
-		<div class="dashboard__links">
-			{#if driverList.length >= 2}
-				<a href="/race/{raceId}/compare/{driverList[0].driver}/{driverList[1].driver}" class="dashboard__link">
-					{$t('charts.compare')} →
-				</a>
-			{/if}
-			<a href="/race/{raceId}/broadcast" class="dashboard__link">
-				{$t('charts.broadcast')} →
-			</a>
-		</div>
+	
 	{:else}
 		<!-- Qualifying Session -->
 		{#if qualifyingLoading}
@@ -413,9 +419,7 @@
 		color: var(--accent);
 		font-weight: 500;
 	}
-	.dashboard__filter {
-		margin-bottom: var(--space-lg);
-	}
+
 	.dashboard__grid {
 		display: flex;
 		flex-direction: column;
@@ -474,28 +478,43 @@
 		overflow: hidden;
 	}
 
-	/* Compare/Broadcast links */
-	.dashboard__links {
+	/* Toolbar: filter + action buttons */
+	.dashboard__toolbar {
 		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
 		gap: var(--space-md);
-		margin-top: var(--space-lg);
-		padding-top: var(--space-md);
-		border-top: 1px solid var(--border);
+		margin-bottom: var(--space-lg);
 	}
-	.dashboard__link {
+	.dashboard__filter {
+		flex: 1;
+	}
+	.dashboard__actions {
+		display: flex;
+		gap: var(--space-sm);
+		flex-shrink: 0;
+		padding-top: 2px;
+	}
+	.dashboard__action-btn {
 		font-family: var(--font-mono);
-		font-size: var(--font-size-label);
-		color: var(--accent);
-		padding: 6px 14px;
-		border: 1px solid var(--accent);
+		font-size: var(--font-size-small);
+		color: var(--text-secondary);
+		padding: 6px 12px;
+		border: 1px solid var(--border);
 		border-radius: var(--radius-sm);
 		text-decoration: none;
 		transition: all 0.15s;
+		white-space: nowrap;
 	}
-	.dashboard__link:hover {
+	.dashboard__action-btn:hover {
+		color: var(--text-primary);
+		border-color: var(--text-muted);
+		text-decoration: none;
+	}
+	.dashboard__action-btn--broadcast:hover {
 		background: var(--accent);
 		color: var(--bg-primary);
-		text-decoration: none;
+		border-color: var(--accent);
 	}
 
 	/* Qualifying loading/error states */

@@ -9,6 +9,7 @@
 	import { api } from '$lib/api.js';
 	import SpeedTrace from '$lib/components/charts/SpeedTrace.svelte';
 	import TrackMap from '$lib/components/charts/TrackMap.svelte';
+	import EnergyTimeline from '$lib/components/charts/EnergyTimeline.svelte';
 
 	let { data } = $props();
 
@@ -259,6 +260,12 @@
 		</div>
 	</div>
 
+	<!-- Energy Timeline side by side -->
+	<div class="compare__energy-timelines">
+		<EnergyTimeline {raceId} drivers={driverList.filter(d => d.driver === d1)} defaultDriver={d1} />
+		<EnergyTimeline {raceId} drivers={driverList.filter(d => d.driver === d2)} defaultDriver={d2} />
+	</div>
+
 	<!-- Track Maps side by side -->
 	<div class="compare__track-maps">
 		<TrackMap {raceId} drivers={driverList.filter(d => d.driver === d1)} {circuit} totalLaps={raceInfo?.total_laps || 58} />
@@ -384,12 +391,20 @@
 		font-size: 12px;
 		color: var(--text-muted);
 	}
+	.compare__energy-timelines {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: var(--space-lg);
+	}
 	.compare__track-maps {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		gap: var(--space-lg);
 	}
 	@media (max-width: 900px) {
+		.compare__energy-timelines {
+			grid-template-columns: 1fr;
+		}
 		.compare__track-maps {
 			grid-template-columns: 1fr;
 		}
