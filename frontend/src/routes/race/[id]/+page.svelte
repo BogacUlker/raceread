@@ -74,11 +74,15 @@
 	let teamsMap = $derived(Object.fromEntries(laps.map((d) => [d.driver, d.team])));
 
 	// Final position map from laps data (for sorting)
+	// DNF drivers (completed significantly fewer laps) sort below finishers
 	let finalPosMap = $derived(
 		Object.fromEntries(
 			laps.map((d) => {
 				const lastLap = d.laps.filter((l) => l.position != null).at(-1);
-				return [d.driver, lastLap?.position ?? 99];
+				const pos = lastLap?.position ?? 99;
+				const completedLaps = d.laps.length;
+				const isDNF = completedLaps < (raceInfo.total_laps || 58) * 0.9;
+				return [d.driver, isDNF ? 100 + (raceInfo.total_laps - completedLaps) : pos];
 			})
 		)
 	);
