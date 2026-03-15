@@ -412,4 +412,10 @@
 			grid-template-columns: repeat(2, 1fr);
 		}
 	}
+
+	@media (max-width: 480px) {
+		.compare__stats {
+			grid-template-columns: 1fr;
+		}
+	}
 </style>

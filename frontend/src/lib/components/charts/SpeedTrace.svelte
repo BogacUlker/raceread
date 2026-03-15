@@ -20,7 +20,7 @@
 
 	let containerEl = $state(null);
 	let svgEl = $state(null);
-	let width = $state(800);
+	let width = $state(0);
 	const margin = { top: 20, right: 20, bottom: 60, left: 50 };
 	const mainHeight = 200;
 	const gearHeight = 16;
@@ -450,5 +450,15 @@
 		color: var(--text-secondary);
 		margin-top: 4px;
 		font-weight: 500;
+	}
+
+	@media (max-width: 768px) {
+		.speed-trace__controls {
+			flex-direction: column;
+			align-items: stretch;
+		}
+		.speed-trace__select {
+			min-height: 40px;
+		}
 	}
 </style>

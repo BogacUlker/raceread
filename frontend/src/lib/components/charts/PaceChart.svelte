@@ -318,4 +318,32 @@
 		color: var(--text-primary);
 		border-color: var(--text-muted);
 	}
+
+	@media (max-width: 768px) {
+		.pace-wrapper {
+			flex-direction: column;
+		}
+		.chart-container {
+			height: 320px;
+		}
+		.pace-legend {
+			flex-direction: row;
+			flex-wrap: wrap;
+			max-height: none;
+			overflow-y: visible;
+		}
+		.pace-legend__item {
+			min-height: 36px;
+		}
+		.toggle-btn {
+			min-height: 36px;
+			padding: 6px 12px;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.chart-container {
+			height: 260px;
+		}
+	}
 </style>

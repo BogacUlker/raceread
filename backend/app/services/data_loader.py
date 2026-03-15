@@ -7,8 +7,12 @@ repeated disk I/O on subsequent requests.
 from functools import lru_cache
 from pathlib import Path
 import json
+from typing import Any
 
 from backend.app.config import DATA_DIR
+
+# Separate cache for expensive computed results (traffic, etc.)
+_computed_cache: dict[str, Any] = {}
 
 
 def get_race_dir(race_id: str) -> Path:
@@ -95,6 +99,39 @@ def load_telemetry(race_id: str, driver: str) -> dict:
     return load_json(
         str(get_race_dir(race_id) / "telemetry" / f"{driver.lower()}.json")
     )
+
+
+def load_telemetry_lap(race_id: str, driver: str, lap: int) -> dict | None:
+    """Load telemetry for a single driver, returning only the requested lap.
+
+    Uses the cached full file but filters before returning, avoiding
+    serialization of unused laps over the wire.
+    """
+    data = load_telemetry(race_id, driver)
+    for l in data.get("laps", []):
+        if l["lap"] == lap:
+            return {**data, "laps": [l]}
+    return None
+
+
+def load_all_telemetry(race_id: str) -> dict[str, dict]:
+    """Load telemetry for all drivers in a race.
+
+    Returns a dict keyed by uppercase driver abbreviation.
+    Uses the LRU-cached load_telemetry per driver.
+    """
+    telemetry_dir = get_race_dir(race_id) / "telemetry"
+    result: dict[str, dict] = {}
+    if telemetry_dir.exists():
+        for f in sorted(telemetry_dir.glob("*.json")):
+            driver = f.stem.upper()
+            result[driver] = load_telemetry(race_id, driver)
+    return result
+
+
+def get_computed_cache() -> dict[str, Any]:
+    """Access the computed results cache."""
+    return _computed_cache
 
 
 def load_circuit(race_id: str) -> dict:

@@ -572,10 +572,32 @@
 
 	@media (max-width: 768px) {
 		.dashboard__title {
-			font-size: 18px;
+			font-size: 16px;
 		}
 		.dashboard__meta {
 			flex-wrap: wrap;
+		}
+		.dashboard__toolbar {
+			flex-direction: column;
+			align-items: stretch;
+		}
+		.dashboard__actions {
+			justify-content: flex-start;
+			flex-wrap: wrap;
+		}
+		.dashboard__action-btn {
+			min-height: 44px;
+			display: flex;
+			align-items: center;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.dashboard__title {
+			font-size: 15px;
+		}
+		.dashboard__meta {
+			font-size: var(--font-size-small);
 		}
 	}
 </style>

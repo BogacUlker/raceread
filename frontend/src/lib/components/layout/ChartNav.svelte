@@ -118,4 +118,14 @@
 		color: var(--text-secondary);
 		border-color: var(--text-muted);
 	}
+
+	@media (max-width: 768px) {
+		.chart-nav__pill,
+		.chart-nav__toggle {
+			min-height: 40px;
+			display: flex;
+			align-items: center;
+			padding: 8px 14px;
+		}
+	}
 </style>

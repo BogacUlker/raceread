@@ -63,6 +63,32 @@
 		hoveredLapStore.set(null);
 	}
 
+	function handleTouchMove(e) {
+		e.preventDefault();
+		const touch = e.touches[0];
+		if (!touch) return;
+		const rect = e.currentTarget.getBoundingClientRect();
+		const x = touch.clientX - rect.left;
+		const y = touch.clientY - rect.top;
+		mouseX = x;
+		mouseY = y;
+
+		const domain = $xScale.domain();
+		const lapNum = Math.round($xScale.invert(x));
+		if (lapNum >= domain[0] && lapNum <= domain[1]) {
+			localHoveredLap = lapNum;
+			hoveredLapStore.set(lapNum);
+		} else {
+			localHoveredLap = null;
+			hoveredLapStore.set(null);
+		}
+	}
+
+	function handleTouchEnd() {
+		localHoveredLap = null;
+		hoveredLapStore.set(null);
+	}
+
 	let tooltipData = $derived(
 		displayLap
 			? driverData
@@ -101,6 +127,8 @@
 	class="tooltip-capture"
 	onmousemove={handleMouseMove}
 	onmouseleave={handleMouseLeave}
+	ontouchmove={handleTouchMove}
+	ontouchend={handleTouchEnd}
 >
 	{#if displayLap != null}
 		<!-- Vertical guide line -->

@@ -1235,4 +1235,29 @@
 		font-size: 11px;
 		color: var(--text-muted);
 	}
+
+	@media (max-width: 768px) {
+		.track-map__loading {
+			height: 300px;
+		}
+		.track-map__svg {
+			max-height: 400px;
+		}
+		.track-map__tooltip {
+			top: 4px;
+			right: 4px;
+			padding: 6px 10px;
+			font-size: 11px;
+			min-width: 140px;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.track-map__loading {
+			height: 250px;
+		}
+		.track-map__svg {
+			max-height: 320px;
+		}
+	}
 </style>

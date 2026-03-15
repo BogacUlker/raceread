@@ -1,15 +1,16 @@
 """Telemetry router - per-sample speed/throttle/energy data and circuit info."""
 
-from pathlib import Path
-
 from fastapi import APIRouter, HTTPException, Query
 
 from backend.app.services.data_loader import (
+    get_computed_cache,
     get_race_dir,
+    load_all_telemetry,
     load_circuit,
     load_laps,
     load_race_control,
     load_telemetry,
+    load_telemetry_lap,
 )
 from backend.app.services.preprocessing import compute_traffic_analysis
 
@@ -28,23 +29,20 @@ def get_telemetry(
     Otherwise returns all laps.
     """
     try:
-        data = load_telemetry(race_id, driver)
+        if lap is not None:
+            result = load_telemetry_lap(race_id, driver, lap)
+            if result is None:
+                raise HTTPException(
+                    status_code=404,
+                    detail=f"Lap {lap} not found for driver '{driver}' in race '{race_id}'",
+                )
+            return result
+        return load_telemetry(race_id, driver)
     except FileNotFoundError:
         raise HTTPException(
             status_code=404,
             detail=f"Telemetry not found for driver '{driver}' in race '{race_id}'",
         )
-
-    if lap is not None:
-        filtered_laps = [l for l in data.get("laps", []) if l["lap"] == lap]
-        if not filtered_laps:
-            raise HTTPException(
-                status_code=404,
-                detail=f"Lap {lap} not found for driver '{driver}' in race '{race_id}'",
-            )
-        return {**data, "laps": filtered_laps}
-
-    return data
 
 
 @router.get("/races/{race_id}/telemetry/compare")
@@ -58,25 +56,24 @@ def compare_telemetry(
     results = {}
     for drv in [d1, d2]:
         try:
-            data = load_telemetry(race_id, drv)
+            result = load_telemetry_lap(race_id, drv, lap)
         except FileNotFoundError:
             raise HTTPException(
                 status_code=404,
                 detail=f"Telemetry not found for driver '{drv}' in race '{race_id}'",
             )
 
-        lap_data = [l for l in data.get("laps", []) if l["lap"] == lap]
-        if not lap_data:
+        if result is None:
             raise HTTPException(
                 status_code=404,
                 detail=f"Lap {lap} not found for driver '{drv}' in race '{race_id}'",
             )
 
         results[drv.upper()] = {
-            "driver": data["driver"],
-            "team": data["team"],
+            "driver": result["driver"],
+            "team": result["team"],
             "lap": lap,
-            "samples": lap_data[0]["samples"],
+            "samples": result["laps"][0]["samples"],
         }
 
     return results
@@ -96,8 +93,16 @@ def get_circuit(race_id: str):
 
 @router.get("/races/{race_id}/traffic")
 def get_traffic(race_id: str):
-    """Return traffic analysis: per-driver time in traffic and pace degradation."""
-    # Load all driver telemetry files
+    """Return traffic analysis: per-driver time in traffic and pace degradation.
+
+    Results are cached in memory after first computation.
+    """
+    cache = get_computed_cache()
+    cache_key = f"traffic:{race_id}"
+
+    if cache_key in cache:
+        return cache[cache_key]
+
     telemetry_dir = get_race_dir(race_id) / "telemetry"
     if not telemetry_dir.exists():
         raise HTTPException(
@@ -105,10 +110,7 @@ def get_traffic(race_id: str):
             detail=f"Telemetry data not found for race '{race_id}'",
         )
 
-    all_telemetry = {}
-    for f in sorted(telemetry_dir.glob("*.json")):
-        driver = f.stem.upper()
-        all_telemetry[driver] = load_telemetry(race_id, driver)
+    all_telemetry = load_all_telemetry(race_id)
 
     try:
         laps_data = load_laps(race_id)
@@ -120,4 +122,6 @@ def get_traffic(race_id: str):
     except FileNotFoundError:
         rc_data = {"vsc_laps": [], "sc_laps": []}
 
-    return compute_traffic_analysis(all_telemetry, laps_data, rc_data)
+    result = compute_traffic_analysis(all_telemetry, laps_data, rc_data)
+    cache[cache_key] = result
+    return result

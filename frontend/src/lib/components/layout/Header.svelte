@@ -74,4 +74,14 @@
 		align-items: center;
 		gap: var(--space-sm);
 	}
+
+	@media (max-width: 480px) {
+		.header__inner {
+			padding: 0 var(--space-md);
+			height: 48px;
+		}
+		.header__logo-text {
+			font-size: 16px;
+		}
+	}
 </style>

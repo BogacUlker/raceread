@@ -181,4 +181,19 @@
 		font-family: var(--font-mono);
 		font-size: 13px;
 	}
+
+	@media (max-width: 768px) {
+		.chart-container {
+			height: 200px;
+		}
+		.driver-select select {
+			min-height: 40px;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.chart-container {
+			height: 180px;
+		}
+	}
 </style>
