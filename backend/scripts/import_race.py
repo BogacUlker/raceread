@@ -459,16 +459,17 @@ def export_race_control(
         lap = msg.get("lap")
 
         if "safetycar" in category.replace(" ", ""):
-            if "VIRTUAL" in message_text and "DEPLOYED" in message_text:
+            is_virtual = "VIRTUAL" in message_text or "VSC" in message_text
+            if is_virtual and "DEPLOYED" in message_text:
                 vsc_deploy_lap = lap
-            elif "VIRTUAL" in message_text and "ENDING" in message_text:
+            elif is_virtual and "ENDING" in message_text:
                 if vsc_deploy_lap is not None and lap is not None:
                     for lp in range(vsc_deploy_lap, lap + 1):
                         vsc_laps.add(lp)
                     vsc_deploy_lap = None
-            elif "DEPLOYED" in message_text and "VIRTUAL" not in message_text:
+            elif "DEPLOYED" in message_text and not is_virtual:
                 sc_deploy_lap = lap
-            elif "ENDING" in message_text and "VIRTUAL" not in message_text:
+            elif "ENDING" in message_text and not is_virtual:
                 if sc_deploy_lap is not None and lap is not None:
                     for lp in range(sc_deploy_lap, lap + 1):
                         sc_laps.add(lp)

@@ -117,15 +117,18 @@
 		}
 	});
 
-	// Get VSC laps (fetch from energy/vsc endpoint)
+	// Get VSC + SC laps (fetch from energy/vsc endpoint)
 	let vscLaps = $state([]);
+	let scLaps = $state([]);
 
 	async function loadVscLaps() {
 		try {
 			const vscData = await api(`/api/races/${raceId}/energy/vsc`);
 			vscLaps = vscData.vsc_laps || [];
+			scLaps = vscData.sc_laps || [];
 		} catch {
 			vscLaps = [];
+			scLaps = [];
 		}
 	}
 
@@ -247,6 +250,7 @@
 								{laps}
 								selectedDrivers={$selectedDrivers}
 								{vscLaps}
+								{scLaps}
 								annotations={$showAnnotations ? (annotations.annotations || []) : []}
 								{strategy}
 							/>
@@ -269,6 +273,7 @@
 							drivers={strategySorted}
 							totalLaps={raceInfo.total_laps}
 							{vscLaps}
+							{scLaps}
 						/>
 					</div>
 				</div>
@@ -456,17 +461,24 @@
 	/* Collapsible sections */
 	.dashboard-section {
 		position: relative;
+		min-height: 28px;
 	}
 	.section-toggle {
 		position: absolute;
 		top: 4px;
 		right: 4px;
 		z-index: 5;
-		background: transparent;
-		border: none;
+		background: var(--bg-primary);
+		border: 1px solid var(--border);
+		border-radius: var(--radius-sm);
 		cursor: pointer;
 		padding: 4px 6px;
 		line-height: 1;
+		opacity: 0.6;
+		transition: opacity 0.15s;
+	}
+	.section-toggle:hover {
+		opacity: 1;
 	}
 	.chevron {
 		display: inline-block;

@@ -13,10 +13,11 @@
 	 * @type {{
 	 *   drivers: Array<{driver: string, team: string, stints: Array, pit_laps: number[]}>,
 	 *   totalLaps: number,
-	 *   vscLaps: number[]
+	 *   vscLaps: number[],
+	 *   scLaps: number[]
 	 * }}
 	 */
-	let { drivers, totalLaps, vscLaps = [] } = $props();
+	let { drivers, totalLaps, vscLaps = [], scLaps = [] } = $props();
 
 	const rowHeight = 30;
 	const rowGap = 3;
@@ -51,27 +52,32 @@
 		})()
 	);
 
-	// VSC ranges
-	let vscRanges = $derived(
-		(() => {
-			if (!vscLaps.length) return [];
-			const sorted = [...vscLaps].sort((a, b) => a - b);
-			const result = [];
-			let start = sorted[0];
-			let end = sorted[0];
-			for (let i = 1; i < sorted.length; i++) {
-				if (sorted[i] === end + 1) {
-					end = sorted[i];
-				} else {
-					result.push({ start, end });
-					start = sorted[i];
-					end = sorted[i];
-				}
+	// Group consecutive laps into ranges
+	function groupRanges(laps) {
+		if (!laps.length) return [];
+		const sorted = [...laps].sort((a, b) => a - b);
+		const result = [];
+		let start = sorted[0];
+		let end = sorted[0];
+		for (let i = 1; i < sorted.length; i++) {
+			if (sorted[i] === end + 1) {
+				end = sorted[i];
+			} else {
+				result.push({ start, end });
+				start = sorted[i];
+				end = sorted[i];
 			}
-			result.push({ start, end });
-			return result;
-		})()
-	);
+		}
+		result.push({ start, end });
+		return result;
+	}
+
+	// SC takes priority: filter VSC laps that overlap with SC
+	let scSet = $derived(new Set(scLaps));
+	let filteredVscLaps = $derived(vscLaps.filter(l => !scSet.has(l)));
+
+	let vscRanges = $derived(groupRanges(filteredVscLaps));
+	let scRanges = $derived(groupRanges(scLaps));
 
 	// Cross-chart sync
 	let syncLap = $state(null);
@@ -210,7 +216,20 @@
 				</g>
 			{/each}
 
-			<!-- VSC shading -->
+			<!-- SC shading (darker amber) -->
+			{#each scRanges as range}
+				<rect
+					x={xScale(range.start - 0.5)}
+					y={padding.top}
+					width={xScale(range.end + 0.5) - xScale(range.start - 0.5)}
+					height={svgHeight - padding.top - padding.bottom}
+					fill="#F59E0B"
+					fill-opacity="0.07"
+					style="pointer-events: none;"
+				/>
+			{/each}
+
+			<!-- VSC shading (lighter amber) -->
 			{#each vscRanges as range}
 				<rect
 					x={xScale(range.start - 0.5)}

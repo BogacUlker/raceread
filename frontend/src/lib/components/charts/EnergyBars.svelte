@@ -17,6 +17,14 @@
 
 	let sorted = $derived([...entries].sort((a, b) => a.rank - b.rank));
 
+	function textOnColor(hex) {
+		const r = parseInt(hex.slice(1, 3), 16);
+		const g = parseInt(hex.slice(3, 5), 16);
+		const b = parseInt(hex.slice(5, 7), 16);
+		const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+		return luminance > 0.5 ? '#000' : '#fff';
+	}
+
 	let hovered = $state(null);
 	let selectedDriver = $state(null);
 	let tooltip = $state(null);
@@ -96,7 +104,7 @@
 				onmouseleave={handleRowLeave}
 				onclick={() => handleRowClick(entry)}
 			>
-				<span class="bar-row__driver" style="color: {color}">{entry.driver}</span>
+				<span class="bar-row__driver" class:bar-row__driver--selected={isSelected} style="background: {color}; color: {textOnColor(color)}">{entry.driver}</span>
 				<div class="bar-row__stack">
 					<div
 						class="segment"
@@ -183,14 +191,24 @@
 		opacity: 0.5;
 	}
 	.bar-row--selected {
-		border-left-color: var(--accent);
+		border-left-color: transparent;
 	}
 	.bar-row__driver {
 		font-family: var(--font-mono);
-		font-size: var(--font-size-label);
-		font-weight: 600;
+		font-size: 11px;
+		font-weight: 700;
 		width: 38px;
 		flex-shrink: 0;
+		text-align: center;
+		padding: 2px 4px;
+		border-radius: 3px;
+		box-sizing: border-box;
+		border: 2px solid transparent;
+		transition: border-color 0.15s, box-shadow 0.15s;
+	}
+	.bar-row__driver--selected {
+		border-color: var(--accent);
+		box-shadow: 0 0 6px rgba(226, 75, 74, 0.5);
 	}
 	.bar-row__stack {
 		flex: 1;

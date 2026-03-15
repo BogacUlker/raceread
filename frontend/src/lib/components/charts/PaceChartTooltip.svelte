@@ -17,10 +17,11 @@
 	 *   driverData: Array<{driver: string, team: string, laps: Array}>,
 	 *   viewMode: string,
 	 *   annotations: Array,
-	 *   vscLaps: number[]
+	 *   vscLaps: number[],
+	 *   scLaps: number[]
 	 * }}
 	 */
-	let { driverData, viewMode, annotations = [], vscLaps = [] } = $props();
+	let { driverData, viewMode, annotations = [], vscLaps = [], scLaps = [] } = $props();
 
 	let localHoveredLap = $state(null);
 	let mouseX = $state(0);
@@ -35,8 +36,9 @@
 	// The displayed lap: local hover takes priority, else external sync
 	let displayLap = $derived(localHoveredLap ?? externalLap);
 
-	// Check if a lap is in a VSC range
+	// Check if a lap is in a VSC or SC range
 	let vscSet = $derived(new Set(vscLaps));
+	let scSet = $derived(new Set(scLaps));
 
 	function handleMouseMove(e) {
 		const rect = e.currentTarget.getBoundingClientRect();
@@ -115,7 +117,9 @@
 			>
 				<div class="tooltip__header">
 					<span>{$t('tooltip.lap')} {displayLap}</span>
-					{#if vscSet.has(displayLap)}
+					{#if scSet.has(displayLap)}
+						<span class="tooltip__vsc">{$t('tooltip.sc_active')}</span>
+					{:else if vscSet.has(displayLap)}
 						<span class="tooltip__vsc">{$t('tooltip.vsc_active')}</span>
 					{/if}
 				</div>

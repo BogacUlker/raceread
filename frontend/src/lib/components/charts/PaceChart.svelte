@@ -19,7 +19,7 @@
 	import PaceChartTooltip from './PaceChartTooltip.svelte';
 	import PaceChartAnnotations from './PaceChartAnnotations.svelte';
 
-	let { laps, selectedDrivers, vscLaps = [], annotations = [], strategy } = $props();
+	let { laps, selectedDrivers, vscLaps = [], scLaps = [], annotations = [], strategy } = $props();
 
 	let viewMode = $state('gap');
 
@@ -150,13 +150,13 @@
 					padding={{ top: 16, right: 16, bottom: 40, left: 56 }}
 				>
 					<Svg>
-						<PaceChartOverlay {vscLaps} />
+						<PaceChartOverlay {vscLaps} {scLaps} />
 						<PaceChartLine driverData={filteredData} {yKey} {pitMarkers} />
 						<PaceChartAnnotations {annotations} driverData={filteredData} {yKey} />
 						<PaceChartAxis {viewMode} />
 					</Svg>
 					<Html>
-						<PaceChartTooltip driverData={filteredData} {viewMode} {annotations} {vscLaps} />
+						<PaceChartTooltip driverData={filteredData} {viewMode} {annotations} {vscLaps} {scLaps} />
 					</Html>
 				</LayerCake>
 			{:else}
