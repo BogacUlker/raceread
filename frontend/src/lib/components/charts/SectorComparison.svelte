@@ -6,11 +6,14 @@
 	import { t } from '$lib/i18n/index.js';
 	import { TEAM_COLORS } from '$lib/constants.js';
 	import { formatLapTime } from '$lib/utils/format.js';
+	import { hoveredDriver } from '$lib/stores/race.js';
 
 	/** @type {{ drivers: Array<any> }} */
 	let { drivers } = $props();
 
 	let selectedSession = $state('Q3');
+	let externalHover = $state(null);
+	const unsubH = hoveredDriver.subscribe(v => { externalHover = v; });
 	const sessions = ['Q1', 'Q2', 'Q3'];
 
 	// Filter drivers who have a time in the selected session
@@ -21,17 +24,40 @@
 		})
 	);
 
-	// Get sector times for each driver based on their best lap in selected session
-	// We use the sectors stored on each driver entry
+	// Get sector times for selected session (uses per-session sectors if available)
 	let driverSectors = $derived(
-		filteredDrivers.map((d) => ({
-			driver: d.driver,
-			team: d.team,
-			s1: d.sectors?.s1 ?? null,
-			s2: d.sectors?.s2 ?? null,
-			s3: d.sectors?.s3 ?? null,
-		}))
+		filteredDrivers.map((d) => {
+			const sessionKey = 'sectors_' + selectedSession.toLowerCase();
+			const sectors = d[sessionKey] || d.sectors || {};
+			return {
+				driver: d.driver,
+				team: d.team,
+				s1: sectors?.s1 ?? null,
+				s2: sectors?.s2 ?? null,
+				s3: sectors?.s3 ?? null,
+			};
+		})
 	);
+
+	// Theoretical best: fastest S1 + fastest S2 + fastest S3 across all drivers in session
+	let theoreticalBest = $derived((() => {
+		const s1s = driverSectors.filter(d => d.s1 != null).map(d => d.s1);
+		const s2s = driverSectors.filter(d => d.s2 != null).map(d => d.s2);
+		const s3s = driverSectors.filter(d => d.s3 != null).map(d => d.s3);
+		if (!s1s.length || !s2s.length || !s3s.length) return null;
+		const bestS1 = Math.min(...s1s);
+		const bestS2 = Math.min(...s2s);
+		const bestS3 = Math.min(...s3s);
+		return {
+			total: bestS1 + bestS2 + bestS3,
+			s1: bestS1,
+			s2: bestS2,
+			s3: bestS3,
+			s1Driver: driverSectors.find(d => d.s1 === bestS1)?.driver,
+			s2Driver: driverSectors.find(d => d.s2 === bestS2)?.driver,
+			s3Driver: driverSectors.find(d => d.s3 === bestS3)?.driver,
+		};
+	})());
 
 	// Find fastest and slowest for each sector
 	let sectorStats = $derived((() => {
@@ -71,6 +97,7 @@
 	let tooltipY = $state(0);
 
 	function handleEnter(d, e) {
+		hoveredDriver.set(d.driver);
 		hovered = d.driver;
 		tooltipData = d;
 		updatePos(e);
@@ -81,6 +108,7 @@
 	}
 
 	function handleLeave() {
+		hoveredDriver.set(null);
 		hovered = null;
 		tooltipData = null;
 	}
@@ -122,10 +150,24 @@
 		</span>
 	</div>
 
+	<!-- Theoretical best lap -->
+	{#if theoreticalBest}
+		<div class="theoretical">
+			<span class="theoretical__label">{$t('qualifying.theoretical_best')}</span>
+			<span class="theoretical__time">{formatLapTime(theoreticalBest.total)}</span>
+			<span class="theoretical__sectors">
+				S1: {formatLapTime(theoreticalBest.s1)} ({theoreticalBest.s1Driver}) &middot;
+				S2: {formatLapTime(theoreticalBest.s2)} ({theoreticalBest.s2Driver}) &middot;
+				S3: {formatLapTime(theoreticalBest.s3)} ({theoreticalBest.s3Driver})
+			</span>
+		</div>
+	{/if}
+
 	<div class="sector-chart">
 		{#each driverSectors as d}
 			{@const color = TEAM_COLORS[d.team] || '#888'}
-			{@const isFaded = hovered && hovered !== d.driver}
+			{@const activeHover = hovered || externalHover}
+			{@const isFaded = activeHover && activeHover !== d.driver}
 			<!-- svelte-ignore a11y_no_static_element_interactions -->
 			<div
 				class="sector-row"
@@ -233,6 +275,32 @@
 		border-radius: 2px;
 	}
 
+	.theoretical {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		padding: 6px 10px;
+		margin-bottom: var(--space-sm);
+		background: rgba(34, 197, 94, 0.06);
+		border: 1px solid rgba(34, 197, 94, 0.15);
+		border-radius: var(--radius-sm);
+		font-family: var(--font-mono);
+		font-size: 11px;
+	}
+	.theoretical__label {
+		font-weight: 600;
+		color: #22C55E;
+		white-space: nowrap;
+	}
+	.theoretical__time {
+		font-weight: 700;
+		color: var(--text-primary);
+		font-size: 12px;
+	}
+	.theoretical__sectors {
+		color: var(--text-muted);
+		font-size: 10px;
+	}
 	.sector-chart {
 		display: flex;
 		flex-direction: column;

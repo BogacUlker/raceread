@@ -6,11 +6,13 @@
 	import { t } from '$lib/i18n/index.js';
 	import { TEAM_COLORS } from '$lib/constants.js';
 	import { formatLapTime } from '$lib/utils/format.js';
+	import { hoveredDriver } from '$lib/stores/race.js';
 
 	/** @type {{ drivers: Array<any> }} */
 	let { drivers } = $props();
 
 	let hoveredRow = $state(null);
+	const unsubH = hoveredDriver.subscribe(v => { hoveredRow = v; });
 	let sectorTooltip = $state(null);
 	let tooltipX = $state(0);
 	let tooltipY = $state(0);
@@ -22,7 +24,7 @@
 	}
 
 	function handleRowEnter(d, e) {
-		hoveredRow = d.driver;
+		hoveredDriver.set(d.driver);
 		if (d.sectors && (d.sectors.s1 || d.sectors.s2 || d.sectors.s3)) {
 			sectorTooltip = d;
 			updateTooltipPos(e);
@@ -34,8 +36,16 @@
 	}
 
 	function handleRowLeave() {
-		hoveredRow = null;
+		hoveredDriver.set(null);
 		sectorTooltip = null;
+	}
+
+	function textOnColor(hex) {
+		const r = parseInt(hex.slice(1, 3), 16);
+		const g = parseInt(hex.slice(3, 5), 16);
+		const b = parseInt(hex.slice(5, 7), 16);
+		const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+		return luminance > 0.5 ? '#000' : '#fff';
 	}
 
 	function updateTooltipPos(e) {
@@ -67,22 +77,27 @@
 					<th class="col-time">{$t('qualifying.q2')}</th>
 					<th class="col-time">{$t('qualifying.q3')}</th>
 					<th class="col-gap">{$t('qualifying.gap')}</th>
+						<th class="col-progress">Q1→Q3</th>
 				</tr>
 			</thead>
 			<tbody>
 				{#each drivers as d}
 					{@const color = TEAM_COLORS[d.team] || '#888'}
 					{@const isHovered = hoveredRow === d.driver}
+					{@const isDimmed = hoveredRow != null && hoveredRow !== d.driver}
 					<!-- svelte-ignore a11y_no_static_element_interactions -->
 					<tr
 						class={rowClass(d)}
 						class:row--hovered={isHovered}
+						class:row--dimmed={isDimmed}
 						onmouseenter={(e) => handleRowEnter(d, e)}
 						onmousemove={handleRowMove}
 						onmouseleave={handleRowLeave}
 					>
 						<td class="col-pos">{d.position ?? '-'}</td>
-						<td class="col-driver" style="color: {color}">{d.driver}</td>
+						<td class="col-driver">
+							<span class="driver-badge" style="background: {color}; color: {textOnColor(color)}">{d.driver}</span>
+						</td>
 						<td class="col-team">{d.team}</td>
 						<td class="col-time">{d.q1 ?? '-'}</td>
 						<td class="col-time" class:dimmed={!d.q2}>{d.q2 ?? '-'}</td>
@@ -96,6 +111,21 @@
 								{/if}
 							{:else}
 								+{d.gap_to_pole.toFixed(3)}s
+							{/if}
+						</td>
+						<td class="col-progress">
+							{#if d.q1_s && d.q3_s}
+								{@const improvement = d.q1_s - d.q3_s}
+								<span class="progress-val" class:progress-good={improvement > 0}>
+									{improvement > 0 ? '-' : '+'}{Math.abs(improvement).toFixed(2)}s
+								</span>
+							{:else if d.q1_s && d.q2_s && !d.q3_s}
+								{@const improvement = d.q1_s - d.q2_s}
+								<span class="progress-val progress-partial" class:progress-good={improvement > 0}>
+									{improvement > 0 ? '-' : '+'}{Math.abs(improvement).toFixed(2)}s
+								</span>
+							{:else}
+								<span class="dimmed">-</span>
 							{/if}
 						</td>
 					</tr>
@@ -154,6 +184,17 @@
 	.col-driver {
 		font-weight: 600;
 	}
+	.driver-badge {
+		display: inline-block;
+		font-family: var(--font-mono);
+		font-size: 11px;
+		font-weight: 700;
+		padding: 1px 6px;
+		border-radius: 3px;
+	}
+	:global(.row--dimmed) td {
+		opacity: 0.3;
+	}
 	.col-team {
 		color: var(--text-secondary);
 	}
@@ -168,6 +209,22 @@
 	}
 	.dimmed {
 		opacity: 0.35;
+	}
+	.col-progress {
+		text-align: right;
+		width: 70px;
+	}
+	.progress-val {
+		font-family: var(--font-mono);
+		font-size: 11px;
+		color: var(--text-muted);
+		font-variant-numeric: tabular-nums;
+	}
+	.progress-good {
+		color: #22C55E;
+	}
+	.progress-partial {
+		opacity: 0.6;
 	}
 	.pole-label {
 		font-size: 10px;
