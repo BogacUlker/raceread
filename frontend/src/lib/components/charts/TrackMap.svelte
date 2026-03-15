@@ -6,8 +6,8 @@
 <script>
 	import { onMount } from 'svelte';
 	import { t } from '$lib/i18n/index.js';
-	import { scaleLinear } from 'd3-scale';
-	import { interpolateTurbo } from 'd3-scale-chromatic';
+	import { scaleLinear, scaleDiverging } from 'd3-scale';
+	import { interpolateTurbo, interpolateRdYlGn } from 'd3-scale-chromatic';
 	import { ENERGY_COLORS, TEAM_COLORS } from '$lib/constants.js';
 	import InferredBadge from '$lib/components/ui/InferredBadge.svelte';
 
@@ -26,6 +26,7 @@
 	let driver2 = $state('');
 	let selectedLap = $state(5);
 	let colorMode = $state('speed'); // 'speed' | 'energy' | 'compare'
+	let compareView = $state('race'); // 'race' (dots only) | 'trace' (colored lines)
 	let loading = $state(false);
 	let hoverIdx = $state(null);
 	let hoverDriver = $state(null); // which driver's trace is hovered in compare mode
@@ -49,6 +50,8 @@
 
 	let availableLaps = $derived(Array.from({ length: totalLaps }, (_, i) => i + 1));
 	let isCompare = $derived(colorMode === 'compare');
+	let isRaceView = $derived(isCompare && compareView === 'race');
+	let showTraces = $derived(!isCompare || compareView === 'trace');
 
 	// Auto-select first two drivers
 	$effect(() => {
@@ -200,6 +203,45 @@
 		return buildSegments(samples2, () => color2);
 	});
 
+	// Delta segments for trace compare: single line colored by speed difference
+	let deltaMax = $derived.by(() => {
+		if (!isCompare || !primarySamples.length || !samples2.length) return 30;
+		let maxDiff = 0;
+		const len = Math.min(primarySamples.length, samples2.length);
+		for (let i = 0; i < len; i++) {
+			const diff = Math.abs((primarySamples[i].speed || 0) - (samples2[i].speed || 0));
+			if (diff > maxDiff) maxDiff = diff;
+		}
+		return Math.max(maxDiff, 5);
+	});
+
+	let deltaColorScale = $derived(
+		scaleDiverging(interpolateRdYlGn).domain([-deltaMax, 0, deltaMax])
+	);
+
+	let deltaSegments = $derived.by(() => {
+		if (!isCompare || compareView !== 'trace' || primarySamples.length < 2 || samples2.length < 2) return [];
+		const xs = xScale;
+		const ys = yScale;
+		const segs = [];
+		const len = Math.min(primarySamples.length - 1, samples2.length - 1);
+		for (let i = 0; i < len; i++) {
+			const s1 = primarySamples[i];
+			const s1next = primarySamples[i + 1];
+			const s2 = samples2[i];
+			if (s1.x == null || s1.y == null || s1next.x == null || s1next.y == null) continue;
+			const delta = (s1.speed || 0) - (s2.speed || 0);
+			segs.push({
+				x1: xs(s1.x), y1: ys(s1.y),
+				x2: xs(s1next.x), y2: ys(s1next.y),
+				color: deltaColorScale(delta),
+				delta,
+				idx: i,
+			});
+		}
+		return segs;
+	});
+
 	// Corner labels
 	let cornerLabels = $derived.by(() => {
 		if (!circuit?.corners) return [];
@@ -243,6 +285,17 @@
 		return s[hoverIdx] || null;
 	});
 
+	// For delta trace hover: both samples at the hovered index
+	let hoverSample2 = $derived.by(() => {
+		if (hoverIdx === null || !isCompare) return null;
+		return samples2[hoverIdx] || null;
+	});
+
+	let hoverDelta = $derived.by(() => {
+		if (!hoverSample || !hoverSample2) return null;
+		return (hoverSample.speed || 0) - (hoverSample2.speed || 0);
+	});
+
 	let hoverLabel = $derived(hoverDriver === 2 ? driver2 : driver1);
 	let hoverColor = $derived(hoverDriver === 2 ? color2 : color1);
 
@@ -254,6 +307,14 @@
 	let animSample1 = $derived(animProgress > 0 && primarySamples.length ? nearestSample(primarySamples, animProgress) : null);
 	let animSample2 = $derived(animProgress > 0 && isCompare && samples2.length ? nearestSample(samples2, animProgress) : null);
 	let showAnimTooltip = $derived(animProgress > 0 && animSample1 != null);
+
+	// Speed delta for compare tooltip
+	let speedDelta = $derived.by(() => {
+		if (!animSample1 || !animSample2) return null;
+		const s1 = animSample1.speed ?? 0;
+		const s2 = animSample2.speed ?? 0;
+		return s1 - s2;
+	});
 
 	function handleSegmentHover(idx, driverSlot) {
 		hoverIdx = idx;
@@ -424,6 +485,16 @@
 				{$t('charts.compare')}
 			</button>
 		</div>
+		{#if isCompare}
+			<div class="track-map__sub-toggle">
+				<button class="track-map__sub-btn" class:active={compareView === 'race'} onclick={() => compareView = 'race'}>
+					Race
+				</button>
+				<button class="track-map__sub-btn" class:active={compareView === 'trace'} onclick={() => compareView = 'trace'}>
+					Trace
+				</button>
+			</div>
+		{/if}
 	</div>
 
 	{#if loading}
@@ -435,68 +506,65 @@
 			<!-- svelte-ignore a11y_no_static_element_interactions -->
 			<svg viewBox="0 0 {svgWidth} {svgHeight}" class="track-map__svg" onmouseleave={() => { hoverIdx = null; hoverDriver = null; }}>
 
-				<!-- Dark track outline background -->
+				<!-- Track outline background - brighter in race view -->
 				{#if outlinePath}
 					<path
 						d={outlinePath}
 						fill="none"
-						stroke="rgba(255,255,255,0.06)"
-						stroke-width={OUTLINE_WIDTH}
+						stroke={isRaceView ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.06)'}
+						stroke-width={isRaceView ? OUTLINE_WIDTH + 4 : OUTLINE_WIDTH}
 						stroke-linejoin="round"
 						stroke-linecap="round"
 						style="pointer-events: none;"
 					/>
 				{/if}
 
-				<!-- Shadow layer for driver 1 -->
-				{#each segments1 as seg}
-					<line
-						x1={seg.x1} y1={seg.y1} x2={seg.x2} y2={seg.y2}
-						stroke="rgba(0,0,0,0.35)"
-						stroke-width={TRACK_WIDTH + 3}
-						stroke-linecap="round"
-						style="pointer-events: none;"
-					/>
-				{/each}
-
-				<!-- Driver 1 colored segments -->
-				{#each segments1 as seg}
-					<!-- svelte-ignore a11y_no_static_element_interactions -->
-					<line
-						x1={seg.x1} y1={seg.y1} x2={seg.x2} y2={seg.y2}
-						stroke={seg.color}
-						stroke-width={hoverIdx === seg.idx && hoverDriver !== 2 ? TRACK_WIDTH_HOVER : TRACK_WIDTH}
-						stroke-linecap="round"
-						stroke-opacity={isCompare ? 0.9 : 1}
-						style="cursor: crosshair;"
-						onmouseenter={() => handleSegmentHover(seg.idx, 1)}
-					/>
-				{/each}
-
-				<!-- Driver 2 segments (compare mode) -->
-				{#if isCompare && segments2.length > 0}
-					{#each segments2 as seg}
-						<line
-							x1={seg.x1} y1={seg.y1} x2={seg.x2} y2={seg.y2}
-							stroke="rgba(0,0,0,0.25)"
-							stroke-width={TRACK_WIDTH + 2}
-							stroke-linecap="round"
-							style="pointer-events: none;"
-						/>
-					{/each}
-					{#each segments2 as seg}
-						<!-- svelte-ignore a11y_no_static_element_interactions -->
-						<line
-							x1={seg.x1} y1={seg.y1} x2={seg.x2} y2={seg.y2}
-							stroke={seg.color}
-							stroke-width={hoverIdx === seg.idx && hoverDriver === 2 ? TRACK_WIDTH_HOVER : TRACK_WIDTH - 1}
-							stroke-linecap="round"
-							stroke-opacity="0.8"
-							stroke-dasharray="8,4"
-							style="cursor: crosshair;"
-							onmouseenter={() => handleSegmentHover(seg.idx, 2)}
-						/>
-					{/each}
+				{#if showTraces}
+					{#if isCompare && deltaSegments.length > 0}
+						<!-- Compare trace: delta heatmap (single line) -->
+						{#each deltaSegments as seg}
+							<line
+								x1={seg.x1} y1={seg.y1} x2={seg.x2} y2={seg.y2}
+								stroke="rgba(0,0,0,0.35)"
+								stroke-width={TRACK_WIDTH + 3}
+								stroke-linecap="round"
+								style="pointer-events: none;"
+							/>
+						{/each}
+						{#each deltaSegments as seg}
+							<!-- svelte-ignore a11y_no_static_element_interactions -->
+							<line
+								x1={seg.x1} y1={seg.y1} x2={seg.x2} y2={seg.y2}
+								stroke={seg.color}
+								stroke-width={hoverIdx === seg.idx ? TRACK_WIDTH_HOVER : TRACK_WIDTH}
+								stroke-linecap="round"
+								style="cursor: crosshair;"
+								onmouseenter={() => handleSegmentHover(seg.idx, 1)}
+							/>
+						{/each}
+					{:else}
+						<!-- Single driver: speed or energy coloring -->
+						{#each segments1 as seg}
+							<line
+								x1={seg.x1} y1={seg.y1} x2={seg.x2} y2={seg.y2}
+								stroke="rgba(0,0,0,0.35)"
+								stroke-width={TRACK_WIDTH + 3}
+								stroke-linecap="round"
+								style="pointer-events: none;"
+							/>
+						{/each}
+						{#each segments1 as seg}
+							<!-- svelte-ignore a11y_no_static_element_interactions -->
+							<line
+								x1={seg.x1} y1={seg.y1} x2={seg.x2} y2={seg.y2}
+								stroke={seg.color}
+								stroke-width={hoverIdx === seg.idx ? TRACK_WIDTH_HOVER : TRACK_WIDTH}
+								stroke-linecap="round"
+								style="cursor: crosshair;"
+								onmouseenter={() => handleSegmentHover(seg.idx, 1)}
+							/>
+						{/each}
+					{/if}
 				{/if}
 
 				<!-- Corner connector lines -->
@@ -527,25 +595,39 @@
 
 				<!-- Animated driver dots -->
 				{#if animating || animProgress > 0}
+					{@const dotR = isRaceView ? 10 : 8}
+					{@const strokeW = isRaceView ? 3 : 2.5}
 					{#if animPos1}
-						<circle cx={animPos1.x} cy={animPos1.y} r="8"
+						{#if isRaceView}
+							<circle cx={animPos1.x} cy={animPos1.y} r={dotR + 6}
+								fill={color1} fill-opacity="0.15"
+								style="pointer-events: none;"
+							/>
+						{/if}
+						<circle cx={animPos1.x} cy={animPos1.y} r={dotR}
 							fill={isCompare ? color1 : 'var(--accent)'}
-							stroke="white" stroke-width="2.5"
-							style="pointer-events: none; filter: drop-shadow(0 0 4px rgba(0,0,0,0.6));"
+							stroke="white" stroke-width={strokeW}
+							style="pointer-events: none; filter: drop-shadow(0 0 6px rgba(0,0,0,0.7));"
 						/>
 						{#if isCompare}
-							<text x={animPos1.x} y={animPos1.y - 14} fill={color1} font-size="10" font-weight="700"
-								text-anchor="middle" font-family="var(--font-mono)" style="pointer-events: none;">{driver1}</text>
+							<text x={animPos1.x} y={animPos1.y - dotR - 6} fill={color1} font-size={isRaceView ? '12' : '10'} font-weight="700"
+								text-anchor="middle" font-family="var(--font-mono)" style="pointer-events: none; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.8));">{driver1}</text>
 						{/if}
 					{/if}
 					{#if animPos2}
-						<circle cx={animPos2.x} cy={animPos2.y} r="8"
+						{#if isRaceView}
+							<circle cx={animPos2.x} cy={animPos2.y} r={dotR + 6}
+								fill={color2} fill-opacity="0.15"
+								style="pointer-events: none;"
+							/>
+						{/if}
+						<circle cx={animPos2.x} cy={animPos2.y} r={dotR}
 							fill={color2}
-							stroke="white" stroke-width="2.5"
-							style="pointer-events: none; filter: drop-shadow(0 0 4px rgba(0,0,0,0.6));"
+							stroke="white" stroke-width={strokeW}
+							style="pointer-events: none; filter: drop-shadow(0 0 6px rgba(0,0,0,0.7));"
 						/>
-						<text x={animPos2.x} y={animPos2.y - 14} fill={color2} font-size="10" font-weight="700"
-							text-anchor="middle" font-family="var(--font-mono)" style="pointer-events: none;">{driver2}</text>
+						<text x={animPos2.x} y={animPos2.y - dotR - 6} fill={color2} font-size={isRaceView ? '12' : '10'} font-weight="700"
+							text-anchor="middle" font-family="var(--font-mono)" style="pointer-events: none; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.8));">{driver2}</text>
 					{/if}
 				{/if}
 
@@ -591,6 +673,11 @@
 								<div class="track-map__tooltip-val">{animSample2.energy || '-'}</div>
 							</div>
 						</div>
+						{#if speedDelta != null}
+							<div class="track-map__tooltip-delta" class:delta-pos={speedDelta > 0} class:delta-neg={speedDelta < 0}>
+								{speedDelta > 0 ? '+' : ''}{speedDelta.toFixed(0)} km/h
+							</div>
+						{/if}
 						{#if animSample1.dist != null}
 							<div class="track-map__tooltip-row track-map__tooltip-dist">
 								<span>{animSample1.dist.toFixed(0)}m / {circuit?.track_length || '?'}m</span>
@@ -629,35 +716,75 @@
 				</div>
 			{:else if hoverSample && !animating}
 				<div class="track-map__tooltip">
-					{#if isCompare}
-						<div class="track-map__tooltip-driver" style="color: {hoverColor}">{hoverLabel}</div>
-					{/if}
-					<div class="track-map__tooltip-row">
-						<span class="track-map__tooltip-label">{$t('charts.speed')}</span>
-						<span class="track-map__tooltip-value">{hoverSample.speed?.toFixed(0)} km/h</span>
-					</div>
-					<div class="track-map__tooltip-row">
-						<span class="track-map__tooltip-label">{$t('charts.gear')}</span>
-						<span class="track-map__tooltip-value">{hoverSample.gear}</span>
-					</div>
-					<div class="track-map__tooltip-row">
-						<span class="track-map__tooltip-label">{$t('charts.throttle')}</span>
-						<span class="track-map__tooltip-value">{hoverSample.throttle?.toFixed(0)}%</span>
-					</div>
-					<div class="track-map__tooltip-row">
-						<span class="track-map__tooltip-label">{$t('charts.brake')}</span>
-						<span class="track-map__tooltip-value {hoverSample.brake ? 'brake-active' : ''}">{hoverSample.brake ? $t('charts.brake_on') : '-'}</span>
-					</div>
-					{#if hoverSample.energy}
+					{#if isCompare && compareView === 'trace' && hoverSample2}
+						<!-- Delta trace hover: both drivers -->
+						<div class="track-map__tooltip-compare-header">
+							<span style="color: {color1}; font-weight: 700;">{driver1}</span>
+							<span class="track-map__tooltip-vs">vs</span>
+							<span style="color: {color2}; font-weight: 700;">{driver2}</span>
+						</div>
+						<div class="track-map__tooltip-compare">
+							<div class="track-map__tooltip-col">
+								<div class="track-map__tooltip-val">{hoverSample.speed?.toFixed(0)} <small>km/h</small></div>
+								<div class="track-map__tooltip-val">{hoverSample.gear}</div>
+								<div class="track-map__tooltip-val">{hoverSample.throttle?.toFixed(0)}%</div>
+								<div class="track-map__tooltip-val {hoverSample.brake ? 'brake-active' : ''}">{hoverSample.brake ? $t('charts.brake_on') : '-'}</div>
+							</div>
+							<div class="track-map__tooltip-labels">
+								<div>{$t('charts.speed')}</div>
+								<div>{$t('charts.gear')}</div>
+								<div>{$t('charts.throttle')}</div>
+								<div>{$t('charts.brake')}</div>
+							</div>
+							<div class="track-map__tooltip-col">
+								<div class="track-map__tooltip-val">{hoverSample2.speed?.toFixed(0)} <small>km/h</small></div>
+								<div class="track-map__tooltip-val">{hoverSample2.gear}</div>
+								<div class="track-map__tooltip-val">{hoverSample2.throttle?.toFixed(0)}%</div>
+								<div class="track-map__tooltip-val {hoverSample2.brake ? 'brake-active' : ''}">{hoverSample2.brake ? $t('charts.brake_on') : '-'}</div>
+							</div>
+						</div>
+						{#if hoverDelta != null}
+							<div class="track-map__tooltip-delta" class:delta-pos={hoverDelta > 0} class:delta-neg={hoverDelta < 0}>
+								{hoverDelta > 0 ? '+' : ''}{hoverDelta.toFixed(0)} km/h
+							</div>
+						{/if}
+						{#if hoverSample.dist != null}
+							<div class="track-map__tooltip-row track-map__tooltip-dist">
+								<span>{hoverSample.dist.toFixed(0)}m / {circuit?.track_length || '?'}m</span>
+							</div>
+						{/if}
+					{:else}
+						<!-- Single driver hover -->
+						{#if isCompare}
+							<div class="track-map__tooltip-driver" style="color: {hoverColor}">{hoverLabel}</div>
+						{/if}
 						<div class="track-map__tooltip-row">
-							<span class="track-map__tooltip-label">{$t('charts.energy_state')}</span>
-							<span class="track-map__tooltip-value">{hoverSample.energy}</span>
+							<span class="track-map__tooltip-label">{$t('charts.speed')}</span>
+							<span class="track-map__tooltip-value">{hoverSample.speed?.toFixed(0)} km/h</span>
 						</div>
-					{/if}
-					{#if hoverSample.dist != null}
-						<div class="track-map__tooltip-row track-map__tooltip-dist">
-							<span>{hoverSample.dist.toFixed(0)}m / {circuit?.track_length || '?'}m</span>
+						<div class="track-map__tooltip-row">
+							<span class="track-map__tooltip-label">{$t('charts.gear')}</span>
+							<span class="track-map__tooltip-value">{hoverSample.gear}</span>
 						</div>
+						<div class="track-map__tooltip-row">
+							<span class="track-map__tooltip-label">{$t('charts.throttle')}</span>
+							<span class="track-map__tooltip-value">{hoverSample.throttle?.toFixed(0)}%</span>
+						</div>
+						<div class="track-map__tooltip-row">
+							<span class="track-map__tooltip-label">{$t('charts.brake')}</span>
+							<span class="track-map__tooltip-value {hoverSample.brake ? 'brake-active' : ''}">{hoverSample.brake ? $t('charts.brake_on') : '-'}</span>
+						</div>
+						{#if hoverSample.energy}
+							<div class="track-map__tooltip-row">
+								<span class="track-map__tooltip-label">{$t('charts.energy_state')}</span>
+								<span class="track-map__tooltip-value">{hoverSample.energy}</span>
+							</div>
+						{/if}
+						{#if hoverSample.dist != null}
+							<div class="track-map__tooltip-row track-map__tooltip-dist">
+								<span>{hoverSample.dist.toFixed(0)}m / {circuit?.track_length || '?'}m</span>
+							</div>
+						{/if}
 					{/if}
 				</div>
 			{/if}
@@ -721,16 +848,25 @@
 				<span class="track-map__legend-chip" style="background:{ENERGY_COLORS.clip}">Clip</span>
 				<span class="track-map__legend-chip" style="background:{ENERGY_COLORS.neutral}">Neutral</span>
 			</div>
+		{:else if compareView === 'trace'}
+			<!-- Compare trace legend: delta gradient -->
+			<div class="track-map__legend">
+				<span class="track-map__legend-label" style="color: {color2}">{driver2} {$t('charts.faster')}</span>
+				<div class="track-map__gradient-wrap">
+					<div class="track-map__gradient-delta"></div>
+				</div>
+				<span class="track-map__legend-label" style="color: {color1}">{driver1} {$t('charts.faster')}</span>
+			</div>
 		{:else}
-			<!-- Compare legend -->
+			<!-- Compare race legend: dots -->
 			<div class="track-map__legend">
 				<span class="track-map__legend-driver">
-					<span class="track-map__legend-line" style="background: {color1}"></span>
+					<span class="track-map__legend-dot" style="background: {color1}"></span>
 					{driver1}
 				</span>
 				<span class="track-map__vs-legend">vs</span>
 				<span class="track-map__legend-driver">
-					<span class="track-map__legend-line track-map__legend-line--dashed" style="background: {color2}"></span>
+					<span class="track-map__legend-dot" style="background: {color2}"></span>
 					{driver2}
 				</span>
 			</div>
@@ -890,6 +1026,41 @@
 	}
 	.track-map__tooltip-val.brake-active { color: var(--accent); }
 	.track-map__tooltip-val small { font-size: 10px; font-weight: 400; color: var(--text-muted); }
+	.track-map__tooltip-delta {
+		text-align: center;
+		font-family: var(--font-mono);
+		font-size: 12px;
+		font-weight: 700;
+		padding: 4px 0 2px;
+		margin-top: 4px;
+		border-top: 1px solid var(--border);
+		color: var(--text-muted);
+	}
+	.track-map__tooltip-delta.delta-pos { color: #22C55E; }
+	.track-map__tooltip-delta.delta-neg { color: #EF4444; }
+
+	/* Sub-toggle for compare view */
+	.track-map__sub-toggle {
+		display: flex;
+		gap: 0;
+	}
+	.track-map__sub-btn {
+		font-family: var(--font-mono);
+		font-size: 11px;
+		padding: 3px 8px;
+		border: 1px solid var(--border);
+		background: transparent;
+		color: var(--text-muted);
+		cursor: pointer;
+		transition: all 0.15s;
+	}
+	.track-map__sub-btn:first-child { border-radius: var(--radius-sm) 0 0 var(--radius-sm); }
+	.track-map__sub-btn:last-child { border-radius: 0 var(--radius-sm) var(--radius-sm) 0; border-left: none; }
+	.track-map__sub-btn.active {
+		background: var(--bg-secondary);
+		color: var(--text-primary);
+		border-color: var(--text-muted);
+	}
 
 	/* Animation controls */
 	.track-map__anim-controls {
@@ -1013,6 +1184,16 @@
 			#ca2a04, #7a0403
 		);
 	}
+	.track-map__gradient-delta {
+		width: 100%;
+		height: 10px;
+		border-radius: 5px;
+		background: linear-gradient(to right,
+			#a50026, #d73027, #f46d43, #fdae61,
+			#ffffbf,
+			#a6d96a, #66bd63, #1a9850, #006837
+		);
+	}
 	.track-map__gradient-ticks { position: relative; height: 16px; }
 	.track-map__gradient-tick {
 		position: absolute;
@@ -1042,16 +1223,12 @@
 		font-weight: 600;
 		color: var(--text-primary);
 	}
-	.track-map__legend-line {
-		width: 24px;
-		height: 4px;
-		border-radius: 2px;
-	}
-	.track-map__legend-line--dashed {
-		background: transparent !important;
-		border-top: 3px dashed;
-		border-color: inherit;
-		height: 0;
+	.track-map__legend-dot {
+		width: 10px;
+		height: 10px;
+		border-radius: 50%;
+		border: 2px solid rgba(255,255,255,0.5);
+		flex-shrink: 0;
 	}
 	.track-map__vs-legend {
 		font-family: var(--font-mono);
