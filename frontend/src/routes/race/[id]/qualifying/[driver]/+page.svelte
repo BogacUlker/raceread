@@ -20,6 +20,14 @@
 
 	let teamColor = $derived(TEAM_COLORS[driverData?.team] || '#888');
 
+	// All other drivers for animation compare
+	let otherDrivers = $derived(
+		(data.qualifying?.drivers || [])
+			.filter(d => d.driver !== driverCode)
+			.sort((a, b) => (a.position ?? 99) - (b.position ?? 99))
+	);
+	let compareTarget = $state('');
+
 	let attempts = $derived(driverData?.attempts || []);
 	let hasAttempts = $derived(attempts.length > 0);
 
@@ -467,6 +475,33 @@
 					</div>
 				</div>
 			{/if}
+
+			<!-- Animate compare -->
+			{#if otherDrivers.length > 0}
+				<div class="chart-card">
+					<div class="chart-card__header">
+						<span class="chart-card__title">{$t('qualifying.animate_title')}</span>
+					</div>
+					<div class="animate-compare">
+						<span class="animate-compare__label">{driverCode} {$t('charts.vs')}</span>
+						<select class="animate-compare__select" bind:value={compareTarget}>
+							<option value="">{$t('charts.select_drivers')}</option>
+							{#each otherDrivers as d}
+								{@const dColor = TEAM_COLORS[d.team] || '#888'}
+								<option value={d.driver}>P{d.position} - {d.driver} ({d.team})</option>
+							{/each}
+						</select>
+						{#if compareTarget}
+							<a
+								href="/race/{raceId}/qualifying/animate/{driverCode.toLowerCase()}/{compareTarget.toLowerCase()}"
+								class="animate-compare__btn"
+							>
+								{$t('qualifying.play')} ▶
+							</a>
+						{/if}
+					</div>
+				</div>
+			{/if}
 		{/if}
 	{/if}
 </section>
@@ -731,6 +766,47 @@
 		font-family: var(--font-mono);
 		font-size: 10px;
 		color: #F59E0B;
+	}
+
+	/* Animate compare */
+	.animate-compare {
+		display: flex;
+		align-items: center;
+		gap: var(--space-sm);
+		padding: var(--space-sm) 0;
+		flex-wrap: wrap;
+	}
+	.animate-compare__label {
+		font-family: var(--font-mono);
+		font-size: 13px;
+		font-weight: 600;
+		color: var(--text-secondary);
+	}
+	.animate-compare__select {
+		font-family: var(--font-mono);
+		font-size: 12px;
+		padding: 5px 8px;
+		background: var(--bg-primary);
+		color: var(--text-primary);
+		border: 1px solid var(--border);
+		border-radius: var(--radius-sm);
+		min-width: 180px;
+	}
+	.animate-compare__btn {
+		font-family: var(--font-mono);
+		font-size: 12px;
+		font-weight: 600;
+		padding: 5px 14px;
+		background: var(--accent);
+		color: #fff;
+		border: none;
+		border-radius: var(--radius-sm);
+		text-decoration: none;
+		cursor: pointer;
+		transition: opacity 0.15s;
+	}
+	.animate-compare__btn:hover {
+		opacity: 0.85;
 	}
 
 	/* Responsive */
