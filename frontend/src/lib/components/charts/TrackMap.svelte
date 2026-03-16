@@ -38,7 +38,7 @@
 	// Animation state
 	let animating = $state(false);
 	let animProgress = $state(0); // 0..1
-	let animSpeed = $state(1); // 1x, 2x, 4x
+	let animSpeed = $state(0.25); // 0.25x - 4x
 	let animFrame = $state(null);
 	let animStartTime = $state(null);
 

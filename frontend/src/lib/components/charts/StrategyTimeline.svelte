@@ -226,18 +226,40 @@
 					width={rw}
 					height={svgHeight - padding.top - padding.bottom}
 					fill="#F59E0B"
-					fill-opacity="0.07"
+					fill-opacity="0.10"
+					style="pointer-events: none;"
+				/>
+				<!-- SC top bar + label -->
+				<rect
+					x={rx}
+					y={padding.top}
+					width={rw}
+					height="3"
+					fill="#F59E0B"
+					opacity="0.8"
+					rx="1"
+					style="pointer-events: none;"
+				/>
+				{@const labelW = 22}
+				{@const labelX = rx + rw / 2 - labelW / 2}
+				<rect
+					x={labelX}
+					y="2"
+					width={labelW}
+					height="14"
+					fill="#F59E0B"
+					opacity="0.9"
+					rx="3"
 					style="pointer-events: none;"
 				/>
 				<text
 					x={rx + rw / 2}
-					y={padding.top - 2}
+					y="12"
 					text-anchor="middle"
-					fill="#F59E0B"
+					fill="#000"
 					font-family="var(--font-mono)"
-					font-size="9"
-					font-weight="600"
-					opacity="0.7"
+					font-size="10"
+					font-weight="700"
 					style="pointer-events: none;"
 				>SC</text>
 			{/each}
@@ -252,18 +274,40 @@
 					width={rw}
 					height={svgHeight - padding.top - padding.bottom}
 					fill="#F59E0B"
-					fill-opacity="0.05"
+					fill-opacity="0.06"
+					style="pointer-events: none;"
+				/>
+				<!-- VSC top bar + label -->
+				<rect
+					x={rx}
+					y={padding.top}
+					width={rw}
+					height="2"
+					fill="#F59E0B"
+					opacity="0.5"
+					rx="1"
+					style="pointer-events: none;"
+				/>
+				{@const labelW = 28}
+				{@const labelX = rx + rw / 2 - labelW / 2}
+				<rect
+					x={labelX}
+					y="2"
+					width={labelW}
+					height="14"
+					fill="#F59E0B"
+					opacity="0.6"
+					rx="3"
 					style="pointer-events: none;"
 				/>
 				<text
 					x={rx + rw / 2}
-					y={padding.top - 2}
+					y="12"
 					text-anchor="middle"
-					fill="#F59E0B"
+					fill="#000"
 					font-family="var(--font-mono)"
-					font-size="9"
-					font-weight="600"
-					opacity="0.5"
+					font-size="10"
+					font-weight="700"
 					style="pointer-events: none;"
 				>VSC</text>
 			{/each}
