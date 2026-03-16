@@ -12,15 +12,18 @@ RaceRead infers energy states from publicly available telemetry (via FastF1) and
 
 - **Deploy/Clip Ratio** - energy efficiency metric we created. Higher = smarter energy use
 - **Energy state timeline** - lap-by-lap deploy/harvest/clip breakdown per driver
-- **Track map with energy overlay** - see where on track drivers deploy and harvest
+- **Track map with energy overlay** - see where on track drivers deploy and harvest, with corner zoom
 - **Speed trace with energy coloring** - two-driver comparison with energy context
 - **Traffic analysis** - time spent in dirty air and pace degradation
+- **Pit stop time loss** - computed from lap deltas, SC pit detection
+- **Qualifying animation** - two drivers' qualifying laps animated on track with real-time gap chart
+- **Ideal lap analysis** - theoretical best from best sectors across Q1/Q2/Q3
 
-Plus standard race analysis: pace charts, strategy timeline, delta matrix, qualifying breakdown.
+Plus standard race analysis: pace charts, strategy timeline, delta matrix, qualifying breakdown, per-driver qualifying detail pages.
 
 ## Charts
 
-14 interactive charts across race and qualifying sessions:
+18 interactive charts and features across race and qualifying sessions:
 
 | Chart | What it shows |
 |-------|--------------|
@@ -28,18 +31,22 @@ Plus standard race analysis: pace charts, strategy timeline, delta matrix, quali
 | Summarized Pace | Median pace distribution per driver |
 | Delta Matrix | Driver-to-driver median gap heatmap |
 | Strategy Timeline | Tyre compounds, pit stops, SC/VSC periods |
+| Pit Stop Stats | Per-driver pit stop time loss, SC pit detection |
 | Energy Profile | Normalized deploy/harvest/clip per driver |
 | Energy Timeline | Lap-by-lap energy state changes |
 | Speed Trace | Two-driver speed comparison by track distance |
-| Track Map | Telemetry on circuit layout (speed or energy coloring) |
+| Track Map | Telemetry on circuit layout with corner zoom |
 | Traffic Analysis | Time in dirty air per driver |
 | Pilot Comparison | Side-by-side analysis of any two drivers |
 | Qualifying Results | Q1/Q2/Q3 times with elimination rounds |
 | Sector Comparison | Sector times across drivers |
 | Gap to Pole | Qualifying delta visualization |
+| Ideal Laps | Theoretical best lap from best sectors across sessions |
+| Driver Qualifying Detail | Per-driver attempt history, time progression, best sectors |
+| Qualifying Animation | Time-synced lap animation of two drivers on track with live gap chart |
 | Broadcaster Mode | Full-screen, auto-cycling charts for live streams |
 
-All charts are interactive: hover tooltips, driver filtering, cross-chart sync on hover.
+All charts are interactive: hover tooltips, driver filtering, corner zoom on track map, cross-chart sync on hover.
 
 ## Energy Inference
 
