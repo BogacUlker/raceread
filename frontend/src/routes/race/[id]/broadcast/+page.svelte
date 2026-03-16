@@ -51,13 +51,15 @@
 		}
 	});
 
-	// VSC laps
+	// SC/VSC laps
 	let vscLaps = $state([]);
+	let scLaps = $state([]);
 	async function loadVscLaps() {
 		try {
 			const vscData = await api(`/api/races/${raceId}/energy/vsc`);
 			vscLaps = vscData.vsc_laps || [];
-		} catch { vscLaps = []; }
+			scLaps = vscData.sc_laps || [];
+		} catch { vscLaps = []; scLaps = []; }
 	}
 	loadVscLaps();
 
@@ -150,6 +152,7 @@
 				{laps}
 				selectedDrivers={$selectedDrivers}
 				{vscLaps}
+				{scLaps}
 				annotations={[]}
 				{strategy}
 			/>
@@ -158,6 +161,7 @@
 				drivers={strategySorted}
 				totalLaps={raceInfo.total_laps}
 				{vscLaps}
+				{scLaps}
 			/>
 		{:else if CHARTS[activeChart] === 'energy'}
 			<EnergyBars entries={energyComparison.entries || []} />

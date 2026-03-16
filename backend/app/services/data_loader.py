@@ -137,3 +137,14 @@ def get_computed_cache() -> dict[str, Any]:
 def load_circuit(race_id: str) -> dict:
     """Load circuit info (corners, outline, track length)."""
     return load_json(str(get_race_dir(race_id) / "circuit.json"))
+
+
+def load_qualifying_telemetry(race_id: str, driver: str) -> dict:
+    """Load qualifying telemetry for a single driver."""
+    return load_json(
+        str(
+            get_race_dir(race_id)
+            / "qualifying_telemetry"
+            / f"{driver.lower()}.json"
+        )
+    )

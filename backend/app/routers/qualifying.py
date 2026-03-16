@@ -3,6 +3,7 @@
 from fastapi import APIRouter, HTTPException
 
 from backend.app.models.schemas import (
+    QualifyingAttempt,
     QualifyingDriver,
     QualifyingResponse,
     QualifyingSessionResult,
@@ -12,14 +13,40 @@ from backend.app.services.data_loader import load_qualifying
 router = APIRouter(tags=["qualifying"])
 
 
+def _parse_session_sectors(entry: dict, key: str) -> QualifyingSessionResult:
+    """Parse per-session sector data from a qualifying entry."""
+    raw = entry.get(key, {}) or {}
+    return QualifyingSessionResult(
+        s1=raw.get("s1"),
+        s2=raw.get("s2"),
+        s3=raw.get("s3"),
+    )
+
+
 def _parse_qualifying_driver(entry: dict) -> QualifyingDriver:
     """Parse a raw qualifying driver entry into the schema."""
-    sectors_raw = entry.get("sectors", {})
-    sectors = QualifyingSessionResult(
-        s1=sectors_raw.get("s1"),
-        s2=sectors_raw.get("s2"),
-        s3=sectors_raw.get("s3"),
-    )
+    sectors = _parse_session_sectors(entry, "sectors")
+    sectors_q1 = _parse_session_sectors(entry, "sectors_q1")
+    sectors_q2 = _parse_session_sectors(entry, "sectors_q2")
+    sectors_q3 = _parse_session_sectors(entry, "sectors_q3")
+
+    attempts_raw = entry.get("attempts", [])
+    attempts = [
+        QualifyingAttempt(
+            attempt_number=a.get("attempt_number", 0),
+            session=a.get("session", ""),
+            time_s=a.get("time_s"),
+            time_str=a.get("time_str"),
+            s1=a.get("s1"),
+            s2=a.get("s2"),
+            s3=a.get("s3"),
+            compound=a.get("compound"),
+            is_deleted=a.get("is_deleted", False),
+            is_personal_best=a.get("is_personal_best", False),
+        )
+        for a in attempts_raw
+    ]
+
     return QualifyingDriver(
         driver=entry["driver"],
         team=entry.get("team", "Unknown"),
@@ -33,7 +60,11 @@ def _parse_qualifying_driver(entry: dict) -> QualifyingDriver:
         q3_s=entry.get("q3_s"),
         eliminated_in=entry.get("eliminated_in"),
         sectors=sectors,
+        sectors_q1=sectors_q1,
+        sectors_q2=sectors_q2,
+        sectors_q3=sectors_q3,
         gap_to_pole=entry.get("gap_to_pole"),
+        attempts=attempts,
     )
 
 

@@ -83,6 +83,7 @@ class VSCComparisonEntry(BaseModel):
 class VSCComparisonResponse(BaseModel):
     race_id: str
     vsc_laps: list[int]
+    sc_laps: list[int] = []
     entries: list[VSCComparisonEntry]
 
 
@@ -132,6 +133,19 @@ class QualifyingSessionResult(BaseModel):
     s3: float | None = None
 
 
+class QualifyingAttempt(BaseModel):
+    attempt_number: int
+    session: str  # "Q1", "Q2", "Q3"
+    time_s: float | None = None
+    time_str: str | None = None
+    s1: float | None = None
+    s2: float | None = None
+    s3: float | None = None
+    compound: str | None = None
+    is_deleted: bool = False
+    is_personal_best: bool = False
+
+
 class QualifyingDriver(BaseModel):
     driver: str
     team: str
@@ -145,12 +159,66 @@ class QualifyingDriver(BaseModel):
     q3_s: float | None = None
     eliminated_in: str | None = None
     sectors: QualifyingSessionResult = QualifyingSessionResult()
+    sectors_q1: QualifyingSessionResult = QualifyingSessionResult()
+    sectors_q2: QualifyingSessionResult = QualifyingSessionResult()
+    sectors_q3: QualifyingSessionResult = QualifyingSessionResult()
     gap_to_pole: float | None = None
+    attempts: list[QualifyingAttempt] = []
 
 
 class QualifyingResponse(BaseModel):
     race_id: str
     drivers: list[QualifyingDriver]
+
+
+class QualifyingTelemetrySample(BaseModel):
+    time_s: float
+    dist: float
+    speed: float
+    x: float
+    y: float
+    throttle: float | None = None
+    brake: bool = False
+    gear: int | None = None
+
+
+class QualifyingTelemetryDriver(BaseModel):
+    driver: str
+    team: str
+    session: str  # "Q1", "Q2", "Q3"
+    lap_time_s: float
+    samples: list[QualifyingTelemetrySample]
+
+
+class QualifyingTelemetryResponse(BaseModel):
+    race_id: str
+    drivers: list[QualifyingTelemetryDriver]
+
+
+# ---------------------------------------------------------------------------
+# Pit stop analysis schemas
+# ---------------------------------------------------------------------------
+
+
+class PitStopDetail(BaseModel):
+    lap: int
+    time_loss_s: float | None = None
+    compound_from: str | None = None
+    compound_to: str | None = None
+    under_sc: bool = False
+
+
+class DriverPitStats(BaseModel):
+    driver: str
+    team: str
+    pits: list[PitStopDetail]
+    total_time_lost_s: float
+    num_stops: int
+
+
+class PitStatsResponse(BaseModel):
+    race_id: str
+    drivers: list[DriverPitStats]
 
 
 # ---------------------------------------------------------------------------

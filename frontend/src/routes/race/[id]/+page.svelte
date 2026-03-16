@@ -25,6 +25,8 @@
 	import SpeedTrace from '$lib/components/charts/SpeedTrace.svelte';
 	import TrackMap from '$lib/components/charts/TrackMap.svelte';
 	import TrafficAnalysis from '$lib/components/charts/TrafficAnalysis.svelte';
+	import PitStopStats from '$lib/components/charts/PitStopStats.svelte';
+	import IdealLaps from '$lib/components/charts/IdealLaps.svelte';
 
 	let { data } = $props();
 
@@ -35,6 +37,7 @@
 	let delta = $derived(data.delta);
 	let annotations = $derived(data.annotations);
 	let energyComparison = $derived(data.energyComparison);
+	let pitstops = $derived(data.pitstops);
 
 	// Collapsed sections state
 	let collapsed = $state({});
@@ -279,6 +282,18 @@
 				</div>
 			</div>
 
+			<!-- Row 2b: Pit Stop Stats (full width) -->
+			<div id="section-pit-stops" class="dashboard-section">
+				<button class="section-toggle" onclick={() => collapsedSections.toggle('pit-stops')}>
+					<span class="chevron" class:rotated={collapsed['pit-stops']}>&#9660;</span>
+				</button>
+				<div class="section-body" class:collapsed={collapsed['pit-stops']}>
+					<div class="grid-row grid-row--full">
+						<PitStopStats data={pitstops} />
+					</div>
+				</div>
+			</div>
+
 			<!-- Row 3: Energy Bars + Delta Matrix -->
 			<div id="section-energy" class="dashboard-section">
 				<button class="section-toggle" onclick={() => collapsedSections.toggle('energy')}>
@@ -389,7 +404,7 @@
 						<span class="chevron" class:rotated={collapsed['qualifying-results']}>&#9660;</span>
 					</button>
 					<div class="section-body" class:collapsed={collapsed['qualifying-results']}>
-						<QualifyingResults drivers={qualifyingData.drivers || []} />
+						<QualifyingResults drivers={qualifyingData.drivers || []} {raceId} />
 					</div>
 				</div>
 
@@ -400,6 +415,16 @@
 					</button>
 					<div class="section-body" class:collapsed={collapsed['sector-comparison']}>
 						<SectorComparison drivers={qualifyingData.drivers || []} />
+					</div>
+				</div>
+
+				<!-- Ideal Laps -->
+				<div id="section-ideal-laps" class="dashboard-section">
+					<button class="section-toggle" onclick={() => collapsedSections.toggle('ideal-laps')}>
+						<span class="chevron" class:rotated={collapsed['ideal-laps']}>&#9660;</span>
+					</button>
+					<div class="section-body" class:collapsed={collapsed['ideal-laps']}>
+						<IdealLaps drivers={qualifyingData.drivers || []} />
 					</div>
 				</div>
 

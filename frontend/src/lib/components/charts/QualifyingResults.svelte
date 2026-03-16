@@ -6,8 +6,8 @@
 	import { t } from '$lib/i18n/index.js';
 	import { TEAM_COLORS } from '$lib/constants.js';
 	import { formatLapTime } from '$lib/utils/format.js';
-	/** @type {{ drivers: Array<any> }} */
-	let { drivers } = $props();
+	/** @type {{ drivers: Array<any>, raceId?: string }} */
+	let { drivers, raceId = '' } = $props();
 
 	let hoveredRow = $state(null);
 	let sectorTooltip = $state(null);
@@ -93,7 +93,11 @@
 					>
 						<td class="col-pos">{d.position ?? '-'}</td>
 						<td class="col-driver">
+							{#if raceId}
+							<a href="/race/{raceId}/qualifying/{d.driver.toLowerCase()}" class="driver-badge driver-badge--link" style="background: {color}; color: {textOnColor(color)}">{d.driver}</a>
+						{:else}
 							<span class="driver-badge" style="background: {color}; color: {textOnColor(color)}">{d.driver}</span>
+						{/if}
 						</td>
 						<td class="col-team">{d.team}</td>
 						<td class="col-time">{d.q1 ?? '-'}</td>
@@ -188,6 +192,14 @@
 		font-weight: 700;
 		padding: 1px 6px;
 		border-radius: 3px;
+	}
+	.driver-badge--link {
+		text-decoration: none;
+		cursor: pointer;
+		transition: opacity 0.15s;
+	}
+	.driver-badge--link:hover {
+		opacity: 0.85;
 	}
 	:global(.row--dimmed) td {
 		opacity: 0.3;

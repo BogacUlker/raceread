@@ -3,9 +3,9 @@ import { browser } from '$app/environment';
 
 const STORAGE_KEY = 'raceread:collapsed';
 
-const SECTIONS = ['insights', 'pace', 'strategy', 'energy', 'energy-timeline', 'speed-trace', 'track-map', 'traffic'];
+const SECTIONS = ['insights', 'pace', 'strategy', 'pit-stops', 'energy', 'energy-timeline', 'speed-trace', 'track-map', 'traffic'];
 
-const QUALIFYING_SECTIONS = ['qualifying-results', 'sector-comparison', 'qualifying-delta'];
+const QUALIFYING_SECTIONS = ['qualifying-results', 'sector-comparison', 'ideal-laps', 'qualifying-delta'];
 
 function loadFromStorage() {
 	if (!browser) return {};

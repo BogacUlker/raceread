@@ -934,16 +934,126 @@ def _format_timedelta_str(td: pd.Timedelta | None) -> str | None:
     return f"{mins}:{secs:06.3f}"
 
 
+def _find_sectors_for_time(
+    drv_laps: pd.DataFrame,
+    target_td: pd.Timedelta,
+    tolerance_ms: int = 50,
+) -> dict[str, float | None]:
+    """Find sector times for a lap matching a target time within tolerance."""
+    sectors: dict[str, float | None] = {"s1": None, "s2": None, "s3": None}
+    if target_td is None or pd.isna(target_td) or len(drv_laps) == 0:
+        return sectors
+    tolerance = pd.Timedelta(milliseconds=tolerance_ms)
+    for _, lap_row in drv_laps.iterrows():
+        lt = lap_row.get("LapTime")
+        if lt is not None and pd.notna(lt):
+            if abs(lt - target_td) <= tolerance:
+                sectors["s1"] = _clean_value(lap_row.get("Sector1Time"))
+                sectors["s2"] = _clean_value(lap_row.get("Sector2Time"))
+                sectors["s3"] = _clean_value(lap_row.get("Sector3Time"))
+                break
+    return sectors
+
+
+def _classify_sessions_for_driver(
+    drv_laps: "pd.DataFrame",
+    q1_s: float | None,
+    q2_s: float | None,
+    q3_s: float | None,
+    eliminated_in: str | None,
+) -> dict[int, str]:
+    """Classify each lap into Q1/Q2/Q3 using official best times as anchors.
+
+    Finds laps matching the driver's official Q1/Q2/Q3 best times,
+    then uses per-driver gaps in LapStartTime to determine session boundaries.
+    """
+    sorted_laps = drv_laps.sort_values("LapStartTime").reset_index(drop=True)
+    n = len(sorted_laps)
+
+    if n == 0:
+        return {}
+
+    if eliminated_in == "Q1":
+        return {i: "Q1" for i in range(n)}
+
+    # Find anchor indices: laps whose LapTime matches official best
+    def find_anchor(target_s):
+        if target_s is None:
+            return None
+        best_idx, best_diff = None, 0.1  # 100ms tolerance
+        for i in range(n):
+            lt = sorted_laps.iloc[i].get("LapTime")
+            if lt is not None and not pd.isna(lt):
+                diff = abs(lt.total_seconds() - target_s)
+                if diff < best_diff:
+                    best_diff = diff
+                    best_idx = i
+        return best_idx
+
+    q1_anchor = find_anchor(q1_s)
+    q2_anchor = find_anchor(q2_s)
+    q3_anchor = find_anchor(q3_s)
+
+    # Compute gaps between consecutive laps
+    gaps = []
+    for i in range(n - 1):
+        a = sorted_laps.iloc[i]["LapStartTime"]
+        b = sorted_laps.iloc[i + 1]["LapStartTime"]
+        if pd.notna(a) and pd.notna(b):
+            gaps.append((i, (b - a).total_seconds()))
+
+    # Q1->Q2 boundary: largest gap (>240s) before Q2 anchor
+    q1_boundary = None
+    ref = q2_anchor if q2_anchor is not None else (q1_anchor if q1_anchor is not None else n)
+    cands = [(i, g) for i, g in gaps if i < ref and g > 240]
+    if not cands and ref is not None:
+        cands = [(i, g) for i, g in gaps if i < ref]
+    if cands:
+        q1_boundary = max(cands, key=lambda x: x[1])[0]
+
+    # Q2->Q3 boundary: largest gap (>240s) between Q2 and Q3 anchors
+    q2_boundary = None
+    if q2_anchor is not None and q3_anchor is not None:
+        cands = [(i, g) for i, g in gaps if i >= q2_anchor and i < q3_anchor and g > 240]
+        if not cands:
+            cands = [(i, g) for i, g in gaps if i >= q2_anchor and i < q3_anchor]
+        if cands:
+            q2_boundary = max(cands, key=lambda x: x[1])[0]
+
+    # Classify
+    result = {}
+    for i in range(n):
+        if q1_boundary is not None and i <= q1_boundary:
+            result[i] = "Q1"
+        elif q2_boundary is not None and i <= q2_boundary:
+            result[i] = "Q2"
+        elif q2_boundary is not None:
+            result[i] = "Q3"
+        elif q1_boundary is not None:
+            result[i] = "Q2"
+        else:
+            result[i] = "Q1"
+
+    # Safety: eliminated drivers cannot have higher sessions
+    if eliminated_in == "Q2":
+        for i in result:
+            if result[i] == "Q3":
+                result[i] = "Q2"
+
+    return result
+
+
+
 def export_qualifying(
     year: int,
     event: str,
     race_id: str,
     output_dir: Path,
 ) -> None:
-    """Export qualifying.json with Q1/Q2/Q3 times, positions, and sector data.
+    """Export qualifying.json with Q1/Q2/Q3 times, positions, sector data, and per-attempt details.
 
     Loads the qualifying session separately from the race session.
-    Uses session.results for authoritative Q times and session.laps for sectors.
+    Uses session.results for authoritative Q times and session.laps for sectors + attempts.
     """
     print("  Loading qualifying session...")
     quali_session = fastf1.get_session(year, event, "Q")
@@ -955,6 +1065,8 @@ def export_qualifying(
         return
 
     quali_laps = quali_session.laps
+
+    # Session classification is done per-driver using _classify_sessions_for_driver
 
     drivers_out = []
     for _, row in results.iterrows():
@@ -989,23 +1101,65 @@ def export_qualifying(
         elif q3_s is None and q2_s is not None:
             eliminated_in = "Q2"
 
-        # Find sector times by matching the best Q time in session.laps
-        sectors = {"s1": None, "s2": None, "s3": None}
-        best_q_td = q3_td if pd.notna(q3_td) else (q2_td if pd.notna(q2_td) else q1_td)
+        drv_laps = quali_laps[quali_laps["Driver"] == driver] if len(quali_laps) > 0 else pd.DataFrame()
 
-        if best_q_td is not None and pd.notna(best_q_td) and len(quali_laps) > 0:
-            drv_laps = quali_laps[quali_laps["Driver"] == driver]
-            if len(drv_laps) > 0:
-                # Find lap matching best Q time within 50ms tolerance
-                tolerance = pd.Timedelta(milliseconds=50)
-                for _, lap_row in drv_laps.iterrows():
-                    lt = lap_row.get("LapTime")
-                    if lt is not None and pd.notna(lt):
-                        if abs(lt - best_q_td) <= tolerance:
-                            sectors["s1"] = _clean_value(lap_row.get("Sector1Time"))
-                            sectors["s2"] = _clean_value(lap_row.get("Sector2Time"))
-                            sectors["s3"] = _clean_value(lap_row.get("Sector3Time"))
-                            break
+        # Best overall sectors (from best lap)
+        best_q_td = q3_td if pd.notna(q3_td) else (q2_td if pd.notna(q2_td) else q1_td)
+        sectors = _find_sectors_for_time(drv_laps, best_q_td)
+
+        # Per-session sectors
+        sectors_q1 = _find_sectors_for_time(drv_laps, q1_td)
+        sectors_q2 = _find_sectors_for_time(drv_laps, q2_td)
+        sectors_q3 = _find_sectors_for_time(drv_laps, q3_td)
+
+        # Per-attempt data
+        attempts: list[dict] = []
+        if len(drv_laps) > 0:
+            # Sort by SessionTime to get chronological order
+            sorted_laps = drv_laps.sort_values("LapStartTime") if "LapStartTime" in drv_laps.columns else drv_laps
+
+            # Track attempt numbers per session
+            # Classify sessions using anchor-based per-driver detection
+            session_map = _classify_sessions_for_driver(
+                drv_laps, q1_s, q2_s, q3_s, eliminated_in,
+            )
+            # Build index mapping: sorted_laps index -> session label
+            sorted_idx_to_session = {}
+            sorted_laps_reset = drv_laps.sort_values("LapStartTime").reset_index(drop=True)
+            for si in range(len(sorted_laps_reset)):
+                sorted_idx_to_session[si] = session_map.get(si, "Q1")
+
+            session_counts: dict[str, int] = {"Q1": 0, "Q2": 0, "Q3": 0}
+            sorted_counter = 0
+
+            for _, lap_row in sorted_laps.iterrows():
+                lt = lap_row.get("LapTime")
+                if lt is None or pd.isna(lt):
+                    sorted_counter += 1
+                    continue
+
+                session_label = sorted_idx_to_session.get(sorted_counter, "Q1")
+                sorted_counter += 1
+
+                session_counts[session_label] = session_counts.get(session_label, 0) + 1
+
+                lt_s = _clean_value(lt)
+                is_deleted = bool(lap_row.get("Deleted", False)) if pd.notna(lap_row.get("Deleted", False)) else False
+                is_pb = bool(lap_row.get("IsPersonalBest", False)) if pd.notna(lap_row.get("IsPersonalBest", False)) else False
+                compound = str(lap_row.get("Compound", "")) if pd.notna(lap_row.get("Compound", "")) else None
+
+                attempts.append({
+                    "attempt_number": session_counts[session_label],
+                    "session": session_label,
+                    "time_s": lt_s,
+                    "time_str": _format_timedelta_str(lt),
+                    "s1": _clean_value(lap_row.get("Sector1Time")),
+                    "s2": _clean_value(lap_row.get("Sector2Time")),
+                    "s3": _clean_value(lap_row.get("Sector3Time")),
+                    "compound": compound,
+                    "is_deleted": is_deleted,
+                    "is_personal_best": is_pb,
+                })
 
         drivers_out.append({
             "driver": driver,
@@ -1020,6 +1174,10 @@ def export_qualifying(
             "q3_s": q3_s,
             "eliminated_in": eliminated_in,
             "sectors": sectors,
+            "sectors_q1": sectors_q1,
+            "sectors_q2": sectors_q2,
+            "sectors_q3": sectors_q3,
+            "attempts": attempts,
         })
 
     # Sort by position
@@ -1041,12 +1199,138 @@ def export_qualifying(
         else:
             d["gap_to_pole"] = None
 
+    total_attempts = sum(len(d["attempts"]) for d in drivers_out)
+    print(f"  {len(drivers_out)} drivers, {total_attempts} total qualifying attempts exported")
+
     output = {
         "race_id": race_id,
         "drivers": drivers_out,
     }
 
     _write_json(output_dir / "qualifying.json", output)
+
+
+def export_qualifying_telemetry(
+    year: int,
+    event: str,
+    race_id: str,
+    output_dir: Path,
+    max_samples: int = 200,
+) -> None:
+    """Export per-driver qualifying telemetry for animated comparison.
+
+    For each driver, gets telemetry from their best qualifying lap (Q3 > Q2 > Q1)
+    and downsamples to ~max_samples points.
+    """
+    print("  Loading qualifying session for telemetry...")
+    quali_session = fastf1.get_session(year, event, "Q")
+    quali_session.load()
+
+    results = quali_session.results
+    if results is None or len(results) == 0:
+        print("  [WARN] No qualifying results available, skipping telemetry")
+        return
+
+    quali_laps = quali_session.laps
+    if quali_laps is None or len(quali_laps) == 0:
+        print("  [WARN] No qualifying laps available, skipping telemetry")
+        return
+
+    tel_dir = output_dir / "qualifying_telemetry"
+    tel_dir.mkdir(parents=True, exist_ok=True)
+
+    exported = 0
+    for _, row in results.iterrows():
+        driver = str(row.get("Abbreviation", ""))
+        if not driver:
+            continue
+
+        team = str(row.get("TeamName", "Unknown"))
+
+        # Find best Q time and corresponding session
+        q3_td = row.get("Q3")
+        q2_td = row.get("Q2")
+        q1_td = row.get("Q1")
+
+        best_td = None
+        session_label = "Q1"
+        if q3_td is not None and pd.notna(q3_td):
+            best_td = q3_td
+            session_label = "Q3"
+        elif q2_td is not None and pd.notna(q2_td):
+            best_td = q2_td
+            session_label = "Q2"
+        elif q1_td is not None and pd.notna(q1_td):
+            best_td = q1_td
+            session_label = "Q1"
+
+        if best_td is None:
+            continue
+
+        # Find the matching lap in session.laps
+        drv_laps = quali_laps[quali_laps["Driver"] == driver]
+        best_lap = None
+        tolerance = pd.Timedelta(milliseconds=50)
+        for _, lap_row in drv_laps.iterrows():
+            lt = lap_row.get("LapTime")
+            if lt is not None and pd.notna(lt) and abs(lt - best_td) <= tolerance:
+                best_lap = lap_row
+                break
+
+        if best_lap is None:
+            print(f"    [WARN] No matching lap found for {driver} ({session_label}), skipping")
+            continue
+
+        # Get telemetry for this lap
+        try:
+            tel = best_lap.get_telemetry()
+        except Exception as exc:
+            print(f"    [WARN] Telemetry failed for {driver}: {exc}")
+            continue
+
+        if tel is None or len(tel) == 0:
+            continue
+
+        # Extract columns
+        raw_samples = []
+        for _, s in tel.iterrows():
+            time_val = s.get("Time")
+            time_s = time_val.total_seconds() if time_val is not None and pd.notna(time_val) else 0
+            raw_samples.append({
+                "time_s": round(time_s, 4),
+                "dist": round(float(s.get("Distance", 0)), 1),
+                "speed": round(float(s.get("Speed", 0)), 1),
+                "x": round(float(s.get("X", 0)), 1),
+                "y": round(float(s.get("Y", 0)), 1),
+                "throttle": round(float(s.get("Throttle", 0)), 1) if pd.notna(s.get("Throttle")) else None,
+                "brake": bool(s.get("Brake", False)),
+                "gear": int(s.get("nGear", 0)) if pd.notna(s.get("nGear")) else None,
+            })
+
+        # Downsample if needed
+        if len(raw_samples) > max_samples:
+            step = len(raw_samples) / max_samples
+            samples = [raw_samples[int(i * step)] for i in range(max_samples)]
+            # Always include last sample
+            if samples[-1] != raw_samples[-1]:
+                samples[-1] = raw_samples[-1]
+        else:
+            samples = raw_samples
+
+        lap_time_s = _clean_value(best_td) or 0
+
+        driver_tel = {
+            "driver": driver,
+            "team": team,
+            "session": session_label,
+            "lap_time_s": lap_time_s,
+            "samples": samples,
+        }
+
+        _write_json(tel_dir / f"{driver.lower()}.json", driver_tel)
+        exported += 1
+
+    print(f"  {exported} drivers' qualifying telemetry exported")
 
 
 # ---------------------------------------------------------------------------
@@ -1174,6 +1458,12 @@ def run_import(year: int, event: str, energy_only: bool = False, telemetry_only:
         export_qualifying(year, event, race_id, output_dir)
     except Exception as exc:
         print(f"  [WARN] Qualifying export failed (non-fatal): {exc}")
+
+    print("  Exporting qualifying telemetry...")
+    try:
+        export_qualifying_telemetry(year, event, race_id, output_dir)
+    except Exception as exc:
+        print(f"  [WARN] Qualifying telemetry export failed (non-fatal): {exc}")
 
     # Summary
     print(f"\n{'=' * 60}")

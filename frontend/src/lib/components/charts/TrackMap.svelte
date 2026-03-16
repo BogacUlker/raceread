@@ -42,6 +42,11 @@
 	let animFrame = $state(null);
 	let animStartTime = $state(null);
 
+	// Corner zoom state
+	let zoomedCorner = $state(null); // corner object or null
+	const ZOOM_BEFORE = 300; // meters before corner
+	const ZOOM_AFTER = 200; // meters after corner
+
 	const TRACK_WIDTH = 7;
 	const TRACK_WIDTH_HOVER = 10;
 	const OUTLINE_WIDTH = 12;
@@ -100,8 +105,35 @@
 	let color1 = $derived(TEAM_COLORS[team1] || '#00D7B6');
 	let color2 = $derived(TEAM_COLORS[team2] || '#E24B4A');
 
+	// Corner zoom: filter samples to the zoomed section
+	function filterSamplesForCorner(samples, corner, trackLength) {
+		if (!corner || !samples.length || !trackLength) return samples;
+		const cDist = corner.distance;
+		const start = cDist - ZOOM_BEFORE;
+		const end = cDist + ZOOM_AFTER;
+
+		if (start >= 0 && end <= trackLength) {
+			return samples.filter(s => s.dist >= start && s.dist <= end);
+		}
+		// Handle wrapping near start/finish line
+		if (start < 0) {
+			return samples.filter(s => s.dist >= (trackLength + start) || s.dist <= end);
+		}
+		// end > trackLength
+		return samples.filter(s => s.dist >= start || s.dist <= (end - trackLength));
+	}
+
+	let trackLength = $derived(circuit?.track_length || 0);
+
+	let zoomedSamples1 = $derived(
+		zoomedCorner ? filterSamplesForCorner(samples1, zoomedCorner, trackLength) : samples1
+	);
+	let zoomedSamples2 = $derived(
+		zoomedCorner ? filterSamplesForCorner(samples2, zoomedCorner, trackLength) : samples2
+	);
+
 	// Primary samples for bounds/scales
-	let primarySamples = $derived(samples1.length > 0 ? samples1 : []);
+	let primarySamples = $derived(zoomedSamples1.length > 0 ? zoomedSamples1 : []);
 
 	// Circuit outline points for background track
 	let outlinePoints = $derived(circuit?.outline || []);
@@ -196,20 +228,23 @@
 		return segs;
 	}
 
+	let zoomLineWidth = $derived(zoomedCorner ? 12 : TRACK_WIDTH);
+	let zoomLineWidthHover = $derived(zoomedCorner ? 15 : TRACK_WIDTH_HOVER);
+
 	let segments1 = $derived(buildSegments(primarySamples, isCompare ? () => color1 : getSegmentColor));
 
 	let segments2 = $derived.by(() => {
-		if (!isCompare || samples2.length < 2) return [];
-		return buildSegments(samples2, () => color2);
+		if (!isCompare || zoomedSamples2.length < 2) return [];
+		return buildSegments(zoomedSamples2, () => color2);
 	});
 
 	// Delta segments for trace compare: single line colored by speed difference
 	let deltaMax = $derived.by(() => {
-		if (!isCompare || !primarySamples.length || !samples2.length) return 30;
+		if (!isCompare || !primarySamples.length || !zoomedSamples2.length) return 30;
 		let maxDiff = 0;
-		const len = Math.min(primarySamples.length, samples2.length);
+		const len = Math.min(primarySamples.length, zoomedSamples2.length);
 		for (let i = 0; i < len; i++) {
-			const diff = Math.abs((primarySamples[i].speed || 0) - (samples2[i].speed || 0));
+			const diff = Math.abs((primarySamples[i].speed || 0) - (zoomedSamples2[i].speed || 0));
 			if (diff > maxDiff) maxDiff = diff;
 		}
 		return Math.max(maxDiff, 5);
@@ -220,15 +255,15 @@
 	);
 
 	let deltaSegments = $derived.by(() => {
-		if (!isCompare || compareView !== 'trace' || primarySamples.length < 2 || samples2.length < 2) return [];
+		if (!isCompare || compareView !== 'trace' || primarySamples.length < 2 || zoomedSamples2.length < 2) return [];
 		const xs = xScale;
 		const ys = yScale;
 		const segs = [];
-		const len = Math.min(primarySamples.length - 1, samples2.length - 1);
+		const len = Math.min(primarySamples.length - 1, zoomedSamples2.length - 1);
 		for (let i = 0; i < len; i++) {
 			const s1 = primarySamples[i];
 			const s1next = primarySamples[i + 1];
-			const s2 = samples2[i];
+			const s2 = zoomedSamples2[i];
 			if (s1.x == null || s1.y == null || s1next.x == null || s1next.y == null) continue;
 			const delta = (s1.speed || 0) - (s2.speed || 0);
 			segs.push({
@@ -260,6 +295,7 @@
 				labelX: px + (dx / len) * CORNER_OFFSET,
 				labelY: py + (dy / len) * CORNER_OFFSET,
 				label: `${c.number}`,
+				corner: c,
 			};
 		});
 	});
@@ -319,6 +355,19 @@
 	function handleSegmentHover(idx, driverSlot) {
 		hoverIdx = idx;
 		hoverDriver = driverSlot;
+	}
+
+	function handleCornerClick(corner) {
+		if (!isCompare) return;
+		if (zoomedCorner && zoomedCorner.number === corner.number) {
+			zoomedCorner = null;
+		} else {
+			zoomedCorner = corner;
+		}
+	}
+
+	function zoomOut() {
+		zoomedCorner = null;
 	}
 
 	// Speed legend ticks
@@ -506,8 +555,8 @@
 			<!-- svelte-ignore a11y_no_static_element_interactions -->
 			<svg viewBox="0 0 {svgWidth} {svgHeight}" class="track-map__svg" onmouseleave={() => { hoverIdx = null; hoverDriver = null; }}>
 
-				<!-- Track outline background - brighter in race view -->
-				{#if outlinePath}
+				<!-- Track outline background - brighter in race view, hidden when zoomed -->
+				{#if outlinePath && !zoomedCorner}
 					<path
 						d={outlinePath}
 						fill="none"
@@ -526,7 +575,7 @@
 							<line
 								x1={seg.x1} y1={seg.y1} x2={seg.x2} y2={seg.y2}
 								stroke="rgba(0,0,0,0.35)"
-								stroke-width={TRACK_WIDTH + 3}
+								stroke-width={zoomLineWidth + 3}
 								stroke-linecap="round"
 								style="pointer-events: none;"
 							/>
@@ -536,7 +585,7 @@
 							<line
 								x1={seg.x1} y1={seg.y1} x2={seg.x2} y2={seg.y2}
 								stroke={seg.color}
-								stroke-width={hoverIdx === seg.idx ? TRACK_WIDTH_HOVER : TRACK_WIDTH}
+								stroke-width={hoverIdx === seg.idx ? zoomLineWidthHover : zoomLineWidth}
 								stroke-linecap="round"
 								style="cursor: crosshair;"
 								onmouseenter={() => handleSegmentHover(seg.idx, 1)}
@@ -548,7 +597,7 @@
 							<line
 								x1={seg.x1} y1={seg.y1} x2={seg.x2} y2={seg.y2}
 								stroke="rgba(0,0,0,0.35)"
-								stroke-width={TRACK_WIDTH + 3}
+								stroke-width={zoomLineWidth + 3}
 								stroke-linecap="round"
 								style="pointer-events: none;"
 							/>
@@ -558,7 +607,7 @@
 							<line
 								x1={seg.x1} y1={seg.y1} x2={seg.x2} y2={seg.y2}
 								stroke={seg.color}
-								stroke-width={hoverIdx === seg.idx ? TRACK_WIDTH_HOVER : TRACK_WIDTH}
+								stroke-width={hoverIdx === seg.idx ? zoomLineWidthHover : zoomLineWidth}
 								stroke-linecap="round"
 								style="cursor: crosshair;"
 								onmouseenter={() => handleSegmentHover(seg.idx, 1)}
@@ -567,7 +616,8 @@
 					{/if}
 				{/if}
 
-				<!-- Corner connector lines -->
+				<!-- Corner connector lines (hidden when zoomed) -->
+				{#if !zoomedCorner}
 				{#each cornerLabels as c}
 					<line
 						x1={c.trackX} y1={c.trackY} x2={c.labelX} y2={c.labelY}
@@ -576,17 +626,28 @@
 					/>
 				{/each}
 
-				<!-- Corner labels -->
+				<!-- Corner labels (clickable in compare mode) -->
 				{#each cornerLabels as c}
-					<circle cx={c.labelX} cy={c.labelY} r="10" fill="var(--bg-secondary)" stroke="var(--border)" stroke-width="1" opacity="0.9" />
-					<text x={c.labelX} y={c.labelY} fill="var(--text-secondary)" font-size="9" font-weight="600"
-						text-anchor="middle" dominant-baseline="central" font-family="var(--font-mono)">
-						{c.label}
-					</text>
+					{@const isZoomed = zoomedCorner && zoomedCorner.number === c.corner?.number}
+					<!-- svelte-ignore a11y_no_static_element_interactions -->
+					<!-- svelte-ignore a11y_click_events_have_key_events -->
+					<g onclick={() => handleCornerClick(c.corner)} style={isCompare ? 'cursor: pointer;' : ''}>
+						<circle cx={c.labelX} cy={c.labelY} r="10"
+							fill={isZoomed ? 'var(--accent)' : 'var(--bg-secondary)'}
+							stroke={isZoomed ? 'var(--accent)' : 'var(--border)'}
+							stroke-width={isZoomed ? '2' : '1'} opacity="0.9" />
+						<text x={c.labelX} y={c.labelY}
+							fill={isZoomed ? '#fff' : 'var(--text-secondary)'}
+							font-size="9" font-weight="600"
+							text-anchor="middle" dominant-baseline="central" font-family="var(--font-mono)">
+							{c.label}
+						</text>
+					</g>
 				{/each}
+				{/if}
 
-				<!-- Start/finish marker -->
-				{#if startPos}
+				<!-- Start/finish marker (hidden when zoomed) -->
+				{#if startPos && !zoomedCorner}
 					<circle cx={startPos.x} cy={startPos.y} r="8" fill="none" stroke="var(--accent)" stroke-width="2.5" />
 					<circle cx={startPos.x} cy={startPos.y} r="3" fill="var(--accent)" />
 					<text x={startPos.x} y={startPos.y - 14} fill="var(--accent)" font-size="10" font-weight="700"
@@ -825,6 +886,61 @@
 				{(animProgress * 100).toFixed(0)}%
 			</span>
 		</div>
+
+		<!-- Corner zoom controls + mini speed chart -->
+		{#if zoomedCorner && isCompare}
+			<div class="track-map__zoom-bar">
+				<span class="track-map__zoom-label">
+					{$t('charts.corner')} {zoomedCorner.number}
+				</span>
+				<button class="track-map__zoom-out" onclick={zoomOut}>
+					&#10005; {$t('charts.zoom_out')}
+				</button>
+			</div>
+			<!-- Mini speed comparison for zoomed section -->
+			{#if zoomedSamples1.length > 2 && zoomedSamples2.length > 2}
+				{@const miniW = Math.max(300, containerWidth - 100)}
+				{@const miniH = 100}
+				{@const allSpeeds = [...zoomedSamples1, ...zoomedSamples2].map(s => s.speed || 0).filter(s => s > 0)}
+				{@const minSpeed = Math.min(...allSpeeds)}
+				{@const maxSpeed = Math.max(...allSpeeds)}
+				{@const allDists = [...zoomedSamples1, ...zoomedSamples2].map(s => s.dist || 0)}
+				{@const minDist = Math.min(...allDists)}
+				{@const maxDist = Math.max(...allDists)}
+				<svg viewBox="0 0 {miniW} {miniH}" class="track-map__mini-speed">
+					<!-- D1 speed line -->
+					<polyline
+						fill="none"
+						stroke={color1}
+						stroke-width="2"
+						points={zoomedSamples1.map(s => {
+							const x = ((s.dist - minDist) / (maxDist - minDist || 1)) * (miniW - 20) + 10;
+							const y = miniH - 10 - (((s.speed || 0) - minSpeed) / (maxSpeed - minSpeed || 1)) * (miniH - 20);
+							return `${x.toFixed(1)},${y.toFixed(1)}`;
+						}).join(' ')}
+					/>
+					<!-- D2 speed line -->
+					<polyline
+						fill="none"
+						stroke={color2}
+						stroke-width="2"
+						points={zoomedSamples2.map(s => {
+							const x = ((s.dist - minDist) / (maxDist - minDist || 1)) * (miniW - 20) + 10;
+							const y = miniH - 10 - (((s.speed || 0) - minSpeed) / (maxSpeed - minSpeed || 1)) * (miniH - 20);
+							return `${x.toFixed(1)},${y.toFixed(1)}`;
+						}).join(' ')}
+					/>
+					<!-- Axis labels -->
+					<text x="5" y="12" fill="var(--text-muted)" font-size="9" font-family="var(--font-mono)">{maxSpeed.toFixed(0)}</text>
+					<text x="5" y={miniH - 2} fill="var(--text-muted)" font-size="9" font-family="var(--font-mono)">{minSpeed.toFixed(0)}</text>
+					<text x={miniW - 5} y={miniH - 2} fill="var(--text-muted)" font-size="9" font-family="var(--font-mono)" text-anchor="end">km/h</text>
+				</svg>
+			{/if}
+		{:else if isCompare && !zoomedCorner}
+			<div class="track-map__zoom-hint">
+				<span class="track-map__zoom-hint-text">{$t('charts.click_corner')}</span>
+			</div>
+		{/if}
 
 		<!-- Legends -->
 		{#if colorMode === 'speed'}
@@ -1234,6 +1350,58 @@
 		font-family: var(--font-mono);
 		font-size: 11px;
 		color: var(--text-muted);
+	}
+
+	/* Corner zoom controls */
+	.track-map__zoom-bar {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 6px 10px;
+		margin-top: var(--space-sm);
+		background: rgba(226, 75, 74, 0.08);
+		border: 1px solid rgba(226, 75, 74, 0.2);
+		border-radius: var(--radius-sm);
+		font-family: var(--font-mono);
+		font-size: 12px;
+	}
+	.track-map__zoom-label {
+		font-weight: 600;
+		color: var(--accent);
+	}
+	.track-map__zoom-out {
+		font-family: var(--font-mono);
+		font-size: 11px;
+		padding: 3px 10px;
+		border: 1px solid var(--border);
+		border-radius: var(--radius-sm);
+		background: transparent;
+		color: var(--text-secondary);
+		cursor: pointer;
+		transition: all 0.15s;
+	}
+	.track-map__zoom-out:hover {
+		background: var(--bg-secondary);
+		color: var(--text-primary);
+		border-color: var(--text-muted);
+	}
+	.track-map__zoom-hint {
+		text-align: center;
+		padding: 4px 0;
+		margin-top: var(--space-xs);
+	}
+	.track-map__zoom-hint-text {
+		font-family: var(--font-mono);
+		font-size: 10px;
+		color: var(--text-muted);
+	}
+	.track-map__mini-speed {
+		width: 100%;
+		height: 100px;
+		margin-top: var(--space-xs);
+		background: var(--bg-primary);
+		border: 1px solid var(--border);
+		border-radius: var(--radius-sm);
 	}
 
 	@media (max-width: 768px) {
