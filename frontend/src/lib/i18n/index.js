@@ -4,8 +4,25 @@ import en from './en.json';
 
 const translations = { tr, en };
 
+/** Read saved locale from localStorage, default to 'tr' */
+function getInitialLocale() {
+	if (typeof window !== 'undefined') {
+		const saved = localStorage.getItem('raceread-locale');
+		if (saved === 'tr' || saved === 'en') return saved;
+	}
+	return 'tr';
+}
+
 /** Current locale: 'tr' or 'en' */
-export const locale = writable('tr');
+export const locale = writable(getInitialLocale());
+
+/** Persist locale changes to localStorage and update <html lang> */
+if (typeof window !== 'undefined') {
+	locale.subscribe((l) => {
+		localStorage.setItem('raceread-locale', l);
+		document.documentElement.lang = l;
+	});
+}
 
 /**
  * Derived translation function.

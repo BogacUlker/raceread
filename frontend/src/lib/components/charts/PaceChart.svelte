@@ -192,7 +192,7 @@
 				{/each}
 				{#if pinned.length > 0}
 					<button class="pace-legend__clear" onclick={() => pinnedDriver.set([])}>
-						Clear
+						{$t('filter.clear')}
 					</button>
 				{/if}
 			</div>

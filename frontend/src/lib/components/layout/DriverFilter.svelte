@@ -30,7 +30,7 @@
 <div class="driver-filter">
 	<div class="driver-filter__actions">
 		<button class="filter-btn" onclick={selectAll}>{$t('filter.all_drivers')}</button>
-		<button class="filter-btn" onclick={deselectAll}>Clear</button>
+		<button class="filter-btn" onclick={deselectAll}>{$t('filter.clear')}</button>
 	</div>
 	<div class="driver-filter__list">
 		{#each drivers as { driver, team }}
