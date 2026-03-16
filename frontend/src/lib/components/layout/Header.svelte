@@ -6,8 +6,7 @@
 <header class="header">
 	<div class="header__inner">
 		<a href="/" class="header__logo">
-			<span class="header__logo-text">RaceRead</span>
-			<span class="header__logo-dot"></span>
+			<img src="/logo@2x.png" alt="RaceRead" class="header__logo-img" width="114" height="64" />
 		</a>
 		<nav class="header__nav">
 			<a href="/" class="header__link">{$t('nav.home')}</a>
@@ -38,21 +37,12 @@
 	.header__logo {
 		display: flex;
 		align-items: center;
-		gap: 6px;
 		text-decoration: none;
 	}
-	.header__logo-text {
-		font-family: var(--font-mono);
-		font-size: 18px;
-		font-weight: 600;
-		color: var(--text-primary);
-		letter-spacing: -0.02em;
-	}
-	.header__logo-dot {
-		width: 6px;
-		height: 6px;
-		border-radius: 50%;
-		background: var(--accent);
+	.header__logo-img {
+		height: 32px;
+		width: auto;
+		display: block;
 	}
 	.header__nav {
 		flex: 1;
@@ -80,8 +70,8 @@
 			padding: 0 var(--space-md);
 			height: 48px;
 		}
-		.header__logo-text {
-			font-size: 16px;
+		.header__logo-img {
+			height: 26px;
 		}
 	}
 </style>
