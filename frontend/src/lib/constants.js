@@ -40,4 +40,6 @@ export const ANNOTATION_COLORS = {
 	fastest_lap: '#A855F7',
 	race_insight: '#8B5CF6',
 	energy_insight: '#F59E0B',
+	traffic_insight: '#06B6D4',
+	qualifying_insight: '#A855F7',
 };

@@ -6,13 +6,10 @@
 	import { t } from '$lib/i18n/index.js';
 	import { TEAM_COLORS } from '$lib/constants.js';
 	import { formatLapTime } from '$lib/utils/format.js';
-	import { hoveredDriver } from '$lib/stores/race.js';
-
 	/** @type {{ drivers: Array<any> }} */
 	let { drivers } = $props();
 
 	let hoveredRow = $state(null);
-	const unsubH = hoveredDriver.subscribe(v => { hoveredRow = v; });
 	let sectorTooltip = $state(null);
 	let tooltipX = $state(0);
 	let tooltipY = $state(0);
@@ -24,7 +21,7 @@
 	}
 
 	function handleRowEnter(d, e) {
-		hoveredDriver.set(d.driver);
+		hoveredRow = d.driver;
 		if (d.sectors && (d.sectors.s1 || d.sectors.s2 || d.sectors.s3)) {
 			sectorTooltip = d;
 			updateTooltipPos(e);
@@ -36,7 +33,7 @@
 	}
 
 	function handleRowLeave() {
-		hoveredDriver.set(null);
+		hoveredRow = null;
 		sectorTooltip = null;
 	}
 

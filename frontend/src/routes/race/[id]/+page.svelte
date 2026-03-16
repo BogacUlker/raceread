@@ -375,6 +375,13 @@
 				<span>{$t('common.no_data')}</span>
 			</div>
 		{:else if qualifyingData}
+			<!-- Qualifying Insights -->
+			{#if $showAnnotations}
+				<RaceInsightsPanel
+					annotations={annotations.annotations || []}
+					chartTypes={['qualifying']}
+				/>
+			{/if}
 			<div class="dashboard__grid">
 				<!-- Qualifying Results Table -->
 				<div id="section-qualifying-results" class="dashboard-section">

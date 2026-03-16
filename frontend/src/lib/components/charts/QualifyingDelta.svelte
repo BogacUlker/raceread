@@ -5,13 +5,8 @@
 <script>
 	import { t } from '$lib/i18n/index.js';
 	import { TEAM_COLORS } from '$lib/constants.js';
-	import { hoveredDriver } from '$lib/stores/race.js';
-
 	/** @type {{ drivers: Array<any> }} */
 	let { drivers } = $props();
-
-	let externalHover = $state(null);
-	const unsubH = hoveredDriver.subscribe(v => { externalHover = v; });
 
 	// Split into groups
 	let q3Drivers = $derived(drivers.filter((d) => d.q3_s != null));
@@ -43,14 +38,13 @@
 				<div class="delta-group__label">Q3</div>
 				{#each q3Drivers as d}
 					{@const color = TEAM_COLORS[d.team] || '#888'}
-					{@const activeHover = hovered || externalHover}
-					{@const isFaded = activeHover && activeHover !== d.driver}
+					{@const isFaded = hovered && hovered !== d.driver}
 					<!-- svelte-ignore a11y_no_static_element_interactions -->
 					<div
 						class="delta-row"
 						class:delta-row--faded={isFaded}
-						onmouseenter={() => { hovered = d.driver; hoveredDriver.set(d.driver); }}
-						onmouseleave={() => { hovered = null; hoveredDriver.set(null); }}
+						onmouseenter={() => { hovered = d.driver; }}
+						onmouseleave={() => { hovered = null; }}
 					>
 						<span class="delta-row__driver" style="color: {color}">{d.driver}</span>
 						<div class="delta-row__bar-area">
@@ -81,14 +75,13 @@
 				<div class="delta-group__label delta-group__label--q2">Q2</div>
 				{#each q2Drivers as d}
 					{@const color = TEAM_COLORS[d.team] || '#888'}
-					{@const activeHover = hovered || externalHover}
-					{@const isFaded = activeHover && activeHover !== d.driver}
+					{@const isFaded = hovered && hovered !== d.driver}
 					<!-- svelte-ignore a11y_no_static_element_interactions -->
 					<div
 						class="delta-row"
 						class:delta-row--faded={isFaded}
-						onmouseenter={() => { hovered = d.driver; hoveredDriver.set(d.driver); }}
-						onmouseleave={() => { hovered = null; hoveredDriver.set(null); }}
+						onmouseenter={() => { hovered = d.driver; }}
+						onmouseleave={() => { hovered = null; }}
 					>
 						<span class="delta-row__driver" style="color: {color}">{d.driver}</span>
 						<div class="delta-row__bar-area">
@@ -109,14 +102,13 @@
 				<div class="delta-group__label delta-group__label--q1">Q1</div>
 				{#each q1Drivers as d}
 					{@const color = TEAM_COLORS[d.team] || '#888'}
-					{@const activeHover = hovered || externalHover}
-					{@const isFaded = activeHover && activeHover !== d.driver}
+					{@const isFaded = hovered && hovered !== d.driver}
 					<!-- svelte-ignore a11y_no_static_element_interactions -->
 					<div
 						class="delta-row"
 						class:delta-row--faded={isFaded}
-						onmouseenter={() => { hovered = d.driver; hoveredDriver.set(d.driver); }}
-						onmouseleave={() => { hovered = null; hoveredDriver.set(null); }}
+						onmouseenter={() => { hovered = d.driver; }}
+						onmouseleave={() => { hovered = null; }}
 					>
 						<span class="delta-row__driver" style="color: {color}">{d.driver}</span>
 						<div class="delta-row__bar-area">

@@ -6,14 +6,10 @@
 	import { t } from '$lib/i18n/index.js';
 	import { TEAM_COLORS } from '$lib/constants.js';
 	import { formatLapTime } from '$lib/utils/format.js';
-	import { hoveredDriver } from '$lib/stores/race.js';
-
 	/** @type {{ drivers: Array<any> }} */
 	let { drivers } = $props();
 
 	let selectedSession = $state('Q3');
-	let externalHover = $state(null);
-	const unsubH = hoveredDriver.subscribe(v => { externalHover = v; });
 	const sessions = ['Q1', 'Q2', 'Q3'];
 
 	// Filter drivers who have a time in the selected session
@@ -97,7 +93,6 @@
 	let tooltipY = $state(0);
 
 	function handleEnter(d, e) {
-		hoveredDriver.set(d.driver);
 		hovered = d.driver;
 		tooltipData = d;
 		updatePos(e);
@@ -108,7 +103,6 @@
 	}
 
 	function handleLeave() {
-		hoveredDriver.set(null);
 		hovered = null;
 		tooltipData = null;
 	}
@@ -166,8 +160,7 @@
 	<div class="sector-chart">
 		{#each driverSectors as d}
 			{@const color = TEAM_COLORS[d.team] || '#888'}
-			{@const activeHover = hovered || externalHover}
-			{@const isFaded = activeHover && activeHover !== d.driver}
+			{@const isFaded = hovered && hovered !== d.driver}
 			<!-- svelte-ignore a11y_no_static_element_interactions -->
 			<div
 				class="sector-row"
