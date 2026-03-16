@@ -422,7 +422,7 @@
 	}
 
 	function cycleSpeed() {
-		const speeds = [1, 2, 4];
+		const speeds = [0.25, 0.5, 0.75, 1, 2, 4];
 		const idx = speeds.indexOf(animSpeed);
 		animSpeed = speeds[(idx + 1) % speeds.length];
 		if (animating) {

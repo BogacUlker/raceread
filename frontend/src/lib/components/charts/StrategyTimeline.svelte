@@ -218,28 +218,54 @@
 
 			<!-- SC shading (darker amber) -->
 			{#each scRanges as range}
+				{@const rx = xScale(range.start - 0.5)}
+				{@const rw = xScale(range.end + 0.5) - rx}
 				<rect
-					x={xScale(range.start - 0.5)}
+					x={rx}
 					y={padding.top}
-					width={xScale(range.end + 0.5) - xScale(range.start - 0.5)}
+					width={rw}
 					height={svgHeight - padding.top - padding.bottom}
 					fill="#F59E0B"
 					fill-opacity="0.07"
 					style="pointer-events: none;"
 				/>
+				<text
+					x={rx + rw / 2}
+					y={padding.top - 2}
+					text-anchor="middle"
+					fill="#F59E0B"
+					font-family="var(--font-mono)"
+					font-size="9"
+					font-weight="600"
+					opacity="0.7"
+					style="pointer-events: none;"
+				>SC</text>
 			{/each}
 
 			<!-- VSC shading (lighter amber) -->
 			{#each vscRanges as range}
+				{@const rx = xScale(range.start - 0.5)}
+				{@const rw = xScale(range.end + 0.5) - rx}
 				<rect
-					x={xScale(range.start - 0.5)}
+					x={rx}
 					y={padding.top}
-					width={xScale(range.end + 0.5) - xScale(range.start - 0.5)}
+					width={rw}
 					height={svgHeight - padding.top - padding.bottom}
 					fill="#F59E0B"
 					fill-opacity="0.05"
 					style="pointer-events: none;"
 				/>
+				<text
+					x={rx + rw / 2}
+					y={padding.top - 2}
+					text-anchor="middle"
+					fill="#F59E0B"
+					font-family="var(--font-mono)"
+					font-size="9"
+					font-weight="600"
+					opacity="0.5"
+					style="pointer-events: none;"
+				>VSC</text>
 			{/each}
 
 			<!-- Subtle horizontal grid lines -->

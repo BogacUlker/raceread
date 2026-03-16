@@ -32,6 +32,9 @@
 		<h3 class="chart-card__title">{$t('charts.traffic')}</h3>
 	</div>
 
+	<!-- Explanation -->
+	<p class="traffic__explain">{$t('charts.traffic_explain')}</p>
+
 	<!-- View toggle -->
 	<div class="traffic__controls">
 		<div class="traffic__toggle">
@@ -124,6 +127,14 @@
 		color: var(--text-muted);
 		cursor: pointer;
 		transition: all 0.15s;
+	}
+	.traffic__explain {
+		font-family: var(--font-body);
+		font-size: 12px;
+		color: var(--text-muted);
+		line-height: 1.5;
+		margin: 0 0 var(--space-md) 0;
+		opacity: 0.8;
 	}
 	.traffic__toggle-btn:first-child { border-radius: var(--radius-sm) 0 0 var(--radius-sm); }
 	.traffic__toggle-btn:last-child { border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
