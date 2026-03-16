@@ -348,8 +348,8 @@
 	// ----- Gap chart data (draws progressively) -----
 
 	let gapChartW = $derived(Math.max(300, containerWidth));
-	const gapChartH = 120;
-	const gapM = { top: 20, right: 20, bottom: 30, left: 50 };
+	const gapChartH = 140;
+	const gapM = { top: 32, right: 20, bottom: 30, left: 50 };
 
 	// Pre-compute gap at regular distance intervals
 	let gapPoints = $derived.by(() => {
@@ -675,7 +675,7 @@
 				<!-- Driver labels on y-axis -->
 				<text
 					x={gapM.left - 4}
-					y={gapM.top - 4}
+					y={gapM.top - 16}
 					fill={color1}
 					font-size="9"
 					font-family="var(--font-mono)"
@@ -684,7 +684,7 @@
 				>{d1} {$t('charts.faster')}</text>
 				<text
 					x={gapM.left - 4}
-					y={gapChartH - gapM.bottom + 12}
+					y={gapChartH - gapM.bottom + 20}
 					fill={color2}
 					font-size="9"
 					font-family="var(--font-mono)"
