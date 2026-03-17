@@ -210,25 +210,28 @@
 	let pos2 = $derived(getPositionAtTime(samples2, Math.min(currentTime, lapTime2)));
 
 	// ----- Gap calculation -----
-	// At the leader's distance, what is the time difference?
+	// Use x,y position matching to compute gap correctly
+	// (raw dist values are not comparable between drivers due to different racing lines)
 	let currentGap = $derived.by(() => {
-		if (!samples1.length || !samples2.length || totalTime === 0) return 0;
+		if (!gapPoints.length || totalTime === 0) return 0;
 
 		const t1 = Math.min(currentTime, lapTime1);
-		const t2 = Math.min(currentTime, lapTime2);
 		const dist1 = getDistAtTime(samples1, t1);
-		const dist2 = getDistAtTime(samples2, t2);
 
-		// Leader is whoever has covered more distance
-		if (dist1 >= dist2) {
-			// d1 is ahead; find what time d2 reaches dist1
-			const t2AtDist1 = getTimeAtDist(samples2, dist1);
-			return t2AtDist1 - t1; // positive = d1 leads
-		} else {
-			// d2 is ahead
-			const t1AtDist2 = getTimeAtDist(samples1, dist2);
-			return t2 - t1AtDist2; // negative = d2 leads
+		// Interpolate gap from precomputed x,y-matched curve
+		if (gapPoints.length < 2) return gapPoints[0]?.gap || 0;
+
+		let lo = 0, hi = gapPoints.length - 1;
+		while (lo < hi - 1) {
+			const mid = (lo + hi) >> 1;
+			if (gapPoints[mid].dist <= dist1) lo = mid;
+			else hi = mid;
 		}
+		const a = gapPoints[lo];
+		const b = gapPoints[hi];
+		if (a.dist === b.dist) return a.gap;
+		const frac = (dist1 - a.dist) / (b.dist - a.dist);
+		return a.gap + (b.gap - a.gap) * frac;
 	});
 
 	function formatGapDisplay(gap) {
@@ -351,23 +354,57 @@
 	const gapChartH = 140;
 	const gapM = { top: 32, right: 20, bottom: 30, left: 50 };
 
-	// Pre-compute gap at regular distance intervals
+	// Pre-compute gap by projecting each d1 position onto d2's path segments.
+	// Raw dist values differ between drivers (different racing lines),
+	// so we use x,y segment projection for accurate time interpolation.
 	let gapPoints = $derived.by(() => {
-		if (!samples1.length || !samples2.length || trackLength === 0) return [];
+		if (!samples1.length || !samples2.length) return [];
 
-		const points = [];
-		const numSteps = 200;
-		const step = trackLength / numSteps;
+		const ratio = samples2.length / samples1.length;
+		const totalGap = lapTime2 - lapTime1;
 
-		for (let i = 0; i <= numSteps; i++) {
-			const dist = i * step;
-			const t1 = getTimeAtDist(samples1, dist);
-			const t2 = getTimeAtDist(samples2, dist);
-			const gap = t2 - t1; // positive = d1 faster to reach this point
-			points.push({ dist, gap });
-		}
+		// For each d1 sample, project its (x,y) onto d2's path segments
+		const raw = samples1.map((s1, i) => {
+			const center = Math.round(i * ratio);
+			const lo = Math.max(0, center - 25);
+			const hi = Math.min(samples2.length - 2, center + 25);
 
-		return points;
+			let bestDistSq = Infinity;
+			let bestTime = samples2[Math.min(center, samples2.length - 1)].time_s;
+
+			for (let j = lo; j <= hi; j++) {
+				const ax = samples2[j].x, ay = samples2[j].y;
+				const bx = samples2[j + 1].x, by = samples2[j + 1].y;
+
+				// Project s1 onto segment [a, b]
+				const abx = bx - ax, aby = by - ay;
+				const apx = s1.x - ax, apy = s1.y - ay;
+				const ab2 = abx * abx + aby * aby;
+				const t = ab2 > 0 ? Math.max(0, Math.min(1, (apx * abx + apy * aby) / ab2)) : 0;
+
+				const px = ax + t * abx, py = ay + t * aby;
+				const dx = s1.x - px, dy = s1.y - py;
+				const dSq = dx * dx + dy * dy;
+
+				if (dSq < bestDistSq) {
+					bestDistSq = dSq;
+					bestTime = samples2[j].time_s + t * (samples2[j + 1].time_s - samples2[j].time_s);
+				}
+			}
+
+			return { dist: s1.dist, gap: bestTime - s1.time_s };
+		});
+
+		// Force known endpoints (start=0, end=exact total gap)
+		raw[0].gap = 0;
+		raw[raw.length - 1].gap = totalGap;
+
+		// Smooth with 5-point moving average to reduce residual noise
+		return raw.map((p, i) => {
+			if (i < 2 || i >= raw.length - 2) return p;
+			const avg = (raw[i - 2].gap + raw[i - 1].gap + p.gap + raw[i + 1].gap + raw[i + 2].gap) / 5;
+			return { dist: p.dist, gap: avg };
+		});
 	});
 
 	let maxAbsGap = $derived.by(() => {
@@ -376,14 +413,11 @@
 		return m * 1.2;
 	});
 
-	// Current distance (leader's distance) for progressive draw
+	// Current distance for progressive draw (use d1's dist since gap curve is indexed by it)
 	let currentMaxDist = $derived.by(() => {
-		if (!samples1.length || !samples2.length) return 0;
+		if (!samples1.length) return 0;
 		const t1 = Math.min(currentTime, lapTime1);
-		const t2 = Math.min(currentTime, lapTime2);
-		const dist1 = getDistAtTime(samples1, t1);
-		const dist2 = getDistAtTime(samples2, t2);
-		return Math.max(dist1, dist2);
+		return getDistAtTime(samples1, t1);
 	});
 
 	let visibleGapPoints = $derived(gapPoints.filter(p => p.dist <= currentMaxDist));

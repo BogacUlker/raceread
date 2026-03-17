@@ -40,7 +40,7 @@
 		text-decoration: none;
 	}
 	.header__logo-img {
-		height: 32px;
+		height: 54px;
 		width: auto;
 		display: block;
 	}
@@ -71,7 +71,7 @@
 			height: 48px;
 		}
 		.header__logo-img {
-			height: 26px;
+			height: 42px;
 		}
 	}
 </style>
