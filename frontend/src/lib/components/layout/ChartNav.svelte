@@ -5,7 +5,6 @@
 -->
 <script>
 	import { tick } from 'svelte';
-	import { get } from 'svelte/store';
 	import { t } from '$lib/i18n/index.js';
 	import { collapsedSections, SECTIONS, QUALIFYING_SECTIONS } from '$lib/stores/dashboard.js';
 	import { activeSession } from '$lib/stores/race.js';
@@ -26,17 +25,27 @@
 		'qualifying-delta': 'chart_nav.qualifying_delta'
 	};
 
-	let collapsed = $state({});
-	$effect(() => { collapsed = get(collapsedSections); });
+	let activeSections = $derived($activeSession === 'qualifying' ? QUALIFYING_SECTIONS : SECTIONS);
+	let allCollapsed = $derived(activeSections.every((s) => $collapsedSections[s]));
 
-	let session = $state('race');
-	$effect(() => { session = get(activeSession); });
-
-	let activeSections = $derived(session === 'qualifying' ? QUALIFYING_SECTIONS : SECTIONS);
-	let allCollapsed = $derived(activeSections.every((s) => collapsed[s]));
+	// Scroll to top of chart sections when session changes
+	let prevSession = $state($activeSession);
+	$effect(() => {
+		const s = $activeSession;
+		if (s !== prevSession) {
+			prevSession = s;
+			tick().then(() => {
+				const target = s === 'qualifying' ? 'section-qualifying-results' : 'section-insights';
+				const el = document.getElementById(target);
+				if (el) {
+					el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+				}
+			});
+		}
+	});
 
 	async function navigateTo(sectionId) {
-		if (collapsed[sectionId]) {
+		if ($collapsedSections[sectionId]) {
 			collapsedSections.toggle(sectionId);
 			await tick();
 		}
@@ -60,14 +69,14 @@
 		{#each activeSections as sectionId}
 			<button
 				class="chart-nav__pill"
-				class:muted={collapsed[sectionId]}
+				class:muted={$collapsedSections[sectionId]}
 				onclick={() => navigateTo(sectionId)}
 			>
 				{$t(LABELS[sectionId])}
 			</button>
 		{/each}
 	</div>
-	{#if session === 'race'}
+	{#if $activeSession === 'race'}
 		<button class="chart-nav__toggle" onclick={toggleAll}>
 			{allCollapsed ? $t('chart_nav.expand_all') : $t('chart_nav.collapse_all')}
 		</button>

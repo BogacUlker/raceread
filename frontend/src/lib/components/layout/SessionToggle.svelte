@@ -3,12 +3,8 @@
 	Reads/writes the activeSession store.
 -->
 <script>
-	import { get } from 'svelte/store';
 	import { t } from '$lib/i18n/index.js';
 	import { activeSession } from '$lib/stores/race.js';
-
-	let current = $state('race');
-	$effect(() => { current = get(activeSession); });
 
 	function switchTo(session) {
 		activeSession.set(session);
@@ -18,14 +14,14 @@
 <div class="session-toggle">
 	<button
 		class="session-toggle__tab"
-		class:active={current === 'race'}
+		class:active={$activeSession === 'race'}
 		onclick={() => switchTo('race')}
 	>
 		{$t('session.race')}
 	</button>
 	<button
 		class="session-toggle__tab"
-		class:active={current === 'qualifying'}
+		class:active={$activeSession === 'qualifying'}
 		onclick={() => switchTo('qualifying')}
 	>
 		{$t('session.qualifying')}
