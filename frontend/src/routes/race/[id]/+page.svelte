@@ -4,6 +4,7 @@
 -->
 <script>
 	import { t } from '$lib/i18n/index.js';
+	import { get } from 'svelte/store';
 	import { selectedDrivers, activeSession, showAnnotations } from '$lib/stores/race.js';
 	import { collapsedSections } from '$lib/stores/dashboard.js';
 	import { TEAM_COLORS } from '$lib/constants.js';
@@ -41,11 +42,11 @@
 
 	// Collapsed sections state
 	let collapsed = $state({});
-	const unsubCollapsed = collapsedSections.subscribe((v) => { collapsed = v; });
+	$effect(() => { collapsed = get(collapsedSections); });
 
 	// Active session state
 	let session = $state('race');
-	const unsubSession = activeSession.subscribe((v) => { session = v; });
+	$effect(() => { session = get(activeSession); });
 
 	// Qualifying data - lazy loaded on first tab switch
 	let qualifyingData = $state(null);
@@ -157,12 +158,18 @@
 	async function loadTraffic() {
 		trafficLoading = true;
 		try {
-			trafficData = await api(`/api/races/${raceId}/traffic`);
+			// Add timeout to prevent indefinite loading state
+			const timeoutPromise = new Promise((_, reject) =>
+				setTimeout(() => reject(new Error('Traffic data timeout')), 10000)
+			);
+			trafficData = await Promise.race([
+				api(`/api/races/${raceId}/traffic`),
+				timeoutPromise
+			]);
 		} catch {
 			trafficData = null;
-		} finally {
-			trafficLoading = false;
 		}
+		trafficLoading = false;
 	}
 
 	loadTraffic();

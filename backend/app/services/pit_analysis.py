@@ -13,6 +13,41 @@ from typing import Any
 from backend.app.services.preprocessing import _extract_sc_laps, _extract_vsc_laps, _round
 
 
+def _compute_race_wide_baseline(
+    driver_laps_map: dict[str, list[dict]],
+    neutralized_laps: set[int],
+    all_pit_adjacent: set[int],
+) -> float | None:
+    """Compute a race-wide median clean pace from all drivers.
+
+    Used as a fallback when a specific driver has too few clean laps
+    for a reliable individual baseline.
+    """
+    all_clean: list[float] = []
+    for drv_laps in driver_laps_map.values():
+        for lap in drv_laps:
+            lap_num = lap.get("lap", 0)
+            time_s = lap.get("time_s")
+            if lap_num <= 1 or time_s is None:
+                continue
+            if lap_num in neutralized_laps:
+                continue
+            if lap_num in all_pit_adjacent:
+                continue
+            if lap.get("is_accurate") is False:
+                continue
+            all_clean.append(time_s)
+    if all_clean:
+        return statistics.median(all_clean)
+    return None
+
+
+# Typical pit lane time loss (seconds) used as a last-resort fallback
+# when neither baseline nor lap times are available.  Covers the
+# stationary time (~2-3s) plus pit lane speed-limit delta (~20s).
+_FALLBACK_PIT_LOSS_S = 22.0
+
+
 def compute_pit_stats(
     laps_data: dict,
     strategy_data: dict,
@@ -28,6 +63,7 @@ def compute_pit_stats(
        - SC/VSC laps
        - Pit laps and the lap immediately after each pit (pit_lap + 1)
     4. Median clean pace becomes the baseline.
+       Falls back to race-wide median, then a fixed estimate (~22s).
     5. Time loss per pit = lap[pit_lap].time_s + lap[pit_lap+1].time_s - 2 * baseline.
     6. Track compound changes and SC/VSC status for each stop.
 
@@ -45,10 +81,22 @@ def compute_pit_stats(
         for drv, drv_laps in laps_data["laps"].items():
             driver_laps_map[drv] = drv_laps if isinstance(drv_laps, list) else []
 
+    # Collect all pit-adjacent laps across all drivers for race-wide baseline
+    all_pit_adjacent: set[int] = set()
+    strategy_drivers = strategy_data.get("drivers", [])
+    for driver_entry in strategy_drivers:
+        for pl in driver_entry.get("pit_laps", []):
+            all_pit_adjacent.add(pl)
+            all_pit_adjacent.add(pl + 1)
+
+    # Compute race-wide baseline once (used as fallback)
+    race_wide_baseline = _compute_race_wide_baseline(
+        driver_laps_map, neutralized_laps, all_pit_adjacent
+    )
+
     # Process each driver from strategy data
     results: list[dict[str, Any]] = []
 
-    strategy_drivers = strategy_data.get("drivers", [])
     for driver_entry in strategy_drivers:
         driver_code = driver_entry.get("driver", "")
         team = driver_entry.get("team", "Unknown")
@@ -98,10 +146,22 @@ def compute_pit_stats(
 
             clean_times.append(time_s)
 
-        # Compute baseline median clean pace
+        # Compute baseline median clean pace with fallback chain:
+        # 1. Driver-specific median (needs >= 3 clean laps for reliability)
+        # 2. Race-wide median from all drivers
+        # 3. None (will use fixed fallback per-stop)
         baseline: float | None = None
-        if clean_times:
+        baseline_is_fallback = False
+        if len(clean_times) >= 3:
             baseline = statistics.median(clean_times)
+        elif race_wide_baseline is not None:
+            baseline = race_wide_baseline
+            baseline_is_fallback = True
+        elif clean_times:
+            # Fewer than 3 driver-specific laps but no race-wide data either;
+            # use what we have (better than nothing).
+            baseline = statistics.median(clean_times)
+            baseline_is_fallback = True
 
         # Compute time loss per pit stop
         pit_details: list[dict[str, Any]] = []
@@ -122,19 +182,30 @@ def compute_pit_stats(
             # Check if pit stop happened under SC/VSC
             under_sc = pl in neutralized_laps
 
-            # Compute time loss
-            time_loss: float | None = None
-            if baseline is not None:
-                pit_time = pit_lap_data.get("time_s") if pit_lap_data else None
-                out_time = out_lap_data.get("time_s") if out_lap_data else None
+            # Compute time loss with fallback chain
+            time_loss: float
+            estimated = False
 
-                if pit_time is not None and out_time is not None:
-                    time_loss = _round(pit_time + out_time - 2 * baseline)
-                    total_loss += time_loss
-                elif pit_time is not None and out_time is None:
-                    # Pit on last lap or missing out lap - estimate from single lap
-                    time_loss = _round(pit_time - baseline)
-                    total_loss += time_loss
+            pit_time = pit_lap_data.get("time_s") if pit_lap_data else None
+            out_time = out_lap_data.get("time_s") if out_lap_data else None
+
+            if baseline is not None and pit_time is not None and out_time is not None:
+                # Normal case: both pit lap and out lap available
+                time_loss = _round(pit_time + out_time - 2 * baseline)
+            elif baseline is not None and pit_time is not None and out_time is None:
+                # Pit on last lap or missing out lap - single lap estimate
+                time_loss = _round(pit_time - baseline)
+                estimated = True
+            elif baseline is not None and pit_time is None and out_time is not None:
+                # Missing pit lap time (e.g., lap 1 pit) - single lap estimate
+                time_loss = _round(out_time - baseline)
+                estimated = True
+            else:
+                # No baseline or no lap times at all - use fixed fallback
+                time_loss = _FALLBACK_PIT_LOSS_S
+                estimated = True
+
+            total_loss += time_loss
 
             pit_details.append({
                 "lap": pl,
@@ -142,6 +213,7 @@ def compute_pit_stats(
                 "compound_from": compound_from,
                 "compound_to": compound_to,
                 "under_sc": under_sc,
+                "estimated": estimated or baseline_is_fallback,
             })
 
         results.append({

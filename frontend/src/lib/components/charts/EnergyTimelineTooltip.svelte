@@ -4,6 +4,7 @@
 -->
 <script>
 	import { getContext } from 'svelte';
+	import { get } from 'svelte/store';
 	import { ENERGY_COLORS } from '$lib/constants.js';
 	import { hoveredLap as hoveredLapStore } from '$lib/stores/race.js';
 	import { t } from '$lib/i18n/index.js';
@@ -17,7 +18,7 @@
 
 	// Sync from external store
 	let externalLap = $state(null);
-	const unsubLap = hoveredLapStore.subscribe((v) => { externalLap = v; });
+	$effect(() => { externalLap = get(hoveredLapStore); });
 
 	let displayLap = $derived(localHoveredLap ?? externalLap);
 

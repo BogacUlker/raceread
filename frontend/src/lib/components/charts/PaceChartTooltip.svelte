@@ -4,6 +4,7 @@
 -->
 <script>
 	import { getContext } from 'svelte';
+	import { get } from 'svelte/store';
 	import { TEAM_COLORS, COMPOUND_COLORS, ANNOTATION_COLORS } from '$lib/constants.js';
 	import { formatLapTime, formatGap } from '$lib/utils/format.js';
 	import { hoveredLap as hoveredLapStore } from '$lib/stores/race.js';
@@ -29,9 +30,7 @@
 
 	// Sync from external store (other chart hovered)
 	let externalLap = $state(null);
-	const unsubscribe = hoveredLapStore.subscribe((v) => {
-		externalLap = v;
-	});
+	$effect(() => { externalLap = get(hoveredLapStore); });
 
 	// The displayed lap: local hover takes priority, else external sync
 	let displayLap = $derived(localHoveredLap ?? externalLap);

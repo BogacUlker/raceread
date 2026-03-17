@@ -5,6 +5,7 @@
 -->
 <script>
 	import { getContext } from 'svelte';
+	import { get } from 'svelte/store';
 	import { TEAM_COLORS, COMPOUND_COLORS } from '$lib/constants.js';
 	import { hoveredDriver, pinnedDriver } from '$lib/stores/race.js';
 	import { t } from '$lib/i18n/index.js';
@@ -20,8 +21,8 @@
 	let pitTooltipX = $state(0);
 	let pitTooltipY = $state(0);
 
-	const unsubHover = hoveredDriver.subscribe((v) => { hovered = v; });
-	const unsubPin = pinnedDriver.subscribe((v) => { pinned = v; });
+	$effect(() => { hovered = get(hoveredDriver); });
+	$effect(() => { pinned = get(pinnedDriver); });
 
 	function buildPath(laps) {
 		const points = laps

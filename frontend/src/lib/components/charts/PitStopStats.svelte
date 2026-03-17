@@ -6,6 +6,7 @@
 <script>
 	import { t } from '$lib/i18n/index.js';
 	import { TEAM_COLORS, COMPOUND_COLORS } from '$lib/constants.js';
+	import { get } from 'svelte/store';
 	import { hoveredDriver } from '$lib/stores/race.js';
 
 	/** @type {{ data: { race_id: string, drivers: Array<{ driver: string, team: string, pits: Array<{ lap: number, time_loss_s: number, compound_from: string, compound_to: string, under_sc: boolean }>, total_time_lost_s: number, num_stops: number }> } }} */
@@ -49,7 +50,7 @@
 	let tooltipX = $state(0);
 	let tooltipY = $state(0);
 
-	const unsubHover = hoveredDriver.subscribe(() => {});
+	$effect(() => { get(hoveredDriver); });
 
 	function handleRowEnter(entry, e) {
 		hovered = entry.driver;

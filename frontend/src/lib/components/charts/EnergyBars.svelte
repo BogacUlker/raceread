@@ -7,6 +7,7 @@
 	import { t } from '$lib/i18n/index.js';
 	import { TEAM_COLORS, ENERGY_COLORS } from '$lib/constants.js';
 	import InferredBadge from '$lib/components/ui/InferredBadge.svelte';
+	import { get } from 'svelte/store';
 	import { hoveredDriver, selectedEnergyDriver } from '$lib/stores/race.js';
 	import { formatPct } from '$lib/utils/format.js';
 
@@ -31,8 +32,8 @@
 	let tooltipX = $state(0);
 	let tooltipY = $state(0);
 
-	const unsubHover = hoveredDriver.subscribe(() => {});
-	const unsubSelected = selectedEnergyDriver.subscribe((v) => { selectedDriver = v; });
+	$effect(() => { get(hoveredDriver); });
+	$effect(() => { selectedDriver = get(selectedEnergyDriver); });
 
 	function handleRowEnter(entry, e) {
 		hovered = entry.driver;

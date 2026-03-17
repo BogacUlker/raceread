@@ -5,6 +5,7 @@
 <script>
 	import { t } from '$lib/i18n/index.js';
 	import { TEAM_COLORS } from '$lib/constants.js';
+	import { get } from 'svelte/store';
 	import { hoveredDriver, pinnedDriver } from '$lib/stores/race.js';
 	import { median } from 'd3-array';
 	import { scaleLinear } from 'd3-scale';
@@ -16,8 +17,8 @@
 
 	let hovered = $state(null);
 	let pinned = $state([]);
-	const unsubH = hoveredDriver.subscribe(v => { hovered = v; });
-	const unsubP = pinnedDriver.subscribe(v => { pinned = v; });
+	$effect(() => { hovered = get(hoveredDriver); });
+	$effect(() => { pinned = get(pinnedDriver); });
 
 	// Compute median lap time per driver (excluding inaccurate/null laps)
 	let driverMedians = $derived(

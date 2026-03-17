@@ -4,7 +4,7 @@
 
 <footer class="footer">
 	<div class="footer__inner">
-		<span class="footer__text">RaceRead - F1 Post-Race Telemetry Analysis</span>
+		<span class="footer__text">RaceRead - {$t('footer.tagline')}</span>
 		<div class="footer__right">
 			<a href="https://buymeacoffee.com/bogaculker" target="_blank" rel="noopener noreferrer" class="footer__coffee">
 				&#9749; {$t('footer.buy_coffee')}

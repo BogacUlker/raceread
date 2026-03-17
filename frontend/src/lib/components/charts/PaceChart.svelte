@@ -11,6 +11,7 @@
 	import { t } from '$lib/i18n/index.js';
 	import { computeGapToLeader } from '$lib/utils/format.js';
 	import { TEAM_COLORS } from '$lib/constants.js';
+	import { get } from 'svelte/store';
 	import { hoveredDriver, pinnedDriver } from '$lib/stores/race.js';
 
 	import PaceChartLine from './PaceChartLine.svelte';
@@ -25,8 +26,8 @@
 
 	let hovered = $state(null);
 	let pinned = $state([]);
-	const unsubH = hoveredDriver.subscribe(v => { hovered = v; });
-	const unsubP = pinnedDriver.subscribe(v => { pinned = v; });
+	$effect(() => { hovered = get(hoveredDriver); });
+	$effect(() => { pinned = get(pinnedDriver); });
 
 	let lapsWithGap = $derived(computeGapToLeader(laps));
 

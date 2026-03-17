@@ -202,7 +202,11 @@
 	</div>
 
 	<!-- Speed Trace -->
-	<SpeedTrace {raceId} drivers={driverList} {circuit} totalLaps={raceInfo?.total_laps || 58} />
+	<SpeedTrace {raceId} drivers={[
+		...driverList.filter(d => d.driver === d1),
+		...driverList.filter(d => d.driver === d2),
+		...driverList.filter(d => d.driver !== d1 && d.driver !== d2)
+	]} {circuit} totalLaps={raceInfo?.total_laps || 58} />
 
 	<!-- Lap Delta Chart -->
 	{#if lapDeltas.length > 0}

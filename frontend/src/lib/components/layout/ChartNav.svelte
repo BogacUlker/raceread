@@ -5,6 +5,7 @@
 -->
 <script>
 	import { tick } from 'svelte';
+	import { get } from 'svelte/store';
 	import { t } from '$lib/i18n/index.js';
 	import { collapsedSections, SECTIONS, QUALIFYING_SECTIONS } from '$lib/stores/dashboard.js';
 	import { activeSession } from '$lib/stores/race.js';
@@ -26,10 +27,10 @@
 	};
 
 	let collapsed = $state({});
-	const unsub = collapsedSections.subscribe((v) => { collapsed = v; });
+	$effect(() => { collapsed = get(collapsedSections); });
 
 	let session = $state('race');
-	const unsubSession = activeSession.subscribe((v) => { session = v; });
+	$effect(() => { session = get(activeSession); });
 
 	let activeSections = $derived(session === 'qualifying' ? QUALIFYING_SECTIONS : SECTIONS);
 	let allCollapsed = $derived(activeSections.every((s) => collapsed[s]));

@@ -12,6 +12,7 @@
 	import EnergyTimelineLayers from './EnergyTimelineLayers.svelte';
 	import EnergyTimelineTooltip from './EnergyTimelineTooltip.svelte';
 	import LoadingSpinner from '$lib/components/ui/LoadingSpinner.svelte';
+	import { get } from 'svelte/store';
 	import { api } from '$lib/api.js';
 	import { selectedEnergyDriver } from '$lib/stores/race.js';
 
@@ -38,7 +39,8 @@
 	});
 
 	// Sync from store (when EnergyBars selects a driver)
-	const unsubStore = selectedEnergyDriver.subscribe((v) => {
+	$effect(() => {
+		const v = get(selectedEnergyDriver);
 		if (v && v !== selectedDriver) {
 			selectedDriver = v;
 		}

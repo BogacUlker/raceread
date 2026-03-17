@@ -130,7 +130,7 @@
 						<td class="col-delta">
 							<div class="delta-cell">
 								<span class="delta-text" style="color: {deltaColor(row.delta)}">
-									+{row.delta.toFixed(3)}s
+									{row.delta > 0 ? '-' : row.delta < 0 ? '+' : ''}{Math.abs(row.delta).toFixed(3)}s
 								</span>
 								<div class="delta-bar-track">
 									<div

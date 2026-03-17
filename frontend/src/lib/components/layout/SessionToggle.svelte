@@ -3,11 +3,12 @@
 	Reads/writes the activeSession store.
 -->
 <script>
+	import { get } from 'svelte/store';
 	import { t } from '$lib/i18n/index.js';
 	import { activeSession } from '$lib/stores/race.js';
 
 	let current = $state('race');
-	const unsub = activeSession.subscribe((v) => { current = v; });
+	$effect(() => { current = get(activeSession); });
 
 	function switchTo(session) {
 		activeSession.set(session);

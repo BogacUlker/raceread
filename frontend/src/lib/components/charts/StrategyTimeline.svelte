@@ -7,6 +7,7 @@
 	import { t } from '$lib/i18n/index.js';
 	import { TEAM_COLORS, COMPOUND_COLORS } from '$lib/constants.js';
 	import { scaleLinear } from 'd3-scale';
+	import { get } from 'svelte/store';
 	import { hoveredLap as hoveredLapStore } from '$lib/stores/race.js';
 
 	/**
@@ -81,7 +82,7 @@
 
 	// Cross-chart sync
 	let syncLap = $state(null);
-	const unsubLap = hoveredLapStore.subscribe((v) => { syncLap = v; });
+	$effect(() => { syncLap = get(hoveredLapStore); });
 
 	// Hover state
 	let hoveredRow = $state(null);
