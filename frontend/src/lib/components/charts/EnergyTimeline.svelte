@@ -23,7 +23,7 @@
 	 *   defaultDriver: string
 	 * }}
 	 */
-	let { raceId, drivers, defaultDriver } = $props();
+	let { raceId, drivers, defaultDriver, compareDriver = '' } = $props();
 
 	let selectedDriver = $state('');
 	let energyData = $state(null);
@@ -43,6 +43,14 @@
 		const v = get(selectedEnergyDriver);
 		if (v && v !== selectedDriver) {
 			selectedDriver = v;
+		}
+	});
+
+	// Sync from parent compare page when top-level selection changes
+	$effect(() => {
+		if (compareDriver && compareDriver !== selectedDriver) {
+			selectedDriver = compareDriver;
+			selectedEnergyDriver.set(compareDriver);
 		}
 	});
 

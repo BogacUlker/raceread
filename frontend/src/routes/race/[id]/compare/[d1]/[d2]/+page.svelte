@@ -206,7 +206,7 @@
 		...driverList.filter(d => d.driver === d1),
 		...driverList.filter(d => d.driver === d2),
 		...driverList.filter(d => d.driver !== d1 && d.driver !== d2)
-	]} {circuit} totalLaps={raceInfo?.total_laps || 58} />
+	]} {circuit} totalLaps={raceInfo?.total_laps || 58} compareDriver1={d1} compareDriver2={d2} />
 
 	<!-- Lap Delta Chart -->
 	{#if lapDeltas.length > 0}
@@ -266,14 +266,14 @@
 
 	<!-- Energy Timeline side by side -->
 	<div class="compare__energy-timelines">
-		<EnergyTimeline {raceId} drivers={driverList.filter(d => d.driver === d1)} defaultDriver={d1} />
-		<EnergyTimeline {raceId} drivers={driverList.filter(d => d.driver === d2)} defaultDriver={d2} />
+		<EnergyTimeline {raceId} drivers={driverList.filter(d => d.driver === d1)} defaultDriver={d1} compareDriver={d1} />
+		<EnergyTimeline {raceId} drivers={driverList.filter(d => d.driver === d2)} defaultDriver={d2} compareDriver={d2} />
 	</div>
 
 	<!-- Track Maps side by side -->
 	<div class="compare__track-maps">
-		<TrackMap {raceId} drivers={driverList.filter(d => d.driver === d1)} {circuit} totalLaps={raceInfo?.total_laps || 58} />
-		<TrackMap {raceId} drivers={driverList.filter(d => d.driver === d2)} {circuit} totalLaps={raceInfo?.total_laps || 58} />
+		<TrackMap {raceId} drivers={driverList.filter(d => d.driver === d1)} {circuit} totalLaps={raceInfo?.total_laps || 58} compareDriver1={d1} />
+		<TrackMap {raceId} drivers={driverList.filter(d => d.driver === d2)} {circuit} totalLaps={raceInfo?.total_laps || 58} compareDriver1={d2} />
 	</div>
 </section>
 

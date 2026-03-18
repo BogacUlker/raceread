@@ -16,6 +16,8 @@
 		drivers = [],
 		circuit = null,
 		totalLaps = 58,
+		compareDriver1 = '',
+		compareDriver2 = '',
 	} = $props();
 
 	let containerEl = $state(null);
@@ -48,6 +50,18 @@
 		if (drivers.length >= 2 && !driver1) {
 			driver1 = drivers[0].driver;
 			driver2 = drivers[1].driver;
+		}
+	});
+
+	// Sync from parent compare page when top-level selection changes
+	$effect(() => {
+		if (compareDriver1 && compareDriver1 !== driver1) {
+			driver1 = compareDriver1;
+		}
+	});
+	$effect(() => {
+		if (compareDriver2 && compareDriver2 !== driver2) {
+			driver2 = compareDriver2;
 		}
 	});
 
