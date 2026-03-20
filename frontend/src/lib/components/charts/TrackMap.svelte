@@ -154,8 +154,9 @@
 
 	// Compute bounds from outline + samples
 	let bounds = $derived.by(() => {
-		const allPoints = [...outlinePoints, ...primarySamples];
-		if (isCompare && samples2.length) allPoints.push(...samples2);
+		const allPoints = zoomedCorner ? [...primarySamples] : [...outlinePoints, ...primarySamples];
+		if (isCompare && zoomedCorner) allPoints.push(...zoomedSamples2);
+		else if (isCompare && samples2.length) allPoints.push(...samples2);
 		if (!allPoints.length) return { minX: 0, maxX: 1, minY: 0, maxY: 1 };
 		let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
 		for (const p of allPoints) {
@@ -355,7 +356,7 @@
 		return samples[Math.min(Math.round(progress * (samples.length - 1)), samples.length - 1)];
 	}
 	let animSample1 = $derived(animProgress > 0 && primarySamples.length ? nearestSample(primarySamples, animProgress) : null);
-	let animSample2 = $derived(animProgress > 0 && isCompare && samples2.length ? nearestSample(samples2, animProgress) : null);
+	let animSample2 = $derived.by(() => { const s2 = zoomedCorner ? zoomedSamples2 : samples2; return animProgress > 0 && isCompare && s2.length ? nearestSample(s2, animProgress) : null; });
 	let showAnimTooltip = $derived(animProgress > 0 && animSample1 != null);
 
 	// Speed delta for compare tooltip
@@ -416,8 +417,9 @@
 	});
 
 	let animPos2 = $derived.by(() => {
-		if (animProgress === 0 || !isCompare || !samples2.length) return null;
-		return lerpPos(samples2, animProgress);
+		const s2 = zoomedCorner ? zoomedSamples2 : samples2;
+		if (animProgress === 0 || !isCompare || !s2.length) return null;
+		return lerpPos(s2, animProgress);
 	});
 
 	let scrubbing = $state(false);
@@ -569,13 +571,13 @@
 			<!-- svelte-ignore a11y_no_static_element_interactions -->
 			<svg viewBox="0 0 {svgWidth} {svgHeight}" class="track-map__svg" onmouseleave={() => { hoverIdx = null; hoverDriver = null; }}>
 
-				<!-- Track outline background - brighter in race view, hidden when zoomed -->
-				{#if outlinePath && !zoomedCorner}
+				<!-- Track outline background -->
+				{#if outlinePath}
 					<path
 						d={outlinePath}
 						fill="none"
-						stroke={isRaceView ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.06)'}
-						stroke-width={isRaceView ? OUTLINE_WIDTH + 4 : OUTLINE_WIDTH}
+						stroke={zoomedCorner ? 'rgba(255,255,255,0.04)' : isRaceView ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.06)'}
+						stroke-width={zoomedCorner ? OUTLINE_WIDTH : isRaceView ? OUTLINE_WIDTH + 4 : OUTLINE_WIDTH}
 						stroke-linejoin="round"
 						stroke-linecap="round"
 						style="pointer-events: none;"

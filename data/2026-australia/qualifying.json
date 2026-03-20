@@ -18,7 +18,6 @@
         "s2": 17.284,
         "s3": 33.736
       },
-      "gap_to_pole": 0.0,
       "sectors_q1": {
         "s1": 27.908,
         "s2": 17.413,
@@ -33,7 +32,178 @@
         "s1": 27.498,
         "s2": 17.284,
         "s3": 33.736
-      }
+      },
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "session": "Q1",
+          "time_s": 111.876,
+          "time_str": "1:51.876",
+          "s1": 41.997,
+          "s2": 19.351,
+          "s3": 50.528,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q1",
+          "time_s": 79.84,
+          "time_str": "1:19.840",
+          "s1": 27.99,
+          "s2": 17.599,
+          "s3": 34.251,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q1",
+          "time_s": 121.569,
+          "time_str": "2:01.569",
+          "s1": 40.873,
+          "s2": 22.025,
+          "s3": 58.671,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q1",
+          "time_s": 110.313,
+          "time_str": "1:50.313",
+          "s1": 52.39,
+          "s2": 19.564,
+          "s3": 38.359,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q1",
+          "time_s": 93.246,
+          "time_str": "1:33.246",
+          "s1": 31.116,
+          "s2": 23.1,
+          "s3": 39.03,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 6,
+          "session": "Q1",
+          "time_s": 79.507,
+          "time_str": "1:19.507",
+          "s1": 27.908,
+          "s2": 17.413,
+          "s3": 34.186,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q2",
+          "time_s": 139.248,
+          "time_str": "2:19.248",
+          "s1": 61.667,
+          "s2": 23.062,
+          "s3": 54.519,
+          "compound": "SOFT",
+          "is_deleted": true,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q2",
+          "time_s": 78.934,
+          "time_str": "1:18.934",
+          "s1": 27.816,
+          "s2": 17.287,
+          "s3": 33.831,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q2",
+          "time_s": 108.654,
+          "time_str": "1:48.654",
+          "s1": 48.833,
+          "s2": 20.916,
+          "s3": 38.905,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q2",
+          "time_s": 78.987,
+          "time_str": "1:18.987",
+          "s1": 27.662,
+          "s2": 17.426,
+          "s3": 33.899,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q3",
+          "time_s": 108.083,
+          "time_str": "1:48.083",
+          "s1": 47.304,
+          "s2": 19.118,
+          "s3": 41.661,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q3",
+          "time_s": 79.084,
+          "time_str": "1:19.084",
+          "s1": 27.674,
+          "s2": 17.488,
+          "s3": 33.922,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q3",
+          "time_s": 102.628,
+          "time_str": "1:42.628",
+          "s1": 43.32,
+          "s2": 19.771,
+          "s3": 39.537,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q3",
+          "time_s": 78.518,
+          "time_str": "1:18.518",
+          "s1": 27.498,
+          "s2": 17.284,
+          "s3": 33.736,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        }
+      ],
+      "gap_to_pole": 0.0
     },
     {
       "driver": "ANT",
@@ -52,7 +222,6 @@
         "s2": 17.44,
         "s3": 33.815
       },
-      "gap_to_pole": 0.293,
       "sectors_q1": {
         "s1": 28.214,
         "s2": 17.61,
@@ -67,7 +236,142 @@
         "s1": 27.556,
         "s2": 17.44,
         "s3": 33.815
-      }
+      },
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "session": "Q1",
+          "time_s": 119.979,
+          "time_str": "1:59.979",
+          "s1": 57.486,
+          "s2": 20.671,
+          "s3": 41.822,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q1",
+          "time_s": 80.12,
+          "time_str": "1:20.120",
+          "s1": 28.214,
+          "s2": 17.61,
+          "s3": 34.296,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q1",
+          "time_s": 108.494,
+          "time_str": "1:48.494",
+          "s1": 35.026,
+          "s2": 24.129,
+          "s3": 49.339,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q1",
+          "time_s": 80.289,
+          "time_str": "1:20.289",
+          "s1": 28.414,
+          "s2": 17.745,
+          "s3": 34.13,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q2",
+          "time_s": 122.055,
+          "time_str": "2:02.055",
+          "s1": 59.75,
+          "s2": 19.667,
+          "s3": 42.638,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q2",
+          "time_s": 79.604,
+          "time_str": "1:19.604",
+          "s1": 27.908,
+          "s2": 17.495,
+          "s3": 34.201,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q2",
+          "time_s": 102.207,
+          "time_str": "1:42.207",
+          "s1": 42.908,
+          "s2": 19.645,
+          "s3": 39.654,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q2",
+          "time_s": 79.435,
+          "time_str": "1:19.435",
+          "s1": 28.002,
+          "s2": 17.497,
+          "s3": 33.936,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q3",
+          "time_s": 102.729,
+          "time_str": "1:42.729",
+          "s1": 41.705,
+          "s2": 19.802,
+          "s3": 41.222,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q3",
+          "time_s": 96.911,
+          "time_str": "1:36.911",
+          "s1": 37.877,
+          "s2": 19.532,
+          "s3": 39.502,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q3",
+          "time_s": 78.811,
+          "time_str": "1:18.811",
+          "s1": 27.556,
+          "s2": 17.44,
+          "s3": 33.815,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        }
+      ],
+      "gap_to_pole": 0.293
     },
     {
       "driver": "HAD",
@@ -86,7 +390,6 @@
         "s2": 17.52,
         "s3": 34.036
       },
-      "gap_to_pole": 0.785,
       "sectors_q1": {
         "s1": 28.076,
         "s2": 17.558,
@@ -101,7 +404,142 @@
         "s1": 27.747,
         "s2": 17.52,
         "s3": 34.036
-      }
+      },
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "session": "Q1",
+          "time_s": 108.799,
+          "time_str": "1:48.799",
+          "s1": 41.25,
+          "s2": 19.672,
+          "s3": 47.877,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q1",
+          "time_s": 80.445,
+          "time_str": "1:20.445",
+          "s1": 28.2,
+          "s2": 17.919,
+          "s3": 34.326,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q2",
+          "time_s": 120.766,
+          "time_str": "2:00.766",
+          "s1": 49.159,
+          "s2": 19.801,
+          "s3": 51.806,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q2",
+          "time_s": 80.023,
+          "time_str": "1:20.023",
+          "s1": 28.076,
+          "s2": 17.558,
+          "s3": 34.389,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q2",
+          "time_s": 108.263,
+          "time_str": "1:48.263",
+          "s1": 40.601,
+          "s2": 19.895,
+          "s3": 47.767,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q2",
+          "time_s": 79.706,
+          "time_str": "1:19.706",
+          "s1": 27.798,
+          "s2": 17.735,
+          "s3": 34.173,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q2",
+          "time_s": 110.017,
+          "time_str": "1:50.017",
+          "s1": 43.03,
+          "s2": 21.74,
+          "s3": 45.247,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 6,
+          "session": "Q2",
+          "time_s": 79.653,
+          "time_str": "1:19.653",
+          "s1": 27.899,
+          "s2": 17.564,
+          "s3": 34.19,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q3",
+          "time_s": 79.625,
+          "time_str": "1:19.625",
+          "s1": 27.852,
+          "s2": 17.453,
+          "s3": 34.32,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q3",
+          "time_s": 108.88,
+          "time_str": "1:48.880",
+          "s1": 47.558,
+          "s2": 22.152,
+          "s3": 39.17,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q3",
+          "time_s": 79.303,
+          "time_str": "1:19.303",
+          "s1": 27.747,
+          "s2": 17.52,
+          "s3": 34.036,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        }
+      ],
+      "gap_to_pole": 0.785
     },
     {
       "driver": "LEC",
@@ -120,7 +558,6 @@
         "s2": 17.527,
         "s3": 34.151
       },
-      "gap_to_pole": 0.809,
       "sectors_q1": {
         "s1": 28.211,
         "s2": 17.611,
@@ -135,7 +572,202 @@
         "s1": 27.679,
         "s2": 17.527,
         "s3": 34.151
-      }
+      },
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "session": "Q1",
+          "time_s": 111.48,
+          "time_str": "1:51.480",
+          "s1": 43.936,
+          "s2": 20.576,
+          "s3": 46.968,
+          "compound": "MEDIUM",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q1",
+          "time_s": 80.712,
+          "time_str": "1:20.712",
+          "s1": 28.361,
+          "s2": 17.661,
+          "s3": 34.69,
+          "compound": "MEDIUM",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q1",
+          "time_s": 107.918,
+          "time_str": "1:47.918",
+          "s1": 36.526,
+          "s2": 23.713,
+          "s3": 47.679,
+          "compound": "MEDIUM",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q1",
+          "time_s": 80.226,
+          "time_str": "1:20.226",
+          "s1": 28.211,
+          "s2": 17.611,
+          "s3": 34.404,
+          "compound": "MEDIUM",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q1",
+          "time_s": 113.382,
+          "time_str": "1:53.382",
+          "s1": 51.732,
+          "s2": 20.232,
+          "s3": 41.418,
+          "compound": "MEDIUM",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q2",
+          "time_s": 80.088,
+          "time_str": "1:20.088",
+          "s1": 28.049,
+          "s2": 17.687,
+          "s3": 34.352,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q2",
+          "time_s": 106.645,
+          "time_str": "1:46.645",
+          "s1": 36.817,
+          "s2": 26.393,
+          "s3": 43.435,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q2",
+          "time_s": 96.464,
+          "time_str": "1:36.464",
+          "s1": 31.125,
+          "s2": 23.424,
+          "s3": 41.915,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q2",
+          "time_s": 80.296,
+          "time_str": "1:20.296",
+          "s1": 28.069,
+          "s2": 17.625,
+          "s3": 34.602,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q2",
+          "time_s": 95.534,
+          "time_str": "1:35.534",
+          "s1": 38.306,
+          "s2": 20.054,
+          "s3": 37.174,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 6,
+          "session": "Q2",
+          "time_s": 79.357,
+          "time_str": "1:19.357",
+          "s1": 27.679,
+          "s2": 17.527,
+          "s3": 34.151,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q3",
+          "time_s": 117.877,
+          "time_str": "1:57.877",
+          "s1": 54.408,
+          "s2": 21.224,
+          "s3": 42.245,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q3",
+          "time_s": 117.137,
+          "time_str": "1:57.137",
+          "s1": 50.027,
+          "s2": 21.373,
+          "s3": 45.737,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q3",
+          "time_s": 80.244,
+          "time_str": "1:20.244",
+          "s1": 28.225,
+          "s2": 17.64,
+          "s3": 34.379,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q3",
+          "time_s": 98.452,
+          "time_str": "1:38.452",
+          "s1": 40.728,
+          "s2": 19.974,
+          "s3": 37.75,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q3",
+          "time_s": 79.327,
+          "time_str": "1:19.327",
+          "s1": 27.761,
+          "s2": 17.505,
+          "s3": 34.061,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        }
+      ],
+      "gap_to_pole": 0.809
     },
     {
       "driver": "PIA",
@@ -154,7 +786,6 @@
         "s2": 17.655,
         "s3": 33.988
       },
-      "gap_to_pole": 0.862,
       "sectors_q1": {
         "s1": 27.947,
         "s2": 17.684,
@@ -169,7 +800,202 @@
         "s1": 27.737,
         "s2": 17.655,
         "s3": 33.988
-      }
+      },
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "session": "Q1",
+          "time_s": 121.546,
+          "time_str": "2:01.546",
+          "s1": 55.995,
+          "s2": 20.95,
+          "s3": 44.601,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q1",
+          "time_s": 80.552,
+          "time_str": "1:20.552",
+          "s1": 28.413,
+          "s2": 17.592,
+          "s3": 34.547,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q1",
+          "time_s": 110.825,
+          "time_str": "1:50.825",
+          "s1": 37.464,
+          "s2": 24.329,
+          "s3": 49.032,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q1",
+          "time_s": 105.3,
+          "time_str": "1:45.300",
+          "s1": 40.219,
+          "s2": 22.767,
+          "s3": 42.314,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q1",
+          "time_s": 80.272,
+          "time_str": "1:20.272",
+          "s1": 28.037,
+          "s2": 17.825,
+          "s3": 34.41,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 6,
+          "session": "Q1",
+          "time_s": 88.974,
+          "time_str": "1:28.974",
+          "s1": 30.781,
+          "s2": 20.043,
+          "s3": 38.15,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 7,
+          "session": "Q1",
+          "time_s": 79.664,
+          "time_str": "1:19.664",
+          "s1": 27.947,
+          "s2": 17.684,
+          "s3": 34.033,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q2",
+          "time_s": 116.518,
+          "time_str": "1:56.518",
+          "s1": 57.131,
+          "s2": 19.974,
+          "s3": 39.413,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q2",
+          "time_s": 104.75,
+          "time_str": "1:44.750",
+          "s1": 31.529,
+          "s2": 19.824,
+          "s3": 53.397,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q2",
+          "time_s": 79.582,
+          "time_str": "1:19.582",
+          "s1": 28.042,
+          "s2": 17.537,
+          "s3": 34.003,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q2",
+          "time_s": 106.667,
+          "time_str": "1:46.667",
+          "s1": 45.759,
+          "s2": 20.092,
+          "s3": 40.816,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q2",
+          "time_s": 79.525,
+          "time_str": "1:19.525",
+          "s1": 27.811,
+          "s2": 17.594,
+          "s3": 34.12,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q3",
+          "time_s": 90.057,
+          "time_str": "1:30.057",
+          "s1": 31.186,
+          "s2": 19.99,
+          "s3": 38.881,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q3",
+          "time_s": 80.322,
+          "time_str": "1:20.322",
+          "s1": 28.196,
+          "s2": 17.565,
+          "s3": 34.561,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q3",
+          "time_s": 95.254,
+          "time_str": "1:35.254",
+          "s1": 37.343,
+          "s2": 20.017,
+          "s3": 37.894,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q3",
+          "time_s": 79.38,
+          "time_str": "1:19.380",
+          "s1": 27.737,
+          "s2": 17.655,
+          "s3": 33.988,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        }
+      ],
+      "gap_to_pole": 0.862
     },
     {
       "driver": "NOR",
@@ -188,7 +1014,6 @@
         "s2": 17.568,
         "s3": 34.153
       },
-      "gap_to_pole": 0.957,
       "sectors_q1": {
         "s1": 28.019,
         "s2": 17.765,
@@ -203,7 +1028,226 @@
         "s1": 27.754,
         "s2": 17.568,
         "s3": 34.153
-      }
+      },
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "session": "Q1",
+          "time_s": 126.258,
+          "time_str": "2:06.258",
+          "s1": 61.485,
+          "s2": 20.141,
+          "s3": 44.632,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q1",
+          "time_s": 81.232,
+          "time_str": "1:21.232",
+          "s1": 28.774,
+          "s2": 17.849,
+          "s3": 34.609,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q1",
+          "time_s": 109.724,
+          "time_str": "1:49.724",
+          "s1": 38.668,
+          "s2": 22.908,
+          "s3": 48.148,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q1",
+          "time_s": 97.484,
+          "time_str": "1:37.484",
+          "s1": 33.785,
+          "s2": 20.231,
+          "s3": 43.468,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q1",
+          "time_s": 80.448,
+          "time_str": "1:20.448",
+          "s1": 28.195,
+          "s2": 17.929,
+          "s3": 34.324,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q2",
+          "time_s": 95.054,
+          "time_str": "1:35.054",
+          "s1": 30.482,
+          "s2": 19.839,
+          "s3": 44.733,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q2",
+          "time_s": 92.802,
+          "time_str": "1:32.802",
+          "s1": 29.799,
+          "s2": 22.215,
+          "s3": 40.788,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q2",
+          "time_s": 80.01,
+          "time_str": "1:20.010",
+          "s1": 28.019,
+          "s2": 17.765,
+          "s3": 34.226,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q2",
+          "time_s": 118.308,
+          "time_str": "1:58.308",
+          "s1": 60.129,
+          "s2": 20.055,
+          "s3": 38.124,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q2",
+          "time_s": 98.007,
+          "time_str": "1:38.007",
+          "s1": 29.931,
+          "s2": 19.674,
+          "s3": 48.402,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 6,
+          "session": "Q2",
+          "time_s": 79.882,
+          "time_str": "1:19.882",
+          "s1": 27.903,
+          "s2": 17.642,
+          "s3": 34.337,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 7,
+          "session": "Q2",
+          "time_s": 111.016,
+          "time_str": "1:51.016",
+          "s1": 47.139,
+          "s2": 19.803,
+          "s3": 44.074,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 8,
+          "session": "Q2",
+          "time_s": 79.909,
+          "time_str": "1:19.909",
+          "s1": 27.798,
+          "s2": 17.804,
+          "s3": 34.307,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q3",
+          "time_s": 96.255,
+          "time_str": "1:36.255",
+          "s1": 37.049,
+          "s2": 20.101,
+          "s3": 39.105,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q3",
+          "time_s": 114.507,
+          "time_str": "1:54.507",
+          "s1": 45.063,
+          "s2": 19.971,
+          "s3": 49.473,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q3",
+          "time_s": 79.605,
+          "time_str": "1:19.605",
+          "s1": 27.954,
+          "s2": 17.574,
+          "s3": 34.077,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q3",
+          "time_s": 116.603,
+          "time_str": "1:56.603",
+          "s1": 52.21,
+          "s2": 23.462,
+          "s3": 40.931,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q3",
+          "time_s": 79.475,
+          "time_str": "1:19.475",
+          "s1": 27.754,
+          "s2": 17.568,
+          "s3": 34.153,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        }
+      ],
+      "gap_to_pole": 0.957
     },
     {
       "driver": "HAM",
@@ -222,7 +1266,6 @@
         "s2": 17.57,
         "s3": 34.152
       },
-      "gap_to_pole": 0.96,
       "sectors_q1": {
         "s1": 27.944,
         "s2": 17.609,
@@ -237,7 +1280,226 @@
         "s1": 27.756,
         "s2": 17.57,
         "s3": 34.152
-      }
+      },
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "session": "Q1",
+          "time_s": 108.17,
+          "time_str": "1:48.170",
+          "s1": 48.079,
+          "s2": 20.037,
+          "s3": 40.054,
+          "compound": "MEDIUM",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q1",
+          "time_s": 80.852,
+          "time_str": "1:20.852",
+          "s1": 28.296,
+          "s2": 17.795,
+          "s3": 34.761,
+          "compound": "MEDIUM",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q1",
+          "time_s": 107.042,
+          "time_str": "1:47.042",
+          "s1": 39.29,
+          "s2": 24.64,
+          "s3": 43.112,
+          "compound": "MEDIUM",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q1",
+          "time_s": 94.814,
+          "time_str": "1:34.814",
+          "s1": 33.467,
+          "s2": 19.279,
+          "s3": 42.068,
+          "compound": "MEDIUM",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q1",
+          "time_s": 80.421,
+          "time_str": "1:20.421",
+          "s1": 28.259,
+          "s2": 17.657,
+          "s3": 34.505,
+          "compound": "MEDIUM",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q2",
+          "time_s": 119.467,
+          "time_str": "1:59.467",
+          "s1": 59.143,
+          "s2": 20.038,
+          "s3": 40.286,
+          "compound": "MEDIUM",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q2",
+          "time_s": 79.811,
+          "time_str": "1:19.811",
+          "s1": 27.944,
+          "s2": 17.609,
+          "s3": 34.258,
+          "compound": "MEDIUM",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q2",
+          "time_s": 149.731,
+          "time_str": "2:29.731",
+          "s1": 87.865,
+          "s2": 19.648,
+          "s3": 42.218,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q2",
+          "time_s": 96.101,
+          "time_str": "1:36.101",
+          "s1": 27.839,
+          "s2": 22.338,
+          "s3": 45.924,
+          "compound": "SOFT",
+          "is_deleted": true,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q2",
+          "time_s": 103.821,
+          "time_str": "1:43.821",
+          "s1": 34.591,
+          "s2": 20.41,
+          "s3": 48.82,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 6,
+          "session": "Q2",
+          "time_s": 94.645,
+          "time_str": "1:34.645",
+          "s1": 36.667,
+          "s2": 19.324,
+          "s3": 38.654,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 7,
+          "session": "Q2",
+          "time_s": 79.921,
+          "time_str": "1:19.921",
+          "s1": 27.976,
+          "s2": 17.63,
+          "s3": 34.315,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 8,
+          "session": "Q2",
+          "time_s": 111.111,
+          "time_str": "1:51.111",
+          "s1": 36.103,
+          "s2": 23.437,
+          "s3": 51.571,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q3",
+          "time_s": 117.488,
+          "time_str": "1:57.488",
+          "s1": 53.324,
+          "s2": 20.885,
+          "s3": 43.279,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q3",
+          "time_s": 116.784,
+          "time_str": "1:56.784",
+          "s1": 46.7,
+          "s2": 22.913,
+          "s3": 47.171,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q3",
+          "time_s": 80.423,
+          "time_str": "1:20.423",
+          "s1": 28.405,
+          "s2": 17.604,
+          "s3": 34.414,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q3",
+          "time_s": 120.661,
+          "time_str": "2:00.661",
+          "s1": 62.582,
+          "s2": 19.741,
+          "s3": 38.338,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q3",
+          "time_s": 79.478,
+          "time_str": "1:19.478",
+          "s1": 27.756,
+          "s2": 17.57,
+          "s3": 34.152,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        }
+      ],
+      "gap_to_pole": 0.96
     },
     {
       "driver": "LAW",
@@ -256,7 +1518,6 @@
         "s2": 17.395,
         "s3": 34.393
       },
-      "gap_to_pole": 1.476,
       "sectors_q1": {
         "s1": 28.452,
         "s2": 17.551,
@@ -271,7 +1532,202 @@
         "s1": 28.206,
         "s2": 17.395,
         "s3": 34.393
-      }
+      },
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "session": "Q1",
+          "time_s": 134.069,
+          "time_str": "2:14.069",
+          "s1": 72.104,
+          "s2": 20.772,
+          "s3": 41.193,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q1",
+          "time_s": 81.3,
+          "time_str": "1:21.300",
+          "s1": 28.831,
+          "s2": 17.639,
+          "s3": 34.83,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q1",
+          "time_s": 106.129,
+          "time_str": "1:46.129",
+          "s1": 34.14,
+          "s2": 26.01,
+          "s3": 45.979,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q1",
+          "time_s": 106.121,
+          "time_str": "1:46.121",
+          "s1": 38.501,
+          "s2": 21.468,
+          "s3": 46.152,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q2",
+          "time_s": 80.599,
+          "time_str": "1:20.599",
+          "s1": 28.473,
+          "s2": 17.563,
+          "s3": 34.563,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q2",
+          "time_s": 107.504,
+          "time_str": "1:47.504",
+          "s1": 35.266,
+          "s2": 28.574,
+          "s3": 43.664,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q2",
+          "time_s": 80.491,
+          "time_str": "1:20.491",
+          "s1": 28.452,
+          "s2": 17.551,
+          "s3": 34.488,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q2",
+          "time_s": 131.095,
+          "time_str": "2:11.095",
+          "s1": 69.464,
+          "s2": 20.938,
+          "s3": 40.693,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q2",
+          "time_s": 93.699,
+          "time_str": "1:33.699",
+          "s1": 31.907,
+          "s2": 21.598,
+          "s3": 40.194,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 6,
+          "session": "Q2",
+          "time_s": 80.144,
+          "time_str": "1:20.144",
+          "s1": 28.198,
+          "s2": 17.449,
+          "s3": 34.497,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 7,
+          "session": "Q2",
+          "time_s": 115.672,
+          "time_str": "1:55.672",
+          "s1": 52.582,
+          "s2": 20.882,
+          "s3": 42.208,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 8,
+          "session": "Q2",
+          "time_s": 103.621,
+          "time_str": "1:43.621",
+          "s1": 31.882,
+          "s2": 20.865,
+          "s3": 50.874,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 9,
+          "session": "Q2",
+          "time_s": 80.211,
+          "time_str": "1:20.211",
+          "s1": 28.499,
+          "s2": 17.36,
+          "s3": 34.352,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q3",
+          "time_s": 106.604,
+          "time_str": "1:46.604",
+          "s1": 44.891,
+          "s2": 21.177,
+          "s3": 40.536,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q3",
+          "time_s": 93.454,
+          "time_str": "1:33.454",
+          "s1": 32.08,
+          "s2": 21.726,
+          "s3": 39.648,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q3",
+          "time_s": 79.994,
+          "time_str": "1:19.994",
+          "s1": 28.206,
+          "s2": 17.395,
+          "s3": 34.393,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        }
+      ],
+      "gap_to_pole": 1.476
     },
     {
       "driver": "LIN",
@@ -290,7 +1746,6 @@
         "s2": 18.423,
         "s3": 34.801
       },
-      "gap_to_pole": 2.729,
       "sectors_q1": {
         "s1": 28.487,
         "s2": 17.454,
@@ -305,7 +1760,214 @@
         "s1": 28.023,
         "s2": 18.423,
         "s3": 34.801
-      }
+      },
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "session": "Q1",
+          "time_s": 132.239,
+          "time_str": "2:12.239",
+          "s1": 68.379,
+          "s2": 20.899,
+          "s3": 42.961,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q1",
+          "time_s": 81.008,
+          "time_str": "1:21.008",
+          "s1": 28.767,
+          "s2": 17.559,
+          "s3": 34.682,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q1",
+          "time_s": 106.451,
+          "time_str": "1:46.451",
+          "s1": 35.803,
+          "s2": 23.748,
+          "s3": 46.9,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q1",
+          "time_s": 105.85,
+          "time_str": "1:45.850",
+          "s1": 38.017,
+          "s2": 23.464,
+          "s3": 44.369,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q1",
+          "time_s": 80.409,
+          "time_str": "1:20.409",
+          "s1": 28.487,
+          "s2": 17.454,
+          "s3": 34.468,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q2",
+          "time_s": 81.113,
+          "time_str": "1:21.113",
+          "s1": 29.12,
+          "s2": 17.48,
+          "s3": 34.513,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q2",
+          "time_s": 102.796,
+          "time_str": "1:42.796",
+          "s1": 35.761,
+          "s2": 22.905,
+          "s3": 44.13,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q2",
+          "time_s": 80.436,
+          "time_str": "1:20.436",
+          "s1": 28.233,
+          "s2": 17.546,
+          "s3": 34.657,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q2",
+          "time_s": 127.991,
+          "time_str": "2:07.991",
+          "s1": 67.61,
+          "s2": 20.674,
+          "s3": 39.707,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q2",
+          "time_s": 93.949,
+          "time_str": "1:33.949",
+          "s1": 32.34,
+          "s2": 20.07,
+          "s3": 41.539,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 6,
+          "session": "Q2",
+          "time_s": 79.971,
+          "time_str": "1:19.971",
+          "s1": 28.173,
+          "s2": 17.38,
+          "s3": 34.418,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 7,
+          "session": "Q2",
+          "time_s": 125.736,
+          "time_str": "2:05.736",
+          "s1": 62.771,
+          "s2": 21.047,
+          "s3": 41.918,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 8,
+          "session": "Q2",
+          "time_s": 102.469,
+          "time_str": "1:42.469",
+          "s1": 32.715,
+          "s2": 20.881,
+          "s3": 48.873,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 9,
+          "session": "Q2",
+          "time_s": 81.3,
+          "time_str": "1:21.300",
+          "s1": 28.541,
+          "s2": 17.312,
+          "s3": 35.447,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q3",
+          "time_s": 102.274,
+          "time_str": "1:42.274",
+          "s1": 42.377,
+          "s2": 20.168,
+          "s3": 39.729,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q3",
+          "time_s": 92.972,
+          "time_str": "1:32.972",
+          "s1": 31.694,
+          "s2": 20.978,
+          "s3": 40.3,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q3",
+          "time_s": 81.247,
+          "time_str": "1:21.247",
+          "s1": 28.023,
+          "s2": 18.423,
+          "s3": 34.801,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        }
+      ],
+      "gap_to_pole": 2.729
     },
     {
       "driver": "BOR",
@@ -324,7 +1986,6 @@
         "s2": 17.418,
         "s3": 34.531
       },
-      "gap_to_pole": 1.703,
       "sectors_q1": {
         "s1": 28.263,
         "s2": 17.547,
@@ -339,7 +2000,154 @@
         "s1": null,
         "s2": null,
         "s3": null
-      }
+      },
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "session": "Q1",
+          "time_s": 121.211,
+          "time_str": "2:01.211",
+          "s1": 60.423,
+          "s2": 20.911,
+          "s3": 39.877,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q1",
+          "time_s": 90.971,
+          "time_str": "1:30.971",
+          "s1": 31.456,
+          "s2": 20.583,
+          "s3": 38.932,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q1",
+          "time_s": 80.495,
+          "time_str": "1:20.495",
+          "s1": 28.263,
+          "s2": 17.547,
+          "s3": 34.685,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q1",
+          "time_s": 116.178,
+          "time_str": "1:56.178",
+          "s1": 42.607,
+          "s2": 26.58,
+          "s3": 46.991,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q1",
+          "time_s": 80.747,
+          "time_str": "1:20.747",
+          "s1": 28.435,
+          "s2": 17.491,
+          "s3": 34.821,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q2",
+          "time_s": 121.357,
+          "time_str": "2:01.357",
+          "s1": 55.665,
+          "s2": 20.771,
+          "s3": 44.921,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q2",
+          "time_s": 96.52,
+          "time_str": "1:36.520",
+          "s1": 31.483,
+          "s2": 21.841,
+          "s3": 43.196,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q2",
+          "time_s": 80.374,
+          "time_str": "1:20.374",
+          "s1": 28.374,
+          "s2": 17.454,
+          "s3": 34.546,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q2",
+          "time_s": 104.231,
+          "time_str": "1:44.231",
+          "s1": 44.48,
+          "s2": 20.627,
+          "s3": 39.124,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q2",
+          "time_s": 99.431,
+          "time_str": "1:39.431",
+          "s1": 31.297,
+          "s2": 20.457,
+          "s3": 47.677,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 6,
+          "session": "Q2",
+          "time_s": 80.221,
+          "time_str": "1:20.221",
+          "s1": 28.272,
+          "s2": 17.418,
+          "s3": 34.531,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 7,
+          "session": "Q2",
+          "time_s": 95.536,
+          "time_str": "1:35.536",
+          "s1": 38.899,
+          "s2": 22.106,
+          "s3": 34.531,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        }
+      ],
+      "gap_to_pole": 1.703
     },
     {
       "driver": "HUL",
@@ -358,7 +2166,6 @@
         "s2": 17.405,
         "s3": 34.311
       },
-      "gap_to_pole": 1.785,
       "sectors_q1": {
         "s1": 28.577,
         "s2": 17.8,
@@ -373,7 +2180,166 @@
         "s1": null,
         "s2": null,
         "s3": null
-      }
+      },
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "session": "Q1",
+          "time_s": 96.136,
+          "time_str": "1:36.136",
+          "s1": 31.544,
+          "s2": 19.313,
+          "s3": 45.279,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q1",
+          "time_s": 81.232,
+          "time_str": "1:21.232",
+          "s1": 28.867,
+          "s2": 17.602,
+          "s3": 34.763,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q1",
+          "time_s": 111.916,
+          "time_str": "1:51.916",
+          "s1": 40.396,
+          "s2": 26.718,
+          "s3": 44.802,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q1",
+          "time_s": 81.088,
+          "time_str": "1:21.088",
+          "s1": 28.619,
+          "s2": 17.637,
+          "s3": 34.832,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q2",
+          "time_s": 107.391,
+          "time_str": "1:47.391",
+          "s1": 41.597,
+          "s2": 20.308,
+          "s3": 45.486,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q2",
+          "time_s": 81.024,
+          "time_str": "1:21.024",
+          "s1": 28.577,
+          "s2": 17.8,
+          "s3": 34.647,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q2",
+          "time_s": 114.052,
+          "time_str": "1:54.052",
+          "s1": 42.729,
+          "s2": 26.876,
+          "s3": 44.447,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q2",
+          "time_s": 131.575,
+          "time_str": "2:11.575",
+          "s1": 64.625,
+          "s2": 20.601,
+          "s3": 46.349,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q2",
+          "time_s": 81.191,
+          "time_str": "1:21.191",
+          "s1": 28.906,
+          "s2": 17.513,
+          "s3": 34.772,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 6,
+          "session": "Q2",
+          "time_s": 108.237,
+          "time_str": "1:48.237",
+          "s1": 36.144,
+          "s2": 20.207,
+          "s3": 51.886,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 7,
+          "session": "Q2",
+          "time_s": 80.303,
+          "time_str": "1:20.303",
+          "s1": 28.587,
+          "s2": 17.405,
+          "s3": 34.311,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 8,
+          "session": "Q2",
+          "time_s": 117.291,
+          "time_str": "1:57.291",
+          "s1": 41.247,
+          "s2": 22.884,
+          "s3": 53.16,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 9,
+          "session": "Q2",
+          "time_s": 82.86,
+          "time_str": "1:22.860",
+          "s1": 28.775,
+          "s2": 17.662,
+          "s3": 36.423,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        }
+      ],
+      "gap_to_pole": 1.785
     },
     {
       "driver": "BEA",
@@ -392,7 +2358,6 @@
         "s2": 17.439,
         "s3": 34.38
       },
-      "gap_to_pole": 1.793,
       "sectors_q1": {
         "s1": 28.868,
         "s2": 17.643,
@@ -407,7 +2372,166 @@
         "s1": null,
         "s2": null,
         "s3": null
-      }
+      },
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "session": "Q1",
+          "time_s": 81.408,
+          "time_str": "1:21.408",
+          "s1": 28.871,
+          "s2": 17.684,
+          "s3": 34.853,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q1",
+          "time_s": 112.229,
+          "time_str": "1:52.229",
+          "s1": 48.955,
+          "s2": 21.33,
+          "s3": 41.944,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q1",
+          "time_s": 81.247,
+          "time_str": "1:21.247",
+          "s1": 28.868,
+          "s2": 17.643,
+          "s3": 34.736,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q2",
+          "time_s": 108.796,
+          "time_str": "1:48.796",
+          "s1": 46.615,
+          "s2": 20.684,
+          "s3": 41.497,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q2",
+          "time_s": 81.44,
+          "time_str": "1:21.440",
+          "s1": 29.159,
+          "s2": 17.694,
+          "s3": 34.587,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q2",
+          "time_s": 114.698,
+          "time_str": "1:54.698",
+          "s1": 39.307,
+          "s2": 21.495,
+          "s3": 53.896,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q2",
+          "time_s": 81.389,
+          "time_str": "1:21.389",
+          "s1": 29.373,
+          "s2": 17.531,
+          "s3": 34.485,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q2",
+          "time_s": 112.695,
+          "time_str": "1:52.695",
+          "s1": 53.413,
+          "s2": 20.532,
+          "s3": 38.75,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 6,
+          "session": "Q2",
+          "time_s": 96.718,
+          "time_str": "1:36.718",
+          "s1": 31.071,
+          "s2": 20.753,
+          "s3": 44.894,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 7,
+          "session": "Q2",
+          "time_s": 80.655,
+          "time_str": "1:20.655",
+          "s1": 28.61,
+          "s2": 17.407,
+          "s3": 34.638,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 8,
+          "session": "Q2",
+          "time_s": 107.954,
+          "time_str": "1:47.954",
+          "s1": 48.874,
+          "s2": 20.304,
+          "s3": 38.776,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 9,
+          "session": "Q2",
+          "time_s": 93.636,
+          "time_str": "1:33.636",
+          "s1": 32.47,
+          "s2": 19.962,
+          "s3": 41.204,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 10,
+          "session": "Q2",
+          "time_s": 80.311,
+          "time_str": "1:20.311",
+          "s1": 28.492,
+          "s2": 17.439,
+          "s3": 34.38,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        }
+      ],
+      "gap_to_pole": 1.793
     },
     {
       "driver": "OCO",
@@ -426,7 +2550,6 @@
         "s2": 17.469,
         "s3": 34.523
       },
-      "gap_to_pole": 1.973,
       "sectors_q1": {
         "s1": 28.594,
         "s2": 17.676,
@@ -441,7 +2564,154 @@
         "s1": null,
         "s2": null,
         "s3": null
-      }
+      },
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "session": "Q1",
+          "time_s": 81.818,
+          "time_str": "1:21.818",
+          "s1": 28.939,
+          "s2": 17.959,
+          "s3": 34.92,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q1",
+          "time_s": 111.972,
+          "time_str": "1:51.972",
+          "s1": 39.017,
+          "s2": 23.346,
+          "s3": 49.609,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q1",
+          "time_s": 81.264,
+          "time_str": "1:21.264",
+          "s1": 28.791,
+          "s2": 17.828,
+          "s3": 34.645,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q2",
+          "time_s": 116.745,
+          "time_str": "1:56.745",
+          "s1": 53.489,
+          "s2": 21.534,
+          "s3": 41.722,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q2",
+          "time_s": 80.759,
+          "time_str": "1:20.759",
+          "s1": 28.594,
+          "s2": 17.676,
+          "s3": 34.489,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q2",
+          "time_s": 110.647,
+          "time_str": "1:50.647",
+          "s1": 35.136,
+          "s2": 26.434,
+          "s3": 49.077,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q2",
+          "time_s": 80.868,
+          "time_str": "1:20.868",
+          "s1": 28.51,
+          "s2": 17.738,
+          "s3": 34.62,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q2",
+          "time_s": 92.579,
+          "time_str": "1:32.579",
+          "s1": 31.255,
+          "s2": 20.946,
+          "s3": 40.378,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 6,
+          "session": "Q2",
+          "time_s": 80.491,
+          "time_str": "1:20.491",
+          "s1": 28.499,
+          "s2": 17.469,
+          "s3": 34.523,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 7,
+          "session": "Q2",
+          "time_s": 107.295,
+          "time_str": "1:47.295",
+          "s1": 45.636,
+          "s2": 21.209,
+          "s3": 40.45,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 8,
+          "session": "Q2",
+          "time_s": 94.452,
+          "time_str": "1:34.452",
+          "s1": 31.117,
+          "s2": 20.851,
+          "s3": 42.484,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 9,
+          "session": "Q2",
+          "time_s": 81.069,
+          "time_str": "1:21.069",
+          "s1": 28.539,
+          "s2": 17.794,
+          "s3": 34.736,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        }
+      ],
+      "gap_to_pole": 1.973
     },
     {
       "driver": "GAS",
@@ -460,7 +2730,6 @@
         "s2": 17.557,
         "s3": 34.605
       },
-      "gap_to_pole": 1.983,
       "sectors_q1": {
         "s1": 28.402,
         "s2": 17.696,
@@ -475,7 +2744,178 @@
         "s1": null,
         "s2": null,
         "s3": null
-      }
+      },
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "session": "Q1",
+          "time_s": 124.879,
+          "time_str": "2:04.879",
+          "s1": 60.883,
+          "s2": 20.369,
+          "s3": 43.627,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q1",
+          "time_s": 82.674,
+          "time_str": "1:22.674",
+          "s1": 29.335,
+          "s2": 17.913,
+          "s3": 35.426,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q1",
+          "time_s": 110.024,
+          "time_str": "1:50.024",
+          "s1": 38.258,
+          "s2": 22.266,
+          "s3": 49.5,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q1",
+          "time_s": 106.418,
+          "time_str": "1:46.418",
+          "s1": 37.719,
+          "s2": 21.067,
+          "s3": 47.632,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q1",
+          "time_s": 81.431,
+          "time_str": "1:21.431",
+          "s1": 28.421,
+          "s2": 17.951,
+          "s3": 35.059,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q2",
+          "time_s": 111.756,
+          "time_str": "1:51.756",
+          "s1": 42.948,
+          "s2": 19.905,
+          "s3": 48.903,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q2",
+          "time_s": 97.775,
+          "time_str": "1:37.775",
+          "s1": 31.676,
+          "s2": 20.707,
+          "s3": 45.392,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q2",
+          "time_s": 81.138,
+          "time_str": "1:21.138",
+          "s1": 28.402,
+          "s2": 17.696,
+          "s3": 35.04,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q2",
+          "time_s": 130.732,
+          "time_str": "2:10.732",
+          "s1": 70.105,
+          "s2": 20.428,
+          "s3": 40.199,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q2",
+          "time_s": 95.754,
+          "time_str": "1:35.754",
+          "s1": 31.102,
+          "s2": 19.867,
+          "s3": 44.785,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 6,
+          "session": "Q2",
+          "time_s": 80.501,
+          "time_str": "1:20.501",
+          "s1": 28.339,
+          "s2": 17.557,
+          "s3": 34.605,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 7,
+          "session": "Q2",
+          "time_s": 107.314,
+          "time_str": "1:47.314",
+          "s1": 44.468,
+          "s2": 20.531,
+          "s3": 42.315,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 8,
+          "session": "Q2",
+          "time_s": 107.186,
+          "time_str": "1:47.186",
+          "s1": 32.863,
+          "s2": 20.279,
+          "s3": 54.044,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 9,
+          "session": "Q2",
+          "time_s": 80.826,
+          "time_str": "1:20.826",
+          "s1": 28.283,
+          "s2": 17.626,
+          "s3": 34.917,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        }
+      ],
+      "gap_to_pole": 1.983
     },
     {
       "driver": "ALB",
@@ -494,7 +2934,6 @@
         "s2": 17.74,
         "s3": 34.909
       },
-      "gap_to_pole": 2.423,
       "sectors_q1": {
         "s1": 28.44,
         "s2": 17.67,
@@ -509,7 +2948,166 @@
         "s1": null,
         "s2": null,
         "s3": null
-      }
+      },
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "session": "Q1",
+          "time_s": 81.802,
+          "time_str": "1:21.802",
+          "s1": 28.934,
+          "s2": 17.771,
+          "s3": 35.097,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q1",
+          "time_s": 114.904,
+          "time_str": "1:54.904",
+          "s1": 43.36,
+          "s2": 24.474,
+          "s3": 47.07,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q1",
+          "time_s": 82.223,
+          "time_str": "1:22.223",
+          "s1": 29.214,
+          "s2": 17.902,
+          "s3": 35.107,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q2",
+          "time_s": 113.099,
+          "time_str": "1:53.099",
+          "s1": 52.653,
+          "s2": 20.211,
+          "s3": 40.235,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q2",
+          "time_s": 81.481,
+          "time_str": "1:21.481",
+          "s1": 28.822,
+          "s2": 17.722,
+          "s3": 34.937,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q2",
+          "time_s": 112.886,
+          "time_str": "1:52.886",
+          "s1": 43.941,
+          "s2": 24.988,
+          "s3": 43.957,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q2",
+          "time_s": 81.051,
+          "time_str": "1:21.051",
+          "s1": 28.44,
+          "s2": 17.67,
+          "s3": 34.941,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q2",
+          "time_s": 116.823,
+          "time_str": "1:56.823",
+          "s1": 57.792,
+          "s2": 19.842,
+          "s3": 39.189,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 6,
+          "session": "Q2",
+          "time_s": 81.975,
+          "time_str": "1:21.975",
+          "s1": 29.278,
+          "s2": 17.751,
+          "s3": 34.946,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 7,
+          "session": "Q2",
+          "time_s": 119.3,
+          "time_str": "1:59.300",
+          "s1": 37.114,
+          "s2": 22.38,
+          "s3": 59.806,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 8,
+          "session": "Q2",
+          "time_s": 99.026,
+          "time_str": "1:39.026",
+          "s1": 39.954,
+          "s2": 19.719,
+          "s3": 39.353,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 9,
+          "session": "Q2",
+          "time_s": 80.941,
+          "time_str": "1:20.941",
+          "s1": 28.292,
+          "s2": 17.74,
+          "s3": 34.909,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 10,
+          "session": "Q2",
+          "time_s": 103.318,
+          "time_str": "1:43.318",
+          "s1": 39.229,
+          "s2": 23.051,
+          "s3": 41.038,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        }
+      ],
+      "gap_to_pole": 2.423
     },
     {
       "driver": "COL",
@@ -528,7 +3126,6 @@
         "s2": 17.621,
         "s3": 35.16
       },
-      "gap_to_pole": 2.752,
       "sectors_q1": {
         "s1": 28.515,
         "s2": 17.811,
@@ -543,7 +3140,178 @@
         "s1": null,
         "s2": null,
         "s3": null
-      }
+      },
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "session": "Q1",
+          "time_s": 121.668,
+          "time_str": "2:01.668",
+          "s1": 59.495,
+          "s2": 20.224,
+          "s3": 41.949,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q1",
+          "time_s": 83.393,
+          "time_str": "1:23.393",
+          "s1": 28.681,
+          "s2": 18.796,
+          "s3": 35.916,
+          "compound": "SOFT",
+          "is_deleted": true,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q1",
+          "time_s": 111.55,
+          "time_str": "1:51.550",
+          "s1": 38.642,
+          "s2": 22.987,
+          "s3": 49.921,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q1",
+          "time_s": 108.667,
+          "time_str": "1:48.667",
+          "s1": 43.534,
+          "s2": 22.92,
+          "s3": 42.213,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q1",
+          "time_s": 82.247,
+          "time_str": "1:22.247",
+          "s1": 29.133,
+          "s2": 17.786,
+          "s3": 35.328,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q2",
+          "time_s": 115.225,
+          "time_str": "1:55.225",
+          "s1": 44.557,
+          "s2": 20.591,
+          "s3": 50.077,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q2",
+          "time_s": 103.13,
+          "time_str": "1:43.130",
+          "s1": 29.52,
+          "s2": 28.094,
+          "s3": 45.516,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q2",
+          "time_s": 81.2,
+          "time_str": "1:21.200",
+          "s1": 28.515,
+          "s2": 17.811,
+          "s3": 34.874,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q2",
+          "time_s": 125.999,
+          "time_str": "2:05.999",
+          "s1": 65.279,
+          "s2": 20.474,
+          "s3": 40.246,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q2",
+          "time_s": 104.501,
+          "time_str": "1:44.501",
+          "s1": 31.725,
+          "s2": 20.286,
+          "s3": 52.49,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 6,
+          "session": "Q2",
+          "time_s": 81.852,
+          "time_str": "1:21.852",
+          "s1": 28.874,
+          "s2": 17.68,
+          "s3": 35.298,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 7,
+          "session": "Q2",
+          "time_s": 109.275,
+          "time_str": "1:49.275",
+          "s1": 48.504,
+          "s2": 20.691,
+          "s3": 40.08,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 8,
+          "session": "Q2",
+          "time_s": 105.209,
+          "time_str": "1:45.209",
+          "s1": 34.146,
+          "s2": 20.208,
+          "s3": 50.855,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 9,
+          "session": "Q2",
+          "time_s": 81.27,
+          "time_str": "1:21.270",
+          "s1": 28.489,
+          "s2": 17.621,
+          "s3": 35.16,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        }
+      ],
+      "gap_to_pole": 2.752
     },
     {
       "driver": "ALO",
@@ -562,7 +3330,6 @@
         "s2": 18.047,
         "s3": 35.125
       },
-      "gap_to_pole": 3.451,
       "sectors_q1": {
         "s1": 28.797,
         "s2": 18.047,
@@ -577,7 +3344,106 @@
         "s1": null,
         "s2": null,
         "s3": null
-      }
+      },
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "session": "Q1",
+          "time_s": 133.764,
+          "time_str": "2:13.764",
+          "s1": 71.288,
+          "s2": 21.263,
+          "s3": 41.213,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q1",
+          "time_s": 83.011,
+          "time_str": "1:23.011",
+          "s1": 29.274,
+          "s2": 18.305,
+          "s3": 35.432,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q1",
+          "time_s": 103.728,
+          "time_str": "1:43.728",
+          "s1": 37.651,
+          "s2": 20.721,
+          "s3": 45.356,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q1",
+          "time_s": 82.555,
+          "time_str": "1:22.555",
+          "s1": 28.974,
+          "s2": 18.172,
+          "s3": 35.409,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q1",
+          "time_s": 116.787,
+          "time_str": "1:56.787",
+          "s1": 55.716,
+          "s2": 20.977,
+          "s3": 40.094,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 6,
+          "session": "Q1",
+          "time_s": 82.15,
+          "time_str": "1:22.150",
+          "s1": 28.896,
+          "s2": 18.089,
+          "s3": 35.165,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 7,
+          "session": "Q1",
+          "time_s": 100.143,
+          "time_str": "1:40.143",
+          "s1": 34.84,
+          "s2": 20.752,
+          "s3": 44.551,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 8,
+          "session": "Q1",
+          "time_s": 81.969,
+          "time_str": "1:21.969",
+          "s1": 28.797,
+          "s2": 18.047,
+          "s3": 35.125,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        }
+      ],
+      "gap_to_pole": 3.451
     },
     {
       "driver": "PER",
@@ -596,7 +3462,6 @@
         "s2": 17.819,
         "s3": 35.648
       },
-      "gap_to_pole": 4.087,
       "sectors_q1": {
         "s1": 29.138,
         "s2": 17.819,
@@ -611,7 +3476,58 @@
         "s1": null,
         "s2": null,
         "s3": null
-      }
+      },
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "session": "Q1",
+          "time_s": 132.455,
+          "time_str": "2:12.455",
+          "s1": 70.664,
+          "s2": 21.01,
+          "s3": 40.781,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q1",
+          "time_s": 83.567,
+          "time_str": "1:23.567",
+          "s1": 29.434,
+          "s2": 17.996,
+          "s3": 36.137,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q1",
+          "time_s": 106.087,
+          "time_str": "1:46.087",
+          "s1": 40.026,
+          "s2": 20.42,
+          "s3": 45.641,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q1",
+          "time_s": 82.605,
+          "time_str": "1:22.605",
+          "s1": 29.138,
+          "s2": 17.819,
+          "s3": 35.648,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        }
+      ],
+      "gap_to_pole": 4.087
     },
     {
       "driver": "BOT",
@@ -630,7 +3546,6 @@
         "s2": 18.068,
         "s3": 35.978
       },
-      "gap_to_pole": 4.726,
       "sectors_q1": {
         "s1": 29.198,
         "s2": 18.068,
@@ -645,7 +3560,70 @@
         "s1": null,
         "s2": null,
         "s3": null
-      }
+      },
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "session": "Q1",
+          "time_s": 129.994,
+          "time_str": "2:09.994",
+          "s1": 67.955,
+          "s2": 20.755,
+          "s3": 41.284,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q1",
+          "time_s": 83.641,
+          "time_str": "1:23.641",
+          "s1": 29.482,
+          "s2": 17.949,
+          "s3": 36.21,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q1",
+          "time_s": 101.323,
+          "time_str": "1:41.323",
+          "s1": 41.601,
+          "s2": 20.218,
+          "s3": 39.504,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q1",
+          "time_s": 104.306,
+          "time_str": "1:44.306",
+          "s1": 41.112,
+          "s2": 20.231,
+          "s3": 42.963,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q1",
+          "time_s": 83.244,
+          "time_str": "1:23.244",
+          "s1": 29.198,
+          "s2": 18.068,
+          "s3": 35.978,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        }
+      ],
+      "gap_to_pole": 4.726
     },
     {
       "driver": "STR",
@@ -664,7 +3642,6 @@
         "s2": null,
         "s3": null
       },
-      "gap_to_pole": null,
       "sectors_q1": {
         "s1": null,
         "s2": null,
@@ -679,7 +3656,9 @@
         "s1": null,
         "s2": null,
         "s3": null
-      }
+      },
+      "attempts": [],
+      "gap_to_pole": null
     },
     {
       "driver": "VER",
@@ -698,7 +3677,6 @@
         "s2": null,
         "s3": null
       },
-      "gap_to_pole": null,
       "sectors_q1": {
         "s1": null,
         "s2": null,
@@ -713,7 +3691,22 @@
         "s1": null,
         "s2": null,
         "s3": null
-      }
+      },
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "session": "Q1",
+          "time_s": 102.025,
+          "time_str": "1:42.025",
+          "s1": 41.429,
+          "s2": 19.065,
+          "s3": 41.531,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        }
+      ],
+      "gap_to_pole": null
     },
     {
       "driver": "SAI",
@@ -732,7 +3725,6 @@
         "s2": null,
         "s3": null
       },
-      "gap_to_pole": null,
       "sectors_q1": {
         "s1": null,
         "s2": null,
@@ -747,7 +3739,9 @@
         "s1": null,
         "s2": null,
         "s3": null
-      }
+      },
+      "attempts": [],
+      "gap_to_pole": null
     }
   ]
 }

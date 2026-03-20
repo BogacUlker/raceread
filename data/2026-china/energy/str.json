@@ -1,0 +1,126 @@
+{
+  "driver": "STR",
+  "team": "Aston Martin",
+  "laps": [
+    {
+      "lap": 1,
+      "deploy_pct": 5.45,
+      "harvest_pct": 28.48,
+      "clip_pct": 0.12,
+      "neutral_pct": 65.94,
+      "normalized_deploy": 16.01,
+      "normalized_harvest": 83.64,
+      "normalized_clip": 0.35,
+      "is_vsc": false
+    },
+    {
+      "lap": 2,
+      "deploy_pct": 4.77,
+      "harvest_pct": 28.9,
+      "clip_pct": 0.26,
+      "neutral_pct": 66.06,
+      "normalized_deploy": 14.06,
+      "normalized_harvest": 85.18,
+      "normalized_clip": 0.77,
+      "is_vsc": false
+    },
+    {
+      "lap": 3,
+      "deploy_pct": 3.47,
+      "harvest_pct": 26.57,
+      "clip_pct": 0.64,
+      "neutral_pct": 69.32,
+      "normalized_deploy": 11.31,
+      "normalized_harvest": 86.6,
+      "normalized_clip": 2.09,
+      "is_vsc": false
+    },
+    {
+      "lap": 4,
+      "deploy_pct": 1.69,
+      "harvest_pct": 24.97,
+      "clip_pct": 0.26,
+      "neutral_pct": 73.08,
+      "normalized_deploy": 6.28,
+      "normalized_harvest": 92.76,
+      "normalized_clip": 0.97,
+      "is_vsc": false
+    },
+    {
+      "lap": 5,
+      "deploy_pct": 2.91,
+      "harvest_pct": 31.79,
+      "clip_pct": 0.4,
+      "neutral_pct": 64.9,
+      "normalized_deploy": 8.29,
+      "normalized_harvest": 90.57,
+      "normalized_clip": 1.14,
+      "is_vsc": false
+    },
+    {
+      "lap": 6,
+      "deploy_pct": 3.31,
+      "harvest_pct": 28.97,
+      "clip_pct": 0.0,
+      "neutral_pct": 67.72,
+      "normalized_deploy": 10.25,
+      "normalized_harvest": 89.75,
+      "normalized_clip": 0.0,
+      "is_vsc": false
+    },
+    {
+      "lap": 7,
+      "deploy_pct": 2.42,
+      "harvest_pct": 28.76,
+      "clip_pct": 0.27,
+      "neutral_pct": 68.55,
+      "normalized_deploy": 7.69,
+      "normalized_harvest": 91.45,
+      "normalized_clip": 0.86,
+      "is_vsc": false
+    },
+    {
+      "lap": 8,
+      "deploy_pct": 2.66,
+      "harvest_pct": 28.99,
+      "clip_pct": 0.93,
+      "neutral_pct": 67.42,
+      "normalized_deploy": 8.16,
+      "normalized_harvest": 88.98,
+      "normalized_clip": 2.85,
+      "is_vsc": false
+    },
+    {
+      "lap": 9,
+      "deploy_pct": 4.67,
+      "harvest_pct": 28.66,
+      "clip_pct": 0.13,
+      "neutral_pct": 66.54,
+      "normalized_deploy": 13.96,
+      "normalized_harvest": 85.65,
+      "normalized_clip": 0.39,
+      "is_vsc": false
+    },
+    {
+      "lap": 10,
+      "deploy_pct": 0.0,
+      "harvest_pct": 22.64,
+      "clip_pct": 3.77,
+      "neutral_pct": 73.58,
+      "normalized_deploy": 0.0,
+      "normalized_harvest": 85.73,
+      "normalized_clip": 14.27,
+      "is_vsc": false
+    }
+  ],
+  "summary": {
+    "avg_deploy": 3.14,
+    "avg_harvest": 27.87,
+    "avg_clip": 0.68,
+    "avg_neutral": 68.31,
+    "normalized_deploy": 9.91,
+    "normalized_harvest": 87.95,
+    "normalized_clip": 2.15,
+    "dc_ratio": 4.61
+  }
+}
