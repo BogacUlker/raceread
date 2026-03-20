@@ -39,10 +39,13 @@
 	});
 
 	// Sync from store (when EnergyBars selects a driver)
-	selectedEnergyDriver.subscribe(v => {
-		if (v && v !== selectedDriver) {
-			selectedDriver = v;
-		}
+	$effect(() => {
+		const unsub = selectedEnergyDriver.subscribe(v => {
+			if (v && v !== selectedDriver) {
+				selectedDriver = v;
+			}
+		});
+		return unsub;
 	});
 
 	// Sync from parent compare page when top-level selection changes

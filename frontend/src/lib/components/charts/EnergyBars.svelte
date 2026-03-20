@@ -32,8 +32,8 @@
 	let tooltipX = $state(0);
 	let tooltipY = $state(0);
 
-	hoveredDriver.subscribe(v => hovered = v);
-	selectedEnergyDriver.subscribe(v => selectedDriver = v);
+	$effect(() => { const unsub = hoveredDriver.subscribe(v => hovered = v); return unsub; });
+	$effect(() => { const unsub = selectedEnergyDriver.subscribe(v => selectedDriver = v); return unsub; });
 
 	function handleRowEnter(entry, e) {
 		hovered = entry.driver;

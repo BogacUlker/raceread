@@ -282,7 +282,7 @@
 							{$t('annotations.toggle_label')} {$showAnnotations ? 'ON' : 'OFF'}
 						</button>
 						{#if driverList.length >= 2}
-							<a href="/race/{raceId}/compare/{driverList[0].driver}/{driverList[1].driver}" class="pd-btn">{$t('charts.compare')}</a>
+							<a href="/race/{raceId}/compare" class="pd-btn">{$t('charts.compare')}</a>
 						{/if}
 						<a href="/race/{raceId}/broadcast" class="pd-btn pd-btn--accent">{$t('charts.broadcast')}</a>
 					</div>
