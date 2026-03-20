@@ -471,8 +471,8 @@
 	.pq-header__left { display: flex; align-items: center; gap: 1rem; }
 	.pq-header__badge { font-family: var(--fh); font-size: 24px; font-weight: 700; padding: 6px 18px; letter-spacing: .04em; }
 	.pq-header__info { display: flex; flex-direction: column; gap: 2px; }
-	.pq-header__team { font-size: 14px; color: var(--t2); }
-	.pq-header__pos { font-family: var(--fm); font-size: 13px; color: var(--tm); }
+	.pq-header__team { font-family: var(--fh); font-size: 18px; font-weight: 600; color: #E8E8ED; }
+	.pq-header__pos { font-family: var(--fm); font-size: 15px; color: #9CA3AF; font-weight: 600; letter-spacing: .03em; }
 	.pq-header__right { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
 	.pq-header__best-label { font-family: var(--fm); font-size: 9px; color: var(--tm); text-transform: uppercase; letter-spacing: .08em; }
 	.pq-header__best-val { font-family: var(--fh); font-size: 26px; font-weight: 700; font-variant-numeric: tabular-nums; }
