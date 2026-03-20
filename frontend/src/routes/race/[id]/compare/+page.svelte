@@ -130,7 +130,7 @@
 
 		<!-- Compare Charts (custom components, no store deps) -->
 		<CompareSpeedTrace {raceId} driver1={pick1} driver2={pick2} {color1} {color2} {selectedLap} {circuit} totalLaps={raceInfo.total_laps || 58} />
-		<CompareTrackMap {raceId} driver1={pick1} driver2={pick2} {color1} {color2} {selectedLap} {circuit} totalLaps={raceInfo.total_laps || 58} />
+		<CompareTrackMap {raceId} drivers={[...driverList.filter(d => d.driver === pick1), ...driverList.filter(d => d.driver === pick2), ...driverList.filter(d => d.driver !== pick1 && d.driver !== pick2)]} {circuit} totalLaps={raceInfo?.total_laps || 58} compareDriver1={pick1} compareDriver2={pick2} {selectedLap} />
 		<CompareEnergyTimeline {raceId} driver1={pick1} driver2={pick2} {color1} {color2} />
 	{:else}
 		<div class="cmp__empty">
