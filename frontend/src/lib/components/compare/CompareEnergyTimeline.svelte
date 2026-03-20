@@ -189,25 +189,18 @@
 							<text x={xPos} y={chartHeight + 16} fill="#6B7280" font-size="9" text-anchor="middle" font-family="'JetBrains Mono', monospace">{tick}</text>
 						{/each}
 
-						<!-- Hover tooltip -->
-						{#if hover1}
-							{@const norm = { deploy: hover1.raw.normalized_deploy, harvest: hover1.raw.normalized_harvest, clip: hover1.raw.normalized_clip }}
-							<foreignObject
-								x={hover1.x + hover1.w + 4 > innerWidth - 90 ? hover1.x - 95 : hover1.x + hover1.w + 4}
-								y={20}
-								width="90"
-								height="70"
-							>
-								<div class="cet__tip">
-									<div class="cet__tip-lap">LAP {hover1.lap}</div>
-									<div style="color:{ENERGY.deploy}">D: {(norm.deploy ?? 0).toFixed(1)}%</div>
-									<div style="color:{ENERGY.harvest}">H: {(norm.harvest ?? 0).toFixed(1)}%</div>
-									<div style="color:{ENERGY.clip}">C: {(norm.clip ?? 0).toFixed(1)}%</div>
-								</div>
-							</foreignObject>
-						{/if}
 					</g>
 				</svg>
+				<!-- Hover tooltip (HTML, outside SVG) -->
+				{#if hover1}
+					{@const norm = { deploy: hover1.raw.normalized_deploy, harvest: hover1.raw.normalized_harvest, clip: hover1.raw.normalized_clip }}
+					<div class="cet__tip" style="left:{hover1.x + hover1.w + 50}px; top:30px;">
+						<div class="cet__tip-lap">LAP {hover1.lap}</div>
+						<div style="color:{ENERGY.deploy}">Deploy: {(norm.deploy ?? 0).toFixed(1)}%</div>
+						<div style="color:{ENERGY.harvest}">Harvest: {(norm.harvest ?? 0).toFixed(1)}%</div>
+						<div style="color:{ENERGY.clip}">Clip: {(norm.clip ?? 0).toFixed(1)}%</div>
+					</div>
+				{/if}
 			{/if}
 		</div>
 
@@ -254,25 +247,17 @@
 							<text x={xPos} y={chartHeight + 16} fill="#6B7280" font-size="9" text-anchor="middle" font-family="'JetBrains Mono', monospace">{tick}</text>
 						{/each}
 
-						<!-- Hover tooltip -->
-						{#if hover2}
-							{@const norm = { deploy: hover2.raw.normalized_deploy, harvest: hover2.raw.normalized_harvest, clip: hover2.raw.normalized_clip }}
-							<foreignObject
-								x={hover2.x + hover2.w + 4 > innerWidth - 90 ? hover2.x - 95 : hover2.x + hover2.w + 4}
-								y={20}
-								width="90"
-								height="70"
-							>
-								<div class="cet__tip">
-									<div class="cet__tip-lap">LAP {hover2.lap}</div>
-									<div style="color:{ENERGY.deploy}">D: {(norm.deploy ?? 0).toFixed(1)}%</div>
-									<div style="color:{ENERGY.harvest}">H: {(norm.harvest ?? 0).toFixed(1)}%</div>
-									<div style="color:{ENERGY.clip}">C: {(norm.clip ?? 0).toFixed(1)}%</div>
-								</div>
-							</foreignObject>
-						{/if}
 					</g>
 				</svg>
+				{#if hover2}
+					{@const norm = { deploy: hover2.raw.normalized_deploy, harvest: hover2.raw.normalized_harvest, clip: hover2.raw.normalized_clip }}
+					<div class="cet__tip" style="left:{hover2.x + hover2.w + 50}px; top:30px;">
+						<div class="cet__tip-lap">LAP {hover2.lap}</div>
+						<div style="color:{ENERGY.deploy}">Deploy: {(norm.deploy ?? 0).toFixed(1)}%</div>
+						<div style="color:{ENERGY.harvest}">Harvest: {(norm.harvest ?? 0).toFixed(1)}%</div>
+						<div style="color:{ENERGY.clip}">Clip: {(norm.clip ?? 0).toFixed(1)}%</div>
+					</div>
+				{/if}
 			{/if}
 		</div>
 	</div>
@@ -311,7 +296,7 @@
 		grid-template-columns: 1fr 1fr;
 		gap: 3px;
 	}
-	.cet__panel {
+	.cet__panel { position: relative;
 		background: #0F1117;
 		padding: 0.75rem;
 	}
@@ -337,7 +322,7 @@
 	.cet__inferred {
 		display: inline-block;
 		font-family: 'JetBrains Mono', monospace;
-		font-size: 9px;
+		font-size: 11px;
 		font-weight: 600;
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
@@ -362,18 +347,25 @@
 		color: #6B7280;
 	}
 	.cet__tip {
-		background: #22252F;
+		position: absolute;
+		background: rgba(15, 17, 23, 0.95);
 		border: 1px solid #2E3240;
-		padding: 5px 7px;
+		padding: 10px 14px;
 		font-family: 'JetBrains Mono', monospace;
-		font-size: 9px;
+		font-size: 13px;
 		color: #E8E8ED;
-		line-height: 1.5;
+		line-height: 1.7;
+		white-space: nowrap;
+		pointer-events: none;
+		z-index: 50;
+		box-shadow: 0 4px 20px rgba(0,0,0,.5);
 	}
 	.cet__tip-lap {
-		color: #6B7280;
-		margin-bottom: 2px;
-		font-weight: 600;
+		color: #9CA3AF;
+		margin-bottom: 4px;
+		font-weight: 700;
+		font-size: 12px;
+		letter-spacing: .04em;
 	}
 	.cet__legend {
 		display: flex;
@@ -384,7 +376,7 @@
 		padding-top: 0.75rem;
 		border-top: 1px solid #2E3240;
 		font-family: 'JetBrains Mono', monospace;
-		font-size: 10px;
+		font-size: 13px;
 		color: #9CA3AF;
 		letter-spacing: 0.05em;
 	}

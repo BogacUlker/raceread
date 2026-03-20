@@ -52,8 +52,8 @@
 
 	const TRACK_WIDTH = 7;
 	const TRACK_WIDTH_HOVER = 10;
-	const OUTLINE_WIDTH = 12;
-	const CORNER_OFFSET = 24;
+	const OUTLINE_WIDTH = 14;
+	const CORNER_OFFSET = 30;
 	const ANIM_LAP_DURATION = 8000; // ms for 1x speed
 
 	let availableLaps = $derived(Array.from({ length: totalLaps }, (_, i) => i + 1));
@@ -111,6 +111,11 @@
 			}
 		} catch { /* ignore */ }
 		loading = false;
+		// Reset animation on new data
+		animProgress = 0;
+		animating = false;
+		if (animFrame) { cancelAnimationFrame(animFrame); animFrame = null; }
+		lastTimestamp = null;
 	}
 
 	let samples1 = $derived(telemetry1?.laps?.[0]?.samples || []);

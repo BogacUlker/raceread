@@ -18,7 +18,7 @@
 	// Local state - no URL, no stores, no goto
 	let pick1 = $state('');
 	let pick2 = $state('');
-	let selectedLap = $state(5);
+	let selectedLap = $state(1);
 	let ready = $derived(pick1 !== '' && pick2 !== '' && pick1 !== pick2);
 
 	function teamColor(code) { const d = driverList.find(x => x.driver === code); return TEAM_COLORS[d?.team] || '#888'; }
@@ -128,10 +128,12 @@
 		</div>
 		{/if}
 
-		<!-- Compare Charts (custom components, no store deps) -->
+		<!-- Compare Charts -->
+		<div class="cmp__charts">
 		<CompareSpeedTrace {raceId} driver1={pick1} driver2={pick2} {color1} {color2} {selectedLap} {circuit} totalLaps={raceInfo.total_laps || 58} />
 		<CompareTrackMap {raceId} drivers={[...driverList.filter(d => d.driver === pick1), ...driverList.filter(d => d.driver === pick2), ...driverList.filter(d => d.driver !== pick1 && d.driver !== pick2)]} {circuit} totalLaps={raceInfo?.total_laps || 58} compareDriver1={pick1} compareDriver2={pick2} {selectedLap} />
 		<CompareEnergyTimeline {raceId} driver1={pick1} driver2={pick2} {color1} {color2} />
+		</div>
 	{:else}
 		<div class="cmp__empty">
 			<p>{$t('charts.select_drivers')}</p>
@@ -183,6 +185,7 @@
 	.cmp__best { color: #22C55E !important; font-weight: 700; }
 	.cmp__sec-delta { display: block; margin-top: .4rem; font-family: var(--fm); font-size: 12px; font-weight: 700; }
 
+	.cmp__charts { display: flex; flex-direction: column; gap: 1.5rem; }
 	.cmp__empty { display: flex; align-items: center; justify-content: center; min-height: 300px; font-family: var(--fm); font-size: 14px; color: var(--tm); }
 
 	@media (max-width: 900px) {
