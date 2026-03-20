@@ -13,6 +13,85 @@
 	let teamColor = $derived(TEAM_COLORS[driverData?.team] || '#888');
 	let otherDrivers = $derived((data.qualifying?.drivers || []).filter(d => d.driver !== driverCode).sort((a, b) => (a.position ?? 99) - (b.position ?? 99)));
 	let compareTarget = $state('');
+	let circuit = $derived(data.circuit);
+
+	// Track outline for sector map
+	let trackOutline = $derived.by(() => {
+		if (!circuit?.outline?.length) return '';
+		const pts = circuit.outline;
+		const xs = pts.map(p => p.x), ys = pts.map(p => p.y);
+		const minX = Math.min(...xs), maxX = Math.max(...xs), minY = Math.min(...ys), maxY = Math.max(...ys);
+		const w = maxX - minX || 1, h = maxY - minY || 1;
+		return pts.map((p, i) => {
+			const nx = ((p.x - minX) / w) * 400 + 50;
+			const ny = (1 - (p.y - minY) / h) * 350 + 25;
+			return (i === 0 ? 'M' : 'L') + nx.toFixed(1) + ',' + ny.toFixed(1);
+		}).join(' ') + ' Z';
+	});
+
+	// Corner positions for track map
+	let cornerPositions = $derived.by(() => {
+		if (!circuit?.corners?.length || !circuit?.outline?.length) return [];
+		const pts = circuit.outline;
+		const xs = pts.map(p => p.x), ys = pts.map(p => p.y);
+		const minX = Math.min(...xs), maxX = Math.max(...xs), minY = Math.min(...ys), maxY = Math.max(...ys);
+		const w = maxX - minX || 1, h = maxY - minY || 1;
+		return circuit.corners.map(c => ({
+			number: c.number,
+			x: ((c.x - minX) / w) * 400 + 50,
+			y: (1 - (c.y - minY) / h) * 350 + 25,
+			dist: c.distance,
+		}));
+	});
+
+	// Split track outline into 3 sector paths by cumulative distance
+	let sectorPaths = $derived.by(() => {
+		if (!circuit?.outline?.length || !bestSectors?.s1 || !bestSectors?.s2 || !bestSectors?.s3) return null;
+		const pts = circuit.outline;
+		const tl = circuit.track_length || 5235;
+
+		// Compute cumulative distance along outline
+		const cumDist = [0];
+		for (let i = 1; i < pts.length; i++) {
+			const dx = pts[i].x - pts[i-1].x;
+			const dy = pts[i].y - pts[i-1].y;
+			cumDist.push(cumDist[i-1] + Math.sqrt(dx*dx + dy*dy));
+		}
+		const totalDist = cumDist[cumDist.length - 1];
+
+		// Sector boundaries as fraction of total outline distance
+		// Use time ratio as approximation (best we can do without exact sector boundary data)
+		const total = bestSectors.s1.value + bestSectors.s2.value + bestSectors.s3.value;
+		const s1Frac = bestSectors.s1.value / total;
+		const s2Frac = (bestSectors.s1.value + bestSectors.s2.value) / total;
+		const s1Dist = totalDist * s1Frac;
+		const s2Dist = totalDist * s2Frac;
+
+		// Find point indices at sector boundaries
+		let s1Idx = 0, s2Idx = 0;
+		for (let i = 0; i < cumDist.length; i++) {
+			if (cumDist[i] <= s1Dist) s1Idx = i;
+			if (cumDist[i] <= s2Dist) s2Idx = i;
+		}
+
+		const xs = pts.map(p => p.x), ys = pts.map(p => p.y);
+		const minX = Math.min(...xs), maxX = Math.max(...xs), minY = Math.min(...ys), maxY = Math.max(...ys);
+		const w = maxX - minX || 1, h = maxY - minY || 1;
+
+		function toPath(slice) {
+			return slice.map((p, i) => {
+				const nx = ((p.x - minX) / w) * 400 + 50;
+				const ny = (1 - (p.y - minY) / h) * 350 + 25;
+				return (i === 0 ? 'M' : 'L') + nx.toFixed(1) + ',' + ny.toFixed(1);
+			}).join(' ');
+		}
+
+		return {
+			s1: toPath(pts.slice(0, s1Idx + 1)),
+			s2: toPath(pts.slice(s1Idx, s2Idx + 1)),
+			s3: toPath(pts.slice(s2Idx).concat([pts[0]])),
+		};
+	});
 	let attempts = $derived(driverData?.attempts || []);
 	let hasAttempts = $derived(attempts.length > 0);
 
@@ -155,6 +234,99 @@
 						</div>
 					{/if}
 				</div>
+
+				<!-- Q1→Q2→Q3 Phase Progression -->
+				{#if activeSessions.length > 0}
+				<div class="pq-phase">
+					<h3 class="pq-phase__title">{$locale === 'tr' ? 'Sıralama Aşamaları' : 'Qualifying Phases'}</h3>
+					<div class="pq-phase__timeline">
+						{#each ['Q1', 'Q2', 'Q3'] as session}
+							{@const sessionAttempts = attemptsBySession[session] || []}
+							{@const isActive = sessionAttempts.length > 0}
+							{@const bestInSession = sessionAttempts.filter(a => !a.is_deleted && a.time_s).sort((a,b) => a.time_s - b.time_s)[0]}
+							{@const hasDeleted = sessionAttempts.some(a => a.is_deleted)}
+							<div class="pq-phase__session" class:pq-phase__session--active={isActive} class:pq-phase__session--inactive={!isActive}>
+								<div class="pq-phase__label">{session}</div>
+								{#if isActive && bestInSession}
+									<div class="pq-phase__time">{formatLapTime(bestInSession.time_s)}</div>
+									<div class="pq-phase__attempts">
+										{#each sessionAttempts as a}
+											<span class="pq-phase__dot" class:pq-phase__dot--best={a.is_personal_best && !a.is_deleted} class:pq-phase__dot--deleted={a.is_deleted} class:pq-phase__dot--normal={!a.is_personal_best && !a.is_deleted} title="{formatLapTime(a.time_s)}{a.is_deleted ? ' (deleted)' : ''}"></span>
+										{/each}
+									</div>
+									{#if hasDeleted}<span class="pq-phase__deleted-tag">{$locale === 'tr' ? 'silinen tur' : 'deleted'}</span>{/if}
+								{:else}
+									<div class="pq-phase__na">{$locale === 'tr' ? 'geçemedi' : 'eliminated'}</div>
+								{/if}
+							</div>
+							{#if session !== 'Q3'}
+								<div class="pq-phase__arrow" class:pq-phase__arrow--active={attemptsBySession[session === 'Q1' ? 'Q2' : 'Q3']?.length > 0}>→</div>
+							{/if}
+						{/each}
+					</div>
+				</div>
+				{/if}
+
+				<!-- Sector Track Map -->
+				{#if trackOutline && bestSectors?.s1}
+				<div class="pq-trackmap">
+					<h3 class="pq-trackmap__title">{$locale === 'tr' ? 'Sektör Haritası' : 'Sector Map'}</h3>
+					<div class="pq-trackmap__wrap">
+						<svg viewBox="0 0 500 400" class="pq-trackmap__svg" preserveAspectRatio="xMidYMid meet">
+							<!-- Full track outline dim -->
+							<path d={trackOutline} fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" />
+
+							{#if sectorPaths}
+								<path d={sectorPaths.s1} fill="none" stroke="#E24B4A" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="0.85" />
+								<path d={sectorPaths.s2} fill="none" stroke="#3B82F6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="0.85" />
+								<path d={sectorPaths.s3} fill="none" stroke="#22C55E" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="0.85" />
+							{/if}
+
+							<!-- Corner labels -->
+							{#each cornerPositions as c}
+								<text x={c.x} y={c.y - 12} fill="rgba(255,255,255,0.5)" font-size="10" font-family="'JetBrains Mono'" text-anchor="middle">{c.number}</text>
+							{/each}
+
+							<!-- S/F marker at track start point -->
+							{#if circuit?.outline?.length}
+								{@const pts = circuit.outline}
+								{@const xs = pts.map(p => p.x)}
+								{@const ys = pts.map(p => p.y)}
+								{@const minX = Math.min(...xs)}
+								{@const maxX = Math.max(...xs)}
+								{@const minY = Math.min(...ys)}
+								{@const maxY = Math.max(...ys)}
+								{@const w = maxX - minX || 1}
+								{@const h = maxY - minY || 1}
+								{@const sfX = ((pts[0].x - minX) / w) * 400 + 50}
+								{@const sfY = (1 - (pts[0].y - minY) / h) * 350 + 25}
+								<circle cx={sfX} cy={sfY} r="5" fill="none" stroke="#E24B4A" stroke-width="2" />
+								<text x={sfX} y={sfY + 16} fill="#E24B4A" font-size="9" font-family="'JetBrains Mono'" text-anchor="middle">S/F</text>
+							{/if}
+						</svg>
+
+						<!-- Sector legend with times -->
+						<div class="pq-trackmap__legend">
+							<div class="pq-trackmap__sec" style="border-left-color: #E24B4A">
+								<span class="pq-trackmap__sec-label">S1</span>
+								<span class="pq-trackmap__sec-time">{bestSectors.s1.value.toFixed(3)}s</span>
+								<span class="pq-trackmap__sec-src">{bestSectors.s1.attempt.session}</span>
+							</div>
+							<div class="pq-trackmap__sec" style="border-left-color: #3B82F6">
+								<span class="pq-trackmap__sec-label">S2</span>
+								<span class="pq-trackmap__sec-time">{bestSectors.s2.value.toFixed(3)}s</span>
+								<span class="pq-trackmap__sec-src">{bestSectors.s2.attempt.session}</span>
+							</div>
+							<div class="pq-trackmap__sec" style="border-left-color: #22C55E">
+								<span class="pq-trackmap__sec-label">S3</span>
+								<span class="pq-trackmap__sec-time">{bestSectors.s3.value.toFixed(3)}s</span>
+								<span class="pq-trackmap__sec-src">{bestSectors.s3.attempt.session}</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				{/if}
+
 				{#if !hasAttempts}
 					<div class="chart-card"><div class="chart-card__header"><span class="chart-card__title">{$t('qualifying_detail.attempts')}</span></div><p class="pq-no-data">{$t('qualifying_detail.no_attempts')}</p></div>
 				{:else}
@@ -367,4 +539,40 @@
 	}
 	@media (max-width: 768px) { .pq-header { flex-direction: column; align-items: flex-start; } .pq-header__right { align-items: flex-start; } .pq-sectors { grid-template-columns: repeat(2, 1fr); } .pq-main { padding: 1rem; } }
 	@media (max-width: 480px) { .pq-header__badge { font-size: 18px; padding: 4px 12px; } .pq-header__best-val { font-size: 18px; } .pq-sectors { grid-template-columns: 1fr; } }
+
+	/* Phase Progression */
+	.pq-phase { margin-bottom: 1.5rem; }
+	.pq-phase__title { font-family: var(--fh); font-size: 15px; font-weight: 700; text-transform: uppercase; margin-bottom: 1rem; border-left: 3px solid var(--ac); padding-left: .75rem; }
+	.pq-phase__timeline { display: flex; align-items: center; gap: .5rem; }
+	.pq-phase__session { background: var(--bg2); padding: 1.25rem 1.5rem; flex: 1; text-align: center; border-top: 3px solid var(--brd); transition: border-color .2s; }
+	.pq-phase__session--active { border-top-color: var(--ac); }
+	.pq-phase__session--inactive { opacity: .3; }
+	.pq-phase__label { font-family: var(--fh); font-size: 18px; font-weight: 700; margin-bottom: .5rem; }
+	.pq-phase__time { font-family: var(--fm); font-size: 16px; font-weight: 700; color: var(--ac); }
+	.pq-phase__attempts { display: flex; justify-content: center; gap: 4px; margin-top: .5rem; }
+	.pq-phase__dot { width: 8px; height: 8px; }
+	.pq-phase__dot--best { background: #22C55E; }
+	.pq-phase__dot--deleted { background: #EF4444; }
+	.pq-phase__dot--normal { background: #6B7280; }
+	.pq-phase__deleted-tag { font-family: var(--fm); font-size: 9px; color: #EF4444; text-transform: uppercase; display: block; margin-top: .25rem; }
+	.pq-phase__na { font-family: var(--fm); font-size: 11px; color: var(--tm); text-transform: uppercase; margin-top: .5rem; }
+	.pq-phase__arrow { font-size: 20px; color: var(--brd); }
+	.pq-phase__arrow--active { color: var(--ac); }
+
+	/* Sector Track Map */
+	.pq-trackmap { margin-bottom: 1.5rem; }
+	.pq-trackmap__title { font-family: var(--fh); font-size: 15px; font-weight: 700; text-transform: uppercase; margin-bottom: 1rem; border-left: 3px solid var(--ac); padding-left: .75rem; }
+	.pq-trackmap__wrap { display: grid; grid-template-columns: 1fr auto; gap: 1.5rem; background: var(--bg2); padding: 1.5rem; }
+	.pq-trackmap__svg { width: 100%; max-height: 350px; }
+	.pq-trackmap__legend { display: flex; flex-direction: column; gap: .5rem; justify-content: center; }
+	.pq-trackmap__sec { padding: .75rem 1rem; border-left: 3px solid; background: rgba(15,17,23,.5); }
+	.pq-trackmap__sec-label { font-family: var(--fh); font-size: 16px; font-weight: 700; display: block; margin-bottom: 2px; }
+	.pq-trackmap__sec-time { font-family: var(--fm); font-size: 14px; font-weight: 700; display: block; }
+	.pq-trackmap__sec-src { font-family: var(--fm); font-size: 10px; color: var(--tm); }
+
+	@media (max-width: 640px) {
+		.pq-phase__timeline { flex-direction: column; }
+		.pq-phase__arrow { transform: rotate(90deg); }
+		.pq-trackmap__wrap { grid-template-columns: 1fr; }
+	}
 </style>
