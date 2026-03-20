@@ -104,15 +104,51 @@
 		lastTimestamp = null;
 	}
 
+	let scrubbing = $state(false);
+	let scrubEl = $state(null);
+
 	function seekTo(e) {
-		const rect = e.currentTarget.getBoundingClientRect();
-		const x = e.clientX - rect.left;
+		if (!scrubEl) return;
+		const rect = scrubEl.getBoundingClientRect();
+		const x = (e.clientX || e.touches?.[0]?.clientX || 0) - rect.left;
 		progress = Math.max(0, Math.min(1, x / rect.width));
+	}
+
+	function startScrub(e) {
+		scrubbing = true;
+		seekTo(e);
+		// Pause playback while scrubbing
+		if (playing) {
+			playing = false;
+			if (animFrame) cancelAnimationFrame(animFrame);
+			lastTimestamp = null;
+		}
+		window.addEventListener('mousemove', onScrubMove);
+		window.addEventListener('mouseup', stopScrub);
+		window.addEventListener('touchmove', onScrubMove);
+		window.addEventListener('touchend', stopScrub);
+	}
+
+	function onScrubMove(e) {
+		if (!scrubbing) return;
+		e.preventDefault();
+		seekTo(e);
+	}
+
+	function stopScrub() {
+		scrubbing = false;
+		if (typeof window !== 'undefined') {
+			window.removeEventListener('mousemove', onScrubMove);
+			window.removeEventListener('mouseup', stopScrub);
+			window.removeEventListener('touchmove', onScrubMove);
+			window.removeEventListener('touchend', stopScrub);
+		}
 	}
 
 	// Clean up on destroy
 	onDestroy(() => {
 		if (animFrame) cancelAnimationFrame(animFrame);
+		stopScrub();
 	});
 
 	// Also clean up via $effect for hot reloads
@@ -272,8 +308,8 @@
 			}
 		}
 
-		const padX = (maxX - minX) * 0.12;
-		const padY = (maxY - minY) * 0.12;
+		const padX = (maxX - minX) * 0.04;
+		const padY = (maxY - minY) * 0.04;
 		return { minX: minX - padX, maxX: maxX + padX, minY: minY - padY, maxY: maxY + padY };
 	});
 
@@ -330,8 +366,8 @@
 			}
 		}
 
-		const padX = (maxX - minX) * 0.12;
-		const padY = (maxY - minY) * 0.12;
+		const padX = (maxX - minX) * 0.04;
+		const padY = (maxY - minY) * 0.04;
 		return `${minX - padX} ${minY - padY} ${maxX - minX + 2 * padX} ${maxY - minY + 2 * padY}`;
 	});
 
@@ -342,10 +378,10 @@
 		return rangeX / svgWidth;
 	});
 
-	let dotRadius = $derived(Math.max(4, 12 * scaleFactor));
-	let trackStroke = $derived(Math.max(2, 8 * scaleFactor));
-	let labelOffset = $derived(Math.max(8, 20 * scaleFactor));
-	let fontSize = $derived(Math.max(6, 14 * scaleFactor));
+	let dotRadius = $derived(Math.max(8, 22 * scaleFactor));
+	let trackStroke = $derived(Math.max(6, 24 * scaleFactor));
+	let labelOffset = $derived(Math.max(12, 28 * scaleFactor));
+	let fontSize = $derived(Math.max(10, 20 * scaleFactor));
 	let cornerFontSize = $derived(Math.max(5, 10 * scaleFactor));
 
 	// ----- Gap chart data (draws progressively) -----
@@ -493,624 +529,239 @@
 
 <svelte:head>
 	<title>{d1} vs {d2} {$t('qualifying.animate_title')} - {raceInfo?.name || ''} - RaceRead</title>
+	<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
 </svelte:head>
 
 <section class="qanim" bind:this={containerEl}>
-	<!-- Header -->
-	<div class="qanim__header">
-		<a href="/race/{raceId}" class="qanim__back">
-			← {raceInfo?.name || $t('qualifying.back_to_race')}
-		</a>
-		<h1 class="qanim__title">
-			<span class="qanim__badge" style="background:{color1}">{d1}</span>
-			<span class="qanim__vs">{$t('charts.vs')}</span>
-			<span class="qanim__badge" style="background:{color2}">{d2}</span>
-		</h1>
-		<p class="qanim__subtitle">{$t('qualifying.animate_title')}</p>
-	</div>
-
 	{#if !hasData}
-		<!-- No data state -->
 		<div class="qanim__no-data">
+			<a href="/race/{raceId}" class="qanim__back">&larr; {raceInfo?.name}</a>
 			<p>{$t('qualifying.animate_no_data')}</p>
 		</div>
 	{:else}
-		<!-- Track Map SVG -->
-		<div class="qanim__track-container">
-			<svg
-				viewBox={viewBoxFlipped}
-				width={svgWidth}
-				height={svgHeight}
-				class="qanim__track-svg"
-				preserveAspectRatio="xMidYMid meet"
-			>
-				<!-- Track outline -->
-				{#if outlinePath}
-					<path
-						d={outlinePath}
-						fill="none"
-						stroke="var(--border)"
-						stroke-width={trackStroke}
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						opacity="0.4"
-					/>
-				{/if}
-
-				<!-- Corner labels -->
-				{#each corners as corner}
-					<text
-						x={tx(corner.x)}
-						y={ty(corner.y) - cornerFontSize * 1.2}
-						fill="var(--text-muted)"
-						font-size={cornerFontSize}
-						font-family="var(--font-mono)"
-						text-anchor="middle"
-						opacity="0.6"
-					>{corner.number}</text>
-				{/each}
-
-				<!-- Driver 1 dot -->
-				<circle
-					cx={tx(pos1.x)}
-					cy={ty(pos1.y)}
-					r={dotRadius}
-					fill={color1}
-					stroke="#000"
-					stroke-width={dotRadius * 0.2}
-					opacity={d1Finished ? 0.4 : 1}
-				/>
-				<!-- Driver 1 label -->
-				<text
-					x={tx(pos1.x)}
-					y={ty(pos1.y) - labelOffset}
-					fill={color1}
-					font-size={fontSize}
-					font-family="var(--font-mono)"
-					font-weight="700"
-					text-anchor="middle"
-					opacity={d1Finished ? 0.4 : 1}
-				>{d1}{d1Finished ? ` - ${$t('qualifying.finished')}` : ''}</text>
-
-				<!-- Driver 2 dot -->
-				<circle
-					cx={tx(pos2.x)}
-					cy={ty(pos2.y)}
-					r={dotRadius}
-					fill={color2}
-					stroke="#000"
-					stroke-width={dotRadius * 0.2}
-					opacity={d2Finished ? 0.4 : 1}
-				/>
-				<!-- Driver 2 label -->
-				<text
-					x={tx(pos2.x)}
-					y={ty(pos2.y) + labelOffset + fontSize}
-					fill={color2}
-					font-size={fontSize}
-					font-family="var(--font-mono)"
-					font-weight="700"
-					text-anchor="middle"
-					opacity={d2Finished ? 0.4 : 1}
-				>{d2}{d2Finished ? ` - ${$t('qualifying.finished')}` : ''}</text>
-			</svg>
-
-			<!-- Gap overlay -->
-			<div class="qanim__gap-overlay">
-				<span class="qanim__gap-value" style="color:{currentGap >= 0 ? color1 : color2}">
-					{formatGapDisplay(currentGap)}
-				</span>
-				<span class="qanim__gap-leader">
-					{gapLeader} {$t('qualifying.leads')}
-				</span>
+		<!-- Top bar: back + title + controls -->
+		<div class="qanim__topbar">
+			<a href="/race/{raceId}" class="qanim__back">&larr; {raceInfo?.name}</a>
+			<div class="qanim__title-group">
+				<span class="qanim__badge" style="background:{color1}">{d1}</span>
+				<span class="qanim__vs">{$t('charts.vs')}</span>
+				<span class="qanim__badge" style="background:{color2}">{d2}</span>
 			</div>
-		</div>
-
-		<!-- Playback Controls -->
-		<div class="qanim__controls">
-			<button class="qanim__btn qanim__btn--play" onclick={togglePlay} aria-label={playing ? $t('qualifying.pause') : $t('qualifying.play')}>
-				{#if playing}
-					<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-						<rect x="6" y="4" width="4" height="16" />
-						<rect x="14" y="4" width="4" height="16" />
-					</svg>
-				{:else}
-					<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-						<polygon points="5,3 19,12 5,21" />
-					</svg>
-				{/if}
-			</button>
-
-			<div class="qanim__speed-group">
+			<div class="qanim__ctrl-group">
+				<button class="qanim__btn qanim__btn--play" onclick={togglePlay}>
+					{#if playing}
+						<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><rect x="6" y="4" width="4" height="16" /><rect x="14" y="4" width="4" height="16" /></svg>
+					{:else}
+						<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><polygon points="5,3 19,12 5,21" /></svg>
+					{/if}
+				</button>
 				{#each SPEED_OPTIONS as s}
-					<button
-						class="qanim__speed-btn"
-						class:qanim__speed-btn--active={speed === s}
-						onclick={() => speed = s}
-					>
-						{s}x
-					</button>
+					<button class="qanim__speed-btn" class:qanim__speed-btn--active={speed === s} onclick={() => speed = s}>{s}x</button>
 				{/each}
+				<button class="qanim__btn qanim__btn--reset" onclick={resetAnimation}>
+					<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1,4 1,10 7,10" /><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10" /></svg>
+				</button>
+			</div>
+		</div>
+
+		<!-- 3-column layout: D1 stats | Track Map | D2 stats -->
+		<div class="qanim__arena">
+			<!-- Left panel: Driver 1 -->
+			<div class="qanim__panel qanim__panel--left">
+				<div class="qanim__p-badge" style="background:{color1}">{d1}</div>
+				<p class="qanim__p-team">{team1}</p>
+				<p class="qanim__p-session">{session1}</p>
+
+				<div class="qanim__p-stat qanim__p-stat--big">
+					<span class="qanim__p-stat-label">{$t('qualifying.current_speed')}</span>
+					<span class="qanim__p-stat-value" style="color:{color1}">{d1Finished ? '-' : Math.round(pos1.speed)}</span>
+					<span class="qanim__p-stat-unit">km/h</span>
+				</div>
+
+				<div class="qanim__p-stat">
+					<span class="qanim__p-stat-label">{$t('qualifying.lap_time')}</span>
+					<span class="qanim__p-stat-value">{formatLapTime(lapTime1)}</span>
+				</div>
+
+				{#if d1Finished}
+					<div class="qanim__p-finished">{$t('qualifying.finished')}</div>
+				{/if}
 			</div>
 
-			<button class="qanim__btn qanim__btn--reset" onclick={resetAnimation} aria-label={$t('qualifying.reset')}>
-				<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-					<polyline points="1,4 1,10 7,10" />
-					<path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10" />
+			<!-- Center: Track map -->
+			<div class="qanim__map">
+				<svg viewBox={viewBoxFlipped} class="qanim__track-svg" preserveAspectRatio="xMidYMid meet">
+					<!-- Glow filters for driver dots -->
+					<defs>
+						<filter id="glow1" x="-50%" y="-50%" width="200%" height="200%">
+							<feGaussianBlur stdDeviation="3" result="blur" />
+							<feFlood flood-color={color1} flood-opacity="0.5" result="color" />
+							<feComposite in="color" in2="blur" operator="in" result="glow" />
+							<feMerge><feMergeNode in="glow" /><feMergeNode in="SourceGraphic" /></feMerge>
+						</filter>
+						<filter id="glow2" x="-50%" y="-50%" width="200%" height="200%">
+							<feGaussianBlur stdDeviation="3" result="blur" />
+							<feFlood flood-color={color2} flood-opacity="0.5" result="color" />
+							<feComposite in="color" in2="blur" operator="in" result="glow" />
+							<feMerge><feMergeNode in="glow" /><feMergeNode in="SourceGraphic" /></feMerge>
+						</filter>
+					</defs>
+					{#if outlinePath}
+						<path d={outlinePath} fill="none" stroke="var(--border)" stroke-width={trackStroke} stroke-linecap="round" stroke-linejoin="round" opacity="0.55" />
+					{/if}
+					{#each corners as corner}
+						<text x={tx(corner.x)} y={ty(corner.y) - cornerFontSize * 1.2} fill="var(--text-muted)" font-size={cornerFontSize} font-family="var(--font-mono)" text-anchor="middle" opacity="0.5">{corner.number}</text>
+					{/each}
+					<circle cx={tx(pos1.x)} cy={ty(pos1.y)} r={dotRadius} fill={color1} stroke="#000" stroke-width={dotRadius * 0.15} opacity={d1Finished ? 0.4 : 1} filter={d1Finished ? "none" : "url(#glow1)"} />
+					<text x={tx(pos1.x)} y={ty(pos1.y) - labelOffset} fill={color1} font-size={fontSize} font-family="var(--font-mono)" font-weight="700" text-anchor="middle" opacity={d1Finished ? 0.4 : 1}>{d1}</text>
+					<circle cx={tx(pos2.x)} cy={ty(pos2.y)} r={dotRadius} fill={color2} stroke="#000" stroke-width={dotRadius * 0.15} opacity={d2Finished ? 0.4 : 1} filter={d2Finished ? "none" : "url(#glow2)"} />
+					<text x={tx(pos2.x)} y={ty(pos2.y) + labelOffset + fontSize} fill={color2} font-size={fontSize} font-family="var(--font-mono)" font-weight="700" text-anchor="middle" opacity={d2Finished ? 0.4 : 1}>{d2}</text>
 				</svg>
-			</button>
+
+				<!-- Gap overlay centered -->
+				<div class="qanim__gap-overlay">
+					<span class="qanim__gap-value" style="color:{currentGap >= 0 ? color1 : color2}">{formatGapDisplay(currentGap)}</span>
+					<span class="qanim__gap-leader">{gapLeader} {$t('qualifying.leads')}</span>
+				</div>
+			</div>
+
+			<!-- Right panel: Driver 2 -->
+			<div class="qanim__panel qanim__panel--right">
+				<div class="qanim__p-badge" style="background:{color2}">{d2}</div>
+				<p class="qanim__p-team">{team2}</p>
+				<p class="qanim__p-session">{session2}</p>
+
+				<div class="qanim__p-stat qanim__p-stat--big">
+					<span class="qanim__p-stat-label">{$t('qualifying.current_speed')}</span>
+					<span class="qanim__p-stat-value" style="color:{color2}">{d2Finished ? '-' : Math.round(pos2.speed)}</span>
+					<span class="qanim__p-stat-unit">km/h</span>
+				</div>
+
+				<div class="qanim__p-stat">
+					<span class="qanim__p-stat-label">{$t('qualifying.lap_time')}</span>
+					<span class="qanim__p-stat-value">{formatLapTime(lapTime2)}</span>
+				</div>
+
+				{#if d2Finished}
+					<div class="qanim__p-finished">{$t('qualifying.finished')}</div>
+				{/if}
+			</div>
 		</div>
 
-		<!-- Scrub bar -->
-		<!-- svelte-ignore a11y_click_events_have_key_events -->
-		<div class="qanim__scrub" onclick={seekTo} role="slider" tabindex="0" aria-valuenow={Math.round(progress * 100)} aria-valuemin="0" aria-valuemax="100" aria-label="Animation progress">
-			<div class="qanim__scrub-track">
-				<div class="qanim__scrub-fill" style="width:{progress * 100}%"></div>
-				<div class="qanim__scrub-thumb" style="left:{progress * 100}%"></div>
+		<!-- Bottom: scrub bar + mini gap chart -->
+		<div class="qanim__bottom">
+			<!-- svelte-ignore a11y_click_events_have_key_events -->
+			<!-- svelte-ignore a11y_no_static_element_interactions -->
+			<div class="qanim__scrub" bind:this={scrubEl} onmousedown={startScrub} ontouchstart={startScrub} role="slider" tabindex="0" aria-valuenow={Math.round(progress * 100)} aria-valuemin="0" aria-valuemax="100">
+				<div class="qanim__scrub-track">
+					<div class="qanim__scrub-fill" style="width:{progress * 100}%"></div>
+					<div class="qanim__scrub-thumb" style="left:{progress * 100}%"></div>
+				</div>
+				<div class="qanim__scrub-labels">
+					<span>{formatLapTime(currentTime)}</span>
+					<span>{formatLapTime(totalTime)}</span>
+				</div>
 			</div>
-			<div class="qanim__scrub-labels">
-				<span>0:00.000</span>
-				<span>{formatLapTime(currentTime)}</span>
-				<span>{formatLapTime(totalTime)}</span>
+
+			<!-- Mini gap chart -->
+			<div class="qanim__gap-label">
+				<span class="qanim__gap-label-text">{$t('qualifying.gap_chart_title')}</span>
+				<span class="qanim__gap-label-drivers"><span style="color:{color1}">{d1}</span> vs <span style="color:{color2}">{d2}</span></span>
 			</div>
-		</div>
-
-		<!-- Gap Chart -->
-		<div class="qanim__gap-chart">
-			<h3 class="qanim__section-title">{$t('qualifying.gap_chart_title')}</h3>
-			<svg viewBox="0 0 {gapChartW} {gapChartH}" class="qanim__gap-svg" preserveAspectRatio="xMidYMid meet">
-				<!-- Grid lines -->
-				{#each gapTicks as tick}
-					<line
-						x1={gapM.left}
-						y1={gapY(tick)}
-						x2={gapChartW - gapM.right}
-						y2={gapY(tick)}
-						stroke="var(--border)"
-						stroke-opacity={tick === 0 ? 0.6 : 0.2}
-						stroke-width={tick === 0 ? 1 : 0.5}
-					/>
-					<text
-						x={gapM.left - 4}
-						y={gapY(tick) + 3}
-						fill="var(--text-muted)"
-						font-size="9"
-						font-family="var(--font-mono)"
-						text-anchor="end"
-					>{tick === 0 ? '0' : (tick > 0 ? `+${tick.toFixed(1)}` : tick.toFixed(1))}</text>
-				{/each}
-
-				<!-- Distance axis ticks -->
-				{#each distTicks as dist}
-					<text
-						x={gapX(dist)}
-						y={gapChartH - 6}
-						fill="var(--text-muted)"
-						font-size="8"
-						font-family="var(--font-mono)"
-						text-anchor="middle"
-					>{dist}m</text>
-				{/each}
-
-				<!-- Gap line segments (colored by leader) -->
+			<svg viewBox="0 0 {gapChartW} 80" class="qanim__gap-mini" preserveAspectRatio="none">
+				<line x1={gapM.left} y1={40} x2={gapChartW - gapM.right} y2={40} stroke="var(--border)" stroke-opacity="0.3" />
 				{#each gapSegments as seg}
 					{#if seg.points.length >= 2}
-						<polyline
-							points={seg.points.map(p => `${gapX(p.dist).toFixed(1)},${gapY(p.gap).toFixed(1)}`).join(' ')}
-							fill="none"
-							stroke={seg.color}
-							stroke-width="2"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-						/>
+						<polyline points={seg.points.map(p => `${gapX(p.dist).toFixed(1)},${(40 - (p.gap / maxAbsGap) * 36).toFixed(1)}`).join(' ')} fill="none" stroke={seg.color} stroke-width="1.5" stroke-linecap="round" />
 					{/if}
 				{/each}
-
-				<!-- Driver labels on y-axis -->
-				<text
-					x={gapM.left - 4}
-					y={gapM.top - 16}
-					fill={color1}
-					font-size="9"
-					font-family="var(--font-mono)"
-					text-anchor="end"
-					font-weight="600"
-				>{d1} {$t('charts.faster')}</text>
-				<text
-					x={gapM.left - 4}
-					y={gapChartH - gapM.bottom + 20}
-					fill={color2}
-					font-size="9"
-					font-family="var(--font-mono)"
-					text-anchor="end"
-					font-weight="600"
-				>{d2} {$t('charts.faster')}</text>
 			</svg>
-		</div>
-
-		<!-- Driver info panel -->
-		<div class="qanim__info-panel">
-			<div class="qanim__driver-info" style="border-left: 3px solid {color1}">
-				<div class="qanim__driver-code" style="color:{color1}">{d1}</div>
-				<div class="qanim__driver-meta">{team1} - {session1}</div>
-				<div class="qanim__driver-stats">
-					<span class="qanim__stat">
-						<span class="qanim__stat-label">{$t('qualifying.lap_time')}</span>
-						<span class="qanim__stat-value">{formatLapTime(lapTime1)}</span>
-					</span>
-					<span class="qanim__stat">
-						<span class="qanim__stat-label">{$t('qualifying.current_speed')}</span>
-						<span class="qanim__stat-value">{Math.round(pos1.speed)} km/h</span>
-					</span>
-				</div>
-			</div>
-
-			<div class="qanim__driver-info" style="border-left: 3px solid {color2}">
-				<div class="qanim__driver-code" style="color:{color2}">{d2}</div>
-				<div class="qanim__driver-meta">{team2} - {session2}</div>
-				<div class="qanim__driver-stats">
-					<span class="qanim__stat">
-						<span class="qanim__stat-label">{$t('qualifying.lap_time')}</span>
-						<span class="qanim__stat-value">{formatLapTime(lapTime2)}</span>
-					</span>
-					<span class="qanim__stat">
-						<span class="qanim__stat-label">{$t('qualifying.current_speed')}</span>
-						<span class="qanim__stat-value">{Math.round(pos2.speed)} km/h</span>
-					</span>
-				</div>
-			</div>
 		</div>
 	{/if}
 </section>
-
 <style>
 	.qanim {
-		padding-top: var(--space-md);
-		display: flex;
-		flex-direction: column;
-		gap: var(--space-lg);
-		max-width: 1200px;
-		margin: 0 auto;
+		position: fixed; inset: 0; z-index: 200;
+		background: #0F1117; color: #E8E8ED;
+		font-family: 'DM Sans', sans-serif;
+		-webkit-font-smoothing: antialiased;
+		display: flex; flex-direction: column;
+		overflow: hidden;
+		--fm: 'JetBrains Mono', monospace;
+		--fh: 'Space Grotesk', sans-serif;
+		--ac: #E24B4A;
+		--bg2: #1A1D27;
+		--brd: #2E3240;
+		--tm: #6B7280;
 	}
 
-	/* Header */
-	.qanim__header {
-		display: flex;
-		flex-direction: column;
-		gap: var(--space-sm);
+	/* Top bar */
+	.qanim__topbar {
+		display: flex; align-items: center; justify-content: space-between;
+		padding: 0.6rem 1.5rem;
+		border-bottom: 1px solid rgba(46,50,64,.5);
+		flex-shrink: 0;
 	}
+	.qanim__back { font-family: var(--fm); font-size: 10px; color: var(--ac); text-decoration: none; text-transform: uppercase; letter-spacing: .08em; }
+	.qanim__back:hover { text-decoration: none; opacity: .8; }
+	.qanim__title-group { display: flex; align-items: center; gap: .5rem; }
+	.qanim__badge { font-family: var(--fm); font-size: 13px; font-weight: 700; padding: 3px 10px; color: #000; }
+	.qanim__vs { font-family: var(--fm); font-size: 11px; color: var(--tm); }
+	.qanim__ctrl-group { display: flex; align-items: center; gap: 4px; }
+	.qanim__btn { background: var(--bg2); border: 1px solid var(--brd); color: #E8E8ED; cursor: pointer; display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; transition: all .15s; }
+	.qanim__btn:hover { border-color: var(--ac); }
+	.qanim__speed-btn { font-family: var(--fm); font-size: 10px; padding: 4px 8px; background: none; border: 1px solid var(--brd); color: var(--tm); cursor: pointer; }
+	.qanim__speed-btn--active { background: var(--ac); color: #fff; border-color: var(--ac); }
 
-	.qanim__back {
-		font-family: var(--font-mono);
-		font-size: 12px;
-		color: var(--text-muted);
-		text-decoration: none;
-	}
+	/* 3-column arena */
+	.qanim__arena { flex: 1; display: flex; min-height: 0; }
 
-	.qanim__back:hover {
-		color: var(--text-secondary);
-	}
+	/* Side panels */
+	.qanim__panel { width: 180px; flex-shrink: 0; background: var(--bg2); padding: 1.25rem; display: flex; flex-direction: column; align-items: center; gap: .75rem; border-top: 1px solid rgba(46,50,64,.3); }
+	.qanim__panel--left { border-right: 1px solid rgba(46,50,64,.3); }
+	.qanim__panel--right { border-left: 1px solid rgba(46,50,64,.3); }
+	.qanim__p-badge { font-family: var(--fh); font-size: 22px; font-weight: 700; padding: 6px 20px; color: #000; }
+	.qanim__p-team { font-size: 13px; color: #9CA3AF; font-weight: 500; }
+	.qanim__p-session { font-family: var(--fm); font-size: 11px; color: #9CA3AF; text-transform: uppercase; letter-spacing: .1em; }
+	.qanim__p-stat { text-align: center; margin-top: .5rem; }
+	.qanim__p-stat--big { margin-top: auto; }
+	.qanim__p-stat-label { display: block; font-family: var(--fm); font-size: 10px; color: #9CA3AF; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 5px; }
+	.qanim__p-stat-value { font-family: var(--fh); font-size: 38px; font-weight: 700; line-height: 1; }
+	.qanim__p-stat--big .qanim__p-stat-value { font-size: 54px; }
+	.qanim__p-stat-unit { display: block; font-family: var(--fm); font-size: 11px; color: #9CA3AF; margin-top: 3px; }
+	.qanim__p-finished { font-family: var(--fm); font-size: 12px; color: #22C55E; text-transform: uppercase; letter-spacing: .12em; margin-top: auto; font-weight: 700; }
 
-	.qanim__title {
-		font-family: var(--font-mono);
-		font-size: 24px;
-		font-weight: 700;
-		display: flex;
-		align-items: center;
-		gap: var(--space-sm);
-		flex-wrap: wrap;
-	}
+	/* Center map */
+	.qanim__map { flex: 1; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+	.qanim__track-svg { width: 100%; height: 100%; }
+	.qanim__gap-overlay { position: absolute; top: 1rem; right: 1rem; background: rgba(15,17,23,.85); padding: .6rem 1rem; text-align: center; border: 1px solid rgba(46,50,64,.4); }
+	.qanim__gap-value { font-family: var(--fh); font-size: 22px; font-weight: 700; display: block; }
+	.qanim__gap-leader { font-family: var(--fm); font-size: 9px; color: var(--tm); text-transform: uppercase; letter-spacing: .08em; }
 
-	.qanim__badge {
-		display: inline-block;
-		padding: 2px 10px;
-		border-radius: 4px;
-		color: #000;
-		font-weight: 700;
-		font-size: 16px;
-		letter-spacing: 0.05em;
-	}
-
-	.qanim__vs {
-		color: var(--text-muted);
-		font-weight: 400;
-		font-size: 14px;
-	}
-
-	.qanim__subtitle {
-		font-family: var(--font-mono);
-		font-size: 12px;
-		color: var(--text-muted);
-		text-transform: uppercase;
-		letter-spacing: 0.08em;
-	}
+	/* Bottom bar */
+	.qanim__bottom { flex-shrink: 0; padding: .5rem 1.5rem .75rem; background: var(--bg2); border-top: 1px solid rgba(46,50,64,.4); }
+	.qanim__scrub { cursor: pointer; margin-bottom: .25rem; padding: 6px 0; touch-action: none; user-select: none; }
+	.qanim__scrub-track { position: relative; height: 5px; background: var(--brd); }
+	.qanim__scrub-fill { position: absolute; top: 0; left: 0; height: 100%; background: var(--ac); }
+	.qanim__scrub-thumb { position: absolute; top: 50%; transform: translate(-50%, -50%); width: 14px; height: 14px; background: #E8E8ED; transition: transform .1s; }
+	.qanim__scrub:active .qanim__scrub-thumb { transform: translate(-50%, -50%) scale(1.3); }
+	.qanim__scrub-labels { display: flex; justify-content: space-between; font-family: var(--fm); font-size: 9px; color: var(--tm); margin-top: 3px; }
+	.qanim__gap-label { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px; }
+	.qanim__gap-label-text { font-family: var(--fm); font-size: 9px; color: var(--tm); text-transform: uppercase; letter-spacing: .1em; }
+	.qanim__gap-label-drivers { font-family: var(--fm); font-size: 9px; }
+	.qanim__gap-mini { width: 100%; height: 50px; }
 
 	/* No data */
-	.qanim__no-data {
-		background: var(--bg-secondary);
-		border: 1px solid var(--border);
-		border-radius: 8px;
-		padding: var(--space-lg);
-		text-align: center;
-		color: var(--text-muted);
-		font-family: var(--font-mono);
-		font-size: 14px;
-	}
-
-	/* Track container */
-	.qanim__track-container {
-		position: relative;
-		background: var(--bg-secondary);
-		border: 1px solid var(--border);
-		border-radius: 8px;
-		padding: var(--space-md);
-		overflow: hidden;
-	}
-
-	.qanim__track-svg {
-		display: block;
-		width: 100%;
-		height: auto;
-		max-height: 550px;
-	}
-
-	/* Gap overlay on track */
-	.qanim__gap-overlay {
-		position: absolute;
-		top: var(--space-md);
-		right: var(--space-md);
-		background: rgba(0, 0, 0, 0.75);
-		border: 1px solid var(--border);
-		border-radius: 6px;
-		padding: 8px 14px;
-		text-align: center;
-	}
-
-	.qanim__gap-value {
-		display: block;
-		font-family: var(--font-mono);
-		font-size: 22px;
-		font-weight: 700;
-		letter-spacing: -0.02em;
-	}
-
-	.qanim__gap-leader {
-		display: block;
-		font-family: var(--font-mono);
-		font-size: 10px;
-		color: var(--text-muted);
-		text-transform: uppercase;
-		letter-spacing: 0.05em;
-		margin-top: 2px;
-	}
-
-	/* Playback controls */
-	.qanim__controls {
-		display: flex;
-		align-items: center;
-		gap: var(--space-md);
-		justify-content: center;
-		flex-wrap: wrap;
-	}
-
-	.qanim__btn {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		background: var(--bg-secondary);
-		border: 1px solid var(--border);
-		border-radius: 8px;
-		color: var(--text-primary);
-		cursor: pointer;
-		transition: background 0.15s, border-color 0.15s;
-	}
-
-	.qanim__btn:hover {
-		background: var(--bg-primary);
-		border-color: var(--text-muted);
-	}
-
-	.qanim__btn--play {
-		width: 44px;
-		height: 44px;
-	}
-
-	.qanim__btn--reset {
-		width: 36px;
-		height: 36px;
-	}
-
-	.qanim__speed-group {
-		display: flex;
-		gap: 0;
-		border: 1px solid var(--border);
-		border-radius: 6px;
-		overflow: hidden;
-	}
-
-	.qanim__speed-btn {
-		font-family: var(--font-mono);
-		font-size: 12px;
-		padding: 6px 10px;
-		border: none;
-		border-right: 1px solid var(--border);
-		background: var(--bg-secondary);
-		color: var(--text-muted);
-		cursor: pointer;
-		transition: background 0.15s, color 0.15s;
-	}
-
-	.qanim__speed-btn:last-child {
-		border-right: none;
-	}
-
-	.qanim__speed-btn:hover {
-		color: var(--text-primary);
-	}
-
-	.qanim__speed-btn--active {
-		background: var(--text-muted);
-		color: var(--bg-primary);
-		font-weight: 700;
-	}
-
-	/* Scrub bar */
-	.qanim__scrub {
-		cursor: pointer;
-		user-select: none;
-		padding: 4px 0;
-	}
-
-	.qanim__scrub-track {
-		position: relative;
-		height: 6px;
-		background: var(--bg-secondary);
-		border-radius: 3px;
-		border: 1px solid var(--border);
-		overflow: visible;
-	}
-
-	.qanim__scrub-fill {
-		position: absolute;
-		top: 0;
-		left: 0;
-		height: 100%;
-		background: var(--text-muted);
-		border-radius: 3px 0 0 3px;
-		transition: width 0.05s linear;
-	}
-
-	.qanim__scrub-thumb {
-		position: absolute;
-		top: 50%;
-		transform: translate(-50%, -50%);
-		width: 14px;
-		height: 14px;
-		border-radius: 50%;
-		background: var(--text-primary);
-		border: 2px solid var(--bg-primary);
-		transition: left 0.05s linear;
-	}
-
-	.qanim__scrub-labels {
-		display: flex;
-		justify-content: space-between;
-		font-family: var(--font-mono);
-		font-size: 10px;
-		color: var(--text-muted);
-		margin-top: 4px;
-	}
-
-	/* Gap chart */
-	.qanim__gap-chart {
-		background: var(--bg-secondary);
-		border: 1px solid var(--border);
-		border-radius: 8px;
-		padding: var(--space-md);
-	}
-
-	.qanim__section-title {
-		font-family: var(--font-mono);
-		font-size: 12px;
-		font-weight: 600;
-		color: var(--text-secondary);
-		text-transform: uppercase;
-		letter-spacing: 0.05em;
-		margin-bottom: var(--space-sm);
-	}
-
-	.qanim__gap-svg {
-		width: 100%;
-		height: auto;
-		max-height: 140px;
-	}
-
-	/* Driver info panel */
-	.qanim__info-panel {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: var(--space-md);
-	}
-
-	.qanim__driver-info {
-		background: var(--bg-secondary);
-		border: 1px solid var(--border);
-		border-radius: 8px;
-		padding: var(--space-md);
-	}
-
-	.qanim__driver-code {
-		font-family: var(--font-mono);
-		font-size: 20px;
-		font-weight: 700;
-	}
-
-	.qanim__driver-meta {
-		font-family: var(--font-mono);
-		font-size: 11px;
-		color: var(--text-muted);
-		margin-top: 2px;
-	}
-
-	.qanim__driver-stats {
-		display: flex;
-		gap: var(--space-lg);
-		margin-top: var(--space-sm);
-	}
-
-	.qanim__stat {
-		display: flex;
-		flex-direction: column;
-		gap: 1px;
-	}
-
-	.qanim__stat-label {
-		font-family: var(--font-mono);
-		font-size: 9px;
-		color: var(--text-muted);
-		text-transform: uppercase;
-		letter-spacing: 0.05em;
-	}
-
-	.qanim__stat-value {
-		font-family: var(--font-mono);
-		font-size: 15px;
-		font-weight: 600;
-		color: var(--text-primary);
-	}
+	.qanim__no-data { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; font-family: var(--fm); color: var(--tm); }
 
 	/* Responsive */
+	@media (max-width: 900px) {
+		.qanim__panel { width: 120px; padding: .75rem; }
+		.qanim__p-stat--big .qanim__p-stat-value { font-size: 32px; }
+		.qanim__p-badge { font-size: 16px; }
+	}
 	@media (max-width: 640px) {
-		.qanim__title {
-			font-size: 18px;
-		}
-
-		.qanim__badge {
-			font-size: 13px;
-			padding: 2px 7px;
-		}
-
-		.qanim__gap-value {
-			font-size: 18px;
-		}
-
-		.qanim__info-panel {
-			grid-template-columns: 1fr;
-		}
-
-		.qanim__speed-btn {
-			padding: 5px 7px;
-			font-size: 11px;
-		}
-
-		.qanim__btn--play {
-			width: 38px;
-			height: 38px;
-		}
-
-		.qanim__driver-stats {
-			flex-direction: column;
-			gap: var(--space-sm);
-		}
+		.qanim__panel { display: none; }
+		.qanim__topbar { padding: .5rem .75rem; flex-wrap: wrap; gap: .5rem; }
 	}
 </style>

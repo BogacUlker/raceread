@@ -3,12 +3,13 @@ import { api } from '$lib/api.js';
 export async function load({ params, fetch }) {
 	const { id, d1, d2 } = params;
 
-	const [raceInfo, laps, circuit, strategy, energyComparison] = await Promise.all([
+	const [raceInfo, laps, circuit, strategy, energyComparison, races] = await Promise.all([
 		api(`/api/races/${id}`, fetch),
 		api(`/api/races/${id}/laps`, fetch),
 		api(`/api/races/${id}/circuit`, fetch).catch(() => null),
 		api(`/api/races/${id}/strategy`, fetch),
 		api(`/api/races/${id}/energy/comparison`, fetch),
+		api('/api/races', fetch).catch(() => []),
 	]);
 
 	return {
@@ -20,5 +21,6 @@ export async function load({ params, fetch }) {
 		circuit,
 		strategy,
 		energyComparison,
+		races,
 	};
 }

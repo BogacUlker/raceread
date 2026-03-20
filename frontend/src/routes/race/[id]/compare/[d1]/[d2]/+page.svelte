@@ -4,6 +4,7 @@
 -->
 <script>
 	import { goto } from '$app/navigation';
+	import { onMount } from 'svelte';
 	import { t } from '$lib/i18n/index.js';
 	import { TEAM_COLORS } from '$lib/constants.js';
 	import { api } from '$lib/api.js';
@@ -27,6 +28,18 @@
 
 	// Driver selectors
 	let sel1 = $state('');
+
+	// Auto-select compare mode on track map after render
+	onMount(() => {
+		setTimeout(() => {
+			const btns = document.querySelectorAll('.track-map__mode-btn');
+			btns.forEach(btn => {
+				if (btn.textContent.trim().toLowerCase().includes('kar') || btn.textContent.trim().toLowerCase().includes('compare')) {
+					btn.click();
+				}
+			});
+		}, 500);
+	});
 	let sel2 = $state('');
 
 	$effect(() => {
@@ -125,8 +138,8 @@
 	});
 
 	// Simple SVG chart dimensions
-	const chartW = 600;
-	const chartH = 150;
+	const chartW = 1200;
+	const chartH = 200;
 	const chartM = { top: 10, right: 10, bottom: 30, left: 40 };
 
 	// Delta chart scales
@@ -138,17 +151,27 @@
 	function deltaYScale(val) {
 		return chartM.top + ((deltaMaxD - val) / (2 * deltaMaxD)) * (chartH - chartM.top - chartM.bottom);
 	}
-</script>
+
+	// Uppercase race name with proper GRAND PRIX (not PRİX)
+	function gpName(name) {
+		if (!name) return '';
+		const parts = name.split('Grand Prix');
+		if (parts.length === 2) return parts[0].toUpperCase() + 'GRAND PRIX';
+		return name.toUpperCase();
+	}
+
+	</script>
 
 <svelte:head>
 	<title>{d1} vs {d2} - {raceInfo.name} - RaceRead</title>
+	<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
 </svelte:head>
 
 <section class="compare">
 	<!-- Header -->
 	<div class="compare__header">
 		<a href="/race/{raceId}" class="compare__back">← {raceInfo.name}</a>
-		<h1 class="compare__title">
+		<h1 class="compare__title" style="text-transform:none">
 			<span style="color:{teamColor(d1)}">{d1}</span>
 			<span class="compare__vs">{$t('charts.vs')}</span>
 			<span style="color:{teamColor(d2)}">{d2}</span>
@@ -171,32 +194,56 @@
 
 	<!-- Stats Cards -->
 	<div class="compare__stats">
-		<div class="compare__stat-card">
+		<div class="compare__stat-card compare__stat-card--accent">
 			<span class="compare__stat-label">{$t('charts.best_lap')}</span>
-			<div class="compare__stat-values">
-				<span style="color:{teamColor(d1)}">{formatTime(stats.best1)}</span>
-				<span style="color:{teamColor(d2)}">{formatTime(stats.best2)}</span>
+			<div class="compare__stat-row">
+				<div class="compare__stat-driver">
+					<span class="compare__stat-code" style="color:{teamColor(d1)}">{d1}</span>
+					<span class="compare__stat-big" style="color:{teamColor(d1)}">{formatTime(stats.best1)}</span>
+				</div>
+				<div class="compare__stat-driver">
+					<span class="compare__stat-code" style="color:{teamColor(d2)}">{d2}</span>
+					<span class="compare__stat-big" style="color:{teamColor(d2)}">{formatTime(stats.best2)}</span>
+				</div>
 			</div>
 		</div>
 		<div class="compare__stat-card">
 			<span class="compare__stat-label">{$t('charts.avg_pace')}</span>
-			<div class="compare__stat-values">
-				<span style="color:{teamColor(d1)}">{formatTime(stats.avg1)}</span>
-				<span style="color:{teamColor(d2)}">{formatTime(stats.avg2)}</span>
+			<div class="compare__stat-row">
+				<div class="compare__stat-driver">
+					<span class="compare__stat-code" style="color:{teamColor(d1)}">{d1}</span>
+					<span class="compare__stat-big" style="color:{teamColor(d1)}">{formatTime(stats.avg1)}</span>
+				</div>
+				<div class="compare__stat-driver">
+					<span class="compare__stat-code" style="color:{teamColor(d2)}">{d2}</span>
+					<span class="compare__stat-big" style="color:{teamColor(d2)}">{formatTime(stats.avg2)}</span>
+				</div>
 			</div>
 		</div>
 		<div class="compare__stat-card">
 			<span class="compare__stat-label">{$t('charts.positions')}</span>
-			<div class="compare__stat-values">
-				<span style="color:{teamColor(d1)}">P{stats.startPos1 ?? '-'} → P{stats.endPos1 ?? '-'}</span>
-				<span style="color:{teamColor(d2)}">P{stats.startPos2 ?? '-'} → P{stats.endPos2 ?? '-'}</span>
+			<div class="compare__stat-row">
+				<div class="compare__stat-driver">
+					<span class="compare__stat-code" style="color:{teamColor(d1)}">{d1}</span>
+					<span class="compare__stat-big" style="color:{teamColor(d1)}">P{stats.startPos1 ?? '-'} → P{stats.endPos1 ?? '-'}</span>
+				</div>
+				<div class="compare__stat-driver">
+					<span class="compare__stat-code" style="color:{teamColor(d2)}">{d2}</span>
+					<span class="compare__stat-big" style="color:{teamColor(d2)}">P{stats.startPos2 ?? '-'} → P{stats.endPos2 ?? '-'}</span>
+				</div>
 			</div>
 		</div>
 		<div class="compare__stat-card">
 			<span class="compare__stat-label">{$t('charts.dc_ratio')}</span>
-			<div class="compare__stat-values">
-				<span style="color:{teamColor(d1)}">{stats.dcRatio1?.toFixed(2) ?? '-'}</span>
-				<span style="color:{teamColor(d2)}">{stats.dcRatio2?.toFixed(2) ?? '-'}</span>
+			<div class="compare__stat-row">
+				<div class="compare__stat-driver">
+					<span class="compare__stat-code" style="color:{teamColor(d1)}">{d1}</span>
+					<span class="compare__stat-big" style="color:{teamColor(d1)}">{stats.dcRatio1?.toFixed(2) ?? '-'}</span>
+				</div>
+				<div class="compare__stat-driver">
+					<span class="compare__stat-code" style="color:{teamColor(d2)}">{d2}</span>
+					<span class="compare__stat-big" style="color:{teamColor(d2)}">{stats.dcRatio2?.toFixed(2) ?? '-'}</span>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -238,30 +285,28 @@
 	{/if}
 
 	<!-- Sector Comparison -->
-	<div class="chart-card">
-		<div class="chart-card__header">
-			<h3 class="chart-card__title">{$t('charts.sector_comparison')}</h3>
-		</div>
-		<div class="compare__sectors">
-			{#each [['S1', sectorStats.s1_1, sectorStats.s1_2], ['S2', sectorStats.s2_1, sectorStats.s2_2], ['S3', sectorStats.s3_1, sectorStats.s3_2]] as [label, v1, v2]}
-				<div class="compare__sector-group">
-					<span class="compare__sector-label">{label}</span>
-					<div class="compare__sector-bars">
-						<div class="compare__sector-bar" style="color:{teamColor(d1)}">
-							<span>{d1}</span>
-							<span>{v1 != null ? v1.toFixed(3) : '-'}s</span>
-						</div>
-						<div class="compare__sector-bar" style="color:{teamColor(d2)}">
-							<span>{d2}</span>
-							<span>{v2 != null ? v2.toFixed(3) : '-'}s</span>
-						</div>
-						{#if v1 != null && v2 != null}
-							<span class="compare__sector-delta">{(v1 - v2) > 0 ? '+' : ''}{(v1 - v2).toFixed(3)}s</span>
-						{/if}
+	<!-- Sector Comparison Cards -->
+	<div class="compare__sector-cards">
+		{#each [['S1', sectorStats.s1_1, sectorStats.s1_2], ['S2', sectorStats.s2_1, sectorStats.s2_2], ['S3', sectorStats.s3_1, sectorStats.s3_2]] as [label, v1, v2]}
+			{@const delta = (v1 != null && v2 != null) ? v1 - v2 : null}
+			{@const winner = delta != null ? (delta < 0 ? d1 : d2) : null}
+			<div class="compare__sec-card" style="border-left-color:{winner ? teamColor(winner) : 'var(--brd)'}">
+				<span class="compare__sec-label">{label}</span>
+				<div class="compare__sec-times">
+					<div class="compare__sec-row">
+						<span class="compare__sec-code" style="color:{teamColor(d1)}">{d1}</span>
+						<span class="compare__sec-val" class:compare__sec-val--best={delta != null && delta < 0}>{v1 != null ? v1.toFixed(3) + 's' : '-'}</span>
+					</div>
+					<div class="compare__sec-row">
+						<span class="compare__sec-code" style="color:{teamColor(d2)}">{d2}</span>
+						<span class="compare__sec-val" class:compare__sec-val--best={delta != null && delta > 0}>{v2 != null ? v2.toFixed(3) + 's' : '-'}</span>
 					</div>
 				</div>
-			{/each}
-		</div>
+				{#if delta != null}
+					<span class="compare__sec-delta" style="color:{teamColor(winner)}">{delta > 0 ? '+' : ''}{delta.toFixed(3)}s</span>
+				{/if}
+			</div>
+		{/each}
 	</div>
 
 	<!-- Energy Timeline side by side -->
@@ -270,156 +315,83 @@
 		<EnergyTimeline {raceId} drivers={driverList.filter(d => d.driver === d2)} defaultDriver={d2} compareDriver={d2} />
 	</div>
 
-	<!-- Track Maps side by side -->
-	<div class="compare__track-maps">
-		<TrackMap {raceId} drivers={driverList.filter(d => d.driver === d1)} {circuit} totalLaps={raceInfo?.total_laps || 58} compareDriver1={d1} />
-		<TrackMap {raceId} drivers={driverList.filter(d => d.driver === d2)} {circuit} totalLaps={raceInfo?.total_laps || 58} compareDriver1={d2} />
-	</div>
+	<!-- Track Map - compare mode -->
+	<TrackMap {raceId} drivers={[
+		...driverList.filter(d => d.driver === d1),
+		...driverList.filter(d => d.driver === d2),
+		...driverList.filter(d => d.driver !== d1 && d.driver !== d2)
+	]} {circuit} totalLaps={raceInfo?.total_laps || 58} compareDriver1={d1} compareDriver2={d2} />
 </section>
 
 <style>
+	/* ═══ PREVIEW COMPARE PAGE ═══ */
 	.compare {
-		padding-top: var(--space-md);
-		display: flex;
-		flex-direction: column;
-		gap: var(--space-lg);
+		position: fixed; inset: 0; z-index: 200;
+		overflow-y: auto; overflow-x: hidden;
+		background: #0F1117; color: #E8E8ED;
+		font-family: 'DM Sans', sans-serif;
+		-webkit-font-smoothing: antialiased;
+		padding: 1.5rem 2rem 3rem;
+		display: flex; flex-direction: column; gap: 1.5rem;
+		--fm: 'JetBrains Mono', monospace;
+		--fh: 'Space Grotesk', sans-serif;
+		--ac: #E24B4A; --bg2: #1A1D27; --bgc: #22252F; --brd: #2E3240; --tm: #6B7280;
 	}
-	.compare__back {
-		font-family: var(--font-mono);
-		font-size: var(--font-size-small);
-		color: var(--text-muted);
-	}
-	.compare__header {
-		display: flex;
-		flex-direction: column;
-		gap: var(--space-sm);
-	}
-	.compare__title {
-		font-family: var(--font-mono);
-		font-size: 24px;
-		font-weight: 700;
-	}
-	.compare__vs {
-		color: var(--text-muted);
-		font-weight: 400;
-		font-size: 16px;
-		margin: 0 var(--space-sm);
-	}
-	.compare__selectors {
-		display: flex;
-		align-items: center;
-		gap: var(--space-sm);
-	}
-	.compare__select {
-		font-family: var(--font-mono);
-		font-size: var(--font-size-small);
-		background: var(--bg-secondary);
-		color: var(--text-primary);
-		border: 1px solid var(--border);
-		border-radius: var(--radius-sm);
-		padding: 4px 8px;
-		cursor: pointer;
-	}
-	.compare__swap {
-		font-size: 16px;
-		background: transparent;
-		border: 1px solid var(--border);
-		border-radius: var(--radius-sm);
-		color: var(--text-secondary);
-		cursor: pointer;
-		padding: 2px 8px;
-	}
-	.compare__swap:hover { color: var(--text-primary); }
-	.compare__stats {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-		gap: var(--space-md);
-	}
-	.compare__stat-card {
-		background: var(--bg-card);
-		border: 1px solid var(--border);
-		border-radius: var(--radius-md);
-		padding: var(--space-md);
-	}
-	.compare__stat-label {
-		font-family: var(--font-mono);
-		font-size: 10px;
-		color: var(--text-muted);
-		text-transform: uppercase;
-		letter-spacing: 0.05em;
-	}
-	.compare__stat-values {
-		display: flex;
-		flex-direction: column;
-		gap: 2px;
-		margin-top: var(--space-xs);
-		font-family: var(--font-mono);
-		font-size: 14px;
-		font-weight: 600;
-	}
-	.compare__delta-svg {
-		width: 100%;
-		max-height: 150px;
-	}
-	.compare__sectors {
-		display: flex;
-		flex-direction: column;
-		gap: var(--space-md);
-	}
-	.compare__sector-group {
-		display: flex;
-		align-items: center;
-		gap: var(--space-md);
-	}
-	.compare__sector-label {
-		font-family: var(--font-mono);
-		font-size: 14px;
-		font-weight: 600;
-		color: var(--text-secondary);
-		width: 30px;
-	}
-	.compare__sector-bars {
-		display: flex;
-		align-items: center;
-		gap: var(--space-md);
-		flex: 1;
-	}
-	.compare__sector-bar {
-		font-family: var(--font-mono);
-		font-size: 13px;
-		display: flex;
-		gap: var(--space-sm);
-	}
-	.compare__sector-delta {
-		font-family: var(--font-mono);
-		font-size: 12px;
-		color: var(--text-muted);
-	}
-	.compare__energy-timelines {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: var(--space-lg);
-	}
-	.compare__track-maps {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: var(--space-lg);
+	.compare :global(*) { border-radius: 0 !important; }
+	.compare :global(.chart-card) { border-radius: 0 !important; border: none !important; background: var(--bg2) !important; border-left: 2px solid transparent !important; transition: border-color .25s, box-shadow .25s !important; }
+	.compare :global(.chart-card:hover) { border-left-color: var(--ac) !important; box-shadow: -4px 0 20px -4px rgba(226,75,74,.12) !important; }
+	.compare :global(.chart-card__title) { font-family: var(--fh) !important; text-transform: uppercase; letter-spacing: .03em; }
+
+	.compare__back { font-family: var(--fm); font-size: 11px; color: var(--ac); text-decoration: none; letter-spacing: .08em; }
+	.compare__back:hover { text-decoration: none; opacity: .8; }
+	.compare__header { display: flex; flex-direction: column; gap: .5rem; }
+	.compare__title { font-family: var(--fh); font-size: 28px; font-weight: 700; text-transform: uppercase; letter-spacing: -.02em; }
+	.compare__vs { color: var(--tm); font-weight: 400; font-size: 18px; margin: 0 .5rem; }
+	.compare__selectors { display: flex; align-items: center; gap: .5rem; }
+	.compare__select { font-family: var(--fm); font-size: 12px; background: #0F1117; color: #E8E8ED; border: 1px solid var(--brd); padding: 5px 8px; cursor: pointer; }
+	.compare__swap { font-size: 16px; background: none; border: 1px solid var(--brd); color: #9CA3AF; cursor: pointer; padding: 3px 10px; transition: all .15s; }
+	.compare__swap:hover { color: var(--ac); border-color: var(--ac); }
+
+	/* Stats cards - overview style */
+	.compare__stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+	.compare__stat-card { background: var(--bg2); padding: 1.3rem 1.5rem; border-left: 3px solid var(--brd); transition: border-color .2s; }
+	.compare__stat-card:hover { border-left-color: var(--ac); }
+	.compare__stat-card--accent { border-left-color: var(--ac); background: linear-gradient(135deg, var(--bg2) 0%, rgba(226,75,74,.06) 100%); }
+	.compare__stat-label { font-family: var(--fm); font-size: 9px; color: var(--tm); text-transform: uppercase; letter-spacing: .12em; margin-bottom: .75rem; display: block; }
+	.compare__stat-row { display: flex; justify-content: space-between; gap: .75rem; }
+	.compare__stat-driver { display: flex; flex-direction: column; gap: 2px; }
+	.compare__stat-code { font-family: var(--fm); font-size: 10px; font-weight: 700; }
+	.compare__stat-big { font-family: var(--fh); font-size: 22px; font-weight: 700; line-height: 1; }
+
+	/* Lap delta chart */
+	.compare__delta-svg { width: 100%; max-height: 180px; }
+
+	/* Sectors */
+	.compare__sector-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+	.compare__sec-card { background: var(--bg2); padding: 1.3rem 1.5rem; border-left: 3px solid var(--brd); transition: border-color .2s; }
+	.compare__sec-card:hover { border-left-color: var(--ac); }
+	.compare__sec-label { font-family: var(--fh); font-size: 20px; font-weight: 700; color: #E8E8ED; display: block; margin-bottom: .75rem; }
+	.compare__sec-times { display: flex; flex-direction: column; gap: .4rem; }
+	.compare__sec-row { display: flex; justify-content: space-between; align-items: center; }
+	.compare__sec-code { font-family: var(--fm); font-size: 11px; font-weight: 700; }
+	.compare__sec-val { font-family: var(--fm); font-size: 15px; font-weight: 600; color: #9CA3AF; }
+	.compare__sec-val--best { color: #22C55E; }
+	.compare__sec-delta { display: block; margin-top: .5rem; font-family: var(--fm); font-size: 12px; font-weight: 700; }
+
+	/* Energy timelines + track maps side by side */
+	.compare__energy-timelines { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
+	
+
+	@media (max-width: 1100px) {
+		.compare__stats { grid-template-columns: repeat(2, 1fr); }
+		.compare__sector-cards { grid-template-columns: 1fr; }
 	}
 	@media (max-width: 900px) {
-		.compare__energy-timelines {
-			grid-template-columns: 1fr;
-		}
-		.compare__track-maps {
-			grid-template-columns: 1fr;
-		}
-		.compare__stats {
-			grid-template-columns: repeat(2, 1fr);
-		}
+		.compare__energy-timelines { grid-template-columns: 1fr; }
+		.compare { padding: 1rem; }
 	}
-
 	@media (max-width: 480px) {
-		.compare__stats {
-			grid-template-columns: 1fr;
-		}
+		.compare__stats { grid-template-columns: 1fr; }
+		.compare__title { font-size: 20px; }
 	}
 </style>
