@@ -39,8 +39,7 @@
 	});
 
 	// Sync from store (when EnergyBars selects a driver)
-	$effect(() => {
-		const v = get(selectedEnergyDriver);
+	selectedEnergyDriver.subscribe(v => {
 		if (v && v !== selectedDriver) {
 			selectedDriver = v;
 		}

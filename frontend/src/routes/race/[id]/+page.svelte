@@ -184,7 +184,7 @@
 				<button class="pd-nav__burger" onclick={() => sidebarCollapsed = !sidebarCollapsed}>
 					<span></span><span></span><span></span>
 				</button>
-				<a href="/" class="pd-nav__logo">RACEREAD</a>
+				<a href="/" class="pd-nav__logo"><img src="/logo@2x.png" alt="RaceRead" class="pd-nav__logo-img" /></a>
 			</div>
 			<button class="pd-nav__lang" onclick={() => locale.set($locale === 'en' ? 'tr' : 'en')}>
 				{$locale === 'en' ? 'TR' : 'EN'}
@@ -473,8 +473,9 @@
 	.pd-nav { position: relative; z-index: 60; background: var(--bg); border-bottom: 1px solid rgba(46,50,64,.6); }
 	.pd-nav__inner { padding: 0 1.25rem; height: 52px; display: flex; align-items: center; justify-content: space-between; }
 	.pd-nav__left { display: flex; align-items: center; gap: 1rem; }
-	.pd-nav__logo { font-family: var(--fh); font-weight: 700; font-size: 16px; letter-spacing: -.03em; color: var(--t); text-decoration: none; }
+	.pd-nav__logo { display: flex; align-items: center; text-decoration: none; }
 	.pd-nav__logo:hover { text-decoration: none; }
+	.pd-nav__logo-img { height: 36px; width: auto; }
 	.pd-nav__burger { display: none; flex-direction: column; gap: 4px; background: none; border: none; cursor: pointer; padding: 4px; }
 	.pd-nav__burger span { display: block; width: 16px; height: 1.5px; background: var(--t2); }
 	.pd-nav__lang { font-family: var(--fm); font-size: 10px; font-weight: 700; letter-spacing: .1em; color: var(--ac); background: none; border: 1px solid var(--brd); padding: 4px 10px; cursor: pointer; }

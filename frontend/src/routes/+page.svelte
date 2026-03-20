@@ -6,6 +6,19 @@
 	let races = $derived(data.races);
 	let circuitOutline = $derived(data.circuitOutline || []);
 
+	// Build SVG path from circuit outline
+	let trackPath = $derived.by(() => {
+		if (!circuitOutline.length) return '';
+		const xs = circuitOutline.map(p => p.x), ys = circuitOutline.map(p => p.y);
+		const minX = Math.min(...xs), maxX = Math.max(...xs), minY = Math.min(...ys), maxY = Math.max(...ys);
+		const w = maxX - minX || 1, h = maxY - minY || 1;
+		return circuitOutline.map((p, i) => {
+			const nx = ((p.x - minX) / w) * 460 + 20;
+			const ny = ((p.y - minY) / h) * 420 + 20;
+			return (i === 0 ? 'M' : 'L') + nx.toFixed(1) + ',' + ny.toFixed(1);
+		}).join(' ') + ' Z';
+	});
+
 	const L = {
 		en: {
 			tagline: 'Engineered Intelligence',
@@ -129,13 +142,7 @@
 	function isCompleted(c) { return races.some(r => r.date === c.date); }
 	function getRaceId(c) { const r = races.find(r => r.date === c.date); return r ? r.id : null; }
 
-	let circuitPath = $derived(() => {
-		if (!circuitOutline.length) return '';
-		const xs = circuitOutline.map(p => p.x), ys = circuitOutline.map(p => p.y);
-		const minX = Math.min(...xs), maxX = Math.max(...xs), minY = Math.min(...ys), maxY = Math.max(...ys);
-		const w = maxX - minX || 1, h = maxY - minY || 1;
-		return 'M' + circuitOutline.map(p => `${((p.x-minX)/w)*500},${((p.y-minY)/h)*500}`).join('L') + 'Z';
-	});
+
 
 	let hoveredCard = $state(null);
 	let sidebarOpen = $state(false);    // mobile drawer
@@ -252,11 +259,48 @@
 		<div class="prv-main">
 
 			<section class="prv-hero">
-				{#if circuitPath()}
-					<svg class="prv-hero__circuit" viewBox="0 0 500 500" preserveAspectRatio="xMidYMid meet">
-						<path d={circuitPath()} fill="none" stroke="currentColor" stroke-width="1.5" />
-					</svg>
-				{/if}
+				
+			<!-- Dynamic circuit with racing drivers -->
+			{#if trackPath}
+			<svg class="prv-hero__circuit" viewBox="0 0 500 460" preserveAspectRatio="xMidYMid meet">
+				<defs><path id="race-track" d={trackPath} /></defs>
+				<use href="#race-track" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+				<!-- 11 teams, 2 drivers each = 22 dots (front runners bigger) -->
+				<!-- Mercedes -->
+				<circle r="5" fill="#00D7B6" opacity="0.85"><animateMotion keyPoints="1;0" keyTimes="0;1" calcMode="linear" dur="17.8s" repeatCount="indefinite" begin="0s"><mpath href="#race-track" /></animateMotion></circle>
+				<circle r="4" fill="#00D7B6" opacity="0.6"><animateMotion keyPoints="1;0" keyTimes="0;1" calcMode="linear" dur="18.1s" repeatCount="indefinite" begin="-3s"><mpath href="#race-track" /></animateMotion></circle>
+				<!-- Ferrari -->
+				<circle r="5" fill="#ED1131" opacity="0.85"><animateMotion keyPoints="1;0" keyTimes="0;1" calcMode="linear" dur="17.9s" repeatCount="indefinite" begin="-5s"><mpath href="#race-track" /></animateMotion></circle>
+				<circle r="4" fill="#ED1131" opacity="0.6"><animateMotion keyPoints="1;0" keyTimes="0;1" calcMode="linear" dur="18.3s" repeatCount="indefinite" begin="-8s"><mpath href="#race-track" /></animateMotion></circle>
+				<!-- Red Bull -->
+				<circle r="5" fill="#4781D7" opacity="0.85"><animateMotion keyPoints="1;0" keyTimes="0;1" calcMode="linear" dur="18s" repeatCount="indefinite" begin="-1.5s"><mpath href="#race-track" /></animateMotion></circle>
+				<circle r="4" fill="#4781D7" opacity="0.55"><animateMotion keyPoints="1;0" keyTimes="0;1" calcMode="linear" dur="18.6s" repeatCount="indefinite" begin="-10s"><mpath href="#race-track" /></animateMotion></circle>
+				<!-- McLaren -->
+				<circle r="5" fill="#F47600" opacity="0.85"><animateMotion keyPoints="1;0" keyTimes="0;1" calcMode="linear" dur="18s" repeatCount="indefinite" begin="-6.5s"><mpath href="#race-track" /></animateMotion></circle>
+				<circle r="4" fill="#F47600" opacity="0.6"><animateMotion keyPoints="1;0" keyTimes="0;1" calcMode="linear" dur="18.4s" repeatCount="indefinite" begin="-13s"><mpath href="#race-track" /></animateMotion></circle>
+				<!-- Aston Martin -->
+				<circle r="4" fill="#229971" opacity="0.6"><animateMotion keyPoints="1;0" keyTimes="0;1" calcMode="linear" dur="18.5s" repeatCount="indefinite" begin="-7s"><mpath href="#race-track" /></animateMotion></circle>
+				<circle r="3.5" fill="#229971" opacity="0.45"><animateMotion keyPoints="1;0" keyTimes="0;1" calcMode="linear" dur="18.9s" repeatCount="indefinite" begin="-14s"><mpath href="#race-track" /></animateMotion></circle>
+				<!-- Alpine -->
+				<circle r="4" fill="#00A1E8" opacity="0.6"><animateMotion keyPoints="1;0" keyTimes="0;1" calcMode="linear" dur="18.6s" repeatCount="indefinite" begin="-4s"><mpath href="#race-track" /></animateMotion></circle>
+				<circle r="3.5" fill="#00A1E8" opacity="0.45"><animateMotion keyPoints="1;0" keyTimes="0;1" calcMode="linear" dur="19s" repeatCount="indefinite" begin="-11s"><mpath href="#race-track" /></animateMotion></circle>
+				<!-- Williams -->
+				<circle r="4" fill="#1868DB" opacity="0.55"><animateMotion keyPoints="1;0" keyTimes="0;1" calcMode="linear" dur="18.7s" repeatCount="indefinite" begin="-9s"><mpath href="#race-track" /></animateMotion></circle>
+				<circle r="3.5" fill="#1868DB" opacity="0.4"><animateMotion keyPoints="1;0" keyTimes="0;1" calcMode="linear" dur="19.1s" repeatCount="indefinite" begin="-16s"><mpath href="#race-track" /></animateMotion></circle>
+				<!-- Racing Bulls -->
+				<circle r="3.5" fill="#6C98FF" opacity="0.5"><animateMotion keyPoints="1;0" keyTimes="0;1" calcMode="linear" dur="18.8s" repeatCount="indefinite" begin="-2.5s"><mpath href="#race-track" /></animateMotion></circle>
+				<circle r="3" fill="#6C98FF" opacity="0.4"><animateMotion keyPoints="1;0" keyTimes="0;1" calcMode="linear" dur="19.2s" repeatCount="indefinite" begin="-12s"><mpath href="#race-track" /></animateMotion></circle>
+				<!-- Haas -->
+				<circle r="3.5" fill="#9C9FA2" opacity="0.5"><animateMotion keyPoints="1;0" keyTimes="0;1" calcMode="linear" dur="18.9s" repeatCount="indefinite" begin="-15s"><mpath href="#race-track" /></animateMotion></circle>
+				<circle r="3" fill="#9C9FA2" opacity="0.35"><animateMotion keyPoints="1;0" keyTimes="0;1" calcMode="linear" dur="19.3s" repeatCount="indefinite" begin="-7.5s"><mpath href="#race-track" /></animateMotion></circle>
+				<!-- Audi -->
+				<circle r="3.5" fill="#F50537" opacity="0.5"><animateMotion keyPoints="1;0" keyTimes="0;1" calcMode="linear" dur="19s" repeatCount="indefinite" begin="-4.5s"><mpath href="#race-track" /></animateMotion></circle>
+				<circle r="3" fill="#F50537" opacity="0.35"><animateMotion keyPoints="1;0" keyTimes="0;1" calcMode="linear" dur="19.4s" repeatCount="indefinite" begin="-14.5s"><mpath href="#race-track" /></animateMotion></circle>
+				<!-- Cadillac -->
+				<circle r="3.5" fill="#909090" opacity="0.45"><animateMotion keyPoints="1;0" keyTimes="0;1" calcMode="linear" dur="19.1s" repeatCount="indefinite" begin="-11.5s"><mpath href="#race-track" /></animateMotion></circle>
+				<circle r="3" fill="#909090" opacity="0.3"><animateMotion keyPoints="1;0" keyTimes="0;1" calcMode="linear" dur="19.5s" repeatCount="indefinite" begin="-17s"><mpath href="#race-track" /></animateMotion></circle>
+			</svg>
+			{/if}
 				<div class="prv-hero__content">
 					<span class="prv-hero__tagline">{tr.tagline}</span>
 					<h1 class="prv-hero__title">
@@ -266,7 +310,7 @@
 					<p class="prv-hero__desc">{tr.desc}</p>
 					<div class="prv-hero__actions">
 						<a href="#races" class="prv-btn prv-btn--primary">{tr.cta_analyze}</a>
-						<a href="#how" class="prv-btn prv-btn--ghost">{tr.cta_docs}</a>
+						<a href="/how" class="prv-btn prv-btn--ghost">{tr.cta_docs}</a>
 					</div>
 				</div>
 			</section>
@@ -470,7 +514,7 @@
 
 	/* ── HERO ── */
 	.prv-hero { position: relative; padding: 4rem 3rem; overflow: hidden; }
-	.prv-hero__circuit { position: absolute; top: 50%; right: -2%; transform: translateY(-50%); width: 42%; max-width: 480px; color: rgba(226,75,74,.1); pointer-events: none; filter: drop-shadow(0 0 18px rgba(226,75,74,.08)); }
+	.prv-hero__circuit { position: absolute; top: 45%; right: -8%; transform: translateY(-50%); width: 65%; max-width: 800px; color: rgba(226,75,74,.15); pointer-events: none; filter: drop-shadow(0 0 24px rgba(226,75,74,.1)); }
 	.prv-hero__content { position: relative; z-index: 1; max-width: 680px; }
 	.prv-hero__tagline { display: block; font-family: var(--p-fm); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--p-ac); margin-bottom: 1.25rem; }
 	.prv-hero__title { font-family: var(--p-fh); font-weight: 700; font-size: clamp(30px,4.5vw,56px); line-height: 1.05; letter-spacing: -.03em; text-transform: uppercase; margin-bottom: 1.25rem; }

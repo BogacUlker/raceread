@@ -50,7 +50,7 @@
 	let tooltipX = $state(0);
 	let tooltipY = $state(0);
 
-	$effect(() => { get(hoveredDriver); });
+	hoveredDriver.subscribe(v => hovered = v);
 
 	function handleRowEnter(entry, e) {
 		hovered = entry.driver;

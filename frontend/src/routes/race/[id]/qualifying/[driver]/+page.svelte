@@ -82,7 +82,7 @@
 	<!-- NAV -->
 	<nav class="pq-nav">
 		<div class="pq-nav__inner">
-			<a href="/" class="pq-nav__logo">RACEREAD</a>
+			<a href="/" class="pq-nav__logo"><img src="/logo@2x.png" alt="RaceRead" class="pq-nav__logo-img" /></a>
 			<button class="pq-nav__lang" onclick={() => locale.set($locale === 'en' ? 'tr' : 'en')}>{$locale === 'en' ? 'TR' : 'EN'}</button>
 		</div>
 	</nav>
@@ -258,8 +258,9 @@
 	/* NAV */
 	.pq-nav { position: relative; z-index: 60; background: var(--bg); border-bottom: 1px solid rgba(46,50,64,.6); }
 	.pq-nav__inner { padding: 0 1.25rem; height: 52px; display: flex; align-items: center; justify-content: space-between; }
-	.pq-nav__logo { font-family: var(--fh); font-weight: 700; font-size: 16px; letter-spacing: -.03em; color: var(--t); text-decoration: none; }
+	.pq-nav__logo { display: flex; align-items: center; text-decoration: none; }
 	.pq-nav__logo:hover { text-decoration: none; }
+	.pq-nav__logo-img { height: 36px; width: auto; }
 	.pq-nav__lang { font-family: var(--fm); font-size: 10px; font-weight: 700; letter-spacing: .1em; color: var(--ac); background: none; border: 1px solid var(--brd); padding: 4px 10px; cursor: pointer; }
 
 	/* LAYOUT */

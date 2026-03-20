@@ -26,8 +26,8 @@
 
 	let hovered = $state(null);
 	let pinned = $state([]);
-	$effect(() => { hovered = get(hoveredDriver); });
-	$effect(() => { pinned = get(pinnedDriver); });
+	hoveredDriver.subscribe(v => hovered = v);
+	pinnedDriver.subscribe(v => pinned = v);
 
 	let lapsWithGap = $derived(computeGapToLeader(laps));
 

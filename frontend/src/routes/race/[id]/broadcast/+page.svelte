@@ -1,7 +1,3 @@
-<!--
-	Broadcaster Mode - full-screen, auto-cycling charts with keyboard controls.
-	Arrow keys: prev/next chart. Space: pause. ESC: exit.
--->
 <script>
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
@@ -28,21 +24,15 @@
 
 	let driverList = $derived(laps.map(d => ({ driver: d.driver, team: d.team })));
 
-	// Strategy sorting
-	let finalPosMap = $derived(
-		Object.fromEntries(
-			laps.map(d => {
-				const lastLap = d.laps.filter(l => l.position != null).at(-1);
-				return [d.driver, lastLap?.position ?? 99];
-			})
-		)
-	);
+	let finalPosMap = $derived(Object.fromEntries(laps.map(d => {
+		const lastLap = d.laps.filter(l => l.position != null).at(-1);
+		return [d.driver, lastLap?.position ?? 99];
+	})));
 
 	let strategySorted = $derived(
 		[...(strategy.drivers || [])].sort((a, b) => (finalPosMap[a.driver] ?? 99) - (finalPosMap[b.driver] ?? 99))
 	);
 
-	// Select all drivers once (don't reset on every render)
 	let _broadcastInitialized = false;
 	$effect(() => {
 		if (!_broadcastInitialized && laps.length > 0) {
@@ -51,19 +41,14 @@
 		}
 	});
 
-	// SC/VSC laps
 	let vscLaps = $state([]);
 	let scLaps = $state([]);
-	async function loadVscLaps() {
-		try {
-			const vscData = await api(`/api/races/${raceId}/energy/vsc`);
-			vscLaps = vscData.vsc_laps || [];
-			scLaps = vscData.sc_laps || [];
-		} catch { vscLaps = []; scLaps = []; }
+	if (typeof window !== 'undefined') {
+		api(`/api/races/${raceId}/energy/vsc`).then(d => {
+			vscLaps = d.vsc_laps || []; scLaps = d.sc_laps || [];
+		}).catch(() => {});
 	}
-	loadVscLaps();
 
-	// Chart cycling
 	const CHARTS = ['pace', 'strategy', 'energy', 'speed-trace', 'track-map'];
 	let CHART_LABELS = $derived({
 		pace: $t('charts.pace'),
@@ -74,95 +59,45 @@
 	});
 
 	let activeChart = $state(0);
-	let autoCycle = $state(true);
-	let showOverlay = $state(false);
-	let overlayTimeout = $state(null);
-	let cycleInterval = $state(null);
 
-	const CYCLE_MS = 18000; // 18 seconds per chart
-
-	function startCycle() {
-		stopCycle();
-		cycleInterval = setInterval(() => {
-			if (autoCycle) {
-				activeChart = (activeChart + 1) % CHARTS.length;
-			}
-		}, CYCLE_MS);
-	}
-
-	function stopCycle() {
-		if (cycleInterval) clearInterval(cycleInterval);
-	}
-
-	function nextChart() {
-		activeChart = (activeChart + 1) % CHARTS.length;
-	}
-
-	function prevChart() {
-		activeChart = (activeChart - 1 + CHARTS.length) % CHARTS.length;
+	// Uppercase race name with proper GRAND PRIX
+	function gpName(name) {
+		if (!name) return '';
+		const parts = name.split('Grand Prix');
+		if (parts.length === 2) return parts[0].toUpperCase() + 'GRAND PRIX';
+		return name.toUpperCase();
 	}
 
 	function handleKeydown(e) {
-		switch (e.key) {
-			case 'ArrowRight': nextChart(); break;
-			case 'ArrowLeft': prevChart(); break;
-			case ' ':
-				e.preventDefault();
-				autoCycle = !autoCycle;
-				break;
-			case 'Escape':
-				goto(`/race/${raceId}`);
-				break;
-		}
+		if (e.key === 'Escape') goto(`/race/${raceId}`);
 	}
-
-	function handleMouseMove() {
-		showOverlay = true;
-		if (overlayTimeout) clearTimeout(overlayTimeout);
-		overlayTimeout = setTimeout(() => { showOverlay = false; }, 3000);
-	}
-
-	onMount(() => {
-		startCycle();
-		return () => {
-			stopCycle();
-			if (overlayTimeout) clearTimeout(overlayTimeout);
-		};
-	});
 </script>
+
+<svelte:head>
+	<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</svelte:head>
 
 <svelte:window onkeydown={handleKeydown} />
 
-<!-- svelte-ignore a11y_no_static_element_interactions -->
-<div class="broadcast" onmousemove={handleMouseMove}>
+<div class="bc">
 	<!-- Top bar -->
-	<div class="broadcast__topbar">
-		<span class="broadcast__race-name">{raceInfo.name}</span>
-		<span class="broadcast__chart-name">{CHART_LABELS[CHARTS[activeChart]]}</span>
-		<span class="broadcast__cycle-indicator">
-			{autoCycle ? '▶' : '⏸'}
-			{activeChart + 1}/{CHARTS.length}
-		</span>
+	<div class="bc__topbar">
+		<div class="bc__left">
+			<a href="/race/{raceId}" class="bc__exit" title="ESC">
+				<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M12 4L4 12M4 4l8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+			</a>
+			<span class="bc__race">{gpName(raceInfo.name)}</span>
+		</div>
+		<span class="bc__active-label">{CHART_LABELS[CHARTS[activeChart]]}</span>
+		<span class="bc__counter">{activeChart + 1} / {CHARTS.length}</span>
 	</div>
 
 	<!-- Chart area -->
-	<div class="broadcast__chart">
+	<div class="bc__chart">
 		{#if CHARTS[activeChart] === 'pace'}
-			<PaceChart
-				{laps}
-				selectedDrivers={$selectedDrivers}
-				{vscLaps}
-				{scLaps}
-				annotations={[]}
-				{strategy}
-			/>
+			<PaceChart {laps} selectedDrivers={$selectedDrivers} {vscLaps} {scLaps} annotations={[]} {strategy} />
 		{:else if CHARTS[activeChart] === 'strategy'}
-			<StrategyTimeline
-				drivers={strategySorted}
-				totalLaps={raceInfo.total_laps}
-				{vscLaps}
-				{scLaps}
-			/>
+			<StrategyTimeline drivers={strategySorted} totalLaps={raceInfo.total_laps} {vscLaps} {scLaps} />
 		{:else if CHARTS[activeChart] === 'energy'}
 			<EnergyBars entries={energyComparison.entries || []} />
 		{:else if CHARTS[activeChart] === 'speed-trace'}
@@ -172,124 +107,80 @@
 		{/if}
 	</div>
 
-	<!-- Floating overlay (shows on hover) -->
-	{#if showOverlay}
-		<div class="broadcast__overlay">
-			<div class="broadcast__overlay-pills">
-				{#each CHARTS as chart, i}
-					<button
-						class="broadcast__overlay-pill"
-						class:active={activeChart === i}
-						onclick={() => { activeChart = i; }}
-					>
-						{CHART_LABELS[chart]}
-					</button>
-				{/each}
-			</div>
-			<div class="broadcast__overlay-controls">
-				<button onclick={prevChart}>◀</button>
-				<button onclick={() => { autoCycle = !autoCycle; }}>
-					{autoCycle ? '⏸' : '▶'}
-				</button>
-				<button onclick={nextChart}>▶</button>
-				<button onclick={() => goto(`/race/${raceId}`)}>✕</button>
-			</div>
-		</div>
-	{/if}
+	<!-- Bottom: chart selector pills (always visible) -->
+	<div class="bc__bottom">
+		{#each CHARTS as chart, i}
+			<button class="bc__pill" class:bc__pill--active={activeChart === i} onclick={() => activeChart = i}>
+				{CHART_LABELS[chart]}
+			</button>
+		{/each}
+	</div>
 </div>
 
 <style>
-	.broadcast {
-		width: 100vw;
-		height: 100vh;
-		display: flex;
-		flex-direction: column;
-		background: var(--bg-primary);
+	.bc {
+		width: 100vw; height: 100vh;
+		display: flex; flex-direction: column;
+		background: #0F1117; color: #E8E8ED;
+		font-family: 'DM Sans', sans-serif;
+		-webkit-font-smoothing: antialiased;
 		overflow: hidden;
-		--broadcast-font-scale: 1.15;
-		font-size: calc(1rem * var(--broadcast-font-scale));
+		--fh: 'Space Grotesk', sans-serif;
+		--fm: 'JetBrains Mono', monospace;
+		--ac: #E24B4A;
+		--bg2: #1A1D27;
+		--brd: #2E3240;
+		--tm: #6B7280;
 	}
-	.broadcast__topbar {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		padding: 12px 24px;
-		background: var(--bg-secondary);
-		border-bottom: 1px solid var(--border);
-		font-family: var(--font-mono);
-		flex-shrink: 0;
+	.bc :global(*) { border-radius: 0 !important; }
+	.bc :global(.chart-card) { border-radius: 0 !important; border: none !important; background: var(--bg2) !important; }
+	.bc :global(.chart-card__title) { font-family: var(--fh) !important; text-transform: uppercase; letter-spacing: .03em; font-size: 18px !important; }
+
+	/* Top bar */
+	.bc__topbar {
+		display: flex; align-items: center; justify-content: space-between;
+		padding: 0 1.5rem; height: 48px; flex-shrink: 0;
+		background: var(--bg2); border-bottom: 1px solid rgba(46,50,64,.5);
 	}
-	.broadcast__race-name {
-		font-size: 16px;
-		font-weight: 600;
-		color: var(--text-primary);
+	.bc__left { display: flex; align-items: center; gap: 1rem; }
+	.bc__exit {
+		display: flex; align-items: center; justify-content: center;
+		width: 28px; height: 28px; color: var(--tm);
+		border: 1px solid var(--brd); text-decoration: none;
+		transition: color .15s, border-color .15s;
 	}
-	.broadcast__chart-name {
-		font-size: 14px;
-		color: var(--text-secondary);
+	.bc__exit:hover { color: var(--ac); border-color: var(--ac); text-decoration: none; }
+	.bc__race { font-family: var(--fh); font-size: 15px; font-weight: 700; letter-spacing: -.01em; }
+	.bc__active-label { font-family: var(--fh); font-size: 13px; color: #9CA3AF; text-transform: uppercase; letter-spacing: .06em; }
+	.bc__counter { font-family: var(--fm); font-size: 11px; color: var(--tm); }
+
+	/* Chart area */
+	.bc__chart { flex: 1; padding: 1.25rem 1.5rem; overflow: auto; }
+
+	/* Bottom pills */
+	.bc__bottom {
+		display: flex; align-items: center; justify-content: center;
+		gap: 2px; padding: .6rem 1.5rem; flex-shrink: 0;
+		background: var(--bg2); border-top: 1px solid rgba(46,50,64,.5);
 	}
-	.broadcast__cycle-indicator {
-		font-size: 12px;
-		color: var(--text-muted);
+	.bc__pill {
+		font-family: var(--fm); font-size: 11px;
+		padding: 7px 16px; background: none;
+		border: 1px solid var(--brd); color: var(--tm);
+		cursor: pointer; transition: all .15s;
+		text-transform: uppercase; letter-spacing: .04em;
 	}
-	.broadcast__chart {
-		flex: 1;
-		padding: 24px;
-		overflow: auto;
+	.bc__pill:hover { color: #E8E8ED; border-color: #6B7280; }
+	.bc__pill--active {
+		background: var(--ac); color: #fff;
+		border-color: var(--ac); font-weight: 600;
 	}
-	.broadcast__overlay {
-		position: fixed;
-		bottom: 20px;
-		left: 50%;
-		transform: translateX(-50%);
-		background: var(--bg-card);
-		border: 1px solid var(--border);
-		border-radius: var(--radius-lg);
-		padding: 10px 16px;
-		display: flex;
-		align-items: center;
-		gap: 16px;
-		z-index: 100;
-		animation: fadeIn 0.2s;
-	}
-	@keyframes fadeIn {
-		from { opacity: 0; transform: translateX(-50%) translateY(10px); }
-		to { opacity: 1; transform: translateX(-50%) translateY(0); }
-	}
-	.broadcast__overlay-pills {
-		display: flex;
-		gap: 4px;
-	}
-	.broadcast__overlay-pill {
-		font-family: var(--font-mono);
-		font-size: 11px;
-		padding: 4px 10px;
-		border: 1px solid var(--border);
-		border-radius: 999px;
-		background: transparent;
-		color: var(--text-muted);
-		cursor: pointer;
-	}
-	.broadcast__overlay-pill.active {
-		background: var(--bg-secondary);
-		color: var(--text-primary);
-		border-color: var(--text-muted);
-	}
-	.broadcast__overlay-controls {
-		display: flex;
-		gap: 4px;
-	}
-	.broadcast__overlay-controls button {
-		font-size: 14px;
-		background: transparent;
-		border: 1px solid var(--border);
-		border-radius: var(--radius-sm);
-		color: var(--text-secondary);
-		cursor: pointer;
-		padding: 4px 8px;
-	}
-	.broadcast__overlay-controls button:hover {
-		color: var(--text-primary);
-		border-color: var(--text-muted);
+
+	@media (max-width: 640px) {
+		.bc__topbar { padding: 0 .75rem; }
+		.bc__chart { padding: .75rem; }
+		.bc__bottom { padding: .5rem .75rem; gap: 2px; }
+		.bc__pill { padding: 6px 10px; font-size: 10px; }
+		.bc__race { font-size: 12px; }
 	}
 </style>

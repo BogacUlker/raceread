@@ -21,8 +21,8 @@
 	let pitTooltipX = $state(0);
 	let pitTooltipY = $state(0);
 
-	$effect(() => { hovered = get(hoveredDriver); });
-	$effect(() => { pinned = get(pinnedDriver); });
+	hoveredDriver.subscribe(v => hovered = v);
+	pinnedDriver.subscribe(v => pinned = v);
 
 	function buildPath(laps) {
 		const points = laps

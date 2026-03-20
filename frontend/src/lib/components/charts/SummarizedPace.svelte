@@ -17,8 +17,8 @@
 
 	let hovered = $state(null);
 	let pinned = $state([]);
-	$effect(() => { hovered = get(hoveredDriver); });
-	$effect(() => { pinned = get(pinnedDriver); });
+	hoveredDriver.subscribe(v => hovered = v);
+	pinnedDriver.subscribe(v => pinned = v);
 
 	// Compute median lap time per driver (excluding inaccurate/null laps)
 	let driverMedians = $derived(
