@@ -122,6 +122,7 @@ def get_vsc_comparison(race_id: str) -> VSCComparisonResponse:
         )
 
     vsc_laps: list[int] = race_control.get("vsc_laps", [])
+    sc_laps: list[int] = race_control.get("sc_laps", [])
 
     if not all_energy:
         raise HTTPException(
@@ -135,5 +136,6 @@ def get_vsc_comparison(race_id: str) -> VSCComparisonResponse:
     return VSCComparisonResponse(
         race_id=race_id,
         vsc_laps=vsc_laps,
+        sc_laps=sc_laps,
         entries=entries,
     )
