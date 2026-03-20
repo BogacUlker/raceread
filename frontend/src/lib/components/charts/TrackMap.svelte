@@ -18,6 +18,7 @@
 		totalLaps = 58,
 		compareDriver1 = '',
 		compareDriver2 = '',
+		initialMode = '',
 	} = $props();
 
 	let containerEl = $state(null);
@@ -27,7 +28,7 @@
 	let driver1 = $state('');
 	let driver2 = $state('');
 	let selectedLap = $state(5);
-	let colorMode = $state('speed'); // 'speed' | 'energy' | 'compare'
+	let colorMode = $state(initialMode || 'speed'); // 'speed' | 'energy' | 'compare'
 	let compareView = $state('race'); // 'race' (dots only) | 'trace' (colored lines)
 	let loading = $state(false);
 	let hoverIdx = $state(null);
