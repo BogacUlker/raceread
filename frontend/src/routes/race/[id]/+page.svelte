@@ -67,7 +67,7 @@
 	let circuitData = $derived(data.circuit);
 
 	let trafficData = $derived(data.traffic);
-	let trafficLoading = $derived(!data.traffic && !data.traffic === false);
+	let trafficLoading = $derived(data.traffic === null);
 
 	// Sidebar state
 	
@@ -172,7 +172,7 @@
 </script>
 
 <svelte:head>
-	<title>{raceInfo.name} - RaceRead Preview</title>
+	<title>{raceInfo.name} - RaceRead</title>
 	<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
 </svelte:head>
 
