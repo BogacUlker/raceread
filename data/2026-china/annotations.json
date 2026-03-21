@@ -4,38 +4,20 @@
     {
       "driver": null,
       "lap": null,
-      "chart_type": "race_insight",
-      "category": "race_insight",
-      "severity": "high",
-      "text_en": "Mercedes dominance in China: ANT secured pole with a 1:32.064, leading a front-row lockout as RUS qualified P2 just +0.222s behind. The Silver Arrows converted their qualifying advantage into a 1-2 finish, with ANT controlling the race from start to finish.",
-      "text_tr": "Çin'de Mercedes dominasyonu: ANT 1:32.064 ile pole pozisyonunu aldı ve RUS'un yalnızca +0.222s gerisinde P2'de yer almasıyla ön sıra kilitledi. Gümüş Oklar, sıralama avantajlarını 1-2 bitirişe çevirdiler ve ANT yarışı baştan sona kontrol etti."
-    },
-    {
-      "driver": null,
-      "lap": null,
       "chart_type": "strategy",
       "category": "race_insight",
       "severity": "high",
-      "text_en": "Safety Car strategy split reshuffled the field: The SC on laps 10-13 caught drivers at different pit windows. COL gained 4 positions by staying out on hard tires, while drivers who pitted during SC (ANT, RUS, HAM, LEC) dropped 2-3 positions but had fresher rubber for the long stint home.",
-      "text_tr": "Güvenlik Aracı strateji ayrımı alanı karıştırdı: 10-13. turlardaki GA, pilotları farklı pit pencerelerinde yakaladı. COL sert lastiklerde kalarak 4 pozisyon kazandı, GA sırasında pit yapan pilotlar (ANT, RUS, HAM, LEC) 2-3 pozisyon kaybetti ancak eve uzun stint için daha taze lastiklere sahip oldular."
+      "text_en": "The Safety Car deployed on Lap 10 defined the Chinese Grand Prix. ANT, RUS, HAM, LEC, GAS, and BEA all pitted immediately, converting their free stop into a 46-lap hard-tire run. COL and OCO, who stayed out on old tires, inherited temporary positions — COL jumped from P6 to P2 and OCO from P7 to P3 — but their alternate strategies ultimately couldn't match the race pace of the pit-window drivers.",
+      "text_tr": "10. turda sahanın içine giren güvenlik aracı Çin Grand Prix'sini şekillendirdi. ANT, RUS, HAM, LEC, GAS ve BEA hemen pit yaptı; bedava pit duraklarını 46 turluk sert lastikle geçirilen bir koşuya dönüştürdüler. Eski lastikle piste kalan COL ve OCO geçici olarak öne geçti — COL 6.'dan 2.'ye, OCO ise 7.'den 3.'ye yükseldi — ancak alternatif stratejileri pit yapanların yarış temposuna yetişemedi."
     },
     {
       "driver": null,
       "lap": null,
-      "chart_type": "qualifying",
-      "category": "qualifying_insight",
-      "severity": "medium",
-      "text_en": "Qualifying margins tell the story: Mercedes' 1-2 was built on consistency across all three sectors. ANT dominated S3 (40.387s), RUS took S1 (24.012s), while Ferrari's LEC countered with the fastest S2 (27.660s), showing the tight competition at the front.",
-      "text_tr": "Sıralama marjları hikayeyi anlatıyor: Mercedes'in 1-2'si üç sektörde de tutarlılık üzerine kuruldu. ANT S3'e hakim oldu (40.387s), RUS S1'i aldı (24.012s), Ferrari'den LEC ise en hızlı S2 ile (27.660s) karşılık vererek öndeki sıkı rekabeti gösterdi."
-    },
-    {
-      "driver": null,
-      "lap": 10,
-      "chart_type": "safety_car",
-      "category": "safety_car",
+      "chart_type": "pace",
+      "category": "race_insight",
       "severity": "high",
-      "text_en": "Critical Safety Car deployment on lap 10 at Turn 2: With recovery vehicles and marshals on track, the 4-lap SC period created the race's defining strategic moment. 12 drivers pitted during this window, dramatically altering the competitive order.",
-      "text_tr": "10. turda 2. virajda kritik Güvenlik Aracı devreye girdi: Pistte kurtarma araçları ve komiserlerin bulunmasıyla, 4 turluk GA periyodu yarışın belirleyici stratejik anını oluşturdu. Bu pencerede 12 pilot pit yaptı ve rekabet düzenini dramatik şekilde değiştirdi."
+      "text_en": "ANT set the race fastest lap of 1:35.275 on Lap 52 — 46 laps into the hard compound — demonstrating 2026 regulations' hallmark negative tire degradation. His hard tires were actually 1.7 seconds per lap faster at Lap 52 than at the start of the stint (Lap 14: 1:38.957), a remarkable improvement that made the 1-stop strategy unbeatable.",
+      "text_tr": "ANT, sert lastikle geçirilen 46. turda, 52. turda 1:35.275'lik yarışın en hızlı turunu attı. Bu, 2026 yönetmeliklerinin karakteristik özelliği olan negatif lastik degradasyonunu mükemmel biçimde yansıtıyordu. Sert lastikleri stint başına (14. tur: 1:38.957) kıyasla 52. turda tur başına 1.7 saniye daha hızlıydı; tek pit duraklı stratejiyi yenilmez kılan çarpıcı bir gelişme."
     },
     {
       "driver": null,
@@ -43,161 +25,215 @@
       "chart_type": "energy",
       "category": "energy_insight",
       "severity": "medium",
-      "text_en": "Energy efficiency pecking order: GAS led all drivers with an 11.920 D/C ratio, followed by ALO (11.470) and ANT (7.730). The Alpine and Aston Martin showed superior energy recovery through Shanghai's heavy braking zones, while ANT balanced deployment effectively despite high race-leading demands.",
-      "text_tr": "Enerji verimliliği hiyerarşisi: GAS 11.920 D/C oranıyla tüm pilotları geride bıraktı, ALO (11.470) ve ANT (7.730) takip etti. Alpine ve Aston Martin, Şanghay'ın ağır fren bölgelerinde üstün enerji geri kazanımı gösterirken, ANT yarış liderliğinin yüksek taleplerine rağmen deployment'ı etkili şekilde dengeledi."
+      "text_en": "HUL (Audi) posted the grid's worst D/C ratio at just 0.75 — compared to ANT's 7.73 and GAS's 11.92 — driven almost entirely by Super Clipping. On multiple laps in the first stint, HUL's clip% exceeded 35%, meaning the Audi's ICE was being heavily borrowed to charge the battery at full throttle. This is the primary reason the C26 lacked straight-line competitiveness despite qualifying P11.",
+      "text_tr": "HUL (Audi), gridde 0.75 gibi son derece düşük bir D/C oranıyla en kötü performansı sergiledi; ANT'ın 7.73'üne ve GAS'ın 11.92'sine kıyasla bu fark çok belirgindi. İlk stint'in birden fazla turunda HUL'ün kırpma yüzdesi %35'i aştı; yani Audi'nin ICE'ı tam gaz iken bataryayı şarj etmek için ağır biçimde kullanılıyordu. Bu durum, C26'nın sıralama turlarında 11. olmasına rağmen düz hatta neden rekabetçi olamadığını açıklıyor."
     },
     {
       "driver": null,
       "lap": null,
-      "chart_type": "traffic",
-      "category": "traffic_insight",
+      "chart_type": "qualifying",
+      "category": "qualifying_insight",
       "severity": "medium",
-      "text_en": "Traffic struggles for backmarkers: STR endured 87.5% of his 8 racing laps in traffic with minimal pace loss (+0.20s), showing surprising composure. ALO faced heavy traffic (59.3%) with significant degradation (+0.80s), highlighting the challenge of racing in the midfield battle.",
-      "text_tr": "Geridekiler için trafik çilesi: STR 8 yarış turundun %87.5'ini trafikte geçirdi ancak minimal pace kaybıyla (+0.20s) şaşırtıcı bir soğukkanlılık gösterdi. ALO ağır trafik (%59.3) ve önemli degradasyonla (+0.80s) karşılaştı, orta grup savaşında yarışmanın zorluğunu vurguladı."
+      "text_en": "Mercedes locked out the front row in Shanghai with ANT on pole (1:32.064) and RUS second (1:32.286), a gap of just 0.222s. ANT's advantage came entirely from Sector 3 — where he set the fastest time of 40.387s — while RUS was quickest in Sector 1 (24.012s). Ferrari's HAM and LEC were within 0.364s of pole, confirming a genuine four-way fight between Mercedes and Ferrari.",
+      "text_tr": "Mercedes, Şanghay'da ilk sırayı ANT (1:32.064) ve RUS (1:32.286) ile kilitleyerek aralarındaki farkı sadece 0.222 saniyede tuttu. ANT'ın üstünlüğü tamamen 3. sektörden geldi; 40.387 saniyelik en hızlı 3. sektör zamanını o yaptı. RUS ise 1. sektörde en hızlıydı (24.012 saniye). Ferrari'den HAM ve LEC, pole'e 0.364 saniye mesafede kaldı; bu da Mercedes ile Ferrari arasında gerçek bir dört yönlü mücadeleyi tescilledi."
+    },
+    {
+      "driver": null,
+      "lap": null,
+      "chart_type": "strategy",
+      "category": "safety_car",
+      "severity": "high",
+      "text_en": "Alpine's COL executed the race's boldest strategy: starting on hard tires (P12 on the grid), staying out through the Safety Car, and pitting only on Lap 32 for mediums. At its peak on Lap 14, COL held P2. The gamble ultimately cost them — they finished P10 — but the 1.960s pace deficit to the medium runners in the second stint was the difference between a points finish and a podium.",
+      "text_tr": "Alpine'den COL, yarışın en cesur stratejisini uyguladı: sert lastikle başladı (grid'de P12), güvenlik aracına rağmen piste kaldı ve yalnızca 32. turda medyum lastik için pit yaptı. En iyi anında, 14. turda P2'deydi. Sonunda bu risk pahalıya patladı — P10 ile bitirdi — ancak ikinci stint'te medyum kullanan rakiplerine kıyasla 1.960 saniyelik tempo açığı, puan bitişi ile podyum arasındaki farkı belirledi."
+    },
+    {
+      "driver": null,
+      "lap": null,
+      "chart_type": "track_map",
+      "category": "traffic_insight",
+      "severity": "low",
+      "text_en": "HAD (Red Bull) spent 45.1% of his race in traffic yet posted a remarkable -0.27s pace improvement in dirty air — the only frontrunner to actually go faster when following other cars. This stands in contrast to VER's +1.68s pace degradation in similar traffic conditions, suggesting significant differences in how the two Red Bull drivers manage energy deployment when in close proximity.",
+      "text_tr": "HAD (Red Bull) yarışının %45.1'ini trafikte geçirmesine rağmen kirli havada dikkat çekici bir -0.27 saniyelik tempo iyileşmesi kaydetti; bu, diğer araçları takip ederken aslında daha hızlı giden tek ön grup sürücüsüydü. Bu durum, benzer trafik koşullarında +1.68 saniyelik tempo kaybı yaşayan VER ile belirgin bir tezat oluşturuyor; iki Red Bull sürücüsünün yakın takipte enerji kullanımını ne kadar farklı yönettiğine işaret ediyor."
+    },
+    {
+      "driver": "ANT",
+      "lap": 10,
+      "chart_type": "strategy",
+      "category": "pit_stop",
+      "severity": "high",
+      "text_en": "ANT pitted from the lead under Safety Car on Lap 10, rejoining in P1 after a zero-net-change stop. The timing was perfect: switching to fresh hards with 46 laps to go, he converted what could have been a costly early stop into an optimal one-stop race. His hard tires then ran faster at the end of the stint than the beginning — 1:35.275 on Lap 52 vs 1:38.957 on Lap 14.",
+      "text_tr": "ANT, 10. turda güvenlik aracı döneminde liderlik pozisyonundan pit yaptı ve P1'de geri döndü. Zamanlama mükemmeldi: gidecek 46 tur varken taze sert lastikle geçiş yaparak potansiyel olarak pahalıya patlaması muhtemel erken bir pit durağını optimal tek durak stratejisine dönüştürdü. Sert lastikleri stint sonunda başından daha hızlıydı; 14. turda 1:38.957'ye karşın 52. turda 1:35.275."
     },
     {
       "driver": "ANT",
       "lap": 52,
       "chart_type": "pace",
       "category": "fastest_lap",
+      "severity": "high",
+      "text_en": "ANT's fastest lap of 1:35.275 came on Lap 52 — deep into a 46-lap hard stint — underscoring the 2026 hard compound's counterintuitive behavior at Shanghai. His D/C ratio of 7.73 (best among frontrunners) reflects precise energy deployment that kept the tires in their optimal window. By contrast, RUS's best was 1:35.400, just 0.125s slower, meaning ANT's energy strategy was extracting maximum performance from identical hardware.",
+      "text_tr": "ANT'ın 1:35.275'lik en hızlı turu 52. turda geldi; 46 turluk sert stint'in derinliklerinde. Bu, Şanghay'daki 2026 sert lastiğinin alışılmadık davranışını gözler önüne serdi. 7.73'lük D/C oranı (ön gruptakilerin en iyisi), lastikleri optimal pencerede tutan hassas enerji kullanımını yansıtıyor. Buna karşın RUS'un en iyisi 1:35.400 idi; yalnızca 0.125 saniye geride. ANT'ın enerji stratejisi, aynı donanımdan maksimum performansı çekiyordu."
+    },
+    {
+      "driver": "ANT",
+      "lap": 16,
+      "chart_type": "energy",
+      "category": "energy_insight",
       "severity": "medium",
-      "text_en": "ANT secured fastest lap with 1:35.275 on lap 52 with 42-lap-old hard tires, demonstrating Mercedes' superior tire management. The lap came during his commanding stint to the finish, extending his lead over RUS.",
-      "text_tr": "ANT 52. turda 42 tur yaşındaki sert lastikleriyle 1:35.275 ile en hızlı turu aldı ve Mercedes'in üstün lastik yönetimini sergiledi. Bu tur, RUS'a olan liderliğini genişlettiği bitirse kadarki dominant stint sırasında geldi."
+      "text_en": "After rejoining post-Safety Car, ANT dropped two seconds per lap faster over laps 16-17 (1:36.604 and 1:36.555) compared to his Lap 14 restart (1:38.957). His clip% settled to near-zero after the SC period, indicating the fresh hard tires allowed full ICE output without the battery needing recharging mid-straight — a critical advantage that began compounding immediately.",
+      "text_tr": "Güvenlik aracının ardından piste dönen ANT, 16-17. turlarda (1:36.604 ve 1:36.555) 14. turdaki yeniden başlangıcına (1:38.957) kıyasla tur başına iki saniye daha hızlı geçti. Güvenlik aracı döneminin ardından kırpma yüzdesi neredeyse sıfıra indi; bu, taze sert lastiklerin düzlüklerin ortasında batarya şarjı gerekmeksizin tam ICE çıkışına izin verdiğine işaret ediyordu. Hemen bileşmeye başlayan kritik bir avantaj."
     },
     {
       "driver": "RUS",
-      "lap": 25,
-      "chart_type": "pace",
-      "category": "pace_anomaly",
-      "severity": "medium",
-      "text_en": "RUS suffered a 1.096s pace drop on lap 25 (1:38.063 vs 1:36.967 rolling avg), his worst lap during the critical middle stint. Despite this blip, he maintained P2 and recovered to secure Mercedes' 1-2 finish.",
-      "text_tr": "RUS 25. turda 1.096s'lik bir pace düşüşü yaşadı (1:38.063'e karşı 1:36.967 ortalama), kritik orta stint sırasındaki en kötü turu. Bu aksama rağmen P2'yi korudu ve Mercedes'in 1-2 bitirişini güvence altına almak için toparlandı."
-    },
-    {
-      "driver": "HAM",
-      "lap": 14,
-      "chart_type": "energy",
-      "category": "energy_shift",
-      "severity": "high",
-      "text_en": "HAM's post-SC energy surge: Deploy jumped from 1.29% to 7.34% on lap 14 as Ferrari pushed hard on fresh hard tires after the safety car period. This aggressive deployment helped him challenge for podium positions in the restart phase.",
-      "text_tr": "HAM'ın GA sonrası enerji artışı: Güvenlik aracı periyodu sonrası Ferrari'nin taze sert lastiklerle sert bastırmasıyla 14. turda deployment %1.29'dan %7.34'e fırladı. Bu agresif deployment, restart aşamasında podium pozisyonları için mücadele etmesine yardımcı oldu."
-    },
-    {
-      "driver": "LEC",
-      "lap": 35,
-      "chart_type": "pace",
-      "category": "pace_anomaly",
-      "severity": "high",
-      "text_en": "LEC's mysterious lap 35 struggle: Posted 1:38.511, a massive 1.877s slower than his rolling average. This unexplained pace loss during the crucial middle stint cost Ferrari valuable track position in their battle with Mercedes.",
-      "text_tr": "LEC'in gizemli 35. tur mücadelesi: 1:38.511 kaydetti, kayan ortalamasından 1.877s daha yavaş. Kritik orta stint sırasındaki bu açıklanamayan pace kaybı, Ferrari'ye Mercedes'le olan savaşında değerli pist pozisyonu kaybettirdi."
-    },
-    {
-      "driver": "BEA",
-      "lap": 47,
-      "chart_type": "pace",
-      "category": "pace_anomaly",
-      "severity": "medium",
-      "text_en": "BEA found late-race pace with a 0.511s improvement on lap 47 (1:36.805 vs 1:37.316 avg), his strongest lap of the final stint. This pace gain helped secure P5 for Haas in their points battle.",
-      "text_tr": "BEA geç yarış tempoma 47. turda 0.511s'lik gelişmeyle buldu (1:36.805'e karşı 1:37.316 ortalama), son stint'inin en güçlü turu. Bu tempo kazanımı, Haas'ın puan savaşında P5'i güvence altına almasına yardımcı oldu."
-    },
-    {
-      "driver": "GAS",
-      "lap": 22,
-      "chart_type": "energy",
-      "category": "energy_shift",
-      "severity": "high",
-      "text_en": "GAS maximized Alpine's energy advantage with a 4.70% deploy surge on lap 22, showcasing the team's superior hybrid system. His race-leading 11.920 D/C ratio proved crucial in Alpine's fight for points.",
-      "text_tr": "GAS 22. turda %4.70'lik deployment artışıyla Alpine'in enerji avantajını maksimuma çıkardı ve takımın üstün hibrit sistemini sergiledi. Yarış lideri 11.920 D/C oranı, Alpine'in puan savaşında kritik oldu."
-    },
-    {
-      "driver": "LAW",
-      "lap": 9,
-      "chart_type": "pace",
-      "category": "pace_anomaly",
-      "severity": "high",
-      "text_en": "LAW's costly lap 9 mistake: A massive 6.48s pace loss (1:46.179 vs 1:39.699 avg) dropped him from P8 to P11, setting up his difficult safety car strategy that left him struggling in the midfield for the remainder.",
-      "text_tr": "LAW'ın maliyetli 9. tur hatası: Büyük bir 6.48s'lik pace kaybı (1:46.179'a karşı 1:39.699 ortalama) onu P8'den P11'e düşürdü ve güvenlik aracı stratejisini zorlaştırarak kalanında orta grupta mücadele etmesine sebep oldu."
-    },
-    {
-      "driver": "HAD",
-      "lap": 14,
-      "chart_type": "energy",
-      "category": "energy_shift",
-      "severity": "high",
-      "text_en": "HAD's extreme energy deployment post-SC: Clip percentage skyrocketed from 2.86% to 15.33% on lap 14, indicating severe power unit strain as Red Bull pushed hard on the restart. This aggressive energy usage reflected their desperation to recover positions.",
-      "text_tr": "HAD'ın GA sonrası aşırı enerji deployment'ı: 14. turda clip yüzdesi %2.86'dan %15.33'e fırladı, Red Bull'un restart'ta sert basmasıyla güç ünitesinde ciddi zorlanma işaretı. Bu agresif enerji kullanımı, pozisyon kazanma çabalarını yansıttı."
-    },
-    {
-      "driver": "SAI",
-      "lap": 3,
-      "chart_type": "energy",
-      "category": "energy_shift",
-      "severity": "high",
-      "text_en": "SAI's early energy crisis: Clip jumped from 0.92% to 9.01% on lap 3, suggesting Williams struggled with power unit management in the opening stint. This energy deficit hampered their race pace throughout.",
-      "text_tr": "SAI'nin erken enerji krizi: 3. turda clip %0.92'den %9.01'e sıçradı, Williams'ın açılış stint'inde güç ünitesi yönetiminde zorlandığını gösteriyor. Bu enerji açığı, yarış boyunca tempolarını etkiledi."
-    },
-    {
-      "driver": "COL",
-      "lap": 32,
+      "lap": 10,
       "chart_type": "strategy",
       "category": "pit_stop",
       "severity": "medium",
-      "text_en": "COL's brave reverse strategy paid off: Started on hard tires and switched to mediums on lap 32, gaining track position during the early safety car chaos. His 23-lap medium stint to the finish proved the alternative strategy's merit.",
-      "text_tr": "COL'un cesur ters stratejisi karşılığını verdi: Sert lastiklerle başladı ve 32. turda ortalara geçti, erken güvenlik aracı kaosunda pist pozisyonu kazandı. Bitişe kadar 23 turluk orta lastik stint'i, alternatif stratejinin değerini kanıtladı."
+      "text_en": "RUS pitted under Safety Car on Lap 10 but rejoined in P4, losing two positions compared to his P2 grid slot. The position loss was positional — other drivers who stayed out (COL to P2, OCO to P4) leapfrogged him. By Lap 29, RUS had clawed back to P2, where he stayed to the flag. A 1-stop on hard tires from Lap 11 to 56 mirrored ANT's strategy exactly.",
+      "text_tr": "RUS, 10. turda güvenlik aracı döneminde pit yaptı ancak P2 grid pozisyonunu iki pozisyon kaybederek P4'te geri döndü. Kayıp stratejik nitelikteydi; pitte kalan sürücüler (COL P2'ye, OCO P4'e) onu geçti. 29. tura gelindiğinde RUS, P2'yi geri almış ve bitiş bayrağına kadar orada kalmıştı. 11. turdan 56. tura kadar sert lastikle tek pit durağı, ANT'ın stratejisini tam olarak yansıtıyordu."
     },
     {
-      "driver": "HUL",
-      "lap": 35,
-      "chart_type": "pace",
-      "category": "pace_anomaly",
-      "severity": "high",
-      "text_en": "HUL's disastrous lap 35: Posted 1:44.913, a catastrophic 6.451s slower than average, before his pit stop for fresh mediums. This pace collapse highlighted Audi's tire degradation issues on the hard compound during long stints.",
-      "text_tr": "HUL'un felaket 35. turu: Taze ortalara geçmek için pit stop öncesi 1:44.913 kaydetti, ortalamadan 6.451s daha yavaş. Bu pace çöküşü, Audi'nin uzun stint'lerde sert lastik degradasyon sorunlarını vurguladı."
+      "driver": "RUS",
+      "lap": 29,
+      "chart_type": "delta",
+      "category": "position_change",
+      "severity": "medium",
+      "text_en": "RUS's recovery from P5 on Lap 14 to P2 by Lap 29 was methodical rather than spectacular. His 1:36.158 on Lap 29 was the turning point — his cleanest lap of the middle stint, coming after a stretch where he was bottled behind OCO. His D/C ratio of 6.21 was lower than ANT's 7.73, reflecting slightly more conservative energy deployment, which likely cost him the win.",
+      "text_tr": "RUS'un 14. turda P5'ten 29. turda P2'ye dönüşü, görkemli değil metodolojikti. 29. turdaki 1:36.158, kırılma noktasıydı; OCO'nun arkasında sıkıştığı bir dönemin ardından gelen orta stint'in en temiz turu. 6.21'lik D/C oranı ANT'ın 7.73'ünün altında kalıyordu; biraz daha muhafazakâr enerji kullanımını yansıtan bu fark, muhtemelen galibiyeti ona pahalıya mal etti."
     },
     {
-      "driver": "LIN",
-      "lap": 27,
-      "chart_type": "pace",
-      "category": "pace_anomaly",
-      "severity": "high",
-      "text_en": "LIN's track limits trouble: A massive 10.94s pace loss on lap 27 (1:50.154 vs 1:39.214 avg) included a track limits penalty deletion. Racing Bulls struggled with car balance in Shanghai's challenging Turn 14 complex.",
-      "text_tr": "LIN'in pist sınırları sorunu: 27. turda büyük 10.94s'lik pace kaybı (1:50.154'e karşı 1:39.214 ortalama) pist sınırları cezası silinmesini içeriyordu. Racing Bulls, Şanghay'ın zorlu 14. viraj kompleksinde araç dengesi sorunları yaşadı."
+      "driver": "RUS",
+      "lap": null,
+      "chart_type": "speed_trace",
+      "category": "race_insight",
+      "severity": "low",
+      "text_en": "RUS recorded a peak speed of 348 km/h on Lap 24 — sixth fastest overall. Despite being in the same car as ANT (pole and race winner), RUS's lower average max speed of 324.4 km/h versus ANT's 319.7 km/h reveals that RUS was extracting more from Z Mode through the straights, but ANT's more efficient energy management meant he was quicker when it mattered.",
+      "text_tr": "RUS, 24. turda 348 km/h'lik zirve hız kaydetti; genel sıralamada altıncı en hızlı. ANT ile aynı araçta (pole ve yarış galibi) olmasına rağmen, RUS'un 324.4 km/h'lik ortalama maksimum hızı ANT'ın 319.7 km/h'siyle kıyaslandığında, RUS'un düzlüklerde Z Moddan daha fazla yararlandığını ortaya koyuyor. Ancak ANT'ın daha verimli enerji yönetimi, önemli anlarda onu daha hızlı kılıyordu."
     },
     {
-      "driver": "BOT",
-      "lap": 33,
+      "driver": "HAM",
+      "lap": 10,
+      "chart_type": "strategy",
+      "category": "pit_stop",
+      "severity": "medium",
+      "text_en": "HAM pitted from P3 under Safety Car on Lap 10 but rejoined P5. He moved up to P2 by Lap 15 on fresh hards and held P2 or P3 through Lap 23. A trip through P4 in laps 27-34 corresponded to his one messy lap (Lap 27: 1:39.232, over a second slower than his surrounding pace), then settled back to his eventual P3 finish for the final 30 laps.",
+      "text_tr": "HAM, 10. turda güvenlik aracı döneminde P3'ten pit yaptı ve P5'te geri döndü. Taze sert lastikle 15. tura gelindiğinde P2'ye yükseldi ve 23. tura kadar P2 veya P3'te kaldı. 27-34. turlardaki P4'e düşüş, en dağınık turuna (27. tur: 1:39.232, çevre turlarından bir saniye yavaş) denk geldi; sonrasında son 30 turu boyunca bitiş pozisyonu olan P3'e yerleşti."
+    },
+    {
+      "driver": "HAM",
+      "lap": 15,
       "chart_type": "pace",
       "category": "pace_anomaly",
       "severity": "medium",
-      "text_en": "BOT maintained steady Cadillac pace with 1.479s variance on lap 33, reflecting the team's consistent but unspectacular performance. His 90% clean air running showed Cadillac's struggle to compete with established manufacturers.",
-      "text_tr": "BOT 33. turda 1.479s'lik varyansla istikrarlı Cadillac temposunu sürdürdü, takımın tutarlı ama gösterişsiz performansını yansıttı. %90 temiz hava koşumu, Cadillac'ın köklü üreticilerle rekabet etme zorluğunu gösterdi."
+      "text_en": "HAM's Lap 15 (1:37.073) was his first clean lap after the Safety Car restart and the moment he jumped from P5 to P2. The Ferrari hard compound came alive quickly — within 2 laps of the restart, HAM was matching the leading Mercedes pace. His D/C ratio of 6.62 was the highest of the Ferrari drivers, suggesting more aggressive energy deployment than LEC's 5.83.",
+      "text_tr": "HAM'ın 15. turu (1:37.073), güvenlik aracı restartının ardından ilk temiz turuydu ve P5'ten P2'ye sıçradığı andı. Ferrari'nin sert lastiği hızla ısındı; restarttan 2 tur içinde HAM, lider Mercedes'in temposuna ulaşmıştı. 6.62'lik D/C oranı Ferrari sürücülerinin en yükseğiydi; LEC'in 5.83'üne kıyasla daha agresif enerji kullanımına işaret ediyordu."
+    },
+    {
+      "driver": "LEC",
+      "lap": 10,
+      "chart_type": "strategy",
+      "category": "safety_car",
+      "severity": "medium",
+      "text_en": "LEC pitted on Lap 10 from P4 but rejoined P7, the largest net position loss among the frontrunners at the Safety Car stop. COL's decision to stay out cost LEC three places he never recovered on track. LEC spent much of the race defending P3 and P4, ultimately finishing P4 after a 46-lap hard stint that peaked with a 1:36.011 on the final lap — his fastest of the race.",
+      "text_tr": "LEC, 10. turda P4'ten pit yaptı ancak P7'de geri döndü; güvenlik aracı durağında ön gruptaki en büyük net pozisyon kaybını yaşadı. COL'ün piste kalma kararı LEC'e piste kaptırdığı üç pozisyona mal oldu. LEC yarışın büyük bölümünü P3 ve P4'ü savunarak geçirdi; nihayetinde yarışının en hızlı turu olan son turda 1:36.011 ile biterek P4 oldu."
+    },
+    {
+      "driver": "LEC",
+      "lap": 15,
+      "chart_type": "energy",
+      "category": "energy_shift",
+      "severity": "medium",
+      "text_en": "LEC's energy data on Lap 15 shows a spike to 4.71% clipping — his highest of the race — as he battled through traffic after the SC restart. This Super Clipping phase corresponded to his slowest post-SC lap (1:37.205), suggesting the Ferrari's power unit was being hampered by battery regeneration demands precisely when LEC needed maximum acceleration to overtake.",
+      "text_tr": "LEC'in 15. turdaki enerji verisi, güvenlik aracı restartının ardından trafik arasında mücadele ederken %4.71 kırpma zirvesini gösteriyor; yarışının en yüksek değeri. Bu Super Clipping fazı, SC sonrası en yavaş turuna (1:37.205) denk geldi; Ferrari'nin güç ünitesinin batarya rejenerasyon talepleri tarafından tam LEC'in geçiş için maksimum ivmeye ihtiyaç duyduğu anda engellenebildiğini gösteriyor."
+    },
+    {
+      "driver": "BEA",
+      "lap": null,
+      "chart_type": "strategy",
+      "category": "race_insight",
+      "severity": "medium",
+      "text_en": "BEA's P5 finish from P10 on the grid is the race's biggest grid-to-finish gain among points scorers. Starting on mediums and pitting under Safety Car on Lap 10, Haas mirrored the leading strategy perfectly. BEA then ran an uninterrupted 46-lap hard stint, steadily improving from 1:39.240 on Lap 14 to 1:36.429 on the final lap — a 2.8-second improvement that exemplifies 2026 hard compound behavior.",
+      "text_tr": "BEA'nın grid'de P10'dan P5 bitiş derecesi, puan alanlar arasındaki yarışın en büyük grid-bitiş kazanımıdır. Medyum lastikle başlayan ve 10. turda güvenlik aracı döneminde pit yapan Haas, lider stratejiyi mükemmel biçimde kopyaladı. BEA ardından 46 turluk kesintisiz sert stint koştu; 14. turda 1:39.240'tan son turda 1:36.429'a istikrarlı biçimde geliştirerek 2026 sert lastik davranışını örnekleyen 2.8 saniyelik bir iyileşme sağladı."
+    },
+    {
+      "driver": "GAS",
+      "lap": 10,
+      "chart_type": "strategy",
+      "category": "safety_car",
+      "severity": "medium",
+      "text_en": "GAS lost 5 positions at the Safety Car stop, falling from P5 to P10 after pitting on Lap 10. Despite this, he recovered to P6 by the end of the race — a net gain of one position from his P7 qualifying slot. GAS's D/C ratio of 11.92 was the highest on the grid, reflecting Alpine's exceptionally efficient energy recovery through Shanghai's braking zones, which sustained his hard-compound pace across 46 laps.",
+      "text_tr": "GAS, 10. turda pit yaparak güvenlik aracı durağında 5 pozisyon kaybetti; P5'ten P10'a düştü. Buna rağmen yarışın sonuna kadar P6'ya iyileşti; sıralama turlarındaki P7'ye kıyasla net bir pozisyon kazanımı. GAS'ın 11.92'lik D/C oranı gridin en yükseğiydi; Alpine'in Şanghay'ın fren bölgelerinde olağanüstü verimli enerji geri kazanımını yansıtıyor. Bu verimlilik, 46 tür boyunca sert lastik temposunu sürdürmesini sağladı."
+    },
+    {
+      "driver": "COL",
+      "lap": 11,
+      "chart_type": "strategy",
+      "category": "safety_car",
+      "severity": "high",
+      "text_en": "COL's decision to stay out during the Safety Car catapulted her from P6 to P2 — the biggest single-event position gain of the race. Running on 10-lap-old hard tires with 22 laps remaining in her first stint, COL held P2 for three laps before the restart traffic eroded her advantage. The undercut never came: Alpine pitted her on Lap 32 for mediums, finishing P10. The gamble gained six positions in a lap but cost the race result.",
+      "text_tr": "COL'ün güvenlik aracı döneminde piste kalma kararı onu P6'dan P2'ye fırlattı; yarışın tek bir olaydaki en büyük pozisyon kazanımı. İlk stint'inde 22 turu kalmışken 10 turluk sert lastikle piste kalan COL, restart trafiği avantajını aşındırana kadar 3 tur boyunca P2'yi tuttu. Undercut hiç gelmedi: Alpine onu 32. turda medyum için içeri aldı ve P10 oldu. Risk bir turda altı pozisyon kazandırdı ama yarış sonucuna mal oldu."
     },
     {
       "driver": "VER",
       "lap": 45,
-      "chart_type": "position_change",
-      "category": "position_change",
+      "chart_type": "pace",
+      "category": "pace_anomaly",
       "severity": "high",
-      "text_en": "VER's race unraveled on lap 45: Dropped 7 positions from P6 to P13, ending his troubled Chinese GP. Red Bull's pace deficit to the leaders was exposed as Max failed to capitalize on his early soft tire gambit.",
-      "text_tr": "VER'in yarışı 45. turda çözüldü: P6'dan P13'e 7 pozisyon düştü ve zorlu Çin GP'si sona erdi. Red Bull'un liderlere olan pace açığı, Max'in erken yumuşak lastik kumarından faydalanamayışıyla ortaya çıktı."
+      "text_en": "VER's race ended on Lap 45 when a mechanical failure in Sector 2 brought his car to a halt, costing him what would have been a strong P6 finish. He had run consistently in the 1:37s through laps 22-44 — genuinely competitive despite the Red Bull's struggles in qualifying (P8). His second stint pace of ~1:37.2 per lap would have placed him between HAD (P8) and GAS (P6) at the flag.",
+      "text_tr": "VER'in yarışı 45. turda 2. sektördeki mekanik arıza ile son buldu ve bu, ona güçlü bir P6 bitiş derecesine mal oldu. 22-44. turlar arasında tutarlı biçimde 1:37'ler civarında koşmuştu; Red Bull'un sıralama turlarındaki mücadelelerine (P8) rağmen gerçekten rekabetçiydi. İkinci stint'indeki yaklaşık 1:37.2'lik ortalama turu, bitiş bayrağında onu HAD (P8) ile GAS (P6) arasına yerleştirirdi."
+    },
+    {
+      "driver": "HAD",
+      "lap": 1,
+      "chart_type": "strategy",
+      "category": "race_insight",
+      "severity": "medium",
+      "text_en": "HAD executed one of the most unusual strategies of the race: a 1-lap soft tire stint before pitting on Lap 1 for hards. The soft tires provided no strategic benefit on Lap 1 given the first-corner chaos, but the early switch to hards set up a long run. HAD then pitted again under the Safety Car on Lap 10, finishing with the same hard-compound 46-lap stint as the frontrunners — ultimately finishing P8.",
+      "text_tr": "HAD yarışın en sıra dışı stratejilerinden birini uyguladı: sert lastik için 1. turda pit yapmadan önce 1 turluk yumuşak lastik stint'i. İlk viraj kaosunu göz önüne aldığımızda yumuşak lastikler 1. turda stratejik bir fayda sağlamadı, ancak erkenden serte geçmek uzun bir koşuya zemin hazırladı. HAD ardından 10. turda güvenlik aracı döneminde tekrar pit yaptı ve ön gruptakilerle aynı 46 turluk sert lastik stint'ini bitirerek P8 oldu."
     },
     {
       "driver": "OCO",
       "lap": 29,
+      "chart_type": "strategy",
+      "category": "pace_anomaly",
+      "severity": "high",
+      "text_en": "OCO's race unravelled on Lap 29 — a 1:44.567 lap (6.3 seconds slower than his rolling average) preceded his Lap 29 pit stop from P7 to P15. A collision investigation involving GAS and a later 10-second time penalty for a Turn 2 incident with COL (serving the penalty on Lap 51) further disrupted his race. Despite this, his final soft-tire stint produced a 1:35.964 on Lap 54 — the second-fastest lap of the race.",
+      "text_tr": "OCO'nun yarışı 29. turda çöktü: P7'den P15'e düştüğü 29. tur pit durağından önce 1:44.567'lik bir tur (yuvarlanan ortalamasından 6.3 saniye yavaş) geldi. GAS ile ilgili bir çarpışma soruşturması ve COL ile Turn 2 olayı nedeniyle verilen 10 saniyelik zaman cezası (51. turda hizmet etti) yarışını daha da zorlaştırdı. Buna rağmen son yumuşak lastik stint'i, 54. turda yarışın ikinci en hızlı turu olan 1:35.964'ü üretiyor."
+    },
+    {
+      "driver": "HUL",
+      "lap": 36,
       "chart_type": "pace",
       "category": "pace_anomaly",
       "severity": "high",
-      "text_en": "OCO's lap 29 incident: A 6.362s pace loss coincided with his collision penalty with COL. The 10-second time penalty, served on lap 51, exemplified the intense midfield battles and their consequences in the points fight.",
-      "text_tr": "OCO'nun 29. tur olayı: 6.362s'lik pace kaybı COL ile çarpışma cezasıyla eş zamanlı geldi. 51. turda çekilen 10 saniyelik zaman cezası, yoğun orta grup savaşlarını ve puan mücadelesindeki sonuçlarını örnekledi."
+      "text_en": "HUL's Lap 35 (1:44.913, 6.5s off pace) preceded a pit stop on Lap 35, creating the biggest single-lap anomaly in the race outside of the Safety Car period. He rejoined from P10 on Lap 36 with fresh mediums and immediately set a 1:36.620 — a 8.3-second improvement in a single lap. The Audi's clip problem (0.75 D/C ratio on hard tires) largely disappeared on mediums, confirming compound sensitivity in the energy management system.",
+      "text_tr": "HUL'ün 35. turu (1:44.913, tempodan 6.5 saniye yavaş), 35. turdaki pit durağından önce geldi ve güvenlik aracı döneminin dışında yarışın tek tur başına en büyük anormalliğini oluşturdu. Taze medyumla P10'dan 36. turda piste dönen HUL, hemen 1:36.620 yaptı; tek turda 8.3 saniyelik iyileşme. Audi'nin sert lastikle yaşadığı kırpma sorunu (0.75 D/C oranı) medyumda büyük ölçüde ortadan kalktı; enerji yönetim sistemindeki bileşik duyarlılığını doğruladı."
     },
     {
-      "driver": "PER",
-      "lap": 18,
-      "chart_type": "energy",
-      "category": "energy_shift",
+      "driver": "LAW",
+      "lap": 9,
+      "chart_type": "strategy",
+      "category": "traffic_insight",
+      "severity": "medium",
+      "text_en": "LAW pitted one lap before the Safety Car on Lap 9 — costing him an estimated 6-8 positions compared to staying out. He rejoined P14 after running as high as P8 in the early stint. The 49% traffic rate (second-highest among midfield runners) and a corresponding 1.15s pace degradation in dirty air told the story of LAW's difficult race: genuinely competitive in clean air (matched GAS's pace), hampered when following.",
+      "text_tr": "LAW, güvenlik aracından 1 tur önce 9. turda pit yaptı; pitte kalsaydı tahminen 6-8 pozisyon kazanacaktı. Erken stint'te P8'e kadar yükseldikten sonra P14'te piste döndü. %49'luk trafik oranı (orta grup sürücüleri arasında ikinci en yüksek) ve kirli havada buna karşılık gelen 1.15 saniyelik tempo kaybı, LAW'ın zorlu yarışını özetliyor: temiz havada gerçekten rekabetçi (GAS'ın temposuyla eşleşti), takip ederken sorunlu."
+    },
+    {
+      "driver": "SAI",
+      "lap": 9,
+      "chart_type": "strategy",
+      "category": "pace_anomaly",
+      "severity": "medium",
+      "text_en": "Like LAW, SAI pitted on Lap 9 — one lap before the Safety Car — dropping from P13 to P16 and missing the free stop window. The Williams ran the entire race on a single stop (Lap 9), covering 46 laps on hard tires and finishing P9. A D/C ratio of 2.12 (one of the lowest among classified finishers) hints at the Williams managing energy conservatively, possibly due to thermal concerns rather than strategic choice.",
+      "text_tr": "LAW gibi SAI de güvenlik aracından 1 tur önce 9. turda pit yaptı; P13'ten P16'ya düşerek ücretsiz pit pencerini kaçırdı. Williams yarışın tamamını tek pit duracağıyla (9. tur) bitirdi; sert lastikle 46 tur koşarak P9 oldu. 2.12'lik D/C oranı (sınıflandırılan bitiriciler arasındaki en düşüklerden biri), Williams'ın enerjiyi muhafazakâr yönettiğine işaret ediyor; stratejik bir tercihten çok termal endişelere bağlı olabilir."
+    },
+    {
+      "driver": "ALO",
+      "lap": 31,
+      "chart_type": "strategy",
+      "category": "pace_anomaly",
       "severity": "high",
-      "text_en": "PER's desperate energy push: Deploy spiked to 8.24% on lap 18 as Cadillac fought for points. This aggressive deployment reflected the team's maximum attack mode, though it couldn't overcome their fundamental pace deficit.",
-      "text_tr": "PER'in çaresiz enerji atağı: Cadillac puan için savaşırken 18. turda deployment %8.24'e fırladı. Bu agresif deployment takımın maksimum atak modunu yansıttı, ancak temel pace açığını kapatamadı."
+      "text_en": "ALO's race effectively ended on Lap 31 when a 1:46.419 (6.4s slower than pace) was followed by a pit stop on Lap 31, then immediately a second stop on Lap 32 — the data showing a 1-lap medium stint before retiring from the race. The dual stop in consecutive laps (Laps 31-32) suggests a mechanical or strategic issue that couldn't be resolved. Aston Martin's ALO finished P17 despite starting from P19.",
+      "text_tr": "ALO'nun yarışı fiilen 31. turda sona erdi; 1:46.419'lik (tempodan 6.4 saniye yavaş) bir tur ardından 31. turda pit durağı ve hemen ardından 32. turda ikinci bir durak geldi; veri, yarıştan çekilmeden önce 1 turluk medyum stint gösteriyor. Ardışık turlardaki (31-32. turlar) çift durak, çözülemeyen mekanik ya da stratejik bir soruna işaret ediyor. Aston Martin'den ALO, P19'dan başlamış olmasına rağmen P17 ile bitirdi."
     }
   ]
 }

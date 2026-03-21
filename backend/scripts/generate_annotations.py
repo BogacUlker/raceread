@@ -22,7 +22,7 @@ from pathlib import Path
 def main():
     parser = argparse.ArgumentParser(description="Generate annotations via Claude API")
     parser.add_argument("--race", required=True, help="Race ID (e.g. 2026-australia)")
-    parser.add_argument("--model", default="claude-sonnet-4-20250514", help="Claude model to use")
+    parser.add_argument("--model", default="claude-sonnet-4-6", help="Claude model to use")
     parser.add_argument("--dry-run", action="store_true", help="Export data only, don't call API")
     args = parser.parse_args()
 
@@ -79,7 +79,7 @@ def main():
 
     message = client.messages.create(
         model=args.model,
-        max_tokens=8192,
+        max_tokens=16384,
         system=system_prompt,
         messages=[
             {
