@@ -309,8 +309,7 @@
 					</h1>
 					<p class="prv-hero__desc">{tr.desc}</p>
 					<div class="prv-hero__actions">
-						<a href="#races" class="prv-btn prv-btn--primary">{tr.cta_analyze}</a>
-						<a href="/how" class="prv-btn prv-btn--ghost">{tr.cta_docs}</a>
+						<a href="/how" class="prv-btn prv-btn--primary">{tr.cta_docs}</a>
 					</div>
 				</div>
 			</section>
