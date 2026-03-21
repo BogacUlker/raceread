@@ -91,8 +91,6 @@ Exported for descriptor annotation generation. Race ID: `2026-australia`
 **VSC Laps**: [11, 12, 13, 14, 17, 18, 19, 20, 22, 32, 33, 34]
 **VSC Ranges**: Lap 11-14, Lap 17-20, Lap 22, Lap 32-34
 
-**SC Laps**: [12, 13, 14, 18, 19, 20, 34]
-
 ### Race Control Messages
 
 | Lap | Category | Message |

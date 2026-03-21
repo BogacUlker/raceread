@@ -1,121 +1,203 @@
 {
+  "race_id": "2026-australia",
   "annotations": [
     {
       "driver": null,
       "lap": null,
-      "chart_type": "traffic",
-      "category": "traffic_insight",
+      "chart_type": "race",
+      "category": "race_insight",
       "severity": "high",
-      "text_en": "Ocon spent 68.2% of his race in dirty air (30 of 44 laps), the most of any driver. Surprisingly, his pace in traffic was actually 0.35s faster than in clean air, likely due to slipstream effect on Albert Park's long straights. The Haas handles dirty air better than most.",
-      "text_tr": "Ocon yari\u015finin %68.2'sini kirli havada gecirdi (44 turun 30'u), herhangi bir pilotun en yuksegi. Sasirtici sekilde trafikeki pace'i temiz havadan 0.35 saniye daha hizliydi, muhtemelen Albert Park'in uzun duzluklerindeki slipstream etkisi. Haas kirli havayi cogundan daha iyi idare ediyor."
+      "text_en": "Russell delivered Mercedes' first victory in the 2026 regulations era with a commanding 1-stop strategy, pitting on lap 12 under VSC and managing his tires for 46 laps. His D/C ratio of 2.88 was the best among frontrunners, showcasing superior energy management throughout the 58-lap race.",
+      "text_tr": "Russell, 12. turda VSC altında pit yapıp lastiklerini 46 tur yöneterek 1-stop stratejisiyle Mercedes'in 2026 düzenlemesi dönemindeki ilk zaferini kazandı. 2.88 D/C oranı ön sıradakiler arasında en iyisiydi ve 58 tur boyunca üstün enerji yönetimi sergiledi."
     },
     {
-      "driver": "VER",
+      "driver": null,
+      "lap": null,
+      "chart_type": "qualifying",
+      "category": "qualifying_insight",
+      "severity": "high",
+      "text_en": "Russell claimed Mercedes' first pole position of 2026 with a 1:18.518, 0.293s ahead of teammate Antonelli. The Mercedes duo dominated all three sectors, with Russell setting the fastest times in each sector during Q3.",
+      "text_tr": "Russell, 1:18.518 ile takım arkadaşı Antonelli'nin 0.293s önünde Mercedes'in 2026'daki ilk pole pozisyonunu aldı. Mercedes ikilisi her üç sektörde de hâkim oldu, Russell Q3'te her sektörde en hızlı zamanları kaydettu."
+    },
+    {
+      "driver": null,
+      "lap": null,
+      "chart_type": "energy",
+      "category": "energy_insight",
+      "severity": "medium",
+      "text_en": "Alpine drivers dominated energy efficiency: Gasly achieved a remarkable 5.50 D/C ratio while spending only 1.65% of laps clipping. The team's superior energy recovery systems allowed them to deploy more aggressively without compromising battery management.",
+      "text_tr": "Alpine sürücüleri enerji verimliliğinde hâkim oldu: Gasly turların sadece %1.65'inde clipping yaparken 5.50 D/C oranı yakaladı. Takımın üstün enerji geri kazanım sistemleri, batarya yönetimini bozmadan daha agresif deploy yapmalarına olanak sağladı."
+    },
+    {
+      "driver": null,
+      "lap": null,
+      "chart_type": "strategy",
+      "category": "race_insight",
+      "severity": "high",
+      "text_en": "VSC periods on laps 11-14 and 32-34 were decisive for race outcomes. Drivers who pitted under the first VSC, including Russell and Antonelli, gained crucial track position. The second VSC caught many on degraded tires, shuffling the midfield order.",
+      "text_tr": "11-14 ve 32-34 turlarındaki VSC dönemleri yarış sonuçlarında belirleyici oldu. Russell ve Antonelli dahil ilk VSC'de pit yapan sürücüler kritik pist pozisyonu kazandı. İkinci VSC birçok sürücüyü eskimiş lastiklerle yakaladı ve orta saha sıralamasını karıştırdı."
+    },
+    {
+      "driver": null,
       "lap": null,
       "chart_type": "traffic",
       "category": "traffic_insight",
       "severity": "medium",
-      "text_en": "Verstappen spent 40% of the race in traffic while climbing from P16 to P6, yet his pace loss was only +0.34s, the smallest among frontrunners. The Red Bull's active aero advantage in dirty air conditions is clear: Verstappen could follow closely without significant performance loss.",
-      "text_tr": "Verstappen P16'dan P6'ya yukselirken yarisin %40'ini trafikte gecirdi, ancak pace kaybi sadece +0.34 saniye, on siradaki pilotlar arasinda en dusuk. Red Bull'un kirli hava kosullarindaki aktif aero avantaji acik: Verstappen belirgin performans kaybi olmadan yakindan takip edebildi."
+      "text_en": "Ocon spent 68.2% of his race in traffic yet showed negative pace degradation (-0.35s), demonstrating the Haas car's ability to follow closely in 2026's new aero regulations. This contrasts sharply with previous years where dirty air severely hampered following cars.",
+      "text_tr": "Ocon yarışının %68.2'sini trafikte geçirmesine rağmen negatif tempo kaybı (-0.35s) gösterdi. Bu, Haas aracının 2026'nın yeni aero düzenlemelerinde yakın takip edebilme kabiliyetini ortaya koyuyor. Bu durum, kirli havanın takip eden araçları ciddi şekilde engellediği önceki yıllarla keskin bir tezat oluşturuyor."
     },
     {
-      "driver": "LAW",
-      "lap": null,
-      "chart_type": "traffic",
-      "category": "traffic_insight",
+      "driver": "RUS",
+      "lap": 12,
+      "chart_type": "strategy",
+      "category": "pit_stop",
+      "severity": "high",
+      "text_en": "Russell's VSC pit stop was masterfully timed, gaining track position while others stayed out. His 46-lap stint on hard tires proved the winning strategy, with consistent 1:22-1:23 lap times throughout the final phase.",
+      "text_tr": "Russell'ın VSC pit stopu mükemmel zamanlandı, diğerleri piste kalırken pist pozisyonu kazandı. Sert lastiklerle 46 turlu stint kazanan strateji oldu ve son fazda sürekli 1:22-1:23 tur zamanları tutturdu."
+    },
+    {
+      "driver": "RUS",
+      "lap": 28,
+      "chart_type": "pace",
+      "category": "position_change",
+      "severity": "high",
+      "text_en": "Russell inherited the race lead when Hamilton pitted on lap 28, taking advantage of his superior tire condition to build a gap. His energy deployment strategy of 10.86% proved perfectly balanced for the demanding Albert Park circuit.",
+      "text_tr": "Russell, Hamilton'ın 28. turda pit yapmasıyla yarış liderliğini devraldı ve üstün lastik kondisyonunu kullanarak ara açtı. %10.86'lık enerji deployment stratejisi zorlu Albert Park pistine mükemmel uyumlu oldu."
+    },
+    {
+      "driver": "ANT",
+      "lap": 12,
+      "chart_type": "strategy",
+      "category": "pit_stop",
       "severity": "medium",
-      "text_en": "Lawson suffered the worst traffic impact: +2.22s pace loss in dirty air, the highest of any driver. With 43.2% of his laps in traffic, the Racing Bulls car appears particularly sensitive to turbulent air. This explains why his raw pace (P14 qualifying) didn't translate to a better race result.",
-      "text_tr": "Lawson en kotu trafik etkisini yasadi: kirli havada +2.22 saniye pace kaybi, tum pilotlarin en yuksegi. Turlarinin %43.2'si trafikte olan Racing Bulls araci turbulanli havaya ozellikle duyarli gorunuyor. Bu, ham pace'inin (siralama P14) neden daha iyi bir yaris sonucuna donusmediklerini acikliyor."
+      "text_en": "Antonelli's strategic pit stop under VSC on lap 12 dropped him from P4 to P5 initially, but his 1-stop strategy proved effective. His D/C ratio of 1.81 showed more conservative energy management compared to Russell's aggressive approach.",
+      "text_tr": "Antonelli'nin 12. turda VSC altındaki stratejik pit stopu onu P4'ten P5'e düşürdü ama 1-stop stratejisi etkili oldu. 1.81 D/C oranı Russell'ın agresif yaklaşımına kıyasla daha muhafazakar enerji yönetimi gösterdi."
     },
     {
       "driver": "LEC",
-      "lap": null,
-      "chart_type": "traffic",
-      "category": "traffic_insight",
-      "severity": "medium",
-      "text_en": "Leclerc only spent 11.1% of the race in traffic (5 laps), yet his pace loss when in traffic was a massive +2.49s. The Ferrari is extremely fast in clean air but collapses in dirty air. This is a car characteristic, not driver error: the SF-26's high-clipping energy profile worsens when following another car.",
-      "text_tr": "Leclerc yarisin sadece %11.1'ini trafikte gecirdi (5 tur), ancak trafikteki pace kaybi muazzam +2.49 saniyeydi. Ferrari temiz havada son derece hizli ama kirli havada cokuyor. Bu pilot hatasi degil arac ozelligi: SF-26'nin yuksek clipping enerji profili baska bir araci takip ederken kotulasiyor."
-    },
-    {
-      "driver": null,
-      "lap": null,
-      "chart_type": "traffic",
-      "category": "traffic_insight",
-      "severity": "low",
-      "text_en": "Mercedes managed traffic efficiently: Russell 24.4% and Antonelli 17.8% in traffic. The 1-stop strategy under VSC gave them clear air for most of the race. Clean air running is key to Mercedes' dominance: their pace advantage disappears when stuck behind other cars.",
-      "text_tr": "Mercedes trafigi verimli yonetti: Russell %24.4 ve Antonelli %17.8 trafikte. VSC altindaki 1 duraklamali strateji onlara yarisin buyuk bolumunde temiz hava sagladi. Temiz hava kosmak Mercedes'in hakimiyetinin anahtari: baska araclarin arkasinda kaldiklinda pace avantajlari kayboluyor."
-    },
-    {
-      "driver": null,
-      "lap": null,
-      "chart_type": "qualifying",
-      "category": "qualifying_insight",
+      "lap": 25,
+      "chart_type": "strategy",
+      "category": "pit_stop",
       "severity": "high",
-      "text_en": "Mercedes dominated qualifying with a half-second gap. Russell took pole (1:18.518), Antonelli P2 (+0.293s). The nearest non-Mercedes was Hadjar at P3 (+0.785s). Russell's fastest sectors in S1 (27.498s), S2 (17.284s), and S3 (33.736s) were all the best of anyone.",
-      "text_tr": "Mercedes siralamaya yarim saniye farkla hakim oldu. Russell pole aldi (1:18.518), Antonelli P2 (+0.293s). Mercedes disindaki en yakin pilot P3'teki Hadjar (+0.785s). Russell'in S1 (27.498s), S2 (17.284s) ve S3 (33.736s) en hizli sektorleri herkesin en iyisiydi."
+      "text_en": "Leclerc's late pit stop on lap 25 cost him the race lead, switching from medium to hard tires. His 14.3-second stop time indicated problems, while his early stint pace was competitive enough to challenge for victory.",
+      "text_tr": "Leclerc'in 25. turdaki geç pit stopu ona yarış liderliğine mal oldu, orta lastiklerden sert lastiklere geçti. 14.3 saniyelik pit stopu sorunlara işaret ederken, erken stint temposu zafer için yarışacak kadar rekabetçiydi."
+    },
+    {
+      "driver": "HAM",
+      "lap": 28,
+      "chart_type": "strategy",
+      "category": "pit_stop",
+      "severity": "medium",
+      "text_en": "Hamilton's 1-stop strategy with a lap 28 pit stop proved less effective than the early VSC stoppers. His 8.06% energy clipping rate was highest among Ferrari drivers, indicating struggles with battery management on the demanding circuit.",
+      "text_tr": "Hamilton'ın 28. turda pit stoplu 1-stop stratejisi erken VSC'de duran sürücülerden daha az etkili oldu. %8.06'lık enerji clipping oranı Ferrari sürücüleri arasında en yüksekti ve zorlu pistte batarya yönetimi sorunlarına işaret ediyordu."
+    },
+    {
+      "driver": "NOR",
+      "lap": 34,
+      "chart_type": "strategy",
+      "category": "pit_stop",
+      "severity": "medium",
+      "text_en": "Norris's second pit stop on lap 34 during VSC dropped him from P5 to P8, switching to medium tires. His strong finish demonstrated McLaren's pace potential, with his 2.08 D/C ratio showing balanced energy management.",
+      "text_tr": "Norris'in 34. turda VSC sırasındaki ikinci pit stopu onu P5'ten P8'e düşürdü, orta lastiklere geçti. Güçlü bitirişi McLaren'ın tempo potansiyelini gösterdi, 2.08 D/C oranı dengeli enerji yönetimi sergiledi."
     },
     {
       "driver": "VER",
-      "lap": null,
-      "chart_type": "qualifying",
-      "category": "qualifying_insight",
-      "severity": "high",
-      "text_en": "Verstappen, Stroll, and Sainz all had no qualifying time and started from the back. Verstappen's absence from qualifying meant he started P16 on hard tires with a reverse strategy. Despite this, he finished P6, showcasing his raw pace advantage over the midfield.",
-      "text_tr": "Verstappen, Stroll ve Sainz'in hicbirinin siralama zamani yoktu ve arkadan basladilar. Verstappen'in siralamada bulunamamasi sert lastiklerle P16'dan ters stratejiyle baslamasi anlamina geldi. Buna ragmen P6 bitirerek orta grup uzerindeki ham pace avantajini sergiledi."
-    },
-    {
-      "driver": null,
-      "lap": null,
-      "chart_type": "qualifying",
-      "category": "qualifying_insight",
+      "lap": 18,
+      "chart_type": "strategy",
+      "category": "pit_stop",
       "severity": "medium",
-      "text_en": "Cadillac was the slowest team in qualifying: Perez P18 (+4.087s), Bottas P19 (+4.726s), both eliminated in Q1. Nearly 5 seconds off pole on a 1:18 lap is an enormous deficit. The Cadillac's energy management issues compound in qualifying where every joule matters.",
-      "text_tr": "Cadillac siralamadaki en yavas takimdi: Perez P18 (+4.087s), Bottas P19 (+4.726s), ikisi de Q1'de elendi. 1:18'lik bir turda pole'dan 5 saniye geride olmak muazzam bir acik. Cadillac'in enerji yonetimi sorunlari her joule'un onemli oldugu siralamada birlesiyor."
-    },
-    {
-      "driver": null,
-      "lap": null,
-      "chart_type": "speed_trace",
-      "category": "race_insight",
-      "severity": "high",
-      "text_en": "Compare Russell and Leclerc on Lap 15 (just after VSC1): Russell on fresh hards clocked 1:22.825 while Leclerc on 15-lap-old mediums managed 1:23.765. The speed trace reveals the gap comes mainly from corner exit speeds where Russell's fresh tires provide better traction.",
-      "text_tr": "15. turda Russell ve Leclerc'i karsilastirin (VSC1 sonrasi): taze sert lastikli Russell 1:22.825 yaparken, 15 turlu medium lastikli Leclerc 1:23.765 yapabildi. Hiz grafigi farkin ozellikle viraj cikis hizlarindan geldigini gosteriyor, Russell'in taze lastikleri daha iyi cekis sagliyor."
+      "text_en": "Verstappen's reverse strategy starting on hard tires paid dividends with his lap 18 VSC pit stop. His 2.42 D/C ratio showed efficient energy usage, though Red Bull's pace deficit to Mercedes was evident throughout.",
+      "text_tr": "Verstappen'in sert lastiklerle başladığı ters strateji 18. turdaki VSC pit stopuyla meyvesini verdi. 2.42 D/C oranı verimli enerji kullanımı gösterdi, ancak Red Bull'un Mercedes'e karşı tempo açığı boyunca belliydi."
     },
     {
       "driver": "VER",
       "lap": 43,
-      "chart_type": "speed_trace",
-      "category": "pace_anomaly",
-      "severity": "medium",
-      "text_en": "Verstappen's Lap 43 (1:22.091) was the fastest single lap by any driver all race. On fresh hard tires, the Red Bull's straight-line speed was unmatched. The speed trace shows Verstappen gaining 3-4 km/h on Russell through the main straight, but the Mercedes was faster through the medium-speed corners.",
-      "text_tr": "Verstappen'in 43. turu (1:22.091) tum yarista herhangi bir pilotun attigi en hizli turdu. Taze sert lastiklerle Red Bull'un duzluk hizi rakipsizdi. Hiz grafigi Verstappen'in ana duzlukte Russell'dan 3-4 km/h kazandigini ama Mercedes'in orta hizli virajlarda daha hizli oldugunu gosteriyor."
+      "chart_type": "pace",
+      "category": "fastest_lap",
+      "severity": "high",
+      "text_en": "Verstappen set the fastest lap of the race with a 1:22.091 on lap 43, showcasing Red Bull's one-lap pace on fresh hard tires. This came during his final stint after switching strategies with a 2-stop approach.",
+      "text_tr": "Verstappen, 43. turda 1:22.091 ile yarışın en hızlı turunu attı ve Red Bull'un taze sert lastiklerle tek tur temposunu sergiledi. Bu, 2-stop yaklaşımıyla strateji değiştirdikten sonraki son stinti sırasında geldi."
     },
     {
-      "driver": "ANT",
-      "lap": 57,
-      "chart_type": "speed_trace",
-      "category": "pace_anomaly",
-      "severity": "medium",
-      "text_en": "Antonelli's Lap 57 (1:22.417) was faster than Russell's best (1:22.670). The speed trace comparison between teammates reveals Antonelli carries more speed through Turn 11-12 complex and brakes later into Turn 9. The rookie is finding time in the most demanding sections.",
-      "text_tr": "Antonelli'nin 57. turu (1:22.417) Russell'in en iyisinden (1:22.670) daha hizliydi. Takim arkadaslari arasindaki hiz grafigi karsilastirmasi Antonelli'nin Viraj 11-12 kompleksinde daha fazla hiz tasiyip Viraj 9'a daha gec fren yaptigini ortaya koyuyor. Rookie en zorlayici bolumlerde zaman buluyor."
+      "driver": "BEA",
+      "lap": 18,
+      "chart_type": "strategy",
+      "category": "pit_stop",
+      "severity": "low",
+      "text_en": "Bearman's long first stint extended to lap 18 under VSC, switching to hard tires for a 39-lap run to the finish. His 2.26 D/C ratio demonstrated solid energy discipline for the rookie driver.",
+      "text_tr": "Bearman'ın uzun ilk stinti 18. tura kadar uzandı ve VSC altında sert lastiklere geçerek finish'e kadar 39 tur sürdü. 2.26 D/C oranı acemi sürücü için sağlam enerji disiplini gösterdi."
     },
     {
-      "driver": null,
+      "driver": "COL",
+      "lap": 9,
+      "chart_type": "pace",
+      "category": "pace_anomaly",
+      "severity": "high",
+      "text_en": "Colapinto lost 23.5 seconds on lap 9 with a 1:49.931, indicating a significant technical issue. His stop-and-go penalty for starting procedure infringement was served on lap 13, compounding his difficulties.",
+      "text_tr": "Colapinto 9. turda 1:49.931 ile 23.5 saniye kaybetti, önemli teknik soruna işaret ediyordu. Start prosedürü ihlalinden dolayı aldığı stop-and-go cezası 13. turda uygulandı ve zorlukları arttırdı."
+    },
+    {
+      "driver": "GAS",
       "lap": null,
-      "chart_type": "track_map",
+      "chart_type": "energy",
       "category": "energy_insight",
       "severity": "high",
-      "text_en": "Albert Park's energy map reveals two distinct zones: heavy harvesting in the Turn 9-10 braking zone and Turn 11-12 chicane, aggressive deploy through the Turn 1-2 exit and the run to Turn 3. Ferrari's clipping is most visible on the lakeside straight where the speed trace plateaus while Mercedes continues accelerating.",
-      "text_tr": "Albert Park'in enerji haritasi iki belirgin bolge gosteriyor: Viraj 9-10 fren bolgesinde ve Viraj 11-12 sikanda yogun harvesting, Viraj 1-2 cikisi ve Viraj 3'e gidiste agresif deploy. Ferrari'nin clipping'i en cok gol kenari duzlugunde gorunuyor: hiz grafigi plato yaparken Mercedes hizlanmaya devam ediyor."
+      "text_en": "Gasly achieved the highest D/C ratio of 5.50, spending just 1.65% of the race clipping. His exceptional energy management allowed aggressive deployment while maintaining battery health - a masterclass in 2026 power unit control.",
+      "text_tr": "Gasly 5.50 ile en yüksek D/C oranını yakaladı, yarışın sadece %1.65'inde clipping yaptı. Olağanüstü enerji yönetimi batarya sağlığını korurken agresif deployment yapmasına olanak sağladı - 2026 güç ünitesi kontrolünde ustalık dersi."
     },
     {
-      "driver": null,
+      "driver": "OCO",
       "lap": null,
-      "chart_type": "track_map",
-      "category": "energy_insight",
+      "chart_type": "traffic",
+      "category": "traffic_insight",
       "severity": "medium",
-      "text_en": "Switch to energy mode on the track map and compare Russell vs Hamilton on any racing lap. Russell's deploy zones (green) extend further out of corners, while Hamilton's clipping zones (amber) dominate the straights. The Ferrari hits its battery limit 50-80m earlier than the Mercedes on every straight.",
-      "text_tr": "Pist haritasinda enerji moduna gecin ve herhangi bir yaris turunda Russell ile Hamilton'i karsilastirin. Russell'in deploy bolgeleri (yesil) viraj cikislarinda daha uzaga uzanirken, Hamilton'in clipping bolgeleri (amber) duzluklere hakim. Ferrari her duzlukte Mercedes'ten 50-80 metre once batarya limitine ulasiyor."
+      "text_en": "Despite spending 68.2% of his race in traffic, Ocon showed negative pace degradation (-0.35s), highlighting the 2026 regulations' success in allowing closer racing. His 2.26 D/C ratio remained competitive despite the challenging conditions.",
+      "text_tr": "Yarışının %68.2'sini trafikte geçirmesine rağmen Ocon negatif tempo kaybı (-0.35s) gösterdi, 2026 düzenlemelerinin yakın yarış yapılmasındaki başarısını vurguladı. 2.26 D/C oranı zorlu koşullara rağmen rekabetçi kaldı."
+    },
+    {
+      "driver": "SAI",
+      "lap": 45,
+      "chart_type": "pace",
+      "category": "pace_anomaly",
+      "severity": "high",
+      "text_en": "Sainz lost over 30 seconds on lap 45 with a 1:56.391, likely due to a technical issue during his 3-stop strategy. His 4.44 D/C ratio was among the highest, showing Williams' energy management challenges.",
+      "text_tr": "Sainz 45. turda 1:56.391 ile 30 saniyeden fazla kaybetti, muhtemelen 3-stop stratejisi sırasında teknik sorun yaşadı. 4.44 D/C oranı en yüksekler arasındaydı, Williams'ın enerji yönetimi zorluklarını gösteriyordu."
+    },
+    {
+      "driver": "ALO",
+      "lap": 11,
+      "chart_type": "pace",
+      "category": "pace_anomaly",
+      "severity": "high",
+      "text_en": "Alonso's massive 32.9-second lap time of 1:59.990 on lap 11 indicated a significant issue. His race ended early on lap 22, with the veteran struggling with the Aston Martin's balance throughout his short stint.",
+      "text_tr": "Alonso'nun 11. turda 1:59.990 ile 32.9 saniyelik büyük kaybı önemli soruna işaret ediyordu. Yarışı 22. turda erken bitti, deneyimli sürücü kısa stinti boyunca Aston Martin'in dengesinde zorlandı."
+    },
+    {
+      "driver": "PER",
+      "lap": 18,
+      "chart_type": "pace",
+      "category": "pace_anomaly",
+      "severity": "high",
+      "text_en": "Perez suffered a dramatic 36.7-second loss on lap 18 with a 2:06.084, the slowest lap of the race. His Cadillac showed promise early but reliability issues hampered his progression through the field.",
+      "text_tr": "Perez 18. turda 2:06.084 ile dramatik 36.7 saniyelik kayıp yaşadı, yarışın en yavaş turu. Cadillac'ı erken dönemde umut verdi ama güvenilirlik sorunları sahada ilerlemesini engelledi."
+    },
+    {
+      "driver": "STR",
+      "lap": 11,
+      "chart_type": "pace",
+      "category": "pace_anomaly",
+      "severity": "high",
+      "text_en": "Stroll's 2:12.251 on lap 11 was the slowest lap time of the race, losing 44.5 seconds. His multiple pit stops and inconsistent pace reflected Aston Martin's struggles with the 2026 regulations package.",
+      "text_tr": "Stroll'ün 11. turdaki 2:12.251'i yarışın en yavaş tur zamanıydı, 44.5 saniye kaybetti. Çoklu pit stopları ve tutarsız temposu Aston Martin'in 2026 düzenlemeleri paketiyle yaşadığı zorluklara yansıdı."
+    },
+    {
+      "driver": "LAW",
+      "lap": 33,
+      "chart_type": "strategy",
+      "category": "pit_stop",
+      "severity": "low",
+      "text_en": "Lawson's final pit stop on lap 33 under VSC for soft tires proved effective for his P13 finish. His 1.15 D/C ratio was the lowest among Racing Bulls drivers, indicating more conservative energy management.",
+      "text_tr": "Lawson'ın 33. turda VSC altında yumuşak lastikler için yaptığı son pit stopu P13 bitirişi için etkili oldu. 1.15 D/C oranı Racing Bulls sürücüleri arasında en düşüktü, daha muhafazakar enerji yönetimini gösteriyordu."
     }
   ]
 }
