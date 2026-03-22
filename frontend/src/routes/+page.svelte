@@ -131,10 +131,15 @@
 		return n.toUpperCase();
 	}
 
-	const RACE_EXTRAS = {
-		'2026-australia': { temp: 23, rainfall: false, sc: '3 VSC', fastest: '1:19.813', fastestDriver: 'NOR' },
-		'2026-china': { temp: 18, rainfall: false, sc: '1 SC', fastest: '1:35.902', fastestDriver: 'VER' },
-	};
+	// Compute race extras from actual data
+	function computeExtras(raceId) {
+		// Hardcoded weather (no weather in page loader)
+		const weather = {
+			'2026-australia': { temp: 23, rainfall: false },
+			'2026-china': { temp: 18, rainfall: false },
+		};
+		return weather[raceId] || {};
+	}
 
 	function getTeamColor(dc) { return TEAM_COLORS[DRIVER_TEAMS[dc]] || '#6B7280'; }
 	function formatDate(d) { return new Date(d).toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: '2-digit' }); }
@@ -345,7 +350,7 @@
 			<section class="prv-races" id="races">
 				<div class="prv-races__grid">
 					{#each races as race, i}
-						{@const extras = RACE_EXTRAS[race.id] || {}}
+						{@const extras = computeExtras(race.id)}
 						<!-- svelte-ignore a11y_no_static_element_interactions -->
 						<a href="/race/{race.id}" class="prv-card"
 							onmouseenter={() => hoveredCard = race.id}
