@@ -22,8 +22,8 @@
 	const L = {
 		en: {
 			tagline: 'Engineered Intelligence',
-			headline_1: 'Post-Race Intelligence',
-			headline_2: 'for F1 Telemetry.',
+			headline_1: 'Every Lap Tells',
+			headline_2: 'a Story.',
 			desc: 'AI-powered energy inference and telemetry analysis for every Grand Prix.',
 			cta_analyze: 'Explore Races',
 			cta_docs: 'How It Works',
@@ -48,8 +48,8 @@
 		},
 		tr: {
 			tagline: 'M\u00FChendislik Zekas\u0131',
-			headline_1: 'Yar\u0131\u015F Sonras\u0131 \u0130stihbarat',
-			headline_2: 'F1 Telemetrisi i\u00E7in.',
+			headline_1: 'Her Turun Bir',
+			headline_2: 'Hikayesi Var.',
 			desc: 'Her Grand Prix i\u00E7in AI destekli enerji \u00E7\u0131kar\u0131m\u0131 ve telemetri analizi.',
 			cta_analyze: 'Yar\u0131\u015Flar\u0131 \u0130ncele',
 			cta_docs: 'Nas\u0131l \u00C7al\u0131\u015F\u0131r',
@@ -546,7 +546,7 @@
 	.prv-timeline__point--done .prv-timeline__diamond { background: var(--p-ac); }
 	.prv-timeline__point--future .prv-timeline__diamond { border: 1px solid var(--p-tm); width: 7px; height: 7px; }
 	.prv-timeline__point--future { opacity: .3; }
-	.prv-timeline__code { font-family: var(--p-fm); font-size: 10px; text-transform: uppercase; color: var(--p-tm); }
+	.prv-timeline__code { font-family: var(--p-fm); font-size: 11px; text-transform: uppercase; color: var(--p-tm); }
 	.prv-timeline__point--done .prv-timeline__code { color: var(--p-t); font-weight: 700; }
 
 	/* ── CARDS ── */
