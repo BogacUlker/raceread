@@ -72,6 +72,13 @@
 	// Sidebar state
 	
 	// Uppercase race name with proper GRAND PRIX (not PRİX)
+	function fmtLap(s) {
+		if (s == null) return '-';
+		const m = Math.floor(s / 60);
+		const sec = s % 60;
+		return m > 0 ? m + ':' + sec.toFixed(3).padStart(6, '0') : sec.toFixed(3);
+	}
+
 	function gpName(name) {
 		if (!name) return '';
 		const parts = name.split('Grand Prix');
@@ -122,20 +129,19 @@
 		return second ? Math.abs(second).toFixed(3) : null;
 	});
 
-	// Overtakes: count position improvements across all drivers
-	let overtakeCount = $derived.by(() => {
-		let count = 0;
+	// Fastest lap across all drivers
+	let fastestLap = $derived.by(() => {
+		let best = null;
 		for (const driver of laps) {
-			const driverLaps = driver.laps || [];
-			for (let i = 1; i < driverLaps.length; i++) {
-				const prev = driverLaps[i-1].position;
-				const curr = driverLaps[i].position;
-				if (prev != null && curr != null && curr < prev) {
-					count += (prev - curr);
+			for (const lap of (driver.laps || [])) {
+				if (lap.time_s && lap.is_accurate !== false && lap.lap > 1) {
+					if (!best || lap.time_s < best.time) {
+						best = { driver: driver.driver, time: lap.time_s, lap: lap.lap };
+					}
 				}
 			}
 		}
-		return count;
+		return best;
 	});
 
 	// Best D/C ratio
@@ -259,9 +265,9 @@
 					<p class="pd-ov-sub">{raceInfo.winner} vs P2</p>
 				</div>
 				<div class="pd-ov-card">
-					<p class="pd-ov-label">{$locale === 'tr' ? 'Geçişler' : 'Overtakes'}</p>
-					<h3 class="pd-ov-value">{overtakeCount}</h3>
-					<p class="pd-ov-sub">{$locale === 'tr' ? 'pozisyon değişimi' : 'position changes'}</p>
+					<p class="pd-ov-label">{$locale === 'tr' ? 'En Hızlı Tur' : 'Fastest Lap'}</p>
+					<h3 class="pd-ov-value">{fastestLap ? fmtLap(fastestLap.time) : '-'}</h3>
+					<p class="pd-ov-sub" style="color:{fastestLap ? tc(fastestLap.driver) : ''}">{fastestLap ? fastestLap.driver + ' / L' + fastestLap.lap : ''}</p>
 				</div>
 				<div class="pd-ov-card">
 					<p class="pd-ov-label">{$locale === 'tr' ? 'En İyi D/C Oranı' : 'Best D/C Ratio'}</p>
