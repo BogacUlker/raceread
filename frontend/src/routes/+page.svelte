@@ -183,8 +183,8 @@
 		<!-- SIDEBAR -->
 		<!-- svelte-ignore a11y_no_static_element_interactions -->
 		<aside class="prv-sidebar" class:collapsed={sidebarCollapsed} class:prv-sidebar--open={sidebarOpen}
-			onmouseenter={() => { clearTimeout(window.__sbTimer); sidebarCollapsed = false; }}
-			onmouseleave={() => { window.__sbTimer = setTimeout(() => { sidebarCollapsed = true; }, 300); }}>
+			
+			>
 
 			<!-- Toggle button -->
 			<button class="prv-sidebar__toggle" onclick={() => sidebarCollapsed = !sidebarCollapsed} title={sidebarCollapsed ? 'Expand' : 'Collapse'}>
