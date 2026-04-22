@@ -4,10 +4,14 @@ F1 post-race telemetry analysis API serving lap data, inferred energy states,
 strategy timelines, delta matrices, and pre-generated descriptor annotations.
 """
 
+import os
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from backend.app.config import CORS_ORIGINS
+
+_is_dev = os.getenv("ENVIRONMENT", "production") != "production"
 from backend.app.routers import annotations, delta, energy, laps, pitstops, qualifying, qualifying_telemetry, races, strategy, telemetry
 
 app = FastAPI(
@@ -17,13 +21,16 @@ app = FastAPI(
         "AI-generated descriptor annotations, and inferred energy states."
     ),
     version="0.1.0",
+    docs_url="/docs" if _is_dev else None,
+    redoc_url="/redoc" if _is_dev else None,
+    openapi_url="/openapi.json" if _is_dev else None,
 )
 
 # CORS middleware
 app.add_middleware(
     CORSMiddleware,
     allow_origins=CORS_ORIGINS,
-    allow_credentials=True,
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )

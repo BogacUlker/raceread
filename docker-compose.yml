@@ -3,16 +3,19 @@ services:
     build:
       context: .
       dockerfile: backend/Dockerfile
-    ports:
-      - "8000:8000"
+    expose:
+      - "8000"
     volumes:
       - ./data:/app/data:ro
-      - ./backend:/app/backend
+      - ./backend:/app/backend:ro
     environment:
-      - CORS_ORIGINS=${CORS_ORIGINS:-*}
+      - CORS_ORIGINS=${CORS_ORIGINS:-https://raceread.app}
       - DATA_DIR=/app/data
-    command: uvicorn backend.app.main:app --host 0.0.0.0 --port 8000 --reload
+    command: uvicorn backend.app.main:app --host 0.0.0.0 --port 8000 --workers 2
     restart: unless-stopped
+    networks:
+      - default
+      - homelab_homelab
 
   frontend:
     build:
@@ -28,3 +31,7 @@ services:
     depends_on:
       - backend
     restart: unless-stopped
+
+networks:
+  homelab_homelab:
+    external: true

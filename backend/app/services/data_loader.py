@@ -5,6 +5,7 @@ repeated disk I/O on subsequent requests.
 """
 
 from functools import lru_cache
+import re
 from pathlib import Path
 import json
 from typing import Any
@@ -14,9 +15,21 @@ from backend.app.config import DATA_DIR
 # Separate cache for expensive computed results (traffic, etc.)
 _computed_cache: dict[str, Any] = {}
 
+# Strict pattern: only alphanumeric, hyphens, underscores allowed
+_SAFE_ID = re.compile(r"^[a-zA-Z0-9_-]+$")
+
+
+def _validate_param(value: str, name: str) -> str:
+    """Validate that a parameter contains no path traversal characters."""
+    if not value or not _SAFE_ID.match(value):
+        from fastapi import HTTPException
+        raise HTTPException(status_code=400, detail=f"Invalid {name}")
+    return value
+
 
 def get_race_dir(race_id: str) -> Path:
     """Return the data directory for a given race ID."""
+    _validate_param(race_id, "race_id")
     return DATA_DIR / race_id
 
 
@@ -47,6 +60,7 @@ def load_laps(race_id: str) -> dict:
 
 def load_energy(race_id: str, driver: str) -> dict:
     """Load energy inference data for a single driver."""
+    _validate_param(driver, "driver")
     return load_json(
         str(get_race_dir(race_id) / "energy" / f"{driver.lower()}.json")
     )
@@ -96,6 +110,7 @@ def load_qualifying(race_id: str) -> dict:
 
 def load_telemetry(race_id: str, driver: str) -> dict:
     """Load per-sample telemetry data for a single driver."""
+    _validate_param(driver, "driver")
     return load_json(
         str(get_race_dir(race_id) / "telemetry" / f"{driver.lower()}.json")
     )
@@ -141,6 +156,7 @@ def load_circuit(race_id: str) -> dict:
 
 def load_qualifying_telemetry(race_id: str, driver: str) -> dict:
     """Load qualifying telemetry for a single driver."""
+    _validate_param(driver, "driver")
     return load_json(
         str(
             get_race_dir(race_id)

@@ -137,6 +137,7 @@
 		const weather = {
 			'2026-australia': { temp: 23, rainfall: false },
 			'2026-china': { temp: 18, rainfall: false },
+			'2026-japan': { temp: 19, rainfall: false },
 		};
 		return weather[raceId] || {};
 	}

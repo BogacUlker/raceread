@@ -1,5 +1,4 @@
 {
-  "race_id": "2026-australia",
   "annotations": [
     {
       "driver": null,
@@ -35,7 +34,7 @@
       "category": "race_insight",
       "severity": "medium",
       "text_en": "Ferrari's Hamilton had the highest clip percentage of any driver in the race at 8.06%, meaning his car was harvesting energy from the ICE at full throttle more than anyone  -  effectively running at reduced power on straights throughout the 58-lap race. This Super Clipping pattern explains why Hamilton's top speed of 328 km/h was among the lowest in the field despite Ferrari's competitive cornering pace.",
-      "text_tr": "Ferrari'den Hamilton, yarıştaki en yüksek clipping oranıyla (yüzde 8,06) tam gaz olduğunda ICE'den en fazla enerji toplayan pilot oldu; bu durum 58 tur boyunca düz pistlerde azaltılmış güçle koşması anlamına geliyor. Bu Super Clipping örüntüsü, Ferrari'nin rekabetçi viraj hızına karşın Hamilton'ın 328 km/s'lik maksimum hızının neden sahadaki en düşükler arasında olduğunu açıklıyor."
+      "text_tr": "Ferrari'den Hamilton, yarıştaki en yüksek clipping oranıyla (yüzde 8,06) tam gaz olduğunda ICE'den en fazla enerji toplayan pilot oldu; bu durum 58 tur boyunca düz pistlerde azaltılmış güçle koşması anlamına geliyor. Bu Super Clipping örüntüsü, Ferrari'nin rekabetçi viraj hızına karşın Hamilton'ın 328 km/h'lik maksimum hızının neden sahadaki en düşükler arasında olduğunu açıklıyor."
     },
     {
       "driver": null,
@@ -61,7 +60,7 @@
       "chart_type": "qualifying",
       "category": "qualifying_insight",
       "severity": "medium",
-      "text_en": "Liam Lawson (P8, Racing Bulls) out-qualified his teammate Isack Hadjar (P3)  -  wait, Hadjar qualified P3 while Lawson qualified P8, a gap of 0.691s (1:19.994 vs 1:19.303). However, Lawson's Q3 lap was compromised  -  his final Q3 time of 1:21.247 suggests an aborted lap, placing him P9 on the grid. The inter-team gap within Racing Bulls was significant heading into the race.",
+      "text_en": "Racing Bulls saw a significant intra-team gap: Hadjar qualified P3 (1:19.303) while Lawson qualified P8 (1:19.994), a difference of 0.691s. Lawson's Q3 lap was compromised  -  his final Q3 time of 1:21.247 suggests an aborted lap, placing him P9 on the grid. The inter-team gap within Racing Bulls was significant heading into the race.",
       "text_tr": "Racing Bulls'ta Hadjar Q3'te 1:19.303 ile P3'ten başlarken, Lawson'ın son Q3 turu (1:21.247) kesintiye uğradı ve P9'dan başladı. İki Racing Bulls pilotu arasındaki 1,944 saniyelik fark oldukça dikkat çekiciydi ve yarış sonunda Lawson P13, Hadjar ise DNF ile bitirdi."
     },
     {
@@ -152,7 +151,7 @@
       "category": "energy_insight",
       "severity": "medium",
       "text_en": "Hamilton's 8.06% clip rate  -  the highest of all 20 classified drivers  -  tells a story of a car that was aggressively charging its battery on the straights at the cost of top speed. The telemetry confirms this: his 328 km/h top speed was 6 km/h slower than Russell's 334 km/h. Yet Hamilton's sector times show competitive performance through Albert Park's technical corners, suggesting Ferrari's energy architecture prioritises corner exit over straight-line speed.",
-      "text_tr": "Hamilton'ın yüzde 8,06'lık clipping oranı  -  sınıflandırılan 20 pilot arasında en yüksek  -  aracın düz pistlerde en yüksek hız pahasına agresif biçimde batarya şarj ettiğini gösteriyor. Telemetri bunu doğruluyor: 328 km/s'lik maksimum hızı Russell'ın 334 km/s'inin 6 km/s gerisinde. Bununla birlikte Hamilton'ın sektör zamanları Albert Park'ın teknik virajlarında rekabetçi bir performans ortaya koyuyor."
+      "text_tr": "Hamilton'ın yüzde 8,06'lık clipping oranı  -  sınıflandırılan 20 pilot arasında en yüksek  -  aracın düz pistlerde en yüksek hız pahasına agresif biçimde batarya şarj ettiğini gösteriyor. Telemetri bunu doğruluyor: 328 km/h'lik maksimum hızı Russell'ın 334 km/h'inin 6 km/h gerisinde. Bununla birlikte Hamilton'ın sektör zamanları Albert Park'ın teknik virajlarında rekabetçi bir performans ortaya koyuyor."
     },
     {
       "driver": "NOR",
@@ -242,7 +241,7 @@
       "category": "pace_anomaly",
       "severity": "low",
       "text_en": "Colapinto recorded the highest top speed of the entire race  -  343.0 km/h on Lap 48  -  on the soft tyre during his final stint. This was 9 km/h faster than Russell's best of 334.0 km/h, highlighting how Alpine's X Mode (wings open configuration) unlocked significant straight-line speed, particularly when the soft tyre was providing maximum mechanical grip in the corners to offset the lower downforce.",
-      "text_tr": "Colapinto, son stintinde yumuşak lastikle Tur 48'de 343,0 km/s ile yarışın tüm sahasındaki en yüksek hızı kaydetti. Bu değer Russell'ın en iyi 334,0 km/s'inin 9 km/s üzerindeydi ve Alpine'in X Modu'nun (kanatların açık konfigürasyonu) önemli bir düz hız açığa çıkardığını vurguluyor."
+      "text_tr": "Colapinto, son stintinde yumuşak lastikle Tur 48'de 343,0 km/h ile yarışın tüm sahasındaki en yüksek hızı kaydetti. Bu değer Russell'ın en iyi 334,0 km/h'inin 9 km/h üzerindeydi ve Alpine'in X Modu'nun (kanatların açık konfigürasyonu) önemli bir düz hız açığa çıkardığını vurguluyor."
     },
     {
       "driver": null,
@@ -259,7 +258,7 @@
       "chart_type": "strategy",
       "category": "safety_car",
       "severity": "high",
-      "text_en": "The second VSC (Laps 17-20) created a secondary pit window that benefited Norris most dramatically (+4 positions, to P5), while hurting Linden (+2 positions lost) and BEA/BOR (-1 each). The pit lane entry was briefly closed on Lap 19 due to marshals on track, meaning some drivers who attempted to pit were forced to stay out  -  a critical detail that shaped the midfield order for the next 12 laps.",
+      "text_en": "The second VSC (Laps 17-20) created a secondary pit window that benefited Norris most dramatically (+4 positions, to P5), while hurting Lindblad (+2 positions lost) and BEA/BOR (-1 each). The pit lane entry was briefly closed on Lap 19 due to marshals on track, meaning some drivers who attempted to pit were forced to stay out  -  a critical detail that shaped the midfield order for the next 12 laps.",
       "text_tr": "İkinci VSC (Tur 17-20) en dramatik biçimde Norris'e yarar sağlayan (+4 pozisyon, P5'e) ikincil bir pit stop penceresi yarattı. Tur 19'da pist üzerindeki marshalllar nedeniyle pit lane girişi kısa süreliğine kapatıldı; bu kritik detay, pit yapmaya çalışan bazı pilotların dışarıda kalmak zorunda kalmasına yol açtı ve sonraki 12 tur boyunca orta sıra düzenini şekillendirdi."
     },
     {
@@ -277,8 +276,8 @@
       "chart_type": "pace",
       "category": "race_insight",
       "severity": "low",
-      "text_en": "Albon ran a three-stint strategy (Medium→Hard→Soft) and finished P12, gaining three places from his P15 grid position. His soft final stint from Lap 34 produced times consistently around 1:24.7-1:24.9, showing Williams' competitive pace on the softer compound. However, a pace loss of +1.88s in traffic (18.2% of laps in traffic) suggests the FW47 struggled in dirty air relative to its clean-air potential.",
-      "text_tr": "Albon, üç stintli (Orta→Sert→Yumuşak) stratejiyle P15'teki grid pozisyonundan üç basamak yukarı çıkarak P12'de bitirdi. Tur 34'ten itibaren sürdürdüğü yumuşak son stint tutarlı biçimde 1:24.7-1:24.9 civarında zamanlar üretti. Ancak trafikte +1,88 saniyelik hız kaybı, FW47'nin kirli havada temiz hava potansiyelinin gerisinde kaldığını gösteriyor."
+      "text_en": "Albon ran a three-stint strategy (Medium→Hard→Soft) and finished P12, gaining three places from his P15 grid position. His soft final stint from Lap 34 produced times consistently around 1:24.7-1:24.9, showing Williams' competitive pace on the softer compound. However, a pace loss of +1.88s in traffic (18.2% of laps in traffic) suggests the FW48 struggled in dirty air relative to its clean-air potential.",
+      "text_tr": "Albon, üç stintli (Orta→Sert→Yumuşak) stratejiyle P15'teki grid pozisyonundan üç basamak yukarı çıkarak P12'de bitirdi. Tur 34'ten itibaren sürdürdüğü yumuşak son stint tutarlı biçimde 1:24.7-1:24.9 civarında zamanlar üretti. Ancak trafikte +1,88 saniyelik hız kaybı, FW48'nin kirli havada temiz hava potansiyelinin gerisinde kaldığını gösteriyor."
     },
     {
       "driver": "HAM",

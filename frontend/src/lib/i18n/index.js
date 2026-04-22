@@ -10,7 +10,7 @@ function getInitialLocale() {
 		const saved = localStorage.getItem('raceread-locale');
 		if (saved === 'tr' || saved === 'en') return saved;
 	}
-	return 'tr';
+	return 'en';
 }
 
 /** Current locale: 'tr' or 'en' */

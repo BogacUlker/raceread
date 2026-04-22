@@ -7,6 +7,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY backend/ /app/backend/
 
+RUN addgroup --system app && adduser --system --ingroup app app
+USER app
+
 ENV PYTHONPATH=/app
 ENV DATA_DIR=/app/data
 

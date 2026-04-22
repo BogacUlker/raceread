@@ -7,7 +7,7 @@ DATA_DIR = Path(os.getenv("DATA_DIR", str(BASE_DIR / "data")))
 FASTF1_CACHE_DIR = Path(os.getenv("FASTF1_CACHE_DIR", str(BASE_DIR / "fastf1_cache")))
 
 # CORS
-CORS_ORIGINS = os.getenv("CORS_ORIGINS", "*").split(",")
+CORS_ORIGINS = os.getenv("CORS_ORIGINS", "https://raceread.app").split(",")
 
 # Energy inference thresholds
 DEPLOY_SIGMA = 1.5

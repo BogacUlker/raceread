@@ -556,6 +556,148 @@ _ENERGY_SHORT = {
 }
 
 
+def _resample_at_distance(raw_samples, target_n, keys_interp, keys_nearest):
+    """Resample telemetry at equal distance intervals using interpolation.
+    
+    keys_interp: columns to linearly interpolate (speed, throttle, x, y, etc.)
+    keys_nearest: columns to pick nearest value (gear, brake, energy, driver_ahead, etc.)
+    """
+    if len(raw_samples) < 2:
+        return raw_samples
+
+    dists = [s["dist"] for s in raw_samples]
+    d_min, d_max = dists[0], dists[-1]
+    if d_max <= d_min:
+        return raw_samples[:target_n]
+
+    target_dists = [d_min + i * (d_max - d_min) / (target_n - 1) for i in range(target_n)]
+    
+    result = []
+    j = 0  # pointer into raw_samples
+    for td in target_dists:
+        # Advance j so raw_samples[j].dist <= td < raw_samples[j+1].dist
+        while j < len(raw_samples) - 2 and dists[j + 1] < td:
+            j += 1
+        
+        a = raw_samples[j]
+        b = raw_samples[min(j + 1, len(raw_samples) - 1)]
+        
+        dd = dists[min(j + 1, len(raw_samples) - 1)] - dists[j]
+        frac = (td - dists[j]) / dd if dd > 0 else 0.0
+        frac = max(0.0, min(1.0, frac))
+        
+        sample = {}
+        sample["dist"] = round(td, 1)
+        
+        for k in keys_interp:
+            va = a.get(k)
+            vb = b.get(k)
+            if va is not None and vb is not None:
+                sample[k] = round(va + (vb - va) * frac, 1)
+            else:
+                sample[k] = va
+        
+        for k in keys_nearest:
+            sample[k] = a[k] if frac < 0.5 else b[k]
+        
+        result.append(sample)
+    
+    return result
+
+def _repair_constant_speed(raw_samples, min_run=5):
+    """Replace constant-speed plateaus with X,Y position-derived speed.
+    
+    FastF1 car_data sometimes has long runs of identical speed values.
+    The Distance column is derived from Speed (integral), so computing
+    speed from distance/time is circular. Instead, we use X,Y coordinates
+    which come from an independent GPS position source.
+    """
+    import math
+    
+    if len(raw_samples) < 3:
+        return raw_samples
+    
+    speeds = [s["speed"] for s in raw_samples]
+    xs = [s.get("x", 0) for s in raw_samples]
+    ys = [s.get("y", 0) for s in raw_samples]
+    times = [s.get("time_s", 0) for s in raw_samples]
+    n = len(speeds)
+    has_time = any(t > 0 for t in times)
+    
+    # Find near-constant speed runs (spread < 1.5 km/h over the run)
+    repaired = list(speeds)
+    run_start = 0
+    for i in range(1, n + 1):
+        if i < n and abs(speeds[i] - speeds[i - 1]) < 1.5:
+            continue
+        run_len = i - run_start
+        if run_len >= min_run:
+            # Check if actually near-constant (spread < 2 km/h)
+            run_speeds = speeds[run_start:i]
+            spread = max(run_speeds) - min(run_speeds)
+            if spread < 2.0:
+                # Replace with X,Y derived speed
+                for j in range(run_start, i):
+                    # Use 3-point window for smoother derivative
+                    j0 = max(0, j - 1)
+                    j1 = min(n - 1, j + 1)
+                    dx = xs[j1] - xs[j0]
+                    dy = ys[j1] - ys[j0]
+                    xy_dist = math.sqrt(dx*dx + dy*dy)
+                    
+                    if has_time:
+                        dt = times[j1] - times[j0]
+                    else:
+                        # Estimate from original speed
+                        avg_spd = speeds[run_start] if speeds[run_start] > 0 else 100
+                        dt = xy_dist / (avg_spd / 3.6) if avg_spd > 0 else 1.0
+                    
+                    if dt > 0.001:
+                        # X,Y units in FastF1 are typically decimeters or similar
+                        # We need to find the right scale factor
+                        calc_speed = (xy_dist / dt) * 3.6
+                        
+                        # Scale: if calc_speed is way off from original, adjust
+                        # X,Y could be in mm, cm, dm, or m - auto-detect scale
+                        if calc_speed > 0:
+                            ratio = speeds[run_start] / calc_speed if calc_speed > 0 else 1.0
+                            # Find nearest power-of-10 scale factor
+                            if 0.5 < ratio < 2.0:
+                                repaired[j] = round(calc_speed, 1)
+                            elif 5 < ratio < 20:
+                                repaired[j] = round(calc_speed * 10, 1)
+                            elif 50 < ratio < 200:
+                                repaired[j] = round(calc_speed * 100, 1)
+                            elif 0.05 < ratio < 0.2:
+                                repaired[j] = round(calc_speed / 10, 1)
+                            else:
+                                # Can't determine scale, keep original
+                                pass
+        run_start = i
+    
+    # Clamp to realistic F1 speed range
+    for i in range(n):
+        if repaired[i] > 350:
+            repaired[i] = 350.0
+        elif repaired[i] < 0:
+            repaired[i] = 0.0
+    
+    # Two-pass smoothing for repaired sections
+    smoothed = list(repaired)
+    for pass_n in range(2):
+        prev = list(smoothed)
+        for i in range(3, n - 3):
+            if abs(repaired[i] - speeds[i]) > 0.5:
+                smoothed[i] = round(
+                    (prev[i-3] + prev[i-2] + prev[i-1] + prev[i] + prev[i+1] + prev[i+2] + prev[i+3]) / 7, 1
+                )
+    
+    for i, s in enumerate(raw_samples):
+        s["speed"] = smoothed[i]
+    
+    return raw_samples
+
+
 def export_telemetry(
     session: fastf1.core.Session,
     drivers_info: dict,
@@ -630,78 +772,56 @@ def export_telemetry(
                 if n < 10:
                     continue
 
-                # Downsample via linspace index selection
-                if n > target_samples:
-                    indices = np.linspace(0, n - 1, target_samples, dtype=int)
-                else:
-                    indices = np.arange(n)
-
-                samples = []
+                # Build raw sample list from telemetry
                 energy_states = energy_states_per_lap.get(lap_num)
-
-                for idx in indices:
+                raw_samples = []
+                for idx in range(n):
                     row = lap_tel.iloc[idx]
-
-                    # Distance - prefer Distance column, fall back to 0
                     dist = _clean_value(row.get("Distance"))
-                    if dist is not None:
-                        dist = round(float(dist), 1)
-                    else:
-                        dist = 0.0
-
+                    dist = round(float(dist), 1) if dist is not None else 0.0
                     speed = _clean_value(row.get("Speed"))
-                    if speed is not None:
-                        speed = round(float(speed), 1)
-
+                    speed = round(float(speed), 1) if speed is not None else 0.0
                     throttle = _clean_value(row.get("Throttle"))
-                    if throttle is not None:
-                        throttle = round(float(throttle), 0)
-
+                    throttle = round(float(throttle), 0) if throttle is not None else 0.0
                     brake = bool(row.get("Brake")) if pd.notna(row.get("Brake")) else False
-
                     gear = _clean_value(row.get("nGear"))
-                    if gear is not None:
-                        gear = int(gear)
-
+                    gear = int(gear) if gear is not None else 0
                     rpm = _clean_value(row.get("RPM"))
-                    if rpm is not None:
-                        rpm = int(rpm)
-
+                    rpm = int(rpm) if rpm is not None else 0
                     x = _clean_value(row.get("X"))
-                    if x is not None:
-                        x = round(float(x), 1)
-
+                    x = round(float(x), 1) if x is not None else 0.0
                     y = _clean_value(row.get("Y"))
-                    if y is not None:
-                        y = round(float(y), 1)
-
+                    y = round(float(y), 1) if y is not None else 0.0
                     driver_ahead = _clean_value(row.get("DriverAhead"))
-                    if driver_ahead is not None:
-                        driver_ahead = str(driver_ahead)
-
+                    driver_ahead = str(driver_ahead) if driver_ahead is not None else None
                     gap_ahead = _clean_value(row.get("DistanceToDriverAhead"))
-                    if gap_ahead is not None:
-                        gap_ahead = round(float(gap_ahead), 2)
-
-                    # Energy state short code
+                    gap_ahead = round(float(gap_ahead), 2) if gap_ahead is not None else None
                     energy = "N"
                     if energy_states is not None and idx < len(energy_states):
                         energy = _ENERGY_SHORT.get(str(energy_states[idx]), "N")
+                    time_val = row.get("Time")
+                    time_s = time_val.total_seconds() if time_val is not None and pd.notna(time_val) else 0.0
 
-                    sample = {
-                        "dist": dist,
-                        "speed": speed,
-                        "throttle": throttle,
-                        "brake": brake,
-                        "gear": gear,
-                        "rpm": rpm,
-                        "x": x,
-                        "y": y,
-                        "driver_ahead": driver_ahead,
-                        "gap_ahead": gap_ahead,
-                        "energy": energy,
-                    }
-                    samples.append(sample)
+                    raw_samples.append({
+                        "dist": dist, "speed": speed, "throttle": throttle,
+                        "brake": brake, "gear": gear, "rpm": rpm,
+                        "x": x, "y": y, "driver_ahead": driver_ahead,
+                        "gap_ahead": gap_ahead, "energy": energy,
+                        "time_s": round(time_s, 4),
+                    })
+
+                # Repair constant speed plateaus from raw telemetry
+                raw_samples = _repair_constant_speed(raw_samples)
+
+                # Resample at equal distance intervals via interpolation
+                if len(raw_samples) > target_samples:
+                    samples = _resample_at_distance(
+                        raw_samples, target_samples,
+                        keys_interp=["speed", "throttle", "x", "y", "rpm", "gap_ahead", "time_s"],
+                        keys_nearest=["brake", "gear", "driver_ahead", "energy"],
+                    )
+                else:
+                    samples = raw_samples
 
                 laps_out.append({
                     "lap": lap_num,
@@ -1307,13 +1427,16 @@ def export_qualifying_telemetry(
                 "gear": int(s.get("nGear", 0)) if pd.notna(s.get("nGear")) else None,
             })
 
-        # Downsample if needed
+        # Repair constant speed plateaus from raw telemetry
+        raw_samples = _repair_constant_speed(raw_samples)
+
+        # Resample at equal distance intervals via interpolation
         if len(raw_samples) > max_samples:
-            step = len(raw_samples) / max_samples
-            samples = [raw_samples[int(i * step)] for i in range(max_samples)]
-            # Always include last sample
-            if samples[-1] != raw_samples[-1]:
-                samples[-1] = raw_samples[-1]
+            samples = _resample_at_distance(
+                raw_samples, max_samples,
+                keys_interp=["speed", "time_s", "x", "y"],
+                keys_nearest=["throttle", "brake", "gear"],
+            )
         else:
             samples = raw_samples
 

@@ -44,7 +44,12 @@
 		try { qualifyingData = await api(`/api/races/${raceId}/qualifying`); } catch { qualifyingError = true; } finally { qualifyingLoading = false; }
 	}
 
-	let driverList = $derived(laps.map(d => ({ driver: d.driver, team: d.team })));
+	let driverList = $derived(laps.map(d => {
+		const last = d.laps.filter(l => l.position != null).at(-1);
+		const pos = last?.position ?? 99;
+		const isDNF = d.laps.length < (raceInfo.total_laps || 58) * 0.9;
+		return { driver: d.driver, team: d.team, _pos: isDNF ? 100 + pos : pos };
+	}).sort((a, b) => a._pos - b._pos));
 	let teamsMap = $derived(Object.fromEntries(laps.map(d => [d.driver, d.team])));
 	let finalPosMap = $derived(Object.fromEntries(laps.map(d => {
 		const last = d.laps.filter(l => l.position != null).at(-1);
