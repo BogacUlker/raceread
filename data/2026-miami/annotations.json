@@ -34,8 +34,8 @@
       "chart_type": "strategy",
       "category": "race_insight",
       "severity": "medium",
-      "text_en": "The dominant 1-stop strategy (Medium → Hard around Lap 26-28) was the race-winning approach, used by ANT, NOR, HAM, PIA, SAI, ALB, and BEA. Those who deviated — RUS pitting early on Lap 20, LEC stopping as early as Lap 21 — sacrificed track position or had tires expire before the flag. STR was the only driver to use three stints on Softs, finishing P17.",
-      "text_tr": "26-28. turlar civarında yapılan tek pit stoplı strateji (Orta → Sert) yarışın kazanan yaklaşımıydı; ANT, NOR, HAM, PIA, SAI, ALB ve BEA bu planı izledi. 20. turda erken pit yapan RUS ve 21. turda duran LEC pist pozisyonundan taviz verdi. Üç stintte Yumuşak lastik kullanan tek isim STR oldu ve P17 ile yarışı tamamladı."
+      "text_en": "The dominant 1-stop strategy (Medium → Hard around Lap 26-28) was the race-winning approach, used by ANT, NOR, HAM, PIA, SAI, ALB, and BEA. Those who deviated — RUS pitting early on Lap 20, LEC stopping as early as Lap 21 — sacrificed track position or had tires expire before the flag. STR was the only 2-stop runner (Medium → Soft → Soft), finishing P17.",
+      "text_tr": "26-28. turlar civarında yapılan tek pit stoplı strateji (Orta → Sert) yarışın kazanan yaklaşımıydı; ANT, NOR, HAM, PIA, SAI, ALB ve BEA bu planı izledi. 20. turda erken pit yapan RUS ve 21. turda duran LEC pist pozisyonundan taviz verdi. STR (Orta → Yumuşak → Yumuşak) iki pit stoplı stratejiyle koşan tek isimdi ve yarışı P17 ile bitirdi."
     },
     {
       "driver": null,
@@ -178,8 +178,8 @@
       "chart_type": "pace",
       "category": "pace_anomaly",
       "severity": "medium",
-      "text_en": "Verstappen's hard tires visibly degraded from Lap 47 onward — his lap times deteriorating from 1:33.1 to 1:35.9 by Lap 55, a 2.8-second swing over just 8 laps. At Tire Age 51 at the flag, VER was running the most worn hard compound of any frontrunner, directly costing him the position battle with Leclerc through the final stint.",
-      "text_tr": "Verstappen'ın sert lastikleri 47. turdan itibaren belirgin biçimde yıprandı; tur süreleri 1:33.1'den 55. turda 1:35.9'a geriledi, sadece 8 turda 2.8 saniyelik bir düşüş. Bayrak indiğinde 51 yaşındaki sert lastiklerle piste çıkan VER, ön sıralardaki tüm pilotlar içinde en yıpranmış bileşiği kullananıydı ve bu durum son stintte Leclerc ile yaşanan pozisyon mücadelesinde doğrudan belirleyici oldu."
+      "text_en": "Verstappen's hard tires visibly degraded from Lap 45 onward — lap times trending from 1:33.4 (L45) to 1:35.9 by Lap 55, roughly 2.4 seconds slower across 10 laps. At a 51-lap tire age at the flag, VER was running the most worn hard compound of any frontrunner, directly shaping the final-stint position battle with Leclerc.",
+      "text_tr": "Verstappen'ın sert lastikleri 45. turdan itibaren belirgin biçimde yıprandı; tur süreleri 1:33.4 (L45) seviyesinden 55. turda 1:35.9'a geriledi, 10 turda yaklaşık 2.4 saniyelik bir düşüş. Bayrak indiğinde 51 turluk sert lastiklerle piste çıkan VER, ön sıralardaki tüm pilotlar içinde en yıpranmış bileşiği kullananıydı ve bu durum son stintte Leclerc ile yaşanan pozisyon mücadelesinde doğrudan belirleyici oldu."
     },
     {
       "driver": "LEC",
@@ -259,8 +259,8 @@
       "chart_type": "strategy",
       "category": "pace_anomaly",
       "severity": "low",
-      "text_en": "Alonso's 41-lap Medium stint was by far the longest of the race on that compound — lasting a remarkable 6 laps longer than the next longest (NOR's 27-lap stint). His final laps on that Medium tire saw consistent pace in the 1:35-1:36 range, showing negligible degradation. The Aston Martin appears to run an extremely low-clip energy map (1.30% clip, 10.25 D/C), which may explain the tire longevity.",
-      "text_tr": "Alonso'nun 41 turlu Orta lastik stinti yarışın bu bileşikteki en uzun kısmıydı; bir sonraki en uzun stint olan NOR'un 27 turunu tam 6 tur geride bıraktı. Bu Orta lastiklerdeki son turlarında 1:35-1:36 aralığında istikrarlı bir tempo gösteren Alonso, neredeyse sıfır degrasyon sergiledi. Aston Martin'in son derece düşük klip enerji haritası kullandığı görülüyor (%1.30 klip, 10.25 D/C); bu durum lastik uzun ömürlülüğünü açıklıyor olabilir."
+      "text_en": "Alonso's 41-lap Medium stint was by far the longest of the race on that compound — the next longest Medium stint was BOR's 32 laps. ALO held consistent pace in the 1:36.4-1:36.9 range through Lap 39 before mild degradation pushed Lap 40 to 1:37.7; Lap 41 was the in-lap before pitting. The Aston Martin appears to run an extremely low-clip energy map (1.30% clip, 10.25 D/C), which likely explains the tire preservation across the long stint.",
+      "text_tr": "Alonso'nun 41 turlu Orta lastik stinti yarışın bu bileşikteki en uzun kısmıydı; bir sonraki en uzun Orta stinti BOR'un 32 turuydu. ALO, 39. tura kadar 1:36.4-1:36.9 aralığında istikrarlı bir tempo tutturdu; 40. turda lastikler hafif düşüş göstererek 1:37.7'ye yükseldi, 41. tur ise pit giriş turuydu. Aston Martin'in son derece düşük klip enerji haritası kullandığı görülüyor (%1.30 klip, 10.25 D/C); bu durum stint sonuna kadar lastiklerin korunmasını açıklıyor olabilir."
     }
   ]
 }
