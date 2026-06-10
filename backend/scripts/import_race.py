@@ -698,6 +698,104 @@ def _repair_constant_speed(raw_samples, min_run=5):
     return raw_samples
 
 
+# ---------------------------------------------------------------------------
+# Position-data fallback (handles sessions with broken GPS/position streams,
+# e.g. Monaco 2026 where get_telemetry() fails on 71/78 laps because pos_data
+# is missing). car_data (speed/throttle/brake/gear/rpm) stays intact, so we
+# fall back to it and reconstruct X/Y from a track distance->position map.
+# ---------------------------------------------------------------------------
+
+_DIST_XY_CACHE: dict = {}
+
+
+def _build_track_dist_xy(session: fastf1.core.Session):
+    """Return sorted (distance, X, Y) numpy arrays mapping lap-distance to track
+    position. Uses the best available lap in this session; falls back to the
+    qualifying session when this session's position data is unusable."""
+    best = None
+    try:
+        for _, lap in session.laps.sort_values("LapTime").iterrows():
+            try:
+                tel = lap.get_telemetry()
+            except Exception:
+                continue
+            if tel is None or "X" not in tel.columns or "Distance" not in tel.columns:
+                continue
+            if tel["X"].notna().sum() < 200 or float(tel["X"].abs().max()) < 100:
+                continue
+            best = tel
+            break
+    except Exception:
+        best = None
+
+    if best is None:
+        # Fall back to qualifying session, whose position data is independent.
+        try:
+            q = fastf1.get_session(session.event.year, session.event["EventName"], "Q")
+            q.load()
+            best = q.laps.pick_fastest().get_telemetry()
+        except Exception:
+            return None
+
+    try:
+        d = best["Distance"].to_numpy(dtype=np.float64)
+        x = best["X"].to_numpy(dtype=np.float64)
+        y = best["Y"].to_numpy(dtype=np.float64)
+        m = np.isfinite(d) & np.isfinite(x) & np.isfinite(y)
+        d, x, y = d[m], x[m], y[m]
+        if len(d) < 50:
+            return None
+        order = np.argsort(d)
+        return d[order], x[order], y[order]
+    except Exception:
+        return None
+
+
+def _track_dist_xy(session: fastf1.core.Session):
+    """Memoized accessor for the session's distance->position map."""
+    key = id(session)
+    if key not in _DIST_XY_CACHE:
+        _DIST_XY_CACHE[key] = _build_track_dist_xy(session)
+    return _DIST_XY_CACHE[key]
+
+
+def _lap_frame(lap_row, lap_num: int, dist_xy) -> "pd.DataFrame | None":
+    """Per-lap telemetry frame with position-data fallback.
+
+    Tries full get_telemetry() first; if position data is missing or degenerate,
+    falls back to car_data and reconstructs X/Y from the track distance map.
+    Always tags the frame with a LapNumber column.
+    """
+    try:
+        tel = lap_row.get_telemetry()
+        if (tel is not None and len(tel) > 0 and "X" in tel.columns
+                and tel["X"].notna().sum() > 0
+                and float(tel["X"].abs().max()) > 100):
+            tel = tel.copy()
+            tel["LapNumber"] = lap_num
+            return tel
+    except Exception:
+        pass
+
+    try:
+        cd = lap_row.get_car_data()
+        if cd is None or len(cd) == 0:
+            return None
+        cd = cd.add_distance().copy()
+        if dist_xy is not None and "Distance" in cd.columns:
+            d, x, y = dist_xy
+            dist = cd["Distance"].to_numpy(dtype=np.float64)
+            cd["X"] = np.interp(dist, d, x)
+            cd["Y"] = np.interp(dist, d, y)
+        else:
+            cd["X"] = 0.0
+            cd["Y"] = 0.0
+        cd["LapNumber"] = lap_num
+        return cd
+    except Exception:
+        return None
+
+
 def export_telemetry(
     session: fastf1.core.Session,
     drivers_info: dict,
@@ -724,20 +822,16 @@ def export_telemetry(
             team = teams.get(drv, "Unknown")
 
             # Collect full telemetry per lap for energy baseline
+            dist_xy = _track_dist_xy(session)
             all_tel_frames = []
             lap_tel_map: dict[int, pd.DataFrame] = {}
 
             for _, lap_row in drv_laps.iterrows():
                 lap_num = int(lap_row["LapNumber"])
-                try:
-                    lap_tel = lap_row.get_telemetry()
-                    if lap_tel is not None and len(lap_tel) > 0:
-                        lap_tel = lap_tel.copy()
-                        lap_tel["LapNumber"] = lap_num
-                        all_tel_frames.append(lap_tel)
-                        lap_tel_map[lap_num] = lap_tel
-                except Exception:
-                    continue
+                lap_tel = _lap_frame(lap_row, lap_num, dist_xy)
+                if lap_tel is not None and len(lap_tel) > 0:
+                    all_tel_frames.append(lap_tel)
+                    lap_tel_map[lap_num] = lap_tel
 
             if not all_tel_frames:
                 print(f"    [WARN] No telemetry for {drv}, skipping")
@@ -860,56 +954,71 @@ def export_circuit(
     outline_out = []
     track_length = 0
 
+    # Track outline + distance->position map (robust to broken GPS: falls back to
+    # qualifying position data when the race stream is dead).
+    dist_xy = None
     try:
-        circuit_info = session.get_circuit_info()
-
-        if circuit_info is not None:
-            # Corners
-            if hasattr(circuit_info, "corners") and circuit_info.corners is not None:
-                for _, corner in circuit_info.corners.iterrows():
-                    corners_out.append({
-                        "number": int(corner.get("Number", 0)),
-                        "x": round(float(corner.get("X", 0)), 1),
-                        "y": round(float(corner.get("Y", 0)), 1),
-                        "angle": round(float(corner.get("Angle", 0)), 1),
-                        "distance": round(float(corner.get("Distance", 0)), 1),
-                        "letter": str(corner.get("Letter", "")),
-                    })
-
-            # Track length from circuit info or approximate from telemetry
-            if hasattr(circuit_info, "circuit_length"):
-                track_length = round(float(circuit_info.circuit_length), 0)
-
-    except Exception as exc:
-        print(f"    [WARN] Circuit info not available: {exc}")
-
-    # Track outline from fastest lap's X/Y
-    try:
-        laps = session.laps
-        fastest = laps.pick_fastest()
-        if fastest is not None:
-            tel = fastest.get_telemetry()
-            if tel is not None and len(tel) > 0:
-                # Downsample outline to ~200 points
-                n = len(tel)
-                step = max(1, n // 200)
-                for i in range(0, n, step):
-                    row = tel.iloc[i]
-                    x_val = row.get("X")
-                    y_val = row.get("Y")
-                    if pd.notna(x_val) and pd.notna(y_val):
-                        outline_out.append({
-                            "x": round(float(x_val), 1),
-                            "y": round(float(y_val), 1),
-                        })
-
-                # Estimate track length from Distance if not available
-                if track_length == 0 and "Distance" in tel.columns:
-                    max_dist = tel["Distance"].max()
-                    if pd.notna(max_dist):
-                        track_length = round(float(max_dist), 0)
+        dist_xy = _track_dist_xy(session)
+        if dist_xy is not None:
+            d, x, y = dist_xy
+            n = len(d)
+            step = max(1, n // 200)
+            for i in range(0, n, step):
+                outline_out.append({
+                    "x": round(float(x[i]), 1),
+                    "y": round(float(y[i]), 1),
+                })
+            if track_length == 0:
+                track_length = round(float(d[-1]), 0)
     except Exception as exc:
         print(f"    [WARN] Could not extract track outline: {exc}")
+
+    def _corner_distance(cx: float, cy: float) -> float:
+        """Distance-along-lap for a corner, via its nearest point on the outline
+        map. Used when the low-level corner API omits marker distance (which
+        happens when position data is broken and add_marker_distance crashes)."""
+        if dist_xy is None:
+            return 0.0
+        d, x, y = dist_xy
+        idx = int(np.argmin((x - cx) ** 2 + (y - cy) ** 2))
+        return round(float(d[idx]), 1)
+
+    # Corners: session.get_circuit_info() calls add_marker_distance() which needs
+    # the fastest lap's telemetry and crashes when position data is broken. The
+    # low-level mvapi call returns the (static, curated) corner geometry without
+    # that step, so fall back to it and recover distance from the outline map.
+    try:
+        circuit_info = session.get_circuit_info()
+    except Exception as exc:
+        print(f"    [WARN] get_circuit_info failed ({exc}); using low-level corner API")
+        circuit_info = None
+        try:
+            from fastf1.mvapi import get_circuit_info as _mv_circuit_info
+            ck = session.session_info["Meeting"]["Circuit"]["Key"]
+            circuit_info = _mv_circuit_info(year=session.event.year, circuit_key=ck)
+        except Exception as exc2:
+            print(f"    [WARN] Low-level corner API failed: {exc2}")
+
+    if circuit_info is not None:
+        if getattr(circuit_info, "corners", None) is not None:
+            for _, corner in circuit_info.corners.iterrows():
+                cx = round(float(corner.get("X", 0)), 1)
+                cy = round(float(corner.get("Y", 0)), 1)
+                cd = corner.get("Distance", 0)
+                if cd is None or pd.isna(cd):
+                    cd = _corner_distance(cx, cy)
+                else:
+                    cd = round(float(cd), 1)
+                corners_out.append({
+                    "number": int(corner.get("Number", 0)),
+                    "x": cx,
+                    "y": cy,
+                    "angle": round(float(corner.get("Angle", 0)), 1),
+                    "distance": cd,
+                    "letter": str(corner.get("Letter", "")),
+                })
+        if getattr(circuit_info, "circuit_length", None):
+            track_length = round(float(circuit_info.circuit_length), 0)
 
     output = {
         "corners": corners_out,
@@ -957,17 +1066,13 @@ def export_energy(
             # Build combined telemetry with LapNumber column
             # get_telemetry() on multi-lap doesn't include LapNumber,
             # so we iterate per lap and concatenate
+            dist_xy = _track_dist_xy(session)
             telemetry_frames = []
             for _, lap_row in drv_laps.iterrows():
                 lap_num = int(lap_row["LapNumber"])
-                try:
-                    lap_tel = lap_row.get_telemetry()
-                    if lap_tel is not None and len(lap_tel) > 0:
-                        lap_tel = lap_tel.copy()
-                        lap_tel["LapNumber"] = lap_num
-                        telemetry_frames.append(lap_tel)
-                except Exception:
-                    continue
+                lap_tel = _lap_frame(lap_row, lap_num, dist_xy)
+                if lap_tel is not None and len(lap_tel) > 0:
+                    telemetry_frames.append(lap_tel)
 
             if not telemetry_frames:
                 print(f"    [WARN] No telemetry for {drv}, skipping energy export")
