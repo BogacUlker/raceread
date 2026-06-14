@@ -97,23 +97,24 @@
 		{ code: 'CHN', name: 'Chinese GP', date: '2026-03-15', round: 2 },
 		{ code: 'JPN', name: 'Japanese GP', date: '2026-03-29', round: 3 },
 		{ code: 'MIA', name: 'Miami GP', date: '2026-05-03', round: 4 },
-		{ code: 'EMI', name: 'Emilia Romagna GP', date: '2026-05-17', round: 5 },
-		{ code: 'MON', name: 'Monaco GP', date: '2026-05-24', round: 6 },
-		{ code: 'ESP', name: 'Spanish GP', date: '2026-06-07', round: 7 },
-		{ code: 'CAN', name: 'Canadian GP', date: '2026-06-14', round: 8 },
-		{ code: 'AUT', name: 'Austrian GP', date: '2026-06-28', round: 9 },
-		{ code: 'GBR', name: 'British GP', date: '2026-07-05', round: 10 },
-		{ code: 'BEL', name: 'Belgian GP', date: '2026-07-26', round: 11 },
-		{ code: 'HUN', name: 'Hungarian GP', date: '2026-08-02', round: 12 },
-		{ code: 'NED', name: 'Dutch GP', date: '2026-08-30', round: 13 },
-		{ code: 'ITA', name: 'Italian GP', date: '2026-09-06', round: 14 },
-		{ code: 'AZE', name: 'Azerbaijan GP', date: '2026-09-20', round: 15 },
-		{ code: 'SGP', name: 'Singapore GP', date: '2026-10-04', round: 16 },
-		{ code: 'USA', name: 'US GP', date: '2026-10-18', round: 17 },
-		{ code: 'MEX', name: 'Mexican GP', date: '2026-10-25', round: 18 },
-		{ code: 'BRA', name: 'Brazilian GP', date: '2026-11-08', round: 19 },
-		{ code: 'QAT', name: 'Qatar GP', date: '2026-11-29', round: 20 },
-		{ code: 'ABU', name: 'Abu Dhabi GP', date: '2026-12-06', round: 21 },
+		{ code: 'CAN', name: 'Canadian GP', date: '2026-05-24', round: 5 },
+		{ code: 'MON', name: 'Monaco GP', date: '2026-06-07', round: 6 },
+		{ code: 'BCN', name: 'Barcelona GP', date: '2026-06-14', round: 7 },
+		{ code: 'AUT', name: 'Austrian GP', date: '2026-06-28', round: 8 },
+		{ code: 'GBR', name: 'British GP', date: '2026-07-05', round: 9 },
+		{ code: 'BEL', name: 'Belgian GP', date: '2026-07-19', round: 10 },
+		{ code: 'HUN', name: 'Hungarian GP', date: '2026-07-26', round: 11 },
+		{ code: 'NED', name: 'Dutch GP', date: '2026-08-23', round: 12 },
+		{ code: 'ITA', name: 'Italian GP', date: '2026-09-06', round: 13 },
+		{ code: 'MAD', name: 'Spanish GP', date: '2026-09-13', round: 14 },
+		{ code: 'AZE', name: 'Azerbaijan GP', date: '2026-09-26', round: 15 },
+		{ code: 'SGP', name: 'Singapore GP', date: '2026-10-11', round: 16 },
+		{ code: 'USA', name: 'US GP', date: '2026-10-25', round: 17 },
+		{ code: 'MEX', name: 'Mexico City GP', date: '2026-11-01', round: 18 },
+		{ code: 'SAO', name: 'São Paulo GP', date: '2026-11-08', round: 19 },
+		{ code: 'LAS', name: 'Las Vegas GP', date: '2026-11-21', round: 20 },
+		{ code: 'QAT', name: 'Qatar GP', date: '2026-11-29', round: 21 },
+		{ code: 'ABU', name: 'Abu Dhabi GP', date: '2026-12-06', round: 22 },
 	];
 
 
@@ -327,7 +328,7 @@
 				</div>
 				<div class="prv-timeline__track">
 					<div class="prv-timeline__line"></div>
-					<div class="prv-timeline__progress" style="width: {(races.length / CALENDAR_2026.length) * 100}%"></div>
+					<div class="prv-timeline__progress" style="width: {races.length ? ((races.length - 1) / (CALENDAR_2026.length - 1)) * 100 : 0}%"></div>
 					<div class="prv-timeline__points">
 						{#each CALENDAR_2026 as cal}
 							{@const done = isCompleted(cal)}
