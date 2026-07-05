@@ -92,30 +92,9 @@
 		BOT: 'Cadillac', COL: 'Alpine', LIN: 'Racing Bulls', PER: 'Cadillac',
 	};
 
-	const CALENDAR_2026 = [
-		{ code: 'AUS', name: 'Australian GP', date: '2026-03-08', round: 1 },
-		{ code: 'CHN', name: 'Chinese GP', date: '2026-03-15', round: 2 },
-		{ code: 'JPN', name: 'Japanese GP', date: '2026-03-29', round: 3 },
-		{ code: 'MIA', name: 'Miami GP', date: '2026-05-03', round: 4 },
-		{ code: 'CAN', name: 'Canadian GP', date: '2026-05-24', round: 5 },
-		{ code: 'MON', name: 'Monaco GP', date: '2026-06-07', round: 6 },
-		{ code: 'BCN', name: 'Barcelona GP', date: '2026-06-14', round: 7 },
-		{ code: 'AUT', name: 'Austrian GP', date: '2026-06-28', round: 8 },
-		{ code: 'GBR', name: 'British GP', date: '2026-07-05', round: 9 },
-		{ code: 'BEL', name: 'Belgian GP', date: '2026-07-19', round: 10 },
-		{ code: 'HUN', name: 'Hungarian GP', date: '2026-07-26', round: 11 },
-		{ code: 'NED', name: 'Dutch GP', date: '2026-08-23', round: 12 },
-		{ code: 'ITA', name: 'Italian GP', date: '2026-09-06', round: 13 },
-		{ code: 'MAD', name: 'Spanish GP', date: '2026-09-13', round: 14 },
-		{ code: 'AZE', name: 'Azerbaijan GP', date: '2026-09-26', round: 15 },
-		{ code: 'SGP', name: 'Singapore GP', date: '2026-10-11', round: 16 },
-		{ code: 'USA', name: 'US GP', date: '2026-10-25', round: 17 },
-		{ code: 'MEX', name: 'Mexico City GP', date: '2026-11-01', round: 18 },
-		{ code: 'SAO', name: 'São Paulo GP', date: '2026-11-08', round: 19 },
-		{ code: 'LAS', name: 'Las Vegas GP', date: '2026-11-21', round: 20 },
-		{ code: 'QAT', name: 'Qatar GP', date: '2026-11-29', round: 21 },
-		{ code: 'ABU', name: 'Abu Dhabi GP', date: '2026-12-06', round: 22 },
-	];
+	// Season calendar comes from /api/calendar (Jolpica-sourced, see
+	// backend/scripts/fetch_calendar.py) - no more hardcoded schedule
+	let calendar = $derived(data.calendar || []);
 
 
 	const RACE_NAMES_TR = {
@@ -158,7 +137,6 @@
 
 <svelte:head>
 	<title>RaceRead - {tr.tagline}</title>
-	<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 </svelte:head>
 
 <div class="prv">
@@ -167,7 +145,7 @@
 	<nav class="prv-nav">
 		<div class="prv-nav__inner">
 			<div class="prv-nav__left">
-				<button class="prv-nav__burger" onclick={() => sidebarOpen = !sidebarOpen}>
+				<button class="prv-nav__burger" aria-label="Menu" aria-expanded={sidebarOpen} onclick={() => sidebarOpen = !sidebarOpen}>
 					<span></span><span></span><span></span>
 				</button>
 				<a href="/" class="prv-nav__logo">
@@ -199,7 +177,7 @@
 				<!-- Season -->
 				<div class="prv-sidebar__section">
 					<h2 class="prv-sidebar__heading">{tr.sidebar_season}</h2>
-					<p class="prv-sidebar__version">{tr.round} {races.length} / {CALENDAR_2026.length}</p>
+					<p class="prv-sidebar__version">{tr.round} {races.length}{calendar.length ? ' / ' + calendar.length : ''}</p>
 				</div>
 
 				<!-- Races -->
@@ -213,7 +191,7 @@
 								<span class="prv-sidebar__race-winner" style="color:{getTeamColor(race.winner)}">{race.winner}</span>
 							</a>
 						{/each}
-						{#each CALENDAR_2026.filter(c => !isCompleted(c)).slice(0, 2) as next}
+						{#each calendar.filter(c => !isCompleted(c)).slice(0, 2) as next}
 							<div class="prv-sidebar__race prv-sidebar__race--upcoming">
 								<span class="prv-sidebar__race-code">R{String(next.round).padStart(2, '0')}</span>
 								<span class="prv-sidebar__race-name">{next.code}</span>
@@ -321,16 +299,17 @@
 				</div>
 			</section>
 
+			{#if calendar.length > 1}
 			<section class="prv-timeline">
 				<div class="prv-timeline__header">
-					<h3 class="prv-timeline__title">{tr.season_title}</h3>
-					<p class="prv-timeline__sub">{tr.round} {races.length} / {CALENDAR_2026.length}</p>
+					<h2 class="prv-timeline__title">{tr.season_title}</h2>
+					<p class="prv-timeline__sub">{tr.round} {races.length} / {calendar.length}</p>
 				</div>
 				<div class="prv-timeline__track">
 					<div class="prv-timeline__line"></div>
-					<div class="prv-timeline__progress" style="width: {races.length ? ((races.length - 1) / (CALENDAR_2026.length - 1)) * 100 : 0}%"></div>
+					<div class="prv-timeline__progress" style="width: {races.length ? ((races.length - 1) / (calendar.length - 1)) * 100 : 0}%"></div>
 					<div class="prv-timeline__points">
-						{#each CALENDAR_2026 as cal}
+						{#each calendar as cal}
 							{@const done = isCompleted(cal)}
 							{@const raceId = getRaceId(cal)}
 							{#if done && raceId}
@@ -348,6 +327,7 @@
 					</div>
 				</div>
 			</section>
+			{/if}
 
 			<section class="prv-races" id="races">
 				<div class="prv-races__grid">
@@ -359,7 +339,7 @@
 							onmouseleave={() => hoveredCard = null}>
 							<div class="prv-card__top">
 								<p class="prv-card__round">R{String(i + 1).padStart(2, '0')} / {formatDate(race.date)}</p>
-								<h4 class="prv-card__name">{raceName(race.name)}</h4>
+								<h3 class="prv-card__name">{raceName(race.name)}</h3>
 							</div>
 							<div class="prv-card__info">
 								<div class="prv-card__winner">
@@ -391,11 +371,11 @@
 							</div>
 						</a>
 					{/each}
-					{#each CALENDAR_2026.filter(c => !isCompleted(c)).slice(0, 1) as next}
+					{#each calendar.filter(c => !isCompleted(c)).slice(0, 1) as next}
 						<div class="prv-card prv-card--upcoming">
 							<div class="prv-card__top">
 								<p class="prv-card__round prv-card__round--muted">{tr.upcoming} / {formatDate(next.date)}</p>
-								<h4 class="prv-card__name prv-card__name--dim">{next.name}</h4>
+								<h3 class="prv-card__name prv-card__name--dim">{next.name}</h3>
 							</div>
 							<div class="prv-card__pending">{tr.no_data}</div>
 						</div>
@@ -417,8 +397,9 @@
 <style>
 	.prv {
 		--p-bg: #0F1117; --p-bg2: #1A1D27; --p-bgc: #22252F;
-		--p-t: #E8E8ED; --p-t2: #9CA3AF; --p-tm: #6B7280;
+		--p-t: #E8E8ED; --p-t2: #9CA3AF; --p-tm: #7D8794;
 		--p-brd: #2E3240; --p-ac: #E24B4A; --p-ach: #C93B3A;
+		--p-ac2: #F07B7A; /* accent for small text - passes WCAG AA on dark bg */
 		--p-fh: 'Space Grotesk', sans-serif;
 		--p-fb: 'DM Sans', 'Inter', sans-serif;
 		--p-fm: 'JetBrains Mono', monospace;
@@ -498,7 +479,7 @@
 	.prv-sidebar__section { padding: 1.25rem; border-bottom: 1px solid rgba(46,50,64,.4); }
 	.prv-sidebar__section--last { border-bottom: none; }
 	.prv-sidebar__heading { font-family: var(--p-fh); font-weight: 700; font-size: 14px; text-transform: uppercase; }
-	.prv-sidebar__version { font-family: var(--p-fm); font-size: 10px; color: var(--p-ac); letter-spacing: .08em; text-transform: uppercase; margin-top: 3px; }
+	.prv-sidebar__version { font-family: var(--p-fm); font-size: 10px; color: var(--p-ac2); letter-spacing: .08em; text-transform: uppercase; margin-top: 3px; }
 	.prv-sidebar__label { font-family: var(--p-fm); font-size: 9px; color: var(--p-tm); text-transform: uppercase; letter-spacing: .1em; margin-bottom: .5rem; }
 	.prv-sidebar__nav { display: flex; flex-direction: column; gap: 1px; }
 	.prv-sidebar__race { display: flex; align-items: center; gap: .5rem; padding: .45rem .5rem; text-decoration: none; color: inherit; margin: 0 -.25rem; transition: background .15s; }
@@ -531,8 +512,8 @@
 	/* ── BUTTONS ── */
 	.prv-btn { font-family: var(--p-fh); font-weight: 600; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; padding: 13px 28px; text-decoration: none; transition: all .15s; cursor: pointer; border: none; }
 	.prv-btn:hover { text-decoration: none; }
-	.prv-btn--primary { background: var(--p-ac); color: #fff; }
-	.prv-btn--primary:hover { background: var(--p-ach); }
+	.prv-btn--primary { background: var(--p-ach); color: #fff; }
+	.prv-btn--primary:hover { background: #B23231; }
 	.prv-btn--ghost { background: none; border: 1px solid var(--p-brd); color: var(--p-t); }
 	.prv-btn--ghost:hover { background: var(--p-bg2); }
 
@@ -540,7 +521,7 @@
 	.prv-timeline { background: var(--p-bg2); padding: 2.5rem 3rem; }
 	.prv-timeline__header { margin-bottom: 1.5rem; }
 	.prv-timeline__title { font-family: var(--p-fh); font-weight: 700; font-size: 22px; text-transform: uppercase; }
-	.prv-timeline__sub { font-family: var(--p-fm); font-size: 11px; color: var(--p-ac); letter-spacing: .12em; text-transform: uppercase; margin-top: 3px; }
+	.prv-timeline__sub { font-family: var(--p-fm); font-size: 11px; color: var(--p-ac2); letter-spacing: .12em; text-transform: uppercase; margin-top: 3px; }
 	.prv-timeline__track { position: relative; height: 70px; display: flex; align-items: center; }
 	.prv-timeline__line { position: absolute; width: 100%; height: 2px; background: var(--p-brd); top: 50%; transform: translateY(-50%); }
 	.prv-timeline__progress { position: absolute; height: 2px; background: var(--p-ac); top: 50%; transform: translateY(-50%); left: 0; }
@@ -563,7 +544,7 @@
 	.prv-card:hover { background: var(--p-bgc); border-color: rgba(226,75,74,.2); text-decoration: none; }
 	.prv-card--upcoming { background: var(--p-bg); border: 1px solid var(--p-brd); }
 	.prv-card__top { margin-bottom: 1.25rem; }
-	.prv-card__round { font-family: var(--p-fm); font-size: 10px; color: var(--p-ac); }
+	.prv-card__round { font-family: var(--p-fm); font-size: 10px; color: var(--p-ac2); }
 	.prv-card__round--muted { color: var(--p-tm); }
 	.prv-card__name { font-family: var(--p-fh); font-weight: 700; font-size: 18px; text-transform: uppercase; line-height: 1.2; margin-top: 5px; }
 	.prv-card__name--dim { opacity: .35; }
@@ -576,7 +557,7 @@
 	.prv-card__overlay { position: absolute; inset: auto 0 0 0; background: var(--p-bgc); padding: 1.25rem 1.5rem; transform: translateY(100%); transition: transform .25s ease; border-top: 1px solid rgba(226,75,74,.15); }
 	.prv-card__overlay--visible { transform: translateY(0); }
 	.prv-card__stats { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-bottom: .75rem; }
-	.prv-card__stat-label { display: block; font-family: var(--p-fm); font-size: 9px; color: var(--p-ac); text-transform: uppercase; margin-bottom: 2px; }
+	.prv-card__stat-label { display: block; font-family: var(--p-fm); font-size: 9px; color: var(--p-ac2); text-transform: uppercase; margin-bottom: 2px; }
 	.prv-card__stat-value { font-family: var(--p-fm); font-size: 12px; font-weight: 700; }
 	.prv-card__stat-sub { font-size: 9px; opacity: .5; }
 	.prv-card__cta { display: flex; align-items: center; justify-content: flex-end; gap: 6px; font-family: var(--p-fh); font-weight: 700; font-size: 10px; color: var(--p-ac); text-transform: uppercase; letter-spacing: .08em; }

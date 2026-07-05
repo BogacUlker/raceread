@@ -39,14 +39,12 @@
 	}
 	.footer__coffee {
 		font-size: 11px;
-		color: var(--text-muted);
+		color: var(--text-secondary);
 		font-family: var(--font-mono);
 		text-decoration: none;
-		opacity: 0.7;
-		transition: opacity 0.2s;
+		transition: color 0.2s;
 	}
 	.footer__coffee:hover {
-		opacity: 1;
-		color: var(--text-secondary);
+		color: var(--text-primary);
 	}
 </style>

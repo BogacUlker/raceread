@@ -3,9 +3,15 @@
 from fastapi import APIRouter, HTTPException
 
 from backend.app.models.schemas import RaceInfo
-from backend.app.services.data_loader import load_race_info, load_races
+from backend.app.services.data_loader import load_calendar, load_race_info, load_races
 
 router = APIRouter(tags=["races"])
+
+
+@router.get("/calendar")
+def get_calendar() -> list[dict]:
+    """Return the full season calendar (sourced from Jolpica-F1)."""
+    return load_calendar()
 
 
 @router.get("/races", response_model=list[RaceInfo])

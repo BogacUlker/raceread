@@ -115,7 +115,6 @@
 		animProgress = 0;
 		animating = false;
 		if (animFrame) { cancelAnimationFrame(animFrame); animFrame = null; }
-		lastTimestamp = null;
 	}
 
 	let samples1 = $derived(telemetry1?.laps?.[0]?.samples || []);

@@ -1,4 +1,6 @@
 <script>
+	import { browser } from '$app/environment';
+	import { replaceState } from '$app/navigation';
 	import { t, locale } from '$lib/i18n/index.js';
 	import { TEAM_COLORS } from '$lib/constants.js';
 	import CompareSpeedTrace from '$lib/components/compare/CompareSpeedTrace.svelte';
@@ -15,11 +17,25 @@
 	let driverList = $derived(laps.map(d => ({ driver: d.driver, team: d.team })));
 	let allCodes = $derived(driverList.map(d => d.driver));
 
-	// Local state - no URL, no stores, no goto
-	let pick1 = $state('');
-	let pick2 = $state('');
+	// Local state; ?d1=&d2= deep links are read once on load and written
+	// back via replaceState (no goto, so no reactivity loops / reloads)
+	const _codes = (data.laps || []).map((d) => d.driver);
+	const _d1 = (data.d1 || '').toUpperCase();
+	const _d2 = (data.d2 || '').toUpperCase();
+	let pick1 = $state(_codes.includes(_d1) ? _d1 : '');
+	let pick2 = $state(_codes.includes(_d2) && _d2 !== _d1 ? _d2 : '');
 	let selectedLap = $state(1);
 	let ready = $derived(pick1 !== '' && pick2 !== '' && pick1 !== pick2);
+
+	$effect(() => {
+		if (!browser) return;
+		const p = new URLSearchParams();
+		if (pick1) p.set('d1', pick1);
+		if (pick2) p.set('d2', pick2);
+		const qs = p.toString();
+		const target = qs ? '?' + qs : location.pathname;
+		if (location.search !== (qs ? '?' + qs : '')) replaceState(target, {});
+	});
 
 	function teamColor(code) { const d = driverList.find(x => x.driver === code); return TEAM_COLORS[d?.team] || '#888'; }
 	function getTeam(code) { const d = driverList.find(x => x.driver === code); return d?.team || ''; }
@@ -56,7 +72,6 @@
 
 <svelte:head>
 	<title>{pick1 && pick2 ? pick1 + ' vs ' + pick2 + ' - ' : ''}{raceInfo.name} - RaceRead</title>
-	<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
 </svelte:head>
 
 <div class="cmp">

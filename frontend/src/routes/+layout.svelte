@@ -1,10 +1,31 @@
 <script>
 	import '../app.css';
+	import { page } from '$app/state';
 	import Header from '$lib/components/layout/Header.svelte';
 	import Footer from '$lib/components/layout/Footer.svelte';
 
 	let { children, data } = $props();
+
+	const DEFAULT_DESC = 'F1 post-race telemetry analysis with energy inference and AI-generated insights';
+	let metaTitle = $derived(page.data?.metaTitle || 'RaceRead');
+	let metaDesc = $derived(page.data?.metaDescription || DEFAULT_DESC);
+	let ogUrl = $derived('https://raceread.app' + (page.url?.pathname || '/'));
 </script>
+
+<svelte:head>
+	<meta name="description" content={metaDesc} />
+	<meta property="og:title" content={metaTitle} />
+	<meta property="og:description" content={metaDesc} />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content={ogUrl} />
+	<meta property="og:image" content="https://raceread.app/og-image.png" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content={metaTitle} />
+	<meta name="twitter:description" content={metaDesc} />
+	<meta name="twitter:image" content="https://raceread.app/og-image.png" />
+</svelte:head>
 
 <div class="app">
 	<Header />

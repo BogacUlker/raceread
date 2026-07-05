@@ -28,5 +28,9 @@ export async function load({ params, fetch }) {
 	const circuit = optionalResults[5].status === 'fulfilled' ? optionalResults[5].value : null;
 	const traffic = optionalResults[6].status === 'fulfilled' ? optionalResults[6].value : null;
 
-	return { raceId: id, raceInfo, laps, strategy, delta, annotations, energyComparison, pitstops, races, vscData, circuit, traffic };
+	return {
+		raceId: id, raceInfo, laps, strategy, delta, annotations, energyComparison, pitstops, races, vscData, circuit, traffic,
+		metaTitle: raceInfo.name + ' - RaceRead',
+		metaDescription: raceInfo.name + ' (' + raceInfo.circuit + ', ' + raceInfo.date + '): lap-by-lap pace, strategy timeline, energy deployment and AI race insights.',
+	};
 }

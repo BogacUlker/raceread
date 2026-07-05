@@ -13,6 +13,17 @@ services:
       - DATA_DIR=/app/data
     command: uvicorn backend.app.main:app --host 0.0.0.0 --port 8000 --workers 2
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health', timeout=5)"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
     networks:
       - default
       - homelab_homelab
@@ -31,6 +42,11 @@ services:
     depends_on:
       - backend
     restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
 
 networks:
   homelab_homelab:

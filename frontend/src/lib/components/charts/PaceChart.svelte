@@ -326,6 +326,7 @@
 		}
 		.chart-container {
 			height: 320px;
+			flex: none; /* flex-basis:0 from flex:1 collapses the chart in column layout */
 		}
 		.pace-legend {
 			flex-direction: row;

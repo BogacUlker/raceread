@@ -35,6 +35,21 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
+@app.middleware("http")
+async def cache_headers(request, call_next):
+    """Post-race data is immutable; let browsers and the CDN cache API responses."""
+    response = await call_next(request)
+    if request.method == "GET" and response.status_code == 200:
+        path = request.url.path
+        if path.startswith("/api/races/"):
+            response.headers["Cache-Control"] = "public, max-age=86400, stale-while-revalidate=604800"
+        elif path in ("/api/races", "/api/calendar"):
+            response.headers["Cache-Control"] = "public, max-age=3600, stale-while-revalidate=86400"
+        response.headers.setdefault("X-Content-Type-Options", "nosniff")
+    return response
+
+
 # Register all routers under /api prefix
 app.include_router(races.router, prefix="/api")
 app.include_router(laps.router, prefix="/api")

@@ -3,6 +3,12 @@ import { api } from '$lib/api.js';
 export async function load({ fetch }) {
 	const races = await api('/api/races', fetch);
 
+	// Season calendar (served from data/calendar.json, sourced from Jolpica)
+	let calendar = [];
+	try {
+		calendar = await api('/api/calendar', fetch);
+	} catch (e) { /* timeline hides itself when empty */ }
+
 	// Fetch circuit outline for hero decoration (most recent race)
 	let circuitOutline = [];
 	const lastRace = races.length > 0 ? races[races.length - 1] : null;
@@ -13,5 +19,5 @@ export async function load({ fetch }) {
 		} catch (e) { /* ignore */ }
 	}
 
-	return { races, circuitOutline };
+	return { races, circuitOutline, calendar };
 }
