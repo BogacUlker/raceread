@@ -1,0 +1,150 @@
+{
+  "race": "2026-canada",
+  "confidence": 89.1,
+  "invariants": {
+    "vsc_drivers_checked": 19,
+    "vsc_violators": [
+      "LAW"
+    ],
+    "deploy_budget_violation_laps": 0,
+    "harvest_budget_violation_laps": 0,
+    "budget_total_laps": 1206,
+    "teammate_clip_corr": {
+      "Williams": 0.099,
+      "Aston Martin": -0.052,
+      "Mercedes": -0.055,
+      "Haas F1 Team": -0.063,
+      "Audi": 0.59,
+      "Cadillac": 0.252,
+      "Alpine": 0.363,
+      "Red Bull Racing": 0.315,
+      "Ferrari": -0.036,
+      "McLaren": -0.278
+    }
+  },
+  "physics": {
+    "team_cda": {
+      "Alpine": 1.438,
+      "Aston Martin": 1.518,
+      "Audi": 1.517,
+      "Cadillac": 1.463,
+      "Ferrari": 1.443,
+      "Haas F1 Team": 1.452,
+      "McLaren": 1.491,
+      "Mercedes": 1.351,
+      "Racing Bulls": 1.62,
+      "Red Bull Racing": 1.532,
+      "Williams": 1.425
+    },
+    "median_contradiction_rate": 0.0,
+    "median_deploy_precision": 1.0,
+    "median_deploy_recall": 0.085,
+    "per_driver": {
+      "ALB": {
+        "contradiction_rate": 0.0,
+        "deploy_physics_precision": 1.0,
+        "deploy_physics_recall": 0.092
+      },
+      "ALO": {
+        "contradiction_rate": 0.0084,
+        "deploy_physics_precision": 1.0,
+        "deploy_physics_recall": 0.068
+      },
+      "ANT": {
+        "contradiction_rate": 0.0,
+        "deploy_physics_precision": 1.0,
+        "deploy_physics_recall": 0.086
+      },
+      "BEA": {
+        "contradiction_rate": 0.0,
+        "deploy_physics_precision": 0.998,
+        "deploy_physics_recall": 0.131
+      },
+      "BOR": {
+        "contradiction_rate": 0.0,
+        "deploy_physics_precision": 0.989,
+        "deploy_physics_recall": 0.06
+      },
+      "BOT": {
+        "contradiction_rate": 0.0,
+        "deploy_physics_precision": 0.995,
+        "deploy_physics_recall": 0.112
+      },
+      "COL": {
+        "contradiction_rate": 0.0024,
+        "deploy_physics_precision": 1.0,
+        "deploy_physics_recall": 0.089
+      },
+      "GAS": {
+        "contradiction_rate": 0.0024,
+        "deploy_physics_precision": 0.995,
+        "deploy_physics_recall": 0.084
+      },
+      "HAD": {
+        "contradiction_rate": 0.0,
+        "deploy_physics_precision": 1.0,
+        "deploy_physics_recall": 0.076
+      },
+      "HAM": {
+        "contradiction_rate": 0.0,
+        "deploy_physics_precision": 1.0,
+        "deploy_physics_recall": 0.083
+      },
+      "HUL": {
+        "contradiction_rate": 0.0,
+        "deploy_physics_precision": 1.0,
+        "deploy_physics_recall": 0.069
+      },
+      "LAW": {
+        "contradiction_rate": 0.0,
+        "deploy_physics_precision": 1.0,
+        "deploy_physics_recall": 0.085
+      },
+      "LEC": {
+        "contradiction_rate": 0.0,
+        "deploy_physics_precision": 1.0,
+        "deploy_physics_recall": 0.085
+      },
+      "NOR": {
+        "contradiction_rate": 0.0,
+        "deploy_physics_precision": 1.0,
+        "deploy_physics_recall": 0.098
+      },
+      "OCO": {
+        "contradiction_rate": 0.0,
+        "deploy_physics_precision": 0.991,
+        "deploy_physics_recall": 0.106
+      },
+      "PER": {
+        "contradiction_rate": 0.0005,
+        "deploy_physics_precision": 0.991,
+        "deploy_physics_recall": 0.097
+      },
+      "PIA": {
+        "contradiction_rate": 0.0,
+        "deploy_physics_precision": 1.0,
+        "deploy_physics_recall": 0.074
+      },
+      "RUS": {
+        "contradiction_rate": 0.0,
+        "deploy_physics_precision": 1.0,
+        "deploy_physics_recall": 0.063
+      },
+      "SAI": {
+        "contradiction_rate": 0.0,
+        "deploy_physics_precision": 1.0,
+        "deploy_physics_recall": 0.074
+      },
+      "STR": {
+        "contradiction_rate": 0.0016,
+        "deploy_physics_precision": 1.0,
+        "deploy_physics_recall": 0.078
+      },
+      "VER": {
+        "contradiction_rate": 0.0,
+        "deploy_physics_precision": 1.0,
+        "deploy_physics_recall": 0.089
+      }
+    }
+  }
+}

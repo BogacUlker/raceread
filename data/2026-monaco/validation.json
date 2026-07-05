@@ -1,0 +1,148 @@
+{
+  "race": "2026-monaco",
+  "confidence": 83.1,
+  "invariants": {
+    "vsc_drivers_checked": 0,
+    "vsc_violators": [],
+    "deploy_budget_violation_laps": 0,
+    "harvest_budget_violation_laps": 14,
+    "budget_total_laps": 1415,
+    "teammate_clip_corr": {
+      "Williams": 0.21,
+      "Aston Martin": 0.102,
+      "Mercedes": 0.121,
+      "Haas F1 Team": 0.198,
+      "Audi": 0.11,
+      "Cadillac": 0.33,
+      "Alpine": 0.338,
+      "Ferrari": 0.381,
+      "Racing Bulls": -0.012,
+      "McLaren": 0.154
+    }
+  },
+  "physics": {
+    "team_cda": {
+      "Alpine": 1.8,
+      "Aston Martin": 1.8,
+      "Audi": 1.8,
+      "Cadillac": 1.8,
+      "Ferrari": 1.8,
+      "Haas F1 Team": 1.8,
+      "McLaren": 1.8,
+      "Mercedes": 1.8,
+      "Racing Bulls": 1.8,
+      "Red Bull Racing": 1.8,
+      "Williams": 1.8
+    },
+    "median_contradiction_rate": 0.0211,
+    "median_deploy_precision": 1.0,
+    "median_deploy_recall": 0.013,
+    "per_driver": {
+      "ALB": {
+        "contradiction_rate": 0.0181,
+        "deploy_physics_precision": 1.0,
+        "deploy_physics_recall": 0.018
+      },
+      "ALO": {
+        "contradiction_rate": 0.0294,
+        "deploy_physics_precision": 1.0,
+        "deploy_physics_recall": 0.009
+      },
+      "ANT": {
+        "contradiction_rate": 0.0244,
+        "deploy_physics_precision": 1.0,
+        "deploy_physics_recall": 0.013
+      },
+      "BEA": {
+        "contradiction_rate": 0.0163,
+        "deploy_physics_precision": 1.0,
+        "deploy_physics_recall": 0.038
+      },
+      "BOR": {
+        "contradiction_rate": 0.0197,
+        "deploy_physics_precision": 1.0,
+        "deploy_physics_recall": 0.018
+      },
+      "BOT": {
+        "contradiction_rate": 0.0176,
+        "deploy_physics_precision": 1.0,
+        "deploy_physics_recall": 0.039
+      },
+      "COL": {
+        "contradiction_rate": 0.0174,
+        "deploy_physics_precision": 0.986,
+        "deploy_physics_recall": 0.017
+      },
+      "GAS": {
+        "contradiction_rate": 0.023,
+        "deploy_physics_precision": 1.0,
+        "deploy_physics_recall": 0.007
+      },
+      "HAD": {
+        "contradiction_rate": 0.0307,
+        "deploy_physics_precision": 1.0,
+        "deploy_physics_recall": 0.004
+      },
+      "HAM": {
+        "contradiction_rate": 0.0186,
+        "deploy_physics_precision": 1.0,
+        "deploy_physics_recall": 0.008
+      },
+      "HUL": {
+        "contradiction_rate": 0.0205,
+        "deploy_physics_precision": 1.0,
+        "deploy_physics_recall": 0.012
+      },
+      "LAW": {
+        "contradiction_rate": 0.0286,
+        "deploy_physics_precision": 1.0,
+        "deploy_physics_recall": 0.008
+      },
+      "LEC": {
+        "contradiction_rate": 0.0344,
+        "deploy_physics_precision": 1.0,
+        "deploy_physics_recall": 0.003
+      },
+      "LIN": {
+        "contradiction_rate": 0.0252,
+        "deploy_physics_precision": 1.0,
+        "deploy_physics_recall": 0.012
+      },
+      "NOR": {
+        "contradiction_rate": 0.0175,
+        "deploy_physics_precision": 1.0,
+        "deploy_physics_recall": 0.013
+      },
+      "OCO": {
+        "contradiction_rate": 0.016,
+        "deploy_physics_precision": 1.0,
+        "deploy_physics_recall": 0.014
+      },
+      "PER": {
+        "contradiction_rate": 0.022,
+        "deploy_physics_precision": 1.0,
+        "deploy_physics_recall": 0.015
+      },
+      "PIA": {
+        "contradiction_rate": 0.0211,
+        "deploy_physics_precision": 1.0,
+        "deploy_physics_recall": 0.026
+      },
+      "RUS": {
+        "contradiction_rate": 0.0228,
+        "deploy_physics_precision": 1.0,
+        "deploy_physics_recall": 0.011
+      },
+      "SAI": {
+        "contradiction_rate": 0.0163,
+        "deploy_physics_precision": 1.0,
+        "deploy_physics_recall": 0.015
+      },
+      "STR": {
+        "contradiction_rate": 0.0301,
+        "deploy_physics_precision": 1.0,
+        "deploy_physics_recall": 0.016
+      }
+    }
+  }
+}
