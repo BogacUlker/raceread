@@ -235,9 +235,9 @@
 		letter-spacing: 0.04em;
 	}
 	.insight-card__text {
-		font-family: var(--font-mono);
-		font-size: 13px;
-		line-height: 1.55;
+		font-family: var(--font-body);
+		font-size: 13.5px;
+		line-height: 1.6;
 		color: var(--text-secondary);
 	}
 

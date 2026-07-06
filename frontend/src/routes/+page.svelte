@@ -496,7 +496,7 @@
 	/* ── CARDS ── */
 	.prv-races { padding: 2.5rem 3rem; }
 	.prv-races__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2px; }
-	.prv-card { position: relative; overflow: hidden; background: var(--p-bg2); padding: 1.5rem; display: flex; flex-direction: column; min-height: 170px; text-decoration: none; color: inherit; transition: background .2s, border-color .2s; border: 1px solid transparent; }
+	.prv-card { position: relative; overflow: hidden; background: var(--p-bg2); padding: 1.5rem; display: flex; flex-direction: column; min-height: 196px; text-decoration: none; color: inherit; transition: background .2s, border-color .2s; border: 1px solid transparent; }
 	.prv-card:hover { background: var(--p-bgc); border-color: rgba(226,75,74,.2); text-decoration: none; }
 	.prv-card--upcoming { background: var(--p-bg); border: 1px solid var(--p-brd); }
 	.prv-card__top { margin-bottom: 1.25rem; }
@@ -510,9 +510,9 @@
 	.prv-card__winner-text { font-family: var(--p-fm); font-size: 11px; text-transform: uppercase; }
 	.prv-card__meta { display: flex; gap: 1rem; font-family: var(--p-fm); font-size: 10px; color: var(--p-tm); text-transform: uppercase; }
 	.prv-card__pending { margin-top: auto; font-family: var(--p-fm); font-size: 10px; color: var(--p-tm); text-transform: uppercase; letter-spacing: .1em; opacity: .4; }
-	.prv-card__overlay { position: absolute; inset: auto 0 0 0; background: var(--p-bgc); padding: 1.25rem 1.5rem; transform: translateY(100%); transition: transform .25s ease; border-top: 1px solid rgba(226,75,74,.15); }
+	.prv-card__overlay { position: absolute; inset: auto 0 0 0; background: var(--p-bgc); padding: .85rem 1.5rem .9rem; transform: translateY(100%); transition: transform .25s ease; border-top: 1px solid rgba(226,75,74,.15); }
 	.prv-card__overlay--visible { transform: translateY(0); }
-	.prv-card__stats { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-bottom: .75rem; }
+	.prv-card__stats { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-bottom: .5rem; }
 	.prv-card__stat-label { display: block; font-family: var(--p-fm); font-size: 9px; color: var(--p-ac2); text-transform: uppercase; margin-bottom: 2px; }
 	.prv-card__stat-value { font-family: var(--p-fm); font-size: 12px; font-weight: 700; }
 	.prv-card__stat-sub { font-size: 9px; opacity: .5; }
