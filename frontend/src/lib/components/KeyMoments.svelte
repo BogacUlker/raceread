@@ -53,17 +53,19 @@
 	}
 
 	function show(a) {
-		// energy moments open the energy room focused on the driver
+		// room-bound moments navigate to their room
 		if (a.chart_type === 'energy' && raceId) {
 			goto(`/race/${raceId}/energy?driver=${a.driver}`);
 			return;
 		}
+		if ((a.chart_type === 'speed_trace' || a.chart_type === 'track' || a.chart_type === 'traffic') && raceId) {
+			if (a.chart_type !== 'traffic') momentFocus.set({ chart: a.chart_type, driver: a.driver, lap: a.lap });
+			goto(`/race/${raceId}/telemetry`);
+			return;
+		}
 		selectedDrivers.update((list) => (list.includes(a.driver) ? list : [...list, a.driver]));
-		// each chart type has its own way of "showing" the moment's driver
 		if (a.chart_type === 'pace' || a.chart_type === 'delta') {
 			pinnedDriver.set([a.driver]);
-		} else if (a.chart_type === 'speed_trace' || a.chart_type === 'track') {
-			momentFocus.set({ chart: a.chart_type, driver: a.driver, lap: a.lap });
 		}
 		const id = 'section-' + SECTION_BY_TYPE[a.chart_type];
 		const el = document.getElementById(id);
@@ -85,7 +87,12 @@
 				<div class="km__card" class:km__card--high={m.severity === 'high'} style="animation-delay: {90 * i}ms">
 					<span class="km__k">{$t('moments.lap')} {m.lap} &middot; {m.driver}</span>
 					<p class="km__txt">{summary(m)}</p>
+					<div class="km__actions">
 					<button class="km__go" onclick={() => show(m)}>{$t('moments.show')} &rarr;</button>
+					{#if raceId}
+						<button class="km__go km__go--watch" onclick={() => goto(`/race/${raceId}/replay?lap=${m.lap}`)}>&#9654; {$t('replay.watch')}</button>
+					{/if}
+				</div>
 				</div>
 			{/each}
 		</div>
@@ -139,6 +146,7 @@
 		margin: 5px 0 9px;
 		flex: 1;
 	}
+	.km__actions { display: flex; gap: 6px; }
 	.km__go {
 		align-self: flex-start;
 		font-family: var(--fm, monospace);
@@ -157,6 +165,7 @@
 		background: var(--ac, #e24b4a);
 		color: #fff;
 	}
+	.km__go--watch { color: var(--t2, #9ca3af); border-color: var(--brd, #2e3240); }
 	@media (prefers-reduced-motion: reduce) {
 		.km__card { animation: none; }
 	}

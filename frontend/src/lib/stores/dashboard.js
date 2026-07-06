@@ -3,7 +3,7 @@ import { browser } from '$app/environment';
 
 const STORAGE_KEY = 'raceread:collapsed';
 
-const SECTIONS = ['insights', 'pace', 'strategy', 'pit-stops', 'energy', 'speed-trace', 'track-map', 'traffic'];
+const SECTIONS = ['insights', 'pace', 'strategy', 'pit-stops', 'energy'];
 
 const QUALIFYING_SECTIONS = ['qualifying-results', 'sector-comparison', 'ideal-laps', 'qualifying-delta'];
 

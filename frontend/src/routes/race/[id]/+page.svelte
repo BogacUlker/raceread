@@ -22,9 +22,6 @@
 	import QualifyingResults from '$lib/components/charts/QualifyingResults.svelte';
 	import SectorComparison from '$lib/components/charts/SectorComparison.svelte';
 	import QualifyingDelta from '$lib/components/charts/QualifyingDelta.svelte';
-	import SpeedTrace from '$lib/components/charts/SpeedTrace.svelte';
-	import TrackMap from '$lib/components/charts/TrackMap.svelte';
-	import TrafficAnalysis from '$lib/components/charts/TrafficAnalysis.svelte';
 	import PitStopStats from '$lib/components/charts/PitStopStats.svelte';
 	import IdealLaps from '$lib/components/charts/IdealLaps.svelte';
 	import ExportButton from '$lib/components/ui/ExportButton.svelte';
@@ -114,10 +111,6 @@
 	let vscLaps = $derived(data.vscData?.vsc_laps || []);
 	let scLaps = $derived(data.vscData?.sc_laps || []);
 
-	let circuitData = $derived(data.circuit);
-
-	let trafficData = $derived(data.traffic);
-	let trafficLoading = $derived(data.traffic === null);
 
 	// Sidebar state
 	
@@ -372,6 +365,7 @@
 						<button class="pd-btn" class:active={$showAnnotations} onclick={() => showAnnotations.update(v => !v)}>
 							{$t('annotations.toggle_label')} {$showAnnotations ? 'ON' : 'OFF'}
 						</button>
+						<a href="/race/{raceId}/replay" class="pd-btn">{$t('replay.room_title')}</a>
 						{#if driverList.length >= 2}
 							<a href="/race/{raceId}/compare" class="pd-btn">{$t('charts.compare')}</a>
 						{/if}
@@ -442,24 +436,32 @@
 						</div>
 					</div>
 
-					<!-- 06. Speed Trace -->
-					<div id="section-speed-trace" class="pd-sec">
-						<div class="pd-sec__body" class:collapsed={$collapsedSections['speed-trace']}>
-							<SpeedTrace {raceId} drivers={driverList} circuit={circuitData} totalLaps={raceInfo?.total_laps || 58} />
-						</div>
-					</div>
-
-					<!-- 07. Track Map -->
-					<div id="section-track-map" class="pd-sec">
-						<div class="pd-sec__body" class:collapsed={$collapsedSections['track-map']}>
-							<TrackMap {raceId} drivers={driverList} circuit={circuitData} totalLaps={raceInfo?.total_laps || 58} />
-						</div>
-					</div>
-
-					<!-- 08. Traffic -->
-					<div id="section-traffic" class="pd-sec">
-						<div class="pd-sec__body" class:collapsed={$collapsedSections['traffic']}>
-							<TrafficAnalysis {trafficData} loading={trafficLoading} />
+					<!-- 05. Rooms: telemetry + replay -->
+					<div id="section-telemetry" class="pd-sec">
+						<div class="pd-row pd-row--split">
+							<a href="/race/{raceId}/telemetry" class="chart-card pd-roomcard">
+								<div class="chart-card__header">
+									<span class="chart-card__title">{$t('telemetry.room_title')}</span>
+								</div>
+								<svg viewBox="0 0 300 90" class="pd-roomcard__viz" aria-hidden="true">
+									<path d="M4,72 L30,20 C36,8 44,8 50,20 L66,58 C72,70 80,70 86,58 L104,18 C110,6 118,6 124,18 L140,52 C146,64 154,64 160,52 L182,14 C188,4 196,4 202,14 L222,60 C228,72 236,72 242,60 L262,26 C268,14 276,14 282,26 L296,54" fill="none" stroke="#3B82F6" stroke-width="2.5" opacity=".8"/>
+									<path d="M4,80 L60,80 L70,64 L90,64 L100,80 L170,80 L180,64 L210,64 L220,80 L296,80" fill="none" stroke="#7D8794" stroke-width="1.5" opacity=".5"/>
+								</svg>
+								<p class="pd-roomcard__desc">{$t('telemetry.room_desc')}</p>
+								<span class="pd-roomcard__go">{$t('telemetry.explore')} &rarr;</span>
+							</a>
+							<a href="/race/{raceId}/replay" class="chart-card pd-roomcard">
+								<div class="chart-card__header">
+									<span class="chart-card__title">{$t('replay.room_title')}</span>
+								</div>
+								<div class="pd-roomcard__viz pd-roomcard__replay">
+									<span class="pd-roomcard__playicon">&#9654;</span>
+									<div class="pd-roomcard__track"><div class="pd-roomcard__prog"></div></div>
+									<span class="pd-roomcard__laps">L1 &mdash; L{raceInfo.total_laps}</span>
+								</div>
+								<p class="pd-roomcard__desc">{$t('replay.room_desc')}</p>
+								<span class="pd-roomcard__go">{$t('replay.watch')} &rarr;</span>
+							</a>
 						</div>
 					</div>
 				</div>
@@ -649,6 +651,12 @@
 	.pd-roomcard__desc { font-size: 12.5px; line-height: 1.55; color: var(--t2); margin: 8px 0 12px; }
 	.pd-roomcard__go { margin-top: auto; align-self: flex-start; font-family: var(--fm); font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #F07B7A; border: 1px solid rgba(226,75,74,.35); padding: 5px 12px; transition: background .15s, color .15s; }
 	.pd-roomcard:hover .pd-roomcard__go { background: var(--ac); color: #fff; }
+	.pd-roomcard__viz { width: 100%; height: 90px; margin: 10px 0 2px; }
+	.pd-roomcard__replay { display: flex; align-items: center; gap: 12px; }
+	.pd-roomcard__playicon { width: 34px; height: 34px; background: var(--ac); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; }
+	.pd-roomcard__track { flex: 1; height: 4px; background: var(--bgc); position: relative; }
+	.pd-roomcard__prog { position: absolute; left: 0; top: 0; bottom: 0; width: 55%; background: var(--ac); }
+	.pd-roomcard__laps { font-family: var(--fm); font-size: 10px; color: var(--tm); white-space: nowrap; }
 
 	/* RACE STORY */
 	.pd-story { background: var(--bg2); border-left: 3px solid var(--ac); padding: 1rem 1.4rem; margin-bottom: 1rem; }

@@ -44,7 +44,7 @@ async def cache_headers(request, call_next):
         path = request.url.path
         if path.startswith("/api/races/"):
             response.headers["Cache-Control"] = "public, max-age=86400, stale-while-revalidate=604800"
-        elif path in ("/api/races", "/api/calendar", "/api/standings"):
+        elif path in ("/api/races", "/api/calendar", "/api/standings", "/api/classics"):
             response.headers["Cache-Control"] = "public, max-age=3600, stale-while-revalidate=86400"
         response.headers.setdefault("X-Content-Type-Options", "nosniff")
     return response

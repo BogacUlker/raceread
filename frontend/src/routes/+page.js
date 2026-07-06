@@ -19,5 +19,10 @@ export async function load({ fetch }) {
 		} catch (e) { /* ignore */ }
 	}
 
-	return { races, circuitOutline, calendar };
+	let classics = [];
+	try {
+		classics = await api('/api/classics', fetch);
+	} catch (e) { /* shelf hides itself */ }
+
+	return { races, circuitOutline, calendar, classics };
 }

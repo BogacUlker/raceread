@@ -41,6 +41,7 @@
 	// Season calendar comes from /api/calendar (Jolpica-sourced, see
 	// backend/scripts/fetch_calendar.py) - no more hardcoded schedule
 	let calendar = $derived(data.calendar || []);
+	let classics = $derived(data.classics || []);
 
 
 	function raceName(name) {
@@ -343,6 +344,34 @@
 				</div>
 			</section>
 
+			{#if classics.length}
+			<section class="prv-classics">
+				<div class="prv-timeline__header">
+					<h2 class="prv-timeline__title">{$t('home.classics_title')}</h2>
+					<p class="prv-timeline__sub">{$t('home.classics_sub')}</p>
+				</div>
+				<div class="prv-classics__grid">
+					{#each classics as c (c.id)}
+						<a href="/race/{c.id}" class="prv-classic">
+							<div class="prv-classic__top">
+								<span class="prv-classic__year">{c.year}</span>
+								<span class="prv-classic__spice">SPICE {c.spice}</span>
+							</div>
+							<div class="prv-classic__mid">
+								<h3 class="prv-classic__name">{raceName(c.name)}</h3>
+								<TrackSilhouette code={c.code} size={52} opacity={0.45} />
+							</div>
+							<div class="prv-classic__meta">
+								<span class="prv-card__team-bar" style="background:{TEAM_COLORS[c.winner_team] || '#888'}"></span>
+								<span class="prv-classic__winner">{c.winner}</span>
+								{#each c.tags || [] as tag}<span class="prv-classic__tag">{tag}</span>{/each}
+							</div>
+						</a>
+					{/each}
+				</div>
+			</section>
+			{/if}
+
 			<footer class="prv-footer">
 				<div class="prv-footer__row">
 					<span class="prv-footer__copy">{$t('home.footer_copy')}</span>
@@ -528,6 +557,21 @@
 	.prv-card__cta { display: flex; align-items: center; justify-content: flex-end; gap: 6px; font-family: var(--p-fh); font-weight: 700; font-size: 10px; color: var(--p-ac); text-transform: uppercase; letter-spacing: .08em; }
 	.prv-card__arrow { transition: transform .15s; }
 	.prv-card:hover .prv-card__arrow { transform: translateX(3px); }
+
+	/* ── CLASSICS SHELF ── */
+	.prv-classics { padding: 2.5rem 3rem; background: linear-gradient(180deg, var(--p-bg) 0%, #12141c 100%); border-top: 1px solid rgba(46,50,64,.5); }
+	.prv-classics__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 2px; margin-top: 1.25rem; }
+	.prv-classic { background: var(--p-bg2); padding: 1.1rem 1.25rem; display: flex; flex-direction: column; gap: 6px; text-decoration: none; color: inherit; border: 1px solid transparent; transition: background .2s, border-color .2s; }
+	.prv-classic:hover { background: var(--p-bgc); border-color: rgba(245,158,11,.35); text-decoration: none; }
+	.prv-classic__top { display: flex; justify-content: space-between; align-items: baseline; }
+	.prv-classic__year { font-family: var(--p-fm); font-size: 10px; color: var(--p-t2); letter-spacing: .1em; }
+	.prv-classic__spice { font-family: var(--p-fm); font-size: 10px; font-weight: 700; color: #F59E0B; letter-spacing: .06em; }
+	.prv-classic__mid { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+	.prv-classic__name { font-family: var(--p-fh); font-weight: 700; font-size: 15px; text-transform: uppercase; line-height: 1.25; }
+	.prv-classic__meta { margin-top: auto; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+	.prv-classic__winner { font-family: var(--p-fm); font-size: 11px; font-weight: 700; }
+	.prv-classic__tag { font-family: var(--p-fm); font-size: 8.5px; letter-spacing: .06em; border: 1px solid var(--p-brd); color: var(--p-t2); padding: 1px 6px; text-transform: uppercase; }
+	@media (max-width: 900px) { .prv-classics { padding: 2rem 1.5rem; } }
 
 	/* ── FOOTER ── */
 	.prv-sidebar__about-link {

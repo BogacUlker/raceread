@@ -49,6 +49,14 @@ P_HARVEST_AVG_W = 150e3  # realistic average recovery power under braking
 PHYS_CERTAIN_MARGIN = 1.10  # P_wheel must exceed ICE-only by 10%
 CONFIDENCE_FAIL = 50
 
+# Era overrides: 2021-22 hybrid PU (MGU-H era, 120 kW MGU-K, 2 MJ/lap K-recovery)
+ERAS = {
+    "2021": dict(P_ICE_W=540e3, P_K_W=120e3, DEPLOY_BUDGET_MJ=4.2,
+                 HARVEST_BUDGET_MJ=2.4, P_HARVEST_AVG_W=90e3),
+}
+_DEFAULTS = dict(P_ICE_W=P_ICE_W, P_K_W=P_K_W, DEPLOY_BUDGET_MJ=DEPLOY_BUDGET_MJ,
+                 HARVEST_BUDGET_MJ=HARVEST_BUDGET_MJ, P_HARVEST_AVG_W=P_HARVEST_AVG_W)
+
 
 def load(path):
     with open(path) as f:
@@ -260,6 +268,9 @@ def confidence(inv, phys):
 
 
 def validate_race(race_id):
+    # apply era-specific power-unit constants (single-threaded script)
+    globals().update(_DEFAULTS)
+    globals().update(ERAS.get(race_id[:4], {}))
     race_dir = DATA_DIR / race_id
     laps_data = load(race_dir / "laps.json")
     inv = check_invariants(race_dir, laps_data)

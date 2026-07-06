@@ -30,7 +30,9 @@
 		"sidebar_about": "About",
 		"sidebar_races": "Completed Races",
 		"sidebar_status": "System Status",
-		"sidebar_active": "Active Feed"
+		"sidebar_active": "Active Feed",
+		"classics_title": "Classics",
+		"classics_sub": "Title fights & legendary races"
 	},
 	"race": {
 		"title": "Race Dashboard",
@@ -265,5 +267,23 @@
 		"window_all": "Full race",
 		"window_first10": "First 10",
 		"window_last10": "Last 10"
+	},
+	"telemetry": {
+		"room_title": "Telemetry",
+		"room_desc": "Speed traces, the animated track map and traffic analysis - the raw-signal room.",
+		"explore": "Explore"
+	},
+	"replay": {
+		"room_title": "Race Replay",
+		"room_desc": "Scrub through the race lap by lap: running order, gaps, pit stops and safety cars.",
+		"watch": "Watch",
+		"play": "Play",
+		"pause": "Pause",
+		"lap": "Lap",
+		"order": "Running order",
+		"gaps": "Gap to leader",
+		"out": "OUT",
+		"leader": "LEADER",
+		"watch_from": "Watch from lap"
 	}
 }

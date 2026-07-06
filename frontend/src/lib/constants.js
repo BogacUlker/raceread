@@ -11,6 +11,10 @@ export const TEAM_COLORS = {
 	'Audi': '#F50537',
 	'Haas F1 Team': '#9C9FA2',
 	'Cadillac': '#909090',
+	/* 2021-era teams (Classics) */
+	'AlphaTauri': '#2B4562',
+	'Alfa Romeo Racing': '#900000',
+	'Alfa Romeo': '#900000',
 };
 
 /** Energy state colors */
@@ -70,6 +74,8 @@ export const RACE_NAMES_TR = {
 	'Las Vegas Grand Prix': 'Las Vegas Grand Prix',
 	'Qatar Grand Prix': 'Katar Grand Prix',
 	'Abu Dhabi Grand Prix': 'Abu Dabi Grand Prix',
+	'São Paulo Grand Prix': 'São Paulo Grand Prix',
+	'Turkish Grand Prix': 'Türkiye Grand Prix',
 };
 
 /** Localized race name; falls back to the English name */
