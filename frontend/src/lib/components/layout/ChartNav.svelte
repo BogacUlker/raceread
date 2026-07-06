@@ -5,6 +5,7 @@
 -->
 <script>
 	import { tick } from 'svelte';
+	import { replaceState } from '$app/navigation';
 	import { t } from '$lib/i18n/index.js';
 	import { collapsedSections, SECTIONS, QUALIFYING_SECTIONS } from '$lib/stores/dashboard.js';
 	import { activeSession } from '$lib/stores/race.js';
@@ -52,6 +53,8 @@
 		const el = document.getElementById(`section-${sectionId}`);
 		if (el) {
 			el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+			// keep the section in the URL so the view is shareable
+			replaceState(location.search + `#section-${sectionId}`, {});
 		}
 	}
 

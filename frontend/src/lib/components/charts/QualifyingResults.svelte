@@ -3,6 +3,7 @@
 	Red tint for Q1 eliminated, orange for Q2. Sector tooltip on hover.
 -->
 <script>
+	import { goto } from '$app/navigation';
 	import { t } from '$lib/i18n/index.js';
 	import { TEAM_COLORS } from '$lib/constants.js';
 	import { formatLapTime } from '$lib/utils/format.js';
@@ -56,6 +57,11 @@
 	function bestTime(d) {
 		return d.q3_s || d.q2_s || d.q1_s;
 	}
+
+	function handleRowClick(d, e) {
+		if (!raceId || e.target.closest('a')) return;
+		goto(`/race/${raceId}/qualifying/${d.driver.toLowerCase()}`);
+	}
 </script>
 
 <div class="chart-card">
@@ -87,9 +93,11 @@
 						class={rowClass(d)}
 						class:row--hovered={isHovered}
 						class:row--dimmed={isDimmed}
+						class:row--clickable={!!raceId}
 						onmouseenter={(e) => handleRowEnter(d, e)}
 						onmousemove={handleRowMove}
 						onmouseleave={handleRowLeave}
+						onclick={(e) => handleRowClick(d, e)}
 					>
 						<td class="col-pos">{d.position ?? '-'}</td>
 						<td class="col-driver">
@@ -251,6 +259,9 @@
 	}
 	:global(.row--hovered) td {
 		background: rgba(255, 255, 255, 0.04);
+	}
+	:global(.row--clickable) {
+		cursor: pointer;
 	}
 
 	.sector-tooltip {

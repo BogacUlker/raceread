@@ -8,6 +8,15 @@ class RaceInfo(BaseModel):
     circuit: str
     winner: str
     total_laps: int
+    # Card-level extras, filled from race data files when available
+    air_temp: float | None = None
+    rainfall: bool | None = None
+    fastest_lap_s: float | None = None
+    fastest_driver: str | None = None
+    fastest_lap_no: int | None = None
+    sc_periods: int | None = None
+    vsc_periods: int | None = None
+    validation_confidence: float | None = None
 
 
 class LapData(BaseModel):

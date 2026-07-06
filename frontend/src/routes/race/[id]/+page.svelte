@@ -1,5 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
+	import { browser } from '$app/environment';
+	import { afterNavigate, replaceState } from '$app/navigation';
 	import { t, locale } from '$lib/i18n/index.js';
 	import { selectedDrivers, activeSession, showAnnotations } from '$lib/stores/race.js';
 	import { collapsedSections } from '$lib/stores/dashboard.js';
@@ -24,6 +26,7 @@
 	import TrafficAnalysis from '$lib/components/charts/TrafficAnalysis.svelte';
 	import PitStopStats from '$lib/components/charts/PitStopStats.svelte';
 	import IdealLaps from '$lib/components/charts/IdealLaps.svelte';
+	import ExportButton from '$lib/components/ui/ExportButton.svelte';
 
 	let { data } = $props();
 	let raceId = $derived(data.raceId);
@@ -63,8 +66,41 @@
 		return { driver: d.driver, pos: last?.position ?? 99 };
 	}).sort((a, b) => a.pos - b.pos).slice(0, 10).map(d => d.driver));
 
+	// Deep links: ?drivers=RUS,VER&session=qualifying (read once, then kept in sync)
+	const _sp = browser ? new URLSearchParams(location.search) : null;
+	const _urlDrivers = _sp?.get('drivers')?.split(',').map(s => s.trim().toUpperCase()).filter(Boolean) ?? null;
+	if (_sp?.get('session') === 'qualifying') activeSession.set('qualifying');
+
 	let initialized = $state(false);
-	$effect(() => { if (!initialized && $selectedDrivers.length === 0 && defaultSelected.length > 0) { selectedDrivers.set(defaultSelected); initialized = true; } });
+	$effect(() => {
+		if (initialized) return;
+		const valid = _urlDrivers?.filter(d => laps.some(x => x.driver === d)) ?? [];
+		if (valid.length > 0) {
+			selectedDrivers.set(valid);
+			initialized = true;
+		} else if ($selectedDrivers.length === 0 && defaultSelected.length > 0) {
+			selectedDrivers.set(defaultSelected);
+			initialized = true;
+		} else if ($selectedDrivers.length > 0) {
+			initialized = true;
+		}
+	});
+
+	// Keep the URL shareable as selection/session change (replaceState = no reloads).
+	// afterNavigate guard: replaceState throws until the router is initialized.
+	let mounted = $state(false);
+	afterNavigate(() => { mounted = true; });
+	$effect(() => {
+		if (!browser || !initialized || !mounted) return;
+		const sel = $selectedDrivers.join(',');
+		const session = $activeSession;
+		const p = new URLSearchParams(location.search);
+		if (sel) p.set('drivers', sel); else p.delete('drivers');
+		if (session === 'qualifying') p.set('session', 'qualifying'); else p.delete('session');
+		const qs = p.toString();
+		const next = (qs ? '?' + qs : location.pathname) + location.hash;
+		if (location.search !== (qs ? '?' + qs : '')) replaceState(next, {});
+	});
 
 	let vscLaps = $derived(data.vscData?.vsc_laps || []);
 	let scLaps = $derived(data.vscData?.sc_laps || []);
@@ -160,6 +196,12 @@
 	// Team color helper
 	function tc(driver) { return TEAM_COLORS[teamsMap[driver]] || '#6B7280'; }
 
+	// Prev/next race navigation
+	let calendar = $derived(data.calendar || []);
+	let raceIdx = $derived(races.findIndex(r => r.id === raceId));
+	let prevRace = $derived(raceIdx > 0 ? races[raceIdx - 1] : null);
+	let nextRace = $derived(raceIdx >= 0 && raceIdx < races.length - 1 ? races[raceIdx + 1] : null);
+
 	// Scroll-triggered reveal animation
 	
 	onMount(() => {
@@ -176,6 +218,12 @@
 		document.querySelectorAll('.pd-ov-card, .pd-sec').forEach(el => {
 			observer.observe(el);
 		});
+
+		// Scroll happens inside .pd-main, so honor #section-* hashes manually
+		if (location.hash) {
+			const el = document.querySelector(location.hash);
+			if (el) setTimeout(() => el.scrollIntoView({ block: 'start' }), 50);
+		}
 
 		return () => observer.disconnect();
 	});
@@ -217,7 +265,7 @@
 			<div class="pd-sb__full">
 				<div class="pd-sb__sec">
 					<h2 class="pd-sb__h">2026 {$locale === 'tr' ? 'Sezonu' : 'Season'}</h2>
-					<p class="pd-sb__sub">{races.length} / 21</p>
+					<p class="pd-sb__sub">{races.length}{calendar.length ? ' / ' + calendar.length : ''}</p>
 				</div>
 				<div class="pd-sb__sec">
 					<nav class="pd-sb__nav">
@@ -245,7 +293,19 @@
 		<div class="pd-main">
 			<!-- Header -->
 			<div class="pd-header">
-				<h1 class="pd-header__title">{gpName(raceInfo.name)}</h1>
+				<div class="pd-header__row">
+					{#if prevRace}
+						<a href="/race/{prevRace.id}" class="pd-header__arrow" title={prevRace.name}>&larr; <span class="pd-header__arrow-name">{prevRace.circuit}</span></a>
+					{:else}
+						<span class="pd-header__arrow pd-header__arrow--off">&larr;</span>
+					{/if}
+					<h1 class="pd-header__title">{gpName(raceInfo.name)}</h1>
+					{#if nextRace}
+						<a href="/race/{nextRace.id}" class="pd-header__arrow" title={nextRace.name}><span class="pd-header__arrow-name">{nextRace.circuit}</span> &rarr;</a>
+					{:else}
+						<span class="pd-header__arrow pd-header__arrow--off">&rarr;</span>
+					{/if}
+				</div>
 				<div class="pd-header__meta">
 					<span>{raceInfo.circuit}</span>
 					<span class="pd-sep">/</span>
@@ -310,6 +370,7 @@
 				<div class="pd-grid">
 					<!-- 01. Pace -->
 					<div id="section-pace" class="pd-sec">
+						<ExportButton target="#section-pace" filename="{raceId}-pace" />
 						<div class="pd-sec__body" class:collapsed={$collapsedSections['pace']}>
 							<div class="pd-row pd-row--pace">
 								<div class="pd-cell pd-cell--wide"><PaceChart {laps} selectedDrivers={$selectedDrivers} {vscLaps} {scLaps} annotations={$showAnnotations ? (annotations.annotations || []) : []} {strategy} /></div>
@@ -320,6 +381,7 @@
 
 					<!-- 02. Strategy -->
 					<div id="section-strategy" class="pd-sec">
+						<ExportButton target="#section-strategy" filename="{raceId}-strategy" />
 						<div class="pd-sec__body" class:collapsed={$collapsedSections['strategy']}>
 							<StrategyTimeline drivers={strategySorted} totalLaps={raceInfo.total_laps} {vscLaps} {scLaps} />
 						</div>
@@ -327,6 +389,7 @@
 
 					<!-- 03. Pit Stops -->
 					<div id="section-pit-stops" class="pd-sec">
+						<ExportButton target="#section-pit-stops" filename="{raceId}-pitstops" />
 						<div class="pd-sec__body" class:collapsed={$collapsedSections['pit-stops']}>
 							<PitStopStats data={pitstops} />
 						</div>
@@ -334,6 +397,7 @@
 
 					<!-- 04. Energy -->
 					<div id="section-energy" class="pd-sec">
+						<ExportButton target="#section-energy" filename="{raceId}-energy" />
 						<div class="pd-sec__body" class:collapsed={$collapsedSections['energy']}>
 							<div class="pd-row pd-row--split">
 								<div class="pd-cell"><EnergyBars entries={energyComparison.entries || []} /></div>
@@ -344,8 +408,9 @@
 
 					<!-- 05. Energy Timeline -->
 					<div id="section-energy-timeline" class="pd-sec">
+						<ExportButton target="#section-energy-timeline" filename="{raceId}-energy-timeline" />
 						<div class="pd-sec__body" class:collapsed={$collapsedSections['energy-timeline']}>
-							<EnergyTimeline {raceId} drivers={driverList} defaultDriver={raceInfo.winner} />
+							<EnergyTimeline {raceId} drivers={driverList} defaultDriver={raceInfo.winner} confidence={raceInfo.validation_confidence} />
 						</div>
 					</div>
 
@@ -533,7 +598,12 @@
 
 	/* HEADER */
 	.pd-header { margin-bottom: 1.25rem; }
+	.pd-header__row { display: flex; align-items: baseline; gap: 14px; }
 	.pd-header__title { font-family: var(--fh); font-weight: 700; font-size: 26px; letter-spacing: -.02em; margin-bottom: 4px; }
+	.pd-header__arrow { font-family: var(--fm); font-size: 11px; color: var(--tm); text-decoration: none; white-space: nowrap; transition: color .15s; }
+	.pd-header__arrow:hover { color: var(--ac); text-decoration: none; }
+	.pd-header__arrow--off { opacity: .25; }
+	@media (max-width: 640px) { .pd-header__arrow-name { display: none; } }
 	.pd-header__meta { display: flex; align-items: center; gap: 6px; font-family: var(--fm); font-size: 11px; color: var(--t2); }
 	.pd-sep { color: var(--tm); }
 	.pd-winner { color: var(--ac); font-weight: 600; }

@@ -111,19 +111,27 @@
 		return n.toUpperCase();
 	}
 
-	// Compute race extras from actual data
-	function computeExtras(raceId) {
-		// Hardcoded weather (no weather in page loader)
-		const weather = {
-			'2026-australia': { temp: 23, rainfall: false },
-			'2026-china': { temp: 18, rainfall: false },
-			'2026-japan': { temp: 19, rainfall: false },
+	// Card extras now come from /api/races (weather.json + laps.json server-side)
+	function fmtLapTime(s) {
+		const m = Math.floor(s / 60);
+		const sec = s % 60;
+		return m + ':' + sec.toFixed(3).padStart(6, '0');
+	}
+	function computeExtras(race) {
+		const sc = [];
+		if (race.sc_periods) sc.push(race.sc_periods + ' SC');
+		if (race.vsc_periods) sc.push(race.vsc_periods + ' VSC');
+		return {
+			temp: race.air_temp != null ? Math.round(race.air_temp) : null,
+			rainfall: race.rainfall,
+			fastest: race.fastest_lap_s ? fmtLapTime(race.fastest_lap_s) : null,
+			fastestDriver: race.fastest_driver,
+			sc: sc.length ? sc.join(' + ') : null,
 		};
-		return weather[raceId] || {};
 	}
 
 	function getTeamColor(dc) { return TEAM_COLORS[DRIVER_TEAMS[dc]] || '#6B7280'; }
-	function formatDate(d) { return new Date(d).toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: '2-digit' }); }
+	function formatDate(d) { return new Date(d).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: '2-digit' }).toUpperCase(); }
 	function formatDateShort(d) { return new Date(d).toLocaleDateString('en-GB', { day: '2-digit', month: 'short' }).toUpperCase(); }
 	function isCompleted(c) { return races.some(r => r.date === c.date); }
 	function getRaceId(c) { const r = races.find(r => r.date === c.date); return r ? r.id : null; }
@@ -294,7 +302,8 @@
 					</h1>
 					<p class="prv-hero__desc">{tr.desc}</p>
 					<div class="prv-hero__actions">
-						<a href="/how" class="prv-btn prv-btn--primary">{tr.cta_docs}</a>
+						<a href="#races" class="prv-btn prv-btn--primary">{tr.cta_analyze}</a>
+						<a href="/how" class="prv-btn prv-btn--ghost">{tr.cta_docs}</a>
 					</div>
 				</div>
 			</section>
@@ -332,7 +341,7 @@
 			<section class="prv-races" id="races">
 				<div class="prv-races__grid">
 					{#each races as race, i}
-						{@const extras = computeExtras(race.id)}
+						{@const extras = computeExtras(race)}
 						<!-- svelte-ignore a11y_no_static_element_interactions -->
 						<a href="/race/{race.id}" class="prv-card"
 							onmouseenter={() => hoveredCard = race.id}

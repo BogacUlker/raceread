@@ -1,9 +1,18 @@
-"""Races router - list available races and race metadata."""
+"""Races router - list available races, race metadata, season calendar."""
+
+import statistics
+from functools import lru_cache
 
 from fastapi import APIRouter, HTTPException
 
 from backend.app.models.schemas import RaceInfo
-from backend.app.services.data_loader import load_calendar, load_race_info, load_races
+from backend.app.services.data_loader import (
+    get_race_dir,
+    load_calendar,
+    load_json,
+    load_race_info,
+    load_races,
+)
 
 router = APIRouter(tags=["races"])
 
@@ -14,11 +23,73 @@ def get_calendar() -> list[dict]:
     return load_calendar()
 
 
+def _count_periods(lap_numbers: list[int]) -> int:
+    """Count contiguous lap groups as separate SC/VSC deployments."""
+    periods, prev = 0, None
+    for lap in sorted(lap_numbers):
+        if prev is None or lap > prev + 2:
+            periods += 1
+        prev = lap
+    return periods
+
+
+@lru_cache(maxsize=64)
+def _race_extras(race_id: str) -> tuple:
+    """Card-level stats (weather, fastest lap, SC/VSC, validation confidence).
+
+    Returned as a tuple of pairs so lru_cache stays hashable.
+    """
+    race_dir = get_race_dir(race_id)
+    extras: dict = {}
+
+    try:
+        samples = load_json(str(race_dir / "weather.json")).get("samples", [])
+        temps = [s["air_temp"] for s in samples if s.get("air_temp") is not None]
+        if temps:
+            extras["air_temp"] = round(statistics.median(temps), 1)
+        if samples:
+            extras["rainfall"] = any(s.get("rainfall") for s in samples)
+    except (FileNotFoundError, AttributeError):
+        pass
+
+    try:
+        laps_by_driver = load_json(str(race_dir / "laps.json")).get("laps", {})
+        best = None
+        for driver, laps in laps_by_driver.items():
+            for lap in laps:
+                t = lap.get("time_s")
+                if t and lap.get("is_accurate") is not False and lap.get("lap", 0) > 1:
+                    if best is None or t < best[0]:
+                        best = (t, driver, lap.get("lap"))
+        if best:
+            extras["fastest_lap_s"] = best[0]
+            extras["fastest_driver"] = best[1]
+            extras["fastest_lap_no"] = best[2]
+    except (FileNotFoundError, AttributeError):
+        pass
+
+    try:
+        rc = load_json(str(race_dir / "race_control.json"))
+        extras["sc_periods"] = _count_periods(rc.get("sc_laps", []))
+        extras["vsc_periods"] = _count_periods(rc.get("vsc_laps", []))
+    except (FileNotFoundError, AttributeError):
+        pass
+
+    try:
+        extras["validation_confidence"] = load_json(
+            str(race_dir / "validation.json")
+        ).get("confidence")
+    except (FileNotFoundError, AttributeError):
+        pass
+
+    return tuple(extras.items())
+
+
 @router.get("/races", response_model=list[RaceInfo])
 def list_races() -> list[RaceInfo]:
-    """Return all available races."""
+    """Return all available races with card-level extras."""
     raw = load_races()
-    return [RaceInfo(**race) for race in raw]
+    return [RaceInfo(**{**race, **dict(_race_extras(race["id"]))}) for race in raw]
 
 
 @router.get("/races/{race_id}", response_model=RaceInfo)
@@ -28,4 +99,4 @@ def get_race(race_id: str) -> RaceInfo:
         raw = load_race_info(race_id)
     except FileNotFoundError:
         raise HTTPException(status_code=404, detail=f"Race '{race_id}' not found")
-    return RaceInfo(**raw)
+    return RaceInfo(**{**raw, **dict(_race_extras(race_id))})

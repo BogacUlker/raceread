@@ -33,11 +33,17 @@
 		[...(strategy.drivers || [])].sort((a, b) => (finalPosMap[a.driver] ?? 99) - (finalPosMap[b.driver] ?? 99))
 	);
 
-	let _broadcastInitialized = false;
+	// Broadcast defaults to the top 6 finishers; "ALL" shows the full field
+	let showAll = $state(false);
+	let topSix = $derived(
+		laps.map(d => ({ driver: d.driver, pos: finalPosMap[d.driver] ?? 99 }))
+			.sort((a, b) => a.pos - b.pos)
+			.slice(0, 6)
+			.map(d => d.driver)
+	);
 	$effect(() => {
-		if (!_broadcastInitialized && laps.length > 0) {
-			selectedDrivers.set(laps.map(d => d.driver));
-			_broadcastInitialized = true;
+		if (laps.length > 0) {
+			selectedDrivers.set(showAll ? laps.map(d => d.driver) : topSix);
 		}
 	});
 
@@ -60,6 +66,20 @@
 
 	let activeChart = $state(0);
 
+	// Auto-cycle through views every 15s until the user takes over
+	let auto = $state(true);
+	$effect(() => {
+		if (!auto) return;
+		const id = setInterval(() => {
+			activeChart = (activeChart + 1) % CHARTS.length;
+		}, 15000);
+		return () => clearInterval(id);
+	});
+	function selectChart(i) {
+		activeChart = i;
+		auto = false;
+	}
+
 	// Uppercase race name with proper GRAND PRIX
 	function gpName(name) {
 		if (!name) return '';
@@ -70,11 +90,13 @@
 
 	function handleKeydown(e) {
 		if (e.key === 'Escape') goto(`/race/${raceId}`);
+		if (e.key === 'ArrowRight') selectChart((activeChart + 1) % CHARTS.length);
+		if (e.key === 'ArrowLeft') selectChart((activeChart - 1 + CHARTS.length) % CHARTS.length);
 	}
 </script>
 
 <svelte:head>
-	<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+	<title>Broadcast - {raceInfo.name} - RaceRead</title>
 </svelte:head>
 
 <svelte:window onkeydown={handleKeydown} />
@@ -89,7 +111,15 @@
 			<span class="bc__race">{gpName(raceInfo.name)}</span>
 		</div>
 		<span class="bc__active-label">{CHART_LABELS[CHARTS[activeChart]]}</span>
-		<span class="bc__counter">{activeChart + 1} / {CHARTS.length}</span>
+		<div class="bc__controls">
+			<button class="bc__ctl" class:bc__ctl--on={!showAll} onclick={() => showAll = !showAll}>
+				{showAll ? 'ALL' : 'TOP 6'}
+			</button>
+			<button class="bc__ctl" class:bc__ctl--on={auto} onclick={() => auto = !auto} title="Auto-cycle views">
+				AUTO {auto ? 'ON' : 'OFF'}
+			</button>
+			<span class="bc__counter">{activeChart + 1} / {CHARTS.length}</span>
+		</div>
 	</div>
 
 	<!-- Chart area -->
@@ -97,9 +127,9 @@
 		{#if CHARTS[activeChart] === 'pace'}
 			<PaceChart {laps} selectedDrivers={$selectedDrivers} {vscLaps} {scLaps} annotations={[]} {strategy} />
 		{:else if CHARTS[activeChart] === 'strategy'}
-			<StrategyTimeline drivers={strategySorted} totalLaps={raceInfo.total_laps} {vscLaps} {scLaps} />
+			<StrategyTimeline drivers={strategySorted.filter(d => $selectedDrivers.includes(d.driver))} totalLaps={raceInfo.total_laps} {vscLaps} {scLaps} />
 		{:else if CHARTS[activeChart] === 'energy'}
-			<EnergyBars entries={energyComparison.entries || []} />
+			<EnergyBars entries={(energyComparison.entries || []).filter(e => $selectedDrivers.includes(e.driver))} />
 		{:else if CHARTS[activeChart] === 'speed-trace'}
 			<SpeedTrace {raceId} drivers={driverList} {circuit} totalLaps={raceInfo?.total_laps || 58} />
 		{:else if CHARTS[activeChart] === 'track-map'}
@@ -110,7 +140,7 @@
 	<!-- Bottom: chart selector pills (always visible) -->
 	<div class="bc__bottom">
 		{#each CHARTS as chart, i}
-			<button class="bc__pill" class:bc__pill--active={activeChart === i} onclick={() => activeChart = i}>
+			<button class="bc__pill" class:bc__pill--active={activeChart === i} onclick={() => selectChart(i)}>
 				{CHART_LABELS[chart]}
 			</button>
 		{/each}
@@ -134,7 +164,16 @@
 	}
 	.bc :global(*) { border-radius: 0 !important; }
 	.bc :global(.chart-card) { border-radius: 0 !important; border: none !important; background: var(--bg2) !important; }
-	.bc :global(.chart-card__title) { font-family: var(--fh) !important; text-transform: uppercase; letter-spacing: .03em; font-size: 18px !important; }
+	.bc :global(.chart-card__title) { font-family: var(--fh) !important; text-transform: uppercase; letter-spacing: .03em; font-size: 24px !important; }
+
+	.bc__controls { display: flex; align-items: center; gap: 8px; }
+	.bc__ctl {
+		font-family: var(--fm); font-size: 10px; font-weight: 700; letter-spacing: .08em;
+		padding: 5px 12px; background: none; border: 1px solid var(--brd);
+		color: var(--tm); cursor: pointer; transition: all .15s; text-transform: uppercase;
+	}
+	.bc__ctl:hover { color: #E8E8ED; border-color: #6B7280; }
+	.bc__ctl--on { color: var(--ac); border-color: rgba(226,75,74,.5); }
 
 	/* Top bar */
 	.bc__topbar {

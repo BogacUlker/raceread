@@ -6,9 +6,6 @@
 <script>
 	import { t } from '$lib/i18n/index.js';
 	import { TEAM_COLORS } from '$lib/constants.js';
-	import { scaleSequential } from 'd3-scale';
-	import { interpolateRdYlGn } from 'd3-scale-chromatic';
-	import { max } from 'd3-array';
 	import { formatDelta } from '$lib/utils/format.js';
 	import { hoveredDriver } from '$lib/stores/race.js';
 
@@ -34,10 +31,22 @@
 		})()
 	);
 
-	// Green = negative (faster), Red = positive (slower)
-	let colorScale = $derived(
-		scaleSequential(interpolateRdYlGn).domain([maxDelta, -maxDelta])
-	);
+	// Dark diverging palette matching the site theme:
+	// blue = negative (row driver faster), red = positive (slower),
+	// near-zero stays close to the panel background.
+	const BASE = [34, 37, 47]; // #22252F
+	const BLUE = [23, 82, 148];
+	const RED = [150, 46, 55];
+	function cellBg(val) {
+		const t = Math.max(-1, Math.min(1, val / maxDelta));
+		const target = t < 0 ? BLUE : RED;
+		const k = Math.sqrt(Math.abs(t)); // sqrt lifts small deltas into visibility
+		const c = BASE.map((b, i) => Math.round(b + (target[i] - b) * k));
+		return `rgb(${c[0]},${c[1]},${c[2]})`;
+	}
+	function cellFg(val) {
+		return Math.abs(val / maxDelta) > 0.06 ? '#E8E8ED' : '#7D8794';
+	}
 
 	// Hover state
 	let hoveredCell = $state(null);
@@ -111,7 +120,7 @@
 								class:cell-hovered={isHovered}
 								class:col-highlight={hoveredCell && hoveredCell.col === j && !isHovered}
 								style={!isDiag && val != null
-									? `background: ${colorScale(val)}; color: ${Math.abs(val) > maxDelta * 0.6 ? '#000' : '#333'}`
+									? `background: ${cellBg(val)}; color: ${cellFg(val)}`
 									: ''}
 								onmouseenter={(e) => handleCellEnter(i, j, e)}
 								onmousemove={handleCellMove}
@@ -181,13 +190,13 @@
 
 	/* Row/column highlight on hover */
 	.row-highlight {
-		background: rgba(255, 255, 255, 0.03);
+		background: rgba(255, 255, 255, 0.06);
 	}
 	.col-highlight {
-		background: rgba(255, 255, 255, 0.03);
+		background: rgba(255, 255, 255, 0.06);
 	}
 	.cell-hovered {
-		outline: 2px solid var(--text-secondary);
+		outline: 2px solid #E8E8ED;
 		outline-offset: -1px;
 	}
 

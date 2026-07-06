@@ -23,7 +23,7 @@
 	 *   defaultDriver: string
 	 * }}
 	 */
-	let { raceId, drivers, defaultDriver, compareDriver = '' } = $props();
+	let { raceId, drivers, defaultDriver, compareDriver = '', confidence = null } = $props();
 
 	let selectedDriver = $state('');
 	let energyData = $state(null);
@@ -95,7 +95,7 @@
 <div class="chart-card">
 	<div class="chart-card__header">
 		<span class="chart-card__title">{$t('charts.energy_timeline')}</span>
-		<InferredBadge />
+		<InferredBadge {confidence} />
 		<div class="driver-select">
 			<select value={selectedDriver} onchange={handleDriverChange}>
 				{#each drivers as d}
@@ -105,19 +105,19 @@
 		</div>
 	</div>
 
-	<!-- Legend -->
+	<!-- Legend: deploy/clip are the focus, harvest is context -->
 	<div class="legend">
 		<span class="legend__item">
 			<span class="legend__dot" style="background: {ENERGY_COLORS.deploy}"></span>
 			{$t('charts.deploy')}
 		</span>
 		<span class="legend__item">
-			<span class="legend__dot" style="background: {ENERGY_COLORS.harvest}"></span>
-			{$t('charts.harvest')}
-		</span>
-		<span class="legend__item">
 			<span class="legend__dot" style="background: {ENERGY_COLORS.clip}"></span>
 			{$t('charts.clip')}
+		</span>
+		<span class="legend__item legend__item--ctx">
+			<span class="legend__dot" style="background: {ENERGY_COLORS.harvest}; opacity: 0.35"></span>
+			{$t('charts.harvest')}
 		</span>
 	</div>
 
@@ -183,6 +183,9 @@
 		width: 8px;
 		height: 8px;
 		border-radius: 2px;
+	}
+	.legend__item--ctx {
+		opacity: 0.65;
 	}
 	.no-data {
 		display: flex;

@@ -1,6 +1,6 @@
 <script>
 	import { browser } from '$app/environment';
-	import { replaceState } from '$app/navigation';
+	import { afterNavigate, replaceState } from '$app/navigation';
 	import { t, locale } from '$lib/i18n/index.js';
 	import { TEAM_COLORS } from '$lib/constants.js';
 	import CompareSpeedTrace from '$lib/components/compare/CompareSpeedTrace.svelte';
@@ -27,8 +27,11 @@
 	let selectedLap = $state(1);
 	let ready = $derived(pick1 !== '' && pick2 !== '' && pick1 !== pick2);
 
+	// afterNavigate guard: replaceState throws until the router is initialized
+	let mounted = $state(false);
+	afterNavigate(() => { mounted = true; });
 	$effect(() => {
-		if (!browser) return;
+		if (!browser || !mounted) return;
 		const p = new URLSearchParams();
 		if (pick1) p.set('d1', pick1);
 		if (pick2) p.set('d2', pick2);
@@ -82,19 +85,19 @@
 
 	<!-- Control bar: two driver pickers + lap selector -->
 	<div class="cmp__controls">
-		<select class="cmp__select" style="border-color:{pick1 ? color1 : 'var(--brd)'}" bind:value={pick1}>
+		<select class="cmp__select" aria-label="First driver" style="border-color:{pick1 ? color1 : 'var(--brd)'}" bind:value={pick1}>
 			<option value="">{$t('filter.select_driver')}</option>
 			{#each allCodes as code}<option value={code} disabled={code === pick2}>{code} - {getTeam(code)}</option>{/each}
 		</select>
 		<span class="cmp__vs">{$t('charts.vs')}</span>
-		<select class="cmp__select" style="border-color:{pick2 ? color2 : 'var(--brd)'}" bind:value={pick2}>
+		<select class="cmp__select" aria-label="Second driver" style="border-color:{pick2 ? color2 : 'var(--brd)'}" bind:value={pick2}>
 			<option value="">{$t('filter.select_driver')}</option>
 			{#each allCodes as code}<option value={code} disabled={code === pick1}>{code} - {getTeam(code)}</option>{/each}
 		</select>
 		{#if ready}
 			<div class="cmp__lap-picker">
 				<span class="cmp__lap-label">{$t('tooltip.lap')}</span>
-				<select class="cmp__lap-select" bind:value={selectedLap}>
+				<select class="cmp__lap-select" aria-label="Lap" bind:value={selectedLap}>
 					{#each lapOptions as lap}<option value={lap}>{lap}</option>{/each}
 				</select>
 			</div>
@@ -175,7 +178,8 @@
 	/* Controls bar */
 	.cmp__controls { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.75rem; flex-wrap: wrap; }
 	.cmp__select { font-family: var(--fm); font-size: 13px; background: #0F1117; color: #E8E8ED; border: 2px solid var(--brd); padding: 10px 14px; cursor: pointer; min-width: 200px; transition: border-color .2s; }
-	.cmp__select:focus { outline: none; border-color: var(--ac); }
+	.cmp__select:focus-visible, .cmp__lap-select:focus-visible { outline: 2px solid var(--ac); outline-offset: 1px; }
+	.cmp__select:focus { border-color: var(--ac); }
 	.cmp__vs { font-family: var(--fh); font-size: 18px; color: var(--tm); }
 	.cmp__lap-picker { display: flex; align-items: center; gap: .5rem; margin-left: auto; }
 	.cmp__lap-label { font-family: var(--fm); font-size: 10px; color: var(--tm); text-transform: uppercase; letter-spacing: .1em; }
