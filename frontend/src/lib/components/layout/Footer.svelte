@@ -12,6 +12,10 @@
 			<span class="footer__text">2026</span>
 		</div>
 	</div>
+	<div class="footer__legal">
+		<span>Data: <a href="https://github.com/theOehrly/Fast-F1" target="_blank" rel="noopener noreferrer">FastF1</a> &middot; <a href="https://github.com/jolpica/jolpica-f1" target="_blank" rel="noopener noreferrer">{$t('footer.jolpica')}</a></span>
+		<p>{$t('footer.disclaimer')}</p>
+	</div>
 </footer>
 
 <style>
@@ -46,5 +50,24 @@
 	}
 	.footer__coffee:hover {
 		color: var(--text-primary);
+	}
+	.footer__legal {
+		max-width: 1400px;
+		margin: 10px auto 0;
+		font-family: var(--font-mono);
+		font-size: 10px;
+		line-height: 1.6;
+		color: var(--text-muted);
+	}
+	.footer__legal a {
+		color: var(--text-secondary);
+		text-decoration: none;
+	}
+	.footer__legal a:hover {
+		color: var(--text-primary);
+	}
+	.footer__legal p {
+		margin-top: 2px;
+		opacity: 0.8;
 	}
 </style>

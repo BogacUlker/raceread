@@ -12,6 +12,13 @@
 			desc2: 'This platform exists to make that invisible layer visible. Every chart, every annotation, every inference model is designed to answer one question: what really happened in this race?',
 			tech_title: 'Built With',
 			tech_items: ['SvelteKit + D3.js for interactive visualizations', 'FastAPI (Python) for telemetry processing', 'FastF1 for official F1 timing data', 'Claude API for bilingual race annotations', 'Physics-based energy inference engine'],
+			data_title: 'Data Sources & Attribution',
+			data_items: [
+				['FastF1', 'https://github.com/theOehrly/Fast-F1', 'official F1 timing & telemetry access (MIT)'],
+				['Jolpica-F1', 'https://github.com/jolpica/jolpica-f1', 'season calendar & championship standings (community-run Ergast successor)'],
+				['Claude API', 'https://www.anthropic.com', 'bilingual race annotations & stories'],
+			],
+			disclaimer: 'RaceRead is an unofficial project and is not associated in any way with the Formula 1 companies. F1, FORMULA ONE, FORMULA 1, GRAND PRIX and related marks are trademarks of Formula One Licensing B.V.',
 			contact_title: 'Contact',
 			contact_text: 'For feedback, collaboration, or press inquiries:',
 			email: 'boulker24@gmail.com',
@@ -28,7 +35,14 @@
 			desc2: 'Bu platform, o g\u00F6r\u00FCnmez katman\u0131 g\u00F6r\u00FCn\u00FCr k\u0131lmak i\u00E7in var. Her grafik, her anotasyon, her \u00E7\u0131kar\u0131m modeli tek bir soruyu yan\u0131tlamak i\u00E7in tasarland\u0131: bu yar\u0131\u015Fta ger\u00E7ekten ne oldu?',
 			tech_title: 'Teknolojiler',
 			tech_items: ['SvelteKit + D3.js ile interaktif g\u00F6rselle\u015Ftirmeler', 'FastAPI (Python) ile telemetri i\u015Fleme', 'FastF1 ile resmi F1 zamanlama verisi', 'Claude API ile iki dilli yar\u0131\u015F anotasyonlar\u0131', 'Fizik tabanl\u0131 enerji \u00E7\u0131kar\u0131m motoru'],
-			contact_title: '\u0130leti\u015Fim',
+			data_title: 'Veri Kaynakları & Atıf',
+			data_items: [
+				['FastF1', 'https://github.com/theOehrly/Fast-F1', 'resmi F1 zamanlama & telemetri erişimi (MIT)'],
+				['Jolpica-F1', 'https://github.com/jolpica/jolpica-f1', 'sezon takvimi & şampiyona puan durumu (gönüllü Ergast halefi)'],
+				['Claude API', 'https://www.anthropic.com', 'iki dilli yarış anotasyonları & hikayeleri'],
+			],
+			disclaimer: 'RaceRead resmi olmayan bir projedir; Formula 1 şirketleriyle hiçbir bağlantısı yoktur. F1, FORMULA ONE, FORMULA 1, GRAND PRIX ve ilgili markalar Formula One Licensing B.V. şirketinin ticari markalarıdır.',
+			contact_title: 'İletişim',
 			contact_text: 'Geri bildirim, i\u015F birli\u011Fi veya bas\u0131n sorular\u0131 i\u00E7in:',
 			email: 'boulker24@gmail.com',
 			coffee: 'Projeyi destekle',
@@ -79,6 +93,17 @@
 			</ul>
 		</section>
 
+		<!-- Data sources & attribution -->
+		<section class="ab__section">
+			<h3 class="ab__section-title">{tr.data_title}</h3>
+			<ul class="ab__list">
+				{#each tr.data_items as [name, url, desc]}
+					<li><a href={url} target="_blank" rel="noopener noreferrer" class="ab__src">{name}</a> - {desc}</li>
+				{/each}
+			</ul>
+			<p class="ab__disclaimer">{tr.disclaimer}</p>
+		</section>
+
 		<!-- Contact -->
 		<section class="ab__section ab__section--last">
 			<h3 class="ab__section-title">{tr.contact_title}</h3>
@@ -125,6 +150,8 @@
 
 	.ab__section { margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(46,50,64,.4); }
 	.ab__section--last { border-bottom: none; }
+	.ab__src { color: #E8E8ED; }
+	.ab__disclaimer { margin-top: 1rem; font-family: var(--font-mono, monospace); font-size: 10.5px; line-height: 1.7; color: #7D8794; }
 	.ab__section-title { font-family: var(--fh); font-size: 18px; font-weight: 700; text-transform: uppercase; border-left: 3px solid var(--ac); padding-left: 1rem; margin-bottom: 1rem; }
 
 	.ab__made-by { font-family: var(--fm); font-size: 11px; color: var(--tm); text-transform: uppercase; letter-spacing: .12em; margin-bottom: .5rem; }

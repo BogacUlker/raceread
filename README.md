@@ -156,5 +156,12 @@ Contributions are welcome. Please open an issue first to discuss what you'd like
 ## Acknowledgments
 
 - [FastF1](https://github.com/theOehrly/Fast-F1) - F1 telemetry data (MIT)
+- [Jolpica-F1](https://github.com/jolpica/jolpica-f1) - season calendar & championship standings (community-run Ergast successor)
 - [LayerCake](https://layercake.graphics/) - Svelte chart framework
 - Built with [Claude Code](https://claude.ai/claude-code)
+
+## Disclaimer
+
+RaceRead is an unofficial project and is not associated in any way with the
+Formula 1 companies. F1, FORMULA ONE, FORMULA 1, GRAND PRIX and related marks
+are trademarks of Formula One Licensing B.V.

@@ -340,11 +340,15 @@
 			</section>
 
 			<footer class="prv-footer">
-				<span class="prv-footer__copy">{$t('home.footer_copy')}</span>
-				<div class="prv-footer__links">
-					<span>{$t('home.footer_data')}</span>
-					<span>{$t('home.footer_energy')}</span>
+				<div class="prv-footer__row">
+					<span class="prv-footer__copy">{$t('home.footer_copy')}</span>
+					<div class="prv-footer__links">
+						<span>{$t('home.footer_data')}</span>
+						<a href="https://github.com/jolpica/jolpica-f1" target="_blank" rel="noopener noreferrer" class="prv-footer__link">{$t('footer.jolpica')}</a>
+						<span>{$t('home.footer_energy')}</span>
+					</div>
 				</div>
+				<p class="prv-footer__legal">{$t('footer.disclaimer')}</p>
 			</footer>
 		</div>
 	</div>
@@ -529,7 +533,11 @@
 	}
 	.prv-sidebar__about-link:hover { color: var(--p-ac); text-decoration: none; }
 
-	.prv-footer { background: #0A0C12; padding: 1.5rem 3rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(46,50,64,.5); }
+	.prv-footer { background: #0A0C12; padding: 1.5rem 3rem; border-top: 1px solid rgba(46,50,64,.5); }
+	.prv-footer__row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .5rem; }
+	.prv-footer__link { color: inherit; text-decoration: none; }
+	.prv-footer__link:hover { color: var(--p-t2); text-decoration: none; }
+	.prv-footer__legal { margin-top: .7rem; font-family: var(--p-fm); font-size: 9px; line-height: 1.6; color: var(--p-tm); opacity: .55; text-transform: none; letter-spacing: .02em; }
 	.prv-footer__copy { font-family: var(--p-fm); font-size: 10px; opacity: .35; text-transform: uppercase; letter-spacing: .12em; }
 	.prv-footer__links { display: flex; gap: 2rem; font-family: var(--p-fm); font-size: 10px; text-transform: uppercase; letter-spacing: .08em; opacity: .25; }
 

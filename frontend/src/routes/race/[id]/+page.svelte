@@ -464,11 +464,15 @@
 
 			<!-- Footer -->
 			<footer class="pd-footer">
-				<div class="pd-footer__stats">
-					<div><p class="pd-footer__label">Data Source</p><p class="pd-footer__val">FastF1 3.8.1</p></div>
-					<div><p class="pd-footer__label">Energy</p><p class="pd-footer__val pd-footer__val--accent">Inferred</p></div>
+				<div class="pd-footer__row">
+					<div class="pd-footer__stats">
+						<div><p class="pd-footer__label">Data Source</p><p class="pd-footer__val">FastF1 3.8.1</p></div>
+						<div><p class="pd-footer__label">Calendar</p><p class="pd-footer__val">Jolpica-F1</p></div>
+						<div><p class="pd-footer__label">Energy</p><p class="pd-footer__val pd-footer__val--accent">Inferred</p></div>
+					</div>
+					<p class="pd-footer__copy">{'\u00A9'} 2026 RACEREAD</p>
 				</div>
-				<p class="pd-footer__copy">{'\u00A9'} 2026 RACEREAD</p>
+				<p class="pd-footer__legal">{$t('footer.disclaimer')}</p>
 			</footer>
 		</div>
 	</div>
@@ -659,7 +663,9 @@
 	.pd-sec__body.collapsed { max-height: 0; opacity: 0; overflow: hidden; }
 
 	/* FOOTER */
-	.pd-footer { margin-top: 3rem; padding: 1.25rem 0; border-top: 1px solid rgba(46,50,64,.5); display: flex; justify-content: space-between; align-items: center; }
+	.pd-footer { margin-top: 3rem; padding: 1.25rem 0; border-top: 1px solid rgba(46,50,64,.5); }
+	.pd-footer__row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .5rem; }
+	.pd-footer__legal { margin-top: .7rem; font-family: var(--fm); font-size: 9px; line-height: 1.6; color: var(--tm); opacity: .6; }
 	.pd-footer__stats { display: flex; gap: 2rem; }
 	.pd-footer__label { font-family: var(--fm); font-size: 8px; color: var(--tm); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 1px; }
 	.pd-footer__val { font-family: var(--fm); font-size: 10px; }
