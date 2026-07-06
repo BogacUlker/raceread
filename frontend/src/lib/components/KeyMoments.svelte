@@ -8,7 +8,30 @@
 	import { t, locale } from '$lib/i18n/index.js';
 	import { selectedDrivers, pinnedDriver, momentFocus } from '$lib/stores/race.js';
 
-	let { annotations = [], raceId = '' } = $props();
+	let { annotations = [], raceId = '', radio = [] } = $props();
+
+	function clipFor(m) {
+		// nearest clip from the moment's driver within 3 laps (radio calls
+		// naturally arrive a couple of laps around the event)
+		let best = null;
+		for (const c of radio) {
+			if (c.driver !== m.driver || c.lap == null) continue;
+			const d = Math.abs(c.lap - m.lap);
+			if (d <= 3 && (best === null || d < Math.abs(best.lap - m.lap))) best = c;
+		}
+		return best;
+	}
+	let playingUrl = $state(null);
+	let audio = null;
+	function toggleRadio(clip) {
+		if (playingUrl === clip.url) { audio?.pause(); playingUrl = null; return; }
+		audio?.pause();
+		audio = new Audio(clip.url);
+		audio.onended = () => { playingUrl = null; };
+		audio.onerror = () => { playingUrl = null; };
+		audio.play().catch(() => { playingUrl = null; });
+		playingUrl = clip.url;
+	}
 
 	const SECTION_BY_TYPE = {
 		pace: 'pace',
@@ -84,6 +107,7 @@
 		<span class="km__title">{$t('moments.title')}</span>
 		<div class="km__grid">
 			{#each moments as m, i (m.chart_type + '-' + m.lap + '-' + m.driver)}
+				{@const clip = clipFor(m)}
 				<div class="km__card" class:km__card--high={m.severity === 'high'} style="animation-delay: {90 * i}ms">
 					<span class="km__k">{$t('moments.lap')} {m.lap} &middot; {m.driver}</span>
 					<p class="km__txt">{summary(m)}</p>
@@ -91,6 +115,11 @@
 					<button class="km__go" onclick={() => show(m)}>{$t('moments.show')} &rarr;</button>
 					{#if raceId}
 						<button class="km__go km__go--watch" onclick={() => goto(`/race/${raceId}/replay?lap=${m.lap}`)}>&#9654; {$t('replay.watch')}</button>
+					{/if}
+					{#if clip}
+						<button class="km__go km__go--radio" class:playing={playingUrl === clip.url} onclick={() => toggleRadio(clip)} title="{$t('moments.radio')}: {clip.driver} L{clip.lap}">
+							{playingUrl === clip.url ? '&#9632;' : '&#128266;'} {$t('moments.radio')}
+						</button>
 					{/if}
 				</div>
 				</div>
@@ -166,6 +195,8 @@
 		color: #fff;
 	}
 	.km__go--watch { color: var(--t2, #9ca3af); border-color: var(--brd, #2e3240); }
+	.km__go--radio { color: #22C55E; border-color: rgba(34,197,94,.35); }
+	.km__go--radio.playing { background: #22C55E; color: #0F1117; }
 	@media (prefers-reduced-motion: reduce) {
 		.km__card { animation: none; }
 	}

@@ -1,0 +1,181 @@
+{
+  "driver": "PER",
+  "team": "Red Bull Racing",
+  "laps": [
+    {
+      "lap": 1,
+      "deploy_pct": 6.46,
+      "harvest_pct": 22.26,
+      "clip_pct": 0.92,
+      "neutral_pct": 70.36,
+      "normalized_deploy": 21.79,
+      "normalized_harvest": 75.1,
+      "normalized_clip": 3.1,
+      "is_vsc": false
+    },
+    {
+      "lap": 2,
+      "deploy_pct": 4.69,
+      "harvest_pct": 22.62,
+      "clip_pct": 0.72,
+      "neutral_pct": 71.96,
+      "normalized_deploy": 16.73,
+      "normalized_harvest": 80.7,
+      "normalized_clip": 2.57,
+      "is_vsc": false
+    },
+    {
+      "lap": 3,
+      "deploy_pct": 9.55,
+      "harvest_pct": 20.92,
+      "clip_pct": 0.97,
+      "neutral_pct": 68.56,
+      "normalized_deploy": 30.38,
+      "normalized_harvest": 66.54,
+      "normalized_clip": 3.09,
+      "is_vsc": false
+    },
+    {
+      "lap": 4,
+      "deploy_pct": 6.66,
+      "harvest_pct": 21.55,
+      "clip_pct": 1.45,
+      "neutral_pct": 70.34,
+      "normalized_deploy": 22.45,
+      "normalized_harvest": 72.66,
+      "normalized_clip": 4.89,
+      "is_vsc": false
+    },
+    {
+      "lap": 5,
+      "deploy_pct": 3.52,
+      "harvest_pct": 20.87,
+      "clip_pct": 0.73,
+      "neutral_pct": 74.88,
+      "normalized_deploy": 14.01,
+      "normalized_harvest": 83.08,
+      "normalized_clip": 2.91,
+      "is_vsc": false
+    },
+    {
+      "lap": 6,
+      "deploy_pct": 3.28,
+      "harvest_pct": 19.81,
+      "clip_pct": 0.97,
+      "neutral_pct": 75.94,
+      "normalized_deploy": 13.63,
+      "normalized_harvest": 82.34,
+      "normalized_clip": 4.03,
+      "is_vsc": false
+    },
+    {
+      "lap": 7,
+      "deploy_pct": 3.73,
+      "harvest_pct": 23.23,
+      "clip_pct": 0.48,
+      "neutral_pct": 72.56,
+      "normalized_deploy": 13.59,
+      "normalized_harvest": 84.66,
+      "normalized_clip": 1.75,
+      "is_vsc": false
+    },
+    {
+      "lap": 8,
+      "deploy_pct": 1.94,
+      "harvest_pct": 19.9,
+      "clip_pct": 0.36,
+      "neutral_pct": 77.79,
+      "normalized_deploy": 8.74,
+      "normalized_harvest": 89.64,
+      "normalized_clip": 1.62,
+      "is_vsc": false
+    },
+    {
+      "lap": 9,
+      "deploy_pct": 2.43,
+      "harvest_pct": 20.75,
+      "clip_pct": 0.61,
+      "neutral_pct": 76.21,
+      "normalized_deploy": 10.21,
+      "normalized_harvest": 87.22,
+      "normalized_clip": 2.56,
+      "is_vsc": false
+    },
+    {
+      "lap": 10,
+      "deploy_pct": 0.45,
+      "harvest_pct": 31.64,
+      "clip_pct": 0.82,
+      "neutral_pct": 67.09,
+      "normalized_deploy": 1.37,
+      "normalized_harvest": 96.14,
+      "normalized_clip": 2.49,
+      "is_vsc": false
+    },
+    {
+      "lap": 11,
+      "deploy_pct": 0.52,
+      "harvest_pct": 35.33,
+      "clip_pct": 0.59,
+      "neutral_pct": 63.57,
+      "normalized_deploy": 1.43,
+      "normalized_harvest": 96.95,
+      "normalized_clip": 1.62,
+      "is_vsc": false
+    },
+    {
+      "lap": 12,
+      "deploy_pct": 0.14,
+      "harvest_pct": 37.28,
+      "clip_pct": 0.83,
+      "neutral_pct": 61.75,
+      "normalized_deploy": 0.37,
+      "normalized_harvest": 97.46,
+      "normalized_clip": 2.17,
+      "is_vsc": false
+    },
+    {
+      "lap": 13,
+      "deploy_pct": 0.06,
+      "harvest_pct": 43.54,
+      "clip_pct": 0.06,
+      "neutral_pct": 56.33,
+      "normalized_deploy": 0.14,
+      "normalized_harvest": 99.73,
+      "normalized_clip": 0.14,
+      "is_vsc": false
+    },
+    {
+      "lap": 14,
+      "deploy_pct": 0.56,
+      "harvest_pct": 37.32,
+      "clip_pct": 0.1,
+      "neutral_pct": 62.02,
+      "normalized_deploy": 1.47,
+      "normalized_harvest": 98.26,
+      "normalized_clip": 0.26,
+      "is_vsc": false
+    },
+    {
+      "lap": 15,
+      "deploy_pct": 1.45,
+      "harvest_pct": 28.75,
+      "clip_pct": 0.11,
+      "neutral_pct": 69.69,
+      "normalized_deploy": 4.78,
+      "normalized_harvest": 94.85,
+      "normalized_clip": 0.36,
+      "is_vsc": false
+    }
+  ],
+  "summary": {
+    "avg_deploy": 3.03,
+    "avg_harvest": 27.05,
+    "avg_clip": 0.65,
+    "avg_neutral": 69.27,
+    "normalized_deploy": 9.86,
+    "normalized_harvest": 88.02,
+    "normalized_clip": 2.12,
+    "dc_ratio": 4.65
+  }
+}

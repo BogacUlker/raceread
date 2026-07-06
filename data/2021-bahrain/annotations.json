@@ -1,0 +1,86 @@
+{
+  "race_id": "2021-bahrain",
+  "annotations": [
+    {
+      "driver": "HAM",
+      "lap": 56,
+      "chart_type": "strategy",
+      "category": "race_insight",
+      "severity": "high",
+      "text_en": "HAM won the race with a 2-stop strategy (M→H→H).",
+      "text_tr": "HAM yarışı 2 duraklı stratejiyle (M→H→H) kazandı."
+    },
+    {
+      "driver": "BOT",
+      "lap": 56,
+      "chart_type": "pace",
+      "category": "race_insight",
+      "severity": "high",
+      "text_en": "Fastest lap of the race: 1:32.090 by BOT on lap 56.",
+      "text_tr": "Yarışın en hızlı turu: 56. turda BOT - 1:32.090."
+    },
+    {
+      "driver": "PER",
+      "lap": 56,
+      "chart_type": "pace",
+      "category": "race_insight",
+      "severity": "high",
+      "text_en": "PER made up the most ground on track: P19 at the end of lap 1 to P5 at the flag (14 places).",
+      "text_tr": "Pistte en çok yer kazanan PER oldu: 1. tur sonunda P19, damalı bayrakta P5 (14 sıra)."
+    },
+    {
+      "driver": "VET",
+      "lap": 55,
+      "chart_type": "strategy",
+      "category": "race_insight",
+      "severity": "medium",
+      "text_en": "Longest stint of the race: VET ran 31 laps on HARD (lap 25-55).",
+      "text_tr": "Yarışın en uzun stinti: VET, HARD lastikle 31 tur koştu (25-55. turlar)."
+    },
+    {
+      "driver": "ALO",
+      "lap": 22,
+      "chart_type": "speed_trace",
+      "category": "race_insight",
+      "severity": "medium",
+      "text_en": "Highest recorded speed: 330 km/h by ALO on lap 22.",
+      "text_tr": "Kaydedilen en yüksek hız: 22. turda ALO - 330 km/s."
+    },
+    {
+      "driver": "LAT",
+      "lap": 28,
+      "chart_type": "energy",
+      "category": "race_insight",
+      "severity": "medium",
+      "text_en": "Best inferred deploy-to-clip ratio of the field: LAT at 5.76 (higher = cleaner energy use; inferred, 2021 PU era).",
+      "text_tr": "Sahanın en iyi çıkarımsal deploy/clip oranı: LAT - 5.76 (yüksek = daha temiz enerji kullanımı; çıkarımsal, 2021 güç ünitesi dönemi)."
+    },
+    {
+      "driver": "LEC",
+      "lap": 28,
+      "chart_type": "energy",
+      "category": "race_insight",
+      "severity": "low",
+      "text_en": "Most battery-limited driver by inferred clip share: LEC (1.56% of samples).",
+      "text_tr": "Çıkarımsal clip payına göre en çok batarya kısıtı yaşayan pilot: LEC (örneklerin %1.56'si)."
+    },
+    {
+      "driver": "VER",
+      "lap": 1,
+      "chart_type": "qualifying",
+      "category": "race_insight",
+      "severity": "medium",
+      "text_en": "Pole position: VER with 1:28.997 in Q3.",
+      "text_tr": "Pole pozisyonu: VER, Q3'te 1:28.997."
+    },
+    {
+      "driver": "GAS",
+      "lap": 56,
+      "chart_type": "strategy",
+      "category": "race_insight",
+      "severity": "low",
+      "text_en": "Busiest pit lane visitor: GAS with 4 stops.",
+      "text_tr": "Pit yoluna en çok uğrayan: GAS - 4 stop."
+    }
+  ]
+}

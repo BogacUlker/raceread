@@ -1,0 +1,138 @@
+{
+  "race": "2021-abu-dhabi",
+  "confidence": 73.3,
+  "invariants": {
+    "vsc_drivers_checked": 16,
+    "vsc_violators": [
+      "LAT"
+    ],
+    "deploy_budget_violation_laps": 0,
+    "harvest_budget_violation_laps": 62,
+    "budget_total_laps": 989,
+    "teammate_clip_corr": {
+      "Alpine": 0.1,
+      "Mercedes": 0.292,
+      "AlphaTauri": 0.508,
+      "Alfa Romeo Racing": 0.01,
+      "Williams": -0.292,
+      "Ferrari": 0.266,
+      "McLaren": -0.139,
+      "Red Bull Racing": 0.2,
+      "Aston Martin": 0.16
+    }
+  },
+  "physics": {
+    "team_cda": {
+      "Alfa Romeo Racing": 1.344,
+      "AlphaTauri": 1.304,
+      "Alpine": 1.357,
+      "Aston Martin": 1.371,
+      "Ferrari": 1.296,
+      "Haas F1 Team": 1.397,
+      "McLaren": 1.359,
+      "Mercedes": 1.36,
+      "Red Bull Racing": 1.397,
+      "Williams": 1.322
+    },
+    "median_contradiction_rate": 0.0138,
+    "median_deploy_precision": 0.979,
+    "median_deploy_recall": 0.08,
+    "per_driver": {
+      "ALO": {
+        "contradiction_rate": 0.0171,
+        "deploy_physics_precision": 0.979,
+        "deploy_physics_recall": 0.084
+      },
+      "BOT": {
+        "contradiction_rate": 0.0093,
+        "deploy_physics_precision": 0.979,
+        "deploy_physics_recall": 0.069
+      },
+      "GAS": {
+        "contradiction_rate": 0.0152,
+        "deploy_physics_precision": 0.983,
+        "deploy_physics_recall": 0.084
+      },
+      "GIO": {
+        "contradiction_rate": 0.0129,
+        "deploy_physics_precision": 0.987,
+        "deploy_physics_recall": 0.063
+      },
+      "HAM": {
+        "contradiction_rate": 0.0127,
+        "deploy_physics_precision": 0.989,
+        "deploy_physics_recall": 0.036
+      },
+      "LAT": {
+        "contradiction_rate": 0.0121,
+        "deploy_physics_precision": 0.966,
+        "deploy_physics_recall": 0.08
+      },
+      "LEC": {
+        "contradiction_rate": 0.0149,
+        "deploy_physics_precision": 0.99,
+        "deploy_physics_recall": 0.106
+      },
+      "MSC": {
+        "contradiction_rate": 0.0131,
+        "deploy_physics_precision": 0.981,
+        "deploy_physics_recall": 0.089
+      },
+      "NOR": {
+        "contradiction_rate": 0.0155,
+        "deploy_physics_precision": 0.98,
+        "deploy_physics_recall": 0.067
+      },
+      "OCO": {
+        "contradiction_rate": 0.0147,
+        "deploy_physics_precision": 0.95,
+        "deploy_physics_recall": 0.051
+      },
+      "PER": {
+        "contradiction_rate": 0.0131,
+        "deploy_physics_precision": 0.959,
+        "deploy_physics_recall": 0.064
+      },
+      "RAI": {
+        "contradiction_rate": 0.0138,
+        "deploy_physics_precision": 0.928,
+        "deploy_physics_recall": 0.076
+      },
+      "RIC": {
+        "contradiction_rate": 0.0159,
+        "deploy_physics_precision": 0.982,
+        "deploy_physics_recall": 0.102
+      },
+      "RUS": {
+        "contradiction_rate": 0.0096,
+        "deploy_physics_precision": 0.99,
+        "deploy_physics_recall": 0.076
+      },
+      "SAI": {
+        "contradiction_rate": 0.0207,
+        "deploy_physics_precision": 0.957,
+        "deploy_physics_recall": 0.103
+      },
+      "STR": {
+        "contradiction_rate": 0.0123,
+        "deploy_physics_precision": 0.972,
+        "deploy_physics_recall": 0.109
+      },
+      "TSU": {
+        "contradiction_rate": 0.0136,
+        "deploy_physics_precision": 0.966,
+        "deploy_physics_recall": 0.082
+      },
+      "VER": {
+        "contradiction_rate": 0.0185,
+        "deploy_physics_precision": 0.939,
+        "deploy_physics_recall": 0.051
+      },
+      "VET": {
+        "contradiction_rate": 0.0164,
+        "deploy_physics_precision": 0.975,
+        "deploy_physics_recall": 0.091
+      }
+    }
+  }
+}

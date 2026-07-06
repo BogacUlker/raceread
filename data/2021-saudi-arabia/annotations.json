@@ -1,0 +1,86 @@
+{
+  "race_id": "2021-saudi-arabia",
+  "annotations": [
+    {
+      "driver": "HAM",
+      "lap": 50,
+      "chart_type": "strategy",
+      "category": "race_insight",
+      "severity": "high",
+      "text_en": "HAM won the race with a 3-stop strategy (M→H→H→H).",
+      "text_tr": "HAM yarışı 3 duraklı stratejiyle (M→H→H→H) kazandı."
+    },
+    {
+      "driver": "HAM",
+      "lap": 47,
+      "chart_type": "pace",
+      "category": "race_insight",
+      "severity": "high",
+      "text_en": "Fastest lap of the race: 1:30.734 by HAM on lap 47.",
+      "text_tr": "Yarışın en hızlı turu: 47. turda HAM - 1:30.734."
+    },
+    {
+      "driver": "LAT",
+      "lap": 50,
+      "chart_type": "pace",
+      "category": "race_insight",
+      "severity": "high",
+      "text_en": "LAT made up the most ground on track: P19 at the end of lap 1 to P12 at the flag (7 places).",
+      "text_tr": "Pistte en çok yer kazanan LAT oldu: 1. tur sonunda P19, damalı bayrakta P12 (7 sıra)."
+    },
+    {
+      "driver": "BOT",
+      "lap": 50,
+      "chart_type": "strategy",
+      "category": "race_insight",
+      "severity": "medium",
+      "text_en": "Longest stint of the race: BOT ran 35 laps on MEDIUM (lap 16-50).",
+      "text_tr": "Yarışın en uzun stinti: BOT, MEDIUM lastikle 35 tur koştu (16-50. turlar)."
+    },
+    {
+      "driver": "BOT",
+      "lap": 36,
+      "chart_type": "speed_trace",
+      "category": "race_insight",
+      "severity": "medium",
+      "text_en": "Highest recorded speed: 336 km/h by BOT on lap 36.",
+      "text_tr": "Kaydedilen en yüksek hız: 36. turda BOT - 336 km/s."
+    },
+    {
+      "driver": "PER",
+      "lap": 25,
+      "chart_type": "energy",
+      "category": "race_insight",
+      "severity": "medium",
+      "text_en": "Best inferred deploy-to-clip ratio of the field: PER at 4.65 (higher = cleaner energy use; inferred, 2021 PU era).",
+      "text_tr": "Sahanın en iyi çıkarımsal deploy/clip oranı: PER - 4.65 (yüksek = daha temiz enerji kullanımı; çıkarımsal, 2021 güç ünitesi dönemi)."
+    },
+    {
+      "driver": "SAI",
+      "lap": 25,
+      "chart_type": "energy",
+      "category": "race_insight",
+      "severity": "low",
+      "text_en": "Most battery-limited driver by inferred clip share: SAI (1.91% of samples).",
+      "text_tr": "Çıkarımsal clip payına göre en çok batarya kısıtı yaşayan pilot: SAI (örneklerin %1.91'si)."
+    },
+    {
+      "driver": "HAM",
+      "lap": 1,
+      "chart_type": "qualifying",
+      "category": "race_insight",
+      "severity": "medium",
+      "text_en": "Pole position: HAM with 1:27.511 in Q3.",
+      "text_tr": "Pole pozisyonu: HAM, Q3'te 1:27.511."
+    },
+    {
+      "driver": "ALO",
+      "lap": 50,
+      "chart_type": "strategy",
+      "category": "race_insight",
+      "severity": "low",
+      "text_en": "Busiest pit lane visitor: ALO with 4 stops.",
+      "text_tr": "Pit yoluna en çok uğrayan: ALO - 4 stop."
+    }
+  ]
+}

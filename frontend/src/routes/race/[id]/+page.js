@@ -20,6 +20,11 @@ export async function load({ params, fetch }) {
 		story = await api(`/api/races/${id}/story`, fetch);
 	} catch (e) { /* story block hides itself */ }
 
+	let radio = null;
+	try {
+		radio = await api(`/api/races/${id}/radio`, fetch);
+	} catch (e) { /* no radio for this race */ }
+
 	const optionalResults = await Promise.allSettled([
 		api(`/api/races/${id}/delta`, fetch),
 		api(`/api/races/${id}/annotations`, fetch),
@@ -39,7 +44,7 @@ export async function load({ params, fetch }) {
 	const traffic = optionalResults[6].status === 'fulfilled' ? optionalResults[6].value : null;
 
 	return {
-		raceId: id, raceInfo, laps, strategy, delta, annotations, energyComparison, pitstops, races, vscData, circuit, traffic, calendar, story,
+		raceId: id, raceInfo, laps, strategy, delta, annotations, energyComparison, pitstops, races, vscData, circuit, traffic, calendar, story, radio,
 		metaTitle: raceInfo.name + ' - RaceRead',
 		metaDescription: raceInfo.name + ' (' + raceInfo.circuit + ', ' + raceInfo.date + '): lap-by-lap pace, strategy timeline, energy deployment and AI race insights.',
 	};

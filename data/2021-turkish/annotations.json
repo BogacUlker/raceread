@@ -1,0 +1,77 @@
+{
+  "race_id": "2021-turkish",
+  "annotations": [
+    {
+      "driver": "BOT",
+      "lap": 58,
+      "chart_type": "strategy",
+      "category": "race_insight",
+      "severity": "high",
+      "text_en": "BOT won the race with a 1-stop strategy (I→I), beating the next classified runner by 14.6s.",
+      "text_tr": "BOT yarışı 1 duraklı stratejiyle (I→I) kazandı; en yakın takipçisine farkı 14.6s idi."
+    },
+    {
+      "driver": "BOT",
+      "lap": 58,
+      "chart_type": "pace",
+      "category": "race_insight",
+      "severity": "high",
+      "text_en": "Fastest lap of the race: 1:30.432 by BOT on lap 58.",
+      "text_tr": "Yarışın en hızlı turu: 58. turda BOT - 1:30.432."
+    },
+    {
+      "driver": "SAI",
+      "lap": 58,
+      "chart_type": "pace",
+      "category": "race_insight",
+      "severity": "high",
+      "text_en": "SAI made up the most ground on track: P17 at the end of lap 1 to P8 at the flag (9 places).",
+      "text_tr": "Pistte en çok yer kazanan SAI oldu: 1. tur sonunda P17, damalı bayrakta P8 (9 sıra)."
+    },
+    {
+      "driver": "OCO",
+      "lap": 57,
+      "chart_type": "strategy",
+      "category": "race_insight",
+      "severity": "medium",
+      "text_en": "Longest stint of the race: OCO ran 57 laps on INTERMEDIATE (lap 1-57).",
+      "text_tr": "Yarışın en uzun stinti: OCO, INTERMEDIATE lastikle 57 tur koştu (1-57. turlar)."
+    },
+    {
+      "driver": "LEC",
+      "lap": 15,
+      "chart_type": "speed_trace",
+      "category": "race_insight",
+      "severity": "medium",
+      "text_en": "Highest recorded speed: 311 km/h by LEC on lap 15.",
+      "text_tr": "Kaydedilen en yüksek hız: 15. turda LEC - 311 km/s."
+    },
+    {
+      "driver": "MAZ",
+      "lap": 29,
+      "chart_type": "energy",
+      "category": "race_insight",
+      "severity": "medium",
+      "text_en": "Best inferred deploy-to-clip ratio of the field: MAZ at 2.85 (higher = cleaner energy use; inferred, 2021 PU era).",
+      "text_tr": "Sahanın en iyi çıkarımsal deploy/clip oranı: MAZ - 2.85 (yüksek = daha temiz enerji kullanımı; çıkarımsal, 2021 güç ünitesi dönemi)."
+    },
+    {
+      "driver": "BOT",
+      "lap": 29,
+      "chart_type": "energy",
+      "category": "race_insight",
+      "severity": "low",
+      "text_en": "Most battery-limited driver by inferred clip share: BOT (1.60% of samples).",
+      "text_tr": "Çıkarımsal clip payına göre en çok batarya kısıtı yaşayan pilot: BOT (örneklerin %1.60'si)."
+    },
+    {
+      "driver": "HAM",
+      "lap": 1,
+      "chart_type": "qualifying",
+      "category": "race_insight",
+      "severity": "medium",
+      "text_en": "Pole position: HAM with 1:22.868 in Q3.",
+      "text_tr": "Pole pozisyonu: HAM, Q3'te 1:22.868."
+    }
+  ]
+}

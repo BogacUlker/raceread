@@ -1,0 +1,86 @@
+{
+  "race_id": "2021-so-paulo",
+  "annotations": [
+    {
+      "driver": "HAM",
+      "lap": 71,
+      "chart_type": "strategy",
+      "category": "race_insight",
+      "severity": "high",
+      "text_en": "HAM won the race with a 4-stop strategy (M→M→M→H→H), beating the next classified runner by 10.5s.",
+      "text_tr": "HAM yarışı 4 duraklı stratejiyle (M→M→M→H→H) kazandı; en yakın takipçisine farkı 10.5s idi."
+    },
+    {
+      "driver": "PER",
+      "lap": 71,
+      "chart_type": "pace",
+      "category": "race_insight",
+      "severity": "high",
+      "text_en": "Fastest lap of the race: 1:11.010 by PER on lap 71.",
+      "text_tr": "Yarışın en hızlı turu: 71. turda PER - 1:11.010."
+    },
+    {
+      "driver": "NOR",
+      "lap": 71,
+      "chart_type": "pace",
+      "category": "race_insight",
+      "severity": "high",
+      "text_en": "NOR made up the most ground on track: P20 at the end of lap 1 to P10 at the flag (10 places).",
+      "text_tr": "Pistte en çok yer kazanan NOR oldu: 1. tur sonunda P20, damalı bayrakta P10 (10 sıra)."
+    },
+    {
+      "driver": "OCO",
+      "lap": 70,
+      "chart_type": "strategy",
+      "category": "race_insight",
+      "severity": "medium",
+      "text_en": "Longest stint of the race: OCO ran 40 laps on HARD (lap 31-70).",
+      "text_tr": "Yarışın en uzun stinti: OCO, HARD lastikle 40 tur koştu (31-70. turlar)."
+    },
+    {
+      "driver": "GAS",
+      "lap": 59,
+      "chart_type": "speed_trace",
+      "category": "race_insight",
+      "severity": "medium",
+      "text_en": "Highest recorded speed: 344 km/h by GAS on lap 59.",
+      "text_tr": "Kaydedilen en yüksek hız: 59. turda GAS - 344 km/s."
+    },
+    {
+      "driver": "GAS",
+      "lap": 35,
+      "chart_type": "energy",
+      "category": "race_insight",
+      "severity": "medium",
+      "text_en": "Best inferred deploy-to-clip ratio of the field: GAS at 2.20 (higher = cleaner energy use; inferred, 2021 PU era).",
+      "text_tr": "Sahanın en iyi çıkarımsal deploy/clip oranı: GAS - 2.20 (yüksek = daha temiz enerji kullanımı; çıkarımsal, 2021 güç ünitesi dönemi)."
+    },
+    {
+      "driver": "VER",
+      "lap": 35,
+      "chart_type": "energy",
+      "category": "race_insight",
+      "severity": "low",
+      "text_en": "Most battery-limited driver by inferred clip share: VER (1.68% of samples).",
+      "text_tr": "Çıkarımsal clip payına göre en çok batarya kısıtı yaşayan pilot: VER (örneklerin %1.68'si)."
+    },
+    {
+      "driver": "HAM",
+      "lap": 1,
+      "chart_type": "qualifying",
+      "category": "race_insight",
+      "severity": "medium",
+      "text_en": "Pole position: HAM with 1:07.934 in Q3.",
+      "text_tr": "Pole pozisyonu: HAM, Q3'te 1:07.934."
+    },
+    {
+      "driver": "MSC",
+      "lap": 71,
+      "chart_type": "strategy",
+      "category": "race_insight",
+      "severity": "low",
+      "text_en": "Busiest pit lane visitor: MSC with 5 stops.",
+      "text_tr": "Pit yoluna en çok uğrayan: MSC - 5 stop."
+    }
+  ]
+}

@@ -377,7 +377,7 @@
 			<ChartNav />
 
 			{#if $activeSession === 'race'}
-				<KeyMoments annotations={annotations.annotations || []} {raceId} />
+				<KeyMoments annotations={annotations.annotations || []} {raceId} radio={data.radio?.clips || []} />
 
 				{#if $showAnnotations}
 					<div class="pd-sec"><RaceInsightsPanel annotations={annotations.annotations || []} /></div>

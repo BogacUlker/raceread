@@ -1,0 +1,86 @@
+{
+  "race_id": "2021-usa",
+  "annotations": [
+    {
+      "driver": "VER",
+      "lap": 56,
+      "chart_type": "strategy",
+      "category": "race_insight",
+      "severity": "high",
+      "text_en": "VER won the race with a 2-stop strategy (M→H→H), beating the next classified runner by 1.3s.",
+      "text_tr": "VER yarışı 2 duraklı stratejiyle (M→H→H) kazandı; en yakın takipçisine farkı 1.3s idi."
+    },
+    {
+      "driver": "HAM",
+      "lap": 41,
+      "chart_type": "pace",
+      "category": "race_insight",
+      "severity": "high",
+      "text_en": "Fastest lap of the race: 1:38.485 by HAM on lap 41.",
+      "text_tr": "Yarışın en hızlı turu: 41. turda HAM - 1:38.485."
+    },
+    {
+      "driver": "STR",
+      "lap": 56,
+      "chart_type": "pace",
+      "category": "race_insight",
+      "severity": "high",
+      "text_en": "STR made up the most ground on track: P18 at the end of lap 1 to P12 at the flag (6 places).",
+      "text_tr": "Pistte en çok yer kazanan STR oldu: 1. tur sonunda P18, damalı bayrakta P12 (6 sıra)."
+    },
+    {
+      "driver": "LAT",
+      "lap": 55,
+      "chart_type": "strategy",
+      "category": "race_insight",
+      "severity": "medium",
+      "text_en": "Longest stint of the race: LAT ran 30 laps on HARD (lap 26-55).",
+      "text_tr": "Yarışın en uzun stinti: LAT, HARD lastikle 30 tur koştu (26-55. turlar)."
+    },
+    {
+      "driver": "STR",
+      "lap": 3,
+      "chart_type": "speed_trace",
+      "category": "race_insight",
+      "severity": "medium",
+      "text_en": "Highest recorded speed: 343 km/h by STR on lap 3.",
+      "text_tr": "Kaydedilen en yüksek hız: 3. turda STR - 343 km/s."
+    },
+    {
+      "driver": "NOR",
+      "lap": 28,
+      "chart_type": "energy",
+      "category": "race_insight",
+      "severity": "medium",
+      "text_en": "Best inferred deploy-to-clip ratio of the field: NOR at 1.95 (higher = cleaner energy use; inferred, 2021 PU era).",
+      "text_tr": "Sahanın en iyi çıkarımsal deploy/clip oranı: NOR - 1.95 (yüksek = daha temiz enerji kullanımı; çıkarımsal, 2021 güç ünitesi dönemi)."
+    },
+    {
+      "driver": "VER",
+      "lap": 28,
+      "chart_type": "energy",
+      "category": "race_insight",
+      "severity": "low",
+      "text_en": "Most battery-limited driver by inferred clip share: VER (1.63% of samples).",
+      "text_tr": "Çıkarımsal clip payına göre en çok batarya kısıtı yaşayan pilot: VER (örneklerin %1.63'si)."
+    },
+    {
+      "driver": "VER",
+      "lap": 1,
+      "chart_type": "qualifying",
+      "category": "race_insight",
+      "severity": "medium",
+      "text_en": "Pole position: VER with 1:32.910 in Q3.",
+      "text_tr": "Pole pozisyonu: VER, Q3'te 1:32.910."
+    },
+    {
+      "driver": "ALO",
+      "lap": 56,
+      "chart_type": "strategy",
+      "category": "race_insight",
+      "severity": "low",
+      "text_en": "Busiest pit lane visitor: ALO with 4 stops.",
+      "text_tr": "Pit yoluna en çok uğrayan: ALO - 4 stop."
+    }
+  ]
+}

@@ -1,0 +1,476 @@
+{
+  "drivers": [
+    {
+      "driver": "ALO",
+      "team": "Alpine",
+      "stints": [
+        {
+          "compound": "HARD",
+          "start_lap": 1,
+          "end_lap": 36,
+          "laps": 36
+        },
+        {
+          "compound": "MEDIUM",
+          "start_lap": 37,
+          "end_lap": 58,
+          "laps": 22
+        }
+      ],
+      "pit_laps": [
+        36
+      ]
+    },
+    {
+      "driver": "BOT",
+      "team": "Mercedes",
+      "stints": [
+        {
+          "compound": "MEDIUM",
+          "start_lap": 1,
+          "end_lap": 30,
+          "laps": 30
+        },
+        {
+          "compound": "HARD",
+          "start_lap": 31,
+          "end_lap": 58,
+          "laps": 28
+        }
+      ],
+      "pit_laps": [
+        30
+      ]
+    },
+    {
+      "driver": "GAS",
+      "team": "AlphaTauri",
+      "stints": [
+        {
+          "compound": "HARD",
+          "start_lap": 1,
+          "end_lap": 36,
+          "laps": 36
+        },
+        {
+          "compound": "MEDIUM",
+          "start_lap": 37,
+          "end_lap": 54,
+          "laps": 18
+        },
+        {
+          "compound": "SOFT",
+          "start_lap": 55,
+          "end_lap": 58,
+          "laps": 4
+        }
+      ],
+      "pit_laps": [
+        36,
+        54
+      ]
+    },
+    {
+      "driver": "GIO",
+      "team": "Alfa Romeo Racing",
+      "stints": [
+        {
+          "compound": "MEDIUM",
+          "start_lap": 1,
+          "end_lap": 17,
+          "laps": 17
+        },
+        {
+          "compound": "HARD",
+          "start_lap": 18,
+          "end_lap": 34,
+          "laps": 17
+        }
+      ],
+      "pit_laps": [
+        17
+      ]
+    },
+    {
+      "driver": "HAM",
+      "team": "Mercedes",
+      "stints": [
+        {
+          "compound": "MEDIUM",
+          "start_lap": 1,
+          "end_lap": 14,
+          "laps": 14
+        },
+        {
+          "compound": "HARD",
+          "start_lap": 15,
+          "end_lap": 58,
+          "laps": 44
+        }
+      ],
+      "pit_laps": [
+        14
+      ]
+    },
+    {
+      "driver": "LAT",
+      "team": "Williams",
+      "stints": [
+        {
+          "compound": "MEDIUM",
+          "start_lap": 1,
+          "end_lap": 28,
+          "laps": 28
+        },
+        {
+          "compound": "HARD",
+          "start_lap": 29,
+          "end_lap": 51,
+          "laps": 23
+        }
+      ],
+      "pit_laps": [
+        28
+      ]
+    },
+    {
+      "driver": "LEC",
+      "team": "Ferrari",
+      "stints": [
+        {
+          "compound": "SOFT",
+          "start_lap": 1,
+          "end_lap": 15,
+          "laps": 15
+        },
+        {
+          "compound": "HARD",
+          "start_lap": 16,
+          "end_lap": 35,
+          "laps": 20
+        },
+        {
+          "compound": "MEDIUM",
+          "start_lap": 36,
+          "end_lap": 58,
+          "laps": 23
+        }
+      ],
+      "pit_laps": [
+        15,
+        35
+      ]
+    },
+    {
+      "driver": "MSC",
+      "team": "Haas F1 Team",
+      "stints": [
+        {
+          "compound": "SOFT",
+          "start_lap": 1,
+          "end_lap": 10,
+          "laps": 10
+        },
+        {
+          "compound": "HARD",
+          "start_lap": 11,
+          "end_lap": 52,
+          "laps": 42
+        },
+        {
+          "compound": "SOFT",
+          "start_lap": 53,
+          "end_lap": 57,
+          "laps": 5
+        }
+      ],
+      "pit_laps": [
+        10,
+        52
+      ]
+    },
+    {
+      "driver": "NOR",
+      "team": "McLaren",
+      "stints": [
+        {
+          "compound": "SOFT",
+          "start_lap": 1,
+          "end_lap": 17,
+          "laps": 17
+        },
+        {
+          "compound": "HARD",
+          "start_lap": 18,
+          "end_lap": 48,
+          "laps": 31
+        },
+        {
+          "compound": "MEDIUM",
+          "start_lap": 49,
+          "end_lap": 58,
+          "laps": 10
+        }
+      ],
+      "pit_laps": [
+        17,
+        48
+      ]
+    },
+    {
+      "driver": "OCO",
+      "team": "Alpine",
+      "stints": [
+        {
+          "compound": "SOFT",
+          "start_lap": 1,
+          "end_lap": 15,
+          "laps": 15
+        },
+        {
+          "compound": "HARD",
+          "start_lap": 16,
+          "end_lap": 58,
+          "laps": 43
+        }
+      ],
+      "pit_laps": [
+        15
+      ]
+    },
+    {
+      "driver": "PER",
+      "team": "Red Bull Racing",
+      "stints": [
+        {
+          "compound": "SOFT",
+          "start_lap": 1,
+          "end_lap": 21,
+          "laps": 21
+        },
+        {
+          "compound": "HARD",
+          "start_lap": 22,
+          "end_lap": 36,
+          "laps": 15
+        },
+        {
+          "compound": "HARD",
+          "start_lap": 37,
+          "end_lap": 53,
+          "laps": 17
+        },
+        {
+          "compound": "SOFT",
+          "start_lap": 54,
+          "end_lap": 55,
+          "laps": 2
+        }
+      ],
+      "pit_laps": [
+        21,
+        36,
+        53,
+        55
+      ]
+    },
+    {
+      "driver": "RAI",
+      "team": "Alfa Romeo Racing",
+      "stints": [
+        {
+          "compound": "MEDIUM",
+          "start_lap": 1,
+          "end_lap": 21,
+          "laps": 21
+        },
+        {
+          "compound": "HARD",
+          "start_lap": 22,
+          "end_lap": 25,
+          "laps": 4
+        }
+      ],
+      "pit_laps": [
+        21,
+        25
+      ]
+    },
+    {
+      "driver": "RIC",
+      "team": "McLaren",
+      "stints": [
+        {
+          "compound": "SOFT",
+          "start_lap": 1,
+          "end_lap": 18,
+          "laps": 18
+        },
+        {
+          "compound": "HARD",
+          "start_lap": 19,
+          "end_lap": 52,
+          "laps": 34
+        },
+        {
+          "compound": "SOFT",
+          "start_lap": 53,
+          "end_lap": 57,
+          "laps": 5
+        }
+      ],
+      "pit_laps": [
+        18,
+        52
+      ]
+    },
+    {
+      "driver": "RUS",
+      "team": "Williams",
+      "stints": [
+        {
+          "compound": "MEDIUM",
+          "start_lap": 1,
+          "end_lap": 26,
+          "laps": 26
+        }
+      ],
+      "pit_laps": [
+        26
+      ]
+    },
+    {
+      "driver": "SAI",
+      "team": "Ferrari",
+      "stints": [
+        {
+          "compound": "SOFT",
+          "start_lap": 1,
+          "end_lap": 19,
+          "laps": 19
+        },
+        {
+          "compound": "HARD",
+          "start_lap": 20,
+          "end_lap": 58,
+          "laps": 39
+        }
+      ],
+      "pit_laps": [
+        19
+      ]
+    },
+    {
+      "driver": "STR",
+      "team": "Aston Martin",
+      "stints": [
+        {
+          "compound": "MEDIUM",
+          "start_lap": 1,
+          "end_lap": 21,
+          "laps": 21
+        },
+        {
+          "compound": "HARD",
+          "start_lap": 22,
+          "end_lap": 52,
+          "laps": 31
+        },
+        {
+          "compound": "SOFT",
+          "start_lap": 53,
+          "end_lap": 57,
+          "laps": 5
+        }
+      ],
+      "pit_laps": [
+        21,
+        52
+      ]
+    },
+    {
+      "driver": "TSU",
+      "team": "AlphaTauri",
+      "stints": [
+        {
+          "compound": "MEDIUM",
+          "start_lap": 1,
+          "end_lap": 23,
+          "laps": 23
+        },
+        {
+          "compound": "HARD",
+          "start_lap": 24,
+          "end_lap": 53,
+          "laps": 30
+        },
+        {
+          "compound": "SOFT",
+          "start_lap": 54,
+          "end_lap": 58,
+          "laps": 5
+        }
+      ],
+      "pit_laps": [
+        23,
+        53
+      ]
+    },
+    {
+      "driver": "VER",
+      "team": "Red Bull Racing",
+      "stints": [
+        {
+          "compound": "SOFT",
+          "start_lap": 1,
+          "end_lap": 13,
+          "laps": 13
+        },
+        {
+          "compound": "HARD",
+          "start_lap": 14,
+          "end_lap": 36,
+          "laps": 23
+        },
+        {
+          "compound": "HARD",
+          "start_lap": 37,
+          "end_lap": 53,
+          "laps": 17
+        },
+        {
+          "compound": "SOFT",
+          "start_lap": 54,
+          "end_lap": 58,
+          "laps": 5
+        }
+      ],
+      "pit_laps": [
+        13,
+        36,
+        53
+      ]
+    },
+    {
+      "driver": "VET",
+      "team": "Aston Martin",
+      "stints": [
+        {
+          "compound": "MEDIUM",
+          "start_lap": 1,
+          "end_lap": 23,
+          "laps": 23
+        },
+        {
+          "compound": "HARD",
+          "start_lap": 24,
+          "end_lap": 58,
+          "laps": 35
+        }
+      ],
+      "pit_laps": [
+        23
+      ]
+    }
+  ]
+}

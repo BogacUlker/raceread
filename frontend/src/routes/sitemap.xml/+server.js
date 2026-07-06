@@ -4,18 +4,23 @@ const SITE = 'https://raceread.app';
 
 export async function GET({ fetch }) {
 	let races = [];
+	let classics = [];
 	try {
 		races = await api('/api/races', fetch);
 	} catch (e) {
 		// still serve the static pages if the API is down
 	}
+	try {
+		classics = await api('/api/classics', fetch);
+	} catch (e) { /* optional */ }
 
 	const urls = [
 		'/',
 		'/how',
 		'/about',
 		'/standings',
-		...races.flatMap((r) => [`/race/${r.id}`, `/race/${r.id}/compare`, `/race/${r.id}/broadcast`]),
+		...races.flatMap((r) => [`/race/${r.id}`, `/race/${r.id}/energy`, `/race/${r.id}/telemetry`, `/race/${r.id}/replay`, `/race/${r.id}/compare`, `/race/${r.id}/broadcast`]),
+		...classics.flatMap((r) => [`/race/${r.id}`, `/race/${r.id}/replay`]),
 	];
 
 	const body =

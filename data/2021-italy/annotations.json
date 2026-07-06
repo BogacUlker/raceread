@@ -1,0 +1,86 @@
+{
+  "race_id": "2021-italy",
+  "annotations": [
+    {
+      "driver": "RIC",
+      "lap": 53,
+      "chart_type": "strategy",
+      "category": "race_insight",
+      "severity": "high",
+      "text_en": "RIC won the race with a 1-stop strategy (M→H).",
+      "text_tr": "RIC yarışı 1 duraklı stratejiyle (M→H) kazandı."
+    },
+    {
+      "driver": "RIC",
+      "lap": 53,
+      "chart_type": "pace",
+      "category": "race_insight",
+      "severity": "high",
+      "text_en": "Fastest lap of the race: 1:24.812 by RIC on lap 53.",
+      "text_tr": "Yarışın en hızlı turu: 53. turda RIC - 1:24.812."
+    },
+    {
+      "driver": "BOT",
+      "lap": 53,
+      "chart_type": "pace",
+      "category": "race_insight",
+      "severity": "high",
+      "text_en": "BOT made up the most ground on track: P16 at the end of lap 1 to P4 at the flag (12 places).",
+      "text_tr": "Pistte en çok yer kazanan BOT oldu: 1. tur sonunda P16, damalı bayrakta P4 (12 sıra)."
+    },
+    {
+      "driver": "RIC",
+      "lap": 53,
+      "chart_type": "strategy",
+      "category": "race_insight",
+      "severity": "medium",
+      "text_en": "Longest stint of the race: RIC ran 31 laps on HARD (lap 23-53).",
+      "text_tr": "Yarışın en uzun stinti: RIC, HARD lastikle 31 tur koştu (23-53. turlar)."
+    },
+    {
+      "driver": "VET",
+      "lap": 15,
+      "chart_type": "speed_trace",
+      "category": "race_insight",
+      "severity": "medium",
+      "text_en": "Highest recorded speed: 362 km/h by VET on lap 15.",
+      "text_tr": "Kaydedilen en yüksek hız: 15. turda VET - 362 km/s."
+    },
+    {
+      "driver": "STR",
+      "lap": 26,
+      "chart_type": "energy",
+      "category": "race_insight",
+      "severity": "medium",
+      "text_en": "Best inferred deploy-to-clip ratio of the field: STR at 2.75 (higher = cleaner energy use; inferred, 2021 PU era).",
+      "text_tr": "Sahanın en iyi çıkarımsal deploy/clip oranı: STR - 2.75 (yüksek = daha temiz enerji kullanımı; çıkarımsal, 2021 güç ünitesi dönemi)."
+    },
+    {
+      "driver": "MAZ",
+      "lap": 26,
+      "chart_type": "energy",
+      "category": "race_insight",
+      "severity": "low",
+      "text_en": "Most battery-limited driver by inferred clip share: MAZ (2.18% of samples).",
+      "text_tr": "Çıkarımsal clip payına göre en çok batarya kısıtı yaşayan pilot: MAZ (örneklerin %2.18'si)."
+    },
+    {
+      "driver": "BOT",
+      "lap": 1,
+      "chart_type": "qualifying",
+      "category": "race_insight",
+      "severity": "medium",
+      "text_en": "Pole position: BOT with 1:19.555 in Q3.",
+      "text_tr": "Pole pozisyonu: BOT, Q3'te 1:19.555."
+    },
+    {
+      "driver": "MAZ",
+      "lap": 53,
+      "chart_type": "strategy",
+      "category": "race_insight",
+      "severity": "low",
+      "text_en": "Busiest pit lane visitor: MAZ with 3 stops.",
+      "text_tr": "Pit yoluna en çok uğrayan: MAZ - 3 stop."
+    }
+  ]
+}

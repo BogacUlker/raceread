@@ -1,0 +1,86 @@
+{
+  "race_id": "2021-abu-dhabi",
+  "annotations": [
+    {
+      "driver": "VER",
+      "lap": 58,
+      "chart_type": "strategy",
+      "category": "race_insight",
+      "severity": "high",
+      "text_en": "VER won the race with a 3-stop strategy (S→H→H→S).",
+      "text_tr": "VER yarışı 3 duraklı stratejiyle (S→H→H→S) kazandı."
+    },
+    {
+      "driver": "VER",
+      "lap": 39,
+      "chart_type": "pace",
+      "category": "race_insight",
+      "severity": "high",
+      "text_en": "Fastest lap of the race: 1:26.103 by VER on lap 39.",
+      "text_tr": "Yarışın en hızlı turu: 39. turda VER - 1:26.103."
+    },
+    {
+      "driver": "GAS",
+      "lap": 58,
+      "chart_type": "pace",
+      "category": "race_insight",
+      "severity": "high",
+      "text_en": "GAS made up the most ground on track: P12 at the end of lap 1 to P5 at the flag (7 places).",
+      "text_tr": "Pistte en çok yer kazanan GAS oldu: 1. tur sonunda P12, damalı bayrakta P5 (7 sıra)."
+    },
+    {
+      "driver": "HAM",
+      "lap": 58,
+      "chart_type": "strategy",
+      "category": "race_insight",
+      "severity": "medium",
+      "text_en": "Longest stint of the race: HAM ran 44 laps on HARD (lap 15-58).",
+      "text_tr": "Yarışın en uzun stinti: HAM, HARD lastikle 44 tur koştu (15-58. turlar)."
+    },
+    {
+      "driver": "GAS",
+      "lap": 39,
+      "chart_type": "speed_trace",
+      "category": "race_insight",
+      "severity": "medium",
+      "text_en": "Highest recorded speed: 334 km/h by GAS on lap 39.",
+      "text_tr": "Kaydedilen en yüksek hız: 39. turda GAS - 334 km/s."
+    },
+    {
+      "driver": "RIC",
+      "lap": 29,
+      "chart_type": "energy",
+      "category": "race_insight",
+      "severity": "medium",
+      "text_en": "Best inferred deploy-to-clip ratio of the field: RIC at 1.67 (higher = cleaner energy use; inferred, 2021 PU era).",
+      "text_tr": "Sahanın en iyi çıkarımsal deploy/clip oranı: RIC - 1.67 (yüksek = daha temiz enerji kullanımı; çıkarımsal, 2021 güç ünitesi dönemi)."
+    },
+    {
+      "driver": "HAM",
+      "lap": 29,
+      "chart_type": "energy",
+      "category": "race_insight",
+      "severity": "low",
+      "text_en": "Most battery-limited driver by inferred clip share: HAM (2.00% of samples).",
+      "text_tr": "Çıkarımsal clip payına göre en çok batarya kısıtı yaşayan pilot: HAM (örneklerin %2.00'si)."
+    },
+    {
+      "driver": "VER",
+      "lap": 1,
+      "chart_type": "qualifying",
+      "category": "race_insight",
+      "severity": "medium",
+      "text_en": "Pole position: VER with 1:22.109 in Q3.",
+      "text_tr": "Pole pozisyonu: VER, Q3'te 1:22.109."
+    },
+    {
+      "driver": "PER",
+      "lap": 58,
+      "chart_type": "strategy",
+      "category": "race_insight",
+      "severity": "low",
+      "text_en": "Busiest pit lane visitor: PER with 4 stops.",
+      "text_tr": "Pit yoluna en çok uğrayan: PER - 4 stop."
+    }
+  ]
+}

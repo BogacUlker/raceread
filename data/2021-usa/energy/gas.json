@@ -1,0 +1,170 @@
+{
+  "driver": "GAS",
+  "team": "AlphaTauri",
+  "laps": [
+    {
+      "lap": 1,
+      "deploy_pct": 2.46,
+      "harvest_pct": 31.76,
+      "clip_pct": 1.07,
+      "neutral_pct": 64.71,
+      "normalized_deploy": 6.97,
+      "normalized_harvest": 90.0,
+      "normalized_clip": 3.03,
+      "is_vsc": false
+    },
+    {
+      "lap": 2,
+      "deploy_pct": 1.09,
+      "harvest_pct": 30.65,
+      "clip_pct": 0.87,
+      "neutral_pct": 67.39,
+      "normalized_deploy": 3.34,
+      "normalized_harvest": 93.99,
+      "normalized_clip": 2.67,
+      "is_vsc": false
+    },
+    {
+      "lap": 3,
+      "deploy_pct": 1.13,
+      "harvest_pct": 27.96,
+      "clip_pct": 1.8,
+      "neutral_pct": 69.11,
+      "normalized_deploy": 3.66,
+      "normalized_harvest": 90.51,
+      "normalized_clip": 5.83,
+      "is_vsc": false
+    },
+    {
+      "lap": 4,
+      "deploy_pct": 0.34,
+      "harvest_pct": 29.61,
+      "clip_pct": 1.12,
+      "neutral_pct": 68.94,
+      "normalized_deploy": 1.09,
+      "normalized_harvest": 95.3,
+      "normalized_clip": 3.6,
+      "is_vsc": false
+    },
+    {
+      "lap": 5,
+      "deploy_pct": 0.78,
+      "harvest_pct": 30.48,
+      "clip_pct": 2.11,
+      "neutral_pct": 66.63,
+      "normalized_deploy": 2.34,
+      "normalized_harvest": 91.34,
+      "normalized_clip": 6.32,
+      "is_vsc": false
+    },
+    {
+      "lap": 6,
+      "deploy_pct": 4.85,
+      "harvest_pct": 30.51,
+      "clip_pct": 1.54,
+      "neutral_pct": 63.11,
+      "normalized_deploy": 13.14,
+      "normalized_harvest": 82.68,
+      "normalized_clip": 4.17,
+      "is_vsc": false
+    },
+    {
+      "lap": 7,
+      "deploy_pct": 2.42,
+      "harvest_pct": 30.03,
+      "clip_pct": 1.21,
+      "neutral_pct": 66.34,
+      "normalized_deploy": 7.19,
+      "normalized_harvest": 89.22,
+      "normalized_clip": 3.59,
+      "is_vsc": false
+    },
+    {
+      "lap": 8,
+      "deploy_pct": 2.74,
+      "harvest_pct": 30.63,
+      "clip_pct": 1.2,
+      "neutral_pct": 65.43,
+      "normalized_deploy": 7.93,
+      "normalized_harvest": 88.6,
+      "normalized_clip": 3.47,
+      "is_vsc": false
+    },
+    {
+      "lap": 9,
+      "deploy_pct": 0.44,
+      "harvest_pct": 30.69,
+      "clip_pct": 0.88,
+      "neutral_pct": 67.99,
+      "normalized_deploy": 1.37,
+      "normalized_harvest": 95.88,
+      "normalized_clip": 2.75,
+      "is_vsc": false
+    },
+    {
+      "lap": 10,
+      "deploy_pct": 1.22,
+      "harvest_pct": 29.28,
+      "clip_pct": 1.55,
+      "neutral_pct": 67.96,
+      "normalized_deploy": 3.81,
+      "normalized_harvest": 91.36,
+      "normalized_clip": 4.84,
+      "is_vsc": false
+    },
+    {
+      "lap": 11,
+      "deploy_pct": 2.33,
+      "harvest_pct": 28.08,
+      "clip_pct": 1.68,
+      "neutral_pct": 67.91,
+      "normalized_deploy": 7.26,
+      "normalized_harvest": 87.5,
+      "normalized_clip": 5.24,
+      "is_vsc": false
+    },
+    {
+      "lap": 12,
+      "deploy_pct": 1.24,
+      "harvest_pct": 29.66,
+      "clip_pct": 1.24,
+      "neutral_pct": 67.87,
+      "normalized_deploy": 3.86,
+      "normalized_harvest": 92.28,
+      "normalized_clip": 3.86,
+      "is_vsc": false
+    },
+    {
+      "lap": 13,
+      "deploy_pct": 0.87,
+      "harvest_pct": 31.99,
+      "clip_pct": 3.06,
+      "neutral_pct": 64.08,
+      "normalized_deploy": 2.42,
+      "normalized_harvest": 89.06,
+      "normalized_clip": 8.52,
+      "is_vsc": false
+    },
+    {
+      "lap": 14,
+      "deploy_pct": 0.0,
+      "harvest_pct": 31.01,
+      "clip_pct": 0.15,
+      "neutral_pct": 68.84,
+      "normalized_deploy": 0.0,
+      "normalized_harvest": 99.52,
+      "normalized_clip": 0.48,
+      "is_vsc": false
+    }
+  ],
+  "summary": {
+    "avg_deploy": 1.56,
+    "avg_harvest": 30.17,
+    "avg_clip": 1.39,
+    "avg_neutral": 66.88,
+    "normalized_deploy": 4.71,
+    "normalized_harvest": 91.09,
+    "normalized_clip": 4.2,
+    "dc_ratio": 1.12
+  }
+}
