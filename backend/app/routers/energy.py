@@ -139,3 +139,57 @@ def get_vsc_comparison(race_id: str) -> VSCComparisonResponse:
         sc_laps=sc_laps,
         entries=entries,
     )
+
+
+# ---- Clip map: where on track does the field hit the clip limiter? ----
+
+_clipmap_cache: dict[str, dict] = {}
+
+
+@router.get("/races/{race_id}/energy/clipmap")
+def get_clipmap(race_id: str) -> dict:
+    """Aggregate clip-state telemetry samples into distance bins along the lap.
+
+    Returns per-bin clip share (0-1) aligned with the circuit outline so the
+    frontend can paint clip density onto the track shape.
+    """
+    from backend.app.services.data_loader import get_race_dir, load_json
+
+    cached = _clipmap_cache.get(race_id)
+    if cached is not None:
+        return cached
+
+    race_dir = get_race_dir(race_id)
+    try:
+        circuit = load_json(str(race_dir / "circuit.json"))
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail="No circuit data")
+    track_len = circuit.get("track_length") or 0
+    if not track_len:
+        raise HTTPException(status_code=404, detail="No track length")
+
+    n_bins = 64
+    clip = [0] * n_bins
+    total = [0] * n_bins
+    tel_dir = race_dir / "telemetry"
+    for f in sorted(tel_dir.glob("*.json")):
+        t = load_json(str(f))
+        for lap in t.get("laps", []):
+            for smp in lap.get("samples", []):
+                d = smp.get("dist")
+                e = smp.get("energy")
+                if d is None or e is None:
+                    continue
+                b = int((d % track_len) / track_len * n_bins)
+                b = min(max(b, 0), n_bins - 1)
+                total[b] += 1
+                if e == "C":
+                    clip[b] += 1
+
+    result = {
+        "bins": n_bins,
+        "clip_share": [round(c / t, 4) if t else 0.0 for c, t in zip(clip, total)],
+        "total_samples": sum(total),
+    }
+    _clipmap_cache[race_id] = result
+    return result

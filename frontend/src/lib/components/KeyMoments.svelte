@@ -4,11 +4,11 @@
 	driver, pins it on the pace chart, scrolls to the section and flashes it.
 -->
 <script>
-	import { replaceState } from '$app/navigation';
+	import { goto, replaceState } from '$app/navigation';
 	import { t, locale } from '$lib/i18n/index.js';
-	import { selectedDrivers, pinnedDriver, selectedEnergyDriver, momentFocus } from '$lib/stores/race.js';
+	import { selectedDrivers, pinnedDriver, momentFocus } from '$lib/stores/race.js';
 
-	let { annotations = [] } = $props();
+	let { annotations = [], raceId = '' } = $props();
 
 	const SECTION_BY_TYPE = {
 		pace: 'pace',
@@ -53,12 +53,15 @@
 	}
 
 	function show(a) {
+		// energy moments open the energy room focused on the driver
+		if (a.chart_type === 'energy' && raceId) {
+			goto(`/race/${raceId}/energy?driver=${a.driver}`);
+			return;
+		}
 		selectedDrivers.update((list) => (list.includes(a.driver) ? list : [...list, a.driver]));
 		// each chart type has its own way of "showing" the moment's driver
 		if (a.chart_type === 'pace' || a.chart_type === 'delta') {
 			pinnedDriver.set([a.driver]);
-		} else if (a.chart_type === 'energy') {
-			selectedEnergyDriver.set(a.driver);
 		} else if (a.chart_type === 'speed_trace' || a.chart_type === 'track') {
 			momentFocus.set({ chart: a.chart_type, driver: a.driver, lap: a.lap });
 		}

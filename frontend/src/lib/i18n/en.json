@@ -252,5 +252,18 @@
 		"title": "Key Moments",
 		"show": "Show",
 		"lap": "Lap"
+	},
+	"energy": {
+		"room_title": "Energy",
+		"room_desc": "Lap-by-lap deployment timeline, driver duels and the clip map of the circuit - the full inferred-energy analysis.",
+		"explore": "Explore",
+		"duel": "Energy Duel",
+		"clipmap": "Clip Map",
+		"clipmap_note": "Circuit painted by how often the whole field hits the clip limiter at each point of the lap. Bright amber = battery-limited zones.",
+		"clip_low": "Low",
+		"clip_high": "High",
+		"window_all": "Full race",
+		"window_first10": "First 10",
+		"window_last10": "Last 10"
 	}
 }

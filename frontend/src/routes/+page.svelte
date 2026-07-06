@@ -1,6 +1,7 @@
 <script>
 	import { t, locale } from '$lib/i18n/index.js';
 	import { TEAM_COLORS, RACE_NAMES_TR, localizedRaceName } from '$lib/constants.js';
+	import TrackSilhouette from '$lib/components/ui/TrackSilhouette.svelte';
 
 	let { data } = $props();
 	let races = $derived(data.races);
@@ -329,9 +330,12 @@
 					{/each}
 					{#each calendar.filter(c => !isCompleted(c)).slice(0, 1) as next}
 						<div class="prv-card prv-card--upcoming">
-							<div class="prv-card__top">
-								<p class="prv-card__round prv-card__round--muted">{$t('home.upcoming')} / {formatDate(next.date)}</p>
-								<h3 class="prv-card__name prv-card__name--dim">{calName(next)}</h3>
+							<div class="prv-card__top prv-card__top--upcoming">
+								<div>
+									<p class="prv-card__round prv-card__round--muted">{$t('home.upcoming')} / {formatDate(next.date)}</p>
+									<h3 class="prv-card__name prv-card__name--dim">{calName(next)}</h3>
+								</div>
+								<TrackSilhouette code={next.code} size={64} opacity={0.45} />
 							</div>
 							<div class="prv-card__pending">{$t('home.no_data')}</div>
 						</div>
@@ -503,6 +507,7 @@
 	.prv-card { position: relative; overflow: hidden; background: var(--p-bg2); padding: 1.5rem; display: flex; flex-direction: column; min-height: 196px; text-decoration: none; color: inherit; transition: background .2s, border-color .2s; border: 1px solid transparent; }
 	.prv-card:hover { background: var(--p-bgc); border-color: rgba(226,75,74,.2); text-decoration: none; }
 	.prv-card--upcoming { background: var(--p-bg); border: 1px solid var(--p-brd); }
+	.prv-card__top--upcoming { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
 	.prv-card__top { margin-bottom: 1.25rem; }
 	.prv-card__round { font-family: var(--p-fm); font-size: 10px; color: var(--p-ac2); }
 	.prv-card__round--muted { color: var(--p-tm); }

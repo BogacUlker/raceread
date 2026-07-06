@@ -17,9 +17,8 @@
 	import PaceChart from '$lib/components/charts/PaceChart.svelte';
 	import SummarizedPace from '$lib/components/charts/SummarizedPace.svelte';
 	import StrategyTimeline from '$lib/components/charts/StrategyTimeline.svelte';
-	import EnergyBars from '$lib/components/charts/EnergyBars.svelte';
 	import DeltaMatrix from '$lib/components/charts/DeltaMatrix.svelte';
-	import EnergyTimeline from '$lib/components/charts/EnergyTimeline.svelte';
+	import InferredBadge from '$lib/components/ui/InferredBadge.svelte';
 	import QualifyingResults from '$lib/components/charts/QualifyingResults.svelte';
 	import SectorComparison from '$lib/components/charts/SectorComparison.svelte';
 	import QualifyingDelta from '$lib/components/charts/QualifyingDelta.svelte';
@@ -384,7 +383,7 @@
 			<ChartNav />
 
 			{#if $activeSession === 'race'}
-				<KeyMoments annotations={annotations.annotations || []} />
+				<KeyMoments annotations={annotations.annotations || []} {raceId} />
 
 				{#if $showAnnotations}
 					<div class="pd-sec"><RaceInsightsPanel annotations={annotations.annotations || []} /></div>
@@ -418,22 +417,28 @@
 						</div>
 					</div>
 
-					<!-- 04. Energy -->
+					<!-- 04. Energy: delta matrix + room preview (full analysis lives in /energy) -->
 					<div id="section-energy" class="pd-sec">
 						<ExportButton target="#section-energy" filename="{raceId}-energy" />
 						<div class="pd-sec__body" class:collapsed={$collapsedSections['energy']}>
 							<div class="pd-row pd-row--split">
-								<div class="pd-cell"><EnergyBars entries={energyComparison.entries || []} /></div>
 								<div class="pd-cell"><DeltaMatrix drivers={delta.drivers || []} matrix={delta.matrix || []} teams={teamsMap} /></div>
+								<div class="pd-cell">
+									<a href="/race/{raceId}/energy" class="chart-card pd-roomcard">
+										<div class="chart-card__header">
+											<span class="chart-card__title">{$t('energy.room_title')}</span>
+											<InferredBadge confidence={raceInfo.validation_confidence} />
+										</div>
+										<div class="pd-roomcard__bars">
+											{#each (energyComparison.entries || []).slice(0, 10) as e}
+												<div class="pd-roomcard__bar" style="height:{Math.min(100, (e.dc_ratio || 0) * 18)}%; background:{tc(e.driver)}" title="{e.driver} D/C {e.dc_ratio?.toFixed(2)}"></div>
+											{/each}
+										</div>
+										<p class="pd-roomcard__desc">{$t('energy.room_desc')}</p>
+										<span class="pd-roomcard__go">{$t('energy.explore')} &rarr;</span>
+									</a>
+								</div>
 							</div>
-						</div>
-					</div>
-
-					<!-- 05. Energy Timeline -->
-					<div id="section-energy-timeline" class="pd-sec">
-						<ExportButton target="#section-energy-timeline" filename="{raceId}-energy-timeline" />
-						<div class="pd-sec__body" class:collapsed={$collapsedSections['energy-timeline']}>
-							<EnergyTimeline {raceId} drivers={driverList} defaultDriver={raceInfo.winner} confidence={raceInfo.validation_confidence} />
 						</div>
 					</div>
 
@@ -634,6 +639,16 @@
 	.pd-header__meta { display: flex; align-items: center; gap: 6px; font-family: var(--fm); font-size: 11px; color: var(--t2); }
 	.pd-sep { color: var(--tm); }
 	.pd-winner { color: var(--ac); font-weight: 600; }
+
+	/* ENERGY ROOM PREVIEW CARD */
+	.pd-roomcard { display: flex; flex-direction: column; height: 100%; padding: 16px; text-decoration: none; color: inherit; cursor: pointer; }
+	.pd-roomcard:hover { text-decoration: none; }
+	.pd-roomcard__bars { display: flex; align-items: flex-end; gap: 6px; height: 130px; margin: 12px 0 4px; }
+	.pd-roomcard__bar { flex: 1; min-height: 4px; opacity: .85; transition: opacity .15s; }
+	.pd-roomcard:hover .pd-roomcard__bar { opacity: 1; }
+	.pd-roomcard__desc { font-size: 12.5px; line-height: 1.55; color: var(--t2); margin: 8px 0 12px; }
+	.pd-roomcard__go { margin-top: auto; align-self: flex-start; font-family: var(--fm); font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #F07B7A; border: 1px solid rgba(226,75,74,.35); padding: 5px 12px; transition: background .15s, color .15s; }
+	.pd-roomcard:hover .pd-roomcard__go { background: var(--ac); color: #fff; }
 
 	/* RACE STORY */
 	.pd-story { background: var(--bg2); border-left: 3px solid var(--ac); padding: 1rem 1.4rem; margin-bottom: 1rem; }
