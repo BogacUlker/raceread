@@ -118,7 +118,8 @@
 	"filter": {
 		"all_drivers": "All Drivers",
 		"select_driver": "Select Driver",
-		"clear": "Clear"
+		"clear": "Clear",
+		"favorite": "Favorite driver"
 	},
 	"tooltip": {
 		"lap": "Lap",
@@ -246,5 +247,10 @@
 	"story": {
 		"title": "Race Story",
 		"source": "AI summary from verified annotations"
+	},
+	"moments": {
+		"title": "Key Moments",
+		"show": "Show",
+		"lap": "Lap"
 	}
 }

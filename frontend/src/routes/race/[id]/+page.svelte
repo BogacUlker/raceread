@@ -5,6 +5,7 @@
 	import { t, locale } from '$lib/i18n/index.js';
 	import { selectedDrivers, activeSession, showAnnotations } from '$lib/stores/race.js';
 	import { collapsedSections } from '$lib/stores/dashboard.js';
+	import { favoriteDriver } from '$lib/stores/prefs.js';
 	import { TEAM_COLORS, localizedRaceName } from '$lib/constants.js';
 	import { api } from '$lib/api.js';
 
@@ -12,6 +13,7 @@
 	import SessionToggle from '$lib/components/layout/SessionToggle.svelte';
 	import ChartNav from '$lib/components/layout/ChartNav.svelte';
 	import RaceInsightsPanel from '$lib/components/RaceInsightsPanel.svelte';
+	import KeyMoments from '$lib/components/KeyMoments.svelte';
 	import PaceChart from '$lib/components/charts/PaceChart.svelte';
 	import SummarizedPace from '$lib/components/charts/SummarizedPace.svelte';
 	import StrategyTimeline from '$lib/components/charts/StrategyTimeline.svelte';
@@ -61,10 +63,18 @@
 		return [d.driver, isDNF ? 100 + (raceInfo.total_laps - d.laps.length) : pos];
 	})));
 	let strategySorted = $derived([...(strategy.drivers || [])].sort((a, b) => (finalPosMap[a.driver] ?? 99) - (finalPosMap[b.driver] ?? 99)));
-	let defaultSelected = $derived(laps.map(d => {
-		const last = d.laps.filter(l => l.position != null).at(-1);
-		return { driver: d.driver, pos: last?.position ?? 99 };
-	}).sort((a, b) => a.pos - b.pos).slice(0, 10).map(d => d.driver));
+	let defaultSelected = $derived.by(() => {
+		const top = laps.map(d => {
+			const last = d.laps.filter(l => l.position != null).at(-1);
+			return { driver: d.driver, pos: last?.position ?? 99 };
+		}).sort((a, b) => a.pos - b.pos).slice(0, 10).map(d => d.driver);
+		// favorite driver is always part of the default selection
+		const fav = $favoriteDriver;
+		if (fav && laps.some(d => d.driver === fav) && !top.includes(fav)) {
+			return [...top.slice(0, 9), fav];
+		}
+		return top;
+	});
 
 	// Deep links: ?drivers=RUS,VER&session=qualifying (read once, then kept in sync)
 	const _sp = browser ? new URLSearchParams(location.search) : null;
@@ -374,6 +384,8 @@
 			<ChartNav />
 
 			{#if $activeSession === 'race'}
+				<KeyMoments annotations={annotations.annotations || []} />
+
 				{#if $showAnnotations}
 					<div class="pd-sec"><RaceInsightsPanel annotations={annotations.annotations || []} /></div>
 				{/if}
@@ -655,6 +667,14 @@
 
 	/* SECTIONS */
 	.pd-sec { position: relative; }
+	/* "Show" bridge pulse from Key Moments */
+	.pd :global(.pd-flash) { animation: -global-pd-flash-pulse 1.6s ease; }
+	@keyframes -global-pd-flash-pulse {
+		0% { box-shadow: 0 0 0 2px rgba(226,75,74,0); }
+		25% { box-shadow: 0 0 0 2px rgba(226,75,74,.65); }
+		100% { box-shadow: 0 0 0 2px rgba(226,75,74,0); }
+	}
+	@media (prefers-reduced-motion: reduce) { .pd :global(.pd-flash) { animation: none; } }
 	.pd-sec__minitoggle { position: absolute; top: 4px; right: 4px; z-index: 5; background: var(--bg); border: 1px solid rgba(46,50,64,.5); cursor: pointer; padding: 3px 5px; line-height: 1; opacity: .4; transition: opacity .15s; }
 	.pd-sec__minitoggle:hover { opacity: 1; }
 	.pd-chev { display: inline-block; font-size: 9px; color: var(--tm); transition: transform .2s; }

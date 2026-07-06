@@ -118,7 +118,8 @@
 	"filter": {
 		"all_drivers": "Tüm Pilotlar",
 		"select_driver": "Pilot Seç",
-		"clear": "Temizle"
+		"clear": "Temizle",
+		"favorite": "Favori pilot"
 	},
 	"tooltip": {
 		"lap": "Tur",
@@ -246,5 +247,10 @@
 	"story": {
 		"title": "Yarış Hikayesi",
 		"source": "Doğrulanmış annotationlardan AI özeti"
+	},
+	"moments": {
+		"title": "Kilit Anlar",
+		"show": "Göster",
+		"lap": "Tur"
 	}
 }

@@ -4,7 +4,7 @@
 	Supports hover highlighting, multi-pin (up to 5) via shared stores, and pit stop markers.
 -->
 <script>
-	import { getContext } from 'svelte';
+	import { getContext, onMount } from 'svelte';
 	import { get } from 'svelte/store';
 	import { TEAM_COLORS, COMPOUND_COLORS } from '$lib/constants.js';
 	import { hoveredDriver, pinnedDriver } from '$lib/stores/race.js';
@@ -23,6 +23,10 @@
 
 	$effect(() => { const unsub = hoveredDriver.subscribe(v => hovered = v); return unsub; });
 	$effect(() => { const unsub = pinnedDriver.subscribe(v => pinned = v); return unsub; });
+
+	// draw-in reveal on first mount (left-to-right wipe)
+	let revealed = $state(false);
+	onMount(() => { requestAnimationFrame(() => { revealed = true; }); });
 
 	function buildPath(laps) {
 		const points = laps
@@ -63,7 +67,7 @@
 </script>
 
 <!-- svelte-ignore a11y_no_static_element_interactions -->
-<g class="pace-lines" onmouseleave={handleLeave}>
+<g class="pace-lines" class:revealed onmouseleave={handleLeave}>
 	{#each driverData as { driver, team, laps }}
 		{@const color = TEAM_COLORS[team] || '#888'}
 		{@const d = buildPath(laps)}
@@ -133,6 +137,20 @@
 </g>
 
 <style>
+	.pace-lines {
+		clip-path: inset(0 100% 0 0);
+	}
+	.pace-lines.revealed {
+		clip-path: inset(0 -2% 0 0);
+		transition: clip-path 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.pace-lines,
+		.pace-lines.revealed {
+			clip-path: none;
+			transition: none;
+		}
+	}
 	:global(.pit-tooltip) {
 		font-family: var(--font-mono);
 		font-size: 12px;

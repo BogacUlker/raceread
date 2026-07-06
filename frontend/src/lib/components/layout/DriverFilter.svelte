@@ -1,6 +1,7 @@
 <script>
 	import { TEAM_COLORS } from '$lib/constants.js';
 	import { t } from '$lib/i18n/index.js';
+	import { favoriteDriver } from '$lib/stores/prefs.js';
 
 	/**
 	 * @type {{
@@ -22,6 +23,12 @@
 		onchange(drivers.map((d) => d.driver));
 	}
 
+	function toggleFavorite(e, driver) {
+		e.preventDefault();
+		e.stopPropagation();
+		favoriteDriver.set($favoriteDriver === driver ? '' : driver);
+	}
+
 	function deselectAll() {
 		onchange([]);
 	}
@@ -35,9 +42,16 @@
 	<div class="driver-filter__list">
 		{#each drivers as { driver, team }}
 			{@const color = TEAM_COLORS[team] || '#888'}
-			<label class="driver-chip" class:active={selected.includes(driver)}>
+			<label class="driver-chip" class:active={selected.includes(driver)} class:fav={$favoriteDriver === driver}>
 				<span class="driver-chip__dot" style="background: {color}"></span>
 				<span class="driver-chip__name">{driver}</span>
+				<button
+					class="driver-chip__star"
+					class:on={$favoriteDriver === driver}
+					title={$t('filter.favorite')}
+					aria-label={$t('filter.favorite') + ': ' + driver}
+					onclick={(e) => toggleFavorite(e, driver)}
+				>&#9733;</button>
 				<input
 					type="checkbox"
 					checked={selected.includes(driver)}
@@ -107,5 +121,26 @@
 		font-size: var(--font-size-label);
 		font-weight: 500;
 		color: var(--text-primary);
+	}
+	.driver-chip__star {
+		background: none;
+		border: none;
+		padding: 0 0 0 2px;
+		font-size: 11px;
+		line-height: 1;
+		color: var(--text-muted);
+		opacity: 0;
+		cursor: pointer;
+		transition: opacity 0.15s, color 0.15s;
+	}
+	.driver-chip:hover .driver-chip__star,
+	.driver-chip__star.on {
+		opacity: 1;
+	}
+	.driver-chip__star.on {
+		color: #f59e0b;
+	}
+	.driver-chip.fav {
+		border-color: rgba(245, 158, 11, 0.45);
 	}
 </style>

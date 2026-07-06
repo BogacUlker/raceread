@@ -1,6 +1,7 @@
 <script>
 	import { t } from '$lib/i18n/index.js';
 	import { TEAM_COLORS } from '$lib/constants.js';
+	import { favoriteDriver } from '$lib/stores/prefs.js';
 
 	let { data } = $props();
 	let standings = $derived(data.standings);
@@ -38,6 +39,21 @@
 	let yTicks = $derived([0, 0.25, 0.5, 0.75, 1].map(f => Math.round(maxPts * f)));
 
 	let hovered = $state(null);
+
+	function toggleFav(code) {
+		favoriteDriver.set($favoriteDriver === code ? '' : code);
+	}
+	// favorite gets full emphasis unless another line is hovered
+	function lineOpacity(code) {
+		if (hovered) return hovered === code ? 0.95 : 0.15;
+		if ($favoriteDriver) return $favoriteDriver === code ? 1 : 0.35;
+		return 0.9;
+	}
+	function lineWidth(code) {
+		if (hovered === code) return 3;
+		if (!hovered && $favoriteDriver === code) return 3;
+		return 2;
+	}
 </script>
 
 <svelte:head>
@@ -64,22 +80,21 @@
 					<text x={x(p.round)} y={H - MB + 18} text-anchor="middle" class="st__tick">{roundCode(p.round)}</text>
 				{/each}
 				{#each chartDrivers as d (d.code)}
-					{@const dim = hovered && hovered !== d.code}
 					<path
 						d={pathFor(d.code)}
 						fill="none"
 						stroke={tc(d.team)}
-						stroke-width={hovered === d.code ? 3 : 2}
+						stroke-width={lineWidth(d.code)}
 						stroke-dasharray={dashed.has(d.code) ? '5 4' : 'none'}
-						opacity={dim ? 0.15 : 0.9}
+						opacity={lineOpacity(d.code)}
 					/>
 					<text
 						x={x(rounds) + 8}
 						y={y(d.points) + 4}
 						class="st__line-label"
 						fill={tc(d.team)}
-						opacity={dim ? 0.2 : 1}
-					>{d.code}</text>
+						opacity={hovered && hovered !== d.code ? 0.2 : 1}
+					>{d.code}{$favoriteDriver === d.code ? ' ★' : ''}</text>
 				{/each}
 			</svg>
 		</div>
@@ -114,11 +129,18 @@
 				</thead>
 				<tbody>
 					{#each drivers as d (d.code)}
-						<tr>
+						<tr class:st__row--fav={$favoriteDriver === d.code}>
 							<td class="st__pos">{d.position}</td>
 							<td class="st__driver">
 								<span class="st__bar" style="background:{tc(d.team)}"></span>
 								<b>{d.code}</b><span class="st__name">{d.name}</span>
+								<button
+									class="st__star"
+									class:on={$favoriteDriver === d.code}
+									title={$t('filter.favorite')}
+									aria-label={$t('filter.favorite') + ': ' + d.code}
+									onclick={() => toggleFav(d.code)}
+								>&#9733;</button>
 							</td>
 							<td class="st__team">{d.team}</td>
 							<td class="st__num">{d.wins || '-'}</td>
@@ -183,6 +205,10 @@
 	.st__num { text-align: right; font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 	.st__gap { color: var(--text-muted); font-size: 12px; }
 	.st__pts { font-weight: 700; }
+	.st__star { background: none; border: none; padding: 0; font-size: 12px; line-height: 1; color: var(--text-muted); opacity: 0; cursor: pointer; transition: opacity .15s, color .15s; }
+	tr:hover .st__star, .st__star.on { opacity: 1; }
+	.st__star.on { color: #F59E0B; }
+	:global(.st__row--fav) td { background: rgba(245,158,11,.05); }
 
 	.st__cons { display: flex; flex-direction: column; gap: 8px; }
 	.st__cons-row { display: flex; align-items: center; gap: 8px; }
