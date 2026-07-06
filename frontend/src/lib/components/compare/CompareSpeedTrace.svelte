@@ -4,6 +4,7 @@
 	SVG speed vs distance + throttle strips below.
 -->
 <script>
+	import { t } from '$lib/i18n/index.js';
 	import { onMount } from 'svelte';
 	import { scaleLinear } from 'd3-scale';
 
@@ -131,14 +132,14 @@
 
 <div class="cst" bind:this={containerEl}>
 	<div class="cst__header">
-		<h3 class="cst__title">SPEED TRACE</h3>
+		<h3 class="cst__title">{$t('charts.speed_trace')}</h3>
 		<span class="cst__lap">LAP {selectedLap}</span>
 	</div>
 
 	{#if loading}
 		<div class="cst__empty">Loading...</div>
 	{:else if d1Data.length === 0 && d2Data.length === 0}
-		<div class="cst__empty">No telemetry data</div>
+		<div class="cst__empty">{$t('common.no_data')}</div>
 	{:else}
 		<!-- svelte-ignore a11y_no_static_element_interactions -->
 		<svg

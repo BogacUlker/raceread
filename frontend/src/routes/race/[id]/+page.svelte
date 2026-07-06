@@ -5,7 +5,7 @@
 	import { t, locale } from '$lib/i18n/index.js';
 	import { selectedDrivers, activeSession, showAnnotations } from '$lib/stores/race.js';
 	import { collapsedSections } from '$lib/stores/dashboard.js';
-	import { TEAM_COLORS } from '$lib/constants.js';
+	import { TEAM_COLORS, localizedRaceName } from '$lib/constants.js';
 	import { api } from '$lib/api.js';
 
 	import DriverFilter from '$lib/components/layout/DriverFilter.svelte';
@@ -122,10 +122,13 @@
 
 	function gpName(name) {
 		if (!name) return '';
-		const parts = name.split('Grand Prix');
-		if (parts.length === 2) return parts[0].toUpperCase() + 'GRAND PRIX';
-		return name.toUpperCase();
+		const n = localizedRaceName(name, $locale);
+		const parts = n.split('Grand Prix');
+		if (parts.length === 2) return parts[0].toLocaleUpperCase($locale === 'tr' ? 'tr' : 'en') + 'GRAND PRIX';
+		return n.toUpperCase();
 	}
+
+	let story = $derived(data.story);
 
 	let sidebarCollapsed = $state(true);
 
@@ -316,6 +319,14 @@
 					<span class="pd-winner">{$t('race.winner')}: {raceInfo.winner}</span>
 				</div>
 			</div>
+
+			<!-- Race Story -->
+			{#if story?.story_en}
+				<div class="pd-story">
+					<span class="pd-story__k">{$t('story.title')} &middot; AI</span>
+					<p class="pd-story__text">{$locale === 'tr' && story.story_tr ? story.story_tr : story.story_en}</p>
+				</div>
+			{/if}
 
 			<!-- Overview Cards -->
 			<div class="pd-overview">
@@ -607,6 +618,12 @@
 	.pd-header__meta { display: flex; align-items: center; gap: 6px; font-family: var(--fm); font-size: 11px; color: var(--t2); }
 	.pd-sep { color: var(--tm); }
 	.pd-winner { color: var(--ac); font-weight: 600; }
+
+	/* RACE STORY */
+	.pd-story { background: var(--bg2); border-left: 3px solid var(--ac); padding: 1rem 1.4rem; margin-bottom: 1rem; }
+	.pd-story__k { font-family: var(--fm); font-size: 10px; color: #F07B7A; letter-spacing: .12em; text-transform: uppercase; }
+	.pd-story__text { font-size: 13.5px; line-height: 1.65; color: var(--t2); margin-top: 6px; max-width: 95ch; }
+	.pd-story__text::first-line { color: var(--t); }
 
 	/* OVERVIEW CARDS */
 	.pd-overview { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-bottom: 1.5rem; }

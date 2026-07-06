@@ -980,10 +980,10 @@
 			</div>
 		{:else if colorMode === 'energy'}
 			<div class="track-map__legend">
-				<span class="track-map__legend-chip" style="background:{ENERGY_COLORS.deploy}">Deploy</span>
-				<span class="track-map__legend-chip" style="background:{ENERGY_COLORS.harvest}">Harvest</span>
+				<span class="track-map__legend-chip" style="background:{ENERGY_COLORS.deploy}">{$t('charts.deploy')}</span>
+				<span class="track-map__legend-chip" style="background:{ENERGY_COLORS.harvest}">{$t('charts.harvest')}</span>
 				<span class="track-map__legend-chip" style="background:{ENERGY_COLORS.clip}">Clip</span>
-				<span class="track-map__legend-chip" style="background:{ENERGY_COLORS.neutral}">Neutral</span>
+				<span class="track-map__legend-chip" style="background:{ENERGY_COLORS.neutral}">{$t('charts.neutral')}</span>
 			</div>
 		{:else if compareView === 'trace'}
 			<!-- Compare trace legend: delta gradient -->

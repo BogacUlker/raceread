@@ -43,3 +43,36 @@ export const ANNOTATION_COLORS = {
 	traffic_insight: '#06B6D4',
 	qualifying_insight: '#A855F7',
 };
+
+/** Turkish Grand Prix name translations (keyed by English full name) */
+export const RACE_NAMES_TR = {
+	'Australian Grand Prix': 'Avustralya Grand Prix',
+	'Chinese Grand Prix': 'Çin Grand Prix',
+	'Japanese Grand Prix': 'Japonya Grand Prix',
+	'Bahrain Grand Prix': 'Bahreyn Grand Prix',
+	'Saudi Arabian Grand Prix': 'Suudi Arabistan Grand Prix',
+	'Miami Grand Prix': 'Miami Grand Prix',
+	'Canadian Grand Prix': 'Kanada Grand Prix',
+	'Monaco Grand Prix': 'Monako Grand Prix',
+	'Barcelona Grand Prix': 'Barselona Grand Prix',
+	'Austrian Grand Prix': 'Avusturya Grand Prix',
+	'British Grand Prix': 'Britanya Grand Prix',
+	'Belgian Grand Prix': 'Belçika Grand Prix',
+	'Hungarian Grand Prix': 'Macaristan Grand Prix',
+	'Dutch Grand Prix': 'Hollanda Grand Prix',
+	'Italian Grand Prix': 'İtalya Grand Prix',
+	'Spanish Grand Prix': 'İspanya Grand Prix',
+	'Azerbaijan Grand Prix': 'Azerbaycan Grand Prix',
+	'Singapore Grand Prix': 'Singapur Grand Prix',
+	'United States Grand Prix': 'ABD Grand Prix',
+	'Mexico City Grand Prix': 'Meksiko Grand Prix',
+	'Brazilian Grand Prix': 'Brezilya Grand Prix',
+	'Las Vegas Grand Prix': 'Las Vegas Grand Prix',
+	'Qatar Grand Prix': 'Katar Grand Prix',
+	'Abu Dhabi Grand Prix': 'Abu Dabi Grand Prix',
+};
+
+/** Localized race name; falls back to the English name */
+export function localizedRaceName(name, locale) {
+	return locale === 'tr' && RACE_NAMES_TR[name] ? RACE_NAMES_TR[name] : name;
+}

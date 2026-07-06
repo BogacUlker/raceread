@@ -1,0 +1,495 @@
+{
+  "season": 2026,
+  "rounds_completed": 9,
+  "drivers": [
+    {
+      "position": 1,
+      "code": "ANT",
+      "name": "Andrea Kimi Antonelli",
+      "team": "Mercedes",
+      "points": 179.0,
+      "wins": 5
+    },
+    {
+      "position": 2,
+      "code": "RUS",
+      "name": "George Russell",
+      "team": "Mercedes",
+      "points": 154.0,
+      "wins": 2
+    },
+    {
+      "position": 3,
+      "code": "HAM",
+      "name": "Lewis Hamilton",
+      "team": "Ferrari",
+      "points": 147.0,
+      "wins": 1
+    },
+    {
+      "position": 4,
+      "code": "LEC",
+      "name": "Charles Leclerc",
+      "team": "Ferrari",
+      "points": 108.0,
+      "wins": 1
+    },
+    {
+      "position": 5,
+      "code": "NOR",
+      "name": "Lando Norris",
+      "team": "McLaren",
+      "points": 97.0,
+      "wins": 0
+    },
+    {
+      "position": 6,
+      "code": "PIA",
+      "name": "Oscar Piastri",
+      "team": "McLaren",
+      "points": 82.0,
+      "wins": 0
+    },
+    {
+      "position": 7,
+      "code": "VER",
+      "name": "Max Verstappen",
+      "team": "Red Bull Racing",
+      "points": 76.0,
+      "wins": 0
+    },
+    {
+      "position": 8,
+      "code": "HAD",
+      "name": "Isack Hadjar",
+      "team": "Red Bull Racing",
+      "points": 52.0,
+      "wins": 0
+    },
+    {
+      "position": 9,
+      "code": "GAS",
+      "name": "Pierre Gasly",
+      "team": "Alpine",
+      "points": 42.0,
+      "wins": 0
+    },
+    {
+      "position": 10,
+      "code": "LAW",
+      "name": "Liam Lawson",
+      "team": "Racing Bulls",
+      "points": 39.0,
+      "wins": 0
+    },
+    {
+      "position": 11,
+      "code": "LIN",
+      "name": "Arvid Lindblad",
+      "team": "Racing Bulls",
+      "points": 20.0,
+      "wins": 0
+    },
+    {
+      "position": 12,
+      "code": "BEA",
+      "name": "Oliver Bearman",
+      "team": "Haas F1 Team",
+      "points": 18.0,
+      "wins": 0
+    },
+    {
+      "position": 13,
+      "code": "COL",
+      "name": "Franco Colapinto",
+      "team": "Alpine",
+      "points": 18.0,
+      "wins": 0
+    },
+    {
+      "position": 14,
+      "code": "BOR",
+      "name": "Gabriel Bortoleto",
+      "team": "Audi",
+      "points": 6.0,
+      "wins": 0
+    },
+    {
+      "position": 15,
+      "code": "SAI",
+      "name": "Carlos Sainz",
+      "team": "Williams",
+      "points": 6.0,
+      "wins": 0
+    },
+    {
+      "position": 16,
+      "code": "ALB",
+      "name": "Alexander Albon",
+      "team": "Williams",
+      "points": 5.0,
+      "wins": 0
+    },
+    {
+      "position": 17,
+      "code": "OCO",
+      "name": "Esteban Ocon",
+      "team": "Haas F1 Team",
+      "points": 3.0,
+      "wins": 0
+    },
+    {
+      "position": 18,
+      "code": "ALO",
+      "name": "Fernando Alonso",
+      "team": "Aston Martin",
+      "points": 1.0,
+      "wins": 0
+    },
+    {
+      "position": 19,
+      "code": "HUL",
+      "name": "Nico H\u00fclkenberg",
+      "team": "Audi",
+      "points": 0.0,
+      "wins": 0
+    },
+    {
+      "position": 20,
+      "code": "BOT",
+      "name": "Valtteri Bottas",
+      "team": "Cadillac",
+      "points": 0.0,
+      "wins": 0
+    },
+    {
+      "position": 21,
+      "code": "PER",
+      "name": "Sergio P\u00e9rez",
+      "team": "Cadillac",
+      "points": 0.0,
+      "wins": 0
+    },
+    {
+      "position": 22,
+      "code": "STR",
+      "name": "Lance Stroll",
+      "team": "Aston Martin",
+      "points": 0.0,
+      "wins": 0
+    }
+  ],
+  "constructors": [
+    {
+      "position": 1,
+      "name": "Mercedes",
+      "points": 333.0,
+      "wins": 7
+    },
+    {
+      "position": 2,
+      "name": "Ferrari",
+      "points": 255.0,
+      "wins": 2
+    },
+    {
+      "position": 3,
+      "name": "McLaren",
+      "points": 179.0,
+      "wins": 0
+    },
+    {
+      "position": 4,
+      "name": "Red Bull Racing",
+      "points": 128.0,
+      "wins": 0
+    },
+    {
+      "position": 5,
+      "name": "Alpine",
+      "points": 60.0,
+      "wins": 0
+    },
+    {
+      "position": 6,
+      "name": "Racing Bulls",
+      "points": 59.0,
+      "wins": 0
+    },
+    {
+      "position": 7,
+      "name": "Haas F1 Team",
+      "points": 21.0,
+      "wins": 0
+    },
+    {
+      "position": 8,
+      "name": "Williams",
+      "points": 11.0,
+      "wins": 0
+    },
+    {
+      "position": 9,
+      "name": "Audi",
+      "points": 6.0,
+      "wins": 0
+    },
+    {
+      "position": 10,
+      "name": "Aston Martin",
+      "points": 1.0,
+      "wins": 0
+    },
+    {
+      "position": 11,
+      "name": "Cadillac",
+      "points": 0.0,
+      "wins": 0
+    }
+  ],
+  "progression": [
+    {
+      "round": 1,
+      "points": {
+        "RUS": 25.0,
+        "ANT": 18.0,
+        "LEC": 15.0,
+        "HAM": 12.0,
+        "NOR": 10.0,
+        "VER": 8.0,
+        "BEA": 6.0,
+        "LIN": 4.0,
+        "BOR": 2.0,
+        "GAS": 1.0,
+        "OCO": 0.0,
+        "ALB": 0.0,
+        "LAW": 0.0,
+        "COL": 0.0,
+        "SAI": 0.0,
+        "PER": 0.0,
+        "HAD": 0.0,
+        "PIA": 0.0,
+        "HUL": 0.0,
+        "ALO": 0.0,
+        "BOT": 0.0,
+        "STR": 0.0
+      }
+    },
+    {
+      "round": 2,
+      "points": {
+        "RUS": 51.0,
+        "ANT": 47.0,
+        "LEC": 34.0,
+        "HAM": 33.0,
+        "BEA": 17.0,
+        "NOR": 15.0,
+        "GAS": 9.0,
+        "VER": 8.0,
+        "LAW": 8.0,
+        "LIN": 4.0,
+        "HAD": 4.0,
+        "PIA": 3.0,
+        "SAI": 2.0,
+        "BOR": 2.0,
+        "COL": 1.0,
+        "OCO": 0.0,
+        "HUL": 0.0,
+        "ALB": 0.0,
+        "BOT": 0.0,
+        "PER": 0.0,
+        "ALO": 0.0,
+        "STR": 0.0
+      }
+    },
+    {
+      "round": 3,
+      "points": {
+        "ANT": 72.0,
+        "RUS": 63.0,
+        "LEC": 49.0,
+        "HAM": 41.0,
+        "NOR": 25.0,
+        "PIA": 21.0,
+        "BEA": 17.0,
+        "GAS": 15.0,
+        "VER": 12.0,
+        "LAW": 10.0,
+        "LIN": 4.0,
+        "HAD": 4.0,
+        "BOR": 2.0,
+        "SAI": 2.0,
+        "OCO": 1.0,
+        "COL": 1.0,
+        "HUL": 0.0,
+        "ALB": 0.0,
+        "BOT": 0.0,
+        "PER": 0.0,
+        "ALO": 0.0,
+        "STR": 0.0
+      }
+    },
+    {
+      "round": 4,
+      "points": {
+        "ANT": 100.0,
+        "RUS": 80.0,
+        "LEC": 59.0,
+        "NOR": 51.0,
+        "HAM": 51.0,
+        "PIA": 43.0,
+        "VER": 26.0,
+        "BEA": 17.0,
+        "GAS": 16.0,
+        "LAW": 10.0,
+        "COL": 7.0,
+        "LIN": 4.0,
+        "HAD": 4.0,
+        "SAI": 4.0,
+        "BOR": 2.0,
+        "OCO": 1.0,
+        "ALB": 1.0,
+        "HUL": 0.0,
+        "BOT": 0.0,
+        "PER": 0.0,
+        "ALO": 0.0,
+        "STR": 0.0
+      }
+    },
+    {
+      "round": 5,
+      "points": {
+        "ANT": 131.0,
+        "RUS": 88.0,
+        "LEC": 75.0,
+        "HAM": 72.0,
+        "NOR": 58.0,
+        "PIA": 48.0,
+        "VER": 43.0,
+        "GAS": 20.0,
+        "BEA": 18.0,
+        "LAW": 16.0,
+        "COL": 15.0,
+        "HAD": 14.0,
+        "SAI": 6.0,
+        "LIN": 5.0,
+        "BOR": 2.0,
+        "OCO": 1.0,
+        "ALB": 1.0,
+        "HUL": 0.0,
+        "BOT": 0.0,
+        "PER": 0.0,
+        "STR": 0.0,
+        "ALO": 0.0
+      }
+    },
+    {
+      "round": 6,
+      "points": {
+        "ANT": 156.0,
+        "HAM": 90.0,
+        "RUS": 88.0,
+        "LEC": 75.0,
+        "PIA": 58.0,
+        "NOR": 58.0,
+        "VER": 43.0,
+        "GAS": 35.0,
+        "HAD": 26.0,
+        "LAW": 24.0,
+        "BEA": 18.0,
+        "COL": 15.0,
+        "LIN": 11.0,
+        "SAI": 6.0,
+        "ALB": 5.0,
+        "OCO": 3.0,
+        "BOR": 2.0,
+        "ALO": 1.0,
+        "HUL": 0.0,
+        "BOT": 0.0,
+        "PER": 0.0,
+        "STR": 0.0
+      }
+    },
+    {
+      "round": 7,
+      "points": {
+        "ANT": 156.0,
+        "HAM": 115.0,
+        "RUS": 106.0,
+        "LEC": 75.0,
+        "NOR": 73.0,
+        "PIA": 68.0,
+        "VER": 55.0,
+        "GAS": 41.0,
+        "HAD": 34.0,
+        "LAW": 28.0,
+        "BEA": 18.0,
+        "COL": 16.0,
+        "LIN": 13.0,
+        "SAI": 6.0,
+        "ALB": 5.0,
+        "OCO": 3.0,
+        "BOR": 2.0,
+        "ALO": 1.0,
+        "HUL": 0.0,
+        "BOT": 0.0,
+        "PER": 0.0,
+        "STR": 0.0
+      }
+    },
+    {
+      "round": 8,
+      "points": {
+        "ANT": 171.0,
+        "RUS": 131.0,
+        "HAM": 125.0,
+        "PIA": 80.0,
+        "NOR": 79.0,
+        "LEC": 79.0,
+        "VER": 73.0,
+        "HAD": 42.0,
+        "GAS": 41.0,
+        "LAW": 30.0,
+        "BEA": 18.0,
+        "COL": 16.0,
+        "LIN": 14.0,
+        "SAI": 6.0,
+        "ALB": 5.0,
+        "OCO": 3.0,
+        "BOR": 2.0,
+        "ALO": 1.0,
+        "HUL": 0.0,
+        "BOT": 0.0,
+        "PER": 0.0,
+        "STR": 0.0
+      }
+    },
+    {
+      "round": 9,
+      "points": {
+        "ANT": 179.0,
+        "RUS": 154.0,
+        "HAM": 147.0,
+        "LEC": 108.0,
+        "NOR": 97.0,
+        "PIA": 82.0,
+        "VER": 76.0,
+        "HAD": 52.0,
+        "GAS": 42.0,
+        "LAW": 39.0,
+        "LIN": 20.0,
+        "BEA": 18.0,
+        "COL": 18.0,
+        "BOR": 6.0,
+        "SAI": 6.0,
+        "ALB": 5.0,
+        "OCO": 3.0,
+        "ALO": 1.0,
+        "HUL": 0.0,
+        "BOT": 0.0,
+        "PER": 0.0,
+        "STR": 0.0
+      }
+    }
+  ]
+}

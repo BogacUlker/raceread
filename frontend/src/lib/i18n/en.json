@@ -1,12 +1,36 @@
 {
 	"nav": {
 		"home": "Home",
-		"about": "About"
+		"about": "About",
+		"standings": "Standings"
 	},
 	"home": {
 		"title": "RaceRead",
 		"subtitle": "F1 Post-Race Telemetry Analysis",
-		"select_race": "Select Race"
+		"select_race": "Select Race",
+		"tagline": "Engineered Intelligence",
+		"headline_1": "Every Lap Tells",
+		"headline_2": "a Story.",
+		"desc": "AI-powered energy inference and telemetry analysis for every Grand Prix.",
+		"cta_analyze": "Explore Races",
+		"cta_docs": "How It Works",
+		"season_title": "2026 Season Progression",
+		"winner": "Winner",
+		"laps_label": "Laps",
+		"analyze": "Analyze",
+		"upcoming": "Upcoming",
+		"round": "Round",
+		"no_data": "Data pending",
+		"fastest_lap": "Fastest Lap",
+		"safety_cars": "Safety Cars",
+		"footer_copy": "© 2026 RaceRead • F1 Post-Race Telemetry Analysis",
+		"footer_data": "Data: FastF1",
+		"footer_energy": "Energy: Inferred",
+		"sidebar_season": "2026 Season",
+		"sidebar_about": "About",
+		"sidebar_races": "Completed Races",
+		"sidebar_status": "System Status",
+		"sidebar_active": "Active Feed"
 	},
 	"race": {
 		"title": "Race Dashboard",
@@ -88,7 +112,8 @@
 		"pit_normal": "Normal pit",
 		"corner_zoom": "Corner Zoom",
 		"zoom_out": "Zoom out",
-		"click_corner": "Click a corner to zoom"
+		"click_corner": "Click a corner to zoom",
+		"neutral": "Neutral"
 	},
 	"filter": {
 		"all_drivers": "All Drivers",
@@ -203,5 +228,21 @@
 	"footer": {
 		"buy_coffee": "Buy me a coffee",
 		"tagline": "F1 Post-Race Telemetry Analysis"
+	},
+	"standings": {
+		"title": "Championship Standings",
+		"after_round": "After round",
+		"drivers": "Driver Standings",
+		"constructors": "Constructor Standings",
+		"driver": "Driver",
+		"team": "Team",
+		"points": "Pts",
+		"wins": "Wins",
+		"gap": "Gap",
+		"progression": "Title Progression"
+	},
+	"story": {
+		"title": "Race Story",
+		"source": "AI summary from verified annotations"
 	}
 }

@@ -1,12 +1,36 @@
 {
 	"nav": {
 		"home": "Ana Sayfa",
-		"about": "Hakkında"
+		"about": "Hakkında",
+		"standings": "Puan Durumu"
 	},
 	"home": {
 		"title": "RaceRead",
 		"subtitle": "F1 Yarış Sonrası Telemetri Analizi",
-		"select_race": "Yarış Seç"
+		"select_race": "Yarış Seç",
+		"tagline": "Mühendislik Zekası",
+		"headline_1": "Her Turun Bir",
+		"headline_2": "Hikayesi Var.",
+		"desc": "Her Grand Prix için AI destekli enerji çıkarımı ve telemetri analizi.",
+		"cta_analyze": "Yarışları İncele",
+		"cta_docs": "Nasıl Çalışır",
+		"season_title": "2026 Sezon İlerlemesi",
+		"winner": "Kazanan",
+		"laps_label": "Tur",
+		"analyze": "Analiz Et",
+		"upcoming": "Yakında",
+		"round": "Yarış",
+		"no_data": "Veri bekleniyor",
+		"fastest_lap": "En Hızlı Tur",
+		"safety_cars": "Güvenlik Aracı",
+		"footer_copy": "© 2026 RaceRead • F1 Yarış Sonrası Telemetri Analizi",
+		"footer_data": "Veri: FastF1",
+		"footer_energy": "Enerji: Çıkarımsal",
+		"sidebar_season": "2026 Sezonu",
+		"sidebar_about": "Hakkında",
+		"sidebar_races": "Tamamlanan Yarışlar",
+		"sidebar_status": "Sistem Durumu",
+		"sidebar_active": "Aktif Besleme"
 	},
 	"race": {
 		"title": "Yarış Panosu",
@@ -88,7 +112,8 @@
 		"pit_normal": "Normal pit",
 		"corner_zoom": "Viraj Zoom",
 		"zoom_out": "Uzaklaştır",
-		"click_corner": "Yakınlaştırmak için viraja tıkla"
+		"click_corner": "Yakınlaştırmak için viraja tıkla",
+		"neutral": "Nötr"
 	},
 	"filter": {
 		"all_drivers": "Tüm Pilotlar",
@@ -203,5 +228,21 @@
 	"footer": {
 		"buy_coffee": "Bir kahve ısmarla",
 		"tagline": "F1 Yarış Sonrası Telemetri Analizi"
+	},
+	"standings": {
+		"title": "Puan Durumu",
+		"after_round": "Yarış",
+		"drivers": "Pilotlar",
+		"constructors": "Takımlar",
+		"driver": "Pilot",
+		"team": "Takım",
+		"points": "Puan",
+		"wins": "Galibiyet",
+		"gap": "Fark",
+		"progression": "Şampiyona Gelişimi"
+	},
+	"story": {
+		"title": "Yarış Hikayesi",
+		"source": "Doğrulanmış annotationlardan AI özeti"
 	}
 }

@@ -14,6 +14,7 @@ export async function GET({ fetch }) {
 		'/',
 		'/how',
 		'/about',
+		'/standings',
 		...races.flatMap((r) => [`/race/${r.id}`, `/race/${r.id}/compare`, `/race/${r.id}/broadcast`]),
 	];
 

@@ -1,6 +1,6 @@
 <script>
-	import { locale } from '$lib/i18n/index.js';
-	import { TEAM_COLORS } from '$lib/constants.js';
+	import { t, locale } from '$lib/i18n/index.js';
+	import { TEAM_COLORS, RACE_NAMES_TR, localizedRaceName } from '$lib/constants.js';
 
 	let { data } = $props();
 	let races = $derived(data.races);
@@ -19,61 +19,6 @@
 		}).join(' ') + ' Z';
 	});
 
-	const L = {
-		en: {
-			tagline: 'Engineered Intelligence',
-			headline_1: 'Every Lap Tells',
-			headline_2: 'a Story.',
-			desc: 'AI-powered energy inference and telemetry analysis for every Grand Prix.',
-			cta_analyze: 'Explore Races',
-			cta_docs: 'How It Works',
-			season_title: '2026 Season Progression',
-			winner: 'Winner',
-			laps_label: 'Laps',
-			analyze: 'Analyze',
-			upcoming: 'Upcoming',
-			round: 'Round',
-			no_data: 'Data pending',
-			fastest_lap: 'Fastest Lap',
-			safety_cars: 'Safety Cars',
-			footer_copy: '\u00A9 2026 RaceRead \u2022 F1 Post-Race Telemetry Analysis',
-			footer_data: 'Data: FastF1',
-			footer_energy: 'Energy: Inferred',
-			sidebar_season: '2026 Season',
-			sidebar_about: 'About',
-			sidebar_about_text: 'Post-race telemetry analysis with AI energy inference. Built for the serious paddock analyst.',
-			sidebar_races: 'Completed Races',
-			sidebar_status: 'System Status',
-			sidebar_active: 'Active Feed',
-		},
-		tr: {
-			tagline: 'M\u00FChendislik Zekas\u0131',
-			headline_1: 'Her Turun Bir',
-			headline_2: 'Hikayesi Var.',
-			desc: 'Her Grand Prix i\u00E7in AI destekli enerji \u00E7\u0131kar\u0131m\u0131 ve telemetri analizi.',
-			cta_analyze: 'Yar\u0131\u015Flar\u0131 \u0130ncele',
-			cta_docs: 'Nas\u0131l \u00C7al\u0131\u015F\u0131r',
-			season_title: '2026 Sezon \u0130lerlemesi',
-			winner: 'Kazanan',
-			laps_label: 'Tur',
-			analyze: 'Analiz Et',
-			upcoming: 'Yak\u0131nda',
-			round: 'Yar\u0131\u015F',
-			no_data: 'Veri bekleniyor',
-			fastest_lap: 'En H\u0131zl\u0131 Tur',
-			safety_cars: 'G\u00FCvenlik Arac\u0131',
-			footer_copy: '\u00A9 2026 RaceRead \u2022 F1 Yar\u0131\u015F Sonras\u0131 Telemetri Analizi',
-			footer_data: 'Veri: FastF1',
-			footer_energy: 'Enerji: \u00C7\u0131kar\u0131msal',
-			sidebar_season: '2026 Sezonu',
-			sidebar_about: 'Hakk\u0131nda',
-			sidebar_about_text: 'AI enerji \u00E7\u0131kar\u0131m\u0131 ile yar\u0131\u015F sonras\u0131 telemetri analizi. Ciddi padok analistleri i\u00E7in tasarland\u0131.',
-			sidebar_races: 'Tamamlanan Yar\u0131\u015Flar',
-			sidebar_status: 'Sistem Durumu',
-			sidebar_active: 'Aktif Besleme',
-		}
-	};
-	let tr = $derived(L[$locale] || L.en);
 
 	const DRIVER_NAMES = {
 		RUS: 'G. Russell', ANT: 'A. Antonelli', VER: 'M. Verstappen', HAD: 'I. Hadjar',
@@ -97,18 +42,16 @@
 	let calendar = $derived(data.calendar || []);
 
 
-	const RACE_NAMES_TR = {
-		'Australian Grand Prix': 'Avustralya Grand Prix',
-		'Chinese Grand Prix': '\u00C7in Grand Prix',
-		'Japanese Grand Prix': 'Japonya Grand Prix',
-		'Miami Grand Prix': 'Miami Grand Prix',
-	};
 	function raceName(name) {
-		const n = ($locale === 'tr' && RACE_NAMES_TR[name]) ? RACE_NAMES_TR[name] : name;
+		const n = localizedRaceName(name, $locale);
 		// Uppercase with proper GRAND PRIX (not PRİX)
 		const parts = n.split('Grand Prix');
-		if (parts.length === 2) return parts[0].toUpperCase() + 'GRAND PRIX';
+		if (parts.length === 2) return parts[0].toLocaleUpperCase($locale === 'tr' ? 'tr' : 'en') + 'GRAND PRIX';
 		return n.toUpperCase();
+	}
+	function calName(c) {
+		if ($locale === 'tr' && RACE_NAMES_TR[c.full_name]) return RACE_NAMES_TR[c.full_name].replace('Grand Prix', 'GP');
+		return c.name;
 	}
 
 	// Card extras now come from /api/races (weather.json + laps.json server-side)
@@ -144,7 +87,7 @@
 </script>
 
 <svelte:head>
-	<title>RaceRead - {tr.tagline}</title>
+	<title>RaceRead - {$t('home.tagline')}</title>
 </svelte:head>
 
 <div class="prv">
@@ -184,13 +127,13 @@
 			<div class="prv-sidebar__content">
 				<!-- Season -->
 				<div class="prv-sidebar__section">
-					<h2 class="prv-sidebar__heading">{tr.sidebar_season}</h2>
-					<p class="prv-sidebar__version">{tr.round} {races.length}{calendar.length ? ' / ' + calendar.length : ''}</p>
+					<h2 class="prv-sidebar__heading">{$t('home.sidebar_season')}</h2>
+					<p class="prv-sidebar__version">{$t('home.round')} {races.length}{calendar.length ? ' / ' + calendar.length : ''}</p>
 				</div>
 
 				<!-- Races -->
 				<div class="prv-sidebar__section">
-					<p class="prv-sidebar__label">{tr.sidebar_races}</p>
+					<p class="prv-sidebar__label">{$t('home.sidebar_races')}</p>
 					<nav class="prv-sidebar__nav">
 						{#each races as race, i}
 							<a href="/race/{race.id}" class="prv-sidebar__race" onclick={() => sidebarOpen = false}>
@@ -209,10 +152,14 @@
 					</nav>
 				</div>
 
-				<!-- About link -->
+				<!-- Standings + About links -->
 				<div class="prv-sidebar__section prv-sidebar__section--last">
+					<a href="/standings" class="prv-sidebar__about-link">
+						<span>{$t('nav.standings')}</span>
+						<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+					</a>
 					<a href="/about" class="prv-sidebar__about-link">
-						<span>{tr.sidebar_about}</span>
+						<span>{$t('home.sidebar_about')}</span>
 						<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
 					</a>
 				</div>
@@ -222,8 +169,8 @@
 					<div class="prv-sidebar__status">
 						<div class="prv-sidebar__dot"></div>
 						<div>
-							<p class="prv-sidebar__status-label">{tr.sidebar_status}</p>
-							<p class="prv-sidebar__status-value">{tr.sidebar_active}</p>
+							<p class="prv-sidebar__status-label">{$t('home.sidebar_status')}</p>
+							<p class="prv-sidebar__status-value">{$t('home.sidebar_active')}</p>
 						</div>
 					</div>
 				</div>
@@ -295,15 +242,15 @@
 			</svg>
 			{/if}
 				<div class="prv-hero__content">
-					<span class="prv-hero__tagline">{tr.tagline}</span>
+					<span class="prv-hero__tagline">{$t('home.tagline')}</span>
 					<h1 class="prv-hero__title">
-						{tr.headline_1}<br />
-						<span class="prv-hero__title--accent">{tr.headline_2}</span>
+						{$t('home.headline_1')}<br />
+						<span class="prv-hero__title--accent">{$t('home.headline_2')}</span>
 					</h1>
-					<p class="prv-hero__desc">{tr.desc}</p>
+					<p class="prv-hero__desc">{$t('home.desc')}</p>
 					<div class="prv-hero__actions">
-						<a href="#races" class="prv-btn prv-btn--primary">{tr.cta_analyze}</a>
-						<a href="/how" class="prv-btn prv-btn--ghost">{tr.cta_docs}</a>
+						<a href="#races" class="prv-btn prv-btn--primary">{$t('home.cta_analyze')}</a>
+						<a href="/how" class="prv-btn prv-btn--ghost">{$t('home.cta_docs')}</a>
 					</div>
 				</div>
 			</section>
@@ -311,8 +258,8 @@
 			{#if calendar.length > 1}
 			<section class="prv-timeline">
 				<div class="prv-timeline__header">
-					<h2 class="prv-timeline__title">{tr.season_title}</h2>
-					<p class="prv-timeline__sub">{tr.round} {races.length} / {calendar.length}</p>
+					<h2 class="prv-timeline__title">{$t('home.season_title')}</h2>
+					<p class="prv-timeline__sub">{$t('home.round')} {races.length} / {calendar.length}</p>
 				</div>
 				<div class="prv-timeline__track">
 					<div class="prv-timeline__line"></div>
@@ -353,10 +300,10 @@
 							<div class="prv-card__info">
 								<div class="prv-card__winner">
 									<div class="prv-card__team-bar" style="background:{getTeamColor(race.winner)}"></div>
-									<span class="prv-card__winner-text">{tr.winner}: {DRIVER_NAMES[race.winner] || race.winner}</span>
+									<span class="prv-card__winner-text">{$t('home.winner')}: {DRIVER_NAMES[race.winner] || race.winner}</span>
 								</div>
 								<div class="prv-card__meta">
-									<span>{race.total_laps} {tr.laps_label}</span>
+									<span>{race.total_laps} {$t('home.laps_label')}</span>
 									{#if extras.temp}<span>{extras.temp + '\u00B0C'}</span>{/if}
 									<span>{extras.rainfall === false ? 'DRY' : extras.rainfall ? 'WET' : ''}</span>
 								</div>
@@ -365,38 +312,38 @@
 								<div class="prv-card__stats">
 									{#if extras.fastest}
 										<div class="prv-card__stat">
-											<span class="prv-card__stat-label">{tr.fastest_lap}</span>
+											<span class="prv-card__stat-label">{$t('home.fastest_lap')}</span>
 											<span class="prv-card__stat-value">{extras.fastest} <span class="prv-card__stat-sub">({extras.fastestDriver})</span></span>
 										</div>
 									{/if}
 									{#if extras.sc}
 										<div class="prv-card__stat">
-											<span class="prv-card__stat-label">{tr.safety_cars}</span>
+											<span class="prv-card__stat-label">{$t('home.safety_cars')}</span>
 											<span class="prv-card__stat-value">{extras.sc}</span>
 										</div>
 									{/if}
 								</div>
-								<div class="prv-card__cta">{tr.analyze} <span class="prv-card__arrow">&rarr;</span></div>
+								<div class="prv-card__cta">{$t('home.analyze')} <span class="prv-card__arrow">&rarr;</span></div>
 							</div>
 						</a>
 					{/each}
 					{#each calendar.filter(c => !isCompleted(c)).slice(0, 1) as next}
 						<div class="prv-card prv-card--upcoming">
 							<div class="prv-card__top">
-								<p class="prv-card__round prv-card__round--muted">{tr.upcoming} / {formatDate(next.date)}</p>
-								<h3 class="prv-card__name prv-card__name--dim">{next.name}</h3>
+								<p class="prv-card__round prv-card__round--muted">{$t('home.upcoming')} / {formatDate(next.date)}</p>
+								<h3 class="prv-card__name prv-card__name--dim">{calName(next)}</h3>
 							</div>
-							<div class="prv-card__pending">{tr.no_data}</div>
+							<div class="prv-card__pending">{$t('home.no_data')}</div>
 						</div>
 					{/each}
 				</div>
 			</section>
 
 			<footer class="prv-footer">
-				<span class="prv-footer__copy">{tr.footer_copy}</span>
+				<span class="prv-footer__copy">{$t('home.footer_copy')}</span>
 				<div class="prv-footer__links">
-					<span>{tr.footer_data}</span>
-					<span>{tr.footer_energy}</span>
+					<span>{$t('home.footer_data')}</span>
+					<span>{$t('home.footer_energy')}</span>
 				</div>
 			</footer>
 		</div>

@@ -10,6 +10,7 @@
 		</a>
 		<nav class="header__nav">
 			<a href="/" class="header__link">{$t('nav.home')}</a>
+			<a href="/standings" class="header__link">{$t('nav.standings')}</a>
 		</nav>
 		<div class="header__actions">
 			<LangToggle />

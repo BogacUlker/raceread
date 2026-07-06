@@ -4,6 +4,7 @@
 	Shows "inferred" badge on each panel.
 -->
 <script>
+	import { t } from '$lib/i18n/index.js';
 	import { onMount } from 'svelte';
 	import { scaleLinear, scaleBand } from 'd3-scale';
 
@@ -149,14 +150,14 @@
 		<div class="cet__panel">
 			<div class="cet__panel-header">
 				<span class="cet__driver" style="color:{color1}">{driver1}</span>
-				<span class="cet__title">ENERGY TIMELINE</span>
-				<span class="cet__inferred">INFERRED</span>
+				<span class="cet__title">{$t('charts.energy_timeline')}</span>
+				<span class="cet__inferred">{$t('charts.inferred')}</span>
 			</div>
 
 			{#if loading1}
 				<div class="cet__empty">Loading...</div>
 			{:else if bars1.length === 0}
-				<div class="cet__empty">No data</div>
+				<div class="cet__empty">{$t('common.no_data')}</div>
 			{:else}
 				<!-- svelte-ignore a11y_no_static_element_interactions -->
 				<svg width={panelWidth} height={chartHeight + margin.top + margin.bottom} class="cet__svg">
@@ -208,14 +209,14 @@
 		<div class="cet__panel">
 			<div class="cet__panel-header">
 				<span class="cet__driver" style="color:{color2}">{driver2}</span>
-				<span class="cet__title">ENERGY TIMELINE</span>
-				<span class="cet__inferred">INFERRED</span>
+				<span class="cet__title">{$t('charts.energy_timeline')}</span>
+				<span class="cet__inferred">{$t('charts.inferred')}</span>
 			</div>
 
 			{#if loading2}
 				<div class="cet__empty">Loading...</div>
 			{:else if bars2.length === 0}
-				<div class="cet__empty">No data</div>
+				<div class="cet__empty">{$t('common.no_data')}</div>
 			{:else}
 				<!-- svelte-ignore a11y_no_static_element_interactions -->
 				<svg width={panelWidth} height={chartHeight + margin.top + margin.bottom} class="cet__svg">
