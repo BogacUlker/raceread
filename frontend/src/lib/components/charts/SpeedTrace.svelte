@@ -9,6 +9,7 @@
 	import { zoom as d3zoom, zoomIdentity } from 'd3-zoom';
 	import { select } from 'd3-selection';
 	import { TEAM_COLORS, ENERGY_COLORS } from '$lib/constants.js';
+	import { momentFocus } from '$lib/stores/race.js';
 	import InferredBadge from '$lib/components/ui/InferredBadge.svelte';
 
 	let {
@@ -51,6 +52,19 @@
 			driver1 = drivers[0].driver;
 			driver2 = drivers[1].driver;
 		}
+	});
+
+	// Key Moments bridge: switch to the moment's driver + lap
+	$effect(() => {
+		const unsub = momentFocus.subscribe((v) => {
+			if (!v || v.chart !== 'speed_trace') return;
+			if (!drivers.some((d) => d.driver === v.driver)) return;
+			if (driver2 === v.driver) driver2 = driver1 || driver2;
+			driver1 = v.driver;
+			if (v.lap >= 1 && v.lap <= totalLaps) selectedLap = v.lap;
+			momentFocus.set(null);
+		});
+		return unsub;
 	});
 
 	// Sync from parent compare page when top-level selection changes

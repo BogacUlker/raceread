@@ -26,3 +26,6 @@ export const comparedLap = writable(null);
 
 /** Whether to show AI-generated annotations on charts */
 export const showAnnotations = writable(true);
+
+/** One-shot focus request from Key Moments bridges: {chart, driver, lap} */
+export const momentFocus = writable(null);

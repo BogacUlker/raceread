@@ -9,6 +9,7 @@
 	import { scaleLinear, scaleDiverging } from 'd3-scale';
 	import { interpolateTurbo, interpolateRdYlGn } from 'd3-scale-chromatic';
 	import { ENERGY_COLORS, TEAM_COLORS } from '$lib/constants.js';
+	import { momentFocus } from '$lib/stores/race.js';
 	import InferredBadge from '$lib/components/ui/InferredBadge.svelte';
 
 	let {
@@ -33,6 +34,19 @@
 	let loading = $state(false);
 	let hoverIdx = $state(null);
 	let hoverDriver = $state(null); // which driver's trace is hovered in compare mode
+
+	// Key Moments bridge: focus the moment's driver + lap
+	$effect(() => {
+		const unsub = momentFocus.subscribe((v) => {
+			if (!v || v.chart !== 'track') return;
+			if (drivers.some((d) => d.driver === v.driver)) {
+				driver1 = v.driver;
+				if (v.lap >= 1 && v.lap <= totalLaps) selectedLap = v.lap;
+			}
+			momentFocus.set(null);
+		});
+		return unsub;
+	});
 
 	// Telemetry data
 	let telemetry1 = $state(null);
