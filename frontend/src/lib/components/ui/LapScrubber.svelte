@@ -15,7 +15,7 @@
 <div class="lsc">
 	<span class="lsc__val"><b>{$locale === 'tr' ? 'TUR' : 'LAP'}</b><span>{value}</span></span>
 	<div class="lsc__track" bind:clientWidth={width}>
-		<svg viewBox="0 0 {width} {H}" width="100%" height={H} preserveAspectRatio="none" aria-hidden="true">
+		<svg viewBox="0 0 {width} {H}" width={width} height={H} preserveAspectRatio="none" aria-hidden="true">
 			<rect x="0" y="10" width={width} height="6" fill="rgba(255,255,255,.1)" />
 			{#each vscLaps as L}<rect x={x(L) - 2} y="8" width="5" height="10" fill="var(--timing-caution)" opacity=".55" />{/each}
 			{#each scLaps as L}<rect x={x(L) - 2} y="8" width="5" height="10" fill="var(--accent)" opacity=".7" />{/each}

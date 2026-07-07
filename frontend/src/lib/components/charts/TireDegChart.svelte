@@ -77,7 +77,7 @@
 			{/each}
 		</div>
 	</div>
-	<svg viewBox="0 0 {width} {H}" width="100%" height={H} role="img" aria-label={$t('insights.tire_deg')}>
+	<svg viewBox="0 0 {width} {H}" width={width} height={H} role="img" aria-label={$t('insights.tire_deg')}>
 		{#each yTicks as tick}
 			<line x1={PAD.l} y1={y(tick)} x2={width - PAD.r} y2={y(tick)} stroke="var(--border)" stroke-width={tick === 0 ? 1.4 : 0.6} />
 			<text x={PAD.l - 8} y={y(tick)} fill="var(--text-muted)" font-size="10" text-anchor="end" dominant-baseline="middle" font-family="var(--font-mono)">{tick > 0 ? '+' + tick : tick}s</text>

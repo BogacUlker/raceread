@@ -10,27 +10,36 @@
 		if (!el || busy) return;
 		busy = true;
 		try {
+			// canvas can't resolve CSS var(); read the tokens at export time
+			const css = getComputedStyle(document.documentElement);
+			const bg = css.getPropertyValue('--bg-primary').trim() || '#15151E';
+			const red = css.getPropertyValue('--accent').trim() || '#E10600';
 			const { toCanvas } = await import('html-to-image');
 			const canvas = await toCanvas(el, {
-				backgroundColor: 'var(--bg-primary)',
+				backgroundColor: bg,
 				pixelRatio: 2,
 				filter: (node) => !node.classList?.contains('export-btn'),
+				// content-visibility:auto leaves offscreen-optimized children
+				// empty inside the clone - force everything visible for export
+				style: { contentVisibility: 'visible', containIntrinsicSize: 'none' },
 			});
-			// RaceRead watermark, bottom right
+			// broadcast watermark: red RACE chip + READ.APP, bottom right
 			const ctx = canvas.getContext('2d');
 			const k = 2; // pixelRatio
-			ctx.font = `600 ${11 * k}px ui-monospace, Menlo, monospace`;
+			ctx.font = `900 italic ${12 * k}px 'Titillium Web', sans-serif`;
 			ctx.textBaseline = 'alphabetic';
-			const text = 'RACEREAD.APP';
-			const tw = ctx.measureText(text).width;
-			const x = canvas.width - tw - 16 * k;
-			const y = canvas.height - 12 * k;
-			ctx.fillStyle = 'rgba(15,17,23,0.72)';
-			ctx.fillRect(x - 10 * k, y - 13 * k, tw + 24 * k, 20 * k);
-			ctx.fillStyle = 'var(--accent)';
-			ctx.fillText('RACE', x, y);
-			ctx.fillStyle = 'var(--text-primary)';
-			ctx.fillText('READ.APP', x + ctx.measureText('RACE').width, y);
+			const w1 = ctx.measureText('RACE').width;
+			const w2 = ctx.measureText('READ.APP').width;
+			const pad = 6 * k;
+			const x = canvas.width - (w1 + w2 + pad * 3) - 10 * k;
+			const y = canvas.height - 11 * k;
+			ctx.fillStyle = red;
+			ctx.fillRect(x, y - 13 * k, w1 + pad * 2, 19 * k);
+			ctx.fillStyle = 'rgba(0,0,0,.82)';
+			ctx.fillRect(x + w1 + pad * 2, y - 13 * k, w2 + pad * 2, 19 * k);
+			ctx.fillStyle = '#fff';
+			ctx.fillText('RACE', x + pad, y);
+			ctx.fillText('READ.APP', x + w1 + pad * 3, y);
 			const a = document.createElement('a');
 			a.href = canvas.toDataURL('image/png');
 			a.download = filename + '.png';

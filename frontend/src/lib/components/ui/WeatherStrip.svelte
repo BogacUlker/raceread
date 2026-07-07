@@ -52,7 +52,7 @@
 				{#if model.rain}<span class="wst__rain">{$t('insights.rain')}</span>{/if}
 			</div>
 		</div>
-		<svg viewBox="0 0 {width} {H}" width="100%" height={H} role="img" aria-label={$t('insights.weather')}>
+		<svg viewBox="0 0 {width} {H}" width={width} height={H} role="img" aria-label={$t('insights.weather')}>
 			<polygon
 				points="{model.s.map((p) => `${x(p.lap)},${y(p.track_temp)}`).join(' ')} {x(model.s[model.s.length - 1].lap)},{H - PAD.b} {x(model.s[0].lap)},{H - PAD.b}"
 				fill="rgba(245,158,11,.12)"

@@ -279,7 +279,7 @@
 		{/each}
 
 		{#if sim && chart}
-			<svg viewBox="0 0 {width} {H}" width="100%" height={H} class="wip__chart" role="img" aria-label={$t('whatif.chart')}>
+			<svg viewBox="0 0 {width} {H}" width={width} height={H} class="wip__chart" role="img" aria-label={$t('whatif.chart')}>
 				<line x1={PAD.l} y1={chart.zero} x2={width - PAD.r} y2={chart.zero} stroke="#4A4F5E" stroke-width="1" stroke-dasharray="4,4" />
 				<text x={width - PAD.r} y={chart.zero - 5} fill="var(--text-muted)" font-size="9" text-anchor="end" font-family="var(--font-mono)">{$t('whatif.reality')}</text>
 				<path d={chart.path} fill="none" stroke={tc(driver)} stroke-width="2.2" />
