@@ -12,6 +12,7 @@
 
 <script>
 	import { t, locale } from '$lib/i18n/index.js';
+	import { slide } from 'svelte/transition';
 	import { TEAM_COLORS } from '$lib/constants.js';
 
 	let { clip, team = '', lap = null, compact = false } = $props();
@@ -21,14 +22,20 @@
 	let cur = $state(0);
 	let dur = $state(0);
 	let audio = null;
+	let closeTimer = null;
 
 	function toggle() {
 		if (playing) { audio?.pause(); playing = false; stopCurrent = null; return; }
 		stopCurrent?.();
 		stopCurrent = () => { audio?.pause(); playing = false; };
+		clearTimeout(closeTimer);
 		if (!audio) {
 			audio = new Audio(clip.url);
-			audio.onended = () => { playing = false; ended = true; cur = dur; };
+			audio.onended = () => {
+				playing = false; ended = true; cur = dur;
+				// linger so the full transcript can be read, then slide shut
+				closeTimer = setTimeout(() => { ended = false; }, 3500);
+			};
 			audio.onerror = () => { playing = false; };
 			audio.ontimeupdate = () => { cur = audio.currentTime; dur = audio.duration || 0; };
 		}
@@ -36,7 +43,7 @@
 		audio.play().catch(() => { playing = false; });
 		playing = true;
 	}
-	$effect(() => () => audio?.pause());
+	$effect(() => () => { audio?.pause(); clearTimeout(closeTimer); });
 
 	let color = $derived(TEAM_COLORS[team] || '#7D8794');
 	let segments = $derived(clip.segments || []);
@@ -57,7 +64,7 @@
 	</button>
 
 	{#if open}
-		<div class="rc__card">
+		<div class="rc__card" transition:slide={{ duration: 260 }}>
 			<div class="rc__head">
 				<span class="rc__team" style="background:{color}"></span>
 				<span class="rc__drv" style="color:{color}">{clip.driver}</span>

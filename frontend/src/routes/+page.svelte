@@ -252,7 +252,7 @@
 					<p class="prv-hero__desc">{$t('home.desc')}</p>
 					<div class="prv-hero__actions">
 						<a href="#races" class="prv-btn prv-btn--primary">{$t('home.cta_analyze')}</a>
-						<a href="/how" class="prv-btn prv-btn--ghost">{$t('home.cta_docs')}</a>
+						<a href="/guide" class="prv-btn prv-btn--ghost">{$t('home.cta_docs')}</a>
 					</div>
 				</div>
 			</section>
@@ -343,6 +343,14 @@
 					{/each}
 				</div>
 			</section>
+
+			<a href="/guide" class="prv-guide">
+				<div class="prv-guide__txt">
+					<span class="prv-guide__k">{$t('home.guide_k')}</span>
+					<span class="prv-guide__t">{$t('home.guide_t')}</span>
+				</div>
+				<span class="prv-guide__arrow">&rarr;</span>
+			</a>
 
 			{#if classics.length}
 			<section class="prv-classics">
@@ -618,4 +626,17 @@
 		.prv-btn { padding: 11px 18px; font-size: 11px; }
 		.prv-hero, .prv-timeline, .prv-races { padding-left: 1rem; padding-right: 1rem; }
 	}
+
+	.prv-guide {
+		display: flex; align-items: center; justify-content: space-between; gap: 16px;
+		margin: 28px 0 4px; padding: 16px 20px;
+		background: var(--bg-secondary, #1A1D27); border: 1px solid var(--border, #2E3240);
+		border-left: 3px solid var(--accent, #E24B4A); text-decoration: none;
+		transition: border-color .15s, background .15s;
+	}
+	.prv-guide:hover { border-color: #6B7280; border-left-color: var(--accent, #E24B4A); background: #1E2230; text-decoration: none; }
+	.prv-guide:hover .prv-guide__arrow { transform: translateX(4px); }
+	.prv-guide__k { display: block; font-family: var(--font-mono); font-size: 9px; letter-spacing: .14em; color: var(--accent, #E24B4A); text-transform: uppercase; margin-bottom: 3px; }
+	.prv-guide__t { font-family: var(--font-heading); font-size: 15px; font-weight: 600; color: var(--text-primary, #E8E8ED); letter-spacing: -.01em; }
+	.prv-guide__arrow { font-size: 18px; color: var(--text-muted, #7D8794); transition: transform .15s; }
 </style>
