@@ -455,27 +455,28 @@
 						<ExportButton target="#section-pit-stops" filename="{raceId}-pitstops" />
 						<div class="pd-sec__body" class:collapsed={$collapsedSections['pit-stops']}>
 							<PitStopStats data={pitstops} />
-							{#if undercuts.length}
-								<div class="pd-uc">
-									<span class="pd-uc__title">{$t('insights.undercut_title')}</span>
-									{#each undercuts.slice(0, 4) as u}
-										{@const winner = u.gain > 0 ? u.first : u.second}
-										{@const loser = u.gain > 0 ? u.second : u.first}
-										<div class="pd-uc__row">
-											<span class="pd-uc__lap">L{u.lap}</span>
-											<span class="pd-uc__w" style="color:{tc(winner)}">{winner}</span>
-											<span class="pd-uc__vs">{u.gain > 0 ? $t('insights.undercut_vs') : $t('insights.overcut_vs')}</span>
-											<span class="pd-uc__l" style="color:{tc(loser)}">{loser}</span>
-											<span class="pd-uc__gain">+{Math.abs(u.gain).toFixed(1)}s</span>
-										</div>
-									{/each}
-								</div>
-							{/if}
+
 						</div>
 					</div>
 
 					<!-- 04. Energy: delta matrix + room preview (full analysis lives in /energy) -->
 					<div class="pd-sec pd-sec--split">
+						{#if undercuts.length}
+							<div class="pd-uc">
+								<span class="pd-uc__title">{$t('insights.undercut_title')}</span>
+								{#each undercuts.slice(0, 4) as u}
+									{@const winner = u.gain > 0 ? u.first : u.second}
+									{@const loser = u.gain > 0 ? u.second : u.first}
+									<div class="pd-uc__row">
+										<span class="pd-uc__lap">L{u.lap}</span>
+										<span class="pd-uc__w" style="color:{tc(winner)}">{winner}</span>
+										<span class="pd-uc__vs">{u.gain > 0 ? $t('insights.undercut_vs') : $t('insights.overcut_vs')}</span>
+										<span class="pd-uc__l" style="color:{tc(loser)}">{loser}</span>
+										<span class="pd-uc__gain">+{Math.abs(u.gain).toFixed(1)}s</span>
+									</div>
+								{/each}
+							</div>
+						{/if}
 						<SpeedTrapCard {laps} />
 						<MetronomCard {laps} {vscLaps} {scLaps} />
 						<BattlesCard {battles} {teamsMap} />
@@ -814,14 +815,12 @@
 	.pd-row--split, .pd-row--pace { gap: 3px; }
 
 
-	.pd-sec--split { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
-	@media (max-width: 1100px) { .pd-sec--split { grid-template-columns: 1fr 1fr; } }
-	@media (max-width: 768px) { .pd-sec--split { grid-template-columns: 1fr; } }
-	.pd-uc { margin-top: 12px; padding: 12px 16px; background: var(--bg-secondary); border: 1px solid var(--border); }
-	.pd-uc__title { display: block; font-family: var(--font-mono); font-size: 10px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 8px; }
-	.pd-uc__row { display: grid; grid-template-columns: 36px 40px 1fr 40px 52px; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 11px; padding: 4px 0; }
+	.pd-sec--split { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
+	.pd-uc { background: var(--bg-secondary); border: 1px solid var(--border); padding: 16px 18px; height: 100%; box-sizing: border-box; }
+	.pd-uc__title { display: inline-block; font-family: var(--font-heading); font-size: 10px; font-weight: 900; font-style: italic; color: #fff; background: var(--accent); text-transform: uppercase; letter-spacing: .07em; padding: 3px 10px; margin-bottom: 12px; }
+	.pd-uc__row { display: grid; grid-template-columns: 34px 40px 78px 40px 1fr; align-items: center; gap: 6px; font-family: var(--fm); font-size: 12px; padding: 5px 0; }
 	.pd-uc__lap { color: var(--text-muted); font-size: 10px; }
-	.pd-uc__w, .pd-uc__l { font-weight: 700; }
-	.pd-uc__vs { color: var(--text-muted); font-size: 10px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-	.pd-uc__gain { text-align: right; font-weight: 600; color: var(--text-primary); }
+	.pd-uc__w, .pd-uc__l { font-family: var(--font-heading); font-weight: 800; font-size: 12px; letter-spacing: .04em; }
+	.pd-uc__vs { color: var(--text-muted); font-size: 10px; text-transform: uppercase; letter-spacing: .05em; text-align: center; }
+	.pd-uc__gain { text-align: right; font-weight: 700; color: var(--timing-pb); font-variant-numeric: tabular-nums; }
 </style>

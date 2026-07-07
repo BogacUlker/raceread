@@ -6,8 +6,10 @@
 	import { t } from '$lib/i18n/index.js';
 	import { api } from '$lib/api.js';
 	import { TEAM_COLORS } from '$lib/constants.js';
+	import DriverChipBar from '$lib/components/ui/DriverChipBar.svelte';
+	import LapScrubber from '$lib/components/ui/LapScrubber.svelte';
 
-	let { raceId, drivers = [], totalLaps = 58 } = $props();
+	let { raceId, drivers = [], totalLaps = 58, vscLaps = [], scLaps = [] } = $props();
 
 	// cool-to-hot ramp, gears 1-8
 	const GEAR_COLORS = ['#3B4CC0', '#5977E3', '#7DA0F9', '#A8C4FE', '#DDDDDD', '#F5A886', '#E36A53', '#B40426'];
@@ -55,19 +57,14 @@
 	});
 
 	function tc(code) { return TEAM_COLORS[drivers.find((d) => d.driver === code)?.team] || 'var(--text-muted)'; }
-	let lapOptions = $derived(Array.from({ length: totalLaps }, (_, i) => i + 1));
 </script>
 
 <div class="chart-card gmp">
 	<div class="chart-card__header gmp__head">
 		<h3 class="chart-card__title">{$t('telemetry.gear_map')}</h3>
 		<div class="gmp__controls">
-			<select bind:value={driver} class="gmp__select" aria-label={$t('filter.select_driver')} style="border-color:{tc(driver)}">
-				{#each drivers as d}<option value={d.driver}>{d.driver}</option>{/each}
-			</select>
-			<select bind:value={lap} class="gmp__select" aria-label={$t('tooltip.lap')}>
-				{#each lapOptions as l}<option value={l}>L{l}</option>{/each}
-			</select>
+			<DriverChipBar drivers={drivers} selected={driver ? [driver] : []} max={1} onchange={(l) => { if (l[0]) driver = l[0]; }} />
+			<LapScrubber {totalLaps} value={lap} {vscLaps} {scLaps} onchange={(v) => lap = v} />
 		</div>
 	</div>
 	{#if model}
@@ -98,7 +95,7 @@
 
 <style>
 	.gmp__head { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
-	.gmp__controls { display: flex; gap: 8px; }
+	.gmp__controls { display: flex; flex-direction: column; gap: 8px; flex: 1; max-width: 640px; }
 	.gmp__select {
 		background: var(--bg-primary); color: var(--text-primary); border: 1px solid var(--border);
 		font-family: var(--font-mono); font-size: 11px; padding: 5px 8px; cursor: pointer;

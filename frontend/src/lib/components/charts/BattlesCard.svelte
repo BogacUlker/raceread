@@ -39,7 +39,7 @@
 <style>
 	.btc { background: var(--bg-secondary); border: 1px solid var(--border); padding: 16px 18px; height: 100%; box-sizing: border-box; }
 	.btc__head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
-	.btc__title { font-family: var(--font-heading); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
+	.btc__title { display: inline-block; font-family: var(--font-heading); font-size: 10px; font-weight: 900; font-style: italic; color: #fff; background: var(--accent); text-transform: uppercase; letter-spacing: .07em; padding: 3px 10px; }
 	.btc__unit { font-family: var(--font-mono); font-size: 9.5px; color: var(--text-muted); letter-spacing: .08em; }
 	.btc__rows { display: flex; flex-direction: column; gap: 7px; }
 	.btc__row { display: grid; grid-template-columns: 34px 14px 34px 1fr 44px 16px; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 11px; }

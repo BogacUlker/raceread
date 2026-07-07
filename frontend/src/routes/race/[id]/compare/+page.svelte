@@ -7,6 +7,8 @@
 	import CompareTrackMap from '$lib/components/compare/CompareTrackMap.svelte';
 	import CompareEnergyTimeline from '$lib/components/compare/CompareEnergyTimeline.svelte';
 	import CompareDominance from '$lib/components/compare/CompareDominance.svelte';
+	import DriverChipBar from '$lib/components/ui/DriverChipBar.svelte';
+	import LapScrubber from '$lib/components/ui/LapScrubber.svelte';
 
 	let { data } = $props();
 	let raceId = $derived(data.raceId);
@@ -71,7 +73,16 @@
 		};
 	});
 
-	let lapOptions = $derived(Array.from({length: raceInfo.total_laps || 58}, (_, i) => i + 1));
+	// SC/VSC windows from track_status codes, for the lap scrubber
+	let neutralized = $derived.by(() => {
+		const vsc = new Set(), sc = new Set();
+		for (const d of laps) for (const l of d.laps || []) {
+			const st = String(l.track_status || '');
+			if (st.includes('4')) sc.add(l.lap);
+			else if (st.includes('6') || st.includes('7')) vsc.add(l.lap);
+		}
+		return { vsc: [...vsc], sc: [...sc] };
+	});
 </script>
 
 <svelte:head>
@@ -84,24 +95,22 @@
 		<h1 class="cmp__title">{$t('charts.compare')}</h1>
 	</div>
 
-	<!-- Control bar: two driver pickers + lap selector -->
+	<!-- Control bar: driver chips (pick two) + lap scrubber -->
 	<div class="cmp__controls">
-		<select class="cmp__select" aria-label="First driver" style="border-color:{pick1 ? color1 : 'var(--brd)'}" bind:value={pick1}>
-			<option value="">{$t('filter.select_driver')}</option>
-			{#each allCodes as code}<option value={code} disabled={code === pick2}>{code} - {getTeam(code)}</option>{/each}
-		</select>
-		<span class="cmp__vs">{$t('charts.vs')}</span>
-		<select class="cmp__select" aria-label="Second driver" style="border-color:{pick2 ? color2 : 'var(--brd)'}" bind:value={pick2}>
-			<option value="">{$t('filter.select_driver')}</option>
-			{#each allCodes as code}<option value={code} disabled={code === pick1}>{code} - {getTeam(code)}</option>{/each}
-		</select>
+		<DriverChipBar
+			drivers={driverList}
+			selected={[pick1, pick2].filter(Boolean)}
+			max={2}
+			onchange={(list) => { pick1 = list[0] || ''; pick2 = list[1] || ''; }}
+		/>
 		{#if ready}
-			<div class="cmp__lap-picker">
-				<span class="cmp__lap-label">{$t('tooltip.lap')}</span>
-				<select class="cmp__lap-select" aria-label="Lap" bind:value={selectedLap}>
-					{#each lapOptions as lap}<option value={lap}>{lap}</option>{/each}
-				</select>
-			</div>
+			<LapScrubber
+				totalLaps={raceInfo.total_laps || 58}
+				value={selectedLap}
+				vscLaps={neutralized.vsc}
+				scLaps={neutralized.sc}
+				onchange={(v) => selectedLap = v}
+			/>
 		{/if}
 	</div>
 
@@ -178,7 +187,7 @@
 	.cmp__title { font-family: var(--fh); font-size: 28px; font-weight: 700; text-transform: uppercase; margin-top: .5rem; }
 
 	/* Controls bar */
-	.cmp__controls { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.75rem; flex-wrap: wrap; }
+	.cmp__controls { display: flex; flex-direction: column; gap: 12px; margin-bottom: 1.5rem; }
 	.cmp__select { font-family: var(--fm); font-size: 13px; background: var(--bg-primary); color: var(--text-primary); border: 2px solid var(--brd); padding: 10px 14px; cursor: pointer; min-width: 200px; transition: border-color .2s; }
 	.cmp__select:focus-visible, .cmp__lap-select:focus-visible { outline: 2px solid var(--ac); outline-offset: 1px; }
 	.cmp__select:focus { border-color: var(--ac-text, var(--accent-text)); }

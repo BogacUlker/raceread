@@ -12,6 +12,16 @@
 	let laps = $derived(data.laps);
 	let circuit = $derived(data.circuit);
 	let traffic = $derived(data.traffic);
+	// SC/VSC windows for the gear-map lap scrubber
+	let neutralized = $derived.by(() => {
+		const vsc = new Set(), sc = new Set();
+		for (const d of laps) for (const l of d.laps || []) {
+			const st = String(l.track_status || '');
+			if (st.includes('4')) sc.add(l.lap);
+			else if (st.includes('6') || st.includes('7')) vsc.add(l.lap);
+		}
+		return { vsc: [...vsc], sc: [...sc] };
+	});
 
 	// sorted by finishing order (same convention as the dashboard)
 	let driverList = $derived(laps.map((d) => {
@@ -44,7 +54,7 @@
 	<div class="tm__grid">
 		<SpeedTrace {raceId} drivers={driverList} {circuit} totalLaps={raceInfo?.total_laps || 58} />
 		<TrackMap {raceId} drivers={driverList} {circuit} totalLaps={raceInfo?.total_laps || 58} />
-		<GearMap {raceId} drivers={driverList} totalLaps={raceInfo?.total_laps || 58} />
+		<GearMap {raceId} drivers={driverList} totalLaps={raceInfo?.total_laps || 58} vscLaps={neutralized.vsc} scLaps={neutralized.sc} />
 		<TrafficAnalysis trafficData={traffic} loading={false} />
 	</div>
 </div>
