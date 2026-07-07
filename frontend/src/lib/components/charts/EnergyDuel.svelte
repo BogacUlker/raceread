@@ -137,7 +137,7 @@
 	.duel-win button.on { color: var(--text-primary); background: var(--bg-secondary); }
 	.duel-svg { width: 100%; height: auto; display: block; }
 	.duel-code { font-family: var(--font-mono); font-size: 11px; font-weight: 700; }
-	.duel-tick { font-family: var(--font-mono); font-size: 8.5px; fill: var(--text-muted); }
+	.duel-tick { font-family: var(--font-mono); font-size: 9px; fill: var(--text-muted); }
 	.duel-legend { display: flex; gap: 14px; margin-top: 6px; font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); }
 	.duel-legend i { display: inline-block; width: 8px; height: 8px; margin-right: 4px; }
 	.duel-empty { padding: 3rem; text-align: center; font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); }

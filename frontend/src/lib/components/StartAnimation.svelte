@@ -167,14 +167,14 @@
 	.sa__stage { display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: start; }
 	.sa__map { width: 100%; max-height: 480px; }
 	.sa__result { min-width: 170px; padding: 10px 12px; background: var(--bg-primary); border: 1px solid var(--brd, var(--border)); }
-	.sa__rt { display: block; font-family: var(--fm, monospace); font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: var(--tm, var(--text-muted)); margin-bottom: 8px; }
+	.sa__rt { display: block; font-family: var(--fm, monospace); font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--tm, var(--text-muted)); margin-bottom: 8px; }
 	.sa__rr { display: grid; grid-template-columns: 20px 40px 1fr; gap: 6px; font-family: var(--fm, monospace); font-size: 11px; padding: 2px 0; }
 	.sa__rp { color: var(--tm, var(--text-muted)); }
 	.sa__rd { font-weight: 700; }
 	.sa__rdelta { text-align: right; color: var(--tm, var(--text-muted)); }
 	.sa__rdelta.up { color: #22C55E; }
 	.sa__rdelta.down { color: var(--accent-text); }
-	.sa__note { margin: 8px 0 0; font-size: 9.5px; color: var(--tm, var(--text-muted)); font-family: var(--fm, monospace); line-height: 1.5; max-width: 180px; }
+	.sa__note { margin: 8px 0 0; font-size: 10px; color: var(--tm, var(--text-muted)); font-family: var(--fm, monospace); line-height: 1.5; max-width: 180px; }
 	.sa__empty { color: var(--tm, var(--text-muted)); font-family: var(--fm, monospace); font-size: 12px; }
 	@media (max-width: 800px) { .sa__stage { grid-template-columns: 1fr; } }
 </style>

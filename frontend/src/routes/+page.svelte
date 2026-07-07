@@ -467,7 +467,7 @@
 	}
 	.collapsed .prv-sidebar__mini { opacity: 1; pointer-events: auto; transition: opacity .2s ease .15s; }
 	.prv-sidebar__mini-race {
-		font-family: var(--p-fm); font-size: 9px; font-weight: 700;
+		font-family: var(--p-fm); font-size: 9.5px; font-weight: 700;
 		color: var(--p-t2); text-decoration: none;
 		padding: 4px 0; border-left: 2px solid transparent;
 		padding-left: 6px; width: 36px; text-align: center;
@@ -481,7 +481,7 @@
 	.prv-sidebar__section--last { border-bottom: none; }
 	.prv-sidebar__heading { font-family: var(--p-fh); font-weight: 700; font-size: 14px; text-transform: uppercase; }
 	.prv-sidebar__version { font-family: var(--p-fm); font-size: 10px; color: var(--p-ac2); letter-spacing: .08em; text-transform: uppercase; margin-top: 3px; }
-	.prv-sidebar__label { font-family: var(--p-fm); font-size: 9px; color: var(--p-tm); text-transform: uppercase; letter-spacing: .1em; margin-bottom: .5rem; }
+	.prv-sidebar__label { font-family: var(--p-fm); font-size: 9.5px; color: var(--p-tm); text-transform: uppercase; letter-spacing: .1em; margin-bottom: .5rem; }
 	.prv-sidebar__nav { display: flex; flex-direction: column; gap: 1px; }
 	.prv-sidebar__race { display: flex; align-items: center; gap: .5rem; padding: .45rem .5rem; text-decoration: none; color: inherit; margin: 0 -.25rem; transition: background .15s; }
 	a.prv-sidebar__race:hover { background: rgba(226,75,74,.08); text-decoration: none; }
@@ -489,12 +489,12 @@
 	.prv-sidebar__race-code { font-family: var(--p-fm); font-size: 10px; color: var(--accent-text); min-width: 24px; }
 	.prv-sidebar__race-name { font-family: var(--p-fm); font-size: 11px; flex: 1; }
 	.prv-sidebar__race-winner { font-family: var(--p-fm); font-size: 10px; font-weight: 700; }
-	.prv-sidebar__race-date { font-family: var(--p-fm); font-size: 9px; color: var(--p-tm); }
+	.prv-sidebar__race-date { font-family: var(--p-fm); font-size: 9.5px; color: var(--p-tm); }
 	.prv-sidebar__about-text { font-size: 12px; line-height: 1.6; color: var(--p-t2); }
 	.prv-sidebar__bottom { margin-top: auto; padding: 1.25rem; background: rgba(15,17,23,.5); }
 	.prv-sidebar__status { display: flex; align-items: center; gap: .6rem; }
 	.prv-sidebar__dot { width: 7px; height: 7px; background: #22C55E; border-radius: 50%; flex-shrink: 0; }
-	.prv-sidebar__status-label { font-family: var(--p-fm); font-size: 9px; color: var(--p-tm); text-transform: uppercase; letter-spacing: .05em; }
+	.prv-sidebar__status-label { font-family: var(--p-fm); font-size: 9.5px; color: var(--p-tm); text-transform: uppercase; letter-spacing: .05em; }
 	.prv-sidebar__status-value { font-family: var(--p-fm); font-size: 10px; color: #22C55E; }
 
 	/* ── MAIN ── */
@@ -559,9 +559,9 @@
 	.prv-card__overlay { position: absolute; inset: auto 0 0 0; background: var(--p-bgc); padding: .85rem 1.5rem .9rem; transform: translateY(100%); transition: transform .25s ease; border-top: 1px solid rgba(226,75,74,.15); }
 	.prv-card__overlay--visible { transform: translateY(0); }
 	.prv-card__stats { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-bottom: .5rem; }
-	.prv-card__stat-label { display: block; font-family: var(--p-fm); font-size: 9px; color: var(--p-ac2); text-transform: uppercase; margin-bottom: 2px; }
+	.prv-card__stat-label { display: block; font-family: var(--p-fm); font-size: 9.5px; color: var(--p-ac2); text-transform: uppercase; margin-bottom: 2px; }
 	.prv-card__stat-value { font-family: var(--p-fm); font-size: 12px; font-weight: 700; }
-	.prv-card__stat-sub { font-size: 9px; opacity: .5; }
+	.prv-card__stat-sub { font-size: 9.5px; opacity: .5; }
 	.prv-card__cta { display: flex; align-items: center; justify-content: flex-end; gap: 6px; font-family: var(--p-fh); font-weight: 700; font-size: 10px; color: var(--accent-text); text-transform: uppercase; letter-spacing: .08em; }
 	.prv-card__arrow { transition: transform .15s; }
 	.prv-card:hover .prv-card__arrow { transform: translateX(3px); }
@@ -578,7 +578,7 @@
 	.prv-classic__name { font-family: var(--p-fh); font-weight: 700; font-size: 15px; text-transform: uppercase; line-height: 1.25; }
 	.prv-classic__meta { margin-top: auto; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 	.prv-classic__winner { font-family: var(--p-fm); font-size: 11px; font-weight: 700; }
-	.prv-classic__tag { font-family: var(--p-fm); font-size: 8.5px; letter-spacing: .06em; border: 1px solid var(--p-brd); color: var(--p-t2); padding: 1px 6px; text-transform: uppercase; }
+	.prv-classic__tag { font-family: var(--p-fm); font-size: 9px; letter-spacing: .06em; border: 1px solid var(--p-brd); color: var(--p-t2); padding: 1px 6px; text-transform: uppercase; }
 	@media (max-width: 900px) { .prv-classics { padding: 2rem 1.5rem; } }
 
 	/* ── FOOTER ── */
@@ -594,7 +594,7 @@
 	.prv-footer__row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .5rem; }
 	.prv-footer__link { color: inherit; text-decoration: none; }
 	.prv-footer__link:hover { color: var(--p-t2); text-decoration: none; }
-	.prv-footer__legal { margin-top: .7rem; font-family: var(--p-fm); font-size: 9px; line-height: 1.6; color: var(--p-tm); opacity: .55; text-transform: none; letter-spacing: .02em; }
+	.prv-footer__legal { margin-top: .7rem; font-family: var(--p-fm); font-size: 9.5px; line-height: 1.6; color: var(--p-tm); opacity: .55; text-transform: none; letter-spacing: .02em; }
 	.prv-footer__copy { font-family: var(--p-fm); font-size: 10px; opacity: .35; text-transform: uppercase; letter-spacing: .12em; }
 	.prv-footer__links { display: flex; gap: 2rem; font-family: var(--p-fm); font-size: 10px; text-transform: uppercase; letter-spacing: .08em; opacity: .25; }
 
@@ -636,7 +636,7 @@
 	}
 	.prv-guide:hover { border-color: #6B7280; border-left-color: var(--accent-text); background: #1E2230; text-decoration: none; }
 	.prv-guide:hover .prv-guide__arrow { transform: translateX(4px); }
-	.prv-guide__k { display: block; font-family: var(--font-mono); font-size: 9px; letter-spacing: .14em; color: var(--accent-text); text-transform: uppercase; margin-bottom: 3px; }
+	.prv-guide__k { display: block; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .14em; color: var(--accent-text); text-transform: uppercase; margin-bottom: 3px; }
 	.prv-guide__t { font-family: var(--font-heading); font-size: 15px; font-weight: 600; color: var(--text-primary); letter-spacing: -.01em; }
 	.prv-guide__arrow { font-size: 18px; color: var(--text-muted); transition: transform .15s; }
 </style>

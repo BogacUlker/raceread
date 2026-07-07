@@ -188,3 +188,22 @@ a:hover {
 .broadcast-layout .chart-card__title {
 	font-size: calc(var(--font-size-title) * var(--broadcast-font-scale, 1));
 }
+
+
+/* ── Page transitions (broadcast wipe) ── */
+@media (prefers-reduced-motion: no-preference) {
+	::view-transition-old(root) {
+		animation: 150ms cubic-bezier(0.4, 0, 1, 1) both vt-out;
+	}
+	::view-transition-new(root) {
+		animation: 230ms cubic-bezier(0, 0, 0.2, 1) 60ms both vt-in;
+	}
+	@keyframes vt-out { to { opacity: 0; transform: translateX(-14px); } }
+	@keyframes vt-in { from { opacity: 0; transform: translateX(18px); } }
+}
+
+/* ── Long-page scroll performance ── */
+.pd-sec, .prv-classics, .prv-races {
+	content-visibility: auto;
+	contain-intrinsic-size: auto 420px;
+}

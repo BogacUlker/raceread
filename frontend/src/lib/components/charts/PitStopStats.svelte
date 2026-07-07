@@ -256,7 +256,7 @@
 	}
 	.segment__compound {
 		font-family: var(--font-mono);
-		font-size: 9px;
+		font-size: 9.5px;
 		font-weight: 600;
 		color: rgba(255, 255, 255, 0.9);
 		white-space: nowrap;

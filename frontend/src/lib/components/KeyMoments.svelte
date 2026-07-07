@@ -158,7 +158,7 @@
 		font-family: var(--font-heading);
 		font-weight: 900;
 		font-style: italic;
-		font-size: 9px;
+		font-size: 9.5px;
 		color: #fff;
 		background: var(--accent);
 		letter-spacing: 0.08em;
@@ -177,7 +177,7 @@
 	.km__go {
 		align-self: flex-start;
 		font-family: var(--fm, monospace);
-		font-size: 9.5px;
+		font-size: 10px;
 		font-weight: 700;
 		letter-spacing: 0.08em;
 		text-transform: uppercase;

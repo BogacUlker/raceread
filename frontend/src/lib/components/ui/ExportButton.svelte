@@ -59,7 +59,7 @@
 		align-items: center;
 		gap: 4px;
 		font-family: var(--font-mono);
-		font-size: 9px;
+		font-size: 9.5px;
 		letter-spacing: 0.08em;
 		padding: 3px 7px;
 		background: var(--bg-primary);

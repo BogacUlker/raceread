@@ -228,7 +228,7 @@
 		gap: 6px;
 	}
 	.tooltip__vsc {
-		font-size: 9px;
+		font-size: 9.5px;
 		font-weight: 700;
 		color: #000;
 		background: #F59E0B;
@@ -263,7 +263,7 @@
 	}
 	.tooltip__tire-age {
 		font-family: var(--font-mono);
-		font-size: 9px;
+		font-size: 9.5px;
 		color: var(--text-muted);
 		flex-shrink: 0;
 	}

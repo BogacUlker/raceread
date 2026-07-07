@@ -136,7 +136,7 @@
 	.mt__steps { padding-left: 20px; color: var(--text-secondary); font-size: 14px; line-height: 1.7; max-width: 68ch; }
 	.mt__steps li { margin-bottom: 10px; }
 	.mt__steps b { color: var(--text-primary); }
-	.mt__tag { font-family: var(--font-mono); font-size: 9px; font-weight: 700; color: #000; padding: 1px 6px; vertical-align: middle; }
+	.mt__tag { font-family: var(--font-mono); font-size: 9.5px; font-weight: 700; color: #000; padding: 1px 6px; vertical-align: middle; }
 	.mt__diagram { background: var(--bg-secondary); border: 1px solid var(--border); padding: 14px; margin: 18px 0; }
 	.mt__diagram svg { width: 100%; height: auto; display: block; }
 	.mt__eras { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0; }
@@ -149,7 +149,7 @@
 	.mt__table { border: 1px solid var(--border); margin: 14px 0; }
 	.mt__row { display: grid; grid-template-columns: 1fr 52px 52px 130px; gap: 12px; align-items: center; padding: 7px 14px; font-family: var(--font-mono); font-size: 11.5px; color: var(--text-secondary); text-decoration: none; border-bottom: 1px solid rgba(46,50,64,.5); }
 	a.mt__row:hover { background: var(--bg-secondary); color: var(--text-primary); text-decoration: none; }
-	.mt__row--head { font-size: 9px; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted); border-bottom: 1px solid var(--border); }
+	.mt__row--head { font-size: 9.5px; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted); border-bottom: 1px solid var(--border); }
 	.mt__era-tag { color: var(--text-muted); }
 	.mt__bar { height: 5px; background: rgba(46,50,64,.6); display: block; }
 	.mt__bar i { display: block; height: 100%; }

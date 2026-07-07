@@ -198,7 +198,7 @@
 	}
 	.session-label {
 		display: inline-block;
-		font-size: 9px;
+		font-size: 9.5px;
 		font-weight: 600;
 		color: var(--text-muted);
 		margin-left: 4px;

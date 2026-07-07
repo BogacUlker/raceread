@@ -226,7 +226,7 @@
 	}
 	.insight-card__severity {
 		font-family: var(--font-mono);
-		font-size: 9px;
+		font-size: 9.5px;
 		font-weight: 600;
 		color: var(--accent-text);
 		background: color-mix(in srgb, var(--accent) 12%, transparent);

@@ -162,7 +162,7 @@
 	.cdm__corners { font-family: var(--fm, monospace); }
 	.cdm__cscroll { max-height: 330px; overflow-y: auto; }
 	.cdm__crow { display: grid; grid-template-columns: 44px 1fr 52px 52px 44px; gap: 8px; align-items: baseline; font-size: 11px; padding: 4px 0; border-bottom: 1px solid rgba(46,50,64,.5); }
-	.cdm__crow--head { font-size: 9px; color: var(--tm, var(--text-muted)); text-transform: uppercase; letter-spacing: .06em; border-bottom: 1px solid var(--brd, var(--border)); }
+	.cdm__crow--head { font-size: 9.5px; color: var(--tm, var(--text-muted)); text-transform: uppercase; letter-spacing: .06em; border-bottom: 1px solid var(--brd, var(--border)); }
 	.cdm__cn { color: var(--tm, var(--text-muted)); }
 	.cdm__cb em { font-style: normal; color: var(--tm, var(--text-muted)); }
 	.cdm__cb b { font-weight: 700; }

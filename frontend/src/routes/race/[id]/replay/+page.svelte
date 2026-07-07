@@ -456,12 +456,12 @@
 	.rp__fi { display: flex; align-items: baseline; gap: 8px; font-family: var(--fm); font-size: 10.5px; line-height: 1.45; }
 	.rp__fi--new { animation: rp-flash 1.2s ease-out; }
 	@keyframes rp-flash { 0% { background: rgba(226,75,74,.18); } 100% { background: transparent; } }
-	.rp__fi-lap { color: var(--tm); font-size: 9px; flex: 0 0 26px; }
+	.rp__fi-lap { color: var(--tm); font-size: 9.5px; flex: 0 0 26px; }
 	.rp__fi-dot { width: 6px; height: 6px; flex: 0 0 6px; align-self: center; }
 	.rp__fi-text { color: #C6CAD3; }
 	.rp__fi-empty { color: var(--tm); font-size: 10.5px; font-family: var(--fm); }
 	@media (prefers-reduced-motion: reduce) { .rp__fi--new { animation: none; } }
-	.rp__colhead { display: inline-block; font-family: var(--font-heading); font-weight: 900; font-style: italic; font-size: 9.5px; color: #fff; background: var(--accent); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 10px; padding: 3px 10px; }
+	.rp__colhead { display: inline-block; font-family: var(--font-heading); font-weight: 900; font-style: italic; font-size: 10px; color: #fff; background: var(--accent); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 10px; padding: 3px 10px; }
 
 	.rp__order { background: var(--bg2); padding: 12px 10px 8px; }
 	.rp__trow { display: grid; grid-template-columns: 26px 6px 44px 26px 1fr 26px; align-items: stretch; height: 26px; margin-bottom: 2px; background: var(--bg-card); }
@@ -474,18 +474,18 @@
 	.rp__tbar { }
 	.rp__ttla { font-family: var(--font-heading); font-weight: 800; font-size: 12.5px; letter-spacing: .05em; display: flex; align-items: center; padding-left: 8px; }
 	.rp__ttag { display: flex; align-items: center; }
-	.rp__ttag b { font-size: 7.5px; font-weight: 900; background: #fff; color: #111; padding: 1.5px 4px; letter-spacing: .04em; }
+	.rp__ttag b { font-size: 8.5px; font-weight: 900; background: #fff; color: #111; padding: 1.5px 4px; letter-spacing: .04em; }
 	.rp__tgap { font-family: var(--fm); font-weight: 600; font-size: 12px; display: flex; align-items: center; justify-content: flex-end; color: #D6D9E0; font-variant-numeric: tabular-nums; padding-right: 2px; }
 	.rp__tgap--pur { color: var(--timing-fastest); font-weight: 700; }
 	.rp__ttyre { display: flex; align-items: center; justify-content: center; }
-	.rp__ttyre i { width: 15px; height: 15px; border-radius: 50%; border: 2.5px solid; display: inline-flex; align-items: center; justify-content: center; font-style: normal; font-weight: 900; font-size: 7.5px; color: #fff; box-sizing: border-box; }
+	.rp__ttyre i { width: 15px; height: 15px; border-radius: 50%; border: 2.5px solid; display: inline-flex; align-items: center; justify-content: center; font-style: normal; font-weight: 900; font-size: 8.5px; color: #fff; box-sizing: border-box; }
 	.rp__fastest { margin-top: 8px; font-family: var(--fm); font-weight: 700; font-size: 10.5px; color: var(--timing-fastest); letter-spacing: .04em; }
 	.rp__fastest small { color: var(--tm); }
-	.rp__note { font-family: var(--fm); font-size: 9px; color: var(--tm); margin-top: 6px; }
+	.rp__note { font-family: var(--fm); font-size: 9.5px; color: var(--tm); margin-top: 6px; }
 
 	.rp__chart { background: var(--bg2); padding: 12px 14px; }
 	.rp__svg { width: 100%; height: auto; display: block; }
-	.rp__tick { font-family: var(--fm); font-size: 9px; fill: var(--tm); }
+	.rp__tick { font-family: var(--fm); font-size: 9.5px; fill: var(--tm); }
 	.rp__legend { display: flex; flex-wrap: wrap; gap: 8px 12px; margin-top: 8px; }
 	.rp__lg { display: inline-flex; align-items: center; gap: 4px; font-family: var(--fm); font-size: 10px; color: var(--text-secondary); cursor: default; }
 	.rp__lg i { width: 8px; height: 8px; display: inline-block; }

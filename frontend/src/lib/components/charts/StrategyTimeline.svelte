@@ -568,14 +568,14 @@
 		gap: 6px;
 	}
 	:global(.strategy-tooltip__compound) {
-		font-size: 9px;
+		font-size: 9.5px;
 		font-weight: 700;
 		padding: 1px 5px;
 		border-radius: 2px;
 		text-transform: uppercase;
 	}
 	:global(.strategy-tooltip__pit) {
-		font-size: 9px;
+		font-size: 9.5px;
 		font-weight: 600;
 		color: var(--text-muted);
 		text-transform: uppercase;

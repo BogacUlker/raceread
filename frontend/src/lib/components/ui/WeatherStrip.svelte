@@ -68,8 +68,8 @@
 <style>
 	.wst { margin-top: 10px; padding: 10px 14px 6px; background: var(--bg-secondary); border: 1px solid var(--border); }
 	.wst__head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 6px; margin-bottom: 4px; }
-	.wst__title { font-family: var(--font-mono); font-size: 9.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--text-secondary); }
-	.wst__meta { display: flex; gap: 14px; font-family: var(--font-mono); font-size: 9px; color: var(--text-muted); flex-wrap: wrap; }
+	.wst__title { font-family: var(--font-mono); font-size: 10px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--text-secondary); }
+	.wst__meta { display: flex; gap: 14px; font-family: var(--font-mono); font-size: 9.5px; color: var(--text-muted); flex-wrap: wrap; }
 	.wst__meta span { display: inline-flex; align-items: center; gap: 4px; }
 	.wst__dot { width: 8px; height: 3px; display: inline-block; }
 	.wst__dot--track { background: #F59E0B; }

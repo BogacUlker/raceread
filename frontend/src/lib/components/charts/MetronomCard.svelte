@@ -39,10 +39,10 @@
 	.mnc { background: var(--bg-secondary); border: 1px solid var(--border); padding: 16px 18px; height: 100%; box-sizing: border-box; }
 	.mnc__head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
 	.mnc__title { font-family: var(--font-heading); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
-	.mnc__unit { font-family: var(--font-mono); font-size: 9px; color: var(--text-muted); letter-spacing: .08em; }
+	.mnc__unit { font-family: var(--font-mono); font-size: 9.5px; color: var(--text-muted); letter-spacing: .08em; }
 	.mnc__rows { display: flex; flex-direction: column; gap: 7px; }
 	.mnc__row { display: grid; grid-template-columns: 14px 34px 1fr 56px; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 11px; }
-	.mnc__rank { color: var(--text-muted); font-size: 9px; }
+	.mnc__rank { color: var(--text-muted); font-size: 9.5px; }
 	.mnc__drv { font-weight: 600; }
 	.mnc__barwrap { height: 5px; background: rgba(46,50,64,.6); }
 	.mnc__bar { height: 100%; }

@@ -456,7 +456,7 @@
 	.pq-sb__bottom { margin-top: auto; padding: 1rem; border-top: 1px solid rgba(46,50,64,.4); }
 	.pq-sb__home { font-family: var(--fm); font-size: 10px; color: var(--ac-text, var(--accent-text)); text-decoration: none; text-transform: uppercase; letter-spacing: .08em; }
 	.pq-sb__home:hover { text-decoration: none; opacity: .8; }
-	.pq-sb__mr { font-family: var(--fm); font-size: 9px; font-weight: 700; color: var(--t2); text-decoration: none; padding: 3px 0; border-left: 2px solid transparent; padding-left: 6px; width: 34px; text-align: center; }
+	.pq-sb__mr { font-family: var(--fm); font-size: 9.5px; font-weight: 700; color: var(--t2); text-decoration: none; padding: 3px 0; border-left: 2px solid transparent; padding-left: 6px; width: 34px; text-align: center; }
 	.pq-sb__mr:hover { color: var(--ac-text, var(--accent-text)); text-decoration: none; }
 
 	/* MAIN */
@@ -474,7 +474,7 @@
 	.pq-header__team { font-family: var(--fh); font-size: 18px; font-weight: 600; color: var(--text-primary); }
 	.pq-header__pos { font-family: var(--fm); font-size: 15px; color: var(--text-secondary); font-weight: 600; letter-spacing: .03em; }
 	.pq-header__right { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
-	.pq-header__best-label { font-family: var(--fm); font-size: 9px; color: var(--tm); text-transform: uppercase; letter-spacing: .08em; }
+	.pq-header__best-label { font-family: var(--fm); font-size: 9.5px; color: var(--tm); text-transform: uppercase; letter-spacing: .08em; }
 	.pq-header__best-val { font-family: var(--fh); font-size: 26px; font-weight: 700; font-variant-numeric: tabular-nums; }
 
 	
@@ -483,10 +483,10 @@
 	.pq-ov { background: var(--bg2); padding: 1.2rem 1.4rem; border-left: 3px solid var(--brd); transition: border-color .2s; }
 	.pq-ov:hover { border-left-color: var(--ac-text, var(--accent-text)); }
 	.pq-ov--accent { border-left-color: var(--ac-text, var(--accent-text)); background: linear-gradient(135deg, var(--bg2) 0%, rgba(226,75,74,.06) 100%); }
-	.pq-ov__label { font-family: var(--fm); font-size: 9px; color: var(--tm); text-transform: uppercase; letter-spacing: .12em; margin-bottom: .5rem; }
+	.pq-ov__label { font-family: var(--fm); font-size: 9.5px; color: var(--tm); text-transform: uppercase; letter-spacing: .12em; margin-bottom: .5rem; }
 	.pq-ov__value { font-family: var(--fh); font-size: 26px; font-weight: 700; line-height: 1; letter-spacing: -.02em; }
 	.pq-ov--accent .pq-ov__value { color: var(--ac-text, var(--accent-text)); }
-	.pq-ov__sub { font-family: var(--fm); font-size: 9px; color: var(--tm); margin-top: 4px; text-transform: uppercase; letter-spacing: .04em; }
+	.pq-ov__sub { font-family: var(--fm); font-size: 9.5px; color: var(--tm); margin-top: 4px; text-transform: uppercase; letter-spacing: .04em; }
 	.pq-ov__sub--delta { color: #F59E0B; }
 
 	/* Empty */
@@ -507,8 +507,8 @@
 	.strike { text-decoration: line-through; opacity: .5; }
 	.best { color: #22C55E; font-weight: 700; }
 	.pq-compound { display: inline-block; width: 8px; height: 8px; border-radius: 50% !important; flex-shrink: 0; }
-	.st-del { font-size: 9px; font-weight: 600; color: #EF4444; text-transform: uppercase; }
-	.st-pb { font-size: 9px; font-weight: 700; color: #22C55E; }
+	.st-del { font-size: 9.5px; font-weight: 600; color: #EF4444; text-transform: uppercase; }
+	.st-pb { font-size: 9.5px; font-weight: 700; color: #22C55E; }
 
 	/* Chart */
 	.pq-chart { width: 100%; max-height: 280px; }
@@ -554,7 +554,7 @@
 	.pq-phase__dot--best { background: #22C55E; }
 	.pq-phase__dot--deleted { background: #EF4444; }
 	.pq-phase__dot--normal { background: #6B7280; }
-	.pq-phase__deleted-tag { font-family: var(--fm); font-size: 9px; color: #EF4444; text-transform: uppercase; display: block; margin-top: .25rem; }
+	.pq-phase__deleted-tag { font-family: var(--fm); font-size: 9.5px; color: #EF4444; text-transform: uppercase; display: block; margin-top: .25rem; }
 	.pq-phase__na { font-family: var(--fm); font-size: 11px; color: var(--tm); text-transform: uppercase; margin-top: .5rem; }
 	.pq-phase__arrow { font-size: 20px; color: var(--brd); }
 	.pq-phase__arrow--active { color: var(--ac-text, var(--accent-text)); }

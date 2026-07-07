@@ -692,7 +692,7 @@
 	.pd-sb__bottom { margin-top: auto; padding: 1rem; border-top: 1px solid rgba(46,50,64,.4); }
 	.pd-sb__home { font-family: var(--fm); font-size: 10px; color: var(--ac-text, var(--accent-text)); text-decoration: none; text-transform: uppercase; letter-spacing: .08em; }
 	.pd-sb__home:hover { text-decoration: none; opacity: .8; }
-	.pd-sb__mr { font-family: var(--fm); font-size: 9px; font-weight: 700; color: var(--t2); text-decoration: none; padding: 3px 0; border-left: 2px solid transparent; padding-left: 6px; width: 34px; text-align: center; }
+	.pd-sb__mr { font-family: var(--fm); font-size: 9.5px; font-weight: 700; color: var(--t2); text-decoration: none; padding: 3px 0; border-left: 2px solid transparent; padding-left: 6px; width: 34px; text-align: center; }
 	.pd-sb__mr:hover { color: var(--ac-text, var(--accent-text)); text-decoration: none; }
 	.pd-sb__mr--active { color: var(--ac-text, var(--accent-text)); border-left-color: var(--ac-text, var(--accent-text)); }
 
@@ -769,7 +769,7 @@
 	@media (prefers-reduced-motion: reduce) { .pd :global(.pd-flash) { animation: none; } }
 	.pd-sec__minitoggle { position: absolute; top: 4px; right: 4px; z-index: 5; background: var(--bg); border: 1px solid rgba(46,50,64,.5); cursor: pointer; padding: 3px 5px; line-height: 1; opacity: .4; transition: opacity .15s; }
 	.pd-sec__minitoggle:hover { opacity: 1; }
-	.pd-chev { display: inline-block; font-size: 9px; color: var(--tm); transition: transform .2s; }
+	.pd-chev { display: inline-block; font-size: 9.5px; color: var(--tm); transition: transform .2s; }
 	.pd-chev.rotated { transform: rotate(-90deg); }
 	.pd-sec__body { max-height: 2000px; opacity: 1; overflow: visible; transition: max-height .35s ease, opacity .25s ease; }
 	.pd-sec__body.collapsed { max-height: 0; opacity: 0; overflow: hidden; }
@@ -777,12 +777,12 @@
 	/* FOOTER */
 	.pd-footer { margin-top: 3rem; padding: 1.25rem 0; border-top: 1px solid rgba(46,50,64,.5); }
 	.pd-footer__row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .5rem; }
-	.pd-footer__legal { margin-top: .7rem; font-family: var(--fm); font-size: 9px; line-height: 1.6; color: var(--tm); opacity: .6; }
+	.pd-footer__legal { margin-top: .7rem; font-family: var(--fm); font-size: 9.5px; line-height: 1.6; color: var(--tm); opacity: .6; }
 	.pd-footer__stats { display: flex; gap: 2rem; }
-	.pd-footer__label { font-family: var(--fm); font-size: 8px; color: var(--tm); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 1px; }
+	.pd-footer__label { font-family: var(--fm); font-size: 9px; color: var(--tm); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 1px; }
 	.pd-footer__val { font-family: var(--fm); font-size: 10px; }
 	.pd-footer__val--accent { color: var(--ac-text, var(--accent-text)); }
-	.pd-footer__copy { font-family: var(--fm); font-size: 9px; color: var(--tm); opacity: .4; text-transform: uppercase; letter-spacing: .1em; }
+	.pd-footer__copy { font-family: var(--fm); font-size: 9.5px; color: var(--tm); opacity: .4; text-transform: uppercase; letter-spacing: .1em; }
 
 	/* LOADING */
 	.pd-loading { display: flex; align-items: center; justify-content: center; padding: 3rem; font-family: var(--fm); color: var(--tm); }
@@ -818,9 +818,9 @@
 	@media (max-width: 1100px) { .pd-sec--split { grid-template-columns: 1fr 1fr; } }
 	@media (max-width: 768px) { .pd-sec--split { grid-template-columns: 1fr; } }
 	.pd-uc { margin-top: 12px; padding: 12px 16px; background: var(--bg-secondary); border: 1px solid var(--border); }
-	.pd-uc__title { display: block; font-family: var(--font-mono); font-size: 9.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 8px; }
+	.pd-uc__title { display: block; font-family: var(--font-mono); font-size: 10px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 8px; }
 	.pd-uc__row { display: grid; grid-template-columns: 36px 40px 1fr 40px 52px; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 11px; padding: 4px 0; }
-	.pd-uc__lap { color: var(--text-muted); font-size: 9.5px; }
+	.pd-uc__lap { color: var(--text-muted); font-size: 10px; }
 	.pd-uc__w, .pd-uc__l { font-weight: 700; }
 	.pd-uc__vs { color: var(--text-muted); font-size: 10px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 	.pd-uc__gain { text-align: right; font-weight: 600; color: var(--text-primary); }

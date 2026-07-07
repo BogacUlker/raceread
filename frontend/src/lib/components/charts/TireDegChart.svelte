@@ -48,7 +48,13 @@
 		const deltas = pts.map((p) => p.delta);
 		const lo = Math.max(-2.5, Math.min(...deltas, -0.5));
 		const hi = Math.min(4, Math.max(...deltas, 1.5));
-		return { pts: pts.filter((p) => p.age <= maxAge && p.delta >= lo && p.delta <= hi), lines, maxAge, lo, hi };
+		let shown = pts.filter((p) => p.age <= maxAge && p.delta >= lo && p.delta <= hi);
+		// cap the scatter: >1000 SVG circles makes long-page scrolling stutter
+		if (shown.length > 400) {
+			const step = shown.length / 400;
+			shown = Array.from({ length: 400 }, (_, i) => shown[Math.floor(i * step)]);
+		}
+		return { pts: shown, lines, maxAge, lo, hi };
 	});
 
 	let x = $derived((age) => PAD.l + (age - 1) / (model.maxAge - 1) * (width - PAD.l - PAD.r));
@@ -98,7 +104,7 @@
 	.tdg__head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; flex-wrap: wrap; gap: 8px; }
 	.tdg__title { font-family: var(--font-heading); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
 	.tdg__legend { display: flex; gap: 12px; }
-	.tdg__lg { display: inline-flex; align-items: center; gap: 5px; font-family: var(--font-mono); font-size: 9.5px; color: var(--text-secondary); }
+	.tdg__lg { display: inline-flex; align-items: center; gap: 5px; font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); }
 	.tdg__lg i { width: 10px; height: 3px; display: inline-block; }
 	.tdg__note { margin: 6px 0 0; font-size: 10.5px; color: var(--text-muted); }
 </style>

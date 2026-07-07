@@ -19,7 +19,7 @@
 	.inferred-badge {
 		display: inline-block;
 		font-family: var(--font-mono);
-		font-size: 9px;
+		font-size: 9.5px;
 		font-weight: 600;
 		text-transform: uppercase;
 		letter-spacing: 0.05em;

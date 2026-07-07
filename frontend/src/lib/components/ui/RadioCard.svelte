@@ -100,7 +100,7 @@
 	.rc__head { display: flex; align-items: stretch; border-bottom: 1px solid var(--brd, var(--border)); }
 	.rc__team { width: 5px; flex: 0 0 5px; }
 	.rc__drv { font-family: var(--fm, var(--font-mono)), monospace; font-weight: 700; font-size: 13px; letter-spacing: .04em; padding: 7px 10px; }
-	.rc__label { display: flex; align-items: center; gap: 6px; font-family: var(--fm, var(--font-mono)), monospace; font-size: 8.5px; letter-spacing: .16em; color: var(--text-secondary); }
+	.rc__label { display: flex; align-items: center; gap: 6px; font-family: var(--fm, var(--font-mono)), monospace; font-size: 9px; letter-spacing: .16em; color: var(--text-secondary); }
 	.rc__dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: rc-pulse 1.1s infinite; }
 	@keyframes rc-pulse { 50% { opacity: .25; } }
 	.rc__wave { display: flex; align-items: center; gap: 2px; margin-left: auto; padding-right: 10px; }
@@ -109,13 +109,13 @@
 	.rc__wave i:nth-child(3) { height: 15px; animation-delay: .3s; } .rc__wave i:nth-child(4) { height: 9px; animation-delay: .45s; }
 	.rc__wave i:nth-child(5) { height: 13px; animation-delay: .6s; } .rc__wave i:nth-child(6) { height: 5px; animation-delay: .75s; }
 	@keyframes rc-eq { 50% { transform: scaleY(.35); } }
-	.rc__lap { font-family: var(--fm, var(--font-mono)), monospace; font-size: 8.5px; color: var(--text-muted); align-self: center; padding-right: 10px; margin-left: auto; }
+	.rc__lap { font-family: var(--fm, var(--font-mono)), monospace; font-size: 9px; color: var(--text-muted); align-self: center; padding-right: 10px; margin-left: auto; }
 	.rc__wave + .rc__lap { margin-left: 0; }
 	.rc__quote { font-family: var(--fm, var(--font-mono)), monospace; font-weight: 700; font-size: 12.5px; line-height: 1.65; text-transform: uppercase; letter-spacing: .02em; padding: 10px 12px 4px; }
 	.rc__seg--unsaid { color: #565D6B; }
 	.rc__seg--said { color: var(--text-primary); }
 	.rc__seg--saying { color: var(--text-primary); border-bottom: 2px solid #6C98FF; }
 	.rc__tr { font-size: 11.5px; color: var(--text-muted); padding: 5px 12px 0; font-style: italic; line-height: 1.55; }
-	.rc__tag { font-family: var(--fm, var(--font-mono)), monospace; font-size: 7.5px; letter-spacing: .14em; color: #565D6B; padding: 8px 12px 9px; text-transform: uppercase; }
+	.rc__tag { font-family: var(--fm, var(--font-mono)), monospace; font-size: 8.5px; letter-spacing: .14em; color: #565D6B; padding: 8px 12px 9px; text-transform: uppercase; }
 	@media (prefers-reduced-motion: reduce) { .rc__dot, .rc__wave i { animation: none; } }
 </style>

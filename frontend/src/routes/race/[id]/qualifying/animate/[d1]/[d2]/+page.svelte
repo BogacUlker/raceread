@@ -736,7 +736,7 @@
 	.qanim__track-svg { width: 100%; height: 100%; }
 	.qanim__gap-overlay { position: absolute; top: 1rem; right: 1rem; background: rgba(15,17,23,.85); padding: .6rem 1rem; text-align: center; border: 1px solid rgba(46,50,64,.4); }
 	.qanim__gap-value { font-family: var(--fh); font-size: 22px; font-weight: 700; display: block; }
-	.qanim__gap-leader { font-family: var(--fm); font-size: 9px; color: var(--tm); text-transform: uppercase; letter-spacing: .08em; }
+	.qanim__gap-leader { font-family: var(--fm); font-size: 9.5px; color: var(--tm); text-transform: uppercase; letter-spacing: .08em; }
 
 	/* Bottom bar */
 	.qanim__bottom { flex-shrink: 0; padding: .5rem 1.5rem .75rem; background: var(--bg2); border-top: 1px solid rgba(46,50,64,.4); }
@@ -745,10 +745,10 @@
 	.qanim__scrub-fill { position: absolute; top: 0; left: 0; height: 100%; background: var(--ac); }
 	.qanim__scrub-thumb { position: absolute; top: 50%; transform: translate(-50%, -50%); width: 14px; height: 14px; background: var(--text-primary); transition: transform .1s; }
 	.qanim__scrub:active .qanim__scrub-thumb { transform: translate(-50%, -50%) scale(1.3); }
-	.qanim__scrub-labels { display: flex; justify-content: space-between; font-family: var(--fm); font-size: 9px; color: var(--tm); margin-top: 3px; }
+	.qanim__scrub-labels { display: flex; justify-content: space-between; font-family: var(--fm); font-size: 9.5px; color: var(--tm); margin-top: 3px; }
 	.qanim__gap-label { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px; }
-	.qanim__gap-label-text { font-family: var(--fm); font-size: 9px; color: var(--tm); text-transform: uppercase; letter-spacing: .1em; }
-	.qanim__gap-label-drivers { font-family: var(--fm); font-size: 9px; }
+	.qanim__gap-label-text { font-family: var(--fm); font-size: 9.5px; color: var(--tm); text-transform: uppercase; letter-spacing: .1em; }
+	.qanim__gap-label-drivers { font-family: var(--fm); font-size: 9.5px; }
 	.qanim__gap-mini { width: 100%; height: 50px; }
 
 	/* No data */

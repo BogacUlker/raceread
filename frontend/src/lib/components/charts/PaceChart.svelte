@@ -257,7 +257,7 @@
 	}
 	.pace-legend__hint {
 		font-family: var(--font-mono);
-		font-size: 9px;
+		font-size: 9.5px;
 		color: var(--text-muted);
 		text-align: center;
 		min-height: 14px;

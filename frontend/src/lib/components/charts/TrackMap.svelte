@@ -1348,7 +1348,7 @@
 		top: 2px;
 		transform: translateX(-50%);
 		font-family: var(--font-mono);
-		font-size: 9px;
+		font-size: 9.5px;
 		color: var(--text-muted);
 	}
 	.track-map__legend-chip {
