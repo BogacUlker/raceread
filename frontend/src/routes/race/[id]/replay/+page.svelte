@@ -130,31 +130,17 @@
 		}
 		for (const c of data.radio?.clips || []) {
 			if (!c.lap || c.lap < 1 || c.lap > totalLaps) continue;
-			items.push({ kind: 'radio', lap: c.lap, driver: c.driver, url: c.url });
+			items.push({ kind: 'radio', lap: c.lap, driver: c.driver, url: c.url, segments: c.segments });
 		}
 		return items.sort((a, b) => a.lap - b.lap);
 	});
 	let feedVisible = $derived(feedAll.filter((i) => i.lap <= lap).slice(-9).reverse());
 	let radioLaps = $derived([...new Set((data.radio?.clips || []).filter((c) => c.lap).map((c) => c.lap))]);
 
-	let playingUrl = $state(null);
-	let radioTime = $state({ cur: 0, dur: 0 });
-	let audio = null;
-	function toggleRadio(clip) {
-		if (playingUrl === clip.url) { audio?.pause(); playingUrl = null; return; }
-		audio?.pause();
-		audio = new Audio(clip.url);
-		audio.onended = () => { playingUrl = null; };
-		audio.onerror = () => { playingUrl = null; };
-		audio.ontimeupdate = () => { radioTime = { cur: audio.currentTime, dur: audio.duration || 0 }; };
-		audio.play().catch(() => { playingUrl = null; });
-		radioTime = { cur: 0, dur: 0 };
-		playingUrl = clip.url;
-	}
-	function mmss(t) { return Math.floor(t / 60) + ':' + String(Math.floor(t % 60)).padStart(2, '0'); }
 
 	// lap-1 start animation (lazy: telemetry loads when the panel opens)
 	import StartAnimation from '$lib/components/StartAnimation.svelte';
+	import RadioCard from '$lib/components/ui/RadioCard.svelte';
 	let showStart = $state(false);
 	let qualiPos = $derived.by(() => {
 		const m = {};
@@ -370,11 +356,7 @@
 						<div class="rp__fi" class:rp__fi--new={item.lap === lap}>
 							<span class="rp__fi-lap">L{item.lap}</span>
 							{#if item.kind === 'radio'}
-								<button class="rp__fi-radio" onclick={() => toggleRadio(item)}>
-									{playingUrl === item.url ? '■' : '▶'}
-									<b style="color:{tc((data.laps.find((d) => d.driver === item.driver) || {}).team)}">{item.driver}</b>
-									{playingUrl === item.url ? mmss(radioTime.cur) + (radioTime.dur ? ' / ' + mmss(radioTime.dur) : '') : $t('replay.radio')}
-								</button>
+								<RadioCard clip={item} team={teamsMap[item.driver]} lap={item.lap} compact />
 							{:else}
 								<span class="rp__fi-dot" style="background:{flagColor(item)}"></span>
 								<span class="rp__fi-text">{item.text}</span>
@@ -431,9 +413,6 @@
 	.rp__fi-lap { color: var(--tm); font-size: 9px; flex: 0 0 26px; }
 	.rp__fi-dot { width: 6px; height: 6px; flex: 0 0 6px; align-self: center; }
 	.rp__fi-text { color: #C6CAD3; }
-	.rp__fi-radio { display: inline-flex; gap: 6px; align-items: baseline; background: none; border: 1px solid var(--brd); color: #9CA3AF; font-family: var(--fm); font-size: 10px; padding: 3px 8px; cursor: pointer; }
-	.rp__fi-radio:hover { border-color: #6C98FF; color: #E8E8ED; }
-	.rp__fi-radio b { font-weight: 700; }
 	.rp__fi-empty { color: var(--tm); font-size: 10.5px; font-family: var(--fm); }
 	@media (prefers-reduced-motion: reduce) { .rp__fi--new { animation: none; } }
 	.rp__colhead { display: block; font-family: var(--fm); font-size: 10px; color: var(--tm); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 8px; }

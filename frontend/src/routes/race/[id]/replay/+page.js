@@ -8,7 +8,7 @@ export async function load({ params, fetch, url }) {
 		api(`/api/races/${id}/laps`, fetch),
 		api(`/api/races/${id}/strategy`, fetch).catch(() => ({ drivers: [] })),
 		api(`/api/races/${id}/energy/vsc`, fetch).catch(() => ({ vsc_laps: [], sc_laps: [] })),
-		api(`/api/races/${id}/radio`, fetch).catch(() => ({ clips: [] })),
+		api(`/api/races/${id}/radio?v=2`, fetch).catch(() => ({ clips: [] })),
 		api(`/api/races/${id}/race-control`, fetch).catch(() => ({ messages: [] })),
 		api(`/api/races/${id}/circuit`, fetch).catch(() => null),
 		api(`/api/races/${id}/qualifying`, fetch).catch(() => null),

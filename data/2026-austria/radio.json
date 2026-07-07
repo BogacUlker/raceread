@@ -1,143 +1,379 @@
 {
-  "session_key": 11315,
-  "clips": [
+ "session_key": 11315,
+ "clips": [
+  {
+   "driver": "HUL",
+   "lap": null,
+   "date": "2026-06-28T12:16:55.566000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-06-28_Austrian_Grand_Prix/2026-06-28_Race/TeamRadio/HUL_27_20260628_141647.mp3"
+  },
+  {
+   "driver": "GAS",
+   "lap": null,
+   "date": "2026-06-28T12:32:10.153000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-06-28_Austrian_Grand_Prix/2026-06-28_Race/TeamRadio/GAS_10_20260628_143137.mp3"
+  },
+  {
+   "driver": "PIA",
+   "lap": null,
+   "date": "2026-06-28T12:32:40.251000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-06-28_Austrian_Grand_Prix/2026-06-28_Race/TeamRadio/PIA_81_20260628_143201.mp3"
+  },
+  {
+   "driver": "PER",
+   "lap": 5,
+   "date": "2026-06-28T13:09:10.543000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-06-28_Austrian_Grand_Prix/2026-06-28_Race/TeamRadio/PER_11_20260628_150840.mp3"
+  },
+  {
+   "driver": "RUS",
+   "lap": 10,
+   "date": "2026-06-28T13:15:16.424000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-06-28_Austrian_Grand_Prix/2026-06-28_Race/TeamRadio/RUS_63_20260628_151458.mp3",
+   "segments": [
     {
-      "driver": "HUL",
-      "lap": null,
-      "date": "2026-06-28T12:16:55.566000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-06-28_Austrian_Grand_Prix/2026-06-28_Race/TeamRadio/HUL_27_20260628_141647.mp3"
+     "s": 0.0,
+     "e": 7.2,
+     "t": "So the stop could trigger this early.",
+     "tr": "Yani pit bu kadar erken tetiklenebilir."
     },
     {
-      "driver": "GAS",
-      "lap": null,
-      "date": "2026-06-28T12:32:10.153000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-06-28_Austrian_Grand_Prix/2026-06-28_Race/TeamRadio/GAS_10_20260628_143137.mp3"
+     "s": 7.2,
+     "e": 8.7,
+     "t": "He is very close to Lewis.",
+     "tr": "Lewis'e çok yakın."
     },
     {
-      "driver": "PIA",
-      "lap": null,
-      "date": "2026-06-28T12:32:40.251000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-06-28_Austrian_Grand_Prix/2026-06-28_Race/TeamRadio/PIA_81_20260628_143201.mp3"
-    },
-    {
-      "driver": "PER",
-      "lap": 5,
-      "date": "2026-06-28T13:09:10.543000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-06-28_Austrian_Grand_Prix/2026-06-28_Race/TeamRadio/PER_11_20260628_150840.mp3"
-    },
-    {
-      "driver": "RUS",
-      "lap": 10,
-      "date": "2026-06-28T13:15:16.424000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-06-28_Austrian_Grand_Prix/2026-06-28_Race/TeamRadio/RUS_63_20260628_151458.mp3"
-    },
-    {
-      "driver": "VER",
-      "lap": 12,
-      "date": "2026-06-28T13:17:16.997000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-06-28_Austrian_Grand_Prix/2026-06-28_Race/TeamRadio/VER_3_20260628_151652.mp3"
-    },
-    {
-      "driver": "HAM",
-      "lap": 13,
-      "date": "2026-06-28T13:18:48.577000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-06-28_Austrian_Grand_Prix/2026-06-28_Race/TeamRadio/HAM_44_20260628_151833.mp3"
-    },
-    {
-      "driver": "RUS",
-      "lap": 17,
-      "date": "2026-06-28T13:23:22.676000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-06-28_Austrian_Grand_Prix/2026-06-28_Race/TeamRadio/RUS_63_20260628_152244.mp3"
-    },
-    {
-      "driver": "HAM",
-      "lap": 18,
-      "date": "2026-06-28T13:24:23.802000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-06-28_Austrian_Grand_Prix/2026-06-28_Race/TeamRadio/HAM_44_20260628_152408.mp3"
-    },
-    {
-      "driver": "NOR",
-      "lap": 20,
-      "date": "2026-06-28T13:27:28.253000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-06-28_Austrian_Grand_Prix/2026-06-28_Race/TeamRadio/NOR_1_20260628_152707.mp3"
-    },
-    {
-      "driver": "HAM",
-      "lap": 25,
-      "date": "2026-06-28T13:33:01.796000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-06-28_Austrian_Grand_Prix/2026-06-28_Race/TeamRadio/HAM_44_20260628_153219.mp3"
-    },
-    {
-      "driver": "HAM",
-      "lap": 26,
-      "date": "2026-06-28T13:34:34.344000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-06-28_Austrian_Grand_Prix/2026-06-28_Race/TeamRadio/HAM_44_20260628_153415.mp3"
-    },
-    {
-      "driver": "ANT",
-      "lap": 27,
-      "date": "2026-06-28T13:36:04.672000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-06-28_Austrian_Grand_Prix/2026-06-28_Race/TeamRadio/ANT_12_20260628_153534.mp3"
-    },
-    {
-      "driver": "HAM",
-      "lap": 32,
-      "date": "2026-06-28T13:43:11.186000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-06-28_Austrian_Grand_Prix/2026-06-28_Race/TeamRadio/HAM_44_20260628_154230.mp3"
-    },
-    {
-      "driver": "HAM",
-      "lap": 39,
-      "date": "2026-06-28T13:51:18.443000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-06-28_Austrian_Grand_Prix/2026-06-28_Race/TeamRadio/HAM_44_20260628_155100.mp3"
-    },
-    {
-      "driver": "VER",
-      "lap": 46,
-      "date": "2026-06-28T13:58:55.613000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-06-28_Austrian_Grand_Prix/2026-06-28_Race/TeamRadio/VER_3_20260628_155813.mp3"
-    },
-    {
-      "driver": "RUS",
-      "lap": 46,
-      "date": "2026-06-28T13:59:28.152000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-06-28_Austrian_Grand_Prix/2026-06-28_Race/TeamRadio/RUS_63_20260628_155900.mp3"
-    },
-    {
-      "driver": "ANT",
-      "lap": 50,
-      "date": "2026-06-28T14:04:30.889000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-06-28_Austrian_Grand_Prix/2026-06-28_Race/TeamRadio/ANT_12_20260628_160408.mp3"
-    },
-    {
-      "driver": "LEC",
-      "lap": 57,
-      "date": "2026-06-28T14:12:37.974000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-06-28_Austrian_Grand_Prix/2026-06-28_Race/TeamRadio/LEC_16_20260628_161214.mp3"
-    },
-    {
-      "driver": "LEC",
-      "lap": 59,
-      "date": "2026-06-28T14:15:10.430000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-06-28_Austrian_Grand_Prix/2026-06-28_Race/TeamRadio/LEC_16_20260628_161444.mp3"
-    },
-    {
-      "driver": "RUS",
-      "lap": 71,
-      "date": "2026-06-28T14:31:23.270000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-06-28_Austrian_Grand_Prix/2026-06-28_Race/TeamRadio/RUS_63_20260628_163044.mp3"
-    },
-    {
-      "driver": "VER",
-      "lap": 71,
-      "date": "2026-06-28T14:32:24.314000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-06-28_Austrian_Grand_Prix/2026-06-28_Race/TeamRadio/VER_3_20260628_163139.mp3"
-    },
-    {
-      "driver": "RUS",
-      "lap": 71,
-      "date": "2026-06-28T14:32:55.076000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-06-28_Austrian_Grand_Prix/2026-06-28_Race/TeamRadio/RUS_63_20260628_163222.mp3"
+     "s": 9.4,
+     "e": 12.1,
+     "t": "Every extra second we can get.",
+     "tr": "Kazanabileceğimiz her saniye önemli."
     }
-  ]
+   ]
+  },
+  {
+   "driver": "VER",
+   "lap": 12,
+   "date": "2026-06-28T13:17:16.997000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-06-28_Austrian_Grand_Prix/2026-06-28_Race/TeamRadio/VER_3_20260628_151652.mp3"
+  },
+  {
+   "driver": "HAM",
+   "lap": 13,
+   "date": "2026-06-28T13:18:48.577000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-06-28_Austrian_Grand_Prix/2026-06-28_Race/TeamRadio/HAM_44_20260628_151833.mp3",
+   "segments": [
+    {
+     "s": 0.0,
+     "e": 6.5,
+     "t": "Out-lap critical, out-lap critical, let's push it.",
+     "tr": "Çıkış turu kritik, çıkış turu kritik, bastıralım."
+    }
+   ]
+  },
+  {
+   "driver": "RUS",
+   "lap": 17,
+   "date": "2026-06-28T13:23:22.676000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-06-28_Austrian_Grand_Prix/2026-06-28_Race/TeamRadio/RUS_63_20260628_152244.mp3"
+  },
+  {
+   "driver": "HAM",
+   "lap": 18,
+   "date": "2026-06-28T13:24:23.802000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-06-28_Austrian_Grand_Prix/2026-06-28_Race/TeamRadio/HAM_44_20260628_152408.mp3",
+   "segments": [
+    {
+     "s": 0.0,
+     "e": 4.2,
+     "t": "Hey, it's okay?",
+     "tr": "Her şey yolunda mı?"
+    },
+    {
+     "s": 5.0,
+     "e": 7.1,
+     "t": "Better now. You're faster than Charles.",
+     "tr": "Şimdi daha iyi. Charles'tan hızlısın."
+    }
+   ]
+  },
+  {
+   "driver": "NOR",
+   "lap": 20,
+   "date": "2026-06-28T13:27:28.253000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-06-28_Austrian_Grand_Prix/2026-06-28_Race/TeamRadio/NOR_1_20260628_152707.mp3",
+   "segments": [
+    {
+     "s": 0.0,
+     "e": 7.8,
+     "t": "I know we're going to stay out, you'll get clean air, we're going to extend.",
+     "tr": "Dışarıda kalacağız, temiz hava bulacaksın, stinti uzatıyoruz."
+    },
+    {
+     "s": 8.2,
+     "e": 10.8,
+     "t": "I've got no more pace, so this is it.",
+     "tr": "Daha fazla tempom yok, elimden gelen bu."
+    }
+   ]
+  },
+  {
+   "driver": "HAM",
+   "lap": 25,
+   "date": "2026-06-28T13:33:01.796000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-06-28_Austrian_Grand_Prix/2026-06-28_Race/TeamRadio/HAM_44_20260628_153219.mp3"
+  },
+  {
+   "driver": "HAM",
+   "lap": 26,
+   "date": "2026-06-28T13:34:34.344000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-06-28_Austrian_Grand_Prix/2026-06-28_Race/TeamRadio/HAM_44_20260628_153415.mp3",
+   "segments": [
+    {
+     "s": 0.0,
+     "e": 3.4,
+     "t": "Box, box, box.",
+     "tr": "Box, box, box."
+    },
+    {
+     "s": 5.3,
+     "e": 6.0,
+     "t": "Double too late.",
+     "tr": "Çok geç olur."
+    },
+    {
+     "s": 7.5,
+     "e": 8.1,
+     "t": "We can hide it.",
+     "tr": "Bunu telafi ederiz."
+    }
+   ]
+  },
+  {
+   "driver": "ANT",
+   "lap": 27,
+   "date": "2026-06-28T13:36:04.672000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-06-28_Austrian_Grand_Prix/2026-06-28_Race/TeamRadio/ANT_12_20260628_153534.mp3",
+   "segments": [
+    {
+     "s": 0.0,
+     "e": 9.2,
+     "t": "What is happening with this brake? I have no confidence.",
+     "tr": "Bu frene ne oluyor? Hiç güvenim yok."
+    },
+    {
+     "s": 9.2,
+     "e": 13.4,
+     "t": "We've got a brake split mate, so one's hotter than the other.",
+     "tr": "Fren dengesizliği var dostum, biri diğerinden daha sıcak."
+    }
+   ]
+  },
+  {
+   "driver": "HAM",
+   "lap": 32,
+   "date": "2026-06-28T13:43:11.186000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-06-28_Austrian_Grand_Prix/2026-06-28_Race/TeamRadio/HAM_44_20260628_154230.mp3"
+  },
+  {
+   "driver": "HAM",
+   "lap": 39,
+   "date": "2026-06-28T13:51:18.443000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-06-28_Austrian_Grand_Prix/2026-06-28_Race/TeamRadio/HAM_44_20260628_155100.mp3"
+  },
+  {
+   "driver": "VER",
+   "lap": 46,
+   "date": "2026-06-28T13:58:55.613000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-06-28_Austrian_Grand_Prix/2026-06-28_Race/TeamRadio/VER_3_20260628_155813.mp3",
+   "segments": [
+    {
+     "s": 0.0,
+     "e": 3.5,
+     "t": "So, yeah, best you can at this stage of the race.",
+     "tr": "Evet, yarışın bu aşamasında elinden gelenin en iyisi bu."
+    },
+    {
+     "s": 3.7,
+     "e": 5.0,
+     "t": "We'll just try to build a bit of a tyre offset.",
+     "tr": "Biraz lastik avantajı oluşturmaya çalışacağız."
+    },
+    {
+     "s": 5.6,
+     "e": 6.8,
+     "t": "Hope he gets into trouble towards the end.",
+     "tr": "Umarım sonlara doğru başı derde girer."
+    },
+    {
+     "s": 7.9,
+     "e": 9.2,
+     "t": "I think this is the front cord.",
+     "tr": "Sanırım ön kısımda sorun var."
+    },
+    {
+     "s": 9.7,
+     "e": 10.0,
+     "t": "Copy.",
+     "tr": "Anlaşıldı."
+    }
+   ]
+  },
+  {
+   "driver": "RUS",
+   "lap": 46,
+   "date": "2026-06-28T13:59:28.152000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-06-28_Austrian_Grand_Prix/2026-06-28_Race/TeamRadio/RUS_63_20260628_155900.mp3"
+  },
+  {
+   "driver": "ANT",
+   "lap": 50,
+   "date": "2026-06-28T14:04:30.889000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-06-28_Austrian_Grand_Prix/2026-06-28_Race/TeamRadio/ANT_12_20260628_160408.mp3",
+   "segments": [
+    {
+     "s": 0.0,
+     "e": 5.8,
+     "t": "Okay, let's go. Just maintain the focus.",
+     "tr": "Tamam, devam. Sadece odağını koru."
+    }
+   ]
+  },
+  {
+   "driver": "LEC",
+   "lap": 57,
+   "date": "2026-06-28T14:12:37.974000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-06-28_Austrian_Grand_Prix/2026-06-28_Race/TeamRadio/LEC_16_20260628_161214.mp3",
+   "segments": [
+    {
+     "s": 0.0,
+     "e": 5.1,
+     "t": "This car is a...",
+     "tr": "Bu araba tam bir..."
+    }
+   ]
+  },
+  {
+   "driver": "LEC",
+   "lap": 59,
+   "date": "2026-06-28T14:15:10.430000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-06-28_Austrian_Grand_Prix/2026-06-28_Race/TeamRadio/LEC_16_20260628_161444.mp3",
+   "segments": [
+    {
+     "s": 0.0,
+     "e": 4.5,
+     "t": "What have you got for this, Mr. Biget?",
+     "tr": "Bunun için elinde ne var?"
+    },
+    {
+     "s": 5.2,
+     "e": 5.8,
+     "t": "Now nothing.",
+     "tr": "Şu an hiçbir şey."
+    }
+   ]
+  },
+  {
+   "driver": "RUS",
+   "lap": 71,
+   "date": "2026-06-28T14:31:23.270000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-06-28_Austrian_Grand_Prix/2026-06-28_Race/TeamRadio/RUS_63_20260628_163044.mp3",
+   "segments": [
+    {
+     "s": 0.0,
+     "e": 2.0,
+     "t": "Woo! Woo!",
+     "tr": "Woo! Woo!"
+    },
+    {
+     "s": 2.0,
+     "e": 4.0,
+     "t": "Good job mate.",
+     "tr": "İyi iş dostum."
+    },
+    {
+     "s": 4.0,
+     "e": 6.0,
+     "t": "Woo!",
+     "tr": "Woo!"
+    },
+    {
+     "s": 8.0,
+     "e": 10.0,
+     "t": "Yabba dabba doo!",
+     "tr": "Yabba dabba doo!"
+    },
+    {
+     "s": 10.0,
+     "e": 12.0,
+     "t": "Well done guys.",
+     "tr": "Aferin çocuklar."
+    },
+    {
+     "s": 12.0,
+     "e": 14.0,
+     "t": "I'm happy. Well done.",
+     "tr": "Mutluyum. Aferin."
+    },
+    {
+     "s": 14.0,
+     "e": 16.0,
+     "t": "Thank you so so. Good team result.",
+     "tr": "Çok teşekkürler. İyi takım sonucu."
+    },
+    {
+     "s": 16.0,
+     "e": 18.0,
+     "t": "Well done. Well done everybody.",
+     "tr": "Aferin. Herkese aferin."
+    }
+   ]
+  },
+  {
+   "driver": "VER",
+   "lap": 71,
+   "date": "2026-06-28T14:32:24.314000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-06-28_Austrian_Grand_Prix/2026-06-28_Race/TeamRadio/VER_3_20260628_163139.mp3",
+   "segments": [
+    {
+     "s": 0.0,
+     "e": 7.8,
+     "t": "Ah, good job, Max. Well done. Throw the wheels off it.",
+     "tr": "İyi iş Max, aferin. Tekerleri söktün resmen."
+    },
+    {
+     "s": 9.8,
+     "e": 11.2,
+     "t": "Thanks for the help.",
+     "tr": "Yardım için teşekkürler."
+    }
+   ]
+  },
+  {
+   "driver": "RUS",
+   "lap": 71,
+   "date": "2026-06-28T14:32:55.076000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-06-28_Austrian_Grand_Prix/2026-06-28_Race/TeamRadio/RUS_63_20260628_163222.mp3",
+   "segments": [
+    {
+     "s": 0.0,
+     "e": 5.0,
+     "t": "Drink system failed, nice race for a two-seater.",
+     "tr": "İçme suyu sistemi bozuldu, iki kişilik araç için güzel yarıştı."
+    },
+    {
+     "s": 5.0,
+     "e": 8.0,
+     "t": "I'm a little bit thirsty. Great job.",
+     "tr": "Biraz susadım. Harika iş."
+    },
+    {
+     "s": 8.0,
+     "e": 11.0,
+     "t": "Well, have a drink ready for you off the podium.",
+     "tr": "Podyum sonrası için içeceğin hazır olur."
+    }
+   ]
+  }
+ ]
 }

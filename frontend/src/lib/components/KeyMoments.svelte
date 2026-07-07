@@ -6,9 +6,10 @@
 <script>
 	import { goto, replaceState } from '$app/navigation';
 	import { t, locale } from '$lib/i18n/index.js';
+	import RadioCard from '$lib/components/ui/RadioCard.svelte';
 	import { selectedDrivers, pinnedDriver, momentFocus } from '$lib/stores/race.js';
 
-	let { annotations = [], raceId = '', radio = [] } = $props();
+	let { annotations = [], raceId = '', radio = [], teamsMap = {} } = $props();
 
 	function clipFor(m) {
 		// nearest clip from the moment's driver within 3 laps (radio calls
@@ -20,23 +21,6 @@
 			if (d <= 3 && (best === null || d < Math.abs(best.lap - m.lap))) best = c;
 		}
 		return best;
-	}
-	let playingUrl = $state(null);
-	let radioTime = $state({ cur: 0, dur: 0 });
-	let audio = null;
-	function toggleRadio(clip) {
-		if (playingUrl === clip.url) { audio?.pause(); playingUrl = null; return; }
-		audio?.pause();
-		audio = new Audio(clip.url);
-		audio.onended = () => { playingUrl = null; };
-		audio.onerror = () => { playingUrl = null; };
-		audio.ontimeupdate = () => { radioTime = { cur: audio.currentTime, dur: audio.duration || 0 }; };
-		audio.play().catch(() => { playingUrl = null; });
-		radioTime = { cur: 0, dur: 0 };
-		playingUrl = clip.url;
-	}
-	function mmss(t) {
-		return Math.floor(t / 60) + ':' + String(Math.floor(t % 60)).padStart(2, '0');
 	}
 
 	const SECTION_BY_TYPE = {
@@ -125,16 +109,10 @@
 					{#if raceId}
 						<button class="km__go km__go--watch" onclick={() => goto(`/race/${raceId}/replay?lap=${m.lap}`)}>&#9654; {$t('replay.watch')}</button>
 					{/if}
-					{#if clip}
-						<button class="km__go km__go--radio" class:playing={playingUrl === clip.url} onclick={() => toggleRadio(clip)} title="{$t('moments.radio')}: {clip.driver} L{clip.lap}">
-							{#if playingUrl === clip.url}
-								■ {mmss(radioTime.cur)}{radioTime.dur ? ' / ' + mmss(radioTime.dur) : ''}
-							{:else}
-								▶ {$t('moments.radio')} · {clip.driver} L{clip.lap}
-							{/if}
-						</button>
-					{/if}
 				</div>
+				{#if clip}
+					<div class="km__radio"><RadioCard {clip} team={teamsMap?.[clip.driver]} lap={clip.lap} compact /></div>
+				{/if}
 				</div>
 			{/each}
 		</div>
@@ -142,6 +120,7 @@
 {/if}
 
 <style>
+	.km__radio { margin-top: 8px; }
 	.km {
 		margin-bottom: 1.5rem;
 	}
