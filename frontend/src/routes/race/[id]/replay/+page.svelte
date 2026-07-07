@@ -114,6 +114,62 @@
 		return a[1] + (b[1] - a[1]) * f;
 	}
 
+	let teamsMap = $derived(Object.fromEntries(data.laps.map((d) => [d.driver, d.team])));
+
+	// ---- race control + radio feed ----
+	// FIA messages and radio clips merged on the lap axis; blue flags and
+	// sector-clear spam are dropped so the feed reads like a broadcast ticker.
+	let feedAll = $derived.by(() => {
+		const items = [];
+		for (const m of data.rcFeed?.messages || []) {
+			if (!m.lap || m.lap < 1 || m.lap > totalLaps) continue;
+			if (m.flag === 'BLUE' || m.flag === 'CLEAR') continue;
+			let text = (m.message || '').replace(/^FIA STEWARDS: /, '').replace(/\s*\(?\d{2}:\d{2}:\d{2}\)?\s*$/, '');
+			if (text.length > 110) text = text.slice(0, 107) + '...';
+			items.push({ kind: 'rc', lap: m.lap, text, flag: m.flag, category: m.category });
+		}
+		for (const c of data.radio?.clips || []) {
+			if (!c.lap || c.lap < 1 || c.lap > totalLaps) continue;
+			items.push({ kind: 'radio', lap: c.lap, driver: c.driver, url: c.url });
+		}
+		return items.sort((a, b) => a.lap - b.lap);
+	});
+	let feedVisible = $derived(feedAll.filter((i) => i.lap <= lap).slice(-9).reverse());
+	let radioLaps = $derived([...new Set((data.radio?.clips || []).filter((c) => c.lap).map((c) => c.lap))]);
+
+	let playingUrl = $state(null);
+	let radioTime = $state({ cur: 0, dur: 0 });
+	let audio = null;
+	function toggleRadio(clip) {
+		if (playingUrl === clip.url) { audio?.pause(); playingUrl = null; return; }
+		audio?.pause();
+		audio = new Audio(clip.url);
+		audio.onended = () => { playingUrl = null; };
+		audio.onerror = () => { playingUrl = null; };
+		audio.ontimeupdate = () => { radioTime = { cur: audio.currentTime, dur: audio.duration || 0 }; };
+		audio.play().catch(() => { playingUrl = null; });
+		radioTime = { cur: 0, dur: 0 };
+		playingUrl = clip.url;
+	}
+	function mmss(t) { return Math.floor(t / 60) + ':' + String(Math.floor(t % 60)).padStart(2, '0'); }
+
+	// lap-1 start animation (lazy: telemetry loads when the panel opens)
+	import StartAnimation from '$lib/components/StartAnimation.svelte';
+	let showStart = $state(false);
+	let qualiPos = $derived.by(() => {
+		const m = {};
+		for (const d of data.qualifying?.drivers || []) { const g = d.grid_position ?? d.position; if (g != null) m[d.driver] = g; }
+		return m;
+	});
+	function flagColor(i) {
+		if (i.category === 'SafetyCar') return '#E24B4A';
+		if (i.flag === 'RED') return '#E24B4A';
+		if (i.flag === 'YELLOW' || i.flag === 'DOUBLE YELLOW') return '#F59E0B';
+		if (i.flag === 'GREEN') return '#22C55E';
+		if (i.flag === 'CHEQUERED') return '#E8E8ED';
+		return '#7D8794';
+	}
+
 	// ---- running order at current lap ----
 	let order = $derived.by(() => {
 		const rows = [];
@@ -227,17 +283,25 @@
 				<button class:on={speed === s} onclick={() => speed = s}>{s}x</button>
 			{/each}
 		</div>
+		<button class="rp__startbtn" class:on={showStart} onclick={() => { showStart = !showStart; playing = false; }}>
+			🏁 {$t('replay.start_title')}
+		</button>
 	</div>
 	<div class="rp__scrub">
 		<svg viewBox="0 0 {W} 22" class="rp__marks" preserveAspectRatio="none" aria-hidden="true">
 			{#each vscLaps as vl}<rect x={gx(vl) - 3} y="0" width="7" height="22" fill="#F59E0B" opacity="0.22" />{/each}
 			{#each scLaps as sl}<rect x={gx(sl) - 3} y="0" width="7" height="22" fill="#E24B4A" opacity="0.25" />{/each}
+			{#each radioLaps as rl}<circle cx={gx(rl)} cy="4" r="2.5" fill="#6C98FF" opacity="0.9" />{/each}
 			{#each Object.entries(pitLapCounts) as [pl, n]}
 				<circle cx={gx(+pl)} cy="11" r={Math.min(4, 1.5 + n * 0.4)} fill="#7D8794" opacity="0.8" />
 			{/each}
 		</svg>
 		<input type="range" min="1" max={totalLaps} value={lap} oninput={(e) => { lapFloat = +e.target.value; }} class="rp__range" aria-label={$t('replay.lap')} />
 	</div>
+
+	{#if showStart}
+		<StartAnimation {raceId} {teamsMap} circuit={data.circuit} {qualiPos} />
+	{/if}
 
 	<div class="rp__main">
 		<!-- Running order -->
@@ -296,6 +360,32 @@
 				{/each}
 			</div>
 		</div>
+
+		<!-- Race control + radio feed -->
+		{#if feedAll.length}
+			<div class="rp__feed">
+				<span class="rp__colhead">{$t('replay.feed')}</span>
+				<div class="rp__feeditems">
+					{#each feedVisible as item (item.kind + item.lap + (item.url || item.text))}
+						<div class="rp__fi" class:rp__fi--new={item.lap === lap}>
+							<span class="rp__fi-lap">L{item.lap}</span>
+							{#if item.kind === 'radio'}
+								<button class="rp__fi-radio" onclick={() => toggleRadio(item)}>
+									{playingUrl === item.url ? '■' : '▶'}
+									<b style="color:{tc((data.laps.find((d) => d.driver === item.driver) || {}).team)}">{item.driver}</b>
+									{playingUrl === item.url ? mmss(radioTime.cur) + (radioTime.dur ? ' / ' + mmss(radioTime.dur) : '') : $t('replay.radio')}
+								</button>
+							{:else}
+								<span class="rp__fi-dot" style="background:{flagColor(item)}"></span>
+								<span class="rp__fi-text">{item.text}</span>
+							{/if}
+						</div>
+					{:else}
+						<p class="rp__fi-empty">{$t('replay.feed_empty')}</p>
+					{/each}
+				</div>
+			</div>
+		{/if}
 	</div>
 </div>
 
@@ -323,12 +413,29 @@
 	.rp__speeds { display: flex; gap: 2px; }
 	.rp__speeds button { font-family: var(--fm); font-size: 10px; padding: 4px 10px; background: none; border: 1px solid var(--brd); color: var(--tm); cursor: pointer; }
 	.rp__speeds button.on { color: #E8E8ED; background: var(--bg2); }
+	.rp__startbtn { font-family: var(--fm); font-size: 10px; padding: 6px 12px; background: none; border: 1px solid var(--brd); color: var(--tm); cursor: pointer; letter-spacing: .06em; }
+	.rp__startbtn:hover { color: #E8E8ED; border-color: #6B7280; }
+	.rp__startbtn.on { color: var(--ac); border-color: rgba(226,75,74,.5); }
 
 	.rp__scrub { position: relative; margin-bottom: 1.25rem; }
 	.rp__marks { width: 100%; height: 22px; display: block; }
 	.rp__range { width: 100%; margin: 0; accent-color: #E24B4A; cursor: pointer; }
 
-	.rp__main { display: grid; grid-template-columns: 250px 1fr; gap: 1.25rem; align-items: start; }
+	.rp__main { display: grid; grid-template-columns: 250px 1fr 270px; gap: 1.25rem; align-items: start; }
+	@media (max-width: 1250px) { .rp__main { grid-template-columns: 250px 1fr; } .rp__feed { grid-column: 1 / -1; } }
+	.rp__feed { background: var(--bg2); padding: 12px 14px; }
+	.rp__feeditems { display: flex; flex-direction: column; gap: 8px; max-height: 420px; overflow-y: auto; }
+	.rp__fi { display: flex; align-items: baseline; gap: 8px; font-family: var(--fm); font-size: 10.5px; line-height: 1.45; }
+	.rp__fi--new { animation: rp-flash 1.2s ease-out; }
+	@keyframes rp-flash { 0% { background: rgba(226,75,74,.18); } 100% { background: transparent; } }
+	.rp__fi-lap { color: var(--tm); font-size: 9px; flex: 0 0 26px; }
+	.rp__fi-dot { width: 6px; height: 6px; flex: 0 0 6px; align-self: center; }
+	.rp__fi-text { color: #C6CAD3; }
+	.rp__fi-radio { display: inline-flex; gap: 6px; align-items: baseline; background: none; border: 1px solid var(--brd); color: #9CA3AF; font-family: var(--fm); font-size: 10px; padding: 3px 8px; cursor: pointer; }
+	.rp__fi-radio:hover { border-color: #6C98FF; color: #E8E8ED; }
+	.rp__fi-radio b { font-weight: 700; }
+	.rp__fi-empty { color: var(--tm); font-size: 10.5px; font-family: var(--fm); }
+	@media (prefers-reduced-motion: reduce) { .rp__fi--new { animation: none; } }
 	.rp__colhead { display: block; font-family: var(--fm); font-size: 10px; color: var(--tm); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 8px; }
 
 	.rp__order { background: var(--bg2); padding: 12px 12px 8px; }

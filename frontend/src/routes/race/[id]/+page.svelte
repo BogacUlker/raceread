@@ -25,6 +25,12 @@
 	import PitStopStats from '$lib/components/charts/PitStopStats.svelte';
 	import IdealLaps from '$lib/components/charts/IdealLaps.svelte';
 	import ExportButton from '$lib/components/ui/ExportButton.svelte';
+	import SpeedTrapCard from '$lib/components/charts/SpeedTrapCard.svelte';
+	import MetronomCard from '$lib/components/charts/MetronomCard.svelte';
+	import TireDegChart from '$lib/components/charts/TireDegChart.svelte';
+	import BattlesCard from '$lib/components/charts/BattlesCard.svelte';
+	import WeatherStrip from '$lib/components/ui/WeatherStrip.svelte';
+	import { computeUndercuts, computeBattles, derivedMoments } from '$lib/analysis.js';
 
 	let { data } = $props();
 	let raceId = $derived(data.raceId);
@@ -204,6 +210,21 @@
 
 	// Team color helper
 	function tc(driver) { return TEAM_COLORS[teamsMap[driver]] || '#6B7280'; }
+
+	// Data-derived insights: undercut cycles + sustained battles
+	let traffic = $state(null);
+	$effect(() => {
+		const id = raceId;
+		if (!id || typeof window === 'undefined') return;
+		traffic = null;
+		api(`/api/races/${id}/traffic`).then((d) => { if (id === raceId) traffic = d; }).catch(() => {});
+	});
+	let undercuts = $derived(computeUndercuts(laps, strategy, vscLaps, scLaps));
+	let battles = $derived(traffic ? computeBattles(traffic, laps, strategy) : []);
+	let momentsAll = $derived([
+		...(annotations.annotations || []),
+		...derivedMoments(undercuts, battles),
+	]);
 
 	// Prev/next race navigation - classics navigate within the classics shelf
 	let calendar = $derived(data.calendar || []);
@@ -400,7 +421,7 @@
 			<ChartNav />
 
 			{#if $activeSession === 'race'}
-				<KeyMoments annotations={annotations.annotations || []} {raceId} radio={data.radio?.clips || []} />
+				<KeyMoments annotations={momentsAll} {raceId} radio={data.radio?.clips || []} />
 
 				{#if $showAnnotations}
 					<div class="pd-sec"><RaceInsightsPanel annotations={annotations.annotations || []} /></div>
@@ -412,7 +433,7 @@
 						<ExportButton target="#section-pace" filename="{raceId}-pace" />
 						<div class="pd-sec__body" class:collapsed={$collapsedSections['pace']}>
 							<div class="pd-row pd-row--pace">
-								<div class="pd-cell pd-cell--wide"><PaceChart {laps} selectedDrivers={$selectedDrivers} {vscLaps} {scLaps} annotations={$showAnnotations ? (annotations.annotations || []) : []} {strategy} /></div>
+								<div class="pd-cell pd-cell--wide"><PaceChart {laps} selectedDrivers={$selectedDrivers} {vscLaps} {scLaps} annotations={$showAnnotations ? (annotations.annotations || []) : []} {strategy} /><WeatherStrip {raceId} totalLaps={raceInfo.total_laps} /></div>
 								<div class="pd-cell pd-cell--side"><SummarizedPace {laps} /></div>
 							</div>
 						</div>
@@ -423,6 +444,7 @@
 						<ExportButton target="#section-strategy" filename="{raceId}-strategy" />
 						<div class="pd-sec__body" class:collapsed={$collapsedSections['strategy']}>
 							<StrategyTimeline drivers={strategySorted} totalLaps={raceInfo.total_laps} {vscLaps} {scLaps} />
+							<TireDegChart {laps} {vscLaps} {scLaps} />
 						</div>
 					</div>
 
@@ -431,10 +453,32 @@
 						<ExportButton target="#section-pit-stops" filename="{raceId}-pitstops" />
 						<div class="pd-sec__body" class:collapsed={$collapsedSections['pit-stops']}>
 							<PitStopStats data={pitstops} />
+							{#if undercuts.length}
+								<div class="pd-uc">
+									<span class="pd-uc__title">{$t('insights.undercut_title')}</span>
+									{#each undercuts.slice(0, 4) as u}
+										{@const winner = u.gain > 0 ? u.first : u.second}
+										{@const loser = u.gain > 0 ? u.second : u.first}
+										<div class="pd-uc__row">
+											<span class="pd-uc__lap">L{u.lap}</span>
+											<span class="pd-uc__w" style="color:{tc(winner)}">{winner}</span>
+											<span class="pd-uc__vs">{u.gain > 0 ? $t('insights.undercut_vs') : $t('insights.overcut_vs')}</span>
+											<span class="pd-uc__l" style="color:{tc(loser)}">{loser}</span>
+											<span class="pd-uc__gain">+{Math.abs(u.gain).toFixed(1)}s</span>
+										</div>
+									{/each}
+								</div>
+							{/if}
 						</div>
 					</div>
 
 					<!-- 04. Energy: delta matrix + room preview (full analysis lives in /energy) -->
+					<div class="pd-sec pd-sec--split">
+						<SpeedTrapCard {laps} />
+						<MetronomCard {laps} {vscLaps} {scLaps} />
+						<BattlesCard {battles} {teamsMap} />
+					</div>
+
 					<div id="section-energy" class="pd-sec">
 						<ExportButton target="#section-energy" filename="{raceId}-energy" />
 						<div class="pd-sec__body" class:collapsed={$collapsedSections['energy']}>
@@ -767,4 +811,15 @@
 
 	.pd-row--split, .pd-row--pace { gap: 3px; }
 
+
+	.pd-sec--split { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+	@media (max-width: 1100px) { .pd-sec--split { grid-template-columns: 1fr 1fr; } }
+	@media (max-width: 768px) { .pd-sec--split { grid-template-columns: 1fr; } }
+	.pd-uc { margin-top: 12px; padding: 12px 16px; background: var(--bg-secondary, #1A1D27); border: 1px solid var(--border, #2E3240); }
+	.pd-uc__title { display: block; font-family: var(--font-mono); font-size: 9.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--text-secondary, #9CA3AF); margin-bottom: 8px; }
+	.pd-uc__row { display: grid; grid-template-columns: 36px 40px 1fr 40px 52px; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 11px; padding: 4px 0; }
+	.pd-uc__lap { color: var(--text-muted, #7D8794); font-size: 9.5px; }
+	.pd-uc__w, .pd-uc__l { font-weight: 700; }
+	.pd-uc__vs { color: var(--text-muted, #7D8794); font-size: 10px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+	.pd-uc__gain { text-align: right; font-weight: 600; color: var(--text-primary, #E8E8ED); }
 </style>

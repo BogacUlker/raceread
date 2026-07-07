@@ -37,7 +37,9 @@ def get_radio(race_id: str) -> dict:
     try:
         return load_json(str(get_race_dir(race_id) / "radio.json"))
     except FileNotFoundError:
-        raise HTTPException(status_code=404, detail="No radio for this race")
+        # radio archives only exist for some races (OpenF1, 2023+);
+        # an empty list keeps client consoles free of 404 noise
+        return {"clips": []}
 
 
 @router.get("/standings")

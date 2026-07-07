@@ -272,7 +272,10 @@
 	"telemetry": {
 		"room_title": "Telemetri",
 		"room_desc": "Hız izleri, animasyonlu pist haritası ve trafik analizi - ham sinyal odası.",
-		"explore": "İncele"
+		"explore": "İncele",
+		"gear_map": "Vites Haritası",
+		"shifts": "vites değişimi / tur",
+		"top_gear": "en yüksek vites"
 	},
 	"replay": {
 		"room_title": "Yarış Replay",
@@ -286,6 +289,47 @@
 		"out": "DIŞARIDA",
 		"leader": "LİDER",
 		"watch_from": "Şu turdan izle",
-		"approx": "yaklaşık fark (eksik zamanlama tamamlandı)"
+		"approx": "yaklaşık fark (eksik zamanlama tamamlandı)",
+		"feed": "Yarış Kontrol & Radyo",
+		"feed_empty": "Henüz mesaj yok - oynatmayı başlat.",
+		"radio": "takım radyosu",
+		"start_title": "Start",
+		"start_time": "Süre",
+		"start_result": "Tur 1 Sonrası",
+		"start_note": "▲▼ start gridine göre kazanılan/kaybedilen pozisyon."
+	},
+	"insights": {
+		"speed_trap": "Hız Tuzağı",
+		"metronom": "Metronom",
+		"metronom_desc": "Temiz turlardaki tur zamanı dağılımı - düşük değer, pilotun aynı turu ısrarla tekrarladığı anlamına gelir.",
+		"tire_deg": "Lastik Ömrü",
+		"tire_age": "LASTİK YAŞI (TUR)",
+		"tire_deg_note": "Her pilotun kendi temiz medyanına göre tur zamanı farkı - araç hızı denklemden çıkar. Çizgiler: hamur bazında medyan.",
+		"weather": "Pist Koşulları",
+		"track_temp": "pist",
+		"air_temp": "hava",
+		"wind": "rüzgar",
+		"rain": "YAĞMUR",
+		"undercut_title": "Pit Çevrimi Kazançları",
+		"undercut_vs": "undercut",
+		"overcut_vs": "overcut",
+		"battles": "Savaşlar",
+		"battles_unit": "DRS menzili",
+		"battles_desc": "Telemetri fark verisinden: aynı aracın DRS menzilinde geçirilen turlar. ✓ geçti · ◐ pit çözdü · ✕ geçemedi.",
+		"battles_empty": "Uzun süreli mücadele tespit edilmedi.",
+		"battle_laps": "tur",
+		"battle_passed": "Geçti",
+		"battle_pit": "Pit ile çözüldü",
+		"battle_stuck": "Geçemedi"
+	},
+	"compare": {
+		"dominance": "Mini-Sektör Üstünlüğü",
+		"even": "eşit",
+		"corner": "Viraj",
+		"brake_point": "Geç frenleyen",
+		"apex": "apeks",
+		"flat_out": "fren yok",
+		"brake_note": "Fren noktası: virajdan kaç metre önce frene basıldığı (~15m çözünürlük). Apeks: minimum hız, km/s.",
+		"no_telemetry": "Bu tur için telemetri yok."
 	}
 }

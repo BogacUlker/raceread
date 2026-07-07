@@ -6,6 +6,7 @@
 	import CompareSpeedTrace from '$lib/components/compare/CompareSpeedTrace.svelte';
 	import CompareTrackMap from '$lib/components/compare/CompareTrackMap.svelte';
 	import CompareEnergyTimeline from '$lib/components/compare/CompareEnergyTimeline.svelte';
+	import CompareDominance from '$lib/components/compare/CompareDominance.svelte';
 
 	let { data } = $props();
 	let raceId = $derived(data.raceId);
@@ -149,6 +150,7 @@
 		<!-- Compare Charts -->
 		<div class="cmp__charts">
 		<CompareSpeedTrace {raceId} driver1={pick1} driver2={pick2} {color1} {color2} {selectedLap} {circuit} totalLaps={raceInfo.total_laps || 58} />
+		<CompareDominance {raceId} driver1={pick1} driver2={pick2} {color1} {color2} {selectedLap} {circuit} />
 		<CompareTrackMap {raceId} drivers={[...driverList.filter(d => d.driver === pick1), ...driverList.filter(d => d.driver === pick2), ...driverList.filter(d => d.driver !== pick1 && d.driver !== pick2)]} {circuit} totalLaps={raceInfo?.total_laps || 58} compareDriver1={pick1} compareDriver2={pick2} {selectedLap} />
 		<CompareEnergyTimeline {raceId} driver1={pick1} driver2={pick2} {color1} {color2} />
 		</div>

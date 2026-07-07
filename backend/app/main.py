@@ -12,7 +12,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from backend.app.config import CORS_ORIGINS
 
 _is_dev = os.getenv("ENVIRONMENT", "production") != "production"
-from backend.app.routers import annotations, delta, energy, laps, pitstops, qualifying, qualifying_telemetry, races, strategy, telemetry
+from backend.app.routers import annotations, delta, energy, insights, laps, pitstops, qualifying, qualifying_telemetry, races, strategy, telemetry
 
 app = FastAPI(
     title="RaceRead API",
@@ -61,6 +61,7 @@ app.include_router(qualifying.router, prefix="/api")
 app.include_router(pitstops.router, prefix="/api")
 app.include_router(telemetry.router, prefix="/api")
 app.include_router(qualifying_telemetry.router, prefix="/api")
+app.include_router(insights.router, prefix="/api")
 
 
 @app.get("/health")

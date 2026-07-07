@@ -3,11 +3,15 @@ import { api } from '$lib/api.js';
 export async function load({ params, fetch, url }) {
 	const id = params.id;
 
-	const [raceInfo, laps, strategy, vscData] = await Promise.all([
+	const [raceInfo, laps, strategy, vscData, radio, rcFeed, circuit, qualifying] = await Promise.all([
 		api(`/api/races/${id}`, fetch),
 		api(`/api/races/${id}/laps`, fetch),
 		api(`/api/races/${id}/strategy`, fetch).catch(() => ({ drivers: [] })),
 		api(`/api/races/${id}/energy/vsc`, fetch).catch(() => ({ vsc_laps: [], sc_laps: [] })),
+		api(`/api/races/${id}/radio`, fetch).catch(() => ({ clips: [] })),
+		api(`/api/races/${id}/race-control`, fetch).catch(() => ({ messages: [] })),
+		api(`/api/races/${id}/circuit`, fetch).catch(() => null),
+		api(`/api/races/${id}/qualifying`, fetch).catch(() => null),
 	]);
 
 	const startLap = parseInt(url.searchParams.get('lap') || '1', 10) || 1;
@@ -18,6 +22,10 @@ export async function load({ params, fetch, url }) {
 		laps,
 		strategy,
 		vscData,
+		radio,
+		rcFeed,
+		circuit,
+		qualifying,
 		startLap,
 		metaTitle: 'Replay - ' + raceInfo.name + ' - RaceRead',
 		metaDescription:

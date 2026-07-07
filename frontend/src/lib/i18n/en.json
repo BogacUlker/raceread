@@ -272,7 +272,10 @@
 	"telemetry": {
 		"room_title": "Telemetry",
 		"room_desc": "Speed traces, the animated track map and traffic analysis - the raw-signal room.",
-		"explore": "Explore"
+		"explore": "Explore",
+		"gear_map": "Gear Map",
+		"shifts": "shifts / lap",
+		"top_gear": "top gear"
 	},
 	"replay": {
 		"room_title": "Race Replay",
@@ -286,6 +289,47 @@
 		"out": "OUT",
 		"leader": "LEADER",
 		"watch_from": "Watch from lap",
-		"approx": "approx. gap (timing gap reconstructed)"
+		"approx": "approx. gap (timing gap reconstructed)",
+		"feed": "Race Control & Radio",
+		"feed_empty": "Nothing yet - press play.",
+		"radio": "team radio",
+		"start_title": "Start",
+		"start_time": "Time",
+		"start_result": "After Lap 1",
+		"start_note": "▲▼ positions gained vs the starting grid."
+	},
+	"insights": {
+		"speed_trap": "Speed Trap",
+		"metronom": "Metronome",
+		"metronom_desc": "Lap-time spread on clean laps - lower means the driver repeats the same lap relentlessly.",
+		"tire_deg": "Tire Life",
+		"tire_age": "TIRE AGE (LAPS)",
+		"tire_deg_note": "Lap-time delta vs each driver’s own clean median, so car pace cancels out. Lines: per-compound median.",
+		"weather": "Track Conditions",
+		"track_temp": "track",
+		"air_temp": "air",
+		"wind": "wind",
+		"rain": "RAIN",
+		"undercut_title": "Pit Cycle Wins",
+		"undercut_vs": "undercut",
+		"overcut_vs": "overcut",
+		"battles": "Battles",
+		"battles_unit": "DRS range",
+		"battles_desc": "Laps spent within DRS range of the same car, from telemetry gap data. ✓ passed · ◐ pit call · ✕ stuck.",
+		"battles_empty": "No sustained battles detected.",
+		"battle_laps": "laps",
+		"battle_passed": "Passed",
+		"battle_pit": "Resolved by pit stop",
+		"battle_stuck": "Could not pass"
+	},
+	"compare": {
+		"dominance": "Mini-Sector Dominance",
+		"even": "even",
+		"corner": "Corner",
+		"brake_point": "Later braker",
+		"apex": "apex",
+		"flat_out": "flat out",
+		"brake_note": "Braking point: who commits deeper before the corner, in meters (~15m resolution). Apex: minimum speed, km/h.",
+		"no_telemetry": "No telemetry for this lap."
 	}
 }

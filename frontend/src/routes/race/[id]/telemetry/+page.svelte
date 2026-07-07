@@ -4,6 +4,7 @@
 	import SpeedTrace from '$lib/components/charts/SpeedTrace.svelte';
 	import TrackMap from '$lib/components/charts/TrackMap.svelte';
 	import TrafficAnalysis from '$lib/components/charts/TrafficAnalysis.svelte';
+	import GearMap from '$lib/components/charts/GearMap.svelte';
 
 	let { data } = $props();
 	let raceId = $derived(data.raceId);
@@ -43,6 +44,7 @@
 	<div class="tm__grid">
 		<SpeedTrace {raceId} drivers={driverList} {circuit} totalLaps={raceInfo?.total_laps || 58} />
 		<TrackMap {raceId} drivers={driverList} {circuit} totalLaps={raceInfo?.total_laps || 58} />
+		<GearMap {raceId} drivers={driverList} totalLaps={raceInfo?.total_laps || 58} />
 		<TrafficAnalysis trafficData={traffic} loading={false} />
 	</div>
 </div>
