@@ -288,9 +288,7 @@
 	<div class="pd-layout">
 		<!-- SIDEBAR -->
 		<!-- svelte-ignore a11y_no_static_element_interactions -->
-		<aside class="pd-sb" class:collapsed={sidebarCollapsed}
-			onmouseenter={() => { clearTimeout(window.__sbTimer); sidebarCollapsed = false; }}
-			onmouseleave={() => { window.__sbTimer = setTimeout(() => { sidebarCollapsed = true; }, 300); }}>
+		<aside class="pd-sb" class:collapsed={sidebarCollapsed}>
 			<button class="pd-sb__toggle" onclick={() => sidebarCollapsed = !sidebarCollapsed}>
 				<svg width="16" height="16" viewBox="0 0 16 16" fill="none">
 					<path d={sidebarCollapsed ? 'M6 3l5 5-5 5' : 'M10 3L5 8l5 5'} stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -460,7 +458,8 @@
 					</div>
 
 					<!-- 04. Energy: delta matrix + room preview (full analysis lives in /energy) -->
-					<div class="pd-sec pd-sec--split">
+					<div id="section-stats" class="pd-sec">
+						<div class="pd-sec__body pd-sec--split" class:collapsed={$collapsedSections['stats']}>
 						{#if undercuts.length}
 							<div class="pd-uc">
 								<span class="pd-uc__title">{$t('insights.undercut_title')}</span>
@@ -480,6 +479,7 @@
 						<SpeedTrapCard {laps} />
 						<MetronomCard {laps} {vscLaps} {scLaps} />
 						<BattlesCard {battles} {teamsMap} />
+					</div>
 					</div>
 
 					<div id="section-energy" class="pd-sec">

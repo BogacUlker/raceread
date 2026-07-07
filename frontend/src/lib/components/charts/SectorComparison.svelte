@@ -77,14 +77,18 @@
 	function sectorColor(sector, value) {
 		if (value == null) return 'var(--text-muted)';
 		const stats = sectorStats[sector];
-		if (value === stats.min) return '#22C55E';
+		if (value === stats.min) return 'var(--timing-fastest-text)';
 		if (value === stats.max && driverSectors.length > 2) return '#EF4444';
 		return 'var(--text-secondary)';
 	}
 
-	function barWidth(value) {
-		if (value == null || maxTotal === 0) return 0;
-		return (value / maxTotal) * 100;
+	// bar length = delta to the sector best, so differences are actually
+	// visible (raw-time bars all render ~equal and read as noise)
+	function deltaWidth(sector, value) {
+		if (value == null) return 0;
+		const st = sectorStats[sector];
+		if (!st || st.max === st.min) return 4;
+		return 4 + ((value - st.min) / (st.max - st.min)) * 96;
 	}
 
 	let hovered = $state(null);
@@ -135,7 +139,7 @@
 	<!-- Legend -->
 	<div class="legend">
 		<span class="legend__item">
-			<span class="legend__dot" style="background: #22C55E"></span>
+			<span class="legend__dot" style="background: var(--timing-fastest)"></span>
 			{$t('qualifying.fastest')}
 		</span>
 		<span class="legend__item">
@@ -171,24 +175,17 @@
 			>
 				<span class="sector-row__driver" style="color: {color}">{d.driver}</span>
 				<div class="sector-row__bars">
-					{#if d.s1 != null}
-						<div
-							class="sector-bar s1"
-							style="width: {barWidth(d.s1)}%; background: rgba(239, 68, 68, 0.6)"
-						></div>
-					{/if}
-					{#if d.s2 != null}
-						<div
-							class="sector-bar s2"
-							style="width: {barWidth(d.s2)}%; background: rgba(59, 130, 246, 0.6)"
-						></div>
-					{/if}
-					{#if d.s3 != null}
-						<div
-							class="sector-bar s3"
-							style="width: {barWidth(d.s3)}%; background: rgba(168, 85, 247, 0.6)"
-						></div>
-					{/if}
+					{#each ['s1', 's2', 's3'] as sec}
+						<div class="sector-lane">
+							{#if d[sec] != null}
+								<div
+									class="sector-bar"
+									class:sector-bar--best={d[sec] === sectorStats[sec].min}
+									style="width: {deltaWidth(sec, d[sec])}%; background: {d[sec] === sectorStats[sec].min ? 'var(--timing-fastest)' : color}"
+								></div>
+							{/if}
+						</div>
+					{/each}
 				</div>
 				<div class="sector-row__times">
 					<span style="color: {sectorColor('s1', d.s1)}">{formatLapTime(d.s1)}</span>
@@ -317,14 +314,8 @@
 		width: 36px;
 		flex-shrink: 0;
 	}
-	.sector-row__bars {
-		flex: 1;
-		height: 18px;
-		display: flex;
-		border-radius: 3px;
-		overflow: hidden;
-		background: var(--bg-primary);
-	}
+	.sector-row__bars { flex: 1; display: flex; flex-direction: column; gap: 2px; }
+	.sector-lane { height: 5px; background: rgba(255,255,255,.05); }
 	.sector-bar {
 		height: 100%;
 		transition: width 0.3s ease;

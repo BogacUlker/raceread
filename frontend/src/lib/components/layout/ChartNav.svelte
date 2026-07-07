@@ -20,6 +20,7 @@
 		'track-map': 'chart_nav.track_map',
 		'traffic': 'chart_nav.traffic',
 		'pit-stops': 'chart_nav.pit_stops',
+		stats: 'chart_nav.stats',
 		'qualifying-results': 'chart_nav.qualifying_results',
 		'sector-comparison': 'chart_nav.sector_comparison',
 		'ideal-laps': 'chart_nav.ideal_laps',
