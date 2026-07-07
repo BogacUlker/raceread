@@ -332,5 +332,30 @@
 		"flat_out": "flat out",
 		"brake_note": "Braking point: who commits deeper before the corner, in meters (~15m resolution). Apex: minimum speed, km/h.",
 		"no_telemetry": "No telemetry for this lap."
+	},
+	"whatif": {
+		"title": "What-If",
+		"hint": "drag pit laps · click a stint to change compound",
+		"stop": "stop",
+		"reset": "reset",
+		"pit": "Pit",
+		"cycle": "Change compound",
+		"chart": "Simulated vs actual",
+		"reality": "reality",
+		"chart_note": "Line = edited strategy minus the same model on the real strategy. Below zero: the alternative is ahead.",
+		"predicted": "Predicted result",
+		"band": "confidence band",
+		"band_solid": "position holds across the band",
+		"gain": "Time gain",
+		"uncertainty": "model uncertainty",
+		"critical": "Critical moment",
+		"clean_air": "Clean air all the way - no traffic cost.",
+		"assumptions": "ASSUMPTIONS",
+		"a_base": "pace from own clean-lap median + fuel model",
+		"a_pit": "pit loss (race median)",
+		"a_traffic": "traffic penalty/lap (measured)",
+		"a_sc": "SC/VSC as they happened",
+		"a_extrap": "tire life extrapolated beyond data",
+		"untouched": "Move a pit lap or change a compound to explore."
 	}
 }

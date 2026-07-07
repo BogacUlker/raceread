@@ -332,5 +332,30 @@
 		"flat_out": "fren yok",
 		"brake_note": "Fren noktası: virajdan kaç metre önce frene basıldığı (~15m çözünürlük). Apeks: minimum hız, km/s.",
 		"no_telemetry": "Bu tur için telemetri yok."
+	},
+	"whatif": {
+		"title": "What-If",
+		"hint": "pit turlarını kaydır · hamur değiştirmek için stinte tıkla",
+		"stop": "stop",
+		"reset": "sıfırla",
+		"pit": "Pit",
+		"cycle": "Hamuru değiştir",
+		"chart": "Simüle vs gerçek",
+		"reality": "gerçek",
+		"chart_note": "Çizgi = düzenlenen strateji eksi aynı modelin gerçek stratejisi. Sıfırın altı: alternatif önde.",
+		"predicted": "Tahmini Sonuç",
+		"band": "güven bandı",
+		"band_solid": "pozisyon bant boyunca sabit",
+		"gain": "Zaman Kazancı",
+		"uncertainty": "model belirsizliği",
+		"critical": "Kritik An",
+		"clean_air": "Baştan sona temiz hava - trafik maliyeti yok.",
+		"assumptions": "VARSAYIMLAR",
+		"a_base": "tempo: kendi temiz tur medyanı + yakıt modeli",
+		"a_pit": "pit kaybı (yarış medyanı)",
+		"a_traffic": "trafik cezası/tur (ölçülmüş)",
+		"a_sc": "SC/VSC gerçekte olduğu gibi",
+		"a_extrap": "lastik ömrü veri sınırının ötesinde ekstrapolasyon",
+		"untouched": "Keşfetmek için bir pit turunu kaydır veya hamur değiştir."
 	}
 }

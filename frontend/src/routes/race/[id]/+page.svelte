@@ -29,6 +29,7 @@
 	import MetronomCard from '$lib/components/charts/MetronomCard.svelte';
 	import TireDegChart from '$lib/components/charts/TireDegChart.svelte';
 	import BattlesCard from '$lib/components/charts/BattlesCard.svelte';
+	import WhatIfPanel from '$lib/components/charts/WhatIfPanel.svelte';
 	import WeatherStrip from '$lib/components/ui/WeatherStrip.svelte';
 	import { computeUndercuts, computeBattles, derivedMoments } from '$lib/analysis.js';
 
@@ -445,6 +446,7 @@
 						<div class="pd-sec__body" class:collapsed={$collapsedSections['strategy']}>
 							<StrategyTimeline drivers={strategySorted} totalLaps={raceInfo.total_laps} {vscLaps} {scLaps} />
 							<TireDegChart {laps} {vscLaps} {scLaps} />
+							<WhatIfPanel {laps} {strategy} {raceInfo} {vscLaps} {scLaps} {teamsMap} {traffic} />
 						</div>
 					</div>
 
