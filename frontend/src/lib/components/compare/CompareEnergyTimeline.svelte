@@ -165,7 +165,7 @@
 						<!-- Y axis -->
 						{#each [0, 25, 50, 75, 100] as tick}
 							<line x1={0} y1={scales1.y(tick)} x2={innerWidth} y2={scales1.y(tick)} stroke="#2E3240" stroke-opacity="0.4" />
-							<text x={-6} y={scales1.y(tick)} fill="#6B7280" font-size="9" text-anchor="end" dominant-baseline="middle" font-family="'JetBrains Mono', monospace">{tick}</text>
+							<text x={-6} y={scales1.y(tick)} fill="#6B7280" font-size="9" text-anchor="end" dominant-baseline="middle" font-family="var(--font-mono)">{tick}</text>
 						{/each}
 
 						<!-- Bars -->
@@ -187,7 +187,7 @@
 						<!-- X axis ticks -->
 						{#each ticks1 as tick}
 							{@const xPos = (scales1.x(tick) || 0) + scales1.x.bandwidth() / 2}
-							<text x={xPos} y={chartHeight + 16} fill="#6B7280" font-size="9" text-anchor="middle" font-family="'JetBrains Mono', monospace">{tick}</text>
+							<text x={xPos} y={chartHeight + 16} fill="#6B7280" font-size="9" text-anchor="middle" font-family="var(--font-mono)">{tick}</text>
 						{/each}
 
 					</g>
@@ -224,7 +224,7 @@
 						<!-- Y axis -->
 						{#each [0, 25, 50, 75, 100] as tick}
 							<line x1={0} y1={scales2.y(tick)} x2={innerWidth} y2={scales2.y(tick)} stroke="#2E3240" stroke-opacity="0.4" />
-							<text x={-6} y={scales2.y(tick)} fill="#6B7280" font-size="9" text-anchor="end" dominant-baseline="middle" font-family="'JetBrains Mono', monospace">{tick}</text>
+							<text x={-6} y={scales2.y(tick)} fill="#6B7280" font-size="9" text-anchor="end" dominant-baseline="middle" font-family="var(--font-mono)">{tick}</text>
 						{/each}
 
 						<!-- Bars -->
@@ -245,7 +245,7 @@
 						<!-- X axis ticks -->
 						{#each ticks2 as tick}
 							{@const xPos = (scales2.x(tick) || 0) + scales2.x.bandwidth() / 2}
-							<text x={xPos} y={chartHeight + 16} fill="#6B7280" font-size="9" text-anchor="middle" font-family="'JetBrains Mono', monospace">{tick}</text>
+							<text x={xPos} y={chartHeight + 16} fill="#6B7280" font-size="9" text-anchor="middle" font-family="var(--font-mono)">{tick}</text>
 						{/each}
 
 					</g>
@@ -285,7 +285,7 @@
 		background: #1A1D27;
 		padding: 1.25rem;
 		border-left: 2px solid transparent;
-		font-family: 'DM Sans', sans-serif;
+		font-family: var(--font-body);
 		transition: border-color 0.25s, box-shadow 0.25s;
 	}
 	.cet:hover {
@@ -308,12 +308,12 @@
 		margin-bottom: 0.5rem;
 	}
 	.cet__driver {
-		font-family: 'JetBrains Mono', monospace;
+		font-family: var(--font-mono);
 		font-size: 13px;
 		font-weight: 700;
 	}
 	.cet__title {
-		font-family: 'Space Grotesk', sans-serif;
+		font-family: var(--font-heading);
 		text-transform: uppercase;
 		font-size: 11px;
 		font-weight: 600;
@@ -322,7 +322,7 @@
 	}
 	.cet__inferred {
 		display: inline-block;
-		font-family: 'JetBrains Mono', monospace;
+		font-family: var(--font-mono);
 		font-size: 11px;
 		font-weight: 600;
 		text-transform: uppercase;
@@ -343,7 +343,7 @@
 		align-items: center;
 		justify-content: center;
 		height: 180px;
-		font-family: 'JetBrains Mono', monospace;
+		font-family: var(--font-mono);
 		font-size: 13px;
 		color: #6B7280;
 	}
@@ -352,7 +352,7 @@
 		background: rgba(15, 17, 23, 0.95);
 		border: 1px solid #2E3240;
 		padding: 10px 14px;
-		font-family: 'JetBrains Mono', monospace;
+		font-family: var(--font-mono);
 		font-size: 13px;
 		color: #E8E8ED;
 		line-height: 1.7;
@@ -376,7 +376,7 @@
 		margin-top: 0.75rem;
 		padding-top: 0.75rem;
 		border-top: 1px solid #2E3240;
-		font-family: 'JetBrains Mono', monospace;
+		font-family: var(--font-mono);
 		font-size: 13px;
 		color: #9CA3AF;
 		letter-spacing: 0.05em;

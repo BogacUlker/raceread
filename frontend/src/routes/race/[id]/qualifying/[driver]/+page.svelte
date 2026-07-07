@@ -418,7 +418,7 @@
 <style>
 	.pq {
 		--bg: #0F1117; --bg2: #1A1D27; --bgc: #22252F; --t: #E8E8ED; --t2: #9CA3AF; --tm: #6B7280; --brd: #2E3240; --ac: #E24B4A;
-		--fh: 'Space Grotesk', sans-serif; --fb: 'DM Sans', sans-serif; --fm: 'JetBrains Mono', monospace;
+		--fh: var(--font-heading); --fb: var(--font-body); --fm: var(--font-mono);
 		--sbw: 200px; --sbc: 44px;
 		position: fixed; inset: 0; z-index: 200; overflow: hidden; background: var(--bg); color: var(--t); font-family: var(--fb); -webkit-font-smoothing: antialiased;
 	}

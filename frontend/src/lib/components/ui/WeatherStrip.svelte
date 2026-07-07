@@ -59,8 +59,8 @@
 			/>
 			<polyline points={model.s.map((p) => `${x(p.lap)},${y(p.track_temp)}`).join(' ')} fill="none" stroke="#F59E0B" stroke-width="1.6" />
 			<polyline points={model.s.filter((p) => p.air_temp != null).map((p) => `${x(p.lap)},${y(p.air_temp)}`).join(' ')} fill="none" stroke="#3B82F6" stroke-width="1.3" />
-			<text x={PAD.l - 8} y={y(model.hi - 1)} fill="#7D8794" font-size="9" text-anchor="end" dominant-baseline="middle" font-family="'JetBrains Mono', monospace">{model.hi - 1}&deg;</text>
-			<text x={PAD.l - 8} y={y(model.lo + 1)} fill="#7D8794" font-size="9" text-anchor="end" dominant-baseline="middle" font-family="'JetBrains Mono', monospace">{model.lo + 1}&deg;</text>
+			<text x={PAD.l - 8} y={y(model.hi - 1)} fill="#7D8794" font-size="9" text-anchor="end" dominant-baseline="middle" font-family="var(--font-mono)">{model.hi - 1}&deg;</text>
+			<text x={PAD.l - 8} y={y(model.lo + 1)} fill="#7D8794" font-size="9" text-anchor="end" dominant-baseline="middle" font-family="var(--font-mono)">{model.lo + 1}&deg;</text>
 		</svg>
 	</div>
 {/if}

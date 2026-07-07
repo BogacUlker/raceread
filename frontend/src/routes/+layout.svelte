@@ -1,4 +1,16 @@
 <script>
+	// Broadcast typography, self-hosted (no CDN)
+	import '@fontsource/titillium-web/400.css';
+	import '@fontsource/titillium-web/600.css';
+	import '@fontsource/titillium-web/700.css';
+	import '@fontsource/titillium-web/900.css';
+	import '@fontsource/titillium-web/600-italic.css';
+	import '@fontsource/titillium-web/700-italic.css';
+	import '@fontsource/saira-condensed/400.css';
+	import '@fontsource/saira-condensed/500.css';
+	import '@fontsource/saira-condensed/600.css';
+	import '@fontsource/saira-condensed/700.css';
+	import '@fontsource/graduate/400.css';
 	import '../app.css';
 	import { page } from '$app/state';
 	import Header from '$lib/components/layout/Header.svelte';

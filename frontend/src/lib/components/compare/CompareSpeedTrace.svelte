@@ -153,14 +153,14 @@
 				<!-- Y axis grid + labels -->
 				{#each [0, 50, 100, 150, 200, 250, 300, 350] as tick}
 					<line x1={0} y1={yScale(tick)} x2={innerWidth} y2={yScale(tick)} stroke="#2E3240" stroke-opacity="0.4" />
-					<text x={-8} y={yScale(tick)} fill="#7D8794" font-size="10" text-anchor="end" dominant-baseline="middle" font-family="'JetBrains Mono', monospace">{tick}</text>
+					<text x={-8} y={yScale(tick)} fill="#7D8794" font-size="10" text-anchor="end" dominant-baseline="middle" font-family="var(--font-mono)">{tick}</text>
 				{/each}
 
 				<!-- Corner markers -->
 				{#each cornerMarkers as marker}
 					{#if marker.x >= 0 && marker.x <= innerWidth}
 						<line x1={marker.x} y1={mainHeight} x2={marker.x} y2={mainHeight + gap + throttleHeight + gap + throttleHeight} stroke="#7D8794" stroke-opacity="0.3" stroke-dasharray="2,2" />
-						<text x={marker.x} y={mainHeight + gap + throttleHeight + gap + throttleHeight + 12} fill="#7D8794" font-size="9" text-anchor="middle" font-family="'JetBrains Mono', monospace">
+						<text x={marker.x} y={mainHeight + gap + throttleHeight + gap + throttleHeight + 12} fill="#7D8794" font-size="9" text-anchor="middle" font-family="var(--font-mono)">
 							{marker.label}
 						</text>
 					{/if}
@@ -180,7 +180,7 @@
 				{/each}
 
 				<!-- Label between strips -->
-				<text x={-8} y={mainHeight + gap + throttleHeight / 2} fill="#7D8794" font-size="8" text-anchor="end" dominant-baseline="middle" font-family="'JetBrains Mono', monospace">THR</text>
+				<text x={-8} y={mainHeight + gap + throttleHeight / 2} fill="#7D8794" font-size="8" text-anchor="end" dominant-baseline="middle" font-family="var(--font-mono)">THR</text>
 
 				<!-- Second throttle strip (driver 2 dedicated row for clarity) -->
 				{#each buildThrottleBlocks(d1Data, mainHeight + gap + throttleHeight + gap) as block}
@@ -224,7 +224,7 @@
 				{/if}
 
 				<!-- X axis label -->
-				<text x={innerWidth / 2} y={mainHeight + gap + throttleHeight + gap + throttleHeight + 28} fill="#7D8794" font-size="11" text-anchor="middle" font-family="'JetBrains Mono', monospace">
+				<text x={innerWidth / 2} y={mainHeight + gap + throttleHeight + gap + throttleHeight + 28} fill="#7D8794" font-size="11" text-anchor="middle" font-family="var(--font-mono)">
 					DISTANCE (m)
 				</text>
 			</g>
@@ -232,9 +232,9 @@
 			<!-- Legend -->
 			<g transform="translate({margin.left},{totalHeight - 10})">
 				<rect x={0} y={-4} width={10} height={3} fill={color1} />
-				<text x={14} y={0} fill="#9CA3AF" font-size="10" font-family="'JetBrains Mono', monospace">{driver1}</text>
+				<text x={14} y={0} fill="#9CA3AF" font-size="10" font-family="var(--font-mono)">{driver1}</text>
 				<rect x={65} y={-4} width={10} height={3} fill={color2} />
-				<text x={79} y={0} fill="#9CA3AF" font-size="10" font-family="'JetBrains Mono', monospace">{driver2}</text>
+				<text x={79} y={0} fill="#9CA3AF" font-size="10" font-family="var(--font-mono)">{driver2}</text>
 			</g>
 		</svg>
 	{/if}
@@ -245,7 +245,7 @@
 		background: #1A1D27;
 		padding: 1.25rem;
 		border-left: 2px solid transparent;
-		font-family: 'DM Sans', sans-serif;
+		font-family: var(--font-body);
 		transition: border-color 0.25s, box-shadow 0.25s;
 	}
 	.cst:hover {
@@ -259,7 +259,7 @@
 		margin-bottom: 0.75rem;
 	}
 	.cst__title {
-		font-family: 'Space Grotesk', sans-serif;
+		font-family: var(--font-heading);
 		text-transform: uppercase;
 		font-size: 15px;
 		font-weight: 700;
@@ -267,7 +267,7 @@
 		margin: 0;
 	}
 	.cst__lap {
-		font-family: 'JetBrains Mono', monospace;
+		font-family: var(--font-mono);
 		font-size: 11px;
 		color: #7D8794;
 		letter-spacing: 0.05em;
@@ -281,7 +281,7 @@
 		align-items: center;
 		justify-content: center;
 		height: 200px;
-		font-family: 'JetBrains Mono', monospace;
+		font-family: var(--font-mono);
 		font-size: 13px;
 		color: #7D8794;
 	}
@@ -289,7 +289,7 @@
 		background: #22252F;
 		border: 1px solid #2E3240;
 		padding: 6px 8px;
-		font-family: 'JetBrains Mono', monospace;
+		font-family: var(--font-mono);
 		font-size: 10px;
 		color: #E8E8ED;
 	}

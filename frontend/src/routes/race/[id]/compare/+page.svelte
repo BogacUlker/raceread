@@ -165,9 +165,9 @@
 	.cmp {
 		position: fixed; inset: 0; z-index: 200;
 		overflow-y: auto; background: #0F1117; color: #E8E8ED;
-		font-family: 'DM Sans', sans-serif; -webkit-font-smoothing: antialiased;
+		font-family: var(--font-body); -webkit-font-smoothing: antialiased;
 		padding: 1.5rem 2rem 3rem;
-		--fh: 'Space Grotesk', sans-serif; --fm: 'JetBrains Mono', monospace;
+		--fh: var(--font-heading); --fm: var(--font-mono);
 		--ac: #E24B4A; --bg2: #1A1D27; --bgc: #22252F; --brd: #2E3240; --tm: #7D8794;
 	}
 	.cmp :global(*) { border-radius: 0 !important; }

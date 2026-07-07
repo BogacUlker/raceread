@@ -375,9 +375,9 @@
 	.rp {
 		position: fixed; inset: 0; z-index: 200;
 		overflow-y: auto; background: #0F1117; color: #E8E8ED;
-		font-family: 'DM Sans', sans-serif; -webkit-font-smoothing: antialiased;
+		font-family: var(--font-body); -webkit-font-smoothing: antialiased;
 		padding: 1.5rem 2rem 3rem;
-		--fm: 'JetBrains Mono', monospace; --fh: 'Space Grotesk', sans-serif;
+		--fm: var(--font-mono); --fh: var(--font-heading);
 		--brd: #2E3240; --bg2: #1A1D27; --tm: #7D8794; --ac: #E24B4A;
 	}
 	.rp :global(*) { border-radius: 0 !important; }

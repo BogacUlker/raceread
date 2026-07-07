@@ -279,13 +279,13 @@
 		{#if sim && chart}
 			<svg viewBox="0 0 {width} {H}" width="100%" height={H} class="wip__chart" role="img" aria-label={$t('whatif.chart')}>
 				<line x1={PAD.l} y1={chart.zero} x2={width - PAD.r} y2={chart.zero} stroke="#4A4F5E" stroke-width="1" stroke-dasharray="4,4" />
-				<text x={width - PAD.r} y={chart.zero - 5} fill="#7D8794" font-size="9" text-anchor="end" font-family="'JetBrains Mono', monospace">{$t('whatif.reality')}</text>
+				<text x={width - PAD.r} y={chart.zero - 5} fill="#7D8794" font-size="9" text-anchor="end" font-family="var(--font-mono)">{$t('whatif.reality')}</text>
 				<path d={chart.path} fill="none" stroke={tc(driver)} stroke-width="2.2" />
 				{#each simStints.slice(0, -1) as s}
 					<line x1={chart.x(s.to)} y1={PAD.t} x2={chart.x(s.to)} y2={H - PAD.b} stroke="#E8E8ED" stroke-width="1" opacity=".25" />
 				{/each}
-				<text x={PAD.l - 6} y={chart.y(chart.lo) - 2} fill="#7D8794" font-size="9" text-anchor="end" font-family="'JetBrains Mono', monospace">{chart.lo > 0 ? '+' : ''}{chart.lo.toFixed(0)}s</text>
-				<text x={PAD.l - 6} y={chart.y(chart.hi) + 8} fill="#7D8794" font-size="9" text-anchor="end" font-family="'JetBrains Mono', monospace">{chart.hi > 0 ? '+' : ''}{chart.hi.toFixed(0)}s</text>
+				<text x={PAD.l - 6} y={chart.y(chart.lo) - 2} fill="#7D8794" font-size="9" text-anchor="end" font-family="var(--font-mono)">{chart.lo > 0 ? '+' : ''}{chart.lo.toFixed(0)}s</text>
+				<text x={PAD.l - 6} y={chart.y(chart.hi) + 8} fill="#7D8794" font-size="9" text-anchor="end" font-family="var(--font-mono)">{chart.hi > 0 ? '+' : ''}{chart.hi.toFixed(0)}s</text>
 			</svg>
 			<p class="wip__chartnote">{$t('whatif.chart_note')}</p>
 

@@ -151,9 +151,9 @@
 	.hw {
 		position: fixed; inset: 0; z-index: 200;
 		overflow-y: auto; background: #0F1117; color: #E8E8ED;
-		font-family: 'DM Sans', sans-serif; -webkit-font-smoothing: antialiased;
-		--fh: 'Space Grotesk', sans-serif;
-		--fm: 'JetBrains Mono', monospace;
+		font-family: var(--font-body); -webkit-font-smoothing: antialiased;
+		--fh: var(--font-heading);
+		--fm: var(--font-mono);
 		--ac: #E24B4A; --bg2: #1A1D27; --brd: #2E3240; --tm: #6B7280;
 	}
 

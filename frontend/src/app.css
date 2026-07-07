@@ -1,17 +1,24 @@
 :root {
-	/* Dark theme (default) */
-	--bg-primary: #0F1117;
-	--bg-secondary: #1A1D27;
-	--bg-card: #22252F;
-	--text-primary: #E8E8ED;
-	--text-secondary: #9CA3AF;
-	--text-muted: #7D8794; /* WCAG AA on dark backgrounds */
-	--border: #2E3240;
-	--accent: #E24B4A;
+	/* Broadcast dark theme (R5) - F1 carbon */
+	--bg-primary: #15151E;
+	--bg-secondary: #101018;
+	--bg-card: #0C0C12;
+	--text-primary: #FFFFFF;
+	--text-secondary: #A8AEBC;
+	--text-muted: #848C99; /* WCAG AA on the carbon backgrounds */
+	--border: #33343C;
+	--accent: #E10600;
 
-	/* Fonts */
-	--font-mono: 'JetBrains Mono', monospace;
-	--font-body: 'DM Sans', sans-serif;
+	/* Timing semantics (session fastest / personal best / caution) */
+	--timing-fastest: #B138DD;
+	--timing-pb: #00C46A;
+	--timing-caution: #FFD800;
+
+	/* Fonts - broadcast: no mono; condensed carries labels & numerals */
+	--font-mono: 'Saira Condensed', 'Titillium Web', sans-serif;
+	--font-body: 'Titillium Web', sans-serif;
+	--font-heading: 'Titillium Web', sans-serif;
+	--font-varsity: 'Graduate', Georgia, serif;
 
 	/* Energy colors */
 	--energy-deploy: #22C55E;
@@ -33,10 +40,10 @@
 	--space-lg: 24px;
 	--space-xl: 32px;
 
-	/* Border radius */
-	--radius-sm: 4px;
-	--radius-md: 8px;
-	--radius-lg: 12px;
+	/* Border radius - 2025 broadcast language is sharp */
+	--radius-sm: 0px;
+	--radius-md: 0px;
+	--radius-lg: 0px;
 
 	/* Typography scale */
 	--font-size-title: 18px;

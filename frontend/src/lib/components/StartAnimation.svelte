@@ -125,7 +125,7 @@
 				{#if outlinePath}<path d={outlinePath} fill="none" stroke="#2E3240" stroke-width="10" stroke-linejoin="round" />{/if}
 				{#each dots as d (d.driver)}
 					<circle cx={d.x} cy={d.y} r="5" fill={tc(d.team)} stroke="#0F1117" stroke-width="1.2" />
-					<text x={d.x + 8} y={d.y + 3} font-size="9" fill={tc(d.team)} font-family="'JetBrains Mono', monospace" font-weight="700">{d.driver}</text>
+					<text x={d.x + 8} y={d.y + 3} font-size="9" fill={tc(d.team)} font-family="var(--font-mono)" font-weight="700">{d.driver}</text>
 				{/each}
 			</svg>
 			{#if finished}

@@ -152,11 +152,11 @@
 		width: 100vw; height: 100vh;
 		display: flex; flex-direction: column;
 		background: #0F1117; color: #E8E8ED;
-		font-family: 'DM Sans', sans-serif;
+		font-family: var(--font-body);
 		-webkit-font-smoothing: antialiased;
 		overflow: hidden;
-		--fh: 'Space Grotesk', sans-serif;
-		--fm: 'JetBrains Mono', monospace;
+		--fh: var(--font-heading);
+		--fm: var(--font-mono);
 		--ac: #E24B4A;
 		--bg2: #1A1D27;
 		--brd: #2E3240;

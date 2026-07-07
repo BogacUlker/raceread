@@ -683,12 +683,12 @@
 	.qanim {
 		position: fixed; inset: 0; z-index: 200;
 		background: #0F1117; color: #E8E8ED;
-		font-family: 'DM Sans', sans-serif;
+		font-family: var(--font-body);
 		-webkit-font-smoothing: antialiased;
 		display: flex; flex-direction: column;
 		overflow: hidden;
-		--fm: 'JetBrains Mono', monospace;
-		--fh: 'Space Grotesk', sans-serif;
+		--fm: var(--font-mono);
+		--fh: var(--font-heading);
 		--ac: #E24B4A;
 		--bg2: #1A1D27;
 		--brd: #2E3240;

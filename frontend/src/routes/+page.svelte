@@ -401,9 +401,9 @@
 		--p-t: #E8E8ED; --p-t2: #9CA3AF; --p-tm: #7D8794;
 		--p-brd: #2E3240; --p-ac: #E24B4A; --p-ach: #C93B3A;
 		--p-ac2: #F07B7A; /* accent for small text - passes WCAG AA on dark bg */
-		--p-fh: 'Space Grotesk', sans-serif;
+		--p-fh: var(--font-heading);
 		--p-fb: 'DM Sans', 'Inter', sans-serif;
-		--p-fm: 'JetBrains Mono', monospace;
+		--p-fm: var(--font-mono);
 		--sb-w: 240px; --sb-cw: 48px;
 		position: fixed; inset: 0; z-index: 200;
 		overflow: hidden; background: var(--p-bg);
