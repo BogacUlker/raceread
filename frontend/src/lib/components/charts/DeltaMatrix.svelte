@@ -90,6 +90,7 @@
 					{#each drivers as d, j}
 						{@const color = TEAM_COLORS[teams[d]] || '#888'}
 						<th
+							scope="col"
 							class="matrix__col-header"
 							class:col-highlight={hoveredCell && hoveredCell.col === j}
 							style="color: {color}"
@@ -103,13 +104,14 @@
 				{#each drivers as rowDriver, i}
 					{@const rowColor = TEAM_COLORS[teams[rowDriver]] || '#888'}
 					<tr class:row-highlight={hoveredCell && hoveredCell.row === i}>
-						<td
+						<th
+							scope="row"
 							class="matrix__row-header"
 							class:row-highlight={hoveredCell && hoveredCell.row === i}
 							style="color: {rowColor}"
 						>
 							{rowDriver}
-						</td>
+						</th>
 						{#each matrix[i] as val, j}
 							{@const isDiag = i === j}
 							{@const isHovered = hoveredCell && hoveredCell.row === i && hoveredCell.col === j}

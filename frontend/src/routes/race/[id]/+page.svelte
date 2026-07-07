@@ -274,7 +274,7 @@
 	<nav class="pd-nav">
 		<div class="pd-nav__inner">
 			<div class="pd-nav__left">
-				<button class="pd-nav__burger" onclick={() => sidebarCollapsed = !sidebarCollapsed}>
+				<button class="pd-nav__burger" aria-label={$locale === 'tr' ? 'Yarış listesini aç/kapat' : 'Toggle race list'} onclick={() => sidebarCollapsed = !sidebarCollapsed}>
 					<span></span><span></span><span></span>
 				</button>
 				<a href="/" class="pd-nav__logo"><img src="/logo@2x.png" alt="RaceRead" class="pd-nav__logo-img" /></a>
@@ -379,22 +379,22 @@
 			<div class="pd-overview">
 				<div class="pd-ov-card pd-ov-card--accent">
 					<p class="pd-ov-label">SC / VSC</p>
-					<h3 class="pd-ov-value">{scDisplay.main}</h3>
+					<p class="pd-ov-value">{scDisplay.main}</p>
 					{#if scDisplay.sub}<p class="pd-ov-sub">{scDisplay.sub}</p>{/if}
 				</div>
 				<div class="pd-ov-card">
 					<p class="pd-ov-label">{$locale === 'tr' ? 'Kazananın Farkı' : 'Winner Margin'}</p>
-					<h3 class="pd-ov-value">{winnerMargin ? '+' + winnerMargin + 's' : 'N/A'}</h3>
+					<p class="pd-ov-value">{winnerMargin ? '+' + winnerMargin + 's' : 'N/A'}</p>
 					<p class="pd-ov-sub">{raceInfo.winner} vs P2</p>
 				</div>
 				<div class="pd-ov-card">
 					<p class="pd-ov-label">{$locale === 'tr' ? 'En Hızlı Tur' : 'Fastest Lap'}</p>
-					<h3 class="pd-ov-value">{fastestLap ? fmtLap(fastestLap.time) : '-'}</h3>
+					<p class="pd-ov-value">{fastestLap ? fmtLap(fastestLap.time) : '-'}</p>
 					<p class="pd-ov-sub" style="color:{fastestLap ? tc(fastestLap.driver) : ''}">{fastestLap ? fastestLap.driver + ' / L' + fastestLap.lap : ''}</p>
 				</div>
 				<div class="pd-ov-card">
 					<p class="pd-ov-label">{$locale === 'tr' ? 'En İyi D/C Oranı' : 'Best D/C Ratio'}</p>
-					<h3 class="pd-ov-value">{bestDC ? bestDC.ratio.toFixed(2) : '-'}</h3>
+					<p class="pd-ov-value">{bestDC ? bestDC.ratio.toFixed(2) : '-'}</p>
 					<p class="pd-ov-sub" style="color:{bestDC ? tc(bestDC.driver) : ''}">{bestDC ? bestDC.driver : ''}</p>
 				</div>
 			</div>
@@ -739,7 +739,7 @@
 	.pd-ov-card:hover { border-left-color: var(--ac); }
 	.pd-ov-card--accent { border-left-color: var(--ac); background: linear-gradient(135deg, var(--bg2) 0%, rgba(226,75,74,.06) 100%); }
 	.pd-ov-label { font-family: var(--fm); font-size: 11px; color: #9CA3AF; text-transform: uppercase; letter-spacing: .1em; margin-bottom: .6rem; font-weight: 500; }
-	.pd-ov-value { font-family: var(--fh); font-size: 28px; font-weight: 700; line-height: 1; letter-spacing: -.02em; }
+	.pd-ov-value { font-family: var(--fh); font-size: 28px; font-weight: 700; line-height: 1; letter-spacing: -.02em; margin: 0; }
 	.pd-ov-card--accent .pd-ov-value { color: var(--ac); }
 	.pd-ov-sub { font-family: var(--fm); font-size: 12px; color: #9CA3AF; margin-top: 6px; text-transform: uppercase; letter-spacing: .04em; }
 

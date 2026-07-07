@@ -11,6 +11,7 @@
 		<nav class="header__nav">
 			<a href="/" class="header__link">{$t('nav.home')}</a>
 			<a href="/standings" class="header__link">{$t('nav.standings')}</a>
+			<a href="/guide" class="header__link">{$t('nav.guide')}</a>
 		</nav>
 		<div class="header__actions">
 			<LangToggle />
