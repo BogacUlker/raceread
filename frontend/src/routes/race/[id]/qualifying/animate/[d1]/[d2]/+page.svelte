@@ -702,16 +702,16 @@
 		border-bottom: 1px solid rgba(46,50,64,.5);
 		flex-shrink: 0;
 	}
-	.qanim__back { font-family: var(--fm); font-size: 10px; color: var(--ac); text-decoration: none; text-transform: uppercase; letter-spacing: .08em; }
+	.qanim__back { font-family: var(--fm); font-size: 10px; color: var(--ac-text, var(--accent-text)); text-decoration: none; text-transform: uppercase; letter-spacing: .08em; }
 	.qanim__back:hover { text-decoration: none; opacity: .8; }
 	.qanim__title-group { display: flex; align-items: center; gap: .5rem; }
 	.qanim__badge { font-family: var(--fm); font-size: 13px; font-weight: 700; padding: 3px 10px; color: #000; }
 	.qanim__vs { font-family: var(--fm); font-size: 11px; color: var(--tm); }
 	.qanim__ctrl-group { display: flex; align-items: center; gap: 4px; }
 	.qanim__btn { background: var(--bg2); border: 1px solid var(--brd); color: var(--text-primary); cursor: pointer; display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; transition: all .15s; }
-	.qanim__btn:hover { border-color: var(--ac); }
+	.qanim__btn:hover { border-color: var(--ac-text, var(--accent-text)); }
 	.qanim__speed-btn { font-family: var(--fm); font-size: 10px; padding: 4px 8px; background: none; border: 1px solid var(--brd); color: var(--tm); cursor: pointer; }
-	.qanim__speed-btn--active { background: var(--ac); color: #fff; border-color: var(--ac); }
+	.qanim__speed-btn--active { background: var(--ac); color: #fff; border-color: var(--ac-text, var(--accent-text)); }
 
 	/* 3-column arena */
 	.qanim__arena { flex: 1; display: flex; min-height: 0; }

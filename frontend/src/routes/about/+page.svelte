@@ -138,15 +138,15 @@
 	.ab__logo { display: flex; align-items: center; text-decoration: none; }
 	.ab__logo:hover { text-decoration: none; }
 	.ab__logo-img { height: 40px; width: auto; }
-	.ab__lang { font-family: var(--fm); font-size: 10px; font-weight: 700; letter-spacing: .1em; color: var(--ac); background: none; border: 1px solid var(--brd); padding: 5px 12px; cursor: pointer; }
+	.ab__lang { font-family: var(--fm); font-size: 10px; font-weight: 700; letter-spacing: .1em; color: var(--ac-text, var(--accent-text)); background: none; border: 1px solid var(--brd); padding: 5px 12px; cursor: pointer; }
 
 	.ab__content { max-width: 640px; margin: 0 auto; padding: 2rem 2rem 4rem; }
-	.ab__back { font-family: var(--fm); font-size: 11px; color: var(--ac); text-decoration: none; text-transform: uppercase; letter-spacing: .08em; }
+	.ab__back { font-family: var(--fm); font-size: 11px; color: var(--ac-text, var(--accent-text)); text-decoration: none; text-transform: uppercase; letter-spacing: .08em; }
 	.ab__back:hover { text-decoration: none; opacity: .8; }
 
 	.ab__hero { margin: 2.5rem 0 3rem; }
 	.ab__title { font-family: var(--fh); font-size: 42px; font-weight: 700; text-transform: uppercase; letter-spacing: -.02em; margin-bottom: .5rem; }
-	.ab__subtitle { font-family: var(--fm); font-size: 13px; color: var(--ac); text-transform: uppercase; letter-spacing: .15em; }
+	.ab__subtitle { font-family: var(--fm); font-size: 13px; color: var(--ac-text, var(--accent-text)); text-transform: uppercase; letter-spacing: .15em; }
 
 	.ab__section { margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(46,50,64,.4); }
 	.ab__section--last { border-bottom: none; }
@@ -156,20 +156,20 @@
 
 	.ab__made-by { font-family: var(--fm); font-size: 11px; color: var(--tm); text-transform: uppercase; letter-spacing: .12em; margin-bottom: .5rem; }
 	.ab__name { font-family: var(--fh); font-size: 32px; font-weight: 700; margin-bottom: .25rem; }
-	.ab__role { font-family: var(--fm); font-size: 13px; color: var(--ac); letter-spacing: .04em; }
+	.ab__role { font-family: var(--fm); font-size: 13px; color: var(--ac-text, var(--accent-text)); letter-spacing: .04em; }
 
 	.ab__text { font-size: 15px; line-height: 1.8; color: var(--text-secondary); margin-bottom: .75rem; }
 
 	.ab__list { padding-left: 1.25rem; }
 	.ab__list li { font-family: var(--fm); font-size: 12px; color: var(--text-secondary); line-height: 1.8; margin-bottom: .3rem; }
-	.ab__list li::marker { color: var(--ac); }
+	.ab__list li::marker { color: var(--ac-text, var(--accent-text)); }
 
-	.ab__email { font-family: var(--fm); font-size: 14px; color: var(--ac); text-decoration: none; display: inline-block; margin-top: .5rem; }
+	.ab__email { font-family: var(--fm); font-size: 14px; color: var(--ac-text, var(--accent-text)); text-decoration: none; display: inline-block; margin-top: .5rem; }
 	.ab__email:hover { text-decoration: underline; }
 
 	.ab__coffee { margin-top: 1.25rem; }
 	.ab__coffee-link { font-family: var(--fm); font-size: 12px; color: var(--text-secondary); text-decoration: none; padding: 8px 16px; border: 1px solid var(--brd); transition: all .15s; }
-	.ab__coffee-link:hover { color: var(--ac); border-color: var(--ac); text-decoration: none; }
+	.ab__coffee-link:hover { color: var(--ac-text, var(--accent-text)); border-color: var(--ac-text, var(--accent-text)); text-decoration: none; }
 
 	.ab__footer { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(46,50,64,.4); }
 

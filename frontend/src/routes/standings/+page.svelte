@@ -175,13 +175,13 @@
 <style>
 	.st { color: var(--text-primary); }
 	.st__head { margin: 0.5rem 0 1.5rem; }
-	.st__back { font-family: var(--font-mono); font-size: 11px; color: var(--accent); text-decoration: none; letter-spacing: .08em; text-transform: uppercase; }
+	.st__back { font-family: var(--font-mono); font-size: 11px; color: var(--accent-text); text-decoration: none; letter-spacing: .08em; text-transform: uppercase; }
 	.st__back:hover { text-decoration: none; opacity: .8; }
 	.st__title { font-size: 28px; font-weight: 800; text-transform: uppercase; letter-spacing: -.02em; margin-top: .5rem; }
-	.st__sub { font-family: var(--font-mono); font-size: 11px; color: var(--accent); letter-spacing: .1em; text-transform: uppercase; margin-top: 2px; }
+	.st__sub { font-family: var(--font-mono); font-size: 11px; color: var(--accent-text); letter-spacing: .1em; text-transform: uppercase; margin-top: 2px; }
 
 	.st__card { background: var(--bg-secondary); padding: 1.25rem 1.5rem; margin-bottom: 1rem; border-left: 2px solid transparent; transition: border-color .2s; }
-	.st__card:hover { border-left-color: var(--accent); }
+	.st__card:hover { border-left-color: var(--accent-text); }
 	.st__card-title { font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: .03em; margin-bottom: 1rem; padding-bottom: 8px; border-bottom: 1px solid rgba(46,50,64,.4); }
 
 	.st__chart-wrap { overflow-x: auto; }

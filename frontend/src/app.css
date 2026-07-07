@@ -7,7 +7,8 @@
 	--text-secondary: #A8AEBC;
 	--text-muted: #848C99; /* WCAG AA on the carbon backgrounds */
 	--border: #33343C;
-	--accent: #E10600;
+	--accent: #E10600; /* surfaces: chips, blocks, fills (white text on top) */
+	--accent-text: #FF4D42; /* the red for TEXT on dark - AA 5.5:1 */
 
 	/* Timing semantics (session fastest / personal best / caution) */
 	--timing-fastest: #B138DD;
@@ -119,7 +120,7 @@ body {
 }
 
 a {
-	color: var(--accent);
+	color: var(--accent-text);
 	text-decoration: none;
 }
 

@@ -228,7 +228,7 @@
 		font-family: var(--font-mono);
 		font-size: 9px;
 		font-weight: 600;
-		color: var(--accent);
+		color: var(--accent-text);
 		background: color-mix(in srgb, var(--accent) 12%, transparent);
 		padding: 1px 5px;
 		border-radius: 3px;

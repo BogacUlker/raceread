@@ -70,7 +70,7 @@
 	}
 
 	.tm__header { margin-bottom: 1.25rem; }
-	.tm__back { font-family: var(--font-mono); font-size: 11px; color: var(--accent); text-decoration: none; letter-spacing: .08em; }
+	.tm__back { font-family: var(--font-mono); font-size: 11px; color: var(--accent-text); text-decoration: none; letter-spacing: .08em; }
 	.tm__back:hover { text-decoration: none; opacity: .8; }
 	.tm__title { font-family: var(--font-heading); font-size: 28px; font-weight: 700; text-transform: uppercase; margin-top: .5rem; }
 	.tm__sub { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); letter-spacing: .1em; text-transform: uppercase; margin-top: 2px; }

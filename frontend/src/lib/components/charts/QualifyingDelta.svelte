@@ -186,7 +186,7 @@
 		font-family: var(--font-mono);
 		font-size: 10px;
 		font-weight: 700;
-		color: var(--accent);
+		color: var(--accent-text);
 		letter-spacing: 0.06em;
 	}
 	.delta-row__gap {

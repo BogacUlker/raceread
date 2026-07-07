@@ -50,6 +50,6 @@
 	.btc__res { text-align: center; font-size: 10px; }
 	.btc__res--passed { color: #22C55E; }
 	.btc__res--pit { color: #F59E0B; }
-	.btc__res--stuck { color: var(--accent); }
+	.btc__res--stuck { color: var(--accent-text); }
 	.btc__desc { margin: 12px 0 0; padding-top: 10px; border-top: 1px solid var(--border); font-size: 10.5px; color: var(--text-muted); line-height: 1.5; }
 </style>

@@ -208,7 +208,7 @@
 		transition: border-color 0.15s, box-shadow 0.15s;
 	}
 	.bar-row__driver--selected {
-		border-color: var(--accent);
+		border-color: var(--accent-text);
 		box-shadow: 0 0 6px rgba(226, 75, 74, 0.5);
 	}
 	.bar-row__stack {

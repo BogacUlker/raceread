@@ -245,7 +245,7 @@
 	}
 	.pill--active {
 		background: var(--accent);
-		border-color: var(--accent);
+		border-color: var(--accent-text);
 		color: #fff;
 	}
 

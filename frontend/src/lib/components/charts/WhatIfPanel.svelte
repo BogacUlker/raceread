@@ -335,7 +335,7 @@
 	.wip__btn { font-family: var(--font-mono); font-size: 10px; padding: 5px 10px; background: none; border: 1px solid var(--border); color: var(--text-muted); cursor: pointer; }
 	.wip__btn:hover:not(:disabled) { color: var(--text-primary); border-color: #6B7280; }
 	.wip__btn:disabled { opacity: .35; cursor: default; }
-	.wip__btn--on { color: var(--accent); border-color: rgba(226,75,74,.5); }
+	.wip__btn--on { color: var(--accent-text); border-color: rgba(226,75,74,.5); }
 	.wip__strip { display: flex; align-items: center; height: 30px; margin-bottom: 8px; }
 	.wip__stint { height: 100%; display: flex; align-items: center; justify-content: center; gap: 6px; border: none; cursor: pointer; font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--bg-secondary); }
 	.wip__stint:hover { filter: brightness(1.12); }
@@ -343,7 +343,7 @@
 	.wip__pitmark { width: 4px; height: 38px; background: var(--text-primary); flex: 0 0 4px; }
 	.wip__sliderrow { display: grid; grid-template-columns: 90px 1fr; gap: 12px; align-items: center; margin-bottom: 4px; }
 	.wip__pl { font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); }
-	.wip__sliderrow input { accent-color: var(--accent); cursor: pointer; margin: 0; }
+	.wip__sliderrow input { accent-color: var(--accent-text); cursor: pointer; margin: 0; }
 	.wip__chart { display: block; margin-top: 10px; background: var(--bg-primary); border: 1px solid var(--border); }
 	.wip__chartnote { margin: 4px 0 0; font-family: var(--font-mono); font-size: 9px; color: var(--text-muted); }
 	.wip__verdict { display: grid; grid-template-columns: 1fr 1fr 1.4fr; gap: 2px; margin-top: 12px; }
@@ -354,7 +354,7 @@
 	.wip__v .v small { font-size: 13px; color: var(--text-muted); font-weight: 500; }
 	.wip__v .v--text { font-size: 12.5px; line-height: 1.5; font-family: var(--font-body, 'DM Sans'), sans-serif; font-weight: 500; }
 	.wip__v .s { display: block; font-family: var(--font-mono); font-size: 9.5px; color: var(--text-muted); margin-top: 3px; }
-	.up { color: #22C55E; } .down { color: var(--accent); }
+	.up { color: #22C55E; } .down { color: var(--accent-text); }
 	.wip__assump { margin: 12px 0 0; font-family: var(--font-mono); font-size: 9px; color: var(--text-muted); line-height: 1.7; text-transform: uppercase; letter-spacing: .04em; }
 	.wip__warn { color: #F59E0B; }
 </style>

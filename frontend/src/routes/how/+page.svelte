@@ -166,16 +166,16 @@
 	.hw__logo { display: flex; align-items: center; text-decoration: none; }
 	.hw__logo:hover { text-decoration: none; }
 	.hw__logo-img { height: 40px; width: auto; }
-	.hw__lang { font-family: var(--fm); font-size: 10px; font-weight: 700; letter-spacing: .1em; color: var(--ac); background: none; border: 1px solid var(--brd); padding: 5px 12px; cursor: pointer; }
+	.hw__lang { font-family: var(--fm); font-size: 10px; font-weight: 700; letter-spacing: .1em; color: var(--ac-text, var(--accent-text)); background: none; border: 1px solid var(--brd); padding: 5px 12px; cursor: pointer; }
 
 	.hw__content { max-width: 780px; margin: 0 auto; padding: 2rem 2rem 4rem; }
 
-	.hw__back { font-family: var(--fm); font-size: 11px; color: var(--ac); text-decoration: none; text-transform: uppercase; letter-spacing: .08em; }
+	.hw__back { font-family: var(--fm); font-size: 11px; color: var(--ac-text, var(--accent-text)); text-decoration: none; text-transform: uppercase; letter-spacing: .08em; }
 	.hw__back:hover { text-decoration: none; opacity: .8; }
 
 	.hw__hero { margin: 2.5rem 0 3rem; }
 	.hw__title { font-family: var(--fh); font-size: 42px; font-weight: 700; text-transform: uppercase; letter-spacing: -.02em; line-height: 1.1; margin-bottom: .5rem; }
-	.hw__subtitle { font-family: var(--fm); font-size: 13px; color: var(--ac); text-transform: uppercase; letter-spacing: .15em; }
+	.hw__subtitle { font-family: var(--fm); font-size: 13px; color: var(--ac-text, var(--accent-text)); text-transform: uppercase; letter-spacing: .15em; }
 
 	.hw__section { margin-bottom: 3rem; padding-bottom: 2.5rem; border-bottom: 1px solid rgba(46,50,64,.4); }
 	.hw__section:last-of-type { border-bottom: none; }
@@ -184,19 +184,19 @@
 
 	.hw__list { padding-left: 1.25rem; margin-bottom: 1rem; }
 	.hw__list li { font-family: var(--fm); font-size: 12px; color: var(--text-secondary); line-height: 1.8; margin-bottom: .3rem; }
-	.hw__list li::marker { color: var(--ac); }
-	.hw__list--numbered li::marker { color: var(--ac); font-weight: 700; }
+	.hw__list li::marker { color: var(--ac-text, var(--accent-text)); }
+	.hw__list--numbered li::marker { color: var(--ac-text, var(--accent-text)); font-weight: 700; }
 
 	.hw__states { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; margin: 1.5rem 0; }
 	.hw__state { background: var(--bg2); padding: 1.1rem 1.25rem; border-left: 3px solid; }
 	.hw__state-name { font-family: var(--fm); font-size: 12px; font-weight: 700; display: block; margin-bottom: 4px; text-transform: uppercase; letter-spacing: .06em; }
 	.hw__state-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
 
-	.hw__badge-note { font-family: var(--fm); font-size: 11px; color: var(--ac); background: rgba(226,75,74,.06); padding: .75rem 1rem; border-left: 3px solid var(--ac); margin-top: 1rem; }
+	.hw__badge-note { font-family: var(--fm); font-size: 11px; color: var(--ac-text, var(--accent-text)); background: rgba(226,75,74,.06); padding: .75rem 1rem; border-left: 3px solid var(--ac); margin-top: 1rem; }
 
 	.hw__chart-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; margin-top: 1rem; }
 	.hw__chart-item { font-family: var(--fm); font-size: 12px; color: var(--text-secondary); background: var(--bg2); padding: .9rem 1.1rem; border-left: 2px solid var(--brd); transition: border-color .2s; }
-	.hw__chart-item:hover { border-left-color: var(--ac); }
+	.hw__chart-item:hover { border-left-color: var(--ac-text, var(--accent-text)); }
 
 	.hw__footer { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(46,50,64,.4); }
 

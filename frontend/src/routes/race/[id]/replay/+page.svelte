@@ -421,7 +421,7 @@
 	}
 	.rp :global(*) { border-radius: 0 !important; }
 	.rp__header { margin-bottom: 1rem; }
-	.rp__back { font-family: var(--fm); font-size: 11px; color: var(--ac); text-decoration: none; letter-spacing: .08em; }
+	.rp__back { font-family: var(--fm); font-size: 11px; color: var(--ac-text, var(--accent-text)); text-decoration: none; letter-spacing: .08em; }
 	.rp__back:hover { text-decoration: none; opacity: .8; }
 	.rp__title { font-family: var(--fh); font-size: 28px; font-weight: 700; text-transform: uppercase; margin-top: .5rem; }
 	.rp__sub { font-family: var(--fm); font-size: 10px; color: var(--tm); letter-spacing: .1em; text-transform: uppercase; margin-top: 2px; }
@@ -436,18 +436,18 @@
 	.rp__status { font-family: var(--font-heading); font-weight: 800; font-style: italic; font-size: 10px; letter-spacing: .08em; padding: 4px 12px; border: 1px solid; white-space: nowrap; align-self: center; }
 	.rp__status--green { color: var(--timing-pb); border-color: rgba(0,196,106,.45); background: rgba(0,196,106,.1); }
 	.rp__status--vsc { color: var(--timing-caution); border-color: rgba(255,216,0,.45); background: rgba(255,216,0,.08); animation: rc-pulse 1.2s infinite; }
-	.rp__status--sc { color: var(--accent); border-color: rgba(225,6,0,.5); background: rgba(225,6,0,.12); animation: rc-pulse 1.2s infinite; }
+	.rp__status--sc { color: var(--accent-text); border-color: rgba(225,6,0,.5); background: rgba(225,6,0,.12); animation: rc-pulse 1.2s infinite; }
 	@keyframes rc-pulse { 50% { opacity: .55; } }
 	.rp__speeds { display: flex; gap: 2px; }
 	.rp__speeds button { font-family: var(--fm); font-size: 10px; padding: 4px 10px; background: none; border: 1px solid var(--brd); color: var(--tm); cursor: pointer; }
 	.rp__speeds button.on { color: var(--text-primary); background: var(--bg2); }
 	.rp__startbtn { font-family: var(--fm); font-size: 10px; padding: 6px 12px; background: none; border: 1px solid var(--brd); color: var(--tm); cursor: pointer; letter-spacing: .06em; }
 	.rp__startbtn:hover { color: var(--text-primary); border-color: #6B7280; }
-	.rp__startbtn.on { color: var(--ac); border-color: rgba(226,75,74,.5); }
+	.rp__startbtn.on { color: var(--ac-text, var(--accent-text)); border-color: rgba(226,75,74,.5); }
 
 	.rp__scrub { position: relative; margin-bottom: 1.25rem; }
 	.rp__marks { width: 100%; height: 22px; display: block; }
-	.rp__range { width: 100%; margin: 0; accent-color: var(--accent); cursor: pointer; }
+	.rp__range { width: 100%; margin: 0; accent-color: var(--accent-text); cursor: pointer; }
 
 	.rp__main { display: grid; grid-template-columns: 250px 1fr 270px; gap: 1.25rem; align-items: start; }
 	@media (max-width: 1250px) { .rp__main { grid-template-columns: 250px 1fr; } .rp__feed { grid-column: 1 / -1; } }

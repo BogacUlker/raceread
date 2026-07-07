@@ -1108,7 +1108,7 @@
 	}
 	.track-map__tooltip-label { color: var(--text-muted); }
 	.track-map__tooltip-value { font-weight: 600; color: var(--text-primary); }
-	.track-map__tooltip-value.brake-active { color: var(--accent); }
+	.track-map__tooltip-value.brake-active { color: var(--accent-text); }
 	.track-map__tooltip-dist {
 		border-top: 1px solid var(--border);
 		margin-top: 4px;
@@ -1162,7 +1162,7 @@
 		color: var(--text-primary);
 		white-space: nowrap;
 	}
-	.track-map__tooltip-val.brake-active { color: var(--accent); }
+	.track-map__tooltip-val.brake-active { color: var(--accent-text); }
 	.track-map__tooltip-val small { font-size: 10px; font-weight: 400; color: var(--text-muted); }
 	.track-map__tooltip-delta {
 		text-align: center;
@@ -1389,7 +1389,7 @@
 	}
 	.track-map__zoom-label {
 		font-weight: 600;
-		color: var(--accent);
+		color: var(--accent-text);
 	}
 	.track-map__zoom-out {
 		font-family: var(--font-mono);

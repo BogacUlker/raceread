@@ -22,7 +22,7 @@
 		width: 24px;
 		height: 24px;
 		border: 2px solid var(--border);
-		border-top-color: var(--accent);
+		border-top-color: var(--accent-text);
 		border-radius: 50%;
 		animation: spin 0.8s linear infinite;
 	}

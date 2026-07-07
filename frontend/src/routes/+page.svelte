@@ -505,7 +505,7 @@
 	.prv-hero__circuit { position: absolute; top: 45%; right: -8%; transform: translateY(-50%); width: 65%; max-width: 800px; color: rgba(226,75,74,.15); pointer-events: none; filter: drop-shadow(0 0 24px rgba(226,75,74,.1)); }
 	.prv-hero__content { position: relative; z-index: 1; max-width: 680px; }
 	.prv-hero__tagline { display: block; font-family: var(--p-fm); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--p-ac); margin-bottom: 1.25rem; }
-	.prv-hero__title { font-family: var(--p-fh); font-weight: 700; font-size: clamp(30px,4.5vw,56px); line-height: 1.05; letter-spacing: -.03em; text-transform: uppercase; margin-bottom: 1.25rem; }
+	.prv-hero__title { font-family: var(--p-fh); font-weight: 900; font-style: italic; font-size: clamp(30px,4.5vw,56px); line-height: 1.04; letter-spacing: 0; text-transform: uppercase; margin-bottom: 1.25rem; }
 	.prv-hero__title--accent { color: var(--p-ac); }
 	.prv-hero__desc { font-size: 15px; line-height: 1.7; color: var(--p-t2); max-width: 520px; margin-bottom: 2rem; }
 	.prv-hero__actions { display: flex; flex-wrap: wrap; gap: 1rem; }
@@ -513,7 +513,7 @@
 	/* ── BUTTONS ── */
 	.prv-btn { font-family: var(--p-fh); font-weight: 600; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; padding: 13px 28px; text-decoration: none; transition: all .15s; cursor: pointer; border: none; }
 	.prv-btn:hover { text-decoration: none; }
-	.prv-btn--primary { background: var(--p-ach); color: #fff; }
+	.prv-btn--primary { background: var(--p-ach); color: #fff; font-weight: 900; font-style: italic; letter-spacing: .04em; }
 	.prv-btn--primary:hover { background: #B23231; }
 	.prv-btn--ghost { background: none; border: 1px solid var(--p-brd); color: var(--p-t); }
 	.prv-btn--ghost:hover { background: var(--p-bg2); }
@@ -634,9 +634,9 @@
 		border-left: 3px solid var(--accent); text-decoration: none;
 		transition: border-color .15s, background .15s;
 	}
-	.prv-guide:hover { border-color: #6B7280; border-left-color: var(--accent); background: #1E2230; text-decoration: none; }
+	.prv-guide:hover { border-color: #6B7280; border-left-color: var(--accent-text); background: #1E2230; text-decoration: none; }
 	.prv-guide:hover .prv-guide__arrow { transform: translateX(4px); }
-	.prv-guide__k { display: block; font-family: var(--font-mono); font-size: 9px; letter-spacing: .14em; color: var(--accent); text-transform: uppercase; margin-bottom: 3px; }
+	.prv-guide__k { display: block; font-family: var(--font-mono); font-size: 9px; letter-spacing: .14em; color: var(--accent-text); text-transform: uppercase; margin-bottom: 3px; }
 	.prv-guide__t { font-family: var(--font-heading); font-size: 15px; font-weight: 600; color: var(--text-primary); letter-spacing: -.01em; }
 	.prv-guide__arrow { font-size: 18px; color: var(--text-muted); transition: transform .15s; }
 </style>

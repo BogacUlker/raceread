@@ -52,6 +52,6 @@
 	}
 	.session-toggle__tab.active {
 		color: var(--text-primary);
-		border-bottom-color: var(--accent);
+		border-bottom-color: var(--accent-text);
 	}
 </style>

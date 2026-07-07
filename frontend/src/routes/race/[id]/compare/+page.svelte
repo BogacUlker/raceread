@@ -173,7 +173,7 @@
 	.cmp :global(*) { border-radius: 0 !important; }
 
 	.cmp__header { margin-bottom: 1.25rem; }
-	.cmp__back { font-family: var(--fm); font-size: 11px; color: var(--ac); text-decoration: none; letter-spacing: .08em; }
+	.cmp__back { font-family: var(--fm); font-size: 11px; color: var(--ac-text, var(--accent-text)); text-decoration: none; letter-spacing: .08em; }
 	.cmp__back:hover { text-decoration: none; opacity: .8; }
 	.cmp__title { font-family: var(--fh); font-size: 28px; font-weight: 700; text-transform: uppercase; margin-top: .5rem; }
 
@@ -181,7 +181,7 @@
 	.cmp__controls { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.75rem; flex-wrap: wrap; }
 	.cmp__select { font-family: var(--fm); font-size: 13px; background: var(--bg-primary); color: var(--text-primary); border: 2px solid var(--brd); padding: 10px 14px; cursor: pointer; min-width: 200px; transition: border-color .2s; }
 	.cmp__select:focus-visible, .cmp__lap-select:focus-visible { outline: 2px solid var(--ac); outline-offset: 1px; }
-	.cmp__select:focus { border-color: var(--ac); }
+	.cmp__select:focus { border-color: var(--ac-text, var(--accent-text)); }
 	.cmp__vs { font-family: var(--fh); font-size: 18px; color: var(--tm); }
 	.cmp__lap-picker { display: flex; align-items: center; gap: .5rem; margin-left: auto; }
 	.cmp__lap-label { font-family: var(--fm); font-size: 10px; color: var(--tm); text-transform: uppercase; letter-spacing: .1em; }
@@ -190,8 +190,8 @@
 	/* Stats */
 	.cmp__stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-bottom: 1.5rem; }
 	.cmp__stat { background: var(--bg2); padding: 1.3rem 1.5rem; border-left: 3px solid var(--brd); transition: border-color .2s; }
-	.cmp__stat:hover { border-left-color: var(--ac); }
-	.cmp__stat--accent { border-left-color: var(--ac); background: linear-gradient(135deg, var(--bg2) 0%, rgba(226,75,74,.06) 100%); }
+	.cmp__stat:hover { border-left-color: var(--ac-text, var(--accent-text)); }
+	.cmp__stat--accent { border-left-color: var(--ac-text, var(--accent-text)); background: linear-gradient(135deg, var(--bg2) 0%, rgba(226,75,74,.06) 100%); }
 	.cmp__stat-label { font-family: var(--fm); font-size: 10px; color: var(--tm); text-transform: uppercase; letter-spacing: .1em; display: block; margin-bottom: .75rem; }
 	.cmp__stat-row { display: flex; justify-content: space-between; gap: .75rem; }
 	.cmp__stat-row > div { display: flex; flex-direction: column; gap: 2px; }

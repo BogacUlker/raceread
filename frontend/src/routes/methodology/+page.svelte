@@ -128,7 +128,7 @@
 <style>
 	.mt { min-height: 100vh; background: var(--bg-primary); color: var(--text-primary); padding: 3rem 1.5rem 5rem; }
 	.mt__inner { max-width: 760px; margin: 0 auto; }
-	.mt__eyebrow { font-family: var(--font-mono); font-size: 10px; letter-spacing: .16em; color: var(--accent); margin: 0 0 6px; }
+	.mt__eyebrow { font-family: var(--font-mono); font-size: 10px; letter-spacing: .16em; color: var(--accent-text); margin: 0 0 6px; }
 	.mt__title { font-family: var(--font-heading); font-size: clamp(26px, 4vw, 34px); font-weight: 700; letter-spacing: -.02em; margin: 0 0 12px; }
 	.mt__lead { font-size: 15.5px; line-height: 1.7; color: var(--text-secondary); max-width: 62ch; }
 	.mt__h2 { font-family: var(--font-heading); font-size: 18px; font-weight: 700; margin: 40px 0 10px; letter-spacing: -.01em; }

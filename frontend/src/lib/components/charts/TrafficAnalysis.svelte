@@ -195,7 +195,7 @@
 		text-align: right;
 	}
 	.traffic__degradation.positive {
-		color: var(--accent);
+		color: var(--accent-text);
 	}
 	.traffic__legend {
 		display: flex;

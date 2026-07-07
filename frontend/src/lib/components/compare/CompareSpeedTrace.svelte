@@ -249,7 +249,7 @@
 		transition: border-color 0.25s, box-shadow 0.25s;
 	}
 	.cst:hover {
-		border-left-color: var(--accent);
+		border-left-color: var(--accent-text);
 		box-shadow: -4px 0 20px -4px rgba(226, 75, 74, 0.12);
 	}
 	.cst__header {

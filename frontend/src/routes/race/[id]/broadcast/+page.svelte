@@ -176,7 +176,7 @@
 		color: var(--tm); cursor: pointer; transition: all .15s; text-transform: uppercase;
 	}
 	.bc__ctl:hover { color: var(--text-primary); border-color: #6B7280; }
-	.bc__ctl--on { background: var(--ac); color: #fff; border-color: var(--ac); font-style: italic; }
+	.bc__ctl--on { background: var(--ac); color: #fff; border-color: var(--ac-text, var(--accent-text)); font-style: italic; }
 
 	/* Top bar */
 	.bc__topbar {
@@ -191,7 +191,7 @@
 		border: 1px solid var(--brd); text-decoration: none;
 		transition: color .15s, border-color .15s;
 	}
-	.bc__exit:hover { color: var(--ac); border-color: var(--ac); text-decoration: none; }
+	.bc__exit:hover { color: var(--ac-text, var(--accent-text)); border-color: var(--ac-text, var(--accent-text)); text-decoration: none; }
 	.bc__race { font-family: var(--fh); font-size: 15px; font-weight: 900; font-style: italic; letter-spacing: .02em; }
 	.bc__active-label { font-family: var(--fh); font-size: 13px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .06em; }
 	.bc__counter { font-family: var(--fm); font-size: 11px; color: var(--tm); }
@@ -215,7 +215,7 @@
 	.bc__pill:hover { color: var(--text-primary); border-color: #6B7280; }
 	.bc__pill--active {
 		background: var(--ac); color: #fff;
-		border-color: var(--ac); font-weight: 900; font-style: italic;
+		border-color: var(--ac-text, var(--accent-text)); font-weight: 900; font-style: italic;
 	}
 
 	@media (max-width: 640px) {
