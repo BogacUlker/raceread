@@ -75,9 +75,12 @@
 
 	function summary(a) {
 		const text = $locale === 'tr' && a.text_tr ? a.text_tr : a.text_en || '';
-		const cut = text.indexOf('. ');
-		let s = cut > 40 && cut < 220 ? text.slice(0, cut + 1) : text;
-		if (s.length > 190) s = s.slice(0, 187) + '...';
+		// sentence boundary = period NOT after a digit (Turkish ordinals:
+		// "15. sıra", "43. tur") and followed by an uppercase start
+		const m = text.match(/(?<!\d)[.!?] (?=[A-ZÇĞİÖŞÜ0-9"'])/);
+		const cut = m ? m.index : -1;
+		let s = cut > 40 && cut < 260 ? text.slice(0, cut + 1) : text;
+		if (s.length > 230) s = s.slice(0, 227) + '...';
 		return s;
 	}
 
