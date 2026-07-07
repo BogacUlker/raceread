@@ -12,6 +12,8 @@
 	import { momentFocus } from '$lib/stores/race.js';
 	import InferredBadge from '$lib/components/ui/InferredBadge.svelte';
 
+	import DriverChipBar from '$lib/components/ui/DriverChipBar.svelte';
+	import LapScrubber from '$lib/components/ui/LapScrubber.svelte';
 	let {
 		raceId,
 		drivers = [],
@@ -533,26 +535,11 @@
 
 	<!-- Controls row -->
 	<div class="track-map__controls">
-		<select bind:value={driver1} class="track-map__select">
-			{#each drivers as d}
-				<option value={d.driver}>{d.driver}</option>
-			{/each}
-		</select>
-
-		{#if isCompare}
-			<span class="track-map__vs">vs</span>
-			<select bind:value={driver2} class="track-map__select">
-				{#each drivers as d}
-					<option value={d.driver}>{d.driver}</option>
-				{/each}
-			</select>
-		{/if}
-
-		<select bind:value={selectedLap} class="track-map__select">
-			{#each availableLaps as lap}
-				<option value={lap}>{$t('tooltip.lap')} {lap}</option>
-			{/each}
-		</select>
+		<div class="track-map__pickers">
+			<DriverChipBar {drivers} selected={isCompare ? [driver1, driver2].filter(Boolean) : (driver1 ? [driver1] : [])} max={isCompare ? 2 : 1}
+				onchange={(l) => { if (isCompare) { if (l.length === 2) { driver1 = l[0]; driver2 = l[1]; } else if (l.length === 1) { driver1 = l[0]; } } else if (l[0]) { driver1 = l[0]; } }} />
+			<LapScrubber {totalLaps} value={selectedLap} {vscLaps} {scLaps} onchange={(v) => selectedLap = v} />
+		</div>
 
 		<div class="track-map__mode-toggle">
 			<button class="track-map__mode-btn" class:active={colorMode === 'speed'} onclick={() => colorMode = 'speed'}>
@@ -1023,6 +1010,7 @@
 </div>
 
 <style>
+	.track-map__pickers { display: flex; flex-direction: column; gap: 8px; flex: 1 1 100%; }
 	.track-map__controls {
 		display: flex;
 		align-items: center;

@@ -52,8 +52,8 @@
 	</div>
 
 	<div class="tm__grid">
-		<SpeedTrace {raceId} drivers={driverList} {circuit} totalLaps={raceInfo?.total_laps || 58} />
-		<TrackMap {raceId} drivers={driverList} {circuit} totalLaps={raceInfo?.total_laps || 58} />
+		<SpeedTrace {raceId} drivers={driverList} {circuit} totalLaps={raceInfo?.total_laps || 58} vscLaps={neutralized.vsc} scLaps={neutralized.sc} />
+		<TrackMap {raceId} drivers={driverList} {circuit} totalLaps={raceInfo?.total_laps || 58} vscLaps={neutralized.vsc} scLaps={neutralized.sc} />
 		<GearMap {raceId} drivers={driverList} totalLaps={raceInfo?.total_laps || 58} vscLaps={neutralized.vsc} scLaps={neutralized.sc} />
 		<TrafficAnalysis trafficData={traffic} loading={false} />
 	</div>

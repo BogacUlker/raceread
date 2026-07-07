@@ -12,6 +12,8 @@
 	import { momentFocus } from '$lib/stores/race.js';
 	import InferredBadge from '$lib/components/ui/InferredBadge.svelte';
 
+	import DriverChipBar from '$lib/components/ui/DriverChipBar.svelte';
+	import LapScrubber from '$lib/components/ui/LapScrubber.svelte';
 	let {
 		raceId,
 		drivers = [],
@@ -268,25 +270,9 @@
 	<!-- Controls -->
 	<div class="speed-trace__controls">
 		<div class="speed-trace__selectors">
-			<!-- Driver 1 -->
-			<select bind:value={driver1} class="speed-trace__select">
-				{#each drivers as d}
-					<option value={d.driver}>{d.driver}</option>
-				{/each}
-			</select>
-			<span class="speed-trace__vs">{$t('charts.vs')}</span>
-			<!-- Driver 2 -->
-			<select bind:value={driver2} class="speed-trace__select">
-				{#each drivers as d}
-					<option value={d.driver}>{d.driver}</option>
-				{/each}
-			</select>
-			<!-- Lap -->
-			<select bind:value={selectedLap} class="speed-trace__select">
-				{#each availableLaps as lap}
-					<option value={lap}>{$t('tooltip.lap')} {lap}</option>
-				{/each}
-			</select>
+			<DriverChipBar {drivers} selected={[driver1, driver2].filter(Boolean)} max={2}
+				onchange={(l) => { if (l.length === 2) { driver1 = l[0]; driver2 = l[1]; } else if (l.length === 1) { driver1 = l[0]; } }} />
+			<LapScrubber {totalLaps} value={selectedLap} {vscLaps} {scLaps} onchange={(v) => selectedLap = v} />
 		</div>
 		<label class="speed-trace__toggle">
 			<input type="checkbox" bind:checked={showEnergy} />
@@ -417,12 +403,7 @@
 		margin-bottom: var(--space-md);
 		flex-wrap: wrap;
 	}
-	.speed-trace__selectors {
-		display: flex;
-		align-items: center;
-		gap: var(--space-sm);
-		flex-wrap: wrap;
-	}
+	.speed-trace__selectors { display: flex; flex-direction: column; gap: 8px; flex: 1; }
 	.speed-trace__select {
 		font-family: var(--font-mono);
 		font-size: var(--font-size-small);

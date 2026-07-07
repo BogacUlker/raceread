@@ -7,6 +7,7 @@
 	import { TEAM_COLORS, ENERGY_COLORS } from '$lib/constants.js';
 	import { api } from '$lib/api.js';
 
+	import DriverChipBar from '$lib/components/ui/DriverChipBar.svelte';
 	let { raceId, drivers = [], d1init = '', d2init = '', totalLaps = 58 } = $props();
 
 	let d1 = $state('');
@@ -65,13 +66,8 @@
 	<div class="chart-card__header">
 		<span class="chart-card__title">{$t('energy.duel')}</span>
 		<div class="duel-ctrl">
-			<select bind:value={d1} aria-label="Driver 1">
-				{#each drivers as d}<option value={d.driver} disabled={d.driver === d2}>{d.driver}</option>{/each}
-			</select>
-			<span class="duel-vs">vs</span>
-			<select bind:value={d2} aria-label="Driver 2">
-				{#each drivers as d}<option value={d.driver} disabled={d.driver === d1}>{d.driver}</option>{/each}
-			</select>
+			<DriverChipBar {drivers} selected={[d1, d2].filter(Boolean)} max={2}
+				onchange={(l) => { if (l.length === 2) { d1 = l[0]; d2 = l[1]; } else if (l.length === 1) { d1 = l[0]; } }} />
 			<div class="duel-win">
 				<button class:on={win === 'all'} onclick={() => win = 'all'}>{$t('energy.window_all')}</button>
 				<button class:on={win === 'first10'} onclick={() => win = 'first10'}>{$t('energy.window_first10')}</button>

@@ -131,9 +131,9 @@
 		{:else if CHARTS[activeChart] === 'energy'}
 			<EnergyBars entries={(energyComparison.entries || []).filter(e => $selectedDrivers.includes(e.driver))} />
 		{:else if CHARTS[activeChart] === 'speed-trace'}
-			<SpeedTrace {raceId} drivers={driverList} {circuit} totalLaps={raceInfo?.total_laps || 58} />
+			<SpeedTrace {raceId} drivers={driverList} {circuit} totalLaps={raceInfo?.total_laps || 58} {vscLaps} {scLaps} />
 		{:else if CHARTS[activeChart] === 'track-map'}
-			<TrackMap {raceId} drivers={driverList} {circuit} totalLaps={raceInfo?.total_laps || 58} />
+			<TrackMap {raceId} drivers={driverList} {circuit} totalLaps={raceInfo?.total_laps || 58} {vscLaps} {scLaps} />
 		{/if}
 	</div>
 

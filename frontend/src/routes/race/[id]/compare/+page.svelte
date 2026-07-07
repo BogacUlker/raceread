@@ -187,7 +187,10 @@
 	.cmp__title { font-family: var(--fh); font-size: 28px; font-weight: 700; text-transform: uppercase; margin-top: .5rem; }
 
 	/* Controls bar */
-	.cmp__controls { display: flex; flex-direction: column; gap: 12px; margin-bottom: 1.5rem; }
+	.cmp__controls { display: flex; flex-direction: column; align-items: center; gap: 14px; margin-bottom: 1.75rem; }
+	.cmp__controls :global(.dcb) { justify-content: center; gap: 6px; max-width: 900px; }
+	.cmp__controls :global(.dcb__chip) { font-size: 12.5px; padding: 5px 11px 5px 0; }
+	.cmp__controls :global(.lsc) { width: 100%; max-width: 760px; }
 	.cmp__select { font-family: var(--fm); font-size: 13px; background: var(--bg-primary); color: var(--text-primary); border: 2px solid var(--brd); padding: 10px 14px; cursor: pointer; min-width: 200px; transition: border-color .2s; }
 	.cmp__select:focus-visible, .cmp__lap-select:focus-visible { outline: 2px solid var(--ac); outline-offset: 1px; }
 	.cmp__select:focus { border-color: var(--ac-text, var(--accent-text)); }
@@ -220,7 +223,7 @@
 
 	@media (max-width: 900px) {
 		.cmp__stats, .cmp__sectors { grid-template-columns: 1fr; }
-		.cmp__controls { flex-direction: column; align-items: stretch; }
+		.cmp__controls { flex-direction: column; align-items: center; }
 		.cmp__select { min-width: auto; }
 		.cmp__lap-picker { margin-left: 0; }
 		.cmp { padding: 1rem; }

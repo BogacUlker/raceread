@@ -23,6 +23,7 @@
 	 *   defaultDriver: string
 	 * }}
 	 */
+	import DriverChipBar from '$lib/components/ui/DriverChipBar.svelte';
 	let { raceId, drivers, defaultDriver, compareDriver = '', confidence = null } = $props();
 
 	let selectedDriver = $state('');
@@ -97,11 +98,8 @@
 		<span class="chart-card__title">{$t('charts.energy_timeline')}</span>
 		<InferredBadge {confidence} />
 		<div class="driver-select">
-			<select value={selectedDriver} onchange={handleDriverChange}>
-				{#each drivers as d}
-					<option value={d.driver}>{d.driver}</option>
-				{/each}
-			</select>
+			<DriverChipBar {drivers} selected={selectedDriver ? [selectedDriver] : []} max={1}
+				onchange={(l) => { if (l[0]) handleDriverChange({ target: { value: l[0] } }); }} />
 		</div>
 	</div>
 

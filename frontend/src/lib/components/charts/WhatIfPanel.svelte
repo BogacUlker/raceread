@@ -12,6 +12,7 @@
 	import { t, locale } from '$lib/i18n/index.js';
 	import { COMPOUND_COLORS, TEAM_COLORS } from '$lib/constants.js';
 
+	import DriverChipBar from '$lib/components/ui/DriverChipBar.svelte';
 	let { laps = [], strategy = null, raceInfo = null, vscLaps = [], scLaps = [], teamsMap = {}, traffic = null } = $props();
 
 	const FUEL = 0.055; // s per lap of fuel burn (typical, era-insensitive enough for V1)
@@ -248,9 +249,10 @@
 	<div class="wip" bind:clientWidth={width}>
 		<div class="wip__bar">
 			<span class="wip__title">{$t('whatif.title')}</span>
-			<select bind:value={driver} class="wip__select" style="border-color:{tc(driver)}" aria-label={$t('filter.select_driver')}>
-				{#each race.finishers as d}<option value={d}>{d}</option>{/each}
-			</select>
+			<DriverChipBar
+				drivers={race.finishers.map((d) => ({ driver: d, team: teamsMap[d] }))}
+				selected={driver ? [driver] : []} max={1}
+				onchange={(l) => { if (l[0]) driver = l[0]; }} />
 			<span class="wip__hint">{$t('whatif.hint')}</span>
 			<div class="wip__actions">
 				<button class="wip__btn" onclick={addStop} disabled={simStints.length >= 4}>+ {$t('whatif.stop')}</button>
