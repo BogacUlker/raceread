@@ -182,7 +182,7 @@
 
 	.st__card { background: var(--bg-secondary); padding: 1.25rem 1.5rem; margin-bottom: 1rem; border-left: 2px solid transparent; transition: border-color .2s; }
 	.st__card:hover { border-left-color: var(--accent-text); }
-	.st__card-title { font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: .03em; margin-bottom: 1rem; padding-bottom: 8px; border-bottom: 1px solid rgba(46,50,64,.4); }
+	.st__card-title { display: inline-block; font-family: var(--font-heading); font-size: 11px; font-weight: 900; font-style: italic; color: #fff; background: var(--accent); text-transform: uppercase; letter-spacing: .07em; padding: 3px 12px; margin-bottom: 1rem; }
 
 	.st__chart-wrap { overflow-x: auto; }
 	.st__chart { width: 100%; min-width: 640px; height: auto; display: block; }
@@ -196,9 +196,12 @@
 
 	.st__table { width: 100%; border-collapse: collapse; }
 	.st__table th { font-family: var(--font-mono); font-size: 10px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: .06em; text-align: left; padding: 4px 8px 8px; border-bottom: 1px solid var(--border); }
-	.st__table td { font-size: 13px; padding: 7px 8px; border-bottom: 1px solid rgba(255,255,255,.04); }
-	.st__pos { width: 30px; text-align: center; font-family: var(--font-mono); color: var(--text-muted); }
-	.st__driver { display: flex; align-items: center; gap: 8px; font-family: var(--font-mono); }
+	.st__table td { font-size: 13px; padding: 7px 8px; }
+	.st__pos { width: 30px; text-align: center; font-family: var(--font-varsity); font-size: 12px; color: #fff; }
+	.st__table tbody tr:first-child .st__pos { background: var(--accent); }
+	.st__table tbody tr { background: var(--bg-card); }
+	.st__table tbody tr + tr { border-top: 2px solid var(--bg-primary); }
+	.st__driver { display: flex; align-items: center; gap: 8px; font-family: var(--font-heading); font-weight: 800; letter-spacing: .04em; }
 	.st__bar { width: 3px; height: 15px; flex-shrink: 0; display: inline-block; }
 	.st__name { color: var(--text-secondary); font-family: var(--font-body, inherit); }
 	.st__team { color: var(--text-secondary); font-size: 12px; }

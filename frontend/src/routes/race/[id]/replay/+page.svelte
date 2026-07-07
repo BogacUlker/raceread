@@ -435,9 +435,10 @@
 	.rp__lapchip small { background: rgba(0,0,0,.75); color: var(--text-muted); font-weight: 600; font-size: 10px; padding-right: 10px; display: flex; align-items: center; }
 	.rp__status { font-family: var(--font-heading); font-weight: 800; font-style: italic; font-size: 10px; letter-spacing: .08em; padding: 4px 12px; border: 1px solid; white-space: nowrap; align-self: center; }
 	.rp__status--green { color: var(--timing-pb); border-color: rgba(0,196,106,.45); background: rgba(0,196,106,.1); }
-	.rp__status--vsc { color: var(--timing-caution); border-color: rgba(255,216,0,.45); background: rgba(255,216,0,.08); animation: rc-pulse 1.2s infinite; }
+	.rp__status--vsc { color: var(--timing-caution); border-color: rgba(255,216,0,.45); background: rgba(255,216,0,.08); animation: rp-glow-y 1.2s infinite; }
 	.rp__status--sc { color: var(--accent-text); border-color: rgba(225,6,0,.5); background: rgba(225,6,0,.12); animation: rc-pulse 1.2s infinite; }
-	@keyframes rc-pulse { 50% { opacity: .55; } }
+	@keyframes rp-glow-r { 50% { box-shadow: 0 0 14px rgba(225,6,0,.55); } }
+	@keyframes rp-glow-y { 50% { box-shadow: 0 0 14px rgba(255,216,0,.4); } }
 	.rp__speeds { display: flex; gap: 2px; }
 	.rp__speeds button { font-family: var(--fm); font-size: 10px; padding: 4px 10px; background: none; border: 1px solid var(--brd); color: var(--tm); cursor: pointer; }
 	.rp__speeds button.on { color: var(--text-primary); background: var(--bg2); }
@@ -465,7 +466,8 @@
 
 	.rp__order { background: var(--bg2); padding: 12px 10px 8px; }
 	.rp__trow { display: grid; grid-template-columns: 26px 6px 44px 26px 1fr 26px; align-items: stretch; height: 26px; margin-bottom: 2px; background: var(--bg-card); }
-	.rp__trow--out { opacity: .3; }
+	.rp__trow--out .rp__tbar, .rp__trow--out .rp__ttyre, .rp__trow--out .rp__tpos { opacity: .3; }
+	.rp__trow--out .rp__ttla, .rp__trow--out .rp__tgap { color: var(--text-muted); }
 	.rp__trow--fav { outline: 1px solid rgba(245,158,11,.35); }
 	.rp__trow--lead .rp__tpos { background: var(--accent); }
 	.rp__trow--up { animation: rp-up 1.4s ease-out; }
@@ -476,10 +478,10 @@
 	.rp__ttag { display: flex; align-items: center; }
 	.rp__ttag b { font-size: 8.5px; font-weight: 900; background: #fff; color: #111; padding: 1.5px 4px; letter-spacing: .04em; }
 	.rp__tgap { font-family: var(--fm); font-weight: 600; font-size: 12px; display: flex; align-items: center; justify-content: flex-end; color: #D6D9E0; font-variant-numeric: tabular-nums; padding-right: 2px; }
-	.rp__tgap--pur { color: var(--timing-fastest); font-weight: 700; }
+	.rp__tgap--pur { color: var(--timing-fastest-text); font-weight: 700; }
 	.rp__ttyre { display: flex; align-items: center; justify-content: center; }
 	.rp__ttyre i { width: 15px; height: 15px; border-radius: 50%; border: 2.5px solid; display: inline-flex; align-items: center; justify-content: center; font-style: normal; font-weight: 900; font-size: 8.5px; color: #fff; box-sizing: border-box; }
-	.rp__fastest { margin-top: 8px; font-family: var(--fm); font-weight: 700; font-size: 10.5px; color: var(--timing-fastest); letter-spacing: .04em; }
+	.rp__fastest { margin-top: 8px; font-family: var(--fm); font-weight: 700; font-size: 11px; color: var(--timing-fastest-text); letter-spacing: .04em; }
 	.rp__fastest small { color: var(--tm); }
 	.rp__note { font-family: var(--fm); font-size: 9.5px; color: var(--tm); margin-top: 6px; }
 
