@@ -823,4 +823,5 @@
 	.pd-uc__w, .pd-uc__l { font-family: var(--font-heading); font-weight: 800; font-size: 12px; letter-spacing: .04em; }
 	.pd-uc__vs { color: var(--text-muted); font-size: 10px; text-transform: uppercase; letter-spacing: .05em; text-align: center; }
 	.pd-uc__gain { text-align: right; font-weight: 700; color: var(--timing-pb); font-variant-numeric: tabular-nums; }
+	.pd-cell, .pd-sec__body { min-width: 0; }
 </style>

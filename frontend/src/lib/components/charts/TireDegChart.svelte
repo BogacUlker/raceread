@@ -9,7 +9,7 @@
 
 	let { laps = [], vscLaps = [], scLaps = [] } = $props();
 
-	let width = $state(900);
+	let width = $state(320);
 	const H = 260, PAD = { l: 46, r: 16, t: 14, b: 34 };
 
 	let model = $derived.by(() => {
@@ -68,7 +68,7 @@
 	});
 </script>
 
-<div class="tdg" bind:clientWidth={width}>
+<div class="tdg">
 	<div class="tdg__head">
 		<span class="tdg__title">{$t('insights.tire_deg')}</span>
 		<div class="tdg__legend">
@@ -77,6 +77,7 @@
 			{/each}
 		</div>
 	</div>
+	<div class="tdg__plot" bind:clientWidth={width}>
 	<svg viewBox="0 0 {width} {H}" width={width} height={H} role="img" aria-label={$t('insights.tire_deg')}>
 		{#each yTicks as tick}
 			<line x1={PAD.l} y1={y(tick)} x2={width - PAD.r} y2={y(tick)} stroke="var(--border)" stroke-width={tick === 0 ? 1.4 : 0.6} />
@@ -96,10 +97,13 @@
 			/>
 		{/each}
 	</svg>
+	</div>
 	<p class="tdg__note">{$t('insights.tire_deg_note')}</p>
 </div>
 
 <style>
+	.tdg__plot { width: 100%; overflow: hidden; min-width: 0; }
+	.tdg__plot svg { display: block; }
 	.tdg { background: var(--bg-secondary); border: 1px solid var(--border); padding: 16px 18px; margin-top: 12px; }
 	.tdg__head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; flex-wrap: wrap; gap: 8px; }
 	.tdg__title { font-family: var(--font-heading); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }

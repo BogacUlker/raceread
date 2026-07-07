@@ -227,7 +227,7 @@
 	});
 
 	// ---- chart geometry ----
-	let width = $state(800);
+	let width = $state(320);
 	const H = 150, PAD = { l: 44, r: 14, t: 12, b: 22 };
 	let chart = $derived.by(() => {
 		if (!sim) return null;
@@ -246,7 +246,7 @@
 </script>
 
 {#if race.finishers.length && race.compounds.length}
-	<div class="wip" bind:clientWidth={width}>
+	<div class="wip">
 		<div class="wip__bar">
 			<span class="wip__title">{$t('whatif.title')}</span>
 			<DriverChipBar
@@ -279,6 +279,7 @@
 		{/each}
 
 		{#if sim && chart}
+			<div class="wip__plot" bind:clientWidth={width}>
 			<svg viewBox="0 0 {width} {H}" width={width} height={H} class="wip__chart" role="img" aria-label={$t('whatif.chart')}>
 				<line x1={PAD.l} y1={chart.zero} x2={width - PAD.r} y2={chart.zero} stroke="#4A4F5E" stroke-width="1" stroke-dasharray="4,4" />
 				<text x={width - PAD.r} y={chart.zero - 5} fill="var(--text-muted)" font-size="9" text-anchor="end" font-family="var(--font-mono)">{$t('whatif.reality')}</text>
@@ -289,6 +290,7 @@
 				<text x={PAD.l - 6} y={chart.y(chart.lo) - 2} fill="var(--text-muted)" font-size="9" text-anchor="end" font-family="var(--font-mono)">{chart.lo > 0 ? '+' : ''}{chart.lo.toFixed(0)}s</text>
 				<text x={PAD.l - 6} y={chart.y(chart.hi) + 8} fill="var(--text-muted)" font-size="9" text-anchor="end" font-family="var(--font-mono)">{chart.hi > 0 ? '+' : ''}{chart.hi.toFixed(0)}s</text>
 			</svg>
+			</div>
 			<p class="wip__chartnote">{$t('whatif.chart_note')}</p>
 
 			<div class="wip__verdict">
@@ -328,6 +330,8 @@
 {/if}
 
 <style>
+	.wip__plot { width: 100%; overflow: hidden; min-width: 0; }
+	.wip__plot svg { display: block; }
 	.wip { background: var(--bg-secondary); border: 1px solid var(--border); border-left: 3px solid var(--accent); padding: 16px 18px; margin-top: 12px; }
 	.wip__bar { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
 	.wip__title { font-family: var(--font-heading); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }

@@ -18,7 +18,7 @@
 			.catch(() => {});
 	});
 
-	let width = $state(900);
+	let width = $state(320);
 	const H = 74, PAD = { l: 46, r: 16, t: 8, b: 4 };
 
 	let model = $derived.by(() => {
@@ -42,7 +42,7 @@
 </script>
 
 {#if model}
-	<div class="wst" bind:clientWidth={width}>
+	<div class="wst">
 		<div class="wst__head">
 			<span class="wst__title">{$t('insights.weather')}</span>
 			<div class="wst__meta">
@@ -52,6 +52,7 @@
 				{#if model.rain}<span class="wst__rain">{$t('insights.rain')}</span>{/if}
 			</div>
 		</div>
+		<div class="wst__plot" bind:clientWidth={width}>
 		<svg viewBox="0 0 {width} {H}" width={width} height={H} role="img" aria-label={$t('insights.weather')}>
 			<polygon
 				points="{model.s.map((p) => `${x(p.lap)},${y(p.track_temp)}`).join(' ')} {x(model.s[model.s.length - 1].lap)},{H - PAD.b} {x(model.s[0].lap)},{H - PAD.b}"
@@ -62,10 +63,13 @@
 			<text x={PAD.l - 8} y={y(model.hi - 1)} fill="var(--text-muted)" font-size="9" text-anchor="end" dominant-baseline="middle" font-family="var(--font-mono)">{model.hi - 1}&deg;</text>
 			<text x={PAD.l - 8} y={y(model.lo + 1)} fill="var(--text-muted)" font-size="9" text-anchor="end" dominant-baseline="middle" font-family="var(--font-mono)">{model.lo + 1}&deg;</text>
 		</svg>
+		</div>
 	</div>
 {/if}
 
 <style>
+	.wst__plot { width: 100%; overflow: hidden; min-width: 0; }
+	.wst__plot svg { display: block; }
 	.wst { margin-top: 10px; padding: 10px 14px 6px; background: var(--bg-secondary); border: 1px solid var(--border); }
 	.wst__head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 6px; margin-bottom: 4px; }
 	.wst__title { font-family: var(--font-mono); font-size: 10px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--text-secondary); }
