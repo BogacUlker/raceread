@@ -116,6 +116,37 @@
 
 	let teamsMap = $derived(Object.fromEntries(data.laps.map((d) => [d.driver, d.team])));
 
+	// ---- broadcast tower extras: tyre at lap, pit tag, fastest-so-far ----
+	let stintMap = $derived.by(() => {
+		const m = {};
+		for (const d of data.strategy?.drivers || []) {
+			m[d.driver] = { stints: d.stints || [], pits: new Set(d.pit_laps || []) };
+		}
+		return m;
+	});
+	function tyreAt(drv, L) {
+		const st = (stintMap[drv]?.stints || []).find((x) => L >= x.start_lap && L <= x.end_lap);
+		return st?.compound?.[0] || null;
+	}
+	const COMPOUND_RING = { S: '#FF3333', M: '#FFC300', H: '#F0F0F0', I: '#39B54A', W: '#0067FF' };
+	function inPit(drv, L) { const p = stintMap[drv]?.pits; return p ? (p.has(L) || p.has(L - 1)) : false; }
+	// holder of the fastest lap set so far (broadcast purple)
+	let fastestSoFar = $derived.by(() => {
+		let best = null;
+		for (const d of data.laps) {
+			for (const l of d.laps || []) {
+				if (l.lap > lap || l.time_s == null || l.is_accurate === false || l.lap <= 1) continue;
+				if (!best || l.time_s < best.t) best = { drv: d.driver, t: l.time_s, lap: l.lap };
+			}
+		}
+		return best;
+	});
+	function fmtFastest(t) { const m = Math.floor(t / 60); return m + ':' + (t - m * 60).toFixed(3).padStart(6, '0'); }
+	// track status chip for the current lap
+	let trackStatus = $derived(
+		scLaps.includes(lap) ? 'sc' : vscLaps.includes(lap) ? 'vsc' : 'green'
+	);
+
 	// ---- race control + radio feed ----
 	// FIA messages and radio clips merged on the lap axis; blue flags and
 	// sector-clear spam are dropped so the feed reads like a broadcast ticker.
@@ -148,12 +179,12 @@
 		return m;
 	});
 	function flagColor(i) {
-		if (i.category === 'SafetyCar') return '#E24B4A';
-		if (i.flag === 'RED') return '#E24B4A';
+		if (i.category === 'SafetyCar') return 'var(--accent)';
+		if (i.flag === 'RED') return 'var(--accent)';
 		if (i.flag === 'YELLOW' || i.flag === 'DOUBLE YELLOW') return '#F59E0B';
 		if (i.flag === 'GREEN') return '#22C55E';
-		if (i.flag === 'CHEQUERED') return '#E8E8ED';
-		return '#7D8794';
+		if (i.flag === 'CHEQUERED') return 'var(--text-primary)';
+		return 'var(--text-muted)';
 	}
 
 	// ---- running order at current lap ----
@@ -263,7 +294,10 @@
 		<button class="rp__play" onclick={() => playing = !playing} aria-label={playing ? $t('replay.pause') : $t('replay.play')}>
 			{playing ? '❚❚' : '▶'}
 		</button>
-		<span class="rp__lapno">{$t('replay.lap')} <b>{lap}</b> / {totalLaps}</span>
+		<span class="rp__lapchip"><b>{$t('replay.lap').toLocaleUpperCase($locale === 'tr' ? 'tr' : 'en')}</b><span>{lap}</span><small>/ {totalLaps}</small></span>
+		<span class="rp__status rp__status--{trackStatus}">
+			{trackStatus === 'sc' ? 'SAFETY CAR' : trackStatus === 'vsc' ? 'VSC' : $t('replay.track_clear')}
+		</span>
 		<div class="rp__speeds">
 			{#each [1, 2, 4] as s}
 				<button class:on={speed === s} onclick={() => speed = s}>{s}x</button>
@@ -276,10 +310,10 @@
 	<div class="rp__scrub">
 		<svg viewBox="0 0 {W} 22" class="rp__marks" preserveAspectRatio="none" aria-hidden="true">
 			{#each vscLaps as vl}<rect x={gx(vl) - 3} y="0" width="7" height="22" fill="#F59E0B" opacity="0.22" />{/each}
-			{#each scLaps as sl}<rect x={gx(sl) - 3} y="0" width="7" height="22" fill="#E24B4A" opacity="0.25" />{/each}
+			{#each scLaps as sl}<rect x={gx(sl) - 3} y="0" width="7" height="22" fill="var(--accent)" opacity="0.25" />{/each}
 			{#each radioLaps as rl}<circle cx={gx(rl)} cy="4" r="2.5" fill="#6C98FF" opacity="0.9" />{/each}
 			{#each Object.entries(pitLapCounts) as [pl, n]}
-				<circle cx={gx(+pl)} cy="11" r={Math.min(4, 1.5 + n * 0.4)} fill="#7D8794" opacity="0.8" />
+				<circle cx={gx(+pl)} cy="11" r={Math.min(4, 1.5 + n * 0.4)} fill="var(--text-muted)" opacity="0.8" />
 			{/each}
 		</svg>
 		<input type="range" min="1" max={totalLaps} value={lap} oninput={(e) => { lapFloat = +e.target.value; }} class="rp__range" aria-label={$t('replay.lap')} />
@@ -294,18 +328,23 @@
 		<div class="rp__order">
 			<span class="rp__colhead">{$t('replay.order')}</span>
 			{#each order as row (row.drv)}
-				<div class="rp__row" class:rp__row--out={row.out} class:rp__row--fav={$favoriteDriver === row.drv} animate:flip={{ duration: 280 }}>
-					<span class="rp__pos">{row.out ? '-' : Math.floor(row.pos)}</span>
-					<span class="rp__bar" style="background:{tc(row.team)}"></span>
-					<span class="rp__code">{row.drv}</span>
-					{#if !row.out && row.delta}
-						<span class="rp__delta" class:up={row.delta > 0} class:down={row.delta < 0}>
-							{row.delta > 0 ? '▲' : '▼'}{Math.abs(row.delta)}
-						</span>
-					{/if}
-					<span class="rp__gap">{row.gapText}</span>
+				<div class="rp__trow" class:rp__trow--out={row.out} class:rp__trow--up={row.delta > 0} class:rp__trow--fav={$favoriteDriver === row.drv} class:rp__trow--lead={!row.out && Math.floor(row.pos) === 1} animate:flip={{ duration: 280 }}>
+					<span class="rp__tpos">{row.out ? '-' : Math.floor(row.pos)}</span>
+					<span class="rp__tbar" style="background:{tc(row.team)}"></span>
+					<span class="rp__ttla">{row.drv}</span>
+					<span class="rp__ttag">{#if !row.out && inPit(row.drv, lap)}<b>PIT</b>{/if}</span>
+					<span class="rp__tgap" class:rp__tgap--pur={fastestSoFar?.drv === row.drv && !row.out}>{row.gapText}</span>
+					<span class="rp__ttyre">
+						{#if !row.out && tyreAt(row.drv, Math.min(lap, totalLaps))}
+							{@const c = tyreAt(row.drv, Math.min(lap, totalLaps))}
+							<i style="border-color:{COMPOUND_RING[c] || '#999'}">{c}</i>
+						{/if}
+					</span>
 				</div>
 			{/each}
+			{#if fastestSoFar}
+				<div class="rp__fastest">⏱ {fastestSoFar.drv} {fmtFastest(fastestSoFar.t)} <small>L{fastestSoFar.lap}</small></div>
+			{/if}
 			{#if order.some((r) => r.gapText?.startsWith('~'))}
 				<p class="rp__note">~ {$t('replay.approx')}</p>
 			{/if}
@@ -316,16 +355,16 @@
 			<span class="rp__colhead">{$t('replay.gaps')}</span>
 			<svg viewBox="0 0 {W} {H}" class="rp__svg" role="img" aria-label={$t('replay.gaps')}>
 				{#each [0, 0.25, 0.5, 0.75, 1] as f}
-					<line x1={ML} x2={W - MR} y1={gy(maxGap * f)} y2={gy(maxGap * f)} stroke="#22252F" />
+					<line x1={ML} x2={W - MR} y1={gy(maxGap * f)} y2={gy(maxGap * f)} stroke="var(--bg-card)" />
 					<text x={ML - 6} y={gy(maxGap * f) + 3} text-anchor="end" class="rp__tick">{Math.round(maxGap * f)}s</text>
 				{/each}
 				{#each vscLaps as vl}<rect x={gx(vl) - 3} y={MT} width="7" height={H - MT - MB} fill="#F59E0B" opacity="0.06" />{/each}
-				{#each scLaps as sl}<rect x={gx(sl) - 3} y={MT} width="7" height={H - MT - MB} fill="#E24B4A" opacity="0.07" />{/each}
+				{#each scLaps as sl}<rect x={gx(sl) - 3} y={MT} width="7" height={H - MT - MB} fill="var(--accent)" opacity="0.07" />{/each}
 				{#each series as s (s.drv)}
 					<path d={pathFor(s)} fill="none" stroke={tc(s.team)} stroke-width={hovered === s.drv ? 2.6 : 1.6}
 						stroke-dasharray={s.dashed ? '5 3' : 'none'} opacity={lineOpacity(s)} />
 				{/each}
-				<line x1={gx(Math.min(lapFloat, totalLaps))} x2={gx(Math.min(lapFloat, totalLaps))} y1={MT} y2={H - MB} stroke="#E8E8ED" stroke-width="1.2" opacity="0.7" />
+				<line x1={gx(Math.min(lapFloat, totalLaps))} x2={gx(Math.min(lapFloat, totalLaps))} y1={MT} y2={H - MB} stroke="var(--text-primary)" stroke-width="1.2" opacity="0.7" />
 				{#each series as s (s.drv)}
 					{@const lf = Math.min(lapFloat, s.pts.at(-1)?.[0] ?? 1)}
 					{@const g = gapAt(s, lf)}
@@ -374,11 +413,11 @@
 <style>
 	.rp {
 		position: fixed; inset: 0; z-index: 200;
-		overflow-y: auto; background: #0F1117; color: #E8E8ED;
+		overflow-y: auto; background: var(--bg-primary); color: var(--text-primary);
 		font-family: var(--font-body); -webkit-font-smoothing: antialiased;
 		padding: 1.5rem 2rem 3rem;
 		--fm: var(--font-mono); --fh: var(--font-heading);
-		--brd: #2E3240; --bg2: #1A1D27; --tm: #7D8794; --ac: #E24B4A;
+		--brd: var(--border); --bg2: var(--bg-secondary); --tm: var(--text-muted); --ac: var(--accent);
 	}
 	.rp :global(*) { border-radius: 0 !important; }
 	.rp__header { margin-bottom: 1rem; }
@@ -390,18 +429,25 @@
 	.rp__controls { display: flex; align-items: center; gap: 14px; margin-bottom: 4px; }
 	.rp__play { width: 38px; height: 38px; background: var(--ac); color: #fff; border: none; font-size: 13px; cursor: pointer; }
 	.rp__play:hover { background: #C93B3A; }
-	.rp__lapno { font-family: var(--fm); font-size: 13px; color: #9CA3AF; }
-	.rp__lapno b { color: #E8E8ED; font-size: 16px; }
+	.rp__lapchip { display: inline-flex; align-items: stretch; white-space: nowrap; }
+	.rp__lapchip b { background: var(--accent); color: #fff; font-family: var(--font-heading); font-weight: 900; font-style: italic; font-size: 11px; padding: 5px 10px; letter-spacing: .05em; }
+	.rp__lapchip span { background: rgba(0,0,0,.75); color: #fff; font-weight: 800; font-size: 14px; padding: 3px 6px 3px 10px; display: flex; align-items: center; }
+	.rp__lapchip small { background: rgba(0,0,0,.75); color: var(--text-muted); font-weight: 600; font-size: 10px; padding-right: 10px; display: flex; align-items: center; }
+	.rp__status { font-family: var(--font-heading); font-weight: 800; font-style: italic; font-size: 10px; letter-spacing: .08em; padding: 4px 12px; border: 1px solid; white-space: nowrap; align-self: center; }
+	.rp__status--green { color: var(--timing-pb); border-color: rgba(0,196,106,.45); background: rgba(0,196,106,.1); }
+	.rp__status--vsc { color: var(--timing-caution); border-color: rgba(255,216,0,.45); background: rgba(255,216,0,.08); animation: rc-pulse 1.2s infinite; }
+	.rp__status--sc { color: var(--accent); border-color: rgba(225,6,0,.5); background: rgba(225,6,0,.12); animation: rc-pulse 1.2s infinite; }
+	@keyframes rc-pulse { 50% { opacity: .55; } }
 	.rp__speeds { display: flex; gap: 2px; }
 	.rp__speeds button { font-family: var(--fm); font-size: 10px; padding: 4px 10px; background: none; border: 1px solid var(--brd); color: var(--tm); cursor: pointer; }
-	.rp__speeds button.on { color: #E8E8ED; background: var(--bg2); }
+	.rp__speeds button.on { color: var(--text-primary); background: var(--bg2); }
 	.rp__startbtn { font-family: var(--fm); font-size: 10px; padding: 6px 12px; background: none; border: 1px solid var(--brd); color: var(--tm); cursor: pointer; letter-spacing: .06em; }
-	.rp__startbtn:hover { color: #E8E8ED; border-color: #6B7280; }
+	.rp__startbtn:hover { color: var(--text-primary); border-color: #6B7280; }
 	.rp__startbtn.on { color: var(--ac); border-color: rgba(226,75,74,.5); }
 
 	.rp__scrub { position: relative; margin-bottom: 1.25rem; }
 	.rp__marks { width: 100%; height: 22px; display: block; }
-	.rp__range { width: 100%; margin: 0; accent-color: #E24B4A; cursor: pointer; }
+	.rp__range { width: 100%; margin: 0; accent-color: var(--accent); cursor: pointer; }
 
 	.rp__main { display: grid; grid-template-columns: 250px 1fr 270px; gap: 1.25rem; align-items: start; }
 	@media (max-width: 1250px) { .rp__main { grid-template-columns: 250px 1fr; } .rp__feed { grid-column: 1 / -1; } }
@@ -415,26 +461,33 @@
 	.rp__fi-text { color: #C6CAD3; }
 	.rp__fi-empty { color: var(--tm); font-size: 10.5px; font-family: var(--fm); }
 	@media (prefers-reduced-motion: reduce) { .rp__fi--new { animation: none; } }
-	.rp__colhead { display: block; font-family: var(--fm); font-size: 10px; color: var(--tm); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 8px; }
+	.rp__colhead { display: inline-block; font-family: var(--font-heading); font-weight: 900; font-style: italic; font-size: 9.5px; color: #fff; background: var(--accent); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 10px; padding: 3px 10px; }
 
-	.rp__order { background: var(--bg2); padding: 12px 12px 8px; }
-	.rp__row { display: flex; align-items: center; gap: 7px; padding: 4px 4px; font-family: var(--fm); font-size: 12px; }
-	.rp__row--out { opacity: .3; }
-	.rp__row--fav { background: rgba(245,158,11,.07); }
-	.rp__pos { width: 20px; text-align: right; color: var(--tm); font-variant-numeric: tabular-nums; }
-	.rp__bar { width: 3px; height: 13px; flex-shrink: 0; }
-	.rp__code { font-weight: 700; width: 38px; }
-	.rp__delta { font-size: 9px; }
-	.rp__delta.up { color: #22C55E; }
-	.rp__delta.down { color: #E24B4A; }
-	.rp__gap { margin-left: auto; color: #9CA3AF; font-variant-numeric: tabular-nums; font-size: 11px; }
+	.rp__order { background: var(--bg2); padding: 12px 10px 8px; }
+	.rp__trow { display: grid; grid-template-columns: 26px 6px 44px 26px 1fr 26px; align-items: stretch; height: 26px; margin-bottom: 2px; background: var(--bg-card); }
+	.rp__trow--out { opacity: .3; }
+	.rp__trow--fav { outline: 1px solid rgba(245,158,11,.35); }
+	.rp__trow--lead .rp__tpos { background: var(--accent); }
+	.rp__trow--up { animation: rp-up 1.4s ease-out; }
+	@keyframes rp-up { 0% { background: rgba(0,196,106,.4); } 100% { background: var(--bg-card); } }
+	.rp__tpos { font-family: var(--font-varsity); color: #fff; font-size: 11.5px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,.07); }
+	.rp__tbar { }
+	.rp__ttla { font-family: var(--font-heading); font-weight: 800; font-size: 12.5px; letter-spacing: .05em; display: flex; align-items: center; padding-left: 8px; }
+	.rp__ttag { display: flex; align-items: center; }
+	.rp__ttag b { font-size: 7.5px; font-weight: 900; background: #fff; color: #111; padding: 1.5px 4px; letter-spacing: .04em; }
+	.rp__tgap { font-family: var(--fm); font-weight: 600; font-size: 12px; display: flex; align-items: center; justify-content: flex-end; color: #D6D9E0; font-variant-numeric: tabular-nums; padding-right: 2px; }
+	.rp__tgap--pur { color: var(--timing-fastest); font-weight: 700; }
+	.rp__ttyre { display: flex; align-items: center; justify-content: center; }
+	.rp__ttyre i { width: 15px; height: 15px; border-radius: 50%; border: 2.5px solid; display: inline-flex; align-items: center; justify-content: center; font-style: normal; font-weight: 900; font-size: 7.5px; color: #fff; box-sizing: border-box; }
+	.rp__fastest { margin-top: 8px; font-family: var(--fm); font-weight: 700; font-size: 10.5px; color: var(--timing-fastest); letter-spacing: .04em; }
+	.rp__fastest small { color: var(--tm); }
 	.rp__note { font-family: var(--fm); font-size: 9px; color: var(--tm); margin-top: 6px; }
 
 	.rp__chart { background: var(--bg2); padding: 12px 14px; }
 	.rp__svg { width: 100%; height: auto; display: block; }
 	.rp__tick { font-family: var(--fm); font-size: 9px; fill: var(--tm); }
 	.rp__legend { display: flex; flex-wrap: wrap; gap: 8px 12px; margin-top: 8px; }
-	.rp__lg { display: inline-flex; align-items: center; gap: 4px; font-family: var(--fm); font-size: 10px; color: #9CA3AF; cursor: default; }
+	.rp__lg { display: inline-flex; align-items: center; gap: 4px; font-family: var(--fm); font-size: 10px; color: var(--text-secondary); cursor: default; }
 	.rp__lg i { width: 8px; height: 8px; display: inline-block; }
 
 	@media (max-width: 900px) {
@@ -442,6 +495,6 @@
 		.rp__main { grid-template-columns: 1fr; }
 	}
 	@media (prefers-reduced-motion: reduce) {
-		.rp__row { transition: none !important; }
+		.rp__trow { transition: none !important; animation: none !important; }
 	}
 </style>

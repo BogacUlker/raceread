@@ -397,9 +397,9 @@
 
 <style>
 	.prv {
-		--p-bg: #0F1117; --p-bg2: #1A1D27; --p-bgc: #22252F;
-		--p-t: #E8E8ED; --p-t2: #9CA3AF; --p-tm: #7D8794;
-		--p-brd: #2E3240; --p-ac: #E24B4A; --p-ach: #C93B3A;
+		--p-bg: var(--bg-primary); --p-bg2: var(--bg-secondary); --p-bgc: var(--bg-card);
+		--p-t: var(--text-primary); --p-t2: var(--text-secondary); --p-tm: var(--text-muted);
+		--p-brd: var(--border); --p-ac: var(--accent); --p-ach: #C93B3A;
 		--p-ac2: #F07B7A; /* accent for small text - passes WCAG AA on dark bg */
 		--p-fh: var(--font-heading);
 		--p-fb: 'DM Sans', 'Inter', sans-serif;
@@ -630,13 +630,13 @@
 	.prv-guide {
 		display: flex; align-items: center; justify-content: space-between; gap: 16px;
 		margin: 28px 0 4px; padding: 16px 20px;
-		background: var(--bg-secondary, #1A1D27); border: 1px solid var(--border, #2E3240);
-		border-left: 3px solid var(--accent, #E24B4A); text-decoration: none;
+		background: var(--bg-secondary); border: 1px solid var(--border);
+		border-left: 3px solid var(--accent); text-decoration: none;
 		transition: border-color .15s, background .15s;
 	}
-	.prv-guide:hover { border-color: #6B7280; border-left-color: var(--accent, #E24B4A); background: #1E2230; text-decoration: none; }
+	.prv-guide:hover { border-color: #6B7280; border-left-color: var(--accent); background: #1E2230; text-decoration: none; }
 	.prv-guide:hover .prv-guide__arrow { transform: translateX(4px); }
-	.prv-guide__k { display: block; font-family: var(--font-mono); font-size: 9px; letter-spacing: .14em; color: var(--accent, #E24B4A); text-transform: uppercase; margin-bottom: 3px; }
-	.prv-guide__t { font-family: var(--font-heading); font-size: 15px; font-weight: 600; color: var(--text-primary, #E8E8ED); letter-spacing: -.01em; }
-	.prv-guide__arrow { font-size: 18px; color: var(--text-muted, #7D8794); transition: transform .15s; }
+	.prv-guide__k { display: block; font-family: var(--font-mono); font-size: 9px; letter-spacing: .14em; color: var(--accent); text-transform: uppercase; margin-bottom: 3px; }
+	.prv-guide__t { font-family: var(--font-heading); font-size: 15px; font-weight: 600; color: var(--text-primary); letter-spacing: -.01em; }
+	.prv-guide__arrow { font-size: 18px; color: var(--text-muted); transition: transform .15s; }
 </style>

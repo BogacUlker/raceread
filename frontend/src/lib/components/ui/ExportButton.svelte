@@ -12,7 +12,7 @@
 		try {
 			const { toCanvas } = await import('html-to-image');
 			const canvas = await toCanvas(el, {
-				backgroundColor: '#0F1117',
+				backgroundColor: 'var(--bg-primary)',
 				pixelRatio: 2,
 				filter: (node) => !node.classList?.contains('export-btn'),
 			});
@@ -27,9 +27,9 @@
 			const y = canvas.height - 12 * k;
 			ctx.fillStyle = 'rgba(15,17,23,0.72)';
 			ctx.fillRect(x - 10 * k, y - 13 * k, tw + 24 * k, 20 * k);
-			ctx.fillStyle = '#E24B4A';
+			ctx.fillStyle = 'var(--accent)';
 			ctx.fillText('RACE', x, y);
-			ctx.fillStyle = '#E8E8ED';
+			ctx.fillStyle = 'var(--text-primary)';
 			ctx.fillText('READ.APP', x + ctx.measureText('RACE').width, y);
 			const a = document.createElement('a');
 			a.href = canvas.toDataURL('image/png');
@@ -62,9 +62,9 @@
 		font-size: 9px;
 		letter-spacing: 0.08em;
 		padding: 3px 7px;
-		background: var(--bg-primary, #0F1117);
-		border: 1px solid var(--border, #2E3240);
-		color: var(--text-muted, #7D8794);
+		background: var(--bg-primary);
+		border: 1px solid var(--border);
+		color: var(--text-muted);
 		cursor: pointer;
 		opacity: 0.45;
 		transition: opacity 0.15s, color 0.15s, border-color 0.15s;
@@ -72,8 +72,8 @@
 	.export-btn:hover,
 	.export-btn:focus-visible {
 		opacity: 1;
-		color: var(--text-primary, #E8E8ED);
-		border-color: var(--text-muted, #7D8794);
+		color: var(--text-primary);
+		border-color: var(--text-muted);
 	}
 	.export-btn:disabled {
 		cursor: wait;

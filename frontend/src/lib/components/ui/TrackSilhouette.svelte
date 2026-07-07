@@ -6,7 +6,7 @@
 <script>
 	import paths from '$lib/data/circuit-paths.json';
 
-	let { code = '', size = 44, stroke = '#9CA3AF', width = 2.4, opacity = 0.6 } = $props();
+	let { code = '', size = 44, stroke = 'var(--text-secondary)', width = 2.4, opacity = 0.6 } = $props();
 	let d = $derived(paths[code] || null);
 </script>
 

@@ -132,7 +132,7 @@
 	let team1 = $derived(drivers.find(d => d.driver === driver1)?.team || '');
 	let team2 = $derived(drivers.find(d => d.driver === driver2)?.team || '');
 	let color1 = $derived(TEAM_COLORS[team1] || '#00D7B6');
-	let color2 = $derived(TEAM_COLORS[team2] || '#E24B4A');
+	let color2 = $derived(TEAM_COLORS[team2] || 'var(--accent)');
 
 	// Corner zoom: filter samples to the zoomed section
 	function filterSamplesForCorner(samples, corner, trackLength) {

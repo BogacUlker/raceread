@@ -239,8 +239,8 @@
 		return { x, y, path, zero: y(0), lo, hi };
 	});
 
-	function tc(code) { return TEAM_COLORS[teamsMap[code]] || '#7D8794'; }
-	function cc(c) { return COMPOUND_COLORS[c] || '#9CA3AF'; }
+	function tc(code) { return TEAM_COLORS[teamsMap[code]] || 'var(--text-muted)'; }
+	function cc(c) { return COMPOUND_COLORS[c] || 'var(--text-secondary)'; }
 	let pitSliders = $derived(simStints.slice(0, -1).map((s, i) => ({ i, lap: s.to, min: simStints[i].from + 2, max: simStints[i + 1].to - 2 })));
 </script>
 
@@ -279,13 +279,13 @@
 		{#if sim && chart}
 			<svg viewBox="0 0 {width} {H}" width="100%" height={H} class="wip__chart" role="img" aria-label={$t('whatif.chart')}>
 				<line x1={PAD.l} y1={chart.zero} x2={width - PAD.r} y2={chart.zero} stroke="#4A4F5E" stroke-width="1" stroke-dasharray="4,4" />
-				<text x={width - PAD.r} y={chart.zero - 5} fill="#7D8794" font-size="9" text-anchor="end" font-family="var(--font-mono)">{$t('whatif.reality')}</text>
+				<text x={width - PAD.r} y={chart.zero - 5} fill="var(--text-muted)" font-size="9" text-anchor="end" font-family="var(--font-mono)">{$t('whatif.reality')}</text>
 				<path d={chart.path} fill="none" stroke={tc(driver)} stroke-width="2.2" />
 				{#each simStints.slice(0, -1) as s}
-					<line x1={chart.x(s.to)} y1={PAD.t} x2={chart.x(s.to)} y2={H - PAD.b} stroke="#E8E8ED" stroke-width="1" opacity=".25" />
+					<line x1={chart.x(s.to)} y1={PAD.t} x2={chart.x(s.to)} y2={H - PAD.b} stroke="var(--text-primary)" stroke-width="1" opacity=".25" />
 				{/each}
-				<text x={PAD.l - 6} y={chart.y(chart.lo) - 2} fill="#7D8794" font-size="9" text-anchor="end" font-family="var(--font-mono)">{chart.lo > 0 ? '+' : ''}{chart.lo.toFixed(0)}s</text>
-				<text x={PAD.l - 6} y={chart.y(chart.hi) + 8} fill="#7D8794" font-size="9" text-anchor="end" font-family="var(--font-mono)">{chart.hi > 0 ? '+' : ''}{chart.hi.toFixed(0)}s</text>
+				<text x={PAD.l - 6} y={chart.y(chart.lo) - 2} fill="var(--text-muted)" font-size="9" text-anchor="end" font-family="var(--font-mono)">{chart.lo > 0 ? '+' : ''}{chart.lo.toFixed(0)}s</text>
+				<text x={PAD.l - 6} y={chart.y(chart.hi) + 8} fill="var(--text-muted)" font-size="9" text-anchor="end" font-family="var(--font-mono)">{chart.hi > 0 ? '+' : ''}{chart.hi.toFixed(0)}s</text>
 			</svg>
 			<p class="wip__chartnote">{$t('whatif.chart_note')}</p>
 
@@ -326,35 +326,35 @@
 {/if}
 
 <style>
-	.wip { background: var(--bg-secondary, #1A1D27); border: 1px solid var(--border, #2E3240); border-left: 3px solid var(--accent, #E24B4A); padding: 16px 18px; margin-top: 12px; }
+	.wip { background: var(--bg-secondary); border: 1px solid var(--border); border-left: 3px solid var(--accent); padding: 16px 18px; margin-top: 12px; }
 	.wip__bar { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
 	.wip__title { font-family: var(--font-heading); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
-	.wip__select { background: var(--bg-primary, #0F1117); color: #E8E8ED; border: 1px solid var(--border, #2E3240); font-family: var(--font-mono); font-size: 11px; padding: 5px 8px; cursor: pointer; }
-	.wip__hint { font-family: var(--font-mono); font-size: 9.5px; color: var(--text-muted, #7D8794); }
+	.wip__select { background: var(--bg-primary); color: var(--text-primary); border: 1px solid var(--border); font-family: var(--font-mono); font-size: 11px; padding: 5px 8px; cursor: pointer; }
+	.wip__hint { font-family: var(--font-mono); font-size: 9.5px; color: var(--text-muted); }
 	.wip__actions { margin-left: auto; display: flex; gap: 6px; }
-	.wip__btn { font-family: var(--font-mono); font-size: 10px; padding: 5px 10px; background: none; border: 1px solid var(--border, #2E3240); color: var(--text-muted, #7D8794); cursor: pointer; }
-	.wip__btn:hover:not(:disabled) { color: #E8E8ED; border-color: #6B7280; }
+	.wip__btn { font-family: var(--font-mono); font-size: 10px; padding: 5px 10px; background: none; border: 1px solid var(--border); color: var(--text-muted); cursor: pointer; }
+	.wip__btn:hover:not(:disabled) { color: var(--text-primary); border-color: #6B7280; }
 	.wip__btn:disabled { opacity: .35; cursor: default; }
-	.wip__btn--on { color: var(--accent, #E24B4A); border-color: rgba(226,75,74,.5); }
+	.wip__btn--on { color: var(--accent); border-color: rgba(226,75,74,.5); }
 	.wip__strip { display: flex; align-items: center; height: 30px; margin-bottom: 8px; }
-	.wip__stint { height: 100%; display: flex; align-items: center; justify-content: center; gap: 6px; border: none; cursor: pointer; font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: #1A1D27; }
+	.wip__stint { height: 100%; display: flex; align-items: center; justify-content: center; gap: 6px; border: none; cursor: pointer; font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--bg-secondary); }
 	.wip__stint:hover { filter: brightness(1.12); }
 	.wip__stlaps { font-size: 9px; font-weight: 500; opacity: .75; }
-	.wip__pitmark { width: 4px; height: 38px; background: #E8E8ED; flex: 0 0 4px; }
+	.wip__pitmark { width: 4px; height: 38px; background: var(--text-primary); flex: 0 0 4px; }
 	.wip__sliderrow { display: grid; grid-template-columns: 90px 1fr; gap: 12px; align-items: center; margin-bottom: 4px; }
-	.wip__pl { font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary, #9CA3AF); }
-	.wip__sliderrow input { accent-color: #E24B4A; cursor: pointer; margin: 0; }
-	.wip__chart { display: block; margin-top: 10px; background: var(--bg-primary, #0F1117); border: 1px solid var(--border, #2E3240); }
-	.wip__chartnote { margin: 4px 0 0; font-family: var(--font-mono); font-size: 9px; color: var(--text-muted, #7D8794); }
+	.wip__pl { font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); }
+	.wip__sliderrow input { accent-color: var(--accent); cursor: pointer; margin: 0; }
+	.wip__chart { display: block; margin-top: 10px; background: var(--bg-primary); border: 1px solid var(--border); }
+	.wip__chartnote { margin: 4px 0 0; font-family: var(--font-mono); font-size: 9px; color: var(--text-muted); }
 	.wip__verdict { display: grid; grid-template-columns: 1fr 1fr 1.4fr; gap: 2px; margin-top: 12px; }
 	@media (max-width: 768px) { .wip__verdict { grid-template-columns: 1fr; } }
-	.wip__v { background: var(--bg-primary, #0F1117); padding: 12px 14px; }
-	.wip__v .k { display: block; font-family: var(--font-mono); font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted, #7D8794); }
+	.wip__v { background: var(--bg-primary); padding: 12px 14px; }
+	.wip__v .k { display: block; font-family: var(--font-mono); font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted); }
 	.wip__v .v { display: block; font-family: var(--font-heading); font-size: 22px; font-weight: 700; margin-top: 2px; }
-	.wip__v .v small { font-size: 13px; color: var(--text-muted, #7D8794); font-weight: 500; }
+	.wip__v .v small { font-size: 13px; color: var(--text-muted); font-weight: 500; }
 	.wip__v .v--text { font-size: 12.5px; line-height: 1.5; font-family: var(--font-body, 'DM Sans'), sans-serif; font-weight: 500; }
-	.wip__v .s { display: block; font-family: var(--font-mono); font-size: 9.5px; color: var(--text-muted, #7D8794); margin-top: 3px; }
-	.up { color: #22C55E; } .down { color: #E24B4A; }
-	.wip__assump { margin: 12px 0 0; font-family: var(--font-mono); font-size: 9px; color: var(--text-muted, #7D8794); line-height: 1.7; text-transform: uppercase; letter-spacing: .04em; }
+	.wip__v .s { display: block; font-family: var(--font-mono); font-size: 9.5px; color: var(--text-muted); margin-top: 3px; }
+	.up { color: #22C55E; } .down { color: var(--accent); }
+	.wip__assump { margin: 12px 0 0; font-family: var(--font-mono); font-size: 9px; color: var(--text-muted); line-height: 1.7; text-transform: uppercase; letter-spacing: .04em; }
 	.wip__warn { color: #F59E0B; }
 </style>

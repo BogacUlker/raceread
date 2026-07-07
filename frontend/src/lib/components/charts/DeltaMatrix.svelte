@@ -34,7 +34,7 @@
 	// Dark diverging palette matching the site theme:
 	// blue = negative (row driver faster), red = positive (slower),
 	// near-zero stays close to the panel background.
-	const BASE = [34, 37, 47]; // #22252F
+	const BASE = [34, 37, 47]; // var(--bg-card)
 	const BLUE = [23, 82, 148];
 	const RED = [150, 46, 55];
 	function cellBg(val) {
@@ -45,7 +45,7 @@
 		return `rgb(${c[0]},${c[1]},${c[2]})`;
 	}
 	function cellFg(val) {
-		return Math.abs(val / maxDelta) > 0.06 ? '#E8E8ED' : '#7D8794';
+		return Math.abs(val / maxDelta) > 0.06 ? 'var(--text-primary)' : 'var(--text-muted)';
 	}
 
 	// Hover state
@@ -198,7 +198,7 @@
 		background: rgba(255, 255, 255, 0.06);
 	}
 	.cell-hovered {
-		outline: 2px solid #E8E8ED;
+		outline: 2px solid var(--text-primary);
 		outline-offset: -1px;
 	}
 

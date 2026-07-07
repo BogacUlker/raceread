@@ -37,7 +37,7 @@
 	let maxShare = $derived(clipData ? Math.max(0.02, ...clipData.clip_share) : 1);
 
 	function segColor(i) {
-		if (!clipData) return '#2E3240';
+		if (!clipData) return 'var(--border)';
 		const bin = Math.min(clipData.bins - 1, Math.floor((i / pts.length) * clipData.bins));
 		const k = Math.min(1, clipData.clip_share[bin] / maxShare);
 		// dark border color -> amber
@@ -82,7 +82,7 @@
 	.cm-svg { width: 100%; max-height: 380px; height: auto; display: block; }
 	.cm-legend { display: flex; align-items: center; gap: 8px; margin-top: 4px; }
 	.cm-legend__label { font-family: var(--font-mono); font-size: 9.5px; color: var(--text-muted); text-transform: uppercase; letter-spacing: .06em; }
-	.cm-grad { flex: 0 0 120px; height: 6px; background: linear-gradient(90deg, #2E3240, #F59E0B); }
+	.cm-grad { flex: 0 0 120px; height: 6px; background: linear-gradient(90deg, var(--border), #F59E0B); }
 	.cm-note { margin-top: 8px; font-size: 12px; line-height: 1.55; color: var(--text-muted); max-width: 60ch; }
 	.cm-empty { padding: 3rem; text-align: center; font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); }
 </style>

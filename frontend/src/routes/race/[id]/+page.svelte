@@ -514,7 +514,7 @@
 								</div>
 								<svg viewBox="0 0 300 90" class="pd-roomcard__viz" aria-hidden="true">
 									<path d="M4,72 L30,20 C36,8 44,8 50,20 L66,58 C72,70 80,70 86,58 L104,18 C110,6 118,6 124,18 L140,52 C146,64 154,64 160,52 L182,14 C188,4 196,4 202,14 L222,60 C228,72 236,72 242,60 L262,26 C268,14 276,14 282,26 L296,54" fill="none" stroke="#3B82F6" stroke-width="2.5" opacity=".8"/>
-									<path d="M4,80 L60,80 L70,64 L90,64 L100,80 L170,80 L180,64 L210,64 L220,80 L296,80" fill="none" stroke="#7D8794" stroke-width="1.5" opacity=".5"/>
+									<path d="M4,80 L60,80 L70,64 L90,64 L100,80 L170,80 L180,64 L210,64 L220,80 L296,80" fill="none" stroke="var(--text-muted)" stroke-width="1.5" opacity=".5"/>
 								</svg>
 								<p class="pd-roomcard__desc">{$t('telemetry.room_desc')}</p>
 								<span class="pd-roomcard__go">{$t('telemetry.explore')} &rarr;</span>
@@ -568,9 +568,9 @@
 
 <style>
 	.pd {
-		--bg: #0F1117; --bg2: #1A1D27; --bgc: #22252F;
-		--t: #E8E8ED; --t2: #9CA3AF; --tm: #6B7280; --brd: #2E3240;
-		--ac: #E24B4A; --ach: #C93B3A;
+		--bg: var(--bg-primary); --bg2: var(--bg-secondary); --bgc: var(--bg-card);
+		--t: var(--text-primary); --t2: var(--text-secondary); --tm: #6B7280; --brd: var(--border);
+		--ac: var(--accent); --ach: #C93B3A;
 		--fh: var(--font-heading); --fb: var(--font-body); --fm: var(--font-mono);
 		--sbw: 220px; --sbc: 44px;
 		position: fixed; inset: 0; z-index: 200; overflow: hidden;
@@ -738,10 +738,10 @@
 	.pd-ov-card { background: var(--bg2); padding: 1.25rem 1.5rem; border-left: 3px solid var(--brd); position: relative; overflow: hidden; transition: border-color .2s; }
 	.pd-ov-card:hover { border-left-color: var(--ac); }
 	.pd-ov-card--accent { border-left-color: var(--ac); background: linear-gradient(135deg, var(--bg2) 0%, rgba(226,75,74,.06) 100%); }
-	.pd-ov-label { font-family: var(--fm); font-size: 11px; color: #9CA3AF; text-transform: uppercase; letter-spacing: .1em; margin-bottom: .6rem; font-weight: 500; }
+	.pd-ov-label { font-family: var(--fm); font-size: 11px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .1em; margin-bottom: .6rem; font-weight: 500; }
 	.pd-ov-value { font-family: var(--fh); font-size: 28px; font-weight: 700; line-height: 1; letter-spacing: -.02em; margin: 0; }
 	.pd-ov-card--accent .pd-ov-value { color: var(--ac); }
-	.pd-ov-sub { font-family: var(--fm); font-size: 12px; color: #9CA3AF; margin-top: 6px; text-transform: uppercase; letter-spacing: .04em; }
+	.pd-ov-sub { font-family: var(--fm); font-size: 12px; color: var(--text-secondary); margin-top: 6px; text-transform: uppercase; letter-spacing: .04em; }
 
 	/* TOOLBAR */
 	.pd-toolbar { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; }
@@ -817,11 +817,11 @@
 	.pd-sec--split { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
 	@media (max-width: 1100px) { .pd-sec--split { grid-template-columns: 1fr 1fr; } }
 	@media (max-width: 768px) { .pd-sec--split { grid-template-columns: 1fr; } }
-	.pd-uc { margin-top: 12px; padding: 12px 16px; background: var(--bg-secondary, #1A1D27); border: 1px solid var(--border, #2E3240); }
-	.pd-uc__title { display: block; font-family: var(--font-mono); font-size: 9.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--text-secondary, #9CA3AF); margin-bottom: 8px; }
+	.pd-uc { margin-top: 12px; padding: 12px 16px; background: var(--bg-secondary); border: 1px solid var(--border); }
+	.pd-uc__title { display: block; font-family: var(--font-mono); font-size: 9.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 8px; }
 	.pd-uc__row { display: grid; grid-template-columns: 36px 40px 1fr 40px 52px; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 11px; padding: 4px 0; }
-	.pd-uc__lap { color: var(--text-muted, #7D8794); font-size: 9.5px; }
+	.pd-uc__lap { color: var(--text-muted); font-size: 9.5px; }
 	.pd-uc__w, .pd-uc__l { font-weight: 700; }
-	.pd-uc__vs { color: var(--text-muted, #7D8794); font-size: 10px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-	.pd-uc__gain { text-align: right; font-weight: 600; color: var(--text-primary, #E8E8ED); }
+	.pd-uc__vs { color: var(--text-muted); font-size: 10px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+	.pd-uc__gain { text-align: right; font-weight: 600; color: var(--text-primary); }
 </style>

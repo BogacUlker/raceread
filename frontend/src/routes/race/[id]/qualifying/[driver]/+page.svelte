@@ -277,7 +277,7 @@
 							<path d={trackOutline} fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" />
 
 							{#if sectorPaths}
-								<path d={sectorPaths.s1} fill="none" stroke="#E24B4A" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="0.85" />
+								<path d={sectorPaths.s1} fill="none" stroke="var(--accent)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="0.85" />
 								<path d={sectorPaths.s2} fill="none" stroke="#3B82F6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="0.85" />
 								<path d={sectorPaths.s3} fill="none" stroke="#22C55E" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="0.85" />
 							{/if}
@@ -300,14 +300,14 @@
 								{@const h = maxY - minY || 1}
 								{@const sfX = ((pts[0].x - minX) / w) * 400 + 50}
 								{@const sfY = (1 - (pts[0].y - minY) / h) * 350 + 25}
-								<circle cx={sfX} cy={sfY} r="5" fill="none" stroke="#E24B4A" stroke-width="2" />
-								<text x={sfX} y={sfY + 16} fill="#E24B4A" font-size="9" font-family="'JetBrains Mono'" text-anchor="middle">S/F</text>
+								<circle cx={sfX} cy={sfY} r="5" fill="none" stroke="var(--accent)" stroke-width="2" />
+								<text x={sfX} y={sfY + 16} fill="var(--accent)" font-size="9" font-family="'JetBrains Mono'" text-anchor="middle">S/F</text>
 							{/if}
 						</svg>
 
 						<!-- Sector legend with times -->
 						<div class="pq-trackmap__legend">
-							<div class="pq-trackmap__sec" style="border-left-color: #E24B4A">
+							<div class="pq-trackmap__sec" style="border-left-color: var(--accent)">
 								<span class="pq-trackmap__sec-label">S1</span>
 								<span class="pq-trackmap__sec-time">{bestSectors.s1.value.toFixed(3)}s</span>
 								<span class="pq-trackmap__sec-src">{bestSectors.s1.attempt.session}</span>
@@ -366,15 +366,15 @@
 							<div class="chart-card__header"><span class="chart-card__title">{$t('qualifying_detail.improvement')}</span></div>
 							<svg viewBox="0 0 {chartW} {chartH}" class="pq-chart">
 								{#each Array(5) as _, i}{@const tv = timeRange.min + ((timeRange.max - timeRange.min) / 4) * i}{@const ty = yScale(tv)}
-									<line x1={margin.left} y1={ty} x2={chartW - margin.right} y2={ty} stroke="#2E3240" stroke-opacity="0.5" />
+									<line x1={margin.left} y1={ty} x2={chartW - margin.right} y2={ty} stroke="var(--border)" stroke-opacity="0.5" />
 									<text x={margin.left - 8} y={ty + 4} fill="#6B7280" font-size="10" text-anchor="end" font-family="'JetBrains Mono'">{formatLapTime(tv)}</text>
 								{/each}
 								{#each sessionSeparators as sep}<line x1={sep.x} y1={margin.top} x2={sep.x} y2={chartH - margin.bottom} stroke="#6B7280" stroke-opacity="0.3" stroke-dasharray="4 3" /><text x={sep.x} y={chartH - margin.bottom + 16} fill="#6B7280" font-size="10" text-anchor="middle" font-family="'JetBrains Mono'">{sep.label}</text>{/each}
 								{#if chartAttempts.length > 0}<text x={xScale(0)} y={chartH - margin.bottom + 16} fill="#6B7280" font-size="10" text-anchor="middle" font-family="'JetBrains Mono'">{chartAttempts[0].session}</text>{/if}
 								<path d={linePath} fill="none" stroke={teamColor} stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" />
 								{#each chartAttempts as a, i}
-									<circle cx={xScale(i)} cy={yScale(a.time_s)} r={a.is_personal_best ? 6 : 4.5} fill={a.is_personal_best ? '#22C55E' : teamColor} stroke="#0F1117" stroke-width="1.5" />
-									<text x={xScale(i)} y={yScale(a.time_s) + labelYOffset(i)} fill="#9CA3AF" font-size="10" text-anchor="middle" font-family="'JetBrains Mono'">{formatLapTime(a.time_s)}</text>
+									<circle cx={xScale(i)} cy={yScale(a.time_s)} r={a.is_personal_best ? 6 : 4.5} fill={a.is_personal_best ? '#22C55E' : teamColor} stroke="var(--bg-primary)" stroke-width="1.5" />
+									<text x={xScale(i)} y={yScale(a.time_s) + labelYOffset(i)} fill="var(--text-secondary)" font-size="10" text-anchor="middle" font-family="'JetBrains Mono'">{formatLapTime(a.time_s)}</text>
 								{/each}
 							</svg>
 						</div>
@@ -417,7 +417,7 @@
 
 <style>
 	.pq {
-		--bg: #0F1117; --bg2: #1A1D27; --bgc: #22252F; --t: #E8E8ED; --t2: #9CA3AF; --tm: #6B7280; --brd: #2E3240; --ac: #E24B4A;
+		--bg: var(--bg-primary); --bg2: var(--bg-secondary); --bgc: var(--bg-card); --t: var(--text-primary); --t2: var(--text-secondary); --tm: #6B7280; --brd: var(--border); --ac: var(--accent);
 		--fh: var(--font-heading); --fb: var(--font-body); --fm: var(--font-mono);
 		--sbw: 200px; --sbc: 44px;
 		position: fixed; inset: 0; z-index: 200; overflow: hidden; background: var(--bg); color: var(--t); font-family: var(--fb); -webkit-font-smoothing: antialiased;
@@ -471,8 +471,8 @@
 	.pq-header__left { display: flex; align-items: center; gap: 1rem; }
 	.pq-header__badge { font-family: var(--fh); font-size: 24px; font-weight: 700; padding: 6px 18px; letter-spacing: .04em; }
 	.pq-header__info { display: flex; flex-direction: column; gap: 2px; }
-	.pq-header__team { font-family: var(--fh); font-size: 18px; font-weight: 600; color: #E8E8ED; }
-	.pq-header__pos { font-family: var(--fm); font-size: 15px; color: #9CA3AF; font-weight: 600; letter-spacing: .03em; }
+	.pq-header__team { font-family: var(--fh); font-size: 18px; font-weight: 600; color: var(--text-primary); }
+	.pq-header__pos { font-family: var(--fm); font-size: 15px; color: var(--text-secondary); font-weight: 600; letter-spacing: .03em; }
 	.pq-header__right { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
 	.pq-header__best-label { font-family: var(--fm); font-size: 9px; color: var(--tm); text-transform: uppercase; letter-spacing: .08em; }
 	.pq-header__best-val { font-family: var(--fh); font-size: 26px; font-weight: 700; font-variant-numeric: tabular-nums; }

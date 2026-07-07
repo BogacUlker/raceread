@@ -164,11 +164,11 @@
 <style>
 	.cmp {
 		position: fixed; inset: 0; z-index: 200;
-		overflow-y: auto; background: #0F1117; color: #E8E8ED;
+		overflow-y: auto; background: var(--bg-primary); color: var(--text-primary);
 		font-family: var(--font-body); -webkit-font-smoothing: antialiased;
 		padding: 1.5rem 2rem 3rem;
 		--fh: var(--font-heading); --fm: var(--font-mono);
-		--ac: #E24B4A; --bg2: #1A1D27; --bgc: #22252F; --brd: #2E3240; --tm: #7D8794;
+		--ac: var(--accent); --bg2: var(--bg-secondary); --bgc: var(--bg-card); --brd: var(--border); --tm: var(--text-muted);
 	}
 	.cmp :global(*) { border-radius: 0 !important; }
 
@@ -179,13 +179,13 @@
 
 	/* Controls bar */
 	.cmp__controls { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.75rem; flex-wrap: wrap; }
-	.cmp__select { font-family: var(--fm); font-size: 13px; background: #0F1117; color: #E8E8ED; border: 2px solid var(--brd); padding: 10px 14px; cursor: pointer; min-width: 200px; transition: border-color .2s; }
+	.cmp__select { font-family: var(--fm); font-size: 13px; background: var(--bg-primary); color: var(--text-primary); border: 2px solid var(--brd); padding: 10px 14px; cursor: pointer; min-width: 200px; transition: border-color .2s; }
 	.cmp__select:focus-visible, .cmp__lap-select:focus-visible { outline: 2px solid var(--ac); outline-offset: 1px; }
 	.cmp__select:focus { border-color: var(--ac); }
 	.cmp__vs { font-family: var(--fh); font-size: 18px; color: var(--tm); }
 	.cmp__lap-picker { display: flex; align-items: center; gap: .5rem; margin-left: auto; }
 	.cmp__lap-label { font-family: var(--fm); font-size: 10px; color: var(--tm); text-transform: uppercase; letter-spacing: .1em; }
-	.cmp__lap-select { font-family: var(--fm); font-size: 13px; background: #0F1117; color: #E8E8ED; border: 1px solid var(--brd); padding: 8px 12px; cursor: pointer; min-width: 70px; }
+	.cmp__lap-select { font-family: var(--fm); font-size: 13px; background: var(--bg-primary); color: var(--text-primary); border: 1px solid var(--brd); padding: 8px 12px; cursor: pointer; min-width: 70px; }
 
 	/* Stats */
 	.cmp__stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-bottom: 1.5rem; }

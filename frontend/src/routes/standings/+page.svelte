@@ -73,7 +73,7 @@
 		<div class="st__chart-wrap">
 			<svg viewBox="0 0 {W} {H}" class="st__chart" role="img" aria-label={$t('standings.progression')}>
 				{#each yTicks as tick}
-					<line x1={ML} x2={W - MR} y1={y(tick)} y2={y(tick)} stroke="#2E3240" stroke-width="1" />
+					<line x1={ML} x2={W - MR} y1={y(tick)} y2={y(tick)} stroke="var(--border)" stroke-width="1" />
 					<text x={ML - 8} y={y(tick) + 3} text-anchor="end" class="st__tick">{tick}</text>
 				{/each}
 				{#each progression as p}

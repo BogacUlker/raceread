@@ -73,7 +73,7 @@
 		for (let i = 0; i < samples.length - 1; i++) {
 			const x1 = xScale(samples[i].dist || 0);
 			const x2 = xScale(samples[i + 1].dist || 0);
-			let fill = '#1A1D27';
+			let fill = 'var(--bg-secondary)';
 			if (samples[i].brake) fill = '#EF4444';
 			else if ((samples[i].throttle || 0) > 50) fill = '#22C55E';
 			blocks.push({ x: x1, w: Math.max(1, x2 - x1), y: stripY, fill });
@@ -152,15 +152,15 @@
 			<g transform="translate({margin.left},{margin.top})">
 				<!-- Y axis grid + labels -->
 				{#each [0, 50, 100, 150, 200, 250, 300, 350] as tick}
-					<line x1={0} y1={yScale(tick)} x2={innerWidth} y2={yScale(tick)} stroke="#2E3240" stroke-opacity="0.4" />
-					<text x={-8} y={yScale(tick)} fill="#7D8794" font-size="10" text-anchor="end" dominant-baseline="middle" font-family="var(--font-mono)">{tick}</text>
+					<line x1={0} y1={yScale(tick)} x2={innerWidth} y2={yScale(tick)} stroke="var(--border)" stroke-opacity="0.4" />
+					<text x={-8} y={yScale(tick)} fill="var(--text-muted)" font-size="10" text-anchor="end" dominant-baseline="middle" font-family="var(--font-mono)">{tick}</text>
 				{/each}
 
 				<!-- Corner markers -->
 				{#each cornerMarkers as marker}
 					{#if marker.x >= 0 && marker.x <= innerWidth}
-						<line x1={marker.x} y1={mainHeight} x2={marker.x} y2={mainHeight + gap + throttleHeight + gap + throttleHeight} stroke="#7D8794" stroke-opacity="0.3" stroke-dasharray="2,2" />
-						<text x={marker.x} y={mainHeight + gap + throttleHeight + gap + throttleHeight + 12} fill="#7D8794" font-size="9" text-anchor="middle" font-family="var(--font-mono)">
+						<line x1={marker.x} y1={mainHeight} x2={marker.x} y2={mainHeight + gap + throttleHeight + gap + throttleHeight} stroke="var(--text-muted)" stroke-opacity="0.3" stroke-dasharray="2,2" />
+						<text x={marker.x} y={mainHeight + gap + throttleHeight + gap + throttleHeight + 12} fill="var(--text-muted)" font-size="9" text-anchor="middle" font-family="var(--font-mono)">
 							{marker.label}
 						</text>
 					{/if}
@@ -180,7 +180,7 @@
 				{/each}
 
 				<!-- Label between strips -->
-				<text x={-8} y={mainHeight + gap + throttleHeight / 2} fill="#7D8794" font-size="8" text-anchor="end" dominant-baseline="middle" font-family="var(--font-mono)">THR</text>
+				<text x={-8} y={mainHeight + gap + throttleHeight / 2} fill="var(--text-muted)" font-size="8" text-anchor="end" dominant-baseline="middle" font-family="var(--font-mono)">THR</text>
 
 				<!-- Second throttle strip (driver 2 dedicated row for clarity) -->
 				{#each buildThrottleBlocks(d1Data, mainHeight + gap + throttleHeight + gap) as block}
@@ -193,7 +193,7 @@
 				<!-- Hover crosshair -->
 				{#if hoverInfo}
 					{@const info = hoverInfo}
-					<line x1={info.screenX} y1={0} x2={info.screenX} y2={mainHeight + gap + throttleHeight + gap + throttleHeight} stroke="#E8E8ED" stroke-width="1" stroke-dasharray="3,3" stroke-opacity="0.5" />
+					<line x1={info.screenX} y1={0} x2={info.screenX} y2={mainHeight + gap + throttleHeight + gap + throttleHeight} stroke="var(--text-primary)" stroke-width="1" stroke-dasharray="3,3" stroke-opacity="0.5" />
 
 					<foreignObject
 						x={info.screenX > innerWidth / 2 ? info.screenX - 155 : info.screenX + 10}
@@ -224,7 +224,7 @@
 				{/if}
 
 				<!-- X axis label -->
-				<text x={innerWidth / 2} y={mainHeight + gap + throttleHeight + gap + throttleHeight + 28} fill="#7D8794" font-size="11" text-anchor="middle" font-family="var(--font-mono)">
+				<text x={innerWidth / 2} y={mainHeight + gap + throttleHeight + gap + throttleHeight + 28} fill="var(--text-muted)" font-size="11" text-anchor="middle" font-family="var(--font-mono)">
 					DISTANCE (m)
 				</text>
 			</g>
@@ -232,9 +232,9 @@
 			<!-- Legend -->
 			<g transform="translate({margin.left},{totalHeight - 10})">
 				<rect x={0} y={-4} width={10} height={3} fill={color1} />
-				<text x={14} y={0} fill="#9CA3AF" font-size="10" font-family="var(--font-mono)">{driver1}</text>
+				<text x={14} y={0} fill="var(--text-secondary)" font-size="10" font-family="var(--font-mono)">{driver1}</text>
 				<rect x={65} y={-4} width={10} height={3} fill={color2} />
-				<text x={79} y={0} fill="#9CA3AF" font-size="10" font-family="var(--font-mono)">{driver2}</text>
+				<text x={79} y={0} fill="var(--text-secondary)" font-size="10" font-family="var(--font-mono)">{driver2}</text>
 			</g>
 		</svg>
 	{/if}
@@ -242,14 +242,14 @@
 
 <style>
 	.cst {
-		background: #1A1D27;
+		background: var(--bg-secondary);
 		padding: 1.25rem;
 		border-left: 2px solid transparent;
 		font-family: var(--font-body);
 		transition: border-color 0.25s, box-shadow 0.25s;
 	}
 	.cst:hover {
-		border-left-color: #E24B4A;
+		border-left-color: var(--accent);
 		box-shadow: -4px 0 20px -4px rgba(226, 75, 74, 0.12);
 	}
 	.cst__header {
@@ -263,13 +263,13 @@
 		text-transform: uppercase;
 		font-size: 15px;
 		font-weight: 700;
-		color: #E8E8ED;
+		color: var(--text-primary);
 		margin: 0;
 	}
 	.cst__lap {
 		font-family: var(--font-mono);
 		font-size: 11px;
-		color: #7D8794;
+		color: var(--text-muted);
 		letter-spacing: 0.05em;
 	}
 	.cst__svg {
@@ -283,18 +283,18 @@
 		height: 200px;
 		font-family: var(--font-mono);
 		font-size: 13px;
-		color: #7D8794;
+		color: var(--text-muted);
 	}
 	.cst__tooltip {
-		background: #22252F;
-		border: 1px solid #2E3240;
+		background: var(--bg-card);
+		border: 1px solid var(--border);
 		padding: 6px 8px;
 		font-family: var(--font-mono);
 		font-size: 10px;
-		color: #E8E8ED;
+		color: var(--text-primary);
 	}
 	.cst__tooltip-dist {
-		color: #7D8794;
+		color: var(--text-muted);
 		margin-bottom: 4px;
 	}
 	.cst__tooltip-row {

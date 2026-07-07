@@ -45,7 +45,7 @@
 	}
 	$effect(() => () => { audio?.pause(); clearTimeout(closeTimer); });
 
-	let color = $derived(TEAM_COLORS[team] || '#7D8794');
+	let color = $derived(TEAM_COLORS[team] || 'var(--text-muted)');
 	let segments = $derived(clip.segments || []);
 	let open = $derived((playing || ended) && segments.length > 0);
 	function segState(s) {
@@ -88,20 +88,20 @@
 <style>
 	.rc__btn {
 		display: inline-flex; gap: 6px; align-items: baseline;
-		background: none; border: 1px solid var(--brd, #2E3240); color: #9CA3AF;
+		background: none; border: 1px solid var(--brd, var(--border)); color: var(--text-secondary);
 		font-family: var(--fm, var(--font-mono)), monospace; font-size: 10px; padding: 3px 8px; cursor: pointer;
 	}
-	.rc__btn:hover { border-color: #6C98FF; color: #E8E8ED; }
-	.rc__btn--on { border-color: #6C98FF; color: #E8E8ED; }
+	.rc__btn:hover { border-color: #6C98FF; color: var(--text-primary); }
+	.rc__btn--on { border-color: #6C98FF; color: var(--text-primary); }
 	.rc__btn b { font-weight: 700; }
 
-	.rc__card { margin-top: 6px; max-width: 440px; background: rgba(8, 9, 13, .92); border: 1px solid var(--brd, #2E3240); }
+	.rc__card { margin-top: 6px; max-width: 440px; background: rgba(8, 9, 13, .92); border: 1px solid var(--brd, var(--border)); }
 	.rc--compact .rc__card { max-width: 100%; }
-	.rc__head { display: flex; align-items: stretch; border-bottom: 1px solid var(--brd, #2E3240); }
+	.rc__head { display: flex; align-items: stretch; border-bottom: 1px solid var(--brd, var(--border)); }
 	.rc__team { width: 5px; flex: 0 0 5px; }
 	.rc__drv { font-family: var(--fm, var(--font-mono)), monospace; font-weight: 700; font-size: 13px; letter-spacing: .04em; padding: 7px 10px; }
-	.rc__label { display: flex; align-items: center; gap: 6px; font-family: var(--fm, var(--font-mono)), monospace; font-size: 8.5px; letter-spacing: .16em; color: #9CA3AF; }
-	.rc__dot { width: 6px; height: 6px; border-radius: 50%; background: #E24B4A; animation: rc-pulse 1.1s infinite; }
+	.rc__label { display: flex; align-items: center; gap: 6px; font-family: var(--fm, var(--font-mono)), monospace; font-size: 8.5px; letter-spacing: .16em; color: var(--text-secondary); }
+	.rc__dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: rc-pulse 1.1s infinite; }
 	@keyframes rc-pulse { 50% { opacity: .25; } }
 	.rc__wave { display: flex; align-items: center; gap: 2px; margin-left: auto; padding-right: 10px; }
 	.rc__wave i { width: 3px; background: #6C98FF; animation: rc-eq .9s infinite ease-in-out; }
@@ -109,13 +109,13 @@
 	.rc__wave i:nth-child(3) { height: 15px; animation-delay: .3s; } .rc__wave i:nth-child(4) { height: 9px; animation-delay: .45s; }
 	.rc__wave i:nth-child(5) { height: 13px; animation-delay: .6s; } .rc__wave i:nth-child(6) { height: 5px; animation-delay: .75s; }
 	@keyframes rc-eq { 50% { transform: scaleY(.35); } }
-	.rc__lap { font-family: var(--fm, var(--font-mono)), monospace; font-size: 8.5px; color: #7D8794; align-self: center; padding-right: 10px; margin-left: auto; }
+	.rc__lap { font-family: var(--fm, var(--font-mono)), monospace; font-size: 8.5px; color: var(--text-muted); align-self: center; padding-right: 10px; margin-left: auto; }
 	.rc__wave + .rc__lap { margin-left: 0; }
 	.rc__quote { font-family: var(--fm, var(--font-mono)), monospace; font-weight: 700; font-size: 12.5px; line-height: 1.65; text-transform: uppercase; letter-spacing: .02em; padding: 10px 12px 4px; }
 	.rc__seg--unsaid { color: #565D6B; }
-	.rc__seg--said { color: #E8E8ED; }
-	.rc__seg--saying { color: #E8E8ED; border-bottom: 2px solid #6C98FF; }
-	.rc__tr { font-size: 11.5px; color: #7D8794; padding: 5px 12px 0; font-style: italic; line-height: 1.55; }
+	.rc__seg--said { color: var(--text-primary); }
+	.rc__seg--saying { color: var(--text-primary); border-bottom: 2px solid #6C98FF; }
+	.rc__tr { font-size: 11.5px; color: var(--text-muted); padding: 5px 12px 0; font-style: italic; line-height: 1.55; }
 	.rc__tag { font-family: var(--fm, var(--font-mono)), monospace; font-size: 7.5px; letter-spacing: .14em; color: #565D6B; padding: 8px 12px 9px; text-transform: uppercase; }
 	@media (prefers-reduced-motion: reduce) { .rc__dot, .rc__wave i { animation: none; } }
 </style>

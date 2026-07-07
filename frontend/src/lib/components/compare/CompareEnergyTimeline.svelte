@@ -164,7 +164,7 @@
 					<g transform="translate({margin.left},{margin.top})">
 						<!-- Y axis -->
 						{#each [0, 25, 50, 75, 100] as tick}
-							<line x1={0} y1={scales1.y(tick)} x2={innerWidth} y2={scales1.y(tick)} stroke="#2E3240" stroke-opacity="0.4" />
+							<line x1={0} y1={scales1.y(tick)} x2={innerWidth} y2={scales1.y(tick)} stroke="var(--border)" stroke-opacity="0.4" />
 							<text x={-6} y={scales1.y(tick)} fill="#6B7280" font-size="9" text-anchor="end" dominant-baseline="middle" font-family="var(--font-mono)">{tick}</text>
 						{/each}
 
@@ -223,7 +223,7 @@
 					<g transform="translate({margin.left},{margin.top})">
 						<!-- Y axis -->
 						{#each [0, 25, 50, 75, 100] as tick}
-							<line x1={0} y1={scales2.y(tick)} x2={innerWidth} y2={scales2.y(tick)} stroke="#2E3240" stroke-opacity="0.4" />
+							<line x1={0} y1={scales2.y(tick)} x2={innerWidth} y2={scales2.y(tick)} stroke="var(--border)" stroke-opacity="0.4" />
 							<text x={-6} y={scales2.y(tick)} fill="#6B7280" font-size="9" text-anchor="end" dominant-baseline="middle" font-family="var(--font-mono)">{tick}</text>
 						{/each}
 
@@ -282,14 +282,14 @@
 
 <style>
 	.cet {
-		background: #1A1D27;
+		background: var(--bg-secondary);
 		padding: 1.25rem;
 		border-left: 2px solid transparent;
 		font-family: var(--font-body);
 		transition: border-color 0.25s, box-shadow 0.25s;
 	}
 	.cet:hover {
-		border-left-color: #E24B4A;
+		border-left-color: var(--accent);
 		box-shadow: -4px 0 20px -4px rgba(226, 75, 74, 0.12);
 	}
 	.cet__panels {
@@ -298,7 +298,7 @@
 		gap: 3px;
 	}
 	.cet__panel { position: relative;
-		background: #0F1117;
+		background: var(--bg-primary);
 		padding: 0.75rem;
 	}
 	.cet__panel-header {
@@ -350,11 +350,11 @@
 	.cet__tip {
 		position: absolute;
 		background: rgba(15, 17, 23, 0.95);
-		border: 1px solid #2E3240;
+		border: 1px solid var(--border);
 		padding: 10px 14px;
 		font-family: var(--font-mono);
 		font-size: 13px;
-		color: #E8E8ED;
+		color: var(--text-primary);
 		line-height: 1.7;
 		white-space: nowrap;
 		pointer-events: none;
@@ -362,7 +362,7 @@
 		box-shadow: 0 4px 20px rgba(0,0,0,.5);
 	}
 	.cet__tip-lap {
-		color: #9CA3AF;
+		color: var(--text-secondary);
 		margin-bottom: 4px;
 		font-weight: 700;
 		font-size: 12px;
@@ -375,10 +375,10 @@
 		gap: 1.5rem;
 		margin-top: 0.75rem;
 		padding-top: 0.75rem;
-		border-top: 1px solid #2E3240;
+		border-top: 1px solid var(--border);
 		font-family: var(--font-mono);
 		font-size: 13px;
-		color: #9CA3AF;
+		color: var(--text-secondary);
 		letter-spacing: 0.05em;
 	}
 	.cet__legend-item {

@@ -54,7 +54,7 @@
 	let x = $derived((age) => PAD.l + (age - 1) / (model.maxAge - 1) * (width - PAD.l - PAD.r));
 	let y = $derived((delta) => PAD.t + (1 - (delta - model.lo) / (model.hi - model.lo)) * (H - PAD.t - PAD.b));
 
-	function cc(compound) { return COMPOUND_COLORS[compound] || '#9CA3AF'; }
+	function cc(compound) { return COMPOUND_COLORS[compound] || 'var(--text-secondary)'; }
 	let yTicks = $derived.by(() => {
 		const ticks = [];
 		for (let v = Math.ceil(model.lo); v <= Math.floor(model.hi); v++) ticks.push(v);
@@ -73,13 +73,13 @@
 	</div>
 	<svg viewBox="0 0 {width} {H}" width="100%" height={H} role="img" aria-label={$t('insights.tire_deg')}>
 		{#each yTicks as tick}
-			<line x1={PAD.l} y1={y(tick)} x2={width - PAD.r} y2={y(tick)} stroke="#2E3240" stroke-width={tick === 0 ? 1.4 : 0.6} />
-			<text x={PAD.l - 8} y={y(tick)} fill="#7D8794" font-size="10" text-anchor="end" dominant-baseline="middle" font-family="var(--font-mono)">{tick > 0 ? '+' + tick : tick}s</text>
+			<line x1={PAD.l} y1={y(tick)} x2={width - PAD.r} y2={y(tick)} stroke="var(--border)" stroke-width={tick === 0 ? 1.4 : 0.6} />
+			<text x={PAD.l - 8} y={y(tick)} fill="var(--text-muted)" font-size="10" text-anchor="end" dominant-baseline="middle" font-family="var(--font-mono)">{tick > 0 ? '+' + tick : tick}s</text>
 		{/each}
 		{#each [1, 10, 20, 30, 40].filter((v) => v <= model.maxAge) as tick}
-			<text x={x(tick)} y={H - 14} fill="#7D8794" font-size="10" text-anchor="middle" font-family="var(--font-mono)">{tick}</text>
+			<text x={x(tick)} y={H - 14} fill="var(--text-muted)" font-size="10" text-anchor="middle" font-family="var(--font-mono)">{tick}</text>
 		{/each}
-		<text x={(PAD.l + width - PAD.r) / 2} y={H - 2} fill="#7D8794" font-size="9" text-anchor="middle" font-family="var(--font-mono)" letter-spacing="1">{$t('insights.tire_age')}</text>
+		<text x={(PAD.l + width - PAD.r) / 2} y={H - 2} fill="var(--text-muted)" font-size="9" text-anchor="middle" font-family="var(--font-mono)" letter-spacing="1">{$t('insights.tire_age')}</text>
 		{#each model.pts as p}
 			<circle cx={x(p.age)} cy={y(p.delta)} r="2" fill={cc(p.compound)} opacity="0.22" />
 		{/each}
@@ -94,11 +94,11 @@
 </div>
 
 <style>
-	.tdg { background: var(--bg-secondary, #1A1D27); border: 1px solid var(--border, #2E3240); padding: 16px 18px; margin-top: 12px; }
+	.tdg { background: var(--bg-secondary); border: 1px solid var(--border); padding: 16px 18px; margin-top: 12px; }
 	.tdg__head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; flex-wrap: wrap; gap: 8px; }
 	.tdg__title { font-family: var(--font-heading); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
 	.tdg__legend { display: flex; gap: 12px; }
-	.tdg__lg { display: inline-flex; align-items: center; gap: 5px; font-family: var(--font-mono); font-size: 9.5px; color: var(--text-secondary, #9CA3AF); }
+	.tdg__lg { display: inline-flex; align-items: center; gap: 5px; font-family: var(--font-mono); font-size: 9.5px; color: var(--text-secondary); }
 	.tdg__lg i { width: 10px; height: 3px; display: inline-block; }
-	.tdg__note { margin: 6px 0 0; font-size: 10.5px; color: var(--text-muted, #7D8794); }
+	.tdg__note { margin: 6px 0 0; font-size: 10.5px; color: var(--text-muted); }
 </style>

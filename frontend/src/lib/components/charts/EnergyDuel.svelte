@@ -102,7 +102,7 @@
 				{#if dep > 0.4}<rect x={bx(i) - barW / 2} y={MID + 4} width={barW} height={dep} fill={ENERGY_COLORS.deploy} opacity="0.9" />{/if}
 				{#if clip > 0.4}<rect x={bx(i) - barW / 2} y={MID + 4 + dep} width={barW} height={clip} fill={ENERGY_COLORS.clip} opacity="0.95" />{/if}
 			{/each}
-			<line x1="0" x2={W} y1={MID + 2} y2={MID + 2} stroke="#2E3240" />
+			<line x1="0" x2={W} y1={MID + 2} y2={MID + 2} stroke="var(--border)" />
 			<text x="4" y={MID - MAXBAR + 4} class="duel-code" fill={tc(d1)}>{d1}</text>
 			<text x="4" y={MID + MAXBAR + 12} class="duel-code" fill={tc(d2)}>{d2}</text>
 			{#each lapNos as lap, i}

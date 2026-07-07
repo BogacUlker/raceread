@@ -181,7 +181,7 @@
 		for (let i = 0; i < samples.length - 1; i++) {
 			const x1 = xs(samples[i].dist || 0);
 			const x2 = xs(samples[i + 1].dist || 0);
-			let fill = '#1A1D27';
+			let fill = 'var(--bg-secondary)';
 			if (samples[i].brake) fill = '#EF4444';
 			else if ((samples[i].throttle || 0) > 50) fill = '#22C55E';
 			blocks.push({ x: x1, w: Math.max(1, x2 - x1), y: stripY, fill });

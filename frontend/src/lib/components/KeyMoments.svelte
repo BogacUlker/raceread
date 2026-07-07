@@ -188,7 +188,7 @@
 	}
 	.km__go--watch { color: var(--t2, #9ca3af); border-color: var(--brd, #2e3240); }
 	.km__go--radio { color: #22C55E; border-color: rgba(34,197,94,.35); }
-	.km__go--radio.playing { background: #22C55E; color: #0F1117; }
+	.km__go--radio.playing { background: #22C55E; color: var(--bg-primary); }
 	@media (prefers-reduced-motion: reduce) {
 		.km__card { animation: none; }
 	}

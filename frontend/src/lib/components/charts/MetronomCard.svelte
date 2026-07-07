@@ -9,7 +9,7 @@
 
 	let { laps = [], vscLaps = [], scLaps = [] } = $props();
 	let rows = $derived(metronomScores(laps, vscLaps, scLaps).slice(0, 5));
-	function tc(team) { return TEAM_COLORS[team] || '#7D8794'; }
+	function tc(team) { return TEAM_COLORS[team] || 'var(--text-muted)'; }
 </script>
 
 <div class="mnc">
@@ -36,16 +36,16 @@
 </div>
 
 <style>
-	.mnc { background: var(--bg-secondary, #1A1D27); border: 1px solid var(--border, #2E3240); padding: 16px 18px; height: 100%; box-sizing: border-box; }
+	.mnc { background: var(--bg-secondary); border: 1px solid var(--border); padding: 16px 18px; height: 100%; box-sizing: border-box; }
 	.mnc__head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
 	.mnc__title { font-family: var(--font-heading); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
-	.mnc__unit { font-family: var(--font-mono); font-size: 9px; color: var(--text-muted, #7D8794); letter-spacing: .08em; }
+	.mnc__unit { font-family: var(--font-mono); font-size: 9px; color: var(--text-muted); letter-spacing: .08em; }
 	.mnc__rows { display: flex; flex-direction: column; gap: 7px; }
 	.mnc__row { display: grid; grid-template-columns: 14px 34px 1fr 56px; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 11px; }
-	.mnc__rank { color: var(--text-muted, #7D8794); font-size: 9px; }
+	.mnc__rank { color: var(--text-muted); font-size: 9px; }
 	.mnc__drv { font-weight: 600; }
 	.mnc__barwrap { height: 5px; background: rgba(46,50,64,.6); }
 	.mnc__bar { height: 100%; }
 	.mnc__v { text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; }
-	.mnc__desc { margin: 12px 0 0; padding-top: 10px; border-top: 1px solid var(--border, #2E3240); font-size: 10.5px; color: var(--text-muted, #7D8794); line-height: 1.5; }
+	.mnc__desc { margin: 12px 0 0; padding-top: 10px; border-top: 1px solid var(--border); font-size: 10.5px; color: var(--text-muted); line-height: 1.5; }
 </style>

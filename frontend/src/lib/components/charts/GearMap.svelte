@@ -54,7 +54,7 @@
 		return { segs, vw, vh, shifts, topGear };
 	});
 
-	function tc(code) { return TEAM_COLORS[drivers.find((d) => d.driver === code)?.team] || '#7D8794'; }
+	function tc(code) { return TEAM_COLORS[drivers.find((d) => d.driver === code)?.team] || 'var(--text-muted)'; }
 	let lapOptions = $derived(Array.from({ length: totalLaps }, (_, i) => i + 1));
 </script>
 
@@ -100,17 +100,17 @@
 	.gmp__head { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
 	.gmp__controls { display: flex; gap: 8px; }
 	.gmp__select {
-		background: var(--bg-primary, #0F1117); color: #E8E8ED; border: 1px solid var(--border, #2E3240);
+		background: var(--bg-primary); color: var(--text-primary); border: 1px solid var(--border);
 		font-family: var(--font-mono); font-size: 11px; padding: 5px 8px; cursor: pointer;
 	}
 	.gmp__body { display: grid; grid-template-columns: 1fr 90px; gap: 14px; align-items: start; margin-top: 8px; }
 	.gmp__map { width: 100%; max-height: 420px; }
 	.gmp__side { display: flex; flex-direction: column; gap: 16px; }
 	.gmp__legend { display: flex; flex-direction: column; gap: 4px; }
-	.gmp__lg { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary, #9CA3AF); }
+	.gmp__lg { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 10px; color: var(--text-secondary); }
 	.gmp__lg i { width: 14px; height: 6px; display: inline-block; }
-	.gmp__stats { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted, #7D8794); display: flex; flex-direction: column; gap: 6px; }
-	.gmp__stats b { color: #E8E8ED; font-size: 14px; margin-right: 4px; }
-	.gmp__empty { color: var(--text-muted, #7D8794); font-family: var(--font-mono); font-size: 12px; }
+	.gmp__stats { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); display: flex; flex-direction: column; gap: 6px; }
+	.gmp__stats b { color: var(--text-primary); font-size: 14px; margin-right: 4px; }
+	.gmp__empty { color: var(--text-muted); font-family: var(--font-mono); font-size: 12px; }
 	@media (max-width: 640px) { .gmp__body { grid-template-columns: 1fr; } .gmp__legend { flex-direction: row; flex-wrap: wrap; } }
 </style>

@@ -108,14 +108,14 @@
 		{/each}
 
 		<!-- Baseline + lap axis -->
-		<line x1="0" x2={$width} y1={$yScale(0)} y2={$yScale(0)} stroke="#2E3240" />
+		<line x1="0" x2={$width} y1={$yScale(0)} y2={$yScale(0)} stroke="var(--border)" />
 		{#each xTicks as tick}
 			<text
 				x={$xScale(tick)}
 				y={$yScale(0) + 16}
 				text-anchor="middle"
 				font-size="9"
-				fill="#7D8794"
+				fill="var(--text-muted)"
 				font-family="var(--font-mono)"
 			>L{tick}</text>
 		{/each}

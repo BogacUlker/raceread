@@ -52,7 +52,7 @@
 <style>
 	.tm {
 		position: fixed; inset: 0; z-index: 200;
-		overflow-y: auto; background: #0F1117; color: #E8E8ED;
+		overflow-y: auto; background: var(--bg-primary); color: var(--text-primary);
 		font-family: var(--font-body); -webkit-font-smoothing: antialiased;
 		padding: 1.5rem 2rem 3rem;
 	}
@@ -60,20 +60,20 @@
 	.tm :global(.chart-card) {
 		border: none !important;
 		border-left: 2px solid transparent !important;
-		background: #1A1D27 !important;
+		background: var(--bg-secondary) !important;
 		transition: border-color .25s !important;
 	}
-	.tm :global(.chart-card:hover) { border-left-color: #E24B4A !important; }
+	.tm :global(.chart-card:hover) { border-left-color: var(--accent) !important; }
 	.tm :global(.chart-card__title) {
 		font-family: var(--font-heading) !important;
 		text-transform: uppercase; letter-spacing: .03em; font-size: 16px !important;
 	}
 
 	.tm__header { margin-bottom: 1.25rem; }
-	.tm__back { font-family: var(--font-mono); font-size: 11px; color: #E24B4A; text-decoration: none; letter-spacing: .08em; }
+	.tm__back { font-family: var(--font-mono); font-size: 11px; color: var(--accent); text-decoration: none; letter-spacing: .08em; }
 	.tm__back:hover { text-decoration: none; opacity: .8; }
 	.tm__title { font-family: var(--font-heading); font-size: 28px; font-weight: 700; text-transform: uppercase; margin-top: .5rem; }
-	.tm__sub { font-family: var(--font-mono); font-size: 10px; color: #7D8794; letter-spacing: .1em; text-transform: uppercase; margin-top: 2px; }
+	.tm__sub { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); letter-spacing: .1em; text-transform: uppercase; margin-top: 2px; }
 
 	.tm__grid { display: flex; flex-direction: column; gap: 1.5rem; }
 

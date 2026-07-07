@@ -59,17 +59,17 @@
 			/>
 			<polyline points={model.s.map((p) => `${x(p.lap)},${y(p.track_temp)}`).join(' ')} fill="none" stroke="#F59E0B" stroke-width="1.6" />
 			<polyline points={model.s.filter((p) => p.air_temp != null).map((p) => `${x(p.lap)},${y(p.air_temp)}`).join(' ')} fill="none" stroke="#3B82F6" stroke-width="1.3" />
-			<text x={PAD.l - 8} y={y(model.hi - 1)} fill="#7D8794" font-size="9" text-anchor="end" dominant-baseline="middle" font-family="var(--font-mono)">{model.hi - 1}&deg;</text>
-			<text x={PAD.l - 8} y={y(model.lo + 1)} fill="#7D8794" font-size="9" text-anchor="end" dominant-baseline="middle" font-family="var(--font-mono)">{model.lo + 1}&deg;</text>
+			<text x={PAD.l - 8} y={y(model.hi - 1)} fill="var(--text-muted)" font-size="9" text-anchor="end" dominant-baseline="middle" font-family="var(--font-mono)">{model.hi - 1}&deg;</text>
+			<text x={PAD.l - 8} y={y(model.lo + 1)} fill="var(--text-muted)" font-size="9" text-anchor="end" dominant-baseline="middle" font-family="var(--font-mono)">{model.lo + 1}&deg;</text>
 		</svg>
 	</div>
 {/if}
 
 <style>
-	.wst { margin-top: 10px; padding: 10px 14px 6px; background: var(--bg-secondary, #1A1D27); border: 1px solid var(--border, #2E3240); }
+	.wst { margin-top: 10px; padding: 10px 14px 6px; background: var(--bg-secondary); border: 1px solid var(--border); }
 	.wst__head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 6px; margin-bottom: 4px; }
-	.wst__title { font-family: var(--font-mono); font-size: 9.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--text-secondary, #9CA3AF); }
-	.wst__meta { display: flex; gap: 14px; font-family: var(--font-mono); font-size: 9px; color: var(--text-muted, #7D8794); flex-wrap: wrap; }
+	.wst__title { font-family: var(--font-mono); font-size: 9.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--text-secondary); }
+	.wst__meta { display: flex; gap: 14px; font-family: var(--font-mono); font-size: 9px; color: var(--text-muted); flex-wrap: wrap; }
 	.wst__meta span { display: inline-flex; align-items: center; gap: 4px; }
 	.wst__dot { width: 8px; height: 3px; display: inline-block; }
 	.wst__dot--track { background: #F59E0B; }

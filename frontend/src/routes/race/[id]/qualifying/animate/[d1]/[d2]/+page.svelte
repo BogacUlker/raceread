@@ -27,7 +27,7 @@
 	let team1 = $derived(driver1Data?.team || '');
 	let team2 = $derived(driver2Data?.team || '');
 	let color1 = $derived(TEAM_COLORS[team1] || '#00D7B6');
-	let color2 = $derived(TEAM_COLORS[team2] || '#E24B4A');
+	let color2 = $derived(TEAM_COLORS[team2] || 'var(--accent)');
 
 	let samples1 = $derived(driver1Data?.samples || []);
 	let samples2 = $derived(driver2Data?.samples || []);
@@ -682,16 +682,16 @@
 <style>
 	.qanim {
 		position: fixed; inset: 0; z-index: 200;
-		background: #0F1117; color: #E8E8ED;
+		background: var(--bg-primary); color: var(--text-primary);
 		font-family: var(--font-body);
 		-webkit-font-smoothing: antialiased;
 		display: flex; flex-direction: column;
 		overflow: hidden;
 		--fm: var(--font-mono);
 		--fh: var(--font-heading);
-		--ac: #E24B4A;
-		--bg2: #1A1D27;
-		--brd: #2E3240;
+		--ac: var(--accent);
+		--bg2: var(--bg-secondary);
+		--brd: var(--border);
 		--tm: #6B7280;
 	}
 
@@ -708,7 +708,7 @@
 	.qanim__badge { font-family: var(--fm); font-size: 13px; font-weight: 700; padding: 3px 10px; color: #000; }
 	.qanim__vs { font-family: var(--fm); font-size: 11px; color: var(--tm); }
 	.qanim__ctrl-group { display: flex; align-items: center; gap: 4px; }
-	.qanim__btn { background: var(--bg2); border: 1px solid var(--brd); color: #E8E8ED; cursor: pointer; display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; transition: all .15s; }
+	.qanim__btn { background: var(--bg2); border: 1px solid var(--brd); color: var(--text-primary); cursor: pointer; display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; transition: all .15s; }
 	.qanim__btn:hover { border-color: var(--ac); }
 	.qanim__speed-btn { font-family: var(--fm); font-size: 10px; padding: 4px 8px; background: none; border: 1px solid var(--brd); color: var(--tm); cursor: pointer; }
 	.qanim__speed-btn--active { background: var(--ac); color: #fff; border-color: var(--ac); }
@@ -721,14 +721,14 @@
 	.qanim__panel--left { border-right: 1px solid rgba(46,50,64,.3); }
 	.qanim__panel--right { border-left: 1px solid rgba(46,50,64,.3); }
 	.qanim__p-badge { font-family: var(--fh); font-size: 22px; font-weight: 700; padding: 6px 20px; color: #000; }
-	.qanim__p-team { font-size: 13px; color: #9CA3AF; font-weight: 500; }
-	.qanim__p-session { font-family: var(--fm); font-size: 11px; color: #9CA3AF; text-transform: uppercase; letter-spacing: .1em; }
+	.qanim__p-team { font-size: 13px; color: var(--text-secondary); font-weight: 500; }
+	.qanim__p-session { font-family: var(--fm); font-size: 11px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .1em; }
 	.qanim__p-stat { text-align: center; margin-top: .5rem; }
 	.qanim__p-stat--big { margin-top: auto; }
-	.qanim__p-stat-label { display: block; font-family: var(--fm); font-size: 10px; color: #9CA3AF; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 5px; }
+	.qanim__p-stat-label { display: block; font-family: var(--fm); font-size: 10px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 5px; }
 	.qanim__p-stat-value { font-family: var(--fh); font-size: 38px; font-weight: 700; line-height: 1; }
 	.qanim__p-stat--big .qanim__p-stat-value { font-size: 54px; }
-	.qanim__p-stat-unit { display: block; font-family: var(--fm); font-size: 11px; color: #9CA3AF; margin-top: 3px; }
+	.qanim__p-stat-unit { display: block; font-family: var(--fm); font-size: 11px; color: var(--text-secondary); margin-top: 3px; }
 	.qanim__p-finished { font-family: var(--fm); font-size: 12px; color: #22C55E; text-transform: uppercase; letter-spacing: .12em; margin-top: auto; font-weight: 700; }
 
 	/* Center map */
@@ -743,7 +743,7 @@
 	.qanim__scrub { cursor: pointer; margin-bottom: .25rem; padding: 6px 0; touch-action: none; user-select: none; }
 	.qanim__scrub-track { position: relative; height: 5px; background: var(--brd); }
 	.qanim__scrub-fill { position: absolute; top: 0; left: 0; height: 100%; background: var(--ac); }
-	.qanim__scrub-thumb { position: absolute; top: 50%; transform: translate(-50%, -50%); width: 14px; height: 14px; background: #E8E8ED; transition: transform .1s; }
+	.qanim__scrub-thumb { position: absolute; top: 50%; transform: translate(-50%, -50%); width: 14px; height: 14px; background: var(--text-primary); transition: transform .1s; }
 	.qanim__scrub:active .qanim__scrub-thumb { transform: translate(-50%, -50%) scale(1.3); }
 	.qanim__scrub-labels { display: flex; justify-content: space-between; font-family: var(--fm); font-size: 9px; color: var(--tm); margin-top: 3px; }
 	.qanim__gap-label { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px; }

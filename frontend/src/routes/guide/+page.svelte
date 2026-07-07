@@ -119,23 +119,23 @@
 </div>
 
 <style>
-	.gd { min-height: 100vh; background: var(--bg-primary, #0F1117); color: var(--text-primary, #E8E8ED); padding: 3rem 1.5rem 5rem; }
+	.gd { min-height: 100vh; background: var(--bg-primary); color: var(--text-primary); padding: 3rem 1.5rem 5rem; }
 	.gd__inner { max-width: 760px; margin: 0 auto; }
-	.gd__eyebrow { font-family: var(--font-mono); font-size: 10px; letter-spacing: .16em; color: var(--accent, #E24B4A); margin: 0 0 6px; }
+	.gd__eyebrow { font-family: var(--font-mono); font-size: 10px; letter-spacing: .16em; color: var(--accent); margin: 0 0 6px; }
 	.gd__title { font-family: var(--font-heading); font-size: clamp(26px, 4vw, 34px); font-weight: 700; letter-spacing: -.02em; margin: 0 0 12px; }
-	.gd__lead { font-size: 15.5px; line-height: 1.7; color: var(--text-secondary, #9CA3AF); max-width: 64ch; }
-	.gd__lead a { color: var(--accent, #E24B4A); }
+	.gd__lead { font-size: 15.5px; line-height: 1.7; color: var(--text-secondary); max-width: 64ch; }
+	.gd__lead a { color: var(--accent); }
 	.gd__toc { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 8px; }
 	.gd__toc a {
 		font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .04em; text-decoration: none;
-		color: var(--text-secondary, #9CA3AF); border: 1px solid var(--border, #2E3240); padding: 6px 12px;
+		color: var(--text-secondary); border: 1px solid var(--border); padding: 6px 12px;
 	}
-	.gd__toc a:hover { color: var(--text-primary, #E8E8ED); border-color: #6B7280; text-decoration: none; }
+	.gd__toc a:hover { color: var(--text-primary); border-color: #6B7280; text-decoration: none; }
 	.gd__sec { margin-top: 44px; }
 	.gd__h2 { font-family: var(--font-heading); font-size: 20px; font-weight: 700; letter-spacing: -.01em; margin: 0 0 4px; display: flex; align-items: baseline; gap: 12px; }
-	.gd__h2 span { font-family: var(--font-mono); font-size: 12px; color: var(--accent, #E24B4A); }
-	.gd__item { border-left: 2px solid var(--border, #2E3240); padding: 2px 0 2px 16px; margin-top: 18px; }
+	.gd__h2 span { font-family: var(--font-mono); font-size: 12px; color: var(--accent); }
+	.gd__item { border-left: 2px solid var(--border); padding: 2px 0 2px 16px; margin-top: 18px; }
 	.gd__h3 { font-size: 14.5px; font-weight: 600; margin: 0 0 4px; }
-	.gd__item p { font-size: 13.5px; line-height: 1.7; color: var(--text-secondary, #9CA3AF); margin: 0; max-width: 66ch; }
-	.gd__foot { font-size: 13px; color: var(--text-muted, #7D8794); border-top: 1px solid var(--border, #2E3240); padding-top: 16px; margin-top: 44px; }
+	.gd__item p { font-size: 13.5px; line-height: 1.7; color: var(--text-secondary); margin: 0; max-width: 66ch; }
+	.gd__foot { font-size: 13px; color: var(--text-muted); border-top: 1px solid var(--border); padding-top: 16px; margin-top: 44px; }
 </style>

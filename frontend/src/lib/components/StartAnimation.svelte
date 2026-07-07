@@ -100,7 +100,7 @@
 			});
 	});
 
-	function tc(team) { return TEAM_COLORS[team] || '#7D8794'; }
+	function tc(team) { return TEAM_COLORS[team] || 'var(--text-muted)'; }
 </script>
 
 <div class="sa">
@@ -122,9 +122,9 @@
 	{#if traces && geo}
 		<div class="sa__stage">
 			<svg viewBox="0 0 {geo.vw} {geo.vh}" class="sa__map" role="img" aria-label={$t('replay.start_title')}>
-				{#if outlinePath}<path d={outlinePath} fill="none" stroke="#2E3240" stroke-width="10" stroke-linejoin="round" />{/if}
+				{#if outlinePath}<path d={outlinePath} fill="none" stroke="var(--border)" stroke-width="10" stroke-linejoin="round" />{/if}
 				{#each dots as d (d.driver)}
-					<circle cx={d.x} cy={d.y} r="5" fill={tc(d.team)} stroke="#0F1117" stroke-width="1.2" />
+					<circle cx={d.x} cy={d.y} r="5" fill={tc(d.team)} stroke="var(--bg-primary)" stroke-width="1.2" />
 					<text x={d.x + 8} y={d.y + 3} font-size="9" fill={tc(d.team)} font-family="var(--font-mono)" font-weight="700">{d.driver}</text>
 				{/each}
 			</svg>
@@ -156,25 +156,25 @@
 </div>
 
 <style>
-	.sa { background: var(--bg2, #1A1D27); padding: 14px 16px; margin-bottom: 1.25rem; }
+	.sa { background: var(--bg2, var(--bg-secondary)); padding: 14px 16px; margin-bottom: 1.25rem; }
 	.sa__bar { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
-	.sa__play { width: 32px; height: 32px; background: var(--ac, #E24B4A); color: #fff; border: none; font-size: 11px; cursor: pointer; flex: 0 0 32px; }
-	.sa__range { flex: 1; accent-color: #E24B4A; cursor: pointer; margin: 0; }
-	.sa__clock { font-family: var(--fm, monospace); font-size: 12px; color: #9CA3AF; min-width: 52px; text-align: right; font-variant-numeric: tabular-nums; }
+	.sa__play { width: 32px; height: 32px; background: var(--ac, var(--accent)); color: #fff; border: none; font-size: 11px; cursor: pointer; flex: 0 0 32px; }
+	.sa__range { flex: 1; accent-color: var(--accent); cursor: pointer; margin: 0; }
+	.sa__clock { font-family: var(--fm, monospace); font-size: 12px; color: var(--text-secondary); min-width: 52px; text-align: right; font-variant-numeric: tabular-nums; }
 	.sa__speeds { display: flex; gap: 2px; }
-	.sa__speeds button { font-family: var(--fm, monospace); font-size: 10px; padding: 4px 10px; background: none; border: 1px solid var(--brd, #2E3240); color: var(--tm, #7D8794); cursor: pointer; }
-	.sa__speeds button.on { color: #E8E8ED; background: #0F1117; }
+	.sa__speeds button { font-family: var(--fm, monospace); font-size: 10px; padding: 4px 10px; background: none; border: 1px solid var(--brd, var(--border)); color: var(--tm, var(--text-muted)); cursor: pointer; }
+	.sa__speeds button.on { color: var(--text-primary); background: var(--bg-primary); }
 	.sa__stage { display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: start; }
 	.sa__map { width: 100%; max-height: 480px; }
-	.sa__result { min-width: 170px; padding: 10px 12px; background: #0F1117; border: 1px solid var(--brd, #2E3240); }
-	.sa__rt { display: block; font-family: var(--fm, monospace); font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: var(--tm, #7D8794); margin-bottom: 8px; }
+	.sa__result { min-width: 170px; padding: 10px 12px; background: var(--bg-primary); border: 1px solid var(--brd, var(--border)); }
+	.sa__rt { display: block; font-family: var(--fm, monospace); font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: var(--tm, var(--text-muted)); margin-bottom: 8px; }
 	.sa__rr { display: grid; grid-template-columns: 20px 40px 1fr; gap: 6px; font-family: var(--fm, monospace); font-size: 11px; padding: 2px 0; }
-	.sa__rp { color: var(--tm, #7D8794); }
+	.sa__rp { color: var(--tm, var(--text-muted)); }
 	.sa__rd { font-weight: 700; }
-	.sa__rdelta { text-align: right; color: var(--tm, #7D8794); }
+	.sa__rdelta { text-align: right; color: var(--tm, var(--text-muted)); }
 	.sa__rdelta.up { color: #22C55E; }
-	.sa__rdelta.down { color: #E24B4A; }
-	.sa__note { margin: 8px 0 0; font-size: 9.5px; color: var(--tm, #7D8794); font-family: var(--fm, monospace); line-height: 1.5; max-width: 180px; }
-	.sa__empty { color: var(--tm, #7D8794); font-family: var(--fm, monospace); font-size: 12px; }
+	.sa__rdelta.down { color: var(--accent); }
+	.sa__note { margin: 8px 0 0; font-size: 9.5px; color: var(--tm, var(--text-muted)); font-family: var(--fm, monospace); line-height: 1.5; max-width: 180px; }
+	.sa__empty { color: var(--tm, var(--text-muted)); font-family: var(--fm, monospace); font-size: 12px; }
 	@media (max-width: 800px) { .sa__stage { grid-template-columns: 1fr; } }
 </style>

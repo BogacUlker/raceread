@@ -151,15 +151,15 @@
 	.bc {
 		width: 100vw; height: 100vh;
 		display: flex; flex-direction: column;
-		background: #0F1117; color: #E8E8ED;
+		background: var(--bg-primary); color: var(--text-primary);
 		font-family: var(--font-body);
 		-webkit-font-smoothing: antialiased;
 		overflow: hidden;
 		--fh: var(--font-heading);
 		--fm: var(--font-mono);
-		--ac: #E24B4A;
-		--bg2: #1A1D27;
-		--brd: #2E3240;
+		--ac: var(--accent);
+		--bg2: var(--bg-secondary);
+		--brd: var(--border);
 		--tm: #6B7280;
 	}
 	.bc :global(*) { border-radius: 0 !important; }
@@ -175,8 +175,8 @@
 		padding: 5px 12px; background: none; border: 1px solid var(--brd);
 		color: var(--tm); cursor: pointer; transition: all .15s; text-transform: uppercase;
 	}
-	.bc__ctl:hover { color: #E8E8ED; border-color: #6B7280; }
-	.bc__ctl--on { color: var(--ac); border-color: rgba(226,75,74,.5); }
+	.bc__ctl:hover { color: var(--text-primary); border-color: #6B7280; }
+	.bc__ctl--on { background: var(--ac); color: #fff; border-color: var(--ac); font-style: italic; }
 
 	/* Top bar */
 	.bc__topbar {
@@ -192,8 +192,8 @@
 		transition: color .15s, border-color .15s;
 	}
 	.bc__exit:hover { color: var(--ac); border-color: var(--ac); text-decoration: none; }
-	.bc__race { font-family: var(--fh); font-size: 15px; font-weight: 700; letter-spacing: -.01em; }
-	.bc__active-label { font-family: var(--fh); font-size: 13px; color: #9CA3AF; text-transform: uppercase; letter-spacing: .06em; }
+	.bc__race { font-family: var(--fh); font-size: 15px; font-weight: 900; font-style: italic; letter-spacing: .02em; }
+	.bc__active-label { font-family: var(--fh); font-size: 13px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .06em; }
 	.bc__counter { font-family: var(--fm); font-size: 11px; color: var(--tm); }
 
 	/* Chart area */
@@ -212,10 +212,10 @@
 		cursor: pointer; transition: all .15s;
 		text-transform: uppercase; letter-spacing: .04em;
 	}
-	.bc__pill:hover { color: #E8E8ED; border-color: #6B7280; }
+	.bc__pill:hover { color: var(--text-primary); border-color: #6B7280; }
 	.bc__pill--active {
 		background: var(--ac); color: #fff;
-		border-color: var(--ac); font-weight: 600;
+		border-color: var(--ac); font-weight: 900; font-style: italic;
 	}
 
 	@media (max-width: 640px) {
