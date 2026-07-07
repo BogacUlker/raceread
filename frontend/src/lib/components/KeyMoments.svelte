@@ -154,11 +154,17 @@
 		to { opacity: 1; transform: translateY(0); }
 	}
 	.km__k {
-		font-family: var(--fm, monospace);
-		font-size: 9.5px;
-		color: #f07b7a;
-		letter-spacing: 0.1em;
+		display: inline-block;
+		font-family: var(--font-heading);
+		font-weight: 900;
+		font-style: italic;
+		font-size: 9px;
+		color: #fff;
+		background: var(--accent);
+		letter-spacing: 0.08em;
 		text-transform: uppercase;
+		padding: 2px 8px;
+		align-self: flex-start;
 	}
 	.km__txt {
 		font-size: 12.5px;

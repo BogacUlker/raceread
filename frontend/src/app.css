@@ -143,11 +143,17 @@ a:hover {
 }
 
 .chart-card__title {
-	font-family: var(--font-body);
-	font-size: var(--font-size-title);
-	font-weight: 600;
-	color: var(--text-primary);
-	letter-spacing: 0.02em;
+	/* broadcast section chip */
+	display: inline-block;
+	font-family: var(--font-heading);
+	font-size: calc(var(--font-size-title) - 6px);
+	font-weight: 900;
+	font-style: italic;
+	color: #fff;
+	background: var(--accent);
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	padding: 3px 12px;
 }
 
 /* Scrollbar */

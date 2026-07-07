@@ -738,8 +738,8 @@
 	.pd-ov-card { background: var(--bg2); padding: 1.25rem 1.5rem; border-left: 3px solid var(--brd); position: relative; overflow: hidden; transition: border-color .2s; }
 	.pd-ov-card:hover { border-left-color: var(--ac); }
 	.pd-ov-card--accent { border-left-color: var(--ac); background: linear-gradient(135deg, var(--bg2) 0%, rgba(226,75,74,.06) 100%); }
-	.pd-ov-label { font-family: var(--fm); font-size: 11px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .1em; margin-bottom: .6rem; font-weight: 500; }
-	.pd-ov-value { font-family: var(--fh); font-size: 28px; font-weight: 700; line-height: 1; letter-spacing: -.02em; margin: 0; }
+	.pd-ov-label { font-family: var(--fm); font-size: 12px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .1em; margin-bottom: .6rem; font-weight: 600; }
+	.pd-ov-value { font-family: var(--fh); font-size: 28px; font-weight: 900; font-style: italic; line-height: 1; letter-spacing: 0; margin: 0; }
 	.pd-ov-card--accent .pd-ov-value { color: var(--ac); }
 	.pd-ov-sub { font-family: var(--fm); font-size: 12px; color: var(--text-secondary); margin-top: 6px; text-transform: uppercase; letter-spacing: .04em; }
 
