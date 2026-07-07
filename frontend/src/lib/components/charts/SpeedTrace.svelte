@@ -21,6 +21,8 @@
 		totalLaps = 58,
 		compareDriver1 = '',
 		compareDriver2 = '',
+		vscLaps = [],
+		scLaps = [],
 	} = $props();
 
 	let containerEl = $state(null);
