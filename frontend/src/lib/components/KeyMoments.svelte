@@ -22,6 +22,7 @@
 		return best;
 	}
 	let playingUrl = $state(null);
+	let radioTime = $state({ cur: 0, dur: 0 });
 	let audio = null;
 	function toggleRadio(clip) {
 		if (playingUrl === clip.url) { audio?.pause(); playingUrl = null; return; }
@@ -29,8 +30,13 @@
 		audio = new Audio(clip.url);
 		audio.onended = () => { playingUrl = null; };
 		audio.onerror = () => { playingUrl = null; };
+		audio.ontimeupdate = () => { radioTime = { cur: audio.currentTime, dur: audio.duration || 0 }; };
 		audio.play().catch(() => { playingUrl = null; });
+		radioTime = { cur: 0, dur: 0 };
 		playingUrl = clip.url;
+	}
+	function mmss(t) {
+		return Math.floor(t / 60) + ':' + String(Math.floor(t % 60)).padStart(2, '0');
 	}
 
 	const SECTION_BY_TYPE = {
@@ -118,7 +124,11 @@
 					{/if}
 					{#if clip}
 						<button class="km__go km__go--radio" class:playing={playingUrl === clip.url} onclick={() => toggleRadio(clip)} title="{$t('moments.radio')}: {clip.driver} L{clip.lap}">
-							{playingUrl === clip.url ? '&#9632;' : '&#128266;'} {$t('moments.radio')}
+							{#if playingUrl === clip.url}
+								■ {mmss(radioTime.cur)}{radioTime.dur ? ' / ' + mmss(radioTime.dur) : ''}
+							{:else}
+								▶ {$t('moments.radio')} · {clip.driver} L{clip.lap}
+							{/if}
 						</button>
 					{/if}
 				</div>

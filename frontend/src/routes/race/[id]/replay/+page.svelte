@@ -51,21 +51,39 @@
 		return lc;
 	});
 
-	// ---- current lap + playback ----
-	let lap = $state(1);
+	// ---- current lap + playback (continuous: lapFloat drives the cursor,
+	// integer lap drives the running order) ----
+	let lapFloat = $state(1);
+	let lap = $derived(Math.max(1, Math.min(totalLaps, Math.floor(lapFloat))));
 	onMount(() => {
-		lap = Math.min(Math.max(1, data.startLap), raceInfo.total_laps || 58);
+		lapFloat = Math.min(Math.max(1, data.startLap), raceInfo.total_laps || 58);
 	});
 	let playing = $state(false);
 	let speed = $state(1);
 	$effect(() => {
 		if (!playing) return;
-		const id = setInterval(() => {
-			if (lap >= totalLaps) { playing = false; return; }
-			lap = lap + 1;
-		}, 900 / speed);
-		return () => clearInterval(id);
+		let raf;
+		let prev = performance.now();
+		const step = (now) => {
+			const dt = (now - prev) / 1000;
+			prev = now;
+			lapFloat = Math.min(totalLaps, lapFloat + (dt / 0.9) * speed);
+			if (lapFloat >= totalLaps) { playing = false; return; }
+			raf = requestAnimationFrame(step);
+		};
+		raf = requestAnimationFrame(step);
+		return () => cancelAnimationFrame(raf);
 	});
+
+	// interpolated gap for smooth cursor dots
+	function gapAt(s, lf) {
+		const i = Math.min(s.pts.length - 1, Math.max(0, Math.floor(lf) - 1));
+		const j = Math.min(s.pts.length - 1, i + 1);
+		const a = s.pts[i], b = s.pts[j];
+		if (!a) return null;
+		const f = Math.min(1, Math.max(0, lf - a[0]));
+		return a[1] + (b[1] - a[1]) * f;
+	}
 
 	// ---- running order at current lap ----
 	let order = $derived.by(() => {
@@ -150,8 +168,8 @@
 		return n.toUpperCase();
 	}
 	function handleKey(e) {
-		if (e.key === 'ArrowRight') lap = Math.min(totalLaps, lap + 1);
-		if (e.key === 'ArrowLeft') lap = Math.max(1, lap - 1);
+		if (e.key === 'ArrowRight') lapFloat = Math.min(totalLaps, Math.floor(lapFloat) + 1);
+		if (e.key === 'ArrowLeft') lapFloat = Math.max(1, Math.floor(lapFloat) - 1);
 		if (e.key === ' ') { e.preventDefault(); playing = !playing; }
 	}
 </script>
@@ -188,7 +206,7 @@
 				<circle cx={gx(+pl)} cy="11" r={Math.min(4, 1.5 + n * 0.4)} fill="#7D8794" opacity="0.8" />
 			{/each}
 		</svg>
-		<input type="range" min="1" max={totalLaps} bind:value={lap} class="rp__range" aria-label={$t('replay.lap')} />
+		<input type="range" min="1" max={totalLaps} value={lap} oninput={(e) => { lapFloat = +e.target.value; }} class="rp__range" aria-label={$t('replay.lap')} />
 	</div>
 
 	<div class="rp__main">
@@ -224,11 +242,12 @@
 					<path d={pathFor(s)} fill="none" stroke={tc(s.team)} stroke-width={hovered === s.drv ? 2.6 : 1.6}
 						stroke-dasharray={s.dashed ? '5 3' : 'none'} opacity={lineOpacity(s)} />
 				{/each}
-				<line x1={gx(lap)} x2={gx(lap)} y1={MT} y2={H - MB} stroke="#E8E8ED" stroke-width="1.2" opacity="0.7" />
+				<line x1={gx(Math.min(lapFloat, totalLaps))} x2={gx(Math.min(lapFloat, totalLaps))} y1={MT} y2={H - MB} stroke="#E8E8ED" stroke-width="1.2" opacity="0.7" />
 				{#each series as s (s.drv)}
-					{@const pt = s.pts.find((p) => p[0] === Math.min(lap, s.pts.at(-1)?.[0] ?? 1))}
-					{#if pt && lineOpacity(s) > 0.5}
-						<circle cx={gx(pt[0])} cy={gy(pt[1])} r="3.5" fill={tc(s.team)} />
+					{@const lf = Math.min(lapFloat, s.pts.at(-1)?.[0] ?? 1)}
+					{@const g = gapAt(s, lf)}
+					{#if g != null && lineOpacity(s) > 0.5}
+						<circle cx={gx(lf)} cy={gy(g)} r="3.5" fill={tc(s.team)} />
 					{/if}
 				{/each}
 				{#each Array.from({ length: Math.ceil(totalLaps / 10) }, (_, i) => (i + 1) * 10) as tick}

@@ -10,14 +10,29 @@
 		if (!el || busy) return;
 		busy = true;
 		try {
-			const { toPng } = await import('html-to-image');
-			const url = await toPng(el, {
+			const { toCanvas } = await import('html-to-image');
+			const canvas = await toCanvas(el, {
 				backgroundColor: '#0F1117',
 				pixelRatio: 2,
 				filter: (node) => !node.classList?.contains('export-btn'),
 			});
+			// RaceRead watermark, bottom right
+			const ctx = canvas.getContext('2d');
+			const k = 2; // pixelRatio
+			ctx.font = `600 ${11 * k}px ui-monospace, Menlo, monospace`;
+			ctx.textBaseline = 'alphabetic';
+			const text = 'RACEREAD.APP';
+			const tw = ctx.measureText(text).width;
+			const x = canvas.width - tw - 16 * k;
+			const y = canvas.height - 12 * k;
+			ctx.fillStyle = 'rgba(15,17,23,0.72)';
+			ctx.fillRect(x - 10 * k, y - 13 * k, tw + 24 * k, 20 * k);
+			ctx.fillStyle = '#E24B4A';
+			ctx.fillText('RACE', x, y);
+			ctx.fillStyle = '#E8E8ED';
+			ctx.fillText('READ.APP', x + ctx.measureText('RACE').width, y);
 			const a = document.createElement('a');
-			a.href = url;
+			a.href = canvas.toDataURL('image/png');
 			a.download = filename + '.png';
 			a.click();
 		} catch (e) {
