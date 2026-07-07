@@ -155,10 +155,27 @@ Contributions are welcome. Please open an issue first to discuss what you'd like
 
 ## Acknowledgments
 
-- [FastF1](https://github.com/theOehrly/Fast-F1) - F1 telemetry data (MIT)
+**Data sources**
+
+- [FastF1](https://github.com/theOehrly/Fast-F1) - F1 telemetry & timing data (MIT)
 - [Jolpica-F1](https://github.com/jolpica/jolpica-f1) - season calendar & championship standings (community-run Ergast successor)
+- [OpenF1](https://openf1.org) - team radio clip metadata (CC BY-NC-SA; RaceRead is a non-commercial fan project). Radio transcripts are auto-generated locally with [Whisper](https://github.com/openai/whisper) and labelled as such in the UI.
+- [f1-circuits](https://github.com/bacinger/f1-circuits) by @bacinger - circuit outline GeoJSON used to build the track silhouettes (MIT)
+
+**Typography** (all under the SIL Open Font License 1.1, self-hosted via Fontsource)
+
+- [Titillium Web](https://fonts.google.com/specimen/Titillium+Web) - display & body
+- [Saira Condensed](https://fonts.google.com/specimen/Saira+Condensed) - timing numerals & labels
+- [Graduate](https://fonts.google.com/specimen/Graduate) - varsity position digits
+
+**Tools**
+
 - [LayerCake](https://layercake.graphics/) - Svelte chart framework
+- [html-to-image](https://github.com/bubkoo/html-to-image) - PNG chart exports (MIT)
 - Built with [Claude Code](https://claude.ai/claude-code)
+
+The broadcast-inspired visual language is an original composition; it does not
+use official Formula 1 typefaces or broadcast assets.
 
 ## Disclaimer
 

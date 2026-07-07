@@ -13,7 +13,7 @@
 		</div>
 	</div>
 	<div class="footer__legal">
-		<span>Data: <a href="https://github.com/theOehrly/Fast-F1" target="_blank" rel="noopener noreferrer">FastF1</a> &middot; <a href="https://github.com/jolpica/jolpica-f1" target="_blank" rel="noopener noreferrer">{$t('footer.jolpica')}</a> &middot; <a href="/methodology">{$t('footer.methodology')}</a></span>
+		<span>Data: <a href="https://github.com/theOehrly/Fast-F1" target="_blank" rel="noopener noreferrer">FastF1</a> &middot; <a href="https://github.com/jolpica/jolpica-f1" target="_blank" rel="noopener noreferrer">{$t('footer.jolpica')}</a> &middot; <a href="https://openf1.org" target="_blank" rel="noopener noreferrer">{$t('footer.openf1')}</a> &middot; <a href="https://github.com/bacinger/f1-circuits" target="_blank" rel="noopener noreferrer">{$t('footer.circuits')}</a> &middot; <a href="/methodology">{$t('footer.methodology')}</a></span>
 		<p>{$t('footer.disclaimer')}</p>
 	</div>
 </footer>
