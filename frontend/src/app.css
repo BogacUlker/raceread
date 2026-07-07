@@ -204,8 +204,6 @@ a:hover {
 	@keyframes vt-in { from { opacity: 0; transform: translateX(18px); } }
 }
 
-/* ── Long-page scroll performance ── */
-.pd-sec, .prv-classics, .prv-races {
-	content-visibility: auto;
-	contain-intrinsic-size: auto 420px;
-}
+/* Long-page scroll perf is handled by capping heavy SVG scatters;
+   content-visibility was tried here but its placeholder/real size swap
+   made the page jump on first scroll-through. */
