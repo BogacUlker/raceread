@@ -1,6 +1,6 @@
 <!--
 	Sustained battles that never show up as position changes: laps spent
-	within DRS range of the same car, from telemetry gap data.
+	within a second of the same car, from telemetry gap data.
 -->
 <script>
 	import { t } from '$lib/i18n/index.js';

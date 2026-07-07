@@ -80,7 +80,8 @@ export function computeUndercuts(laps, strategy, vscLaps = [], scLaps = []) {
 }
 
 /**
- * Sustained DRS-range battles from the traffic analysis payload.
+ * Sustained close-range battles from the traffic analysis payload.
+ * (era-neutral: DRS died with the 2026 regs; the metric is simply gap < ~1s)
  * A battle = >= minLaps consecutive laps in traffic behind the same car.
  */
 export function computeBattles(traffic, laps, strategy, minLaps = 6) {
@@ -155,12 +156,12 @@ export function derivedMoments(undercuts, battles) {
 				? `${b.driver} spent ${b.laps} laps within striking range of ${b.target} (laps ${range}) and finally made the move stick.`
 				: b.resolution === 'pit'
 					? `${b.driver} sat ${b.laps} laps behind ${b.target} (laps ${range}) before the team broke the stalemate with a pit call.`
-					: `${b.driver} spent ${b.laps} laps within DRS range of ${b.target} (laps ${range}) but couldn't find a way past.`,
+					: `${b.driver} spent ${b.laps} laps within a second of ${b.target} (laps ${range}) but couldn't find a way past.`,
 			text_tr: b.resolution === 'passed'
 				? `${b.driver}, ${b.laps} tur boyunca ${b.target}'ı kovaladı (tur ${range}) ve sonunda geçişi yapıştırdı.`
 				: b.resolution === 'pit'
 					? `${b.driver}, ${b.laps} tur ${b.target}'ın arkasında kaldı (tur ${range}); kilidi pit hamlesi çözdü.`
-					: `${b.driver}, ${b.laps} tur boyunca ${b.target}'ın DRS menzilinde kaldı (tur ${range}) ama geçemedi.`,
+					: `${b.driver}, ${b.laps} tur boyunca ${b.target}'ın bir saniyelik menzilinde kaldı (tur ${range}) ama geçemedi.`,
 		});
 	}
 	return out;

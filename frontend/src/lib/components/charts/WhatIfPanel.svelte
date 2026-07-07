@@ -5,7 +5,7 @@
 	Model, all fitted from this race's own data:
 	  predicted(lap) = driverBase + fuel(lap) + tireDeg(compound, age)
 	                   [+ pit loss on stop laps, + traffic penalty when the
-	                    sim timeline falls within DRS range of a real car]
+	                    sim timeline falls within close range of a real car]
 	Neutralized (SC/VSC) laps reuse the driver's actual recorded times.
 -->
 <script>
