@@ -11,9 +11,9 @@
 	);
 </script>
 
-<span class="inferred-badge" title={tip}>
+<a href="/methodology" class="inferred-badge" title={tip}>
 	{$t('charts.inferred')}{#if confidence != null}<span class="inferred-badge__score">{Math.round(confidence)}</span>{/if}
-</span>
+</a>
 
 <style>
 	.inferred-badge {
@@ -29,8 +29,10 @@
 		border-radius: 3px;
 		line-height: 1.4;
 		vertical-align: middle;
-		cursor: help;
+		cursor: pointer;
+		text-decoration: none;
 	}
+	.inferred-badge:hover { filter: brightness(1.12); text-decoration: none; }
 	.inferred-badge__score {
 		margin-left: 5px;
 		padding-left: 5px;
