@@ -175,8 +175,12 @@
 		return second ? Math.abs(second).toFixed(3) : null;
 	});
 
-	// Fastest lap across all drivers
+	// Fastest lap across all drivers (backend extras carry full precision;
+	// the laps API rounds time_s, so prefer raceInfo when present)
 	let fastestLap = $derived.by(() => {
+		if (raceInfo.fastest_lap_s) {
+			return { driver: raceInfo.fastest_driver, time: raceInfo.fastest_lap_s, lap: raceInfo.fastest_lap_no };
+		}
 		let best = null;
 		for (const driver of laps) {
 			for (const lap of (driver.laps || [])) {
@@ -201,11 +205,14 @@
 	// Team color helper
 	function tc(driver) { return TEAM_COLORS[teamsMap[driver]] || '#6B7280'; }
 
-	// Prev/next race navigation
+	// Prev/next race navigation - classics navigate within the classics shelf
 	let calendar = $derived(data.calendar || []);
-	let raceIdx = $derived(races.findIndex(r => r.id === raceId));
-	let prevRace = $derived(raceIdx > 0 ? races[raceIdx - 1] : null);
-	let nextRace = $derived(raceIdx >= 0 && raceIdx < races.length - 1 ? races[raceIdx + 1] : null);
+	let classics = $derived(data.classics || []);
+	let isClassic = $derived(classics.some(c => c.id === raceId));
+	let navList = $derived(isClassic ? classics : races);
+	let raceIdx = $derived(navList.findIndex(r => r.id === raceId));
+	let prevRace = $derived(raceIdx > 0 ? navList[raceIdx - 1] : null);
+	let nextRace = $derived(raceIdx >= 0 && raceIdx < navList.length - 1 ? navList[raceIdx + 1] : null);
 
 	// Scroll-triggered reveal animation
 	
@@ -269,18 +276,28 @@
 			</button>
 			<div class="pd-sb__full">
 				<div class="pd-sb__sec">
-					<h2 class="pd-sb__h">2026 {$locale === 'tr' ? 'Sezonu' : 'Season'}</h2>
-					<p class="pd-sb__sub">{races.length}{calendar.length ? ' / ' + calendar.length : ''}</p>
+					<h2 class="pd-sb__h">{isClassic ? $t('home.classics_title') : '2026 ' + ($locale === 'tr' ? 'Sezonu' : 'Season')}</h2>
+					<p class="pd-sb__sub">{isClassic ? classics.length : races.length + (calendar.length ? ' / ' + calendar.length : '')}</p>
 				</div>
 				<div class="pd-sb__sec">
 					<nav class="pd-sb__nav">
-						{#each races as race, i}
-							<a href="/race/{race.id}" class="pd-sb__race" class:pd-sb__race--active={race.id === raceId}>
-								<span class="pd-sb__rc">R{i + 1}</span>
-								<span class="pd-sb__rn">{race.circuit}</span>
-								<span class="pd-sb__rw" style="color:{tc(race.winner)}">{race.winner}</span>
-							</a>
-						{/each}
+						{#if isClassic}
+							{#each classics as c}
+								<a href="/race/{c.id}" class="pd-sb__race" class:pd-sb__race--active={c.id === raceId}>
+									<span class="pd-sb__rc">'{String(c.year).slice(2)}</span>
+									<span class="pd-sb__rn">{c.circuit}</span>
+									<span class="pd-sb__rw" style="color:{TEAM_COLORS[c.winner_team] || '#888'}">{c.winner}</span>
+								</a>
+							{/each}
+						{:else}
+							{#each races as race, i}
+								<a href="/race/{race.id}" class="pd-sb__race" class:pd-sb__race--active={race.id === raceId}>
+									<span class="pd-sb__rc">R{i + 1}</span>
+									<span class="pd-sb__rn">{race.circuit}</span>
+									<span class="pd-sb__rw" style="color:{tc(race.winner)}">{race.winner}</span>
+								</a>
+							{/each}
+						{/if}
 					</nav>
 				</div>
 				<div class="pd-sb__bottom">
@@ -288,9 +305,15 @@
 				</div>
 			</div>
 			<div class="pd-sb__mini">
-				{#each races as race, i}
-					<a href="/race/{race.id}" class="pd-sb__mr" class:pd-sb__mr--active={race.id === raceId} title={race.name} style="border-left-color:{tc(race.winner)}">R{i+1}</a>
-				{/each}
+				{#if isClassic}
+					{#each classics as c}
+						<a href="/race/{c.id}" class="pd-sb__mr" class:pd-sb__mr--active={c.id === raceId} title={c.name} style="border-left-color:{TEAM_COLORS[c.winner_team] || '#888'}">{c.code}</a>
+					{/each}
+				{:else}
+					{#each races as race, i}
+						<a href="/race/{race.id}" class="pd-sb__mr" class:pd-sb__mr--active={race.id === raceId} title={race.name} style="border-left-color:{tc(race.winner)}">R{i+1}</a>
+					{/each}
+				{/if}
 			</div>
 		</aside>
 

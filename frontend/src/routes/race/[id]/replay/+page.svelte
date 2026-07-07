@@ -14,28 +14,57 @@
 
 	// ---- per-driver race model: cumulative time, position, last lap ----
 	let model = $derived.by(() => {
+		// median lap time per lap: fills missing times (red flags, SC glitches)
+		// so gaps stay computable; affected gaps are marked approximate
+		const byLap = {};
+		for (const d of data.laps) {
+			for (const l of d.laps) {
+				if (l.time_s != null) (byLap[l.lap] ??= []).push(l.time_s);
+			}
+		}
+		const medByLap = {};
+		for (const [L, arr] of Object.entries(byLap)) {
+			arr.sort((a, b) => a - b);
+			medByLap[L] = arr[Math.floor(arr.length / 2)];
+		}
+		// red-flag laps have no timed driver at all: fill with the race-wide
+		// median so cum times keep advancing (cancels out in gap subtraction)
+		const allT = Object.values(byLap).flat().sort((a, b) => a - b);
+		const globalMed = allT.length ? allT[Math.floor(allT.length / 2)] : null;
 		const out = {};
 		for (const d of data.laps) {
 			const posByLap = {};
 			const cumByLap = {};
 			let cum = 0;
-			let ok = true;
 			let lastLap = 0;
-			for (const l of d.laps) {
+			let approxFrom = null;
+			for (const l of [...d.laps].sort((a, b) => a.lap - b.lap)) {
 				if (l.position != null) posByLap[l.lap] = l.position;
-				if (ok && l.time_s != null) {
-					cum += l.time_s;
+				const raceWideGap = !byLap[l.lap]?.length;
+				const t = l.time_s ?? medByLap[l.lap] ?? globalMed;
+				if (t != null) {
+					cum += t;
 					cumByLap[l.lap] = cum;
-				} else if (l.time_s == null) {
-					ok = false; // missing time: stop cumulative tracking (gaps become approximate)
+					// a race-wide gap shifts everyone equally, so it does not
+					// make this driver's gaps approximate from here on
+					if (l.time_s == null && !raceWideGap && approxFrom === null) approxFrom = l.lap;
 				}
 				lastLap = Math.max(lastLap, l.lap);
 			}
-			out[d.driver] = { team: d.team, posByLap, cumByLap, lastLap };
+			out[d.driver] = { team: d.team, posByLap, cumByLap, lastLap, approxFrom };
 		}
 		return out;
 	});
 	let drivers = $derived(Object.keys(model));
+
+	// laps where no driver has a time (red flag): gaps there are approximate
+	let raceWideFillLaps = $derived.by(() => {
+		const timed = new Set();
+		for (const d of data.laps) for (const l of d.laps) if (l.time_s != null) timed.add(l.lap);
+		const s = new Set();
+		for (const d of data.laps) for (const l of d.laps) if (!timed.has(l.lap)) s.add(l.lap);
+		return s;
+	});
 
 	// leader cumulative time per lap
 	let leaderCum = $derived.by(() => {
@@ -101,7 +130,8 @@
 			else if (lapsDown >= 1) gapText = '+' + lapsDown + 'L';
 			else {
 				const g = m.cumByLap[lap] != null && leaderCum[lap] != null ? m.cumByLap[lap] - leaderCum[lap] : null;
-				gapText = g == null ? '—' : '+' + g.toFixed(1);
+				const approx = (m.approxFrom !== null && lap >= m.approxFrom) || raceWideFillLaps.has(lap);
+				gapText = g == null ? '—' : (approx ? '~' : '+') + g.toFixed(1);
 			}
 			const prevPos = m.posByLap[Math.max(1, cLap - 1)] ?? pos;
 			rows.push({ drv, team: m.team, out: false, pos: pos + lapsDown * 0.001, gapText, delta: prevPos - pos });
@@ -226,6 +256,9 @@
 					<span class="rp__gap">{row.gapText}</span>
 				</div>
 			{/each}
+			{#if order.some((r) => r.gapText?.startsWith('~'))}
+				<p class="rp__note">~ {$t('replay.approx')}</p>
+			{/if}
 		</div>
 
 		<!-- Gap chart -->
@@ -309,6 +342,7 @@
 	.rp__delta.up { color: #22C55E; }
 	.rp__delta.down { color: #E24B4A; }
 	.rp__gap { margin-left: auto; color: #9CA3AF; font-variant-numeric: tabular-nums; font-size: 11px; }
+	.rp__note { font-family: var(--fm); font-size: 9px; color: var(--tm); margin-top: 6px; }
 
 	.rp__chart { background: var(--bg2); padding: 12px 14px; }
 	.rp__svg { width: 100%; height: auto; display: block; }

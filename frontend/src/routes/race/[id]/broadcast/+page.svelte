@@ -165,6 +165,9 @@
 	.bc :global(*) { border-radius: 0 !important; }
 	.bc :global(.chart-card) { border-radius: 0 !important; border: none !important; background: var(--bg2) !important; }
 	.bc :global(.chart-card__title) { font-family: var(--fh) !important; text-transform: uppercase; letter-spacing: .03em; font-size: 24px !important; }
+	/* broadcast fills the screen with the chart */
+	.bc :global(.pace-wrapper .chart-container) { height: calc(100vh - 320px) !important; min-height: 340px; }
+	.bc__chart > :global(*) { min-height: 100%; }
 
 	.bc__controls { display: flex; align-items: center; gap: 8px; }
 	.bc__ctl {

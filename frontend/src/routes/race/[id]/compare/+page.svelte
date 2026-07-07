@@ -166,7 +166,7 @@
 		font-family: 'DM Sans', sans-serif; -webkit-font-smoothing: antialiased;
 		padding: 1.5rem 2rem 3rem;
 		--fh: 'Space Grotesk', sans-serif; --fm: 'JetBrains Mono', monospace;
-		--ac: #E24B4A; --bg2: #1A1D27; --bgc: #22252F; --brd: #2E3240; --tm: #6B7280;
+		--ac: #E24B4A; --bg2: #1A1D27; --bgc: #22252F; --brd: #2E3240; --tm: #7D8794;
 	}
 	.cmp :global(*) { border-radius: 0 !important; }
 

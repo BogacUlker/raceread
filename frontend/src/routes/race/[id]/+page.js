@@ -15,6 +15,11 @@ export async function load({ params, fetch }) {
 		calendar = await api('/api/calendar', fetch);
 	} catch (e) { /* sidebar falls back to played-race count */ }
 
+	let classics = [];
+	try {
+		classics = await api('/api/classics', fetch);
+	} catch (e) { /* classic nav degrades to none */ }
+
 	let story = null;
 	try {
 		story = await api(`/api/races/${id}/story`, fetch);
@@ -44,7 +49,7 @@ export async function load({ params, fetch }) {
 	const traffic = optionalResults[6].status === 'fulfilled' ? optionalResults[6].value : null;
 
 	return {
-		raceId: id, raceInfo, laps, strategy, delta, annotations, energyComparison, pitstops, races, vscData, circuit, traffic, calendar, story, radio,
+		raceId: id, raceInfo, laps, strategy, delta, annotations, energyComparison, pitstops, races, vscData, circuit, traffic, calendar, classics, story, radio,
 		metaTitle: raceInfo.name + ' - RaceRead',
 		metaDescription: raceInfo.name + ' (' + raceInfo.circuit + ', ' + raceInfo.date + '): lap-by-lap pace, strategy timeline, energy deployment and AI race insights.',
 	};

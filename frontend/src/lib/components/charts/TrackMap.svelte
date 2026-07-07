@@ -904,6 +904,7 @@
 			<input
 				type="range"
 				class="track-map__slider"
+				aria-label={$t('tooltip.lap')}
 				min="0"
 				max="1000"
 				value={Math.round(animProgress * 1000)}

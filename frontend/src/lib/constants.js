@@ -1,20 +1,20 @@
-/** Team colors - from FastF1 2026 session.results.TeamColor */
+/** Team colors - FastF1 base hues, lightened just enough to pass WCAG AA (4.5:1) as text on card backgrounds */
 export const TEAM_COLORS = {
 	'Mercedes': '#00D7B6',
-	'Red Bull Racing': '#4781D7',
-	'Ferrari': '#ED1131',
+	'Red Bull Racing': '#5087D9',
+	'Ferrari': '#F73B54',
 	'McLaren': '#F47600',
 	'Aston Martin': '#229971',
 	'Alpine': '#00A1E8',
-	'Williams': '#1868DB',
+	'Williams': '#4A8AE8',
 	'Racing Bulls': '#6C98FF',
-	'Audi': '#F50537',
+	'Audi': '#FF4066',
 	'Haas F1 Team': '#9C9FA2',
 	'Cadillac': '#909090',
 	/* 2021-era teams (Classics) */
-	'AlphaTauri': '#2B4562',
-	'Alfa Romeo Racing': '#900000',
-	'Alfa Romeo': '#900000',
+	'AlphaTauri': '#5D8AB5',
+	'Alfa Romeo Racing': '#E85454',
+	'Alfa Romeo': '#E85454',
 };
 
 /** Energy state colors */

@@ -132,7 +132,7 @@
 
 <div class="cst" bind:this={containerEl}>
 	<div class="cst__header">
-		<h3 class="cst__title">{$t('charts.speed_trace')}</h3>
+		<h2 class="cst__title">{$t('charts.speed_trace')}</h2>
 		<span class="cst__lap">LAP {selectedLap}</span>
 	</div>
 
@@ -153,14 +153,14 @@
 				<!-- Y axis grid + labels -->
 				{#each [0, 50, 100, 150, 200, 250, 300, 350] as tick}
 					<line x1={0} y1={yScale(tick)} x2={innerWidth} y2={yScale(tick)} stroke="#2E3240" stroke-opacity="0.4" />
-					<text x={-8} y={yScale(tick)} fill="#6B7280" font-size="10" text-anchor="end" dominant-baseline="middle" font-family="'JetBrains Mono', monospace">{tick}</text>
+					<text x={-8} y={yScale(tick)} fill="#7D8794" font-size="10" text-anchor="end" dominant-baseline="middle" font-family="'JetBrains Mono', monospace">{tick}</text>
 				{/each}
 
 				<!-- Corner markers -->
 				{#each cornerMarkers as marker}
 					{#if marker.x >= 0 && marker.x <= innerWidth}
-						<line x1={marker.x} y1={mainHeight} x2={marker.x} y2={mainHeight + gap + throttleHeight + gap + throttleHeight} stroke="#6B7280" stroke-opacity="0.3" stroke-dasharray="2,2" />
-						<text x={marker.x} y={mainHeight + gap + throttleHeight + gap + throttleHeight + 12} fill="#6B7280" font-size="9" text-anchor="middle" font-family="'JetBrains Mono', monospace">
+						<line x1={marker.x} y1={mainHeight} x2={marker.x} y2={mainHeight + gap + throttleHeight + gap + throttleHeight} stroke="#7D8794" stroke-opacity="0.3" stroke-dasharray="2,2" />
+						<text x={marker.x} y={mainHeight + gap + throttleHeight + gap + throttleHeight + 12} fill="#7D8794" font-size="9" text-anchor="middle" font-family="'JetBrains Mono', monospace">
 							{marker.label}
 						</text>
 					{/if}
@@ -180,7 +180,7 @@
 				{/each}
 
 				<!-- Label between strips -->
-				<text x={-8} y={mainHeight + gap + throttleHeight / 2} fill="#6B7280" font-size="8" text-anchor="end" dominant-baseline="middle" font-family="'JetBrains Mono', monospace">THR</text>
+				<text x={-8} y={mainHeight + gap + throttleHeight / 2} fill="#7D8794" font-size="8" text-anchor="end" dominant-baseline="middle" font-family="'JetBrains Mono', monospace">THR</text>
 
 				<!-- Second throttle strip (driver 2 dedicated row for clarity) -->
 				{#each buildThrottleBlocks(d1Data, mainHeight + gap + throttleHeight + gap) as block}
@@ -224,7 +224,7 @@
 				{/if}
 
 				<!-- X axis label -->
-				<text x={innerWidth / 2} y={mainHeight + gap + throttleHeight + gap + throttleHeight + 28} fill="#6B7280" font-size="11" text-anchor="middle" font-family="'JetBrains Mono', monospace">
+				<text x={innerWidth / 2} y={mainHeight + gap + throttleHeight + gap + throttleHeight + 28} fill="#7D8794" font-size="11" text-anchor="middle" font-family="'JetBrains Mono', monospace">
 					DISTANCE (m)
 				</text>
 			</g>
@@ -269,7 +269,7 @@
 	.cst__lap {
 		font-family: 'JetBrains Mono', monospace;
 		font-size: 11px;
-		color: #6B7280;
+		color: #7D8794;
 		letter-spacing: 0.05em;
 	}
 	.cst__svg {
@@ -283,7 +283,7 @@
 		height: 200px;
 		font-family: 'JetBrains Mono', monospace;
 		font-size: 13px;
-		color: #6B7280;
+		color: #7D8794;
 	}
 	.cst__tooltip {
 		background: #22252F;
@@ -294,7 +294,7 @@
 		color: #E8E8ED;
 	}
 	.cst__tooltip-dist {
-		color: #6B7280;
+		color: #7D8794;
 		margin-bottom: 4px;
 	}
 	.cst__tooltip-row {

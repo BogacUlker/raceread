@@ -68,6 +68,5 @@
 	}
 	.footer__legal p {
 		margin-top: 2px;
-		opacity: 0.8;
 	}
 </style>
