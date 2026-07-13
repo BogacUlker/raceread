@@ -22,19 +22,53 @@
 	// ---- shared race model (independent of picked driver) ----
 	let race = $derived.by(() => {
 		const mid = totalLaps / 2;
-		const times = {}; // driver -> lap -> time
+		const times = {}; // driver -> lap -> time (data holes filled from field median)
 		const cums = {}; // driver -> lap -> cum (reality)
-		const finishers = [];
+		const finishers = []; // pickable: ran every lap (small holes tolerated)
+		const rivalTotals = []; // cars the position estimate ranks against
+		const raw = {}; // driver -> lap -> recorded time
+		const lastLap = {};
 		for (const d of laps) {
 			const m = {};
-			for (const l of d.laps || []) if (l.time_s != null) m[l.lap] = l.time_s;
-			times[d.driver] = m;
-			let c = 0;
-			const cm = {};
-			for (let L = 1; L <= totalLaps; L++) { if (m[L] == null) { break; } c += m[L]; cm[L] = c; }
-			cums[d.driver] = cm;
-			if (cm[totalLaps] != null) finishers.push(d.driver);
+			let mx = 0;
+			for (const l of d.laps || []) { if (l.time_s != null) m[l.lap] = l.time_s; if (l.lap > mx) mx = l.lap; }
+			raw[d.driver] = m;
+			lastLap[d.driver] = mx;
 		}
+		// FastF1 often leaves time_s empty on SC laps, which used to shrink the
+		// eligible list to backmarkers (or nobody, e.g. Monaco). A missing lap is
+		// estimated from the field median of that same lap - under neutralization
+		// the whole field runs near-identical times, so the error stays small.
+		const lapMedian = {};
+		for (let L = 1; L <= totalLaps; L++) {
+			const v = Object.values(raw).map((m) => m[L]).filter((x) => x != null).sort((a, b) => a - b);
+			if (v.length >= 3) lapMedian[L] = v[Math.floor(v.length / 2)];
+		}
+		const MAX_FILL = 8; // beyond this the data is too holey to trust
+		for (const d of laps) {
+			const dr = d.driver, mx = lastLap[dr], m = { ...raw[dr] };
+			let holes = 0, bad = mx === 0;
+			for (let L = 1; L <= mx && !bad; L++) {
+				if (m[L] == null) {
+					const f = lapMedian[L] ?? m[L - 1];
+					if (f == null || ++holes > MAX_FILL) bad = true;
+					else m[L] = f;
+				}
+			}
+			times[dr] = m;
+			const cm = {};
+			if (!bad) { let c = 0; for (let L = 1; L <= mx; L++) { c += m[L]; cm[L] = c; } }
+			cums[dr] = cm;
+			if (bad) continue;
+			if (mx === totalLaps) finishers.push(dr);
+			if (mx >= totalLaps - 3) {
+				// lapped finishers still rank: extend their run with median laps
+				let tot = cm[mx];
+				for (let L = mx + 1; L <= totalLaps; L++) tot += lapMedian[L] ?? cm[mx] / mx;
+				rivalTotals.push({ driver: dr, total: tot });
+			}
+		}
+		finishers.sort((a, b) => cums[a][totalLaps] - cums[b][totalLaps]);
 		// driver clean fuel-corrected base
 		const base = {};
 		const cleanResiduals = []; // {compound, age, r}
@@ -103,7 +137,7 @@
 		let trafficPen = 0.3;
 		const degs = (traffic?.drivers || []).map((x) => x.pace_degradation).filter((v) => v != null && v > 0 && v < 2);
 		if (degs.length >= 4) { degs.sort((a, b) => a - b); trafficPen = degs[Math.floor(degs.length / 2)]; }
-		return { mid, times, cums, finishers, base, degAt, maxAge, compounds: Object.keys(deg), pitLoss, trafficPen };
+		return { mid, times, cums, finishers, rivalTotals, base, degAt, maxAge, compounds: Object.keys(deg), pitLoss, trafficPen };
 	});
 
 	// ---- driver + editable strategy state ----
@@ -212,7 +246,7 @@
 		}
 		const band = Math.min(8, Math.max(1.5, changed * 0.09));
 		const predictedTotal = actTotal - gain;
-		const rivals = race.finishers.filter((d) => d !== driver).map((d) => race.cums[d][totalLaps]);
+		const rivals = race.rivalTotals.filter((r) => r.driver !== driver).map((r) => r.total);
 		const rank = (total) => 1 + rivals.filter((v) => v < total).length;
 		const deltas = edited.cums.map((c, i) => [i + 1, c - baseline.cums[i]]);
 		return {

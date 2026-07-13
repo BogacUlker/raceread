@@ -1,13 +1,13 @@
 import { api } from '$lib/api.js';
 
-export async function load({ params, fetch }) {
+export async function load({ params, fetch, parent }) {
 	const id = params.id;
 
-	const [raceInfo, laps, strategy, races] = await Promise.all([
+	const [raceInfo, laps, strategy, { races }] = await Promise.all([
 		api(`/api/races/${id}`, fetch),
 		api(`/api/races/${id}/laps`, fetch),
 		api(`/api/races/${id}/strategy`, fetch),
-		api('/api/races', fetch),
+		parent(), // root layout already loads /api/races
 	]);
 
 	let calendar = [];

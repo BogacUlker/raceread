@@ -37,6 +37,19 @@
 		return out;
 	});
 	let yTicks = $derived([0, 0.25, 0.5, 0.75, 1].map(f => Math.round(maxPts * f)));
+	// right-edge labels: nudge apart when point totals nearly coincide
+	let labelY = $derived.by(() => {
+		const MIN = 11;
+		const items = chartDrivers.map((d) => ({ code: d.code, y: y(d.points) + 4 })).sort((a, b) => a.y - b.y);
+		for (let i = 1; i < items.length; i++) {
+			if (items[i].y - items[i - 1].y < MIN) items[i].y = items[i - 1].y + MIN;
+		}
+		for (let i = items.length - 1; i >= 0; i--) {
+			const limit = i === items.length - 1 ? H - MB : items[i + 1].y - MIN;
+			if (items[i].y > limit) items[i].y = limit;
+		}
+		return Object.fromEntries(items.map((it) => [it.code, it.y]));
+	});
 
 	let hovered = $state(null);
 
@@ -90,7 +103,7 @@
 					/>
 					<text
 						x={x(rounds) + 8}
-						y={y(d.points) + 4}
+						y={labelY[d.code] ?? y(d.points) + 4}
 						class="st__line-label"
 						fill={tc(d.team)}
 						opacity={hovered && hovered !== d.code ? 0.2 : 1}

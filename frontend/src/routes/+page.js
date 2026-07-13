@@ -1,7 +1,8 @@
 import { api } from '$lib/api.js';
 
-export async function load({ fetch }) {
-	const races = await api('/api/races', fetch);
+export async function load({ fetch, parent }) {
+	// the root layout already loads /api/races - reuse it instead of refetching
+	const { races } = await parent();
 
 	// Season calendar (served from data/calendar.json, sourced from Jolpica)
 	let calendar = [];
