@@ -1,17 +1,25 @@
 {
   "season": 2026,
-  "rounds_completed": 9,
+  "rounds_completed": 10,
   "drivers": [
     {
       "position": 1,
       "code": "ANT",
       "name": "Andrea Kimi Antonelli",
       "team": "Mercedes",
-      "points": 179.0,
-      "wins": 5
+      "points": 204.0,
+      "wins": 6
     },
     {
       "position": 2,
+      "code": "HAM",
+      "name": "Lewis Hamilton",
+      "team": "Ferrari",
+      "points": 159.0,
+      "wins": 1
+    },
+    {
+      "position": 3,
       "code": "RUS",
       "name": "George Russell",
       "team": "Mercedes",
@@ -19,19 +27,11 @@
       "wins": 2
     },
     {
-      "position": 3,
-      "code": "HAM",
-      "name": "Lewis Hamilton",
-      "team": "Ferrari",
-      "points": 147.0,
-      "wins": 1
-    },
-    {
       "position": 4,
       "code": "LEC",
       "name": "Charles Leclerc",
       "team": "Ferrari",
-      "points": 108.0,
+      "points": 126.0,
       "wins": 1
     },
     {
@@ -39,7 +39,7 @@
       "code": "NOR",
       "name": "Lando Norris",
       "team": "McLaren",
-      "points": 97.0,
+      "points": 103.0,
       "wins": 0
     },
     {
@@ -47,7 +47,7 @@
       "code": "PIA",
       "name": "Oscar Piastri",
       "team": "McLaren",
-      "points": 82.0,
+      "points": 92.0,
       "wins": 0
     },
     {
@@ -55,7 +55,7 @@
       "code": "VER",
       "name": "Max Verstappen",
       "team": "Red Bull Racing",
-      "points": 76.0,
+      "points": 91.0,
       "wins": 0
     },
     {
@@ -63,7 +63,7 @@
       "code": "HAD",
       "name": "Isack Hadjar",
       "team": "Red Bull Racing",
-      "points": 52.0,
+      "points": 60.0,
       "wins": 0
     },
     {
@@ -87,22 +87,22 @@
       "code": "LIN",
       "name": "Arvid Lindblad",
       "team": "Racing Bulls",
-      "points": 20.0,
+      "points": 22.0,
       "wins": 0
     },
     {
       "position": 12,
-      "code": "BEA",
-      "name": "Oliver Bearman",
-      "team": "Haas F1 Team",
-      "points": 18.0,
+      "code": "COL",
+      "name": "Franco Colapinto",
+      "team": "Alpine",
+      "points": 19.0,
       "wins": 0
     },
     {
       "position": 13,
-      "code": "COL",
-      "name": "Franco Colapinto",
-      "team": "Alpine",
+      "code": "BEA",
+      "name": "Oliver Bearman",
+      "team": "Haas F1 Team",
       "points": 18.0,
       "wins": 0
     },
@@ -111,7 +111,7 @@
       "code": "BOR",
       "name": "Gabriel Bortoleto",
       "team": "Audi",
-      "points": 6.0,
+      "points": 10.0,
       "wins": 0
     },
     {
@@ -183,37 +183,37 @@
     {
       "position": 1,
       "name": "Mercedes",
-      "points": 333.0,
-      "wins": 7
+      "points": 358.0,
+      "wins": 8
     },
     {
       "position": 2,
       "name": "Ferrari",
-      "points": 255.0,
+      "points": 285.0,
       "wins": 2
     },
     {
       "position": 3,
       "name": "McLaren",
-      "points": 179.0,
+      "points": 195.0,
       "wins": 0
     },
     {
       "position": 4,
       "name": "Red Bull Racing",
-      "points": 128.0,
+      "points": 151.0,
       "wins": 0
     },
     {
       "position": 5,
       "name": "Alpine",
-      "points": 60.0,
+      "points": 61.0,
       "wins": 0
     },
     {
       "position": 6,
       "name": "Racing Bulls",
-      "points": 59.0,
+      "points": 61.0,
       "wins": 0
     },
     {
@@ -231,7 +231,7 @@
     {
       "position": 9,
       "name": "Audi",
-      "points": 6.0,
+      "points": 10.0,
       "wins": 0
     },
     {
@@ -481,6 +481,33 @@
         "BEA": 18.0,
         "COL": 18.0,
         "BOR": 6.0,
+        "SAI": 6.0,
+        "ALB": 5.0,
+        "OCO": 3.0,
+        "ALO": 1.0,
+        "HUL": 0.0,
+        "BOT": 0.0,
+        "PER": 0.0,
+        "STR": 0.0
+      }
+    },
+    {
+      "round": 10,
+      "points": {
+        "ANT": 204.0,
+        "HAM": 159.0,
+        "RUS": 154.0,
+        "LEC": 126.0,
+        "NOR": 103.0,
+        "PIA": 92.0,
+        "VER": 91.0,
+        "HAD": 60.0,
+        "GAS": 42.0,
+        "LAW": 39.0,
+        "LIN": 22.0,
+        "COL": 19.0,
+        "BEA": 18.0,
+        "BOR": 10.0,
         "SAI": 6.0,
         "ALB": 5.0,
         "OCO": 3.0,
