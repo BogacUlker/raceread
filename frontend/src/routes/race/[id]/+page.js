@@ -27,7 +27,7 @@ export async function load({ params, fetch, parent }) {
 
 	let radio = null;
 	try {
-		radio = await api(`/api/races/${id}/radio?v=2`, fetch);
+		radio = await api(`/api/races/${id}/radio?v=3`, fetch);
 	} catch (e) { /* no radio for this race */ }
 
 	const optionalResults = await Promise.allSettled([

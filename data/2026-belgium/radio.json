@@ -1,179 +1,583 @@
 {
-  "session_key": 11334,
-  "clips": [
+ "session_key": 11334,
+ "clips": [
+  {
+   "driver": "OCO",
+   "lap": null,
+   "date": "2026-07-19T12:54:09.219000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/OCO_31_20260719_145336.mp3",
+   "segments": [
     {
-      "driver": "OCO",
-      "lap": null,
-      "date": "2026-07-19T12:54:09.219000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/OCO_31_20260719_145336.mp3"
+     "s": 0.0,
+     "e": 9.4,
+     "t": "So we expect a very small shower five minutes after the race start but it",
+     "tr": "Yarış startından beş dakika sonra çok küçük bir sağanak bekliyoruz ama"
     },
     {
-      "driver": "SAI",
-      "lap": null,
-      "date": "2026-07-19T12:55:40.626000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/SAI_55_20260719_145529.mp3"
-    },
-    {
-      "driver": "HAM",
-      "lap": 3,
-      "date": "2026-07-19T13:08:52.688000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/HAM_44_20260719_150827.mp3"
-    },
-    {
-      "driver": "PIA",
-      "lap": 8,
-      "date": "2026-07-19T13:21:05.206000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/PIA_81_20260719_152048.mp3"
-    },
-    {
-      "driver": "HUL",
-      "lap": 9,
-      "date": "2026-07-19T13:22:05.412000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/HUL_27_20260719_152201.mp3"
-    },
-    {
-      "driver": "HUL",
-      "lap": 9,
-      "date": "2026-07-19T13:22:35.527000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/HUL_27_20260719_152208.mp3"
-    },
-    {
-      "driver": "HAM",
-      "lap": 13,
-      "date": "2026-07-19T13:30:12.462000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/HAM_44_20260719_152954.mp3"
-    },
-    {
-      "driver": "ANT",
-      "lap": 17,
-      "date": "2026-07-19T13:37:49.572000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/ANT_12_20260719_153716.mp3"
-    },
-    {
-      "driver": "HAM",
-      "lap": 18,
-      "date": "2026-07-19T13:39:50.721000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/HAM_44_20260719_153914.mp3"
-    },
-    {
-      "driver": "HAM",
-      "lap": 20,
-      "date": "2026-07-19T13:42:55.819000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/HAM_44_20260719_154223.mp3"
-    },
-    {
-      "driver": "HAM",
-      "lap": 21,
-      "date": "2026-07-19T13:45:56.495000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/HAM_44_20260719_154537.mp3"
-    },
-    {
-      "driver": "HAM",
-      "lap": 24,
-      "date": "2026-07-19T13:52:02.668000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/HAM_44_20260719_155123.mp3"
-    },
-    {
-      "driver": "NOR",
-      "lap": 30,
-      "date": "2026-07-19T14:01:41.051000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/NOR_1_20260719_160127.mp3"
-    },
-    {
-      "driver": "LEC",
-      "lap": 31,
-      "date": "2026-07-19T14:04:45.366000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/LEC_16_20260719_160412.mp3"
-    },
-    {
-      "driver": "ANT",
-      "lap": 40,
-      "date": "2026-07-19T14:20:58.099000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/ANT_12_20260719_162042.mp3"
-    },
-    {
-      "driver": "PIA",
-      "lap": 41,
-      "date": "2026-07-19T14:22:00.900000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/PIA_81_20260719_162145.mp3"
-    },
-    {
-      "driver": "ANT",
-      "lap": 45,
-      "date": "2026-07-19T14:29:37.957000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/ANT_12_20260719_162911.mp3"
-    },
-    {
-      "driver": "LEC",
-      "lap": 44,
-      "date": "2026-07-19T14:30:38.212000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/LEC_16_20260719_163006.mp3"
-    },
-    {
-      "driver": "VER",
-      "lap": 44,
-      "date": "2026-07-19T14:31:08.454000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/VER_3_20260719_163033.mp3"
-    },
-    {
-      "driver": "SAI",
-      "lap": 44,
-      "date": "2026-07-19T14:32:09.424000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/SAI_55_20260719_163145.mp3"
-    },
-    {
-      "driver": "HAM",
-      "lap": 44,
-      "date": "2026-07-19T14:32:09.604000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/HAM_44_20260719_163152.mp3"
-    },
-    {
-      "driver": "HAM",
-      "lap": 44,
-      "date": "2026-07-19T14:32:40.246000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/HAM_44_20260719_163216.mp3"
-    },
-    {
-      "driver": "LEC",
-      "lap": 44,
-      "date": "2026-07-19T14:32:40.449000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/LEC_16_20260719_163216.mp3"
-    },
-    {
-      "driver": "HAM",
-      "lap": 44,
-      "date": "2026-07-19T14:32:40.449000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/HAM_44_20260719_163219.mp3"
-    },
-    {
-      "driver": "ANT",
-      "lap": 45,
-      "date": "2026-07-19T14:33:43.766000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/ANT_12_20260719_163325.mp3"
-    },
-    {
-      "driver": "HAD",
-      "lap": 44,
-      "date": "2026-07-19T14:34:05.928000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/HAD_6_20260719_163403.mp3"
-    },
-    {
-      "driver": "BOR",
-      "lap": 44,
-      "date": "2026-07-19T14:34:05.928000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/BOR_5_20260719_163412.mp3"
-    },
-    {
-      "driver": "LIN",
-      "lap": 44,
-      "date": "2026-07-19T14:34:05.928000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/LIN_41_20260719_163621.mp3"
-    },
-    {
-      "driver": "BEA",
-      "lap": 44,
-      "date": "2026-07-19T14:34:05.928000+00:00",
-      "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/BEA_87_20260719_163702.mp3"
+     "s": 9.4,
+     "e": 11.9,
+     "t": "should last about four minutes and very light rain.",
+     "tr": "yaklaşık dört dakika sürmesi lazım, çok hafif bir yağmur."
     }
-  ]
+   ]
+  },
+  {
+   "driver": "SAI",
+   "lap": null,
+   "date": "2026-07-19T12:55:40.626000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/SAI_55_20260719_145529.mp3"
+  },
+  {
+   "driver": "HAM",
+   "lap": 3,
+   "date": "2026-07-19T13:08:52.688000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/HAM_44_20260719_150827.mp3",
+   "segments": [
+    {
+     "s": 0.0,
+     "e": 7.0,
+     "t": "Car crossed over in front of me. I was right behind another car so I had no front end.",
+     "tr": "Araç önümde aniden kesti. Başka bir aracın hemen arkasındaydım, ön tutuş yoktu."
+    }
+   ]
+  },
+  {
+   "driver": "PIA",
+   "lap": 8,
+   "date": "2026-07-19T13:21:05.206000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/PIA_81_20260719_152048.mp3"
+  },
+  {
+   "driver": "HUL",
+   "lap": 9,
+   "date": "2026-07-19T13:22:05.412000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/HUL_27_20260719_152201.mp3"
+  },
+  {
+   "driver": "HUL",
+   "lap": 9,
+   "date": "2026-07-19T13:22:35.527000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/HUL_27_20260719_152208.mp3"
+  },
+  {
+   "driver": "HAM",
+   "lap": 13,
+   "date": "2026-07-19T13:30:12.462000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/HAM_44_20260719_152954.mp3",
+   "segments": [
+    {
+     "s": 0.0,
+     "e": 4.4,
+     "t": "I'm quicker than Charles, I've got more pace.",
+     "tr": "Charles'tan daha hızlıyım, bende daha fazla tempo var."
+    }
+   ]
+  },
+  {
+   "driver": "ANT",
+   "lap": 17,
+   "date": "2026-07-19T13:37:49.572000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/ANT_12_20260719_153716.mp3",
+   "segments": [
+    {
+     "s": 0.0,
+     "e": 9.5,
+     "t": "Your tyres are looking good Kimi, better than others so you can afford to use them.",
+     "tr": "Lastiklerin iyi görünüyor Kimi, diğerlerinden daha iyi, yani rahatça zorlayabilirsin."
+    }
+   ]
+  },
+  {
+   "driver": "HAM",
+   "lap": 18,
+   "date": "2026-07-19T13:39:50.721000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/HAM_44_20260719_153914.mp3",
+   "segments": [
+    {
+     "s": 0.0,
+     "e": 3.8,
+     "t": "What lap are we on?",
+     "tr": "Kaçıncı turdayız?"
+    },
+    {
+     "s": 4.6,
+     "e": 5.7,
+     "t": "We are on lap 18.",
+     "tr": "18. turdayız."
+    },
+    {
+     "s": 6.5,
+     "e": 7.2,
+     "t": "Why the hell?",
+     "tr": "Ne diye ya?"
+    },
+    {
+     "s": 9.5,
+     "e": 11.7,
+     "t": "I told you what strategy I wanted to do.",
+     "tr": "Hangi stratejiyi istediğimi size söylemiştim."
+    },
+    {
+     "s": 12.2,
+     "e": 13.8,
+     "t": "Just to put me out with everyone else now.",
+     "tr": "Şimdi beni herkesle aynı anda dışarı attınız."
+    },
+    {
+     "s": 14.7,
+     "e": 15.5,
+     "t": "We are on plan B.",
+     "tr": "B planındayız."
+    }
+   ]
+  },
+  {
+   "driver": "HAM",
+   "lap": 20,
+   "date": "2026-07-19T13:42:55.819000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/HAM_44_20260719_154223.mp3",
+   "segments": [
+    {
+     "s": 0.0,
+     "e": 9.5,
+     "t": "We are opening the gap to Piastri and we need to serve a 5 second penalty, that's why.",
+     "tr": "Piastri'ye farkı açıyoruz çünkü 5 saniyelik cezayı çekmemiz gerekiyor, sebebi bu."
+    }
+   ]
+  },
+  {
+   "driver": "HAM",
+   "lap": 21,
+   "date": "2026-07-19T13:45:56.495000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/HAM_44_20260719_154537.mp3",
+   "segments": [
+    {
+     "s": 0.0,
+     "e": 3.6,
+     "t": "Is he okay?",
+     "tr": "O iyi mi?"
+    },
+    {
+     "s": 3.8,
+     "e": 5.2,
+     "t": "He's okay, all okay.",
+     "tr": "İyi, her şey yolunda."
+    }
+   ]
+  },
+  {
+   "driver": "HAM",
+   "lap": 24,
+   "date": "2026-07-19T13:52:02.668000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/HAM_44_20260719_155123.mp3"
+  },
+  {
+   "driver": "NOR",
+   "lap": 30,
+   "date": "2026-07-19T14:01:41.051000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/NOR_1_20260719_160127.mp3",
+   "segments": [
+    {
+     "s": 0.0,
+     "e": 9.5,
+     "t": "And Lando, I don't want any yo-yo racing with Oscar, I'll explain why later.",
+     "tr": "Lando, Oscar'la yo-yo yarışı istemiyorum, nedenini sonra açıklarım."
+    }
+   ]
+  },
+  {
+   "driver": "LEC",
+   "lap": 31,
+   "date": "2026-07-19T14:04:45.366000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/LEC_16_20260719_160412.mp3"
+  },
+  {
+   "driver": "ANT",
+   "lap": 40,
+   "date": "2026-07-19T14:20:58.099000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/ANT_12_20260719_162042.mp3",
+   "segments": [
+    {
+     "s": 0.0,
+     "e": 5.0,
+     "t": "Remember track limits.",
+     "tr": "Pist sınırlarını unutma."
+    },
+    {
+     "s": 5.0,
+     "e": 10.0,
+     "t": "Two, we have two already, so we don't want any more.",
+     "tr": "İki, zaten iki ihlalimiz var, daha fazlasını istemiyoruz."
+    }
+   ]
+  },
+  {
+   "driver": "PIA",
+   "lap": 41,
+   "date": "2026-07-19T14:22:00.900000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/PIA_81_20260719_162145.mp3",
+   "segments": [
+    {
+     "s": 0.0,
+     "e": 6.7,
+     "t": "Hamilton under investigation post-race for unsafe release.",
+     "tr": "Hamilton yarış sonrası güvensiz bırakma soruşturmasında."
+    },
+    {
+     "s": 6.9,
+     "e": 8.2,
+     "t": "We'll stay within five seconds.",
+     "tr": "Beş saniyenin içinde kalacağız."
+    },
+    {
+     "s": 8.4,
+     "e": 10.5,
+     "t": "Hamilton under investigation post-race.",
+     "tr": "Hamilton yarış sonrası soruşturmada."
+    }
+   ]
+  },
+  {
+   "driver": "ANT",
+   "lap": 45,
+   "date": "2026-07-19T14:29:37.957000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/ANT_12_20260719_162911.mp3",
+   "segments": [
+    {
+     "s": 0.0,
+     "e": 4.0,
+     "t": "Nice work Kimi, well done there mate.",
+     "tr": "İyi iş Kimi, aferin sana dostum."
+    },
+    {
+     "s": 4.0,
+     "e": 6.0,
+     "t": "That's cool!",
+     "tr": "Harika bir şey bu!"
+    },
+    {
+     "s": 6.0,
+     "e": 8.0,
+     "t": "Good effort mate.",
+     "tr": "İyi mücadeleydi dostum."
+    },
+    {
+     "s": 8.0,
+     "e": 10.0,
+     "t": "Thank you so much guys.",
+     "tr": "Çok teşekkürler çocuklar."
+    },
+    {
+     "s": 10.0,
+     "e": 12.0,
+     "t": "Yeah well done mate. Thank you.",
+     "tr": "Evet, aferin dostum. Teşekkürler."
+    },
+    {
+     "s": 12.0,
+     "e": 14.0,
+     "t": "Yeah it was a busy race that one, but well done.",
+     "tr": "Evet, yoğun bir yarıştı bu, ama aferin."
+    },
+    {
+     "s": 14.0,
+     "e": 16.0,
+     "t": "Kept cool head.",
+     "tr": "Soğukkanlılığını korudun."
+    }
+   ]
+  },
+  {
+   "driver": "LEC",
+   "lap": 44,
+   "date": "2026-07-19T14:30:38.212000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/LEC_16_20260719_163006.mp3",
+   "segments": [
+    {
+     "s": 0.0,
+     "e": 3.0,
+     "t": "P2, good race. Charles, well done.",
+     "tr": "P2, iyi yarış. Charles, aferin."
+    },
+    {
+     "s": 3.0,
+     "e": 5.0,
+     "t": "Good one, Charles. Good job.",
+     "tr": "İyiydi Charles. İyi iş."
+    },
+    {
+     "s": 5.0,
+     "e": 11.0,
+     "t": "I was close, but only a bit lucky with the VSC.",
+     "tr": "Yakındım ama VSC'de sadece biraz şanslıydım."
+    },
+    {
+     "s": 11.0,
+     "e": 14.0,
+     "t": "That was a good one.",
+     "tr": "İyi bir yarıştı."
+    }
+   ]
+  },
+  {
+   "driver": "VER",
+   "lap": 44,
+   "date": "2026-07-19T14:31:08.454000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/VER_3_20260719_163033.mp3",
+   "segments": [
+    {
+     "s": 0.0,
+     "e": 8.0,
+     "t": "Yeah, good job guys. It's a nice podium. We're unlucky with that VSC, but it's all good.",
+     "tr": "Evet, iyi iş çocuklar. Güzel bir podyum. O VSC'de şanssızdık ama sorun değil."
+    },
+    {
+     "s": 8.0,
+     "e": 12.0,
+     "t": "Well done Max. The pace is getting better. You were very strong as you say.",
+     "tr": "Aferin Max. Tempo giderek iyileşiyor. Dediğin gibi çok güçlüydün."
+    },
+    {
+     "s": 12.0,
+     "e": 18.0,
+     "t": "Unlucky for P2, but it's close enough to the top and we have more coming.",
+     "tr": "P2 için şanssızlık ama zirveye yeterince yakınız ve devamı gelecek."
+    },
+    {
+     "s": 18.0,
+     "e": 21.0,
+     "t": "So thanks for bearing with us.",
+     "tr": "Bize sabrettiğin için teşekkürler."
+    },
+    {
+     "s": 21.0,
+     "e": 28.0,
+     "t": "Yeah, exactly that. It's a tiny bit unlucky, but it's still a good podium.",
+     "tr": "Evet, aynen öyle. Birazcık şanssızlık ama yine de iyi bir podyum."
+    }
+   ]
+  },
+  {
+   "driver": "SAI",
+   "lap": 44,
+   "date": "2026-07-19T14:32:09.424000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/SAI_55_20260719_163145.mp3"
+  },
+  {
+   "driver": "HAM",
+   "lap": 44,
+   "date": "2026-07-19T14:32:09.604000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/HAM_44_20260719_163152.mp3"
+  },
+  {
+   "driver": "HAM",
+   "lap": 44,
+   "date": "2026-07-19T14:32:40.246000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/HAM_44_20260719_163216.mp3"
+  },
+  {
+   "driver": "LEC",
+   "lap": 44,
+   "date": "2026-07-19T14:32:40.449000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/LEC_16_20260719_163216.mp3"
+  },
+  {
+   "driver": "HAM",
+   "lap": 44,
+   "date": "2026-07-19T14:32:40.449000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/HAM_44_20260719_163219.mp3"
+  },
+  {
+   "driver": "ANT",
+   "lap": 45,
+   "date": "2026-07-19T14:33:43.766000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/ANT_12_20260719_163325.mp3"
+  },
+  {
+   "driver": "HAD",
+   "lap": 44,
+   "date": "2026-07-19T14:34:05.928000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/HAD_6_20260719_163403.mp3",
+   "segments": [
+    {
+     "s": 0.0,
+     "e": 2.8,
+     "t": "Good pace today as well mate, good pace.",
+     "tr": "Bugün de iyi tempo dostum, iyi tempo."
+    },
+    {
+     "s": 2.8,
+     "e": 4.8,
+     "t": "Yeah, nothing I could do more honestly.",
+     "tr": "Evet, açıkçası yapabileceğim başka bir şey yoktu."
+    },
+    {
+     "s": 4.8,
+     "e": 7.8,
+     "t": "So all that, it's a bit frustrating because...",
+     "tr": "Yani tüm bunlar biraz sinir bozucu çünkü..."
+    },
+    {
+     "s": 10.8,
+     "e": 13.3,
+     "t": "Yeah, could be on this podium so...",
+     "tr": "Evet, o podyumda olabilirdik yani..."
+    },
+    {
+     "s": 16.7,
+     "e": 19.7,
+     "t": "You did what you could today, good man.",
+     "tr": "Bugün elinden geleni yaptın, aferin sana."
+    }
+   ]
+  },
+  {
+   "driver": "BOR",
+   "lap": 44,
+   "date": "2026-07-19T14:34:05.928000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/BOR_5_20260719_163412.mp3",
+   "segments": [
+    {
+     "s": 8.9,
+     "e": 13.6,
+     "t": "What a race you have driven, Gabi, what a race, unbelievable.",
+     "tr": "Ne yarış sürdün ama Gabi, ne yarış, inanılmaz."
+    },
+    {
+     "s": 13.7,
+     "e": 14.5,
+     "t": "I go backwards?",
+     "tr": "Geri geri mi gideyim?"
+    },
+    {
+     "s": 15.3,
+     "e": 18.5,
+     "t": "Yes, yes, yes, coming to the pits, drive it slowly.",
+     "tr": "Evet, evet, evet, pite gelirken yavaş sür."
+    },
+    {
+     "s": 20.3,
+     "e": 23.1,
+     "t": "I mean, what a race, amazing driving.",
+     "tr": "Yani, ne yarış ama, muhteşem sürüş."
+    },
+    {
+     "s": 24.2,
+     "e": 26.9,
+     "t": "Mega job, mega job, mega quality.",
+     "tr": "Mega iş, mega iş, mega kalite."
+    },
+    {
+     "s": 26.9,
+     "e": 29.5,
+     "t": "Thank you very much.",
+     "tr": "Çok teşekkür ederim."
+    },
+    {
+     "s": 30.0,
+     "e": 35.0,
+     "t": "Ok, fantastic job, really well deserved.",
+     "tr": "Tamam, harika iş, gerçekten hak edilmiş."
+    },
+    {
+     "s": 35.0,
+     "e": 38.0,
+     "t": "You did a fantastic job to put out a fight,",
+     "tr": "Mücadele ortaya koyarak harika bir iş çıkardın,"
+    },
+    {
+     "s": 38.0,
+     "e": 40.0,
+     "t": "and a very good fight out there,",
+     "tr": "dışarıda çok iyi bir mücadeleydi,"
+    },
+    {
+     "s": 40.0,
+     "e": 42.0,
+     "t": "and great job for the team on the pit stop,",
+     "tr": "ve pit stopta takım adına harika iş,"
+    },
+    {
+     "s": 42.0,
+     "e": 44.0,
+     "t": "double stack getting you and Nico",
+     "tr": "double stack ile seni ve Nico'yu"
+    },
+    {
+     "s": 44.0,
+     "e": 46.0,
+     "t": "in a good chance for double points.",
+     "tr": "çifte puan için iyi bir konuma getirdik."
+    },
+    {
+     "s": 46.0,
+     "e": 49.0,
+     "t": "Yes, thanks everyone, what a weekend.",
+     "tr": "Evet, herkese teşekkürler, ne hafta sonu ama."
+    },
+    {
+     "s": 49.0,
+     "e": 51.0,
+     "t": "Amazing.",
+     "tr": "İnanılmaz."
+    },
+    {
+     "s": 54.0,
+     "e": 56.0,
+     "t": "And remember,",
+     "tr": "Ve unutma,"
+    },
+    {
+     "s": 56.0,
+     "e": 60.0,
+     "t": "Full switch off when you're around 200m.",
+     "tr": "200 metre civarındayken tam kapatma yap."
+    },
+    {
+     "s": 60.0,
+     "e": 63.0,
+     "t": "And again, what a fight you put out there today.",
+     "tr": "Ve tekrar, bugün ortaya ne mücadele koydun ama."
+    },
+    {
+     "s": 63.0,
+     "e": 66.0,
+     "t": "Really well deserved P8. Fantastic job mate.",
+     "tr": "Fazlasıyla hak edilmiş bir P8. Harika iş dostum."
+    },
+    {
+     "s": 69.0,
+     "e": 71.0,
+     "t": "Fantastic. Great job.",
+     "tr": "Harika. Süper iş."
+    }
+   ]
+  },
+  {
+   "driver": "LIN",
+   "lap": 44,
+   "date": "2026-07-19T14:34:05.928000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/LIN_41_20260719_163621.mp3",
+   "segments": [
+    {
+     "s": 0.0,
+     "e": 4.0,
+     "t": "Yeah, thank you everyone. I really tried.",
+     "tr": "Evet, herkese teşekkürler. Gerçekten denedim."
+    },
+    {
+     "s": 4.0,
+     "e": 9.0,
+     "t": "It's a shame about the VSC, but regardless, a really good weekend again, so thank you for the work.",
+     "tr": "VSC olayı üzücü ama yine de gerçekten iyi bir hafta sonuydu, emeğiniz için teşekkürler."
+    }
+   ]
+  },
+  {
+   "driver": "BEA",
+   "lap": 44,
+   "date": "2026-07-19T14:34:05.928000+00:00",
+   "url": "https://livetiming.formula1.com/static/2026/2026-07-19_Belgian_Grand_Prix/2026-07-19_Race/TeamRadio/BEA_87_20260719_163702.mp3"
+  }
+ ]
 }
