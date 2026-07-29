@@ -110,6 +110,17 @@ def _race_extras(race_id: str) -> tuple:
     except (FileNotFoundError, AttributeError):
         pass
 
+    try:
+        results = load_json(str(race_dir / "results.json"))
+        # winner_margin_s is null when P2 finished a lap down; leave it unset
+        # so the UI can say so rather than print a meaningless number.
+        if results.get("winner_margin_s") is not None:
+            extras["winner_margin_s"] = results["winner_margin_s"]
+        if results.get("runner_up"):
+            extras["runner_up"] = results["runner_up"]
+    except (FileNotFoundError, AttributeError):
+        pass
+
     return tuple(extras.items())
 
 

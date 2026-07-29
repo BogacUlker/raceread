@@ -17,6 +17,9 @@ class RaceInfo(BaseModel):
     sc_periods: int | None = None
     vsc_periods: int | None = None
     validation_confidence: float | None = None
+    # Official classification gap from results.json; None when P2 was lapped
+    winner_margin_s: float | None = None
+    runner_up: str | None = None
 
 
 class LapData(BaseModel):

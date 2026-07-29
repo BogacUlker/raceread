@@ -174,13 +174,13 @@
 		return { main: parts.join(' + '), sub: e.total + ($locale === 'tr' ? ' tur' : ' laps') };
 	});
 
-	let winnerMargin = $derived.by(() => {
-		if (!delta?.drivers?.length || !delta?.matrix?.length) return null;
-		const wi = delta.drivers.indexOf(raceInfo.winner);
-		if (wi < 0) return null;
-		const second = delta.matrix[wi]?.find((v, i) => i !== wi && v !== null && v !== 0);
-		return second ? Math.abs(second).toFixed(3) : null;
-	});
+	// Official finishing gap to P2, from results.json via the races API.
+	// This used to read the delta matrix, but that holds average *pace* deltas
+	// in alphabetical driver order, so it always reported the winner's pace
+	// advantage over whoever sorted first, never the gap to second place.
+	let winnerMargin = $derived(
+		raceInfo.winner_margin_s != null ? raceInfo.winner_margin_s.toFixed(3) : null
+	);
 
 	// Fastest lap across all drivers (backend extras carry full precision;
 	// the laps API rounds time_s, so prefer raceInfo when present)
@@ -383,7 +383,7 @@
 				<div class="pd-ov-card">
 					<p class="pd-ov-label">{$locale === 'tr' ? 'Kazananın Farkı' : 'Winner Margin'}</p>
 					<p class="pd-ov-value">{winnerMargin ? '+' + winnerMargin + 's' : 'N/A'}</p>
-					<p class="pd-ov-sub">{raceInfo.winner} vs P2</p>
+					<p class="pd-ov-sub">{raceInfo.winner} vs {raceInfo.runner_up ?? 'P2'}</p>
 				</div>
 				<div class="pd-ov-card">
 					<p class="pd-ov-label">{$locale === 'tr' ? 'En Hızlı Tur' : 'Fastest Lap'}</p>
