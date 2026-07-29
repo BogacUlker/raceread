@@ -6,8 +6,8 @@
       "chart_type": "strategy",
       "category": "race_insight",
       "severity": "high",
-      "text_en": "Norris won the Hungarian Grand Prix after leading 34 of the 70 laps, but he only took the lead for good on Lap 46. Piastri led 25 laps and Antonelli 10 as the three of them traded the front on different pit windows. Norris was the fastest man on track all afternoon, averaging 1:24.428 on green laps, and finished 15.080s clear of Verstappen.",
-      "text_tr": "Norris, Macaristan Grand Prix'sini 70 turun 34'ünde liderlik ederek kazandı ama liderliği kalıcı olarak ancak 46. turda aldı. Piastri 25, Antonelli 10 tur önde gitti; üçü farklı pit pencerelerinde önü sürekli el değiştirdi. Norris bütün öğleden sonra pistin en hızlısıydı, yeşil turlarda 1:24.428 ortalama tuttu ve yarışı Verstappen'in 15.080 saniye önünde bitirdi."
+      "text_en": "Norris won the Hungarian Grand Prix after leading 34 of the 70 laps, but he only took the lead for good on Lap 46. Piastri led 25 laps and Antonelli 10 as the three of them traded the front on different pit windows. Norris was the fastest man on track all afternoon with a median lap of 1:24.496, and finished 15.080s clear of Verstappen.",
+      "text_tr": "Norris, Macaristan Grand Prix'sini 70 turun 34'ünde liderlik ederek kazandı ama liderliği kalıcı olarak ancak 46. turda aldı. Piastri 25, Antonelli 10 tur önde gitti; üçü farklı pit pencerelerinde önü sürekli el değiştirdi. Norris bütün öğleden sonra pistin en hızlısıydı, 1:24.496'lık medyan turla ve yarışı Verstappen'in 15.080 saniye önünde bitirdi."
     },
     {
       "driver": null,
@@ -24,8 +24,8 @@
       "chart_type": "delta",
       "category": "race_insight",
       "severity": "medium",
-      "text_en": "The average green lap pace shows how tight the top five were once traffic and pit laps are stripped out: Norris 1:24.428, Hamilton +0.291, Leclerc +0.320, Verstappen +0.397 and Antonelli +0.444. Piastri sat +0.607 back before his retirement. Nothing separated the front of this race except tyre state and track position.",
-      "text_tr": "Trafik ve pit turları ayıklandığında ortalama yeşil tur temposu ilk beşin ne kadar sıkışık olduğunu gösteriyor: Norris 1:24.428, Hamilton +0.291, Leclerc +0.320, Verstappen +0.397 ve Antonelli +0.444. Piastri emekli olmadan önce +0.607 geride duruyordu. Bu yarışın önünü ayıran tek şey lastik durumu ve pist pozisyonuydu."
+      "text_en": "Median lap time shows how tight the front of this race really was: Norris 1:24.496, Hamilton +0.247, Leclerc +0.380, Piastri +0.419, Antonelli +0.458 and Verstappen +0.577. Six drivers inside six tenths a lap, on a circuit where passing barely exists. Nothing separated them except tyre state and track position.",
+      "text_tr": "Medyan tur zamanı bu yarışın önünün gerçekte ne kadar sıkışık olduğunu gösteriyor: Norris 1:24.496, Hamilton +0.247, Leclerc +0.380, Piastri +0.419, Antonelli +0.458 ve Verstappen +0.577. Geçişin neredeyse hiç olmadığı bir pistte altı pilot tur başına 0.6 saniyenin içinde. Onları ayıran tek şey lastik durumu ve pist pozisyonuydu."
     },
     {
       "driver": null,
@@ -78,8 +78,8 @@
       "chart_type": "pace",
       "category": "race_insight",
       "severity": "high",
-      "text_en": "Norris had the best average green lap pace of anyone at 1:24.428 across 62 clean laps. Hamilton was the closest at +0.291. That margin is what let McLaren spend an extra pit stop and still come out ahead.",
-      "text_tr": "Norris 62 temiz turda 1:24.428 ile sahanın en iyi ortalama yeşil tur temposunu tutturdu. En yakını +0.291 ile Hamilton'dı. McLaren'ın fazladan bir pit stop harcayıp yine de önde çıkmasını sağlayan şey bu farktı."
+      "text_en": "Norris had the best median lap time of anyone at 1:24.496 across 63 counted laps. Hamilton was the closest at +0.247. That margin is what let McLaren spend an extra pit stop and still come out ahead.",
+      "text_tr": "Norris, sayılan 63 turda 1:24.496 ile sahanın en iyi medyan tur zamanını tutturdu. En yakını +0.247 ile Hamilton'dı. McLaren'ın fazladan bir pit stop harcayıp yine de önde çıkmasını sağlayan şey bu farktı."
     },
     {
       "driver": "NOR",
@@ -105,8 +105,8 @@
       "chart_type": "pace",
       "category": "race_insight",
       "severity": "medium",
-      "text_en": "Verstappen's average green pace of +0.397 was only fourth best, and his fastest lap of 1:23.433 ranked eighth. He beat Antonelli, Leclerc and Hamilton on strategy and tyre management rather than outright speed.",
-      "text_tr": "Verstappen'in +0.397'lik ortalama yeşil tempo değeri yalnızca dördüncü en iyiydi ve 1:23.433'lük en hızlı turu sekizinci sıradaydı. Antonelli, Leclerc ve Hamilton'ı düz hızdan çok strateji ve lastik yönetimiyle geçti."
+      "text_en": "Verstappen's median lap of +0.577 was only sixth best and his fastest lap of 1:23.433 ranked eighth. He finished ahead of Antonelli, Leclerc and Hamilton on strategy and tyre management rather than outright speed, and the two-stop is what bought him the position.",
+      "text_tr": "Verstappen'in +0.577'lik medyan turu yalnızca altıncı en iyiydi ve 1:23.433'lük en hızlı turu sekizinci sıradaydı. Antonelli, Leclerc ve Hamilton'ın önünde bitirmesini düz hızdan çok strateji ve lastik yönetimi sağladı; o pozisyonu satın alan şey iki duraklı plandı."
     },
     {
       "driver": "VER",
@@ -141,8 +141,8 @@
       "chart_type": "pace",
       "category": "race_insight",
       "severity": "medium",
-      "text_en": "Antonelli's fastest lap of 1:22.415 was the third quickest of the race and his average green pace of +0.444 put him fifth. On a circuit where overtaking is this hard, third place from sixth on the opening lap was a strong return.",
-      "text_tr": "Antonelli'nin 1:22.415'lik en hızlı turu yarışın üçüncü en iyisiydi, +0.444'lük ortalama yeşil temposu ise onu beşinci sıraya koydu. Geçişin bu kadar zor olduğu bir pistte, açılış turundaki altıncılıktan üçüncülüğe çıkmak güçlü bir sonuçtu."
+      "text_en": "Antonelli's fastest lap of 1:22.415 was the third quickest of the race and his median lap of +0.458 put him fifth. On a circuit where overtaking is this hard, third place from sixth on the opening lap was a strong return.",
+      "text_tr": "Antonelli'nin 1:22.415'lik en hızlı turu yarışın üçüncü en iyisiydi, +0.458'lik medyan turu ise onu beşinci sıraya koydu. Geçişin bu kadar zor olduğu bir pistte, açılış turundaki altıncılıktan üçüncülüğe çıkmak güçlü bir sonuçtu."
     },
     {
       "driver": "LEC",
@@ -195,8 +195,8 @@
       "chart_type": "pace",
       "category": "race_insight",
       "severity": "medium",
-      "text_en": "Hamilton had the second best average green pace of the race at +0.291 behind Norris, and his 1:22.300 on Lap 59 was the second fastest lap. Three stops, on Laps 13, 30 and 56, kept him in that window all afternoon.",
-      "text_tr": "Hamilton, Norris'in ardından +0.291 ile yarışın ikinci en iyi ortalama yeşil temposuna sahipti ve 59. turdaki 1:22.300'ü ikinci en hızlı turdu. 13, 30 ve 56. turlardaki üç durak onu bütün öğleden sonra o pencerede tuttu."
+      "text_en": "Hamilton had the second best median lap of the race at +0.247 behind Norris, and his 1:22.300 on Lap 59 was the second fastest lap. Three stops, on Laps 13, 30 and 56, kept him in that window all afternoon.",
+      "text_tr": "Hamilton, Norris'in ardından +0.247 ile yarışın ikinci en iyi medyan turuna sahipti ve 59. turdaki 1:22.300'ü ikinci en hızlı turdu. 13, 30 ve 56. turlardaki üç durak onu bütün öğleden sonra o pencerede tuttu."
     },
     {
       "driver": "PIA",
@@ -231,8 +231,8 @@
       "chart_type": "pace",
       "category": "race_insight",
       "severity": "medium",
-      "text_en": "Russell's fastest lap of 1:22.589 was the fifth quickest of the afternoon and his average green pace of +0.931 was seventh. The raw speed was there, but starting the race effectively last among the frontrunners meant he finished 57.503s behind Norris.",
-      "text_tr": "Russell'ın 1:22.589'luk en hızlı turu öğleden sonranın beşinci en iyisiydi, +0.931'lik ortalama yeşil temposu ise yedinci. Ham hız oradaydı ama yarışa fiilen ön grubun en sonundan başlamak, Norris'in 57.503 saniye gerisinde bitirmesi anlamına geldi."
+      "text_en": "Russell's fastest lap of 1:22.589 was the fifth quickest of the afternoon and his median lap of +0.785 was seventh. The raw speed was there, but running the race effectively last among the frontrunners meant he finished 57.503s behind Norris.",
+      "text_tr": "Russell'ın 1:22.589'luk en hızlı turu öğleden sonranın beşinci en iyisiydi, +0.785'lik medyan turu ise yedinci. Ham hız oradaydı ama yarışı fiilen ön grubun en sonundan koşmak, Norris'in 57.503 saniye gerisinde bitirmesi anlamına geldi."
     },
     {
       "driver": "HAD",
