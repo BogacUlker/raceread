@@ -1,0 +1,284 @@
+{
+  "race_id": "2026-spain",
+  "annotations": [
+    {
+      "driver": null,
+      "lap": null,
+      "chart_type": "strategy",
+      "category": "race_insight",
+      "severity": "high",
+      "text_en": "Antonelli won the Spanish Grand Prix from P2 on the grid. He stopped under the Virtual Safety Car on Lap 14, sat behind Leclerc for 32 laps, took the lead on Lap 48 when the Ferrari finally pitted and beat Verstappen by 4.351s. He led only 10 of the 57 laps; Leclerc led 32 and Norris 15.",
+      "text_tr": "Antonelli İspanya Grand Prix'sini gridin 2. sırasından kazandı. 14. turda Sanal Güvenlik Aracı altında pit yaptı, 32 tur Leclerc'in arkasında bekledi, Ferrari nihayet 48. turda pit'e girince liderliği aldı ve Verstappen'i 4.351 saniye farkla geçti. 57 turun sadece 10'unda önde gitti; Leclerc 32, Norris 15 tur liderlik yaptı."
+    },
+    {
+      "driver": null,
+      "lap": 14,
+      "chart_type": "strategy",
+      "category": "safety_car",
+      "severity": "high",
+      "text_en": "The Lap 14-15 Virtual Safety Car decided the race. Norris led Antonelli by 6.219s on Lap 13. Antonelli, Verstappen and Russell all pitted on Lap 14 under the VSC; Norris, already past the pit entry, stopped on Lap 15 as the VSC ended and fell from P1 to P5, 15.727s behind Antonelli on Lap 16. One lap of timing cost him 21.9 seconds.",
+      "text_tr": "14-15. turlardaki Sanal Güvenlik Aracı yarışı belirledi. Norris 13. turda Antonelli'nin 6.219 saniye önündeydi. Antonelli, Verstappen ve Russell 14. turda VSC altında pit yaptı; pit girişini çoktan geçmiş olan Norris 15. turda VSC biterken girdi ve P1'den P5'e düştü, 16. turda Antonelli'nin 15.727 saniye arkasındaydı. Bir turluk zamanlama farkı ona 21.9 saniyeye mal oldu."
+    },
+    {
+      "driver": "NOR",
+      "lap": null,
+      "chart_type": "pace",
+      "category": "race_insight",
+      "severity": "high",
+      "text_en": "Norris had the fastest car. His race median of 1:37.960 beat Verstappen's 1:38.078 and Antonelli's 1:38.109. After the stops he cut his gap to Verstappen from 9.384s on Lap 16 to 0.887s on Lap 47 but never found a way past and finished 5.089s off the win. His radio on the last lap: we should have won.",
+      "text_tr": "Norris en hızlı araca sahipti. 1:37.960'lık yarış medyanı Verstappen'in 1:38.078'ini ve Antonelli'nin 1:38.109'unu geçti. Pit stoplardan sonra Verstappen'e olan farkını 16. turdaki 9.384 saniyeden 47. turda 0.887 saniyeye indirdi ama geçmenin yolunu bulamadı ve galibiyetin 5.089 saniye gerisinde bitirdi. Son turdaki telsizi: kazanmamız gerekirdi."
+    },
+    {
+      "driver": "LEC",
+      "lap": 48,
+      "chart_type": "strategy",
+      "category": "race_insight",
+      "severity": "high",
+      "text_en": "Leclerc started P5 on hards and ran that set for 48 laps, leading Laps 16-47 while everyone else stopped. His hard stint median was 1:38.359. He pitted on Lap 48 for softs, rejoined P4 and set 1:36.063 on Lap 50, finishing 29.116s behind Antonelli and 0.713s ahead of Russell.",
+      "text_tr": "Leclerc P5'ten sert lastikle başladı ve o seti 48 tur kullandı, herkes pit yaparken 16-47. turlarda liderlik etti. Sert stint medyanı 1:38.359'du. 48. turda yumuşak için pit yaptı, P4 olarak döndü ve 50. turda 1:36.063 attı; Antonelli'nin 29.116 saniye arkasında, Russell'ın 0.713 saniye önünde bitirdi."
+    },
+    {
+      "driver": "RUS",
+      "lap": 49,
+      "chart_type": "pace",
+      "category": "fastest_lap",
+      "severity": "medium",
+      "text_en": "Russell set the fastest lap of the race, 1:35.587 on Lap 49, on hard tyres that were 21 laps old. He was the only frontrunner on a two-stop: hards to Lap 14, mediums under the VSC, then fresh hards from Lap 29 for the final 29 laps. He finished P5, 29.829s back.",
+      "text_tr": "Russell yarışın en hızlı turunu 49. turda 21 turluk sert lastiklerle attı: 1:35.587. Ön gruptaki tek iki pitli sürücüydü: 14. tura kadar sert, VSC altında orta, sonra 29. turdan itibaren son 29 tur için taze sert. P5'te, 29.829 saniye geride bitirdi."
+    },
+    {
+      "driver": null,
+      "lap": null,
+      "chart_type": "energy",
+      "category": "energy_insight",
+      "severity": "medium",
+      "text_en": "Mercedes had the two lowest D/C ratios in the field: Russell 3.12 with 2.93% of the lap clipping, Antonelli 4.12 with 1.94%. Verstappen (7.85) and Piastri (7.47) were near the top, and backmarker Perez led at 9.95. At Madrid the car that clipped the most still won; energy states here are inferred from telemetry, not measured.",
+      "text_tr": "Mercedes gridin en düşük iki D/C oranına sahipti: Russell 3.12 ile turun %2.93'ünde clipping yaptı, Antonelli 4.12 ile %1.94'ünde. Verstappen (7.85) ve Piastri (7.47) üst sıralardaydı, arka gruptan Perez 9.95 ile liderdi. Madrid'de en çok clipping yapan araç yine de kazandı; buradaki enerji durumları telemetriden çıkarımdır, ölçüm değil."
+    },
+    {
+      "driver": "VER",
+      "lap": null,
+      "chart_type": "energy",
+      "category": "energy_insight",
+      "severity": "medium",
+      "text_en": "Red Bull's two cars read almost identically: Verstappen D/C 7.85 with 8.62% deploy, Lawson 7.28 with 7.91%, a car characteristic. McLaren split: Norris deployed on 10.56% of the lap (D/C 5.96) against Piastri's 8.57% (D/C 7.47), consistent with Norris attacking in traffic while Piastri managed a 42-lap hard stint.",
+      "text_tr": "Red Bull'un iki aracı neredeyse aynı okunuyor: Verstappen D/C 7.85 ve %8.62 deploy, Lawson 7.28 ve %7.91; bu bir araç karakteri. McLaren ayrıştı: Norris turun %10.56'sında deploy yaptı (D/C 5.96), Piastri %8.57 (D/C 7.47). Bu, Norris'in trafikte saldırmasıyla, Piastri'nin 42 turluk sert stinti yönetmesiyle uyumlu."
+    },
+    {
+      "driver": "NOR",
+      "lap": 28,
+      "chart_type": "energy",
+      "category": "energy_insight",
+      "severity": "low",
+      "text_en": "On Lap 28 Norris told his pit wall that Russell's deployment was like a boost into Turn 5 every lap and he would have to try something else. He had been stuck behind Russell since Lap 16. Russell's overall deploy share (9.15%) was lower than Norris' 10.56%, so this was about where the energy went, not how much.",
+      "text_tr": "28. turda Norris pit duvarına Russell'ın deploy'unun her tur 5. viraja girişte boost gibi olduğunu ve başka bir şey denemesi gerektiğini söyledi. 16. turdan beri Russell'ın arkasında sıkışmıştı. Russell'ın genel deploy payı (%9.15) Norris'in %10.56'sından düşüktü; yani mesele enerjinin miktarı değil, nereye harcandığıydı."
+    },
+    {
+      "driver": "NOR",
+      "lap": null,
+      "chart_type": "qualifying",
+      "category": "qualifying_insight",
+      "severity": "medium",
+      "text_en": "Norris took pole with 1:31.824, just 0.011s ahead of Antonelli and 0.140s clear of Verstappen. The best sectors were split three ways: Norris in Sector 1 (28.226), Verstappen in Sector 2 (32.730), Antonelli in Sector 3 (30.521). The top eight were covered by 0.492s.",
+      "text_tr": "Norris 1:31.824 ile pole aldı, Antonelli'nin sadece 0.011, Verstappen'in 0.140 saniye önünde. En iyi sektörler üçe bölündü: 1. sektör Norris (28.226), 2. sektör Verstappen (32.730), 3. sektör Antonelli (30.521). İlk sekiz 0.492 saniyeye sığdı."
+    },
+    {
+      "driver": "HAM",
+      "lap": 6,
+      "chart_type": "qualifying",
+      "category": "qualifying_insight",
+      "severity": "medium",
+      "text_en": "Hamilton qualified P4 with 1:32.013, 0.006s ahead of Leclerc. His race lasted six laps: he was P3 on Lap 4 when Verstappen went off, then had his Lap 4 and Lap 5 times deleted for track limits, dropped to P10, was shown the black and white flag and pulled into the pits on Lap 6 with a brake failure he reported on the radio.",
+      "text_tr": "Hamilton 1:32.013 ile P4'te sıralandı, Leclerc'in 0.006 saniye önünde. Yarışı altı tur sürdü: Verstappen pist dışına çıktığında 4. turda P3'teydi, sonra 4. ve 5. tur zamanları track limit nedeniyle silindi, P10'a düştü, siyah-beyaz bayrak gördü ve telsizden bildirdiği fren arızasıyla 6. turda pit'e çekildi."
+    },
+    {
+      "driver": "BEA",
+      "lap": null,
+      "chart_type": "qualifying",
+      "category": "qualifying_insight",
+      "severity": "low",
+      "text_en": "Bearman set no qualifying time and started P22. He finished P16, a gain of six places, the most of anyone, using two stops: 33 laps on hards, 10 on mediums, 13 on hards. Stroll, the other driver without a time, started P21 and stopped on Lap 13.",
+      "text_tr": "Bearman sıralamada zaman kaydetmedi ve P22'den başladı. İki pit ile P16'da bitirdi, altı sıra kazandı, herkesten fazla: 33 tur sert, 10 tur orta, 13 tur sert. Zaman kaydetmeyen diğer sürücü Stroll P21'den başladı ve 13. turda durdu."
+    },
+    {
+      "driver": "VER",
+      "lap": 4,
+      "chart_type": "strategy",
+      "category": "race_insight",
+      "severity": "medium",
+      "text_en": "Verstappen was the only frontrunner to start on softs, and it did not pay: his first stint median was 1:39.999 against 1:39.701 for Antonelli and 1:39.374 for Norris on mediums. On Lap 4 he ran off at Turn 1, lapped in 1:45.324 and dropped from P2 to P4 behind Antonelli and Hamilton; the stewards took no action. He took hards under the VSC and ran them 43 laps to P2.",
+      "text_tr": "Verstappen ön gruptan yumuşakla başlayan tek sürücüydü ve karşılığını alamadı: ilk stint medyanı 1:39.999, orta lastikteki Antonelli 1:39.701 ve Norris 1:39.374'e karşı. 4. turda 1. virajda pist dışına çıktı, 1:45.324'lük bir tur attı ve P2'den Antonelli ile Hamilton'ın arkasına P4'e düştü; hakemler işlem yapmadı. VSC altında sert lastik aldı ve 43 tur kullanarak P2'ye geldi."
+    },
+    {
+      "driver": "GAS",
+      "lap": 55,
+      "chart_type": "strategy",
+      "category": "pit_stop",
+      "severity": "medium",
+      "text_en": "Gasly ran 55 laps on his starting hards from P14 and was P6 on the road from Lap 46 to Lap 52. The stop for softs on Lap 55 dropped him to P12, and he collected a five second penalty for speeding in the pit lane on top. Alpine's other car did the opposite: Colapinto stopped at the first chance and finished P7.",
+      "text_tr": "Gasly P14'ten başladığı sert lastikleri 55 tur kullandı ve 46. turdan 52. tura kadar pistte P6'daydı. 55. turdaki yumuşak lastik stopu onu P12'ye düşürdü, üstüne pit yolunda hız cezasıyla beş saniye aldı. Alpine'ın diğer aracı tam tersini yaptı: Colapinto ilk fırsatta pit yaptı ve P7'de bitirdi."
+    },
+    {
+      "driver": "BOR",
+      "lap": 47,
+      "chart_type": "strategy",
+      "category": "pit_stop",
+      "severity": "medium",
+      "text_en": "Bortoleto ran 47 laps on hards from P12 and held P9 from Lap 15 to Lap 42, then P8 until his stop. His Lap 47 stop for softs dropped him to P13, where he finished. He was warned for moving under braking at Turn 5 and shown the black and white flag for track limits. His soft stint median of 1:38.431 was 1.3s quicker than the hard stint's 1:39.747.",
+      "text_tr": "Bortoleto P12'den sert lastikle 47 tur gitti, 15-42. turlarda P9'u, pit'e girene kadar P8'i tuttu. 47. turdaki yumuşak stopu onu bitirdiği P13'e düşürdü. 5. virajda fren altında hareket ettiği için uyarı ve track limit için siyah-beyaz bayrak aldı. Yumuşak stint medyanı 1:38.431, sert stintin 1:39.747'sinden 1.3 saniye hızlıydı."
+    },
+    {
+      "driver": "LAW",
+      "lap": 44,
+      "chart_type": "strategy",
+      "category": "race_insight",
+      "severity": "medium",
+      "text_en": "Lawson was best of the rest, P6 from P8 on the grid but 86.746s behind the winner. He ran 44 laps on hards, then 13 on mediums with a stint median of 1:37.541 against 1:39.377 on the hards. He held P5 from Lap 29 after Russell's second stop until Russell repassed him on Lap 35.",
+      "text_tr": "Lawson diğerlerinin en iyisiydi: gridin 8. sırasından P6, ama galibin 86.746 saniye gerisinde. 44 tur sert, ardından 13 tur orta lastik kullandı; orta stint medyanı 1:37.541, sertteki 1:39.377'ye karşı. Russell'ın ikinci pitinden sonra 29. turdan Russell'ın onu 35. turda tekrar geçmesine kadar P5'i tuttu."
+    },
+    {
+      "driver": "PIA",
+      "lap": null,
+      "chart_type": "traffic",
+      "category": "traffic_insight",
+      "severity": "medium",
+      "text_en": "Piastri spent 44.4% of his laps in traffic and lost 1.74s per lap doing it. Stuck in P9 behind Lindblad's Racing Bulls for the opening stint, his Lap 2-13 median was 1:42.511. He ran the hards for 42 laps, finished P8 from P7 on the grid, had four lap times deleted and was shown the black and white flag. His race median of 1:39.043 was 1.083s slower than Norris.",
+      "text_tr": "Piastri turlarının %44.4'ünü trafikte geçirdi ve bu ona tur başına 1.74 saniye kaybettirdi. İlk stintte Lindblad'ın Racing Bulls'unun arkasında P9'da sıkıştı; 2-13. tur medyanı 1:42.511'di. Sert lastikleri 42 tur kullandı, gridin 7. sırasından P8'de bitirdi, dört tur zamanı silindi ve siyah-beyaz bayrak gördü. 1:39.043'lük yarış medyanı Norris'ten 1.083 saniye yavaştı."
+    },
+    {
+      "driver": "LIN",
+      "lap": null,
+      "chart_type": "traffic",
+      "category": "traffic_insight",
+      "severity": "medium",
+      "text_en": "Lindblad ran 35 of his 53 laps in traffic, 66.0%, the highest share of any full-distance driver, and paid 1.55s per lap for it. He still converted P10 on the grid into P9 and two points, one lap down, after his VSC stop dropped him from P8 to P11. Bearman was next at 62.3%.",
+      "text_tr": "Lindblad 53 turunun 35'ini trafikte geçirdi, %66.0 ile tam mesafe giden sürücüler arasında en yüksek oran ve tur başına 1.55 saniye ödedi. VSC stopu onu P8'den P11'e düşürmesine rağmen gridin 10. sırasını bir tur geride P9 ve iki puana çevirdi. Bearman %62.3 ile sıradaydı."
+    },
+    {
+      "driver": "VER",
+      "lap": null,
+      "chart_type": "traffic",
+      "category": "traffic_insight",
+      "severity": "low",
+      "text_en": "Verstappen ran only 3 laps in traffic, 5.6% of his race, the least of any top-ten finisher. Norris ran 20 laps in traffic (37.0%) yet was 1.09s per lap faster on those laps than in clean air, because his traffic laps came late, on light fuel, chasing Verstappen.",
+      "text_tr": "Verstappen sadece 3 tur trafikte gitti, yarışının %5.6'sı, ilk ondaki herkesten az. Norris 20 tur trafikte gitti (%37.0) ama o turlarda temiz havadan tur başına 1.09 saniye hızlıydı, çünkü trafik turları yarışın sonunda, hafif yakıtla, Verstappen'i kovalarken geldi."
+    },
+    {
+      "driver": "ANT",
+      "lap": 48,
+      "chart_type": "pace",
+      "category": "race_insight",
+      "severity": "medium",
+      "text_en": "Antonelli spent Laps 16-47 between 1.2s and 3.7s behind Leclerc: 1.472s on Lap 16, 3.691s on Lap 30, 1.201s on Lap 47. His median over that stretch was 1:38.050 to Leclerc's 1:38.162. Once in clean air from Lap 49 he ran 1:36.561 by median against Verstappen's 1:36.934, stretching a 1.021s lead on Lap 48 to 4.351s at the flag, with his fastest lap, 1:36.030, on the final lap.",
+      "text_tr": "Antonelli 16-47. turları Leclerc'in 1.2 ile 3.7 saniye arkasında geçirdi: 16. turda 1.472, 30. turda 3.691, 47. turda 1.201 saniye. O aralıktaki medyanı 1:38.050, Leclerc'inki 1:38.162'ydi. 49. turdan itibaren temiz havada medyanla 1:36.561 gitti, Verstappen'in 1:36.934'üne karşı; 48. turdaki 1.021 saniyelik farkı bayrakta 4.351'e çıkardı ve en hızlı turunu, 1:36.030, son turda attı."
+    },
+    {
+      "driver": "NOR",
+      "lap": 56,
+      "chart_type": "delta",
+      "category": "position_change",
+      "severity": "medium",
+      "text_en": "Norris versus Verstappen after the stops: 9.384s apart on Lap 16, then Norris' Lap 16-47 median of 1:37.705 against 1:38.052 closed it to 0.887s by Lap 47. He finished 0.738s behind. On Lap 56 Verstappen ran off at Turn 5 while defending; Norris said so on the radio and the stewards reviewed it with no further action.",
+      "text_tr": "Pit stoplardan sonra Norris ile Verstappen: 16. turda 9.384 saniye aralık, ardından Norris'in 16-47. tur medyanı 1:37.705, Verstappen'in 1:38.052'sine karşı farkı 47. turda 0.887 saniyeye indirdi. 0.738 saniye arkasında bitirdi. 56. turda Verstappen savunurken 5. virajda pist dışına çıktı; Norris bunu telsizden söyledi, hakemler inceleyip işlem yapmadı."
+    },
+    {
+      "driver": null,
+      "lap": null,
+      "chart_type": "track_map",
+      "category": "race_insight",
+      "severity": "low",
+      "text_en": "Thirty-five lap times were deleted for track limits at Madrid, most at Turn 15 (8), Turn 5 (7), Turn 1 (6) and Turn 6 (5). Hamilton and Sainz lost five each, Piastri four. Four drivers were shown the black and white flag: Hamilton on Lap 6, Sainz on Lap 24, Piastri on Lap 50 and Bortoleto on Lap 53.",
+      "text_tr": "Madrid'de track limit nedeniyle 35 tur zamanı silindi; en çok 15. viraj (8), 5. viraj (7), 1. viraj (6) ve 6. virajda (5). Hamilton ve Sainz beşer, Piastri dört tur kaybetti. Dört sürücü siyah-beyaz bayrak gördü: Hamilton 6., Sainz 24., Piastri 50. ve Bortoleto 53. turda."
+    },
+    {
+      "driver": "ANT",
+      "lap": 43,
+      "chart_type": "speed_trace",
+      "category": "race_insight",
+      "severity": "low",
+      "text_en": "Top speed on the long straight was a dead heat: Antonelli and Colapinto both reached 350.0 km/h, Antonelli on Lap 43 while chasing Leclerc and Colapinto on Lap 21. Norris hit 349.5 km/h on Lap 56. Lindblad (330.8 km/h) and Bearman (330.7 km/h) had the highest average peak speeds, both spending most of the race in someone's slipstream.",
+      "text_tr": "Uzun düzlükteki en yüksek hız berabere bitti: Antonelli ve Colapinto 350.0 km/s'ye ulaştı, Antonelli 43. turda Leclerc'i kovalarken, Colapinto 21. turda. Norris 56. turda 349.5 km/s yaptı. Lindblad (330.8 km/s) ve Bearman (330.7 km/s) en yüksek ortalama tepe hızlarına sahipti; ikisi de yarışın çoğunu birinin rüzgar gölgesinde geçirdi."
+    },
+    {
+      "driver": "SAI",
+      "lap": 43,
+      "chart_type": "strategy",
+      "category": "race_insight",
+      "severity": "medium",
+      "text_en": "Sainz's race from P20 unravelled: a Turn 1 clash with Tsunoda on the opening lap went unpunished, but a Turn 5 collision with Alonso brought a five second penalty. He had five lap times deleted and the black and white flag, stopped on Laps 23 and 31, and retired on Lap 43. Alonso's radio: he squeezed me into the wall.",
+      "text_tr": "Sainz'ın P20'den başlayan yarışı dağıldı: açılış turunda Tsunoda ile 1. virajdaki temas cezasız kaldı ama Alonso ile 5. virajdaki çarpışma beş saniye ceza getirdi. Beş tur zamanı silindi, siyah-beyaz bayrak gördü, 23. ve 31. turlarda pit yaptı ve 43. turda yarış dışı kaldı. Alonso'nun telsizi: beni duvara sıkıştırdı."
+    },
+    {
+      "driver": null,
+      "lap": null,
+      "chart_type": "strategy",
+      "category": "race_insight",
+      "severity": "low",
+      "text_en": "Four cars retired: Hamilton on Lap 6, Stroll on Lap 13, Perez on Lap 31 and Sainz on Lap 43. Only eight cars finished on the lead lap; Lindblad in P9 was already a lap down. Bottas brought the remaining Cadillac home P18, three laps behind after two stops.",
+      "text_tr": "Dört araç yarış dışı kaldı: Hamilton 6., Stroll 13., Perez 31. ve Sainz 43. turda. Sadece sekiz araç lider turunda bitirdi; P9'daki Lindblad zaten bir tur gerideydi. Bottas kalan Cadillac'ı iki pit ile üç tur geride P18'de getirdi."
+    },
+    {
+      "driver": "COL",
+      "lap": 14,
+      "chart_type": "strategy",
+      "category": "pit_stop",
+      "severity": "medium",
+      "text_en": "Colapinto's VSC stop on Lap 14 dropped him from P7 to P10 and he sat there for 28 laps, Laps 15-42. The places then came back one at a time as the long runners stopped: P9 when Piastri pitted on Lap 42, P8 when Bortoleto pitted on Lap 47, P7 when Gasly pitted on Lap 55. His hard stint median was 1:39.251.",
+      "text_tr": "Colapinto'nun 14. turdaki VSC stopu onu P7'den P10'a düşürdü ve 28 tur, 15-42. turlar boyunca orada kaldı. Sonra uzun gidenler pit yaptıkça sıralar tek tek geri geldi: Piastri 42. turda pit yapınca P9, Bortoleto 47. turda P8, Gasly 55. turda P7. Sert stint medyanı 1:39.251'di."
+    },
+    {
+      "driver": null,
+      "lap": null,
+      "chart_type": "pace",
+      "category": "race_insight",
+      "severity": "low",
+      "text_en": "A dry, hot afternoon: air temperature 28.7 to 31.7C, track 49.6 to 54.9C, humidity between 20 and 30%, rain risk 0%. Twelve of the 22 starters chose hards, seven mediums and three softs: Verstappen, Hulkenberg and Hamilton. Norris' medium first stint at 1:39.374 by median beat every hard starter.",
+      "text_tr": "Kuru, sıcak bir öğleden sonra: hava 28.7 ile 31.7 derece, pist 49.6 ile 54.9 derece, nem yüzde 20-30, yağmur riski yüzde 0. 22 sürücünün 12'si sert, yedisi orta, üçü yumuşak seçti: Verstappen, Hülkenberg ve Hamilton. Norris'in orta lastikli ilk stinti medyanla 1:39.374 ile sertle başlayan herkesi geçti."
+    },
+    {
+      "driver": "HUL",
+      "lap": null,
+      "chart_type": "qualifying",
+      "category": "qualifying_insight",
+      "severity": "low",
+      "text_en": "Hulkenberg missed Q3 by 0.182s, 1:33.223 to Lindblad's 1:33.041, and both Audis went out in Q2 with Bortoleto P12. On Sunday Hulkenberg turned P11 into P10 and a point on a one-stop, softs then hards from Lap 15, while Bortoleto's 47-lap hard stint ended P13.",
+      "text_tr": "Hülkenberg Q3'ü 0.182 saniyeyle kaçırdı, Lindblad'ın 1:33.041'ine karşı 1:33.223, ve iki Audi de Q2'de elendi, Bortoleto P12. Pazar günü Hülkenberg tek pitle, yumuşak sonra 15. turdan itibaren sert, P11'i P10'a ve bir puana çevirdi; Bortoleto'nun 47 turluk sert stinti P13'te bitti."
+    },
+    {
+      "driver": "RUS",
+      "lap": 28,
+      "chart_type": "strategy",
+      "category": "pit_stop",
+      "severity": "medium",
+      "text_en": "On Lap 10 Russell told his engineer Leclerc was not going to pick up the pace and Mercedes should consider the undercut. The VSC gave him a cheap stop on Lap 14, hards to mediums, but the second stop on Lap 28 dropped him to P6 behind Lawson until Lap 35. Over Laps 29-47 he ran 1:37.768 by median to Leclerc's 1:37.939 and still finished 0.713s short of him.",
+      "text_tr": "10. turda Russell mühendisine Leclerc'in temposunu artırmayacağını ve Mercedes'in undercut'ı düşünmesi gerektiğini söyledi. VSC ona 14. turda ucuz bir pit verdi, sertten ortaya, ama 28. turdaki ikinci pit onu 35. tura kadar Lawson'ın arkasında P6'ya düşürdü. 29-47. turlarda medyanla 1:37.768 gitti, Leclerc'in 1:37.939'una karşı, ve yine de ondan 0.713 saniye geride bitirdi."
+    },
+    {
+      "driver": "ALO",
+      "lap": null,
+      "chart_type": "energy",
+      "category": "energy_shift",
+      "severity": "low",
+      "text_en": "The biggest deploy shares belonged to cars fighting in the pack: Alonso at 14.30% of the lap (D/C 6.63), Leclerc 13.70%, Ocon 13.42% and Bearman 12.98%. At the other end Sainz deployed on only 7.47% and Tsunoda 7.78%. Inferred from telemetry, so treat these as estimates.",
+      "text_tr": "En büyük deploy payları grupta mücadele eden araçlardaydı: Alonso turun %14.30'unda (D/C 6.63), Leclerc %13.70, Ocon %13.42 ve Bearman %12.98. Diğer uçta Sainz sadece %7.47, Tsunoda %7.78 deploy yaptı. Telemetriden çıkarım, dolayısıyla tahmin olarak değerlendirin."
+    },
+    {
+      "driver": null,
+      "lap": null,
+      "chart_type": "delta",
+      "category": "race_insight",
+      "severity": "medium",
+      "text_en": "Five cars were in a different race. By race median the top five spanned 0.323s per lap, Norris' 1:37.960 to Russell's 1:38.283, and finished within 29.829s. Sixth-fastest Piastri at 1:39.043 was another 0.760s per lap behind Russell, and everyone from P9 down was lapped.",
+      "text_tr": "Beş araç farklı bir yarıştaydı. Yarış medyanına göre ilk beş tur başına 0.323 saniyeye sığdı, Norris'in 1:37.960'ından Russell'ın 1:38.283'üne, ve 29.829 saniye içinde bitirdi. Altıncı en hızlı Piastri 1:39.043 ile Russell'dan tur başına 0.760 saniye daha gerideydi ve P9'dan aşağısı tur yedi."
+    },
+    {
+      "driver": null,
+      "lap": null,
+      "chart_type": "traffic",
+      "category": "traffic_insight",
+      "severity": "low",
+      "text_en": "Race control showed 79 blue flags across 57 laps. The lapped train started early: Stroll spent 8 of his 12 laps in traffic (66.7%) before stopping, and Lindblad, Bearman and Hulkenberg all ran more than half their laps behind another car.",
+      "text_tr": "Yarış kontrol 57 turda 79 mavi bayrak gösterdi. Tur yiyen kuyruk erken başladı: Stroll durmadan önce 12 turunun 8'ini trafikte geçirdi (%66.7); Lindblad, Bearman ve Hülkenberg turlarının yarısından fazlasını başka bir aracın arkasında gitti."
+    }
+  ]
+}

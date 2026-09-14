@@ -1,21 +1,21 @@
 {
   "season": 2026,
-  "rounds_completed": 13,
+  "rounds_completed": 14,
   "drivers": [
     {
       "position": 1,
       "code": "ANT",
       "name": "Andrea Kimi Antonelli",
       "team": "Mercedes",
-      "points": 267.0,
-      "wins": 7
+      "points": 292.0,
+      "wins": 8
     },
     {
       "position": 2,
       "code": "RUS",
       "name": "George Russell",
       "team": "Mercedes",
-      "points": 201.0,
+      "points": 211.0,
       "wins": 2
     },
     {
@@ -31,7 +31,7 @@
       "code": "NOR",
       "name": "Lando Norris",
       "team": "McLaren",
-      "points": 171.0,
+      "points": 186.0,
       "wins": 2
     },
     {
@@ -39,7 +39,7 @@
       "code": "LEC",
       "name": "Charles Leclerc",
       "team": "Ferrari",
-      "points": 155.0,
+      "points": 167.0,
       "wins": 1
     },
     {
@@ -47,7 +47,7 @@
       "code": "VER",
       "name": "Max Verstappen",
       "team": "Red Bull Racing",
-      "points": 127.0,
+      "points": 145.0,
       "wins": 0
     },
     {
@@ -55,7 +55,7 @@
       "code": "PIA",
       "name": "Oscar Piastri",
       "team": "McLaren",
-      "points": 116.0,
+      "points": 120.0,
       "wins": 0
     },
     {
@@ -71,7 +71,7 @@
       "code": "LAW",
       "name": "Liam Lawson",
       "team": "Racing Bulls",
-      "points": 51.0,
+      "points": 59.0,
       "wins": 0
     },
     {
@@ -87,7 +87,7 @@
       "code": "LIN",
       "name": "Arvid Lindblad",
       "team": "Racing Bulls",
-      "points": 29.0,
+      "points": 31.0,
       "wins": 0
     },
     {
@@ -95,7 +95,7 @@
       "code": "COL",
       "name": "Franco Colapinto",
       "team": "Alpine",
-      "points": 21.0,
+      "points": 27.0,
       "wins": 0
     },
     {
@@ -119,7 +119,7 @@
       "code": "HUL",
       "name": "Nico H\u00fclkenberg",
       "team": "Audi",
-      "points": 6.0,
+      "points": 7.0,
       "wins": 0
     },
     {
@@ -191,37 +191,37 @@
     {
       "position": 1,
       "name": "Mercedes",
-      "points": 468.0,
-      "wins": 9
+      "points": 503.0,
+      "wins": 10
     },
     {
       "position": 2,
       "name": "Ferrari",
-      "points": 346.0,
+      "points": 358.0,
       "wins": 2
     },
     {
       "position": 3,
       "name": "McLaren",
-      "points": 287.0,
+      "points": 306.0,
       "wins": 2
     },
     {
       "position": 4,
       "name": "Red Bull Racing",
-      "points": 204.0,
+      "points": 230.0,
       "wins": 0
     },
     {
       "position": 5,
       "name": "Racing Bulls",
-      "points": 75.0,
+      "points": 77.0,
       "wins": 0
     },
     {
       "position": 6,
       "name": "Alpine",
-      "points": 62.0,
+      "points": 68.0,
       "wins": 0
     },
     {
@@ -233,7 +233,7 @@
     {
       "position": 8,
       "name": "Audi",
-      "points": 16.0,
+      "points": 17.0,
       "wins": 0
     },
     {
@@ -599,6 +599,34 @@
         "BEA": 18.0,
         "BOR": 10.0,
         "HUL": 6.0,
+        "SAI": 6.0,
+        "ALB": 5.0,
+        "OCO": 3.0,
+        "ALO": 3.0,
+        "TSU": 1.0,
+        "STR": 0.0,
+        "BOT": 0.0,
+        "PER": 0.0
+      }
+    },
+    {
+      "round": 14,
+      "points": {
+        "ANT": 292.0,
+        "RUS": 211.0,
+        "HAM": 191.0,
+        "NOR": 186.0,
+        "LEC": 167.0,
+        "VER": 145.0,
+        "PIA": 120.0,
+        "HAD": 71.0,
+        "LAW": 59.0,
+        "GAS": 41.0,
+        "LIN": 31.0,
+        "COL": 27.0,
+        "BEA": 18.0,
+        "BOR": 10.0,
+        "HUL": 7.0,
         "SAI": 6.0,
         "ALB": 5.0,
         "OCO": 3.0,
