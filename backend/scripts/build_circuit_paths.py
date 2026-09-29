@@ -8,6 +8,7 @@ frontend TrackSilhouette.svelte.
 import json
 import math
 import urllib.request
+from pathlib import Path
 
 RAW = "https://raw.githubusercontent.com/bacinger/f1-circuits/master/circuits/{}.geojson"
 
@@ -56,7 +57,7 @@ for code, fname in FILES.items():
     result[code] = to_path(coords_of(gj))
     print(code, len(result[code]), "chars")
 
-out = "/private/tmp/claude-501/-Users-bogachanulker-Desktop-RACE-READ/03a43cd7-324d-457b-a9d0-e539dd97dd97/scratchpad/vps/circuit-paths.json"
+out = Path(__file__).resolve().parent.parent.parent / "frontend" / "src" / "lib" / "data" / "circuit-paths.json"
 with open(out, "w") as f:
     json.dump(result, f, separators=(",", ":"))
 print("wrote", out, len(json.dumps(result)) // 1024, "KB")
