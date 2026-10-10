@@ -129,10 +129,20 @@ def load_qualifying(race_id: str) -> dict:
     return load_json(str(get_race_dir(race_id) / "qualifying.json"))
 
 
+# Telemetry files are ~2.5 MB on disk and ~5 MB once parsed, ~20 per race. Caching
+# them in load_json's 512-entry LRU pinned every race's telemetry in each worker
+# (several GB). Derived results (traffic, clipmap) have their own caches, so only
+# about one race's worth of raw telemetry needs to stay in memory.
+@lru_cache(maxsize=24)
+def _load_telemetry_file(file_path: str) -> dict:
+    with open(file_path) as f:
+        return json.load(f)
+
+
 def load_telemetry(race_id: str, driver: str) -> dict:
     """Load per-sample telemetry data for a single driver."""
     _validate_param(driver, "driver")
-    return load_json(
+    return _load_telemetry_file(
         str(get_race_dir(race_id) / "telemetry" / f"{driver.lower()}.json")
     )
 

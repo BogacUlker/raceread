@@ -153,7 +153,7 @@ def get_clipmap(race_id: str) -> dict:
     Returns per-bin clip share (0-1) aligned with the circuit outline so the
     frontend can paint clip density onto the track shape.
     """
-    from backend.app.services.data_loader import get_race_dir, load_json
+    from backend.app.services.data_loader import get_race_dir, load_json, load_telemetry
 
     cached = _clipmap_cache.get(race_id)
     if cached is not None:
@@ -173,7 +173,7 @@ def get_clipmap(race_id: str) -> dict:
     total = [0] * n_bins
     tel_dir = race_dir / "telemetry"
     for f in sorted(tel_dir.glob("*.json")):
-        t = load_json(str(f))
+        t = load_telemetry(race_id, f.stem)
         for lap in t.get("laps", []):
             for smp in lap.get("samples", []):
                 d = smp.get("dist")
