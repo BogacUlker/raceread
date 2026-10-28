@@ -1,0 +1,152 @@
+{
+  "race": "2026-singapore",
+  "confidence": 82.3,
+  "invariants": {
+    "vsc_drivers_checked": 21,
+    "vsc_violators": [
+      "LIN",
+      "SAI",
+      "VER"
+    ],
+    "deploy_budget_violation_laps": 0,
+    "harvest_budget_violation_laps": 2,
+    "budget_total_laps": 1229,
+    "teammate_clip_corr": {
+      "Williams": 0.24,
+      "Aston Martin": 0.345,
+      "Mercedes": 0.163,
+      "Haas F1 Team": 0.676,
+      "Cadillac": 0.129,
+      "Alpine": 0.061,
+      "Red Bull Racing": -0.21,
+      "Ferrari": 0.558,
+      "Racing Bulls": 0.201,
+      "McLaren": 0.041
+    }
+  },
+  "physics": {
+    "team_cda": {
+      "Alpine": 1.8,
+      "Aston Martin": 1.8,
+      "Audi": 1.8,
+      "Cadillac": 1.8,
+      "Ferrari": 1.8,
+      "Haas F1 Team": 1.8,
+      "McLaren": 1.8,
+      "Mercedes": 1.795,
+      "Racing Bulls": 1.8,
+      "Red Bull Racing": 1.8,
+      "Williams": 1.8
+    },
+    "median_contradiction_rate": 0.0167,
+    "median_deploy_precision": 0.99,
+    "median_deploy_recall": 0.044,
+    "per_driver": {
+      "ALB": {
+        "contradiction_rate": 0.0121,
+        "deploy_physics_precision": 0.977,
+        "deploy_physics_recall": 0.051
+      },
+      "ALO": {
+        "contradiction_rate": 0.0165,
+        "deploy_physics_precision": 0.988,
+        "deploy_physics_recall": 0.045
+      },
+      "ANT": {
+        "contradiction_rate": 0.0142,
+        "deploy_physics_precision": 0.996,
+        "deploy_physics_recall": 0.063
+      },
+      "BEA": {
+        "contradiction_rate": 0.0182,
+        "deploy_physics_precision": 0.98,
+        "deploy_physics_recall": 0.052
+      },
+      "BOT": {
+        "contradiction_rate": 0.0092,
+        "deploy_physics_precision": 0.993,
+        "deploy_physics_recall": 0.038
+      },
+      "COL": {
+        "contradiction_rate": 0.0274,
+        "deploy_physics_precision": 1.0,
+        "deploy_physics_recall": 0.041
+      },
+      "GAS": {
+        "contradiction_rate": 0.0195,
+        "deploy_physics_precision": 0.995,
+        "deploy_physics_recall": 0.047
+      },
+      "HAD": {
+        "contradiction_rate": 0.01,
+        "deploy_physics_precision": 1.0,
+        "deploy_physics_recall": 0.042
+      },
+      "HAM": {
+        "contradiction_rate": 0.0194,
+        "deploy_physics_precision": 0.962,
+        "deploy_physics_recall": 0.046
+      },
+      "HUL": {
+        "contradiction_rate": 0.0171,
+        "deploy_physics_precision": 0.917,
+        "deploy_physics_recall": 0.041
+      },
+      "LAW": {
+        "contradiction_rate": 0.0142,
+        "deploy_physics_precision": 0.995,
+        "deploy_physics_recall": 0.043
+      },
+      "LEC": {
+        "contradiction_rate": 0.0235,
+        "deploy_physics_precision": 0.968,
+        "deploy_physics_recall": 0.034
+      },
+      "LIN": {
+        "contradiction_rate": 0.0142,
+        "deploy_physics_precision": 0.99,
+        "deploy_physics_recall": 0.045
+      },
+      "NOR": {
+        "contradiction_rate": 0.0166,
+        "deploy_physics_precision": 0.984,
+        "deploy_physics_recall": 0.054
+      },
+      "OCO": {
+        "contradiction_rate": 0.0229,
+        "deploy_physics_precision": 0.976,
+        "deploy_physics_recall": 0.044
+      },
+      "PER": {
+        "contradiction_rate": 0.0141,
+        "deploy_physics_precision": 0.946,
+        "deploy_physics_recall": 0.063
+      },
+      "PIA": {
+        "contradiction_rate": 0.0234,
+        "deploy_physics_precision": 1.0,
+        "deploy_physics_recall": 0.031
+      },
+      "RUS": {
+        "contradiction_rate": 0.0157,
+        "deploy_physics_precision": 1.0,
+        "deploy_physics_recall": 0.038
+      },
+      "SAI": {
+        "contradiction_rate": 0.0208,
+        "deploy_physics_precision": 0.991,
+        "deploy_physics_recall": 0.025
+      },
+      "STR": {
+        "contradiction_rate": 0.0301,
+        "deploy_physics_precision": 0.968,
+        "deploy_physics_recall": 0.074
+      },
+      "VER": {
+        "contradiction_rate": 0.0167,
+        "deploy_physics_precision": 1.0,
+        "deploy_physics_recall": 0.037
+      }
+    }
+  }
+}

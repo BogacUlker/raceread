@@ -1,0 +1,166 @@
+{
+  "annotations": [
+    {
+      "driver": null,
+      "lap": null,
+      "chart_type": "strategy",
+      "category": "race_insight",
+      "severity": "high",
+      "text_en": "Verstappen won the Singapore Grand Prix from pole and led all 62 laps, finishing 7.335s ahead of Leclerc. He made one stop, on Lap 32, from softs to mediums. Antonelli was third from P4 on the grid, 24.573s behind.",
+      "text_tr": "Verstappen Singapur Grand Prix'sini pole'den kazandı ve 62 turun hepsini önde götürerek Leclerc'in 7.335 saniye önünde bitirdi. Tek pit stopunu 32. turda yaptı, yumuşaktan ortaya geçti. Gridde 4. olan Antonelli 24.573 saniye geride 3. oldu."
+    },
+    {
+      "driver": "VER",
+      "lap": null,
+      "chart_type": "qualifying",
+      "category": "qualifying_insight",
+      "severity": "high",
+      "text_en": "Verstappen took pole with 1:31.373, just 0.054s ahead of Leclerc and 0.123s ahead of Hamilton. He had the best Q3 sector 1 (27.002s) and sector 3 (25.840s); Hamilton was quickest through sector 2 with 38.359s.",
+      "text_tr": "Verstappen pole'ü 1:31.373 ile aldı; Leclerc'in sadece 0.054, Hamilton'ın 0.123 saniye önündeydi. Q3'te 1. sektörün (27.002 saniye) ve 3. sektörün (25.840 saniye) en iyisi oydu; 2. sektörde en hızlısı 38.359 saniyeyle Hamilton'dı."
+    },
+    {
+      "driver": "HAM",
+      "lap": null,
+      "chart_type": "qualifying",
+      "category": "qualifying_insight",
+      "severity": "medium",
+      "text_en": "Hamilton was fastest in Q1 (1:32.429) and in Q2 (1:31.529), but his 1:31.496 in Q3 left him P3, 0.123s off pole.",
+      "text_tr": "Hamilton Q1'de (1:32.429) ve Q2'de (1:31.529) en hızlısıydı, ama Q3'teki 1:31.496'sı onu pole'ün 0.123 saniye gerisinde 3. sıraya koydu."
+    },
+    {
+      "driver": "HAD",
+      "lap": null,
+      "chart_type": "strategy",
+      "category": "position_change",
+      "severity": "high",
+      "text_en": "Hadjar set no time in qualifying and started P22. He stopped once, on Lap 33, and finished P10, the biggest gain of the race at 12 places, despite spending 49.1% of his laps in traffic.",
+      "text_tr": "Hadjar sıralamada süre yapamadı ve 22. sıradan başladı. Tek pit stopunu 33. turda yaptı ve 10. bitirdi: 12 sıralık yükselişle yarışın en büyük kazancı. Üstelik turlarının yüzde 49.1'ini trafikte geçirdi."
+    },
+    {
+      "driver": "BOR",
+      "lap": 8,
+      "chart_type": "strategy",
+      "category": "safety_car",
+      "severity": "medium",
+      "text_en": "Bortoleto stopped after 7 laps and the Virtual Safety Car came out 35 seconds later, on Lap 8. It ended on Lap 9 and nobody pitted under it.",
+      "text_tr": "Bortoleto 7 turdan sonra durdu ve Sanal Güvenlik Aracı 35 saniye sonra, 8. turda çıktı. 9. turda sona erdi ve bu sırada kimse pit yapmadı."
+    },
+    {
+      "driver": "STR",
+      "lap": 39,
+      "chart_type": "strategy",
+      "category": "safety_car",
+      "severity": "high",
+      "text_en": "Stroll stopped after 36 laps and the second Virtual Safety Car was deployed 22 seconds later, on Lap 39, with marshals at Turn 15. Leclerc, Antonelli and Russell all pitted on Lap 39 under it; it ended on Lap 40.",
+      "text_tr": "Stroll 36 turdan sonra durdu ve ikinci Sanal Güvenlik Aracı 22 saniye sonra, 39. turda, görevliler 15. virajdayken çıktı. Leclerc, Antonelli ve Russell 39. turda bu dönemde pit yaptı; 40. turda sona erdi."
+    },
+    {
+      "driver": "LEC",
+      "lap": 39,
+      "chart_type": "strategy",
+      "category": "pit_stop",
+      "severity": "high",
+      "text_en": "Leclerc stopped twice. He was 5.4s behind Verstappen on Lap 36; his second stop on Lap 39, under the Virtual Safety Car, put him 16.3s back on Lap 41. On softs he cut that to 10.6s by Lap 50 and 7.335s at the flag.",
+      "text_tr": "Leclerc iki kez pit yaptı. 36. turda Verstappen'in 5.4 saniye gerisindeydi; 39. turda Sanal Güvenlik Aracı altında yaptığı ikinci pit stop onu 41. turda 16.3 saniye geriye attı. Yumuşaklarla bu farkı 50. turda 10.6 saniyeye, damalı bayrakta 7.335 saniyeye indirdi."
+    },
+    {
+      "driver": "LEC",
+      "lap": 41,
+      "chart_type": "pace",
+      "category": "fastest_lap",
+      "severity": "high",
+      "text_en": "Leclerc set the fastest lap, 1:35.202 on Lap 41, on the softs he fitted on Lap 40. He also had the best median lap of the race, 1:37.179, ahead of Verstappen's 1:37.290.",
+      "text_tr": "Leclerc yarışın en hızlı turunu 41. turda, 40. turda taktığı yumuşaklarla 1:35.202 olarak attı. Yarışın en iyi medyan turu da onundu: 1:37.179, Verstappen'in 1:37.290'ının önünde."
+    },
+    {
+      "driver": "VER",
+      "lap": 32,
+      "chart_type": "delta",
+      "category": "race_insight",
+      "severity": "medium",
+      "text_en": "Verstappen's second stint on mediums had a 1:36.645 median, against 1:37.593 on his opening softs. Leclerc's final soft stint was quicker still, 1:36.059, which is how he closed in on his final stint.",
+      "text_tr": "Verstappen'in ortalarla ikinci stintindeki medyan 1:36.645'ti; açılıştaki yumuşaklarda 1:37.593'tü. Leclerc'in son yumuşak stinti daha da hızlıydı, 1:36.059; son stintinde yaklaşmasının sebebi buydu."
+    },
+    {
+      "driver": "HAM",
+      "lap": 18,
+      "chart_type": "strategy",
+      "category": "pit_stop",
+      "severity": "high",
+      "text_en": "Hamilton stopped once, on Lap 18, and ran the remaining 44 laps on one set of softs, the longest stint of the race. That had him P2 from Lap 40 to Lap 45, but Leclerc passed him on Lap 46, Antonelli on Lap 54, Norris on Lap 55 and Piastri on Lap 61; he finished P6 from P3 on the grid.",
+      "text_tr": "Hamilton 18. turda tek pit stopunu yaptı ve kalan 44 turu tek bir yumuşak takımla gitti; bu yarışın en uzun stintiydi. Bu onu 40. turdan 45. tura kadar 2. sırada tuttu, ama 46. turda Leclerc, 54. turda Antonelli, 55. turda Norris ve 61. turda Piastri onu geçti; gridde 3. iken 6. bitirdi."
+    },
+    {
+      "driver": "HAM",
+      "lap": 39,
+      "chart_type": "strategy",
+      "category": "pit_stop",
+      "severity": "medium",
+      "text_en": "Hamilton's radio on Lap 37 had Leclerc switching to plan C while he stayed on plan B, and on Lap 39 the message was that the rivals on new tyres would not have the life to the end. His own softs did not last either: he lost four places after Lap 45.",
+      "text_tr": "Hamilton'ın 37. turdaki telsizinde Leclerc'in C planına geçtiği, kendisinin B planında kaldığı söylendi; 39. turdaki mesaj ise yeni lastikli rakiplerin lastiklerinin sona kadar dayanmayacağıydı. Kendi yumuşakları da dayanmadı: 45. turdan sonra dört sıra kaybetti."
+    },
+    {
+      "driver": "ANT",
+      "lap": 39,
+      "chart_type": "strategy",
+      "category": "pit_stop",
+      "severity": "medium",
+      "text_en": "Antonelli made two stops, on Lap 23 and under the Virtual Safety Car on Lap 39. He passed Hamilton for P3 on Lap 54 and finished there, up one place from the grid.",
+      "text_tr": "Antonelli 23. turda ve 39. turda Sanal Güvenlik Aracı altında olmak üzere iki kez pit yaptı. 54. turda Hamilton'ı geçerek 3. sıraya çıktı ve orada bitirdi; gride göre bir sıra yükseldi."
+    },
+    {
+      "driver": "NOR",
+      "lap": 32,
+      "chart_type": "strategy",
+      "category": "pit_stop",
+      "severity": "low",
+      "text_en": "Norris made one stop, on Lap 32, soft to medium, and finished P4 from P5, passing Hamilton on Lap 55.",
+      "text_tr": "Norris 32. turda yumuşaktan ortaya tek pit stop yaptı ve 55. turda Hamilton'ı geçerek 5. sıradan başlayıp 4. bitirdi."
+    },
+    {
+      "driver": "RUS",
+      "lap": 39,
+      "chart_type": "strategy",
+      "category": "pit_stop",
+      "severity": "medium",
+      "text_en": "Russell started P19 and ran 39 laps on mediums before stopping under the Virtual Safety Car on Lap 39, which dropped him from P7 to P10. He finished P9.",
+      "text_tr": "Russell 19. sıradan başladı ve 39. turda Sanal Güvenlik Aracı altında pit yapmadan önce ortalarla 39 tur gitti; bu durak onu 7. sıradan 10. sıraya düşürdü. 9. bitirdi."
+    },
+    {
+      "driver": "RUS",
+      "lap": null,
+      "chart_type": "traffic",
+      "category": "traffic_insight",
+      "severity": "medium",
+      "text_en": "Russell spent 70.9% of his laps in traffic, the most in the field. Verstappen and Lawson had no traffic laps at all.",
+      "text_tr": "Russell turlarının yüzde 70.9'unu trafikte geçirdi; bu sahadaki en yüksek oran. Verstappen ve Lawson hiç trafik turu yaşamadı."
+    },
+    {
+      "driver": "STR",
+      "lap": null,
+      "chart_type": "energy",
+      "category": "energy_insight",
+      "severity": "medium",
+      "text_en": "Stroll had by far the highest inferred deploy-to-clip ratio, 7.63; Colapinto was next with 3.21. These energy states are inferred from speed, throttle and braking, not measured.",
+      "text_tr": "Stroll açık ara en yüksek tahmini kullanım/kırpma oranına sahipti: 7.63; onu 3.21 ile Colapinto izledi. Bu enerji durumları hız, gaz ve fren verisinden tahmin ediliyor, ölçülmüyor."
+    },
+    {
+      "driver": "VER",
+      "lap": null,
+      "chart_type": "energy",
+      "category": "energy_insight",
+      "severity": "low",
+      "text_en": "The top two were near the bottom of the inferred deploy-to-clip table: Verstappen 1.06 and Leclerc 1.10, 19th and 18th of 21. Sainz had the lowest ratio, 0.74.",
+      "text_tr": "İlk iki pilot tahmini kullanım/kırpma tablosunun alt sıralarındaydı: Verstappen 1.06 ve Leclerc 1.10 ile 21 pilot arasında 19. ve 18. Sainz en düşük orana sahipti: 0.74."
+    },
+    {
+      "driver": "PIA",
+      "lap": 41,
+      "chart_type": "strategy",
+      "category": "pit_stop",
+      "severity": "low",
+      "text_en": "Piastri stopped on Lap 33 and again on Lap 41, and passed Hamilton for P5 on Lap 61, one place up from the grid.",
+      "text_tr": "Piastri 33. ve 41. turlarda pit yaptı ve 61. turda Hamilton'ı geçerek 5. sıraya çıktı; gride göre bir sıra yükseldi."
+    }
+  ]
+}
