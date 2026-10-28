@@ -408,6 +408,30 @@ def _deleted_laps(rc: list[dict], laps_raw: list[dict]) -> set[tuple[int, int]]:
     return deleted
 
 
+def _realign_lap1_stint(num: int, dstints: list[dict], pit_laps: list[int]) -> None:
+    """Fix a recurring OpenF1 stint glitch in place.
+
+    For some drivers OpenF1 closes stint 1 after Lap 1 and then never opens a
+    stint at their real stop (seen for 4 drivers across COTA and Singapore
+    2026; every other driver's stint ends match their pit laps exactly). When
+    the only mismatch is a Lap 1 stint end with no pit plus one pit lap with
+    no stint end, move that boundary to the pit lap. Compounds keep OpenF1's
+    order; only the lap ranges change."""
+    dstints.sort(key=lambda s: s["stint_number"])
+    ends = [s["lap_end"] for s in dstints[:-1]]
+    spurious = [e for e in ends if e not in pit_laps]
+    missing = [p for p in pit_laps if p not in ends]
+    if spurious != [1] or len(missing) != 1 or dstints[0]["lap_end"] != 1:
+        return
+    p = missing[0]
+    nxt = dstints[1]
+    if not (nxt["lap_start"] <= p < (nxt["lap_end"] or p + 1)):
+        return
+    dstints[0]["lap_end"] = p
+    nxt["lap_start"] = p + 1
+    print(f"    [FIX] car {num}: OpenF1 stint 1 ended on Lap 1 with no stop; moved the boundary to the Lap {p} stop")
+
+
 # ---------------------------------------------------------------------------
 # Session builder
 # ---------------------------------------------------------------------------
@@ -444,7 +468,10 @@ def _build_session(meeting: dict, session: dict, is_race: bool) -> OSession:
 
     lap_starts = [l["date_start"] for l in laps_raw if l.get("date_start")]
     start = min(_ts(lap_starts)) - pd.Timedelta(minutes=2) if lap_starts else _ts([session["date_start"]])[0]
-    end = _ts([session["date_end"]])[0] + pd.Timedelta(minutes=10)
+    # date_end is the scheduled end; delayed sessions (Singapore 2026 qualifying
+    # ran 30 minutes over) keep going, so extend to the last lap actually started.
+    end = max([_ts([session["date_end"]])[0]] + ([max(_ts(lap_starts))] if lap_starts else [])) \
+        + pd.Timedelta(minutes=10)
 
     streams = _Streams(sk, start, end, positions, sorted(drivers), with_gaps=is_race)
     _STREAMS[sk] = streams
@@ -456,7 +483,9 @@ def _build_session(meeting: dict, session: dict, is_race: bool) -> OSession:
     }
     stints_by_drv: dict[int, list[dict]] = {}
     for st in stints:
-        stints_by_drv.setdefault(st["driver_number"], []).append(st)
+        stints_by_drv.setdefault(st["driver_number"], []).append(dict(st))
+    for num, dstints in stints_by_drv.items():
+        _realign_lap1_stint(num, dstints, sorted(p for (n, p) in pit_in if n == num))
 
     laps_by_drv: dict[int, list[dict]] = {}
     for l in laps_raw:
@@ -589,14 +618,23 @@ def _build_session(meeting: dict, session: dict, is_race: bool) -> OSession:
     } for w in weather])
 
     results = []
-    for r in _get("session_result", session_key=sk):
+    session_results = _get("session_result", session_key=sk)
+    numeric = [r["position"] for r in session_results if isinstance(r.get("position"), (int, float))]
+    next_pos = max(numeric, default=0)
+    for r in session_results:
         info = drivers.get(r["driver_number"], {})
         dur = r.get("duration")
         q = dur if isinstance(dur, list) else [None, None, None]
+        position = r.get("position")
+        if not isinstance(position, (int, float)):
+            # OpenF1 writes codes like "RT" for a driver without a time; the
+            # official classification puts them after everyone who set one.
+            next_pos += 1
+            position = next_pos
         results.append({
             "Abbreviation": info.get("name_acronym") or str(r["driver_number"]),
             "TeamName": info.get("team_name") or "Unknown",
-            "Position": float(r["position"]) if r.get("position") is not None else np.nan,
+            "Position": float(position),
             "GridPosition": np.nan,
             "Q1": pd.to_timedelta(q[0], unit="s") if q[0] is not None else pd.NaT,
             "Q2": pd.to_timedelta(q[1], unit="s") if q[1] is not None else pd.NaT,
