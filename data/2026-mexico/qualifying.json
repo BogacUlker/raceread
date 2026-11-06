@@ -1,0 +1,3773 @@
+{
+  "race_id": "2026-mexico",
+  "drivers": [
+    {
+      "driver": "HAM",
+      "team": "Ferrari",
+      "position": 1,
+      "grid_position": null,
+      "q1": "1:17.341",
+      "q1_s": 77.341,
+      "q2": "1:16.953",
+      "q2_s": 76.953,
+      "q3": "1:16.514",
+      "q3_s": 76.514,
+      "eliminated_in": null,
+      "sectors": {
+        "s1": 26.852,
+        "s2": 30.03,
+        "s3": 19.632
+      },
+      "sectors_q1": {
+        "s1": 27.018,
+        "s2": 30.571,
+        "s3": 19.752
+      },
+      "sectors_q2": {
+        "s1": 26.866,
+        "s2": 30.377,
+        "s3": 19.71
+      },
+      "sectors_q3": {
+        "s1": 26.852,
+        "s2": 30.03,
+        "s3": 19.632
+      },
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "session": "Q1",
+          "time_s": 78.249,
+          "time_str": "1:18.249",
+          "s1": 27.403,
+          "s2": 30.774,
+          "s3": 20.072,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q1",
+          "time_s": 611.825,
+          "time_str": "10:11.825",
+          "s1": null,
+          "s2": null,
+          "s3": null,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q1",
+          "time_s": 87.685,
+          "time_str": "1:27.685",
+          "s1": 30.117,
+          "s2": 34.467,
+          "s3": 23.101,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q1",
+          "time_s": 77.341,
+          "time_str": "1:17.341",
+          "s1": 27.018,
+          "s2": 30.571,
+          "s3": 19.752,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q1",
+          "time_s": 101.77,
+          "time_str": "1:41.770",
+          "s1": 36.306,
+          "s2": 36.122,
+          "s3": 29.342,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q2",
+          "time_s": 83.081,
+          "time_str": "1:23.081",
+          "s1": 26.864,
+          "s2": 30.325,
+          "s3": 25.892,
+          "compound": "SOFT",
+          "is_deleted": true,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q2",
+          "time_s": 111.044,
+          "time_str": "1:51.044",
+          "s1": 41.18,
+          "s2": 41.759,
+          "s3": 28.105,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q2",
+          "time_s": 86.759,
+          "time_str": "1:26.759",
+          "s1": 27.707,
+          "s2": 30.644,
+          "s3": 28.408,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q2",
+          "time_s": 76.953,
+          "time_str": "1:16.953",
+          "s1": 26.866,
+          "s2": 30.377,
+          "s3": 19.71,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q2",
+          "time_s": 104.156,
+          "time_str": "1:44.156",
+          "s1": 36.06,
+          "s2": 39.924,
+          "s3": 28.172,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q3",
+          "time_s": 77.069,
+          "time_str": "1:17.069",
+          "s1": 26.903,
+          "s2": 30.326,
+          "s3": 19.84,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q3",
+          "time_s": 94.372,
+          "time_str": "1:34.372",
+          "s1": 35.833,
+          "s2": 33.664,
+          "s3": 24.875,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q3",
+          "time_s": 76.514,
+          "time_str": "1:16.514",
+          "s1": 26.852,
+          "s2": 30.03,
+          "s3": 19.632,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q3",
+          "time_s": 101.931,
+          "time_str": "1:41.931",
+          "s1": 31.69,
+          "s2": 36.9,
+          "s3": 33.341,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        }
+      ],
+      "gap_to_pole": 0.0
+    },
+    {
+      "driver": "RUS",
+      "team": "Mercedes",
+      "position": 2,
+      "grid_position": null,
+      "q1": "1:17.659",
+      "q1_s": 77.659,
+      "q2": "1:17.027",
+      "q2_s": 77.027,
+      "q3": "1:16.523",
+      "q3_s": 76.523,
+      "eliminated_in": null,
+      "sectors": {
+        "s1": 26.877,
+        "s2": 30.008,
+        "s3": 19.638
+      },
+      "sectors_q1": {
+        "s1": 27.105,
+        "s2": 30.583,
+        "s3": 19.971
+      },
+      "sectors_q2": {
+        "s1": 26.866,
+        "s2": 30.407,
+        "s3": 19.754
+      },
+      "sectors_q3": {
+        "s1": 26.877,
+        "s2": 30.008,
+        "s3": 19.638
+      },
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "session": "Q2",
+          "time_s": 93.383,
+          "time_str": "1:33.383",
+          "s1": 30.074,
+          "s2": 41.661,
+          "s3": 21.648,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q2",
+          "time_s": 78.018,
+          "time_str": "1:18.018",
+          "s1": 27.19,
+          "s2": 30.646,
+          "s3": 20.182,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q2",
+          "time_s": 111.517,
+          "time_str": "1:51.517",
+          "s1": 40.693,
+          "s2": 44.064,
+          "s3": 26.76,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q2",
+          "time_s": 101.293,
+          "time_str": "1:41.293",
+          "s1": 35.914,
+          "s2": 40.169,
+          "s3": 25.21,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q2",
+          "time_s": 77.659,
+          "time_str": "1:17.659",
+          "s1": 27.105,
+          "s2": 30.583,
+          "s3": 19.971,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 6,
+          "session": "Q2",
+          "time_s": 106.028,
+          "time_str": "1:46.028",
+          "s1": 33.631,
+          "s2": 42.194,
+          "s3": 30.203,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 7,
+          "session": "Q2",
+          "time_s": 93.235,
+          "time_str": "1:33.235",
+          "s1": 27.817,
+          "s2": 43.29,
+          "s3": 22.128,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 8,
+          "session": "Q2",
+          "time_s": 77.251,
+          "time_str": "1:17.251",
+          "s1": 26.965,
+          "s2": 30.574,
+          "s3": 19.712,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 9,
+          "session": "Q2",
+          "time_s": 105.64,
+          "time_str": "1:45.640",
+          "s1": 35.83,
+          "s2": 40.381,
+          "s3": 29.429,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 10,
+          "session": "Q2",
+          "time_s": 77.027,
+          "time_str": "1:17.027",
+          "s1": 26.866,
+          "s2": 30.407,
+          "s3": 19.754,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 11,
+          "session": "Q2",
+          "time_s": 111.765,
+          "time_str": "1:51.765",
+          "s1": 39.282,
+          "s2": 43.224,
+          "s3": 29.259,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q3",
+          "time_s": 89.289,
+          "time_str": "1:29.289",
+          "s1": 28.784,
+          "s2": 39.318,
+          "s3": 21.187,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q3",
+          "time_s": 77.138,
+          "time_str": "1:17.138",
+          "s1": 26.997,
+          "s2": 30.404,
+          "s3": 19.737,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q3",
+          "time_s": 101.077,
+          "time_str": "1:41.077",
+          "s1": 35.927,
+          "s2": 37.323,
+          "s3": 27.827,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q3",
+          "time_s": 76.523,
+          "time_str": "1:16.523",
+          "s1": 26.877,
+          "s2": 30.008,
+          "s3": 19.638,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q3",
+          "time_s": 115.173,
+          "time_str": "1:55.173",
+          "s1": 40.349,
+          "s2": 40.183,
+          "s3": 34.641,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        }
+      ],
+      "gap_to_pole": 0.009
+    },
+    {
+      "driver": "LEC",
+      "team": "Ferrari",
+      "position": 3,
+      "grid_position": null,
+      "q1": "1:17.506",
+      "q1_s": 77.506,
+      "q2": "1:16.944",
+      "q2_s": 76.944,
+      "q3": "1:16.633",
+      "q3_s": 76.633,
+      "eliminated_in": null,
+      "sectors": {
+        "s1": 26.851,
+        "s2": 30.068,
+        "s3": 19.728
+      },
+      "sectors_q1": {
+        "s1": 27.121,
+        "s2": 30.551,
+        "s3": 19.86
+      },
+      "sectors_q2": {
+        "s1": 27.04,
+        "s2": 30.197,
+        "s3": 19.707
+      },
+      "sectors_q3": {
+        "s1": 26.851,
+        "s2": 30.068,
+        "s3": 19.728
+      },
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "session": "Q1",
+          "time_s": 583.995,
+          "time_str": "9:43.995",
+          "s1": 27.254,
+          "s2": 30.621,
+          "s3": null,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q2",
+          "time_s": 77.532,
+          "time_str": "1:17.532",
+          "s1": 27.121,
+          "s2": 30.551,
+          "s3": 19.86,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q2",
+          "time_s": 98.229,
+          "time_str": "1:38.229",
+          "s1": 34.073,
+          "s2": 41.063,
+          "s3": 23.093,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q2",
+          "time_s": 91.4,
+          "time_str": "1:31.400",
+          "s1": 27.023,
+          "s2": 40.661,
+          "s3": 23.716,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q2",
+          "time_s": 77.506,
+          "time_str": "1:17.506",
+          "s1": 27.026,
+          "s2": 30.612,
+          "s3": 19.868,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q2",
+          "time_s": 101.066,
+          "time_str": "1:41.066",
+          "s1": 40.018,
+          "s2": 36.415,
+          "s3": 24.633,
+          "compound": "SOFT",
+          "is_deleted": true,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 6,
+          "session": "Q2",
+          "time_s": 82.231,
+          "time_str": "1:22.231",
+          "s1": 26.928,
+          "s2": 31.49,
+          "s3": 23.813,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 7,
+          "session": "Q2",
+          "time_s": 103.196,
+          "time_str": "1:43.196",
+          "s1": 36.957,
+          "s2": 38.307,
+          "s3": 27.932,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 8,
+          "session": "Q2",
+          "time_s": 76.944,
+          "time_str": "1:16.944",
+          "s1": 27.04,
+          "s2": 30.197,
+          "s3": 19.707,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 9,
+          "session": "Q2",
+          "time_s": 100.54,
+          "time_str": "1:40.540",
+          "s1": 35.806,
+          "s2": 41.696,
+          "s3": 23.038,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 10,
+          "session": "Q2",
+          "time_s": 77.312,
+          "time_str": "1:17.312",
+          "s1": 26.992,
+          "s2": 30.528,
+          "s3": 19.792,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 11,
+          "session": "Q2",
+          "time_s": 93.96,
+          "time_str": "1:33.960",
+          "s1": 31.115,
+          "s2": 34.329,
+          "s3": 28.516,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 12,
+          "session": "Q2",
+          "time_s": 77.074,
+          "time_str": "1:17.074",
+          "s1": 26.97,
+          "s2": 30.393,
+          "s3": 19.711,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 13,
+          "session": "Q2",
+          "time_s": 91.928,
+          "time_str": "1:31.928",
+          "s1": 31.31,
+          "s2": 33.908,
+          "s3": 26.71,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q3",
+          "time_s": 76.647,
+          "time_str": "1:16.647",
+          "s1": 26.851,
+          "s2": 30.068,
+          "s3": 19.728,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q3",
+          "time_s": 93.793,
+          "time_str": "1:33.793",
+          "s1": 33.743,
+          "s2": 33.78,
+          "s3": 26.27,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q3",
+          "time_s": 76.633,
+          "time_str": "1:16.633",
+          "s1": 26.901,
+          "s2": 30.208,
+          "s3": 19.524,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q3",
+          "time_s": 105.558,
+          "time_str": "1:45.558",
+          "s1": 37.58,
+          "s2": 36.709,
+          "s3": 31.269,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        }
+      ],
+      "gap_to_pole": 0.119
+    },
+    {
+      "driver": "VER",
+      "team": "Red Bull Racing",
+      "position": 4,
+      "grid_position": null,
+      "q1": "1:17.942",
+      "q1_s": 77.942,
+      "q2": "1:16.876",
+      "q2_s": 76.876,
+      "q3": "1:16.692",
+      "q3_s": 76.692,
+      "eliminated_in": null,
+      "sectors": {
+        "s1": 26.848,
+        "s2": 30.237,
+        "s3": 19.607
+      },
+      "sectors_q1": {
+        "s1": 27.006,
+        "s2": 30.534,
+        "s3": 20.402
+      },
+      "sectors_q2": {
+        "s1": 26.768,
+        "s2": 30.393,
+        "s3": 19.715
+      },
+      "sectors_q3": {
+        "s1": 26.848,
+        "s2": 30.237,
+        "s3": 19.607
+      },
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "session": "Q1",
+          "time_s": 608.335,
+          "time_str": "10:08.335",
+          "s1": 26.977,
+          "s2": 30.81,
+          "s3": null,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q1",
+          "time_s": 77.942,
+          "time_str": "1:17.942",
+          "s1": 27.006,
+          "s2": 30.534,
+          "s3": 20.402,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q1",
+          "time_s": 99.713,
+          "time_str": "1:39.713",
+          "s1": 38.502,
+          "s2": 34.511,
+          "s3": 26.7,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q2",
+          "time_s": 76.876,
+          "time_str": "1:16.876",
+          "s1": 26.768,
+          "s2": 30.393,
+          "s3": 19.715,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q2",
+          "time_s": 96.375,
+          "time_str": "1:36.375",
+          "s1": 33.515,
+          "s2": 35.295,
+          "s3": 27.565,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q3",
+          "time_s": 76.692,
+          "time_str": "1:16.692",
+          "s1": 26.848,
+          "s2": 30.237,
+          "s3": 19.607,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q3",
+          "time_s": 88.511,
+          "time_str": "1:28.511",
+          "s1": 31.546,
+          "s2": 32.569,
+          "s3": 24.396,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q3",
+          "time_s": 78.796,
+          "time_str": "1:18.796",
+          "s1": 26.785,
+          "s2": 30.032,
+          "s3": 21.979,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        }
+      ],
+      "gap_to_pole": 0.178
+    },
+    {
+      "driver": "ANT",
+      "team": "Mercedes",
+      "position": 5,
+      "grid_position": null,
+      "q1": "1:17.918",
+      "q1_s": 77.918,
+      "q2": "1:17.133",
+      "q2_s": 77.133,
+      "q3": "1:16.707",
+      "q3_s": 76.707,
+      "eliminated_in": null,
+      "sectors": {
+        "s1": 26.876,
+        "s2": 30.173,
+        "s3": 19.658
+      },
+      "sectors_q1": {
+        "s1": 27.159,
+        "s2": 30.82,
+        "s3": 19.939
+      },
+      "sectors_q2": {
+        "s1": 26.823,
+        "s2": 30.452,
+        "s3": 19.858
+      },
+      "sectors_q3": {
+        "s1": 26.876,
+        "s2": 30.173,
+        "s3": 19.658
+      },
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "session": "Q1",
+          "time_s": 501.608,
+          "time_str": "8:21.608",
+          "s1": null,
+          "s2": null,
+          "s3": null,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q2",
+          "time_s": 91.506,
+          "time_str": "1:31.506",
+          "s1": 29.582,
+          "s2": 39.219,
+          "s3": 22.705,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q2",
+          "time_s": 77.918,
+          "time_str": "1:17.918",
+          "s1": 27.159,
+          "s2": 30.82,
+          "s3": 19.939,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q2",
+          "time_s": 109.299,
+          "time_str": "1:49.299",
+          "s1": 40.702,
+          "s2": 39.515,
+          "s3": 29.082,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q2",
+          "time_s": 78.038,
+          "time_str": "1:18.038",
+          "s1": 26.94,
+          "s2": 30.798,
+          "s3": 20.3,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q2",
+          "time_s": 104.905,
+          "time_str": "1:44.905",
+          "s1": 36.256,
+          "s2": 39.23,
+          "s3": 29.419,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 6,
+          "session": "Q2",
+          "time_s": 86.785,
+          "time_str": "1:26.785",
+          "s1": 29.21,
+          "s2": 35.868,
+          "s3": 21.707,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 7,
+          "session": "Q2",
+          "time_s": 77.203,
+          "time_str": "1:17.203",
+          "s1": 27.083,
+          "s2": 30.361,
+          "s3": 19.759,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 8,
+          "session": "Q2",
+          "time_s": 105.048,
+          "time_str": "1:45.048",
+          "s1": 36.273,
+          "s2": 37.278,
+          "s3": 31.497,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 9,
+          "session": "Q2",
+          "time_s": 77.133,
+          "time_str": "1:17.133",
+          "s1": 26.823,
+          "s2": 30.452,
+          "s3": 19.858,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 10,
+          "session": "Q2",
+          "time_s": 107.029,
+          "time_str": "1:47.029",
+          "s1": 43.556,
+          "s2": 36.432,
+          "s3": 27.041,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q3",
+          "time_s": 92.262,
+          "time_str": "1:32.262",
+          "s1": 29.965,
+          "s2": 37.488,
+          "s3": 24.809,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q3",
+          "time_s": 77.339,
+          "time_str": "1:17.339",
+          "s1": 27.093,
+          "s2": 30.486,
+          "s3": 19.76,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q3",
+          "time_s": 98.946,
+          "time_str": "1:38.946",
+          "s1": 33.612,
+          "s2": 37.014,
+          "s3": 28.32,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q3",
+          "time_s": 87.872,
+          "time_str": "1:27.872",
+          "s1": 29.399,
+          "s2": 37.096,
+          "s3": 21.377,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q3",
+          "time_s": 76.707,
+          "time_str": "1:16.707",
+          "s1": 26.876,
+          "s2": 30.173,
+          "s3": 19.658,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        }
+      ],
+      "gap_to_pole": 0.193
+    },
+    {
+      "driver": "NOR",
+      "team": "McLaren",
+      "position": 6,
+      "grid_position": null,
+      "q1": "1:17.733",
+      "q1_s": 77.733,
+      "q2": "1:16.728",
+      "q2_s": 76.728,
+      "q3": "1:16.824",
+      "q3_s": 76.824,
+      "eliminated_in": null,
+      "sectors": {
+        "s1": 26.869,
+        "s2": 30.22,
+        "s3": 19.735
+      },
+      "sectors_q1": {
+        "s1": 27.22,
+        "s2": 30.653,
+        "s3": 19.86
+      },
+      "sectors_q2": {
+        "s1": 26.991,
+        "s2": 30.193,
+        "s3": 19.544
+      },
+      "sectors_q3": {
+        "s1": 26.869,
+        "s2": 30.22,
+        "s3": 19.735
+      },
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "session": "Q1",
+          "time_s": 100.9,
+          "time_str": "1:40.900",
+          "s1": 30.752,
+          "s2": 34.021,
+          "s3": 36.127,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q1",
+          "time_s": 600.015,
+          "time_str": "10:00.015",
+          "s1": 28.907,
+          "s2": 33.218,
+          "s3": null,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q1",
+          "time_s": 77.733,
+          "time_str": "1:17.733",
+          "s1": 27.22,
+          "s2": 30.653,
+          "s3": 19.86,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q1",
+          "time_s": 102.283,
+          "time_str": "1:42.283",
+          "s1": 37.517,
+          "s2": 36.381,
+          "s3": 28.385,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q2",
+          "time_s": 78.662,
+          "time_str": "1:18.662",
+          "s1": 27.097,
+          "s2": 30.629,
+          "s3": 20.936,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q2",
+          "time_s": 91.881,
+          "time_str": "1:31.881",
+          "s1": 32.618,
+          "s2": 33.029,
+          "s3": 26.234,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q2",
+          "time_s": 77.048,
+          "time_str": "1:17.048",
+          "s1": 26.979,
+          "s2": 30.287,
+          "s3": 19.782,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q2",
+          "time_s": 108.864,
+          "time_str": "1:48.864",
+          "s1": 37.692,
+          "s2": 41.071,
+          "s3": 30.101,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q2",
+          "time_s": 109.115,
+          "time_str": "1:49.115",
+          "s1": 43.361,
+          "s2": 42.238,
+          "s3": 23.516,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 6,
+          "session": "Q2",
+          "time_s": 76.728,
+          "time_str": "1:16.728",
+          "s1": 26.991,
+          "s2": 30.193,
+          "s3": 19.544,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 7,
+          "session": "Q2",
+          "time_s": 102.379,
+          "time_str": "1:42.379",
+          "s1": 36.18,
+          "s2": 37.108,
+          "s3": 29.091,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q3",
+          "time_s": 92.243,
+          "time_str": "1:32.243",
+          "s1": 30.47,
+          "s2": 38.826,
+          "s3": 22.947,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q3",
+          "time_s": 76.824,
+          "time_str": "1:16.824",
+          "s1": 26.869,
+          "s2": 30.22,
+          "s3": 19.735,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q3",
+          "time_s": 97.305,
+          "time_str": "1:37.305",
+          "s1": 34.378,
+          "s2": 35.172,
+          "s3": 27.755,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        }
+      ],
+      "gap_to_pole": 0.31
+    },
+    {
+      "driver": "HAD",
+      "team": "Red Bull Racing",
+      "position": 7,
+      "grid_position": null,
+      "q1": "1:17.385",
+      "q1_s": 77.385,
+      "q2": "1:17.047",
+      "q2_s": 77.047,
+      "q3": "1:16.900",
+      "q3_s": 76.9,
+      "eliminated_in": null,
+      "sectors": {
+        "s1": 26.973,
+        "s2": 30.262,
+        "s3": 19.665
+      },
+      "sectors_q1": {
+        "s1": 27.018,
+        "s2": 30.552,
+        "s3": 19.815
+      },
+      "sectors_q2": {
+        "s1": 26.975,
+        "s2": 30.394,
+        "s3": 19.678
+      },
+      "sectors_q3": {
+        "s1": 26.973,
+        "s2": 30.262,
+        "s3": 19.665
+      },
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "session": "Q1",
+          "time_s": 79.035,
+          "time_str": "1:19.035",
+          "s1": 27.251,
+          "s2": 30.956,
+          "s3": 20.828,
+          "compound": "SOFT",
+          "is_deleted": true,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q1",
+          "time_s": 519.469,
+          "time_str": "8:39.469",
+          "s1": null,
+          "s2": null,
+          "s3": null,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q1",
+          "time_s": 78.669,
+          "time_str": "1:18.669",
+          "s1": 27.142,
+          "s2": 30.654,
+          "s3": 20.873,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q1",
+          "time_s": 95.423,
+          "time_str": "1:35.423",
+          "s1": 33.199,
+          "s2": 34.329,
+          "s3": 27.895,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q1",
+          "time_s": 77.385,
+          "time_str": "1:17.385",
+          "s1": 27.018,
+          "s2": 30.552,
+          "s3": 19.815,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 6,
+          "session": "Q1",
+          "time_s": 108.576,
+          "time_str": "1:48.576",
+          "s1": 38.666,
+          "s2": 42.93,
+          "s3": 26.98,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q2",
+          "time_s": 77.677,
+          "time_str": "1:17.677",
+          "s1": 27.048,
+          "s2": 30.749,
+          "s3": 19.88,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q2",
+          "time_s": 93.963,
+          "time_str": "1:33.963",
+          "s1": 31.992,
+          "s2": 35.375,
+          "s3": 26.596,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q2",
+          "time_s": 77.047,
+          "time_str": "1:17.047",
+          "s1": 26.975,
+          "s2": 30.394,
+          "s3": 19.678,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q2",
+          "time_s": 111.669,
+          "time_str": "1:51.669",
+          "s1": 39.516,
+          "s2": 40.917,
+          "s3": 31.236,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q3",
+          "time_s": 87.376,
+          "time_str": "1:27.376",
+          "s1": 26.927,
+          "s2": 30.286,
+          "s3": 30.163,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q3",
+          "time_s": 76.9,
+          "time_str": "1:16.900",
+          "s1": 26.973,
+          "s2": 30.262,
+          "s3": 19.665,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        }
+      ],
+      "gap_to_pole": 0.386
+    },
+    {
+      "driver": "LIN",
+      "team": "Racing Bulls",
+      "position": 8,
+      "grid_position": null,
+      "q1": "1:18.210",
+      "q1_s": 78.21,
+      "q2": "1:17.135",
+      "q2_s": 77.135,
+      "q3": "1:17.117",
+      "q3_s": 77.117,
+      "eliminated_in": null,
+      "sectors": {
+        "s1": 27.026,
+        "s2": 30.483,
+        "s3": 19.626
+      },
+      "sectors_q1": {
+        "s1": 27.254,
+        "s2": 30.977,
+        "s3": 19.979
+      },
+      "sectors_q2": {
+        "s1": 27.026,
+        "s2": 30.483,
+        "s3": 19.626
+      },
+      "sectors_q3": {
+        "s1": 27.026,
+        "s2": 30.483,
+        "s3": 19.626
+      },
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "session": "Q1",
+          "time_s": 538.749,
+          "time_str": "8:58.749",
+          "s1": 34.733,
+          "s2": null,
+          "s3": null,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q1",
+          "time_s": 87.039,
+          "time_str": "1:27.039",
+          "s1": 31.169,
+          "s2": 34.869,
+          "s3": 21.001,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q1",
+          "time_s": 78.604,
+          "time_str": "1:18.604",
+          "s1": 27.301,
+          "s2": 31.033,
+          "s3": 20.27,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q1",
+          "time_s": 106.685,
+          "time_str": "1:46.685",
+          "s1": 35.657,
+          "s2": 44.165,
+          "s3": 26.863,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q1",
+          "time_s": 96.319,
+          "time_str": "1:36.319",
+          "s1": 38.161,
+          "s2": 36.678,
+          "s3": 21.48,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 6,
+          "session": "Q1",
+          "time_s": 78.21,
+          "time_str": "1:18.210",
+          "s1": 27.254,
+          "s2": 30.977,
+          "s3": 19.979,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 7,
+          "session": "Q1",
+          "time_s": 99.873,
+          "time_str": "1:39.873",
+          "s1": 33.998,
+          "s2": 38.254,
+          "s3": 27.621,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q2",
+          "time_s": 77.135,
+          "time_str": "1:17.135",
+          "s1": 27.026,
+          "s2": 30.483,
+          "s3": 19.626,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q2",
+          "time_s": 96.073,
+          "time_str": "1:36.073",
+          "s1": 33.448,
+          "s2": 36.914,
+          "s3": 25.711,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q2",
+          "time_s": 77.232,
+          "time_str": "1:17.232",
+          "s1": 26.939,
+          "s2": 30.473,
+          "s3": 19.82,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q2",
+          "time_s": 101.771,
+          "time_str": "1:41.771",
+          "s1": 34.925,
+          "s2": 39.474,
+          "s3": 27.372,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q3",
+          "time_s": 78.229,
+          "time_str": "1:18.229",
+          "s1": 26.933,
+          "s2": 30.538,
+          "s3": 20.758,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q3",
+          "time_s": 97.279,
+          "time_str": "1:37.279",
+          "s1": 31.129,
+          "s2": 35.466,
+          "s3": 30.684,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q3",
+          "time_s": 77.117,
+          "time_str": "1:17.117",
+          "s1": 27.007,
+          "s2": 30.38,
+          "s3": 19.73,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        }
+      ],
+      "gap_to_pole": 0.603
+    },
+    {
+      "driver": "GAS",
+      "team": "Alpine",
+      "position": 9,
+      "grid_position": null,
+      "q1": "1:18.194",
+      "q1_s": 78.194,
+      "q2": "1:17.278",
+      "q2_s": 77.278,
+      "q3": "1:17.153",
+      "q3_s": 77.153,
+      "eliminated_in": null,
+      "sectors": {
+        "s1": 26.886,
+        "s2": 30.406,
+        "s3": 19.861
+      },
+      "sectors_q1": {
+        "s1": 27.084,
+        "s2": 31.034,
+        "s3": 20.076
+      },
+      "sectors_q2": {
+        "s1": 26.993,
+        "s2": 30.471,
+        "s3": 19.814
+      },
+      "sectors_q3": {
+        "s1": 26.886,
+        "s2": 30.406,
+        "s3": 19.861
+      },
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "session": "Q1",
+          "time_s": 91.617,
+          "time_str": "1:31.617",
+          "s1": 31.111,
+          "s2": 38.278,
+          "s3": 22.228,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q1",
+          "time_s": 484.108,
+          "time_str": "8:04.108",
+          "s1": 27.133,
+          "s2": null,
+          "s3": null,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q1",
+          "time_s": 78.194,
+          "time_str": "1:18.194",
+          "s1": 27.084,
+          "s2": 31.034,
+          "s3": 20.076,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q1",
+          "time_s": 111.668,
+          "time_str": "1:51.668",
+          "s1": 36.723,
+          "s2": 45.53,
+          "s3": 29.415,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q1",
+          "time_s": 93.723,
+          "time_str": "1:33.723",
+          "s1": 27.126,
+          "s2": 38.535,
+          "s3": 28.062,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q2",
+          "time_s": 77.882,
+          "time_str": "1:17.882",
+          "s1": 27.157,
+          "s2": 30.817,
+          "s3": 19.908,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q2",
+          "time_s": 101.496,
+          "time_str": "1:41.496",
+          "s1": 35.591,
+          "s2": 38.412,
+          "s3": 27.493,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q2",
+          "time_s": 77.278,
+          "time_str": "1:17.278",
+          "s1": 26.993,
+          "s2": 30.471,
+          "s3": 19.814,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q2",
+          "time_s": 104.837,
+          "time_str": "1:44.837",
+          "s1": 38.09,
+          "s2": 37.653,
+          "s3": 29.094,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q3",
+          "time_s": 77.324,
+          "time_str": "1:17.324",
+          "s1": 26.978,
+          "s2": 30.527,
+          "s3": 19.819,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q3",
+          "time_s": 104.936,
+          "time_str": "1:44.936",
+          "s1": 36.694,
+          "s2": 40.459,
+          "s3": 27.783,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q3",
+          "time_s": 77.153,
+          "time_str": "1:17.153",
+          "s1": 26.886,
+          "s2": 30.406,
+          "s3": 19.861,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        }
+      ],
+      "gap_to_pole": 0.639
+    },
+    {
+      "driver": "HUL",
+      "team": "Audi",
+      "position": 10,
+      "grid_position": null,
+      "q1": "1:17.868",
+      "q1_s": 77.868,
+      "q2": "1:17.306",
+      "q2_s": 77.306,
+      "q3": null,
+      "q3_s": null,
+      "eliminated_in": "Q2",
+      "sectors": {
+        "s1": 27.0,
+        "s2": 30.495,
+        "s3": 19.811
+      },
+      "sectors_q1": {
+        "s1": 27.103,
+        "s2": 30.861,
+        "s3": 19.904
+      },
+      "sectors_q2": {
+        "s1": 27.0,
+        "s2": 30.495,
+        "s3": 19.811
+      },
+      "sectors_q3": {
+        "s1": null,
+        "s2": null,
+        "s3": null
+      },
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "session": "Q1",
+          "time_s": 79.502,
+          "time_str": "1:19.502",
+          "s1": 27.608,
+          "s2": 31.56,
+          "s3": 20.334,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q1",
+          "time_s": 111.03,
+          "time_str": "1:51.030",
+          "s1": 39.285,
+          "s2": 42.848,
+          "s3": 28.897,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q1",
+          "time_s": 78.298,
+          "time_str": "1:18.298",
+          "s1": 27.254,
+          "s2": 31.185,
+          "s3": 19.859,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q1",
+          "time_s": 105.531,
+          "time_str": "1:45.531",
+          "s1": 36.029,
+          "s2": 39.863,
+          "s3": 29.639,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q1",
+          "time_s": 77.868,
+          "time_str": "1:17.868",
+          "s1": 27.103,
+          "s2": 30.861,
+          "s3": 19.904,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 6,
+          "session": "Q1",
+          "time_s": 99.546,
+          "time_str": "1:39.546",
+          "s1": 31.833,
+          "s2": 40.401,
+          "s3": 27.312,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q2",
+          "time_s": 78.168,
+          "time_str": "1:18.168",
+          "s1": 27.287,
+          "s2": 31.042,
+          "s3": 19.839,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q2",
+          "time_s": 96.826,
+          "time_str": "1:36.826",
+          "s1": 31.076,
+          "s2": 40.329,
+          "s3": 25.421,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q2",
+          "time_s": 77.587,
+          "time_str": "1:17.587",
+          "s1": 27.09,
+          "s2": 30.597,
+          "s3": 19.9,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q2",
+          "time_s": 97.012,
+          "time_str": "1:37.012",
+          "s1": 32.989,
+          "s2": 37.537,
+          "s3": 26.486,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q2",
+          "time_s": 77.306,
+          "time_str": "1:17.306",
+          "s1": 27.0,
+          "s2": 30.495,
+          "s3": 19.811,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 6,
+          "session": "Q2",
+          "time_s": 101.78,
+          "time_str": "1:41.780",
+          "s1": 35.045,
+          "s2": 38.858,
+          "s3": 27.877,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        }
+      ],
+      "gap_to_pole": 0.792
+    },
+    {
+      "driver": "COL",
+      "team": "Alpine",
+      "position": 11,
+      "grid_position": null,
+      "q1": "1:18.517",
+      "q1_s": 78.517,
+      "q2": "1:17.640",
+      "q2_s": 77.64,
+      "q3": null,
+      "q3_s": null,
+      "eliminated_in": "Q2",
+      "sectors": {
+        "s1": 27.02,
+        "s2": 30.593,
+        "s3": 20.027
+      },
+      "sectors_q1": {
+        "s1": 27.156,
+        "s2": 31.167,
+        "s3": 20.194
+      },
+      "sectors_q2": {
+        "s1": 27.02,
+        "s2": 30.593,
+        "s3": 20.027
+      },
+      "sectors_q3": {
+        "s1": null,
+        "s2": null,
+        "s3": null
+      },
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "session": "Q1",
+          "time_s": 95.547,
+          "time_str": "1:35.547",
+          "s1": 31.386,
+          "s2": 41.983,
+          "s3": 22.178,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q1",
+          "time_s": 478.811,
+          "time_str": "7:58.811",
+          "s1": 27.517,
+          "s2": null,
+          "s3": null,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q1",
+          "time_s": 78.517,
+          "time_str": "1:18.517",
+          "s1": 27.156,
+          "s2": 31.167,
+          "s3": 20.194,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q1",
+          "time_s": 109.377,
+          "time_str": "1:49.377",
+          "s1": 37.187,
+          "s2": 43.046,
+          "s3": 29.144,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q1",
+          "time_s": 95.595,
+          "time_str": "1:35.595",
+          "s1": 27.384,
+          "s2": 34.945,
+          "s3": 33.266,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q2",
+          "time_s": 78.269,
+          "time_str": "1:18.269",
+          "s1": 27.405,
+          "s2": 30.914,
+          "s3": 19.95,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q2",
+          "time_s": 100.016,
+          "time_str": "1:40.016",
+          "s1": 33.262,
+          "s2": 39.389,
+          "s3": 27.365,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q2",
+          "time_s": 77.64,
+          "time_str": "1:17.640",
+          "s1": 27.02,
+          "s2": 30.593,
+          "s3": 20.027,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q2",
+          "time_s": 112.153,
+          "time_str": "1:52.153",
+          "s1": 35.761,
+          "s2": 44.176,
+          "s3": 32.216,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        }
+      ],
+      "gap_to_pole": 1.126
+    },
+    {
+      "driver": "PIA",
+      "team": "McLaren",
+      "position": 12,
+      "grid_position": null,
+      "q1": "1:17.659",
+      "q1_s": 77.659,
+      "q2": "1:17.646",
+      "q2_s": 77.646,
+      "q3": null,
+      "q3_s": null,
+      "eliminated_in": "Q2",
+      "sectors": {
+        "s1": 27.136,
+        "s2": 30.621,
+        "s3": 19.902
+      },
+      "sectors_q1": {
+        "s1": 27.136,
+        "s2": 30.621,
+        "s3": 19.902
+      },
+      "sectors_q2": {
+        "s1": 27.136,
+        "s2": 30.621,
+        "s3": 19.902
+      },
+      "sectors_q3": {
+        "s1": null,
+        "s2": null,
+        "s3": null
+      },
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "session": "Q1",
+          "time_s": 87.931,
+          "time_str": "1:27.931",
+          "s1": 29.476,
+          "s2": 36.346,
+          "s3": 22.109,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q1",
+          "time_s": 78.589,
+          "time_str": "1:18.589",
+          "s1": 27.262,
+          "s2": 31.05,
+          "s3": 20.277,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q1",
+          "time_s": 612.088,
+          "time_str": "10:12.088",
+          "s1": null,
+          "s2": null,
+          "s3": null,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q1",
+          "time_s": 86.278,
+          "time_str": "1:26.278",
+          "s1": 28.7,
+          "s2": 36.094,
+          "s3": 21.484,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q1",
+          "time_s": 77.659,
+          "time_str": "1:17.659",
+          "s1": 27.136,
+          "s2": 30.621,
+          "s3": 19.902,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 6,
+          "session": "Q1",
+          "time_s": 101.802,
+          "time_str": "1:41.802",
+          "s1": 36.1,
+          "s2": 37.265,
+          "s3": 28.437,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q2",
+          "time_s": 77.776,
+          "time_str": "1:17.776",
+          "s1": 27.14,
+          "s2": 30.862,
+          "s3": 19.774,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q2",
+          "time_s": 94.337,
+          "time_str": "1:34.337",
+          "s1": 32.732,
+          "s2": 34.882,
+          "s3": 26.723,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q2",
+          "time_s": 94.417,
+          "time_str": "1:34.417",
+          "s1": 32.77,
+          "s2": 40.143,
+          "s3": 21.504,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q2",
+          "time_s": 88.67,
+          "time_str": "1:28.670",
+          "s1": 26.936,
+          "s2": 33.834,
+          "s3": 27.9,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q2",
+          "time_s": 103.92,
+          "time_str": "1:43.920",
+          "s1": 38.873,
+          "s2": 42.01,
+          "s3": 23.037,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 6,
+          "session": "Q2",
+          "time_s": 77.646,
+          "time_str": "1:17.646",
+          "s1": 27.121,
+          "s2": 30.667,
+          "s3": 19.858,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 7,
+          "session": "Q2",
+          "time_s": 102.685,
+          "time_str": "1:42.685",
+          "s1": 38.791,
+          "s2": 36.483,
+          "s3": 27.411,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        }
+      ],
+      "gap_to_pole": 1.132
+    },
+    {
+      "driver": "BOR",
+      "team": "Audi",
+      "position": 13,
+      "grid_position": null,
+      "q1": "1:17.727",
+      "q1_s": 77.727,
+      "q2": "1:17.680",
+      "q2_s": 77.68,
+      "q3": null,
+      "q3_s": null,
+      "eliminated_in": "Q2",
+      "sectors": {
+        "s1": 27.101,
+        "s2": 30.822,
+        "s3": 19.804
+      },
+      "sectors_q1": {
+        "s1": 27.101,
+        "s2": 30.822,
+        "s3": 19.804
+      },
+      "sectors_q2": {
+        "s1": 27.101,
+        "s2": 30.822,
+        "s3": 19.804
+      },
+      "sectors_q3": {
+        "s1": null,
+        "s2": null,
+        "s3": null
+      },
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "session": "Q1",
+          "time_s": 79.783,
+          "time_str": "1:19.783",
+          "s1": 27.58,
+          "s2": 31.614,
+          "s3": 20.589,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q1",
+          "time_s": 116.218,
+          "time_str": "1:56.218",
+          "s1": 40.114,
+          "s2": 42.516,
+          "s3": 33.588,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q1",
+          "time_s": 78.447,
+          "time_str": "1:18.447",
+          "s1": 27.238,
+          "s2": 31.123,
+          "s3": 20.086,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q1",
+          "time_s": 110.012,
+          "time_str": "1:50.012",
+          "s1": 36.908,
+          "s2": 40.947,
+          "s3": 32.157,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q1",
+          "time_s": 77.727,
+          "time_str": "1:17.727",
+          "s1": 27.101,
+          "s2": 30.822,
+          "s3": 19.804,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 6,
+          "session": "Q1",
+          "time_s": 107.713,
+          "time_str": "1:47.713",
+          "s1": 36.483,
+          "s2": 40.233,
+          "s3": 30.997,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q2",
+          "time_s": 78.387,
+          "time_str": "1:18.387",
+          "s1": 27.185,
+          "s2": 31.127,
+          "s3": 20.075,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q2",
+          "time_s": 100.221,
+          "time_str": "1:40.221",
+          "s1": 34.495,
+          "s2": 36.382,
+          "s3": 29.344,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q2",
+          "time_s": 77.91,
+          "time_str": "1:17.910",
+          "s1": 27.194,
+          "s2": 30.843,
+          "s3": 19.873,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q2",
+          "time_s": 96.712,
+          "time_str": "1:36.712",
+          "s1": 32.906,
+          "s2": 37.237,
+          "s3": 26.569,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q2",
+          "time_s": 77.68,
+          "time_str": "1:17.680",
+          "s1": 27.063,
+          "s2": 30.576,
+          "s3": 20.041,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 6,
+          "session": "Q2",
+          "time_s": 108.936,
+          "time_str": "1:48.936",
+          "s1": 43.902,
+          "s2": 35.695,
+          "s3": 29.339,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        }
+      ],
+      "gap_to_pole": 1.166
+    },
+    {
+      "driver": "BEA",
+      "team": "Haas F1 Team",
+      "position": 14,
+      "grid_position": null,
+      "q1": "1:18.083",
+      "q1_s": 78.083,
+      "q2": "1:18.083",
+      "q2_s": 78.083,
+      "q3": null,
+      "q3_s": null,
+      "eliminated_in": "Q2",
+      "sectors": {
+        "s1": 27.156,
+        "s2": 30.956,
+        "s3": 19.971
+      },
+      "sectors_q1": {
+        "s1": 27.156,
+        "s2": 30.956,
+        "s3": 19.971
+      },
+      "sectors_q2": {
+        "s1": 27.156,
+        "s2": 30.956,
+        "s3": 19.971
+      },
+      "sectors_q3": {
+        "s1": null,
+        "s2": null,
+        "s3": null
+      },
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "session": "Q1",
+          "time_s": 88.042,
+          "time_str": "1:28.042",
+          "s1": 29.808,
+          "s2": 35.648,
+          "s3": 22.586,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q1",
+          "time_s": 79.327,
+          "time_str": "1:19.327",
+          "s1": 27.411,
+          "s2": 31.668,
+          "s3": 20.248,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q1",
+          "time_s": 111.031,
+          "time_str": "1:51.031",
+          "s1": 42.343,
+          "s2": 40.512,
+          "s3": 28.176,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q2",
+          "time_s": 86.294,
+          "time_str": "1:26.294",
+          "s1": 29.854,
+          "s2": 34.447,
+          "s3": 21.993,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q2",
+          "time_s": 78.654,
+          "time_str": "1:18.654",
+          "s1": 27.236,
+          "s2": 31.373,
+          "s3": 20.045,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q2",
+          "time_s": 95.281,
+          "time_str": "1:35.281",
+          "s1": 34.033,
+          "s2": 34.376,
+          "s3": 26.872,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q2",
+          "time_s": 78.083,
+          "time_str": "1:18.083",
+          "s1": 27.156,
+          "s2": 30.956,
+          "s3": 19.971,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q2",
+          "time_s": 98.177,
+          "time_str": "1:38.177",
+          "s1": 36.008,
+          "s2": 35.573,
+          "s3": 26.596,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 6,
+          "session": "Q2",
+          "time_s": 78.083,
+          "time_str": "1:18.083",
+          "s1": 27.299,
+          "s2": 30.89,
+          "s3": 19.894,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 7,
+          "session": "Q2",
+          "time_s": 94.831,
+          "time_str": "1:34.831",
+          "s1": 31.128,
+          "s2": 38.415,
+          "s3": 25.288,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 8,
+          "session": "Q2",
+          "time_s": 77.847,
+          "time_str": "1:17.847",
+          "s1": 27.029,
+          "s2": 30.698,
+          "s3": 20.12,
+          "compound": "SOFT",
+          "is_deleted": true,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 9,
+          "session": "Q2",
+          "time_s": 104.684,
+          "time_str": "1:44.684",
+          "s1": 39.735,
+          "s2": 38.304,
+          "s3": 26.645,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        }
+      ],
+      "gap_to_pole": 1.569
+    },
+    {
+      "driver": "SAI",
+      "team": "Williams",
+      "position": 15,
+      "grid_position": null,
+      "q1": "1:18.521",
+      "q1_s": 78.521,
+      "q2": "1:18.885",
+      "q2_s": 78.885,
+      "q3": null,
+      "q3_s": null,
+      "eliminated_in": "Q2",
+      "sectors": {
+        "s1": 27.36,
+        "s2": 31.305,
+        "s3": 20.22
+      },
+      "sectors_q1": {
+        "s1": 27.195,
+        "s2": 31.105,
+        "s3": 20.221
+      },
+      "sectors_q2": {
+        "s1": 27.36,
+        "s2": 31.305,
+        "s3": 20.22
+      },
+      "sectors_q3": {
+        "s1": null,
+        "s2": null,
+        "s3": null
+      },
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "session": "Q1",
+          "time_s": 85.908,
+          "time_str": "1:25.908",
+          "s1": 28.122,
+          "s2": 35.269,
+          "s3": 22.517,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q1",
+          "time_s": 79.283,
+          "time_str": "1:19.283",
+          "s1": 27.423,
+          "s2": 31.463,
+          "s3": 20.397,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q1",
+          "time_s": 582.116,
+          "time_str": "9:42.116",
+          "s1": 41.83,
+          "s2": 35.443,
+          "s3": null,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q1",
+          "time_s": 91.015,
+          "time_str": "1:31.015",
+          "s1": 30.691,
+          "s2": 38.611,
+          "s3": 21.713,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q1",
+          "time_s": 78.699,
+          "time_str": "1:18.699",
+          "s1": 27.298,
+          "s2": 31.258,
+          "s3": 20.143,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 6,
+          "session": "Q1",
+          "time_s": 96.231,
+          "time_str": "1:36.231",
+          "s1": 34.449,
+          "s2": 35.286,
+          "s3": 26.496,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 7,
+          "session": "Q1",
+          "time_s": 91.549,
+          "time_str": "1:31.549",
+          "s1": 32.1,
+          "s2": 37.854,
+          "s3": 21.595,
+          "compound": "SOFT",
+          "is_deleted": true,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 8,
+          "session": "Q1",
+          "time_s": 78.521,
+          "time_str": "1:18.521",
+          "s1": 27.195,
+          "s2": 31.105,
+          "s3": 20.221,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 9,
+          "session": "Q1",
+          "time_s": 103.223,
+          "time_str": "1:43.223",
+          "s1": 39.286,
+          "s2": 37.378,
+          "s3": 26.559,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q2",
+          "time_s": 85.496,
+          "time_str": "1:25.496",
+          "s1": 29.179,
+          "s2": 34.714,
+          "s3": 21.603,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q2",
+          "time_s": 87.517,
+          "time_str": "1:27.517",
+          "s1": 27.193,
+          "s2": 33.779,
+          "s3": 26.545,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q2",
+          "time_s": 78.885,
+          "time_str": "1:18.885",
+          "s1": 27.36,
+          "s2": 31.305,
+          "s3": 20.22,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q2",
+          "time_s": 99.913,
+          "time_str": "1:39.913",
+          "s1": 38.275,
+          "s2": 36.548,
+          "s3": 25.09,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        }
+      ],
+      "gap_to_pole": 2.371
+    },
+    {
+      "driver": "ALB",
+      "team": "Williams",
+      "position": 16,
+      "grid_position": null,
+      "q1": "1:18.630",
+      "q1_s": 78.63,
+      "q2": null,
+      "q2_s": null,
+      "q3": null,
+      "q3_s": null,
+      "eliminated_in": "Q1",
+      "sectors": {
+        "s1": 27.659,
+        "s2": 30.922,
+        "s3": 20.049
+      },
+      "sectors_q1": {
+        "s1": 27.659,
+        "s2": 30.922,
+        "s3": 20.049
+      },
+      "sectors_q2": {
+        "s1": null,
+        "s2": null,
+        "s3": null
+      },
+      "sectors_q3": {
+        "s1": null,
+        "s2": null,
+        "s3": null
+      },
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "session": "Q1",
+          "time_s": 88.448,
+          "time_str": "1:28.448",
+          "s1": 27.633,
+          "s2": 37.987,
+          "s3": 22.828,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q1",
+          "time_s": 79.751,
+          "time_str": "1:19.751",
+          "s1": 27.454,
+          "s2": 31.723,
+          "s3": 20.574,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q1",
+          "time_s": 578.863,
+          "time_str": "9:38.863",
+          "s1": 35.113,
+          "s2": 43.524,
+          "s3": null,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q1",
+          "time_s": 93.54,
+          "time_str": "1:33.540",
+          "s1": 28.043,
+          "s2": 43.998,
+          "s3": 21.499,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q1",
+          "time_s": 78.905,
+          "time_str": "1:18.905",
+          "s1": 27.38,
+          "s2": 31.285,
+          "s3": 20.24,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 6,
+          "session": "Q1",
+          "time_s": 94.144,
+          "time_str": "1:34.144",
+          "s1": 31.43,
+          "s2": 35.759,
+          "s3": 26.955,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 7,
+          "session": "Q1",
+          "time_s": 90.952,
+          "time_str": "1:30.952",
+          "s1": 27.646,
+          "s2": 36.79,
+          "s3": 26.516,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 8,
+          "session": "Q1",
+          "time_s": 78.63,
+          "time_str": "1:18.630",
+          "s1": 27.659,
+          "s2": 30.922,
+          "s3": 20.049,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 9,
+          "session": "Q1",
+          "time_s": 98.588,
+          "time_str": "1:38.588",
+          "s1": 34.686,
+          "s2": 37.338,
+          "s3": 26.564,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        }
+      ],
+      "gap_to_pole": 2.116
+    },
+    {
+      "driver": "ALO",
+      "team": "Aston Martin",
+      "position": 17,
+      "grid_position": null,
+      "q1": "1:18.908",
+      "q1_s": 78.908,
+      "q2": null,
+      "q2_s": null,
+      "q3": null,
+      "q3_s": null,
+      "eliminated_in": "Q1",
+      "sectors": {
+        "s1": 27.597,
+        "s2": 31.162,
+        "s3": 20.149
+      },
+      "sectors_q1": {
+        "s1": 27.597,
+        "s2": 31.162,
+        "s3": 20.149
+      },
+      "sectors_q2": {
+        "s1": null,
+        "s2": null,
+        "s3": null
+      },
+      "sectors_q3": {
+        "s1": null,
+        "s2": null,
+        "s3": null
+      },
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "session": "Q1",
+          "time_s": 78.908,
+          "time_str": "1:18.908",
+          "s1": 27.597,
+          "s2": 31.162,
+          "s3": 20.149,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q1",
+          "time_s": 104.46,
+          "time_str": "1:44.460",
+          "s1": 40.883,
+          "s2": 41.457,
+          "s3": 22.12,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q1",
+          "time_s": 89.047,
+          "time_str": "1:29.047",
+          "s1": 27.904,
+          "s2": 39.023,
+          "s3": 22.12,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        }
+      ],
+      "gap_to_pole": 2.394
+    },
+    {
+      "driver": "HIR",
+      "team": "Haas F1 Team",
+      "position": 18,
+      "grid_position": null,
+      "q1": "1:18.958",
+      "q1_s": 78.958,
+      "q2": null,
+      "q2_s": null,
+      "q3": null,
+      "q3_s": null,
+      "eliminated_in": "Q1",
+      "sectors": {
+        "s1": 27.315,
+        "s2": 31.359,
+        "s3": 20.284
+      },
+      "sectors_q1": {
+        "s1": 27.315,
+        "s2": 31.359,
+        "s3": 20.284
+      },
+      "sectors_q2": {
+        "s1": null,
+        "s2": null,
+        "s3": null
+      },
+      "sectors_q3": {
+        "s1": null,
+        "s2": null,
+        "s3": null
+      },
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "session": "Q1",
+          "time_s": 98.351,
+          "time_str": "1:38.351",
+          "s1": 32.848,
+          "s2": 35.58,
+          "s3": 29.923,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q1",
+          "time_s": 79.657,
+          "time_str": "1:19.657",
+          "s1": 27.45,
+          "s2": 31.67,
+          "s3": 20.537,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q1",
+          "time_s": 94.136,
+          "time_str": "1:34.136",
+          "s1": 31.079,
+          "s2": 35.653,
+          "s3": 27.404,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q1",
+          "time_s": 78.958,
+          "time_str": "1:18.958",
+          "s1": 27.315,
+          "s2": 31.359,
+          "s3": 20.284,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q1",
+          "time_s": 104.896,
+          "time_str": "1:44.896",
+          "s1": 36.523,
+          "s2": 39.275,
+          "s3": 29.098,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 6,
+          "session": "Q1",
+          "time_s": 78.992,
+          "time_str": "1:18.992",
+          "s1": 27.307,
+          "s2": 31.479,
+          "s3": 20.206,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 7,
+          "session": "Q1",
+          "time_s": 104.086,
+          "time_str": "1:44.086",
+          "s1": 37.669,
+          "s2": 35.978,
+          "s3": 30.439,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        }
+      ],
+      "gap_to_pole": 2.444
+    },
+    {
+      "driver": "STR",
+      "team": "Aston Martin",
+      "position": 19,
+      "grid_position": null,
+      "q1": "1:19.072",
+      "q1_s": 79.072,
+      "q2": null,
+      "q2_s": null,
+      "q3": null,
+      "q3_s": null,
+      "eliminated_in": "Q1",
+      "sectors": {
+        "s1": 27.541,
+        "s2": 31.164,
+        "s3": 20.367
+      },
+      "sectors_q1": {
+        "s1": 27.541,
+        "s2": 31.164,
+        "s3": 20.367
+      },
+      "sectors_q2": {
+        "s1": null,
+        "s2": null,
+        "s3": null
+      },
+      "sectors_q3": {
+        "s1": null,
+        "s2": null,
+        "s3": null
+      },
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "session": "Q1",
+          "time_s": 89.337,
+          "time_str": "1:29.337",
+          "s1": 27.862,
+          "s2": 35.866,
+          "s3": 25.609,
+          "compound": "SOFT",
+          "is_deleted": true,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q1",
+          "time_s": 80.167,
+          "time_str": "1:20.167",
+          "s1": 28.058,
+          "s2": 31.625,
+          "s3": 20.484,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q1",
+          "time_s": 92.187,
+          "time_str": "1:32.187",
+          "s1": 31.572,
+          "s2": 34.897,
+          "s3": 25.718,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q1",
+          "time_s": 88.216,
+          "time_str": "1:28.216",
+          "s1": 30.959,
+          "s2": 34.188,
+          "s3": 23.069,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q1",
+          "time_s": 79.072,
+          "time_str": "1:19.072",
+          "s1": 27.541,
+          "s2": 31.164,
+          "s3": 20.367,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 6,
+          "session": "Q1",
+          "time_s": 105.025,
+          "time_str": "1:45.025",
+          "s1": 38.514,
+          "s2": 40.675,
+          "s3": 25.836,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 7,
+          "session": "Q1",
+          "time_s": 104.575,
+          "time_str": "1:44.575",
+          "s1": 36.575,
+          "s2": 39.285,
+          "s3": 28.715,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 8,
+          "session": "Q1",
+          "time_s": 97.49,
+          "time_str": "1:37.490",
+          "s1": 27.477,
+          "s2": 37.302,
+          "s3": 32.711,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        }
+      ],
+      "gap_to_pole": 2.558
+    },
+    {
+      "driver": "PER",
+      "team": "Cadillac",
+      "position": 20,
+      "grid_position": null,
+      "q1": "1:19.105",
+      "q1_s": 79.105,
+      "q2": null,
+      "q2_s": null,
+      "q3": null,
+      "q3_s": null,
+      "eliminated_in": "Q1",
+      "sectors": {
+        "s1": 27.474,
+        "s2": 31.301,
+        "s3": 20.33
+      },
+      "sectors_q1": {
+        "s1": 27.474,
+        "s2": 31.301,
+        "s3": 20.33
+      },
+      "sectors_q2": {
+        "s1": null,
+        "s2": null,
+        "s3": null
+      },
+      "sectors_q3": {
+        "s1": null,
+        "s2": null,
+        "s3": null
+      },
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "session": "Q1",
+          "time_s": 88.965,
+          "time_str": "1:28.965",
+          "s1": 28.129,
+          "s2": 35.462,
+          "s3": 25.374,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q1",
+          "time_s": 79.909,
+          "time_str": "1:19.909",
+          "s1": 27.599,
+          "s2": 31.849,
+          "s3": 20.461,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q1",
+          "time_s": 100.88,
+          "time_str": "1:40.880",
+          "s1": 33.253,
+          "s2": 37.773,
+          "s3": 29.854,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q1",
+          "time_s": 92.425,
+          "time_str": "1:32.425",
+          "s1": 30.501,
+          "s2": 35.288,
+          "s3": 26.636,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q1",
+          "time_s": 79.105,
+          "time_str": "1:19.105",
+          "s1": 27.474,
+          "s2": 31.301,
+          "s3": 20.33,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 6,
+          "session": "Q1",
+          "time_s": 115.129,
+          "time_str": "1:55.129",
+          "s1": 43.843,
+          "s2": 43.391,
+          "s3": 27.895,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        }
+      ],
+      "gap_to_pole": 2.591
+    },
+    {
+      "driver": "BOT",
+      "team": "Cadillac",
+      "position": 21,
+      "grid_position": null,
+      "q1": "1:19.852",
+      "q1_s": 79.852,
+      "q2": null,
+      "q2_s": null,
+      "q3": null,
+      "q3_s": null,
+      "eliminated_in": "Q1",
+      "sectors": {
+        "s1": 27.431,
+        "s2": 32.132,
+        "s3": 20.289
+      },
+      "sectors_q1": {
+        "s1": 27.431,
+        "s2": 32.132,
+        "s3": 20.289
+      },
+      "sectors_q2": {
+        "s1": null,
+        "s2": null,
+        "s3": null
+      },
+      "sectors_q3": {
+        "s1": null,
+        "s2": null,
+        "s3": null
+      },
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "session": "Q1",
+          "time_s": 80.401,
+          "time_str": "1:20.401",
+          "s1": 27.767,
+          "s2": 31.917,
+          "s3": 20.717,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q1",
+          "time_s": 112.338,
+          "time_str": "1:52.338",
+          "s1": 41.3,
+          "s2": 38.906,
+          "s3": 32.132,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q1",
+          "time_s": 109.442,
+          "time_str": "1:49.442",
+          "s1": 32.681,
+          "s2": 42.466,
+          "s3": 34.295,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q1",
+          "time_s": 99.797,
+          "time_str": "1:39.797",
+          "s1": 31.211,
+          "s2": 41.6,
+          "s3": 26.986,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q1",
+          "time_s": 79.852,
+          "time_str": "1:19.852",
+          "s1": 27.431,
+          "s2": 32.132,
+          "s3": 20.289,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 6,
+          "session": "Q1",
+          "time_s": 108.539,
+          "time_str": "1:48.539",
+          "s1": 39.937,
+          "s2": 38.477,
+          "s3": 30.125,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        }
+      ],
+      "gap_to_pole": 3.338
+    },
+    {
+      "driver": "LAW",
+      "team": "Racing Bulls",
+      "position": 22,
+      "grid_position": null,
+      "q1": null,
+      "q1_s": null,
+      "q2": "1:17.207",
+      "q2_s": 77.207,
+      "q3": "1:17.029",
+      "q3_s": 77.029,
+      "eliminated_in": null,
+      "sectors": {
+        "s1": 26.978,
+        "s2": 30.261,
+        "s3": 19.79
+      },
+      "sectors_q1": {
+        "s1": null,
+        "s2": null,
+        "s3": null
+      },
+      "sectors_q2": {
+        "s1": 27.068,
+        "s2": 30.431,
+        "s3": 19.708
+      },
+      "sectors_q3": {
+        "s1": 26.978,
+        "s2": 30.261,
+        "s3": 19.79
+      },
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "session": "Q1",
+          "time_s": 538.831,
+          "time_str": "8:58.831",
+          "s1": 33.99,
+          "s2": null,
+          "s3": null,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q1",
+          "time_s": 88.222,
+          "time_str": "1:28.222",
+          "s1": 31.255,
+          "s2": 34.817,
+          "s3": 22.15,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q1",
+          "time_s": 78.107,
+          "time_str": "1:18.107",
+          "s1": 27.242,
+          "s2": 30.884,
+          "s3": 19.981,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q1",
+          "time_s": 107.389,
+          "time_str": "1:47.389",
+          "s1": 40.032,
+          "s2": 40.387,
+          "s3": 26.97,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 5,
+          "session": "Q1",
+          "time_s": 99.56,
+          "time_str": "1:39.560",
+          "s1": 37.727,
+          "s2": 39.352,
+          "s3": 22.481,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 6,
+          "session": "Q1",
+          "time_s": 78.097,
+          "time_str": "1:18.097",
+          "s1": 27.205,
+          "s2": 30.946,
+          "s3": 19.946,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 7,
+          "session": "Q1",
+          "time_s": 104.988,
+          "time_str": "1:44.988",
+          "s1": 41.135,
+          "s2": 37.496,
+          "s3": 26.357,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q2",
+          "time_s": 77.628,
+          "time_str": "1:17.628",
+          "s1": 27.165,
+          "s2": 30.781,
+          "s3": 19.682,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q2",
+          "time_s": 103.963,
+          "time_str": "1:43.963",
+          "s1": 37.635,
+          "s2": 37.167,
+          "s3": 29.161,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q2",
+          "time_s": 77.207,
+          "time_str": "1:17.207",
+          "s1": 27.068,
+          "s2": 30.431,
+          "s3": 19.708,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        },
+        {
+          "attempt_number": 4,
+          "session": "Q2",
+          "time_s": 103.566,
+          "time_str": "1:43.566",
+          "s1": 39.017,
+          "s2": 35.988,
+          "s3": 28.561,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 1,
+          "session": "Q3",
+          "time_s": 77.357,
+          "time_str": "1:17.357",
+          "s1": 27.091,
+          "s2": 30.478,
+          "s3": 19.788,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 2,
+          "session": "Q3",
+          "time_s": 101.968,
+          "time_str": "1:41.968",
+          "s1": 37.18,
+          "s2": 36.021,
+          "s3": 28.767,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": false
+        },
+        {
+          "attempt_number": 3,
+          "session": "Q3",
+          "time_s": 77.029,
+          "time_str": "1:17.029",
+          "s1": 26.978,
+          "s2": 30.261,
+          "s3": 19.79,
+          "compound": "SOFT",
+          "is_deleted": false,
+          "is_personal_best": true
+        }
+      ],
+      "gap_to_pole": 0.515
+    }
+  ]
+}

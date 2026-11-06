@@ -1,21 +1,21 @@
 {
   "season": 2026,
-  "rounds_completed": 18,
+  "rounds_completed": 19,
   "drivers": [
     {
       "position": 1,
       "code": "ANT",
       "name": "Andrea Kimi Antonelli",
       "team": "Mercedes",
-      "points": 365.0,
+      "points": 380.0,
       "wins": 9
     },
     {
       "position": 2,
-      "code": "RUS",
-      "name": "George Russell",
-      "team": "Mercedes",
-      "points": 242.0,
+      "code": "VER",
+      "name": "Max Verstappen",
+      "team": "Red Bull Racing",
+      "points": 261.0,
       "wins": 3
     },
     {
@@ -23,23 +23,23 @@
       "code": "HAM",
       "name": "Lewis Hamilton",
       "team": "Ferrari",
-      "points": 241.0,
+      "points": 259.0,
       "wins": 1
     },
     {
       "position": 4,
-      "code": "VER",
-      "name": "Max Verstappen",
-      "team": "Red Bull Racing",
-      "points": 236.0,
-      "wins": 2
+      "code": "RUS",
+      "name": "George Russell",
+      "team": "Mercedes",
+      "points": 250.0,
+      "wins": 3
     },
     {
       "position": 5,
       "code": "LEC",
       "name": "Charles Leclerc",
       "team": "Ferrari",
-      "points": 233.0,
+      "points": 245.0,
       "wins": 1
     },
     {
@@ -47,7 +47,7 @@
       "code": "NOR",
       "name": "Lando Norris",
       "team": "McLaren",
-      "points": 211.0,
+      "points": 221.0,
       "wins": 2
     },
     {
@@ -63,7 +63,7 @@
       "code": "HAD",
       "name": "Isack Hadjar",
       "team": "Red Bull Racing",
-      "points": 105.0,
+      "points": 107.0,
       "wins": 0
     },
     {
@@ -71,7 +71,7 @@
       "code": "LAW",
       "name": "Liam Lawson",
       "team": "Racing Bulls",
-      "points": 77.0,
+      "points": 83.0,
       "wins": 0
     },
     {
@@ -108,18 +108,18 @@
     },
     {
       "position": 14,
-      "code": "HUL",
-      "name": "Nico H\u00fclkenberg",
+      "code": "BOR",
+      "name": "Gabriel Bortoleto",
       "team": "Audi",
-      "points": 13.0,
+      "points": 14.0,
       "wins": 0
     },
     {
       "position": 15,
-      "code": "BOR",
-      "name": "Gabriel Bortoleto",
+      "code": "HUL",
+      "name": "Nico H\u00fclkenberg",
       "team": "Audi",
-      "points": 10.0,
+      "points": 13.0,
       "wins": 0
     },
     {
@@ -164,6 +164,14 @@
     },
     {
       "position": 21,
+      "code": "HIR",
+      "name": "Ryo Hirakawa",
+      "team": "Haas F1 Team",
+      "points": 1.0,
+      "wins": 0
+    },
+    {
+      "position": 22,
       "code": "STR",
       "name": "Lance Stroll",
       "team": "Aston Martin",
@@ -171,7 +179,7 @@
       "wins": 0
     },
     {
-      "position": 22,
+      "position": 23,
       "code": "BOT",
       "name": "Valtteri Bottas",
       "team": "Cadillac",
@@ -179,7 +187,7 @@
       "wins": 0
     },
     {
-      "position": 23,
+      "position": 24,
       "code": "PER",
       "name": "Sergio P\u00e9rez",
       "team": "Cadillac",
@@ -191,31 +199,31 @@
     {
       "position": 1,
       "name": "Mercedes",
-      "points": 607.0,
+      "points": 630.0,
       "wins": 12
     },
     {
       "position": 2,
       "name": "Ferrari",
-      "points": 474.0,
+      "points": 504.0,
       "wins": 2
     },
     {
       "position": 3,
       "name": "Red Bull Racing",
-      "points": 355.0,
-      "wins": 2
+      "points": 382.0,
+      "wins": 3
     },
     {
       "position": 4,
       "name": "McLaren",
-      "points": 355.0,
+      "points": 365.0,
       "wins": 2
     },
     {
       "position": 5,
       "name": "Racing Bulls",
-      "points": 102.0,
+      "points": 108.0,
       "wins": 0
     },
     {
@@ -227,13 +235,13 @@
     {
       "position": 7,
       "name": "Haas F1 Team",
-      "points": 30.0,
+      "points": 31.0,
       "wins": 0
     },
     {
       "position": 8,
       "name": "Audi",
-      "points": 23.0,
+      "points": 27.0,
       "wins": 0
     },
     {
@@ -744,6 +752,35 @@
         "SAI": 7.0,
         "ALB": 5.0,
         "TSU": 1.0,
+        "STR": 0.0,
+        "BOT": 0.0,
+        "PER": 0.0
+      }
+    },
+    {
+      "round": 19,
+      "points": {
+        "ANT": 380.0,
+        "VER": 261.0,
+        "HAM": 259.0,
+        "RUS": 250.0,
+        "LEC": 245.0,
+        "NOR": 221.0,
+        "PIA": 144.0,
+        "HAD": 107.0,
+        "LAW": 83.0,
+        "GAS": 42.0,
+        "LIN": 38.0,
+        "COL": 27.0,
+        "BEA": 23.0,
+        "BOR": 14.0,
+        "HUL": 13.0,
+        "OCO": 7.0,
+        "ALO": 7.0,
+        "SAI": 7.0,
+        "ALB": 5.0,
+        "TSU": 1.0,
+        "HIR": 1.0,
         "STR": 0.0,
         "BOT": 0.0,
         "PER": 0.0

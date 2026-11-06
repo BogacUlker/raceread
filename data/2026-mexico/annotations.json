@@ -1,0 +1,229 @@
+{
+  "annotations": [
+    {
+      "driver": null,
+      "lap": null,
+      "chart_type": "strategy",
+      "category": "race_insight",
+      "severity": "high",
+      "text_en": "Verstappen won the Mexico City Grand Prix by 0.799s from Hamilton, who started on pole. Antonelli finished third, 4.006s behind, and that was enough to make him the 2026 world champion: he leaves Mexico on 380 points to Verstappen's 261, a 119-point lead with four races and 100 points left.",
+      "text_tr": "Verstappen Meksiko Grand Prix'sini pole'den başlayan Hamilton'ın 0.799 saniye önünde kazandı. Antonelli 4.006 saniye geride üçüncü oldu ve bu, onu 2026 dünya şampiyonu yapmaya yetti: Meksika'dan 380 puanla ayrılıyor, Verstappen 261 puanda; dört yarış ve 100 puan kalmışken fark 119 puan."
+    },
+    {
+      "driver": "HAM",
+      "lap": null,
+      "chart_type": "qualifying",
+      "category": "qualifying_insight",
+      "severity": "high",
+      "text_en": "Hamilton took pole with 1:16.514, just 0.009s ahead of Russell and 0.119s ahead of Leclerc. Verstappen qualified fourth with 1:16.692 but set the fastest Q3 times in sectors 1 and 3 (26.848s and 19.607s); Russell was quickest in sector 2 with 30.008s.",
+      "text_tr": "Hamilton pole'ü 1:16.514 ile aldı; Russell'ın yalnızca 0.009, Leclerc'in 0.119 saniye önündeydi. Verstappen 1:16.692 ile dördüncü oldu ama Q3'te 1. ve 3. sektörlerin en iyi derecelerini (26.848 ve 19.607 saniye) o yaptı; 2. sektörde en hızlısı 30.008 saniyeyle Russell'dı."
+    },
+    {
+      "driver": "NOR",
+      "lap": null,
+      "chart_type": "qualifying",
+      "category": "qualifying_insight",
+      "severity": "medium",
+      "text_en": "Norris set the fastest lap of Q2, 1:16.728, but went slower in Q3 with 1:16.824 and qualified sixth, 0.310s off pole. Piastri was knocked out in Q2 in P12 with 1:17.646.",
+      "text_tr": "Norris Q2'nin en hızlı turunu 1:16.728 ile attı, ama Q3'te 1:16.824'e geriledi ve pole'ün 0.310 saniye gerisinde altıncı oldu. Piastri 1:17.646 ile Q2'de 12. sırada elendi."
+    },
+    {
+      "driver": "LEC",
+      "lap": 1,
+      "chart_type": "strategy",
+      "category": "position_change",
+      "severity": "high",
+      "text_en": "Leclerc went from P3 on the grid to the lead on Lap 1, with Hamilton dropping from pole to P3. The stewards gave Leclerc a 5 second penalty for leaving the track and gaining an advantage in the Turn 4 incident with Hamilton. He led until his stop on Lap 27 and served the penalty there.",
+      "text_tr": "Leclerc 1. turda gridin 3. sırasından liderliğe yükseldi, Hamilton pole'den 3. sıraya düştü. Hakemler Hamilton'la yaşanan 4. viraj olayında pisti terk edip avantaj sağladığı için Leclerc'e 5 saniye ceza verdi. 27. turdaki pit stopuna kadar yarışı önde götürdü ve cezayı orada çekti."
+    },
+    {
+      "driver": "RUS",
+      "lap": 33,
+      "chart_type": "strategy",
+      "category": "pit_stop",
+      "severity": "medium",
+      "text_en": "Russell qualified P2 but was P5 after Lap 1 and picked up a 10 second penalty for causing a collision at Turn 6 early in the race. He served it at his stop on Lap 33, dropped from P3 to P7 and finished P6.",
+      "text_tr": "Russell sıralamada 2. oldu ama 1. turdan sonra 5. sıradaydı ve yarışın başında 6. virajda çarpışmaya sebep olduğu için 10 saniye ceza aldı. Cezayı 33. turdaki pit stopunda çekti, 3. sıradan 7. sıraya düştü ve yarışı 6. bitirdi."
+    },
+    {
+      "driver": "HAD",
+      "lap": 1,
+      "chart_type": "strategy",
+      "category": "position_change",
+      "severity": "medium",
+      "text_en": "Hadjar started P7 but was P22 at the end of Lap 1, a 1:39.029 opening lap. He switched from softs to mediums under the Lap 7 Virtual Safety Car, ran 34 laps on them and finished P9.",
+      "text_tr": "Hadjar 7. sıradan başladı ama 1:39.029'luk açılış turunun sonunda 22. sıradaydı. 7. turdaki Sanal Güvenlik Aracı sırasında yumuşaklardan ortalara geçti, onlarla 34 tur gitti ve 9. bitirdi."
+    },
+    {
+      "driver": null,
+      "lap": 7,
+      "chart_type": "strategy",
+      "category": "safety_car",
+      "severity": "low",
+      "text_en": "A Virtual Safety Car on Laps 7 and 8 while marshals worked at Turn 6. Hadjar was the only driver to pit under it.",
+      "text_tr": "7. ve 8. turlarda, görevliler 6. virajda çalışırken Sanal Güvenlik Aracı çıktı. Bu sırada pit yapan tek pilot Hadjar oldu."
+    },
+    {
+      "driver": "VER",
+      "lap": 27,
+      "chart_type": "strategy",
+      "category": "pit_stop",
+      "severity": "medium",
+      "text_en": "Verstappen ran 27 laps on mediums and stopped on Lap 27 for softs, rejoining P5. His engineer then asked for 'one of your magic Mexico stints'; he was back to P3 on Lap 34 and P2 on Lap 39.",
+      "text_tr": "Verstappen ortalarla 27 tur gitti ve 27. turda yumuşaklar için pit yaptı, piste 5. sırada döndü. Ardından mühendisi ondan 'o meşhur Meksika stintlerinden birini' istedi; 34. turda 3., 39. turda 2. sıraya geri çıktı."
+    },
+    {
+      "driver": "ANT",
+      "lap": 43,
+      "chart_type": "strategy",
+      "category": "pit_stop",
+      "severity": "high",
+      "text_en": "Antonelli took the lead on Lap 28 when Leclerc stopped and ran 43 laps on his starting softs, the longest stint of the race. He pitted for mediums at the end of Lap 43 and dropped from P1 to P4. The Safety Car came out on the next lap and the red flag followed, so the cars ahead got fresh tyres during the suspension without losing a place, and he restarted fourth.",
+      "text_tr": "Antonelli 28. turda Leclerc pit yapınca liderliğe geçti ve başladığı yumuşaklarla 43 tur gitti; yarışın en uzun stinti buydu. 43. turun sonunda ortalar için pit yaptı ve 1. sıradan 4. sıraya düştü. Bir sonraki turda Güvenlik Aracı çıktı, ardından kırmızı bayrak geldi; böylece öndeki araçlar duraklama sırasında sıra kaybetmeden yeni lastik aldı ve o yeniden starta dördüncü sıradan çıktı."
+    },
+    {
+      "driver": null,
+      "lap": 45,
+      "chart_type": "strategy",
+      "category": "safety_car",
+      "severity": "high",
+      "text_en": "Bottas's race ended after 42 laps. The Safety Car was deployed on Lap 44, with the medical car out and marshals at Turn 1, and the race was red-flagged on Lap 45. It restarted 39 minutes later with a standing start. Every car shows a tyre change on Lap 45 in the strategy chart: those were made during the suspension, not pit stops, and the Lap 46 time includes the stoppage.",
+      "text_tr": "Bottas'ın yarışı 42 turdan sonra sona erdi. 44. turda Güvenlik Aracı çıktı, tıbbi araç piste girdi ve görevliler 1. virajdaydı; 45. turda yarış kırmızı bayrakla durduruldu. 39 dakika sonra duran startla yeniden başladı. Strateji grafiğinde her aracın 45. turda lastik değiştirdiği görünüyor: bunlar duraklama sırasında yapıldı, pit stop değil; 46. turun süresi de duraklamayı içeriyor."
+    },
+    {
+      "driver": "HAM",
+      "lap": 47,
+      "chart_type": "strategy",
+      "category": "position_change",
+      "severity": "high",
+      "text_en": "Hamilton stopped for softs under the Safety Car on Lap 44 and was moved ahead of Antonelli in the revised restart order, third behind Verstappen and Leclerc. He passed Leclerc at the standing restart and was P2 from Lap 47 to the flag.",
+      "text_tr": "Hamilton 44. turda Güvenlik Aracı altında yumuşaklar için pit yaptı ve düzeltilmiş yeniden start sıralamasında Antonelli'nin önüne, Verstappen ve Leclerc'in arkasına üçüncü sıraya alındı. Duran startta Leclerc'i geçti ve 47. turdan damalı bayrağa kadar 2. sırada kaldı."
+    },
+    {
+      "driver": "VER",
+      "lap": 63,
+      "chart_type": "delta",
+      "category": "race_insight",
+      "severity": "high",
+      "text_en": "Verstappen kept the lead at the standing restart and was 0.868s ahead of Hamilton after Lap 47. Under green flag the gap never reached 1.3s, peaking at 1.299s on Lap 53; it was 0.391s behind the second Safety Car on Lap 62, 0.889s after the Lap 63 restart and 0.799s at the flag. Hamilton reported on Lap 54 that he had been hit by Max at Turn 1; the stewards took no further action.",
+      "text_tr": "Verstappen duran startta liderliği korudu ve 47. turun sonunda Hamilton'ın 0.868 saniye önündeydi. Yeşil bayrak altında fark hiç 1.3 saniyeye ulaşmadı, en yüksek değeri 53. turda 1.299 saniyeydi; 62. turda ikinci Güvenlik Aracı arkasında 0.391, 63. turdaki yeniden starttan sonra 0.889 ve damalı bayrakta 0.799 saniye. Hamilton 54. turda 1. virajda Max'in kendisine çarptığını bildirdi; hakemler başka işlem yapmadı."
+    },
+    {
+      "driver": "VER",
+      "lap": 50,
+      "chart_type": "strategy",
+      "category": "race_insight",
+      "severity": "medium",
+      "text_en": "The stewards looked at Verstappen for a false start, out of position at the restart, and decided on no further investigation on Lap 51. On Antonelli's radio his team said Verstappen was under investigation and told him to stay within five seconds of him.",
+      "text_tr": "Hakemler yeniden startta yanlış pozisyon, yani hatalı start nedeniyle Verstappen'i inceledi ve 51. turda başka soruşturmaya gerek görmedi. Antonelli'nin telsizinde ekibi Verstappen'in soruşturmada olduğunu söyledi ve ona onun beş saniye yakınında kalmasını istedi."
+    },
+    {
+      "driver": "HAM",
+      "lap": 50,
+      "chart_type": "pace",
+      "category": "fastest_lap",
+      "severity": "high",
+      "text_en": "Hamilton set the fastest lap of the race, 1:19.268 on Lap 50, 0.060s quicker than Verstappen's best on the same lap.",
+      "text_tr": "Yarışın en hızlı turunu Hamilton 50. turda 1:19.268 ile attı; Verstappen'in aynı turdaki en iyisinden 0.060 saniye hızlıydı."
+    },
+    {
+      "driver": "LEC",
+      "lap": null,
+      "chart_type": "pace",
+      "category": "pace_anomaly",
+      "severity": "medium",
+      "text_en": "Leclerc had the second-best median lap of the race, 1:20.929, between Verstappen (1:20.892) and Hamilton (1:20.965), but finished P4. He lost P2 to Hamilton at the standing restart and P3 to Antonelli on Lap 48; on Lap 58 Norris's team told him Leclerc had a flat spot down to the canvas.",
+      "text_tr": "Leclerc yarışın ikinci en iyi medyan turuna, 1:20.929'a sahipti; Verstappen (1:20.892) ile Hamilton (1:20.965) arasındaydı, ama 4. bitirdi. Duran startta 2. sırayı Hamilton'a, 48. turda 3. sırayı Antonelli'ye kaptırdı; 58. turda Norris'in ekibi ona Leclerc'in lastiğinde bezine kadar inen bir düzlük olduğunu söyledi."
+    },
+    {
+      "driver": "NOR",
+      "lap": 39,
+      "chart_type": "strategy",
+      "category": "pit_stop",
+      "severity": "medium",
+      "text_en": "Norris ran 39 laps on his starting softs, second only to Antonelli's 43 in the top five, and was P2 from Lap 33 to Lap 38 while others stopped. His Lap 39 stop dropped him to P5, where he finished, 11.778s behind.",
+      "text_tr": "Norris başladığı yumuşaklarla 39 tur gitti; ilk beşte bundan uzununu yalnızca Antonelli 43 turla yaptı ve diğerleri pit yaparken 33. ile 38. turlar arasında 2. sırada koştu. 39. turdaki pit stopu onu 5. sıraya düşürdü ve yarışı 11.778 saniye geride orada bitirdi."
+    },
+    {
+      "driver": "NOR",
+      "lap": null,
+      "chart_type": "traffic",
+      "category": "traffic_insight",
+      "severity": "medium",
+      "text_en": "Norris spent 79.7% of his laps in traffic, the most of any driver, followed by Gasly at 75.0%. Verstappen had clean air on 94.9% of his laps, the most in the field, and Leclerc on 88.1%.",
+      "text_tr": "Norris turlarının %79.7'sini trafikte geçirdi, bu en yüksek orandı; onu %75.0 ile Gasly izledi. Verstappen turlarının %94.9'unda temiz havadaydı, bu sahadaki en yüksek oran; Leclerc'te bu oran %88.1'di."
+    },
+    {
+      "driver": "LIN",
+      "lap": 59,
+      "chart_type": "strategy",
+      "category": "safety_car",
+      "severity": "medium",
+      "text_en": "Lindblad's race ended on Lap 59. The Safety Car was deployed on that lap with the medical car out and marshals at Turn 2, and ran until Lap 62. The stewards took a Turn 2 incident between Piastri and Lindblad into a post-race investigation; On Lap 60 Piastri said 'he moved on the braking' and left him no space at all, and his team reported a reasonable amount of damage.",
+      "text_tr": "Lindblad'ın yarışı 59. turda sona erdi. Güvenlik Aracı o turda çıktı, tıbbi araç piste girdi ve görevliler 2. virajdaydı; 62. tura kadar pistte kaldı. Hakemler Piastri ile Lindblad arasındaki 2. viraj olayını yarış sonrasına bıraktı; Piastri 60. turda 'frenlemede hareket etti' dedi ve kendisine hiç yer bırakılmadığını söyledi, ekibi de epey hasar olduğunu bildirdi."
+    },
+    {
+      "driver": "PIA",
+      "lap": null,
+      "chart_type": "strategy",
+      "category": "position_change",
+      "severity": "high",
+      "text_en": "Three drivers lost places after the flag. Piastri crossed the line P7 and was classified P13, Colapinto P8 and classified P15, Gasly P10 and classified P17. The stewards had sent Piastri's Turn 2 incident with Lindblad and yellow flag infringements by Gasly and Colapinto at Turn 2 to post-race investigation. Lawson, Bortoleto, Hadjar and Hirakawa moved up to P7 to P10.",
+      "text_tr": "Üç pilot damalı bayraktan sonra sıra kaybetti. Piastri çizgiyi 7. geçti ve 13. olarak sınıflandırıldı, Colapinto 8. geçti ve 15., Gasly 10. geçti ve 17. oldu. Hakemler Piastri'nin Lindblad'la 2. virajdaki olayını, Gasly ve Colapinto'nun 2. virajdaki sarı bayrak ihlallerini yarış sonrasına bırakmıştı. Lawson, Bortoleto, Hadjar ve Hirakawa 7. ile 10. sıralara yükseldi."
+    },
+    {
+      "driver": "LAW",
+      "lap": null,
+      "chart_type": "strategy",
+      "category": "position_change",
+      "severity": "high",
+      "text_en": "Lawson made the biggest gain of the race, from P22 on the grid to P7 and 6 points. He was P21 after Lap 1 and P11 after the standing restart. Hirakawa was next, P18 to P10.",
+      "text_tr": "Lawson yarışın en büyük yükselişini yaptı: gridin 22. sırasından 7. sıraya çıktı ve 6 puan aldı. 1. turdan sonra 21., duran starttan sonra 11. sıradaydı. Onu 18. sıradan 10. sıraya çıkan Hirakawa izledi."
+    },
+    {
+      "driver": "HUL",
+      "lap": 59,
+      "chart_type": "strategy",
+      "category": "pit_stop",
+      "severity": "medium",
+      "text_en": "Hulkenberg got a 10 second penalty for causing a collision at Turn 4 after the standing restart, and Perez a 5 second penalty for speeding in the pit lane. Both, along with Hirakawa, pitted under the second Safety Car on Lap 59. Hulkenberg finished P14 and Perez P16.",
+      "text_tr": "Hulkenberg duran starttan sonra 4. virajda çarpışmaya sebep olduğu için 10 saniye, Perez pit yolunda hız sınırını aştığı için 5 saniye ceza aldı. İkisi de Hirakawa ile birlikte 59. turda ikinci Güvenlik Aracı altında pit yaptı. Hulkenberg 14., Perez 16. bitirdi."
+    },
+    {
+      "driver": "ALO",
+      "lap": null,
+      "chart_type": "strategy",
+      "category": "pit_stop",
+      "severity": "low",
+      "text_en": "Both Aston Martins retired after 5 laps: Alonso had started P17 and Stroll P19.",
+      "text_tr": "İki Aston Martin de 5 turdan sonra yarışı bıraktı: Alonso 17., Stroll 19. sıradan başlamıştı."
+    },
+    {
+      "driver": "BEA",
+      "lap": 47,
+      "chart_type": "strategy",
+      "category": "pit_stop",
+      "severity": "low",
+      "text_en": "Bearman retired after 47 laps, on the lap of the standing restart. He had been P12 at the suspension.",
+      "text_tr": "Bearman 47 turdan sonra, duran startın yapıldığı turda yarışı bıraktı. Duraklama sırasında 12. sıradaydı."
+    },
+    {
+      "driver": "HAD",
+      "lap": null,
+      "chart_type": "energy",
+      "category": "energy_insight",
+      "severity": "medium",
+      "text_en": "Hadjar had the highest inferred deploy-to-clip ratio, 3.07, ahead of Bearman's 2.61. All ratios were low in Mexico: the field ranged from 0.41 to 3.07, against 4.06 to 15.64 in Austin. These energy states are inferred from speed, throttle and braking, not measured.",
+      "text_tr": "En yüksek tahmini deploy/clip oranı 3.07 ile Hadjar'daydı; Bearman 2.61 ile onu izledi. Meksika'da tüm oranlar düşüktü: saha 0.41 ile 3.07 arasındaydı, Austin'de bu aralık 4.06 ile 15.64'tü. Bu enerji durumları hız, gaz ve frenden tahmin edilir, ölçülmez."
+    },
+    {
+      "driver": "VER",
+      "lap": null,
+      "chart_type": "energy",
+      "category": "energy_insight",
+      "severity": "medium",
+      "text_en": "The winner was at the other end of the table. Verstappen's inferred deploy-to-clip ratio of 0.51 was the second lowest in the field, ahead of only Norris at 0.41, and Norris had the highest clip share, 4.49%. Verstappen's clip share was 4.00%.",
+      "text_tr": "Yarışın galibi tablonun öbür ucundaydı. Verstappen'in 0.51'lik tahmini deploy/clip oranı sahadaki en düşük ikinci orandı; ondan düşük olan yalnızca 0.41 ile Norris'ti ve en yüksek clip payı da %4.49 ile Norris'teydi. Verstappen'in clip payı %4.00'tü."
+    }
+  ]
+}
