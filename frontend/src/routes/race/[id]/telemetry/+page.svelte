@@ -35,7 +35,7 @@
 		if (!name) return '';
 		const n = localizedRaceName(name, $locale);
 		const parts = n.split('Grand Prix');
-		if (parts.length === 2) return parts[0].toLocaleUpperCase($locale === 'tr' ? 'tr' : 'en') + 'GRAND PRIX';
+		if (parts.length === 2) return parts[0].toLocaleUpperCase($locale === 'tr' ? 'tr' : 'en') + 'GRAND PRIX' + parts[1].toLocaleUpperCase($locale === 'tr' ? 'tr' : 'en');
 		return n.toUpperCase();
 	}
 </script>

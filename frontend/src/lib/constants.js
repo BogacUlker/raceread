@@ -67,6 +67,7 @@ export const RACE_NAMES_TR = {
 	'Italian Grand Prix': 'İtalya Grand Prix',
 	'Spanish Grand Prix': 'İspanya Grand Prix',
 	'Azerbaijan Grand Prix': 'Azerbaycan Grand Prix',
+	'Bahrain Grand Prix in Malaysia': 'Bahreyn Grand Prix (Malezya)',
 	'Singapore Grand Prix': 'Singapur Grand Prix',
 	'United States Grand Prix': 'ABD Grand Prix',
 	'Mexico City Grand Prix': 'Meksiko Grand Prix',

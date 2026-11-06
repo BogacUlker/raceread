@@ -36,6 +36,7 @@ CIRCUIT_CODES = {
     "monza": "ITA",
     "madring": "MAD",
     "baku": "AZE",
+    "sepang": "MAL",
     "marina_bay": "SGP",
     "americas": "USA",
     "rodriguez": "MEX",

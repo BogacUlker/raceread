@@ -16,7 +16,7 @@ FILES = {
     "AUS": "au-1953", "CHN": "cn-2004", "JPN": "jp-1962", "MIA": "us-2022",
     "CAN": "ca-1978", "MON": "mc-1929", "BCN": "es-1991", "AUT": "at-1969",
     "GBR": "gb-1948", "BEL": "be-1925", "HUN": "hu-1986", "NED": "nl-1948",
-    "ITA": "it-1922", "MAD": "es-2026", "AZE": "az-2016", "SGP": "sg-2008",
+    "ITA": "it-1922", "MAD": "es-2026", "AZE": "az-2016", "MAL": "my-1999", "SGP": "sg-2008",
     "USA": "us-2012", "MEX": "mx-1962", "SAO": "br-1940", "LAS": "us-2023",
     "QAT": "qa-2004", "ABU": "ae-2009",
 }

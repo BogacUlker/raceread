@@ -145,7 +145,7 @@
 	function gpName(name) {
 		if (!name) return '';
 		const parts = name.split('Grand Prix');
-		if (parts.length === 2) return parts[0].toUpperCase() + 'GRAND PRIX';
+		if (parts.length === 2) return parts[0].toUpperCase() + 'GRAND PRIX' + parts[1].toUpperCase();
 		return name.toUpperCase();
 	}
 

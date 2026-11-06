@@ -46,7 +46,7 @@
 	function teamColor(code) { const d = driverList.find(x => x.driver === code); return TEAM_COLORS[d?.team] || '#888'; }
 	function getTeam(code) { const d = driverList.find(x => x.driver === code); return d?.team || ''; }
 	function formatTime(s) { if (s == null) return '-'; const m = Math.floor(s / 60); const sec = s % 60; return m > 0 ? m + ':' + sec.toFixed(3).padStart(6, '0') : sec.toFixed(3); }
-	function gpName(name) { if (!name) return ''; const p = name.split('Grand Prix'); return p.length === 2 ? p[0].toUpperCase() + 'GRAND PRIX' : name.toUpperCase(); }
+	function gpName(name) { if (!name) return ''; const p = name.split('Grand Prix'); return p.length === 2 ? p[0].toUpperCase() + 'GRAND PRIX' + p[1].toUpperCase() : name.toUpperCase(); }
 
 	let color1 = $derived(teamColor(pick1));
 	let color2 = $derived(teamColor(pick2));
