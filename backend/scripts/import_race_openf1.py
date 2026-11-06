@@ -432,6 +432,65 @@ def _realign_lap1_stint(num: int, dstints: list[dict], pit_laps: list[int]) -> N
     print(f"    [FIX] car {num}: OpenF1 stint 1 ended on Lap 1 with no stop; moved the boundary to the Lap {p} stop")
 
 
+def _tyre_stop_laps(pits: list[dict], num: int) -> list[int]:
+    """Pit laps of car `num` that were tyre stops rather than lane passes.
+
+    A record with a stationary time is a stop. Some records lack one (20 of
+    73 at Malaysia 2026); those count when the lane time is no quicker than
+    the fastest confirmed stop minus 0.5s, since a drive-through skips the
+    ~2s stationary phase. With no confirmed stop to compare against (Mexico
+    2026 has no stationary times at all) nothing is assumed."""
+    confirmed = [p["lane_duration"] for p in pits if (p.get("stop_duration") or 0) > 0 and p.get("lane_duration")]
+    floor = min(confirmed) - 0.5 if confirmed else None
+    laps = []
+    for p in pits:
+        if p["driver_number"] != num or not p.get("lap_number"):
+            continue
+        if (p.get("stop_duration") or 0) > 0 or (
+                floor is not None and p.get("stop_duration") is None and (p.get("lane_duration") or 0) >= floor):
+            laps.append(p["lap_number"])
+    return laps
+
+
+def _split_at_missing_stops(num: int, dstints: list[dict], stops: list[int]) -> None:
+    """Open a stint at every tyre stop OpenF1's stint feed missed.
+
+    For the 2026 "Bahrain GP in Malaysia" the stint feed stopped updating
+    mid-race: 19 of 21 drivers have pit records with a stationary time (a
+    real stop) that never opens a stint. The tyres fitted there are in no
+    source, so the new stint's compound is UNKNOWN and its tyre age unset.
+    See _tyre_stop_laps for which pit records count as stops."""
+    dstints.sort(key=lambda s: s["stint_number"])
+    ends = {s["lap_end"] for s in dstints}
+    added, shifted = [], []
+    for p in sorted(stops):
+        if p in ends:
+            continue
+        cur = next((s for s in dstints if s["lap_start"] <= p < (s["lap_end"] or 0)), None)
+        if cur is None:
+            continue
+        nxt = next((s for s in dstints if s["lap_start"] == p + 2), None)
+        if nxt is not None and cur["lap_end"] == p + 1:
+            # The feed opened the stint one lap late (Piastri, Malaysia 2026
+            # Lap 33): move the boundary instead of inventing a 1-lap stint.
+            cur["lap_end"], nxt["lap_start"] = p, p + 1
+            ends.add(p)
+            shifted.append(p)
+            continue
+        new = dict(cur, lap_start=p + 1, compound="UNKNOWN", tyre_age_at_start=None, _unknown_age=True)
+        cur["lap_end"] = p
+        dstints.append(new)
+        dstints.sort(key=lambda s: s["lap_start"])
+        ends.add(p)
+        added.append(p)
+    for i, st in enumerate(dstints, 1):
+        st["stint_number"] = i
+    if added:
+        print(f"    [FIX] car {num}: OpenF1 stint feed missed the stop(s) on Lap {', '.join(map(str, added))}; compound UNKNOWN")
+    if shifted:
+        print(f"    [FIX] car {num}: OpenF1 opened the stint one lap late after the Lap {', '.join(map(str, shifted))} stop; boundary moved")
+
+
 # ---------------------------------------------------------------------------
 # Session builder
 # ---------------------------------------------------------------------------
@@ -486,6 +545,7 @@ def _build_session(meeting: dict, session: dict, is_race: bool) -> OSession:
         stints_by_drv.setdefault(st["driver_number"], []).append(dict(st))
     for num, dstints in stints_by_drv.items():
         _realign_lap1_stint(num, dstints, sorted(p for (n, p) in pit_in if n == num))
+        _split_at_missing_stops(num, dstints, _tyre_stop_laps(pits, num))
 
     laps_by_drv: dict[int, list[dict]] = {}
     for l in laps_raw:
@@ -564,7 +624,7 @@ def _build_session(meeting: dict, session: dict, is_race: bool) -> OSession:
                 "Sector3Time": pd.to_timedelta(sectors[2], unit="s") if sectors[2] is not None else pd.NaT,
                 "Compound": st["compound"] if st else None,
                 "Stint": float(st["stint_number"]) if st else np.nan,
-                "TyreLife": float((st.get("tyre_age_at_start") or 0) + n - st["lap_start"] + 1) if st else np.nan,
+                "TyreLife": float((st.get("tyre_age_at_start") or 0) + n - st["lap_start"] + 1) if st and not st.get("_unknown_age") else np.nan,
                 "Position": pos,
                 "TrackStatus": status,
                 "IsPersonalBest": is_pb,
@@ -652,11 +712,15 @@ def main() -> None:
     parser.add_argument("--year", type=int, required=True)
     parser.add_argument("--event", type=str, required=True,
                         help='Meeting name as OpenF1 lists it, e.g. "United States Grand Prix"')
+    parser.add_argument("--name", type=str,
+                        help='Event name to store instead of the OpenF1 meeting_name, e.g. "Bahrain Grand Prix in Malaysia"')
     parser.add_argument("--energy-only", action="store_true")
     parser.add_argument("--telemetry-only", action="store_true")
     args = parser.parse_args()
 
     meeting = _resolve_meeting(args.year, args.event)
+    if args.name:
+        meeting["meeting_name"] = args.name
     sessions = {s["session_name"]: s for s in _get("sessions", meeting_key=meeting["meeting_key"])}
     if "Race" not in sessions:
         raise SystemExit(f"OpenF1 has no Race session for {meeting['meeting_name']}")
