@@ -1,13 +1,13 @@
 {
   "season": 2026,
-  "rounds_completed": 19,
+  "rounds_completed": 20,
   "drivers": [
     {
       "position": 1,
       "code": "ANT",
       "name": "Andrea Kimi Antonelli",
       "team": "Mercedes",
-      "points": 380.0,
+      "points": 390.0,
       "wins": 9
     },
     {
@@ -15,31 +15,31 @@
       "code": "VER",
       "name": "Max Verstappen",
       "team": "Red Bull Racing",
-      "points": 261.0,
+      "points": 279.0,
       "wins": 3
     },
     {
       "position": 3,
-      "code": "HAM",
-      "name": "Lewis Hamilton",
-      "team": "Ferrari",
-      "points": 259.0,
-      "wins": 1
-    },
-    {
-      "position": 4,
       "code": "RUS",
       "name": "George Russell",
       "team": "Mercedes",
-      "points": 250.0,
+      "points": 262.0,
       "wins": 3
+    },
+    {
+      "position": 4,
+      "code": "HAM",
+      "name": "Lewis Hamilton",
+      "team": "Ferrari",
+      "points": 261.0,
+      "wins": 1
     },
     {
       "position": 5,
       "code": "LEC",
       "name": "Charles Leclerc",
       "team": "Ferrari",
-      "points": 245.0,
+      "points": 249.0,
       "wins": 1
     },
     {
@@ -47,15 +47,15 @@
       "code": "NOR",
       "name": "Lando Norris",
       "team": "McLaren",
-      "points": 221.0,
-      "wins": 2
+      "points": 246.0,
+      "wins": 3
     },
     {
       "position": 7,
       "code": "PIA",
       "name": "Oscar Piastri",
       "team": "McLaren",
-      "points": 144.0,
+      "points": 152.0,
       "wins": 0
     },
     {
@@ -63,7 +63,7 @@
       "code": "HAD",
       "name": "Isack Hadjar",
       "team": "Red Bull Racing",
-      "points": 107.0,
+      "points": 122.0,
       "wins": 0
     },
     {
@@ -71,7 +71,7 @@
       "code": "LAW",
       "name": "Liam Lawson",
       "team": "Racing Bulls",
-      "points": 83.0,
+      "points": 89.0,
       "wins": 0
     },
     {
@@ -119,7 +119,7 @@
       "code": "HUL",
       "name": "Nico H\u00fclkenberg",
       "team": "Audi",
-      "points": 13.0,
+      "points": 14.0,
       "wins": 0
     },
     {
@@ -193,37 +193,45 @@
       "team": "Cadillac",
       "points": 0.0,
       "wins": 0
+    },
+    {
+      "position": 25,
+      "code": "CAM",
+      "name": "Rafael Camara",
+      "team": "Haas F1 Team",
+      "points": 0.0,
+      "wins": 0
     }
   ],
   "constructors": [
     {
       "position": 1,
       "name": "Mercedes",
-      "points": 630.0,
+      "points": 652.0,
       "wins": 12
     },
     {
       "position": 2,
       "name": "Ferrari",
-      "points": 504.0,
+      "points": 510.0,
       "wins": 2
     },
     {
       "position": 3,
       "name": "Red Bull Racing",
-      "points": 382.0,
+      "points": 415.0,
       "wins": 3
     },
     {
       "position": 4,
       "name": "McLaren",
-      "points": 365.0,
-      "wins": 2
+      "points": 398.0,
+      "wins": 3
     },
     {
       "position": 5,
       "name": "Racing Bulls",
-      "points": 108.0,
+      "points": 114.0,
       "wins": 0
     },
     {
@@ -241,7 +249,7 @@
     {
       "position": 8,
       "name": "Audi",
-      "points": 27.0,
+      "points": 28.0,
       "wins": 0
     },
     {
@@ -784,6 +792,36 @@
         "STR": 0.0,
         "BOT": 0.0,
         "PER": 0.0
+      }
+    },
+    {
+      "round": 20,
+      "points": {
+        "ANT": 390.0,
+        "VER": 279.0,
+        "RUS": 262.0,
+        "HAM": 261.0,
+        "LEC": 249.0,
+        "NOR": 246.0,
+        "PIA": 152.0,
+        "HAD": 122.0,
+        "LAW": 89.0,
+        "GAS": 42.0,
+        "LIN": 38.0,
+        "COL": 27.0,
+        "BEA": 23.0,
+        "BOR": 14.0,
+        "HUL": 14.0,
+        "OCO": 7.0,
+        "ALO": 7.0,
+        "SAI": 7.0,
+        "ALB": 5.0,
+        "TSU": 1.0,
+        "HIR": 1.0,
+        "STR": 0.0,
+        "BOT": 0.0,
+        "PER": 0.0,
+        "CAM": 0.0
       }
     }
   ]

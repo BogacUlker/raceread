@@ -1,0 +1,2008 @@
+{
+  "driver": "GAS",
+  "team": "Alpine",
+  "session": "Q1",
+  "lap_time_s": 93.449,
+  "samples": [
+    {
+      "dist": 0.0,
+      "speed": 295.7,
+      "time_s": 0.0,
+      "x": -3625.0,
+      "y": -5466.0,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 7
+    },
+    {
+      "dist": 21.3,
+      "speed": 295.7,
+      "time_s": 0.3,
+      "x": -3571.9,
+      "y": -5672.4,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 7
+    },
+    {
+      "dist": 42.7,
+      "speed": 298.0,
+      "time_s": 0.5,
+      "x": -3518.7,
+      "y": -5879.9,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 7
+    },
+    {
+      "dist": 64.0,
+      "speed": 292.7,
+      "time_s": 0.8,
+      "x": -3464.2,
+      "y": -6085.4,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 7
+    },
+    {
+      "dist": 85.4,
+      "speed": 287.2,
+      "time_s": 1.0,
+      "x": -3390.5,
+      "y": -6358.4,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 7
+    },
+    {
+      "dist": 106.7,
+      "speed": 279.6,
+      "time_s": 1.3,
+      "x": -3348.4,
+      "y": -6518.3,
+      "throttle": 3.0,
+      "brake": true,
+      "gear": 7
+    },
+    {
+      "dist": 128.1,
+      "speed": 269.8,
+      "time_s": 1.6,
+      "x": -3286.1,
+      "y": -6749.9,
+      "throttle": 0.0,
+      "brake": true,
+      "gear": 7
+    },
+    {
+      "dist": 149.4,
+      "speed": 251.8,
+      "time_s": 1.9,
+      "x": -3235.5,
+      "y": -6936.1,
+      "throttle": 0.0,
+      "brake": true,
+      "gear": 6
+    },
+    {
+      "dist": 170.8,
+      "speed": 235.0,
+      "time_s": 2.2,
+      "x": -3178.5,
+      "y": -7143.8,
+      "throttle": 0.0,
+      "brake": true,
+      "gear": 5
+    },
+    {
+      "dist": 192.1,
+      "speed": 215.7,
+      "time_s": 2.6,
+      "x": -3113.5,
+      "y": -7378.3,
+      "throttle": 0.0,
+      "brake": true,
+      "gear": 5
+    },
+    {
+      "dist": 213.4,
+      "speed": 193.2,
+      "time_s": 2.9,
+      "x": -3054.3,
+      "y": -7579.2,
+      "throttle": 0.0,
+      "brake": true,
+      "gear": 4
+    },
+    {
+      "dist": 234.8,
+      "speed": 172.7,
+      "time_s": 3.4,
+      "x": -2971.8,
+      "y": -7835.3,
+      "throttle": 0.0,
+      "brake": true,
+      "gear": 4
+    },
+    {
+      "dist": 256.1,
+      "speed": 150.3,
+      "time_s": 3.9,
+      "x": -2895.8,
+      "y": -8028.7,
+      "throttle": 0.0,
+      "brake": true,
+      "gear": 3
+    },
+    {
+      "dist": 277.5,
+      "speed": 129.4,
+      "time_s": 4.4,
+      "x": -2817.3,
+      "y": -8186.7,
+      "throttle": 0.0,
+      "brake": true,
+      "gear": 2
+    },
+    {
+      "dist": 298.8,
+      "speed": 107.2,
+      "time_s": 5.1,
+      "x": -2736.1,
+      "y": -8313.5,
+      "throttle": 0.0,
+      "brake": true,
+      "gear": 2
+    },
+    {
+      "dist": 320.2,
+      "speed": 89.6,
+      "time_s": 5.9,
+      "x": -2581.6,
+      "y": -8460.6,
+      "throttle": 0.0,
+      "brake": true,
+      "gear": 1
+    },
+    {
+      "dist": 341.5,
+      "speed": 76.0,
+      "time_s": 6.9,
+      "x": -2382.0,
+      "y": -8516.4,
+      "throttle": 0.0,
+      "brake": false,
+      "gear": 1
+    },
+    {
+      "dist": 362.9,
+      "speed": 78.5,
+      "time_s": 7.9,
+      "x": -2183.3,
+      "y": -8450.8,
+      "throttle": 25.3,
+      "brake": false,
+      "gear": 1
+    },
+    {
+      "dist": 384.2,
+      "speed": 93.1,
+      "time_s": 8.8,
+      "x": -2014.9,
+      "y": -8315.6,
+      "throttle": 50.0,
+      "brake": false,
+      "gear": 1
+    },
+    {
+      "dist": 405.5,
+      "speed": 105.8,
+      "time_s": 9.5,
+      "x": -1857.6,
+      "y": -8183.4,
+      "throttle": 22.0,
+      "brake": false,
+      "gear": 2
+    },
+    {
+      "dist": 426.9,
+      "speed": 103.0,
+      "time_s": 10.3,
+      "x": -1672.1,
+      "y": -8086.8,
+      "throttle": 0.0,
+      "brake": false,
+      "gear": 2
+    },
+    {
+      "dist": 448.2,
+      "speed": 105.6,
+      "time_s": 11.0,
+      "x": -1501.6,
+      "y": -8090.0,
+      "throttle": 31.5,
+      "brake": false,
+      "gear": 2
+    },
+    {
+      "dist": 469.6,
+      "speed": 116.6,
+      "time_s": 11.7,
+      "x": -1303.8,
+      "y": -8153.3,
+      "throttle": 55.3,
+      "brake": false,
+      "gear": 2
+    },
+    {
+      "dist": 490.9,
+      "speed": 133.1,
+      "time_s": 12.3,
+      "x": -1108.3,
+      "y": -8232.7,
+      "throttle": 62.4,
+      "brake": false,
+      "gear": 2
+    },
+    {
+      "dist": 512.3,
+      "speed": 150.4,
+      "time_s": 12.8,
+      "x": -910.9,
+      "y": -8300.2,
+      "throttle": 71.6,
+      "brake": false,
+      "gear": 3
+    },
+    {
+      "dist": 533.6,
+      "speed": 157.0,
+      "time_s": 13.3,
+      "x": -681.5,
+      "y": -8343.3,
+      "throttle": 41.0,
+      "brake": false,
+      "gear": 3
+    },
+    {
+      "dist": 554.9,
+      "speed": 158.6,
+      "time_s": 13.8,
+      "x": -485.9,
+      "y": -8350.5,
+      "throttle": 49.6,
+      "brake": false,
+      "gear": 3
+    },
+    {
+      "dist": 576.3,
+      "speed": 163.3,
+      "time_s": 14.3,
+      "x": -219.7,
+      "y": -8318.8,
+      "throttle": 60.0,
+      "brake": false,
+      "gear": 3
+    },
+    {
+      "dist": 597.6,
+      "speed": 170.3,
+      "time_s": 14.7,
+      "x": -3.8,
+      "y": -8250.7,
+      "throttle": 63.0,
+      "brake": false,
+      "gear": 3
+    },
+    {
+      "dist": 619.0,
+      "speed": 178.4,
+      "time_s": 15.2,
+      "x": 147.2,
+      "y": -8180.6,
+      "throttle": 68.0,
+      "brake": false,
+      "gear": 4
+    },
+    {
+      "dist": 640.3,
+      "speed": 185.8,
+      "time_s": 15.6,
+      "x": 325.1,
+      "y": -8068.5,
+      "throttle": 67.6,
+      "brake": false,
+      "gear": 4
+    },
+    {
+      "dist": 661.7,
+      "speed": 191.4,
+      "time_s": 16.0,
+      "x": 508.1,
+      "y": -7912.9,
+      "throttle": 67.9,
+      "brake": false,
+      "gear": 4
+    },
+    {
+      "dist": 683.0,
+      "speed": 198.0,
+      "time_s": 16.4,
+      "x": 656.1,
+      "y": -7739.6,
+      "throttle": 75.6,
+      "brake": false,
+      "gear": 5
+    },
+    {
+      "dist": 704.4,
+      "speed": 204.2,
+      "time_s": 16.7,
+      "x": 791.5,
+      "y": -7541.2,
+      "throttle": 80.0,
+      "brake": false,
+      "gear": 5
+    },
+    {
+      "dist": 725.7,
+      "speed": 213.3,
+      "time_s": 17.1,
+      "x": 874.9,
+      "y": -7383.1,
+      "throttle": 87.0,
+      "brake": false,
+      "gear": 5
+    },
+    {
+      "dist": 747.0,
+      "speed": 222.1,
+      "time_s": 17.5,
+      "x": 940.2,
+      "y": -7225.5,
+      "throttle": 93.0,
+      "brake": false,
+      "gear": 5
+    },
+    {
+      "dist": 768.4,
+      "speed": 230.6,
+      "time_s": 17.8,
+      "x": 1012.3,
+      "y": -6997.5,
+      "throttle": 98.3,
+      "brake": false,
+      "gear": 5
+    },
+    {
+      "dist": 789.7,
+      "speed": 237.6,
+      "time_s": 18.1,
+      "x": 1067.1,
+      "y": -6791.3,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 5
+    },
+    {
+      "dist": 811.1,
+      "speed": 244.7,
+      "time_s": 18.4,
+      "x": 1125.0,
+      "y": -6558.7,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 5
+    },
+    {
+      "dist": 832.4,
+      "speed": 250.2,
+      "time_s": 18.7,
+      "x": 1183.0,
+      "y": -6331.1,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 6
+    },
+    {
+      "dist": 853.8,
+      "speed": 256.7,
+      "time_s": 19.0,
+      "x": 1222.4,
+      "y": -6174.6,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 6
+    },
+    {
+      "dist": 875.1,
+      "speed": 260.2,
+      "time_s": 19.3,
+      "x": 1289.4,
+      "y": -5896.9,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 6
+    },
+    {
+      "dist": 896.5,
+      "speed": 267.8,
+      "time_s": 19.6,
+      "x": 1339.9,
+      "y": -5684.9,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 7
+    },
+    {
+      "dist": 917.8,
+      "speed": 271.0,
+      "time_s": 19.9,
+      "x": 1377.7,
+      "y": -5526.2,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 7
+    },
+    {
+      "dist": 939.1,
+      "speed": 274.0,
+      "time_s": 20.2,
+      "x": 1431.1,
+      "y": -5306.3,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 7
+    },
+    {
+      "dist": 960.5,
+      "speed": 276.0,
+      "time_s": 20.5,
+      "x": 1488.1,
+      "y": -5074.8,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 7
+    },
+    {
+      "dist": 981.8,
+      "speed": 279.0,
+      "time_s": 20.8,
+      "x": 1527.1,
+      "y": -4919.5,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 7
+    },
+    {
+      "dist": 1003.2,
+      "speed": 281.0,
+      "time_s": 21.0,
+      "x": 1576.2,
+      "y": -4725.0,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 7
+    },
+    {
+      "dist": 1024.5,
+      "speed": 281.0,
+      "time_s": 21.3,
+      "x": 1629.4,
+      "y": -4517.4,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 7
+    },
+    {
+      "dist": 1045.9,
+      "speed": 281.0,
+      "time_s": 21.6,
+      "x": 1682.2,
+      "y": -4310.4,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 7
+    },
+    {
+      "dist": 1067.2,
+      "speed": 281.3,
+      "time_s": 21.8,
+      "x": 1734.7,
+      "y": -4104.3,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 7
+    },
+    {
+      "dist": 1088.6,
+      "speed": 282.0,
+      "time_s": 22.1,
+      "x": 1788.1,
+      "y": -3900.0,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 7
+    },
+    {
+      "dist": 1109.9,
+      "speed": 282.0,
+      "time_s": 22.4,
+      "x": 1841.7,
+      "y": -3696.2,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 7
+    },
+    {
+      "dist": 1131.2,
+      "speed": 282.0,
+      "time_s": 22.7,
+      "x": 1895.4,
+      "y": -3492.4,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 7
+    },
+    {
+      "dist": 1152.6,
+      "speed": 282.0,
+      "time_s": 22.9,
+      "x": 1948.4,
+      "y": -3291.2,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 7
+    },
+    {
+      "dist": 1173.9,
+      "speed": 281.5,
+      "time_s": 23.2,
+      "x": 1997.7,
+      "y": -3105.0,
+      "throttle": 83.9,
+      "brake": false,
+      "gear": 7
+    },
+    {
+      "dist": 1195.3,
+      "speed": 279.5,
+      "time_s": 23.5,
+      "x": 2065.8,
+      "y": -2848.8,
+      "throttle": 11.0,
+      "brake": true,
+      "gear": 7
+    },
+    {
+      "dist": 1216.6,
+      "speed": 262.7,
+      "time_s": 23.8,
+      "x": 2122.1,
+      "y": -2636.8,
+      "throttle": 0.0,
+      "brake": true,
+      "gear": 7
+    },
+    {
+      "dist": 1238.0,
+      "speed": 236.9,
+      "time_s": 24.1,
+      "x": 2164.2,
+      "y": -2480.5,
+      "throttle": 0.0,
+      "brake": true,
+      "gear": 7
+    },
+    {
+      "dist": 1259.3,
+      "speed": 219.4,
+      "time_s": 24.4,
+      "x": 2222.0,
+      "y": -2271.7,
+      "throttle": 0.0,
+      "brake": true,
+      "gear": 5
+    },
+    {
+      "dist": 1280.7,
+      "speed": 191.8,
+      "time_s": 24.8,
+      "x": 2280.5,
+      "y": -2064.3,
+      "throttle": 0.0,
+      "brake": true,
+      "gear": 5
+    },
+    {
+      "dist": 1302.0,
+      "speed": 165.9,
+      "time_s": 25.3,
+      "x": 2355.0,
+      "y": -1793.7,
+      "throttle": 0.0,
+      "brake": true,
+      "gear": 4
+    },
+    {
+      "dist": 1323.3,
+      "speed": 143.6,
+      "time_s": 25.8,
+      "x": 2389.1,
+      "y": -1622.5,
+      "throttle": 0.0,
+      "brake": true,
+      "gear": 2
+    },
+    {
+      "dist": 1344.7,
+      "speed": 131.1,
+      "time_s": 26.3,
+      "x": 2402.7,
+      "y": -1420.4,
+      "throttle": 0.0,
+      "brake": true,
+      "gear": 2
+    },
+    {
+      "dist": 1366.0,
+      "speed": 118.0,
+      "time_s": 27.0,
+      "x": 2377.3,
+      "y": -1216.2,
+      "throttle": 0.0,
+      "brake": true,
+      "gear": 2
+    },
+    {
+      "dist": 1387.4,
+      "speed": 109.3,
+      "time_s": 27.6,
+      "x": 2295.4,
+      "y": -1022.9,
+      "throttle": 0.0,
+      "brake": false,
+      "gear": 2
+    },
+    {
+      "dist": 1408.7,
+      "speed": 107.9,
+      "time_s": 28.4,
+      "x": 2143.2,
+      "y": -875.1,
+      "throttle": 31.0,
+      "brake": false,
+      "gear": 2
+    },
+    {
+      "dist": 1430.1,
+      "speed": 112.6,
+      "time_s": 29.1,
+      "x": 1955.0,
+      "y": -778.8,
+      "throttle": 47.3,
+      "brake": false,
+      "gear": 2
+    },
+    {
+      "dist": 1451.4,
+      "speed": 125.3,
+      "time_s": 29.7,
+      "x": 1748.9,
+      "y": -721.0,
+      "throttle": 52.9,
+      "brake": false,
+      "gear": 2
+    },
+    {
+      "dist": 1472.8,
+      "speed": 141.1,
+      "time_s": 30.3,
+      "x": 1542.0,
+      "y": -683.4,
+      "throttle": 69.0,
+      "brake": false,
+      "gear": 3
+    },
+    {
+      "dist": 1494.1,
+      "speed": 158.4,
+      "time_s": 30.8,
+      "x": 1315.3,
+      "y": -670.0,
+      "throttle": 77.0,
+      "brake": false,
+      "gear": 3
+    },
+    {
+      "dist": 1515.4,
+      "speed": 171.5,
+      "time_s": 31.2,
+      "x": 1117.3,
+      "y": -673.2,
+      "throttle": 82.8,
+      "brake": false,
+      "gear": 3
+    },
+    {
+      "dist": 1536.8,
+      "speed": 183.6,
+      "time_s": 31.7,
+      "x": 956.4,
+      "y": -691.1,
+      "throttle": 80.5,
+      "brake": false,
+      "gear": 4
+    },
+    {
+      "dist": 1558.1,
+      "speed": 191.3,
+      "time_s": 32.1,
+      "x": 749.4,
+      "y": -736.8,
+      "throttle": 64.7,
+      "brake": false,
+      "gear": 4
+    },
+    {
+      "dist": 1579.5,
+      "speed": 197.0,
+      "time_s": 32.5,
+      "x": 510.0,
+      "y": -846.8,
+      "throttle": 64.0,
+      "brake": false,
+      "gear": 4
+    },
+    {
+      "dist": 1600.8,
+      "speed": 199.8,
+      "time_s": 32.8,
+      "x": 370.7,
+      "y": -932.8,
+      "throttle": 70.0,
+      "brake": false,
+      "gear": 5
+    },
+    {
+      "dist": 1622.2,
+      "speed": 205.9,
+      "time_s": 33.2,
+      "x": 205.6,
+      "y": -1062.1,
+      "throttle": 82.9,
+      "brake": false,
+      "gear": 5
+    },
+    {
+      "dist": 1643.5,
+      "speed": 214.0,
+      "time_s": 33.6,
+      "x": 11.6,
+      "y": -1253.8,
+      "throttle": 93.1,
+      "brake": false,
+      "gear": 5
+    },
+    {
+      "dist": 1664.8,
+      "speed": 223.7,
+      "time_s": 33.9,
+      "x": -83.8,
+      "y": -1370.1,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 5
+    },
+    {
+      "dist": 1686.2,
+      "speed": 233.7,
+      "time_s": 34.3,
+      "x": -206.7,
+      "y": -1542.6,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 5
+    },
+    {
+      "dist": 1707.5,
+      "speed": 240.3,
+      "time_s": 34.6,
+      "x": -330.5,
+      "y": -1718.4,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 5
+    },
+    {
+      "dist": 1728.9,
+      "speed": 245.9,
+      "time_s": 34.9,
+      "x": -458.3,
+      "y": -1899.5,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 6
+    },
+    {
+      "dist": 1750.2,
+      "speed": 252.7,
+      "time_s": 35.2,
+      "x": -621.3,
+      "y": -2129.7,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 6
+    },
+    {
+      "dist": 1771.6,
+      "speed": 257.2,
+      "time_s": 35.5,
+      "x": -712.7,
+      "y": -2258.2,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 6
+    },
+    {
+      "dist": 1792.9,
+      "speed": 260.0,
+      "time_s": 35.8,
+      "x": -851.0,
+      "y": -2459.1,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 6
+    },
+    {
+      "dist": 1814.3,
+      "speed": 263.8,
+      "time_s": 36.1,
+      "x": -979.3,
+      "y": -2647.9,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 6
+    },
+    {
+      "dist": 1835.6,
+      "speed": 266.9,
+      "time_s": 36.4,
+      "x": -1089.1,
+      "y": -2811.0,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 6
+    },
+    {
+      "dist": 1856.9,
+      "speed": 260.2,
+      "time_s": 36.7,
+      "x": -1183.9,
+      "y": -2952.7,
+      "throttle": 3.0,
+      "brake": true,
+      "gear": 6
+    },
+    {
+      "dist": 1878.3,
+      "speed": 242.9,
+      "time_s": 37.0,
+      "x": -1306.5,
+      "y": -3134.3,
+      "throttle": 0.0,
+      "brake": true,
+      "gear": 6
+    },
+    {
+      "dist": 1899.6,
+      "speed": 227.7,
+      "time_s": 37.3,
+      "x": -1434.9,
+      "y": -3324.9,
+      "throttle": 0.0,
+      "brake": true,
+      "gear": 5
+    },
+    {
+      "dist": 1921.0,
+      "speed": 204.1,
+      "time_s": 37.7,
+      "x": -1573.3,
+      "y": -3528.0,
+      "throttle": 0.0,
+      "brake": true,
+      "gear": 4
+    },
+    {
+      "dist": 1942.3,
+      "speed": 184.8,
+      "time_s": 38.1,
+      "x": -1675.8,
+      "y": -3665.6,
+      "throttle": 0.0,
+      "brake": true,
+      "gear": 4
+    },
+    {
+      "dist": 1963.7,
+      "speed": 170.5,
+      "time_s": 38.5,
+      "x": -1835.4,
+      "y": -3833.1,
+      "throttle": 0.0,
+      "brake": true,
+      "gear": 3
+    },
+    {
+      "dist": 1985.0,
+      "speed": 161.8,
+      "time_s": 39.0,
+      "x": -2040.1,
+      "y": -3976.0,
+      "throttle": 0.0,
+      "brake": false,
+      "gear": 3
+    },
+    {
+      "dist": 2006.4,
+      "speed": 154.0,
+      "time_s": 39.5,
+      "x": -2200.3,
+      "y": -4036.1,
+      "throttle": 0.0,
+      "brake": false,
+      "gear": 3
+    },
+    {
+      "dist": 2027.7,
+      "speed": 146.5,
+      "time_s": 40.0,
+      "x": -2406.3,
+      "y": -4077.9,
+      "throttle": 1.7,
+      "brake": false,
+      "gear": 3
+    },
+    {
+      "dist": 2049.0,
+      "speed": 139.4,
+      "time_s": 40.5,
+      "x": -2607.4,
+      "y": -4080.6,
+      "throttle": 2.8,
+      "brake": false,
+      "gear": 3
+    },
+    {
+      "dist": 2070.4,
+      "speed": 132.7,
+      "time_s": 41.1,
+      "x": -2814.3,
+      "y": -4035.6,
+      "throttle": 21.9,
+      "brake": false,
+      "gear": 3
+    },
+    {
+      "dist": 2091.7,
+      "speed": 131.6,
+      "time_s": 41.7,
+      "x": -3039.3,
+      "y": -3923.1,
+      "throttle": 39.8,
+      "brake": false,
+      "gear": 3
+    },
+    {
+      "dist": 2113.1,
+      "speed": 135.0,
+      "time_s": 42.3,
+      "x": -3174.7,
+      "y": -3812.5,
+      "throttle": 49.7,
+      "brake": false,
+      "gear": 3
+    },
+    {
+      "dist": 2134.4,
+      "speed": 140.1,
+      "time_s": 42.8,
+      "x": -3326.2,
+      "y": -3627.1,
+      "throttle": 53.0,
+      "brake": false,
+      "gear": 3
+    },
+    {
+      "dist": 2155.8,
+      "speed": 147.8,
+      "time_s": 43.4,
+      "x": -3417.9,
+      "y": -3465.8,
+      "throttle": 59.0,
+      "brake": false,
+      "gear": 3
+    },
+    {
+      "dist": 2177.1,
+      "speed": 154.9,
+      "time_s": 43.9,
+      "x": -3497.3,
+      "y": -3251.2,
+      "throttle": 66.7,
+      "brake": false,
+      "gear": 3
+    },
+    {
+      "dist": 2198.5,
+      "speed": 160.9,
+      "time_s": 44.3,
+      "x": -3548.9,
+      "y": -3035.5,
+      "throttle": 39.2,
+      "brake": false,
+      "gear": 3
+    },
+    {
+      "dist": 2219.8,
+      "speed": 148.3,
+      "time_s": 44.8,
+      "x": -3584.2,
+      "y": -2837.9,
+      "throttle": 0.0,
+      "brake": true,
+      "gear": 3
+    },
+    {
+      "dist": 2241.1,
+      "speed": 118.1,
+      "time_s": 45.4,
+      "x": -3604.0,
+      "y": -2597.8,
+      "throttle": 0.0,
+      "brake": true,
+      "gear": 2
+    },
+    {
+      "dist": 2262.5,
+      "speed": 94.5,
+      "time_s": 46.2,
+      "x": -3590.8,
+      "y": -2401.1,
+      "throttle": 0.0,
+      "brake": true,
+      "gear": 1
+    },
+    {
+      "dist": 2283.8,
+      "speed": 77.3,
+      "time_s": 47.1,
+      "x": -3526.2,
+      "y": -2194.0,
+      "throttle": 0.0,
+      "brake": true,
+      "gear": 1
+    },
+    {
+      "dist": 2305.2,
+      "speed": 66.9,
+      "time_s": 48.2,
+      "x": -3375.0,
+      "y": -2056.8,
+      "throttle": 2.9,
+      "brake": false,
+      "gear": 1
+    },
+    {
+      "dist": 2326.5,
+      "speed": 72.4,
+      "time_s": 49.3,
+      "x": -3156.9,
+      "y": -2076.6,
+      "throttle": 23.0,
+      "brake": false,
+      "gear": 1
+    },
+    {
+      "dist": 2347.9,
+      "speed": 88.5,
+      "time_s": 50.3,
+      "x": -2974.1,
+      "y": -2165.4,
+      "throttle": 45.1,
+      "brake": false,
+      "gear": 1
+    },
+    {
+      "dist": 2369.2,
+      "speed": 97.3,
+      "time_s": 51.1,
+      "x": -2798.4,
+      "y": -2249.3,
+      "throttle": 0.8,
+      "brake": false,
+      "gear": 1
+    },
+    {
+      "dist": 2390.6,
+      "speed": 89.0,
+      "time_s": 51.9,
+      "x": -2589.7,
+      "y": -2292.2,
+      "throttle": 0.0,
+      "brake": false,
+      "gear": 1
+    },
+    {
+      "dist": 2411.9,
+      "speed": 81.4,
+      "time_s": 52.8,
+      "x": -2388.1,
+      "y": -2238.8,
+      "throttle": 0.0,
+      "brake": true,
+      "gear": 1
+    },
+    {
+      "dist": 2433.2,
+      "speed": 77.1,
+      "time_s": 53.8,
+      "x": -2249.4,
+      "y": -2082.3,
+      "throttle": 20.4,
+      "brake": false,
+      "gear": 1
+    },
+    {
+      "dist": 2454.6,
+      "speed": 84.7,
+      "time_s": 54.8,
+      "x": -2219.4,
+      "y": -1874.9,
+      "throttle": 38.0,
+      "brake": false,
+      "gear": 1
+    },
+    {
+      "dist": 2475.9,
+      "speed": 93.6,
+      "time_s": 55.6,
+      "x": -2275.6,
+      "y": -1671.4,
+      "throttle": 44.2,
+      "brake": false,
+      "gear": 1
+    },
+    {
+      "dist": 2497.3,
+      "speed": 108.5,
+      "time_s": 56.3,
+      "x": -2401.5,
+      "y": -1475.7,
+      "throttle": 51.0,
+      "brake": false,
+      "gear": 1
+    },
+    {
+      "dist": 2518.6,
+      "speed": 123.2,
+      "time_s": 57.0,
+      "x": -2504.5,
+      "y": -1339.4,
+      "throttle": 62.9,
+      "brake": false,
+      "gear": 2
+    },
+    {
+      "dist": 2540.0,
+      "speed": 140.9,
+      "time_s": 57.5,
+      "x": -2648.7,
+      "y": -1186.1,
+      "throttle": 74.0,
+      "brake": false,
+      "gear": 2
+    },
+    {
+      "dist": 2561.3,
+      "speed": 156.8,
+      "time_s": 58.0,
+      "x": -2821.9,
+      "y": -989.7,
+      "throttle": 72.3,
+      "brake": false,
+      "gear": 3
+    },
+    {
+      "dist": 2582.7,
+      "speed": 163.2,
+      "time_s": 58.5,
+      "x": -2952.3,
+      "y": -813.6,
+      "throttle": 56.4,
+      "brake": false,
+      "gear": 3
+    },
+    {
+      "dist": 2604.0,
+      "speed": 158.2,
+      "time_s": 59.0,
+      "x": -3040.3,
+      "y": -672.6,
+      "throttle": 14.0,
+      "brake": true,
+      "gear": 3
+    },
+    {
+      "dist": 2625.3,
+      "speed": 137.4,
+      "time_s": 59.5,
+      "x": -3138.3,
+      "y": -472.4,
+      "throttle": 0.0,
+      "brake": true,
+      "gear": 2
+    },
+    {
+      "dist": 2646.7,
+      "speed": 117.8,
+      "time_s": 60.1,
+      "x": -3205.4,
+      "y": -272.6,
+      "throttle": 0.0,
+      "brake": true,
+      "gear": 2
+    },
+    {
+      "dist": 2668.0,
+      "speed": 96.3,
+      "time_s": 60.9,
+      "x": -3229.7,
+      "y": -57.2,
+      "throttle": 0.0,
+      "brake": true,
+      "gear": 1
+    },
+    {
+      "dist": 2689.4,
+      "speed": 75.6,
+      "time_s": 61.8,
+      "x": -3184.9,
+      "y": 151.1,
+      "throttle": 0.0,
+      "brake": true,
+      "gear": 1
+    },
+    {
+      "dist": 2710.7,
+      "speed": 63.2,
+      "time_s": 62.9,
+      "x": -2994.8,
+      "y": 267.9,
+      "throttle": 12.2,
+      "brake": false,
+      "gear": 1
+    },
+    {
+      "dist": 2732.1,
+      "speed": 73.6,
+      "time_s": 64.0,
+      "x": -2818.0,
+      "y": 211.5,
+      "throttle": 34.0,
+      "brake": false,
+      "gear": 1
+    },
+    {
+      "dist": 2753.4,
+      "speed": 87.7,
+      "time_s": 65.0,
+      "x": -2630.0,
+      "y": 56.4,
+      "throttle": 44.2,
+      "brake": false,
+      "gear": 1
+    },
+    {
+      "dist": 2774.7,
+      "speed": 107.0,
+      "time_s": 65.7,
+      "x": -2515.1,
+      "y": -77.9,
+      "throttle": 55.0,
+      "brake": false,
+      "gear": 1
+    },
+    {
+      "dist": 2796.1,
+      "speed": 126.2,
+      "time_s": 66.4,
+      "x": -2413.0,
+      "y": -214.5,
+      "throttle": 67.0,
+      "brake": false,
+      "gear": 2
+    },
+    {
+      "dist": 2817.4,
+      "speed": 144.7,
+      "time_s": 66.9,
+      "x": -2285.2,
+      "y": -370.6,
+      "throttle": 67.0,
+      "brake": false,
+      "gear": 3
+    },
+    {
+      "dist": 2838.8,
+      "speed": 155.9,
+      "time_s": 67.5,
+      "x": -2148.2,
+      "y": -511.3,
+      "throttle": 63.0,
+      "brake": false,
+      "gear": 3
+    },
+    {
+      "dist": 2860.1,
+      "speed": 165.1,
+      "time_s": 67.9,
+      "x": -1960.1,
+      "y": -626.9,
+      "throttle": 47.1,
+      "brake": false,
+      "gear": 3
+    },
+    {
+      "dist": 2881.5,
+      "speed": 176.0,
+      "time_s": 68.4,
+      "x": -1734.4,
+      "y": -688.9,
+      "throttle": 39.0,
+      "brake": false,
+      "gear": 3
+    },
+    {
+      "dist": 2902.8,
+      "speed": 160.5,
+      "time_s": 68.9,
+      "x": -1491.2,
+      "y": -714.5,
+      "throttle": 23.1,
+      "brake": false,
+      "gear": 3
+    },
+    {
+      "dist": 2924.2,
+      "speed": 157.1,
+      "time_s": 69.4,
+      "x": -1321.5,
+      "y": -698.2,
+      "throttle": 36.0,
+      "brake": false,
+      "gear": 3
+    },
+    {
+      "dist": 2945.5,
+      "speed": 158.0,
+      "time_s": 69.9,
+      "x": -1084.8,
+      "y": -636.3,
+      "throttle": 44.0,
+      "brake": false,
+      "gear": 3
+    },
+    {
+      "dist": 2966.8,
+      "speed": 161.3,
+      "time_s": 70.3,
+      "x": -939.5,
+      "y": -570.6,
+      "throttle": 54.4,
+      "brake": false,
+      "gear": 3
+    },
+    {
+      "dist": 2988.2,
+      "speed": 171.4,
+      "time_s": 70.8,
+      "x": -763.6,
+      "y": -453.3,
+      "throttle": 74.0,
+      "brake": false,
+      "gear": 3
+    },
+    {
+      "dist": 3009.5,
+      "speed": 182.7,
+      "time_s": 71.2,
+      "x": -588.7,
+      "y": -271.9,
+      "throttle": 81.0,
+      "brake": false,
+      "gear": 3
+    },
+    {
+      "dist": 3030.9,
+      "speed": 192.1,
+      "time_s": 71.6,
+      "x": -466.0,
+      "y": -110.3,
+      "throttle": 87.0,
+      "brake": false,
+      "gear": 4
+    },
+    {
+      "dist": 3052.2,
+      "speed": 205.4,
+      "time_s": 72.0,
+      "x": -372.6,
+      "y": 36.7,
+      "throttle": 95.0,
+      "brake": false,
+      "gear": 4
+    },
+    {
+      "dist": 3073.6,
+      "speed": 205.0,
+      "time_s": 72.4,
+      "x": -245.0,
+      "y": 251.2,
+      "throttle": 50.9,
+      "brake": false,
+      "gear": 4
+    },
+    {
+      "dist": 3094.9,
+      "speed": 184.0,
+      "time_s": 72.8,
+      "x": -127.1,
+      "y": 451.5,
+      "throttle": 0.0,
+      "brake": true,
+      "gear": 4
+    },
+    {
+      "dist": 3116.3,
+      "speed": 155.9,
+      "time_s": 73.2,
+      "x": -12.6,
+      "y": 647.3,
+      "throttle": 0.0,
+      "brake": true,
+      "gear": 3
+    },
+    {
+      "dist": 3137.6,
+      "speed": 136.8,
+      "time_s": 73.8,
+      "x": 91.9,
+      "y": 833.1,
+      "throttle": 0.0,
+      "brake": true,
+      "gear": 3
+    },
+    {
+      "dist": 3158.9,
+      "speed": 112.5,
+      "time_s": 74.4,
+      "x": 190.8,
+      "y": 1046.1,
+      "throttle": 0.0,
+      "brake": true,
+      "gear": 2
+    },
+    {
+      "dist": 3180.3,
+      "speed": 96.2,
+      "time_s": 75.2,
+      "x": 226.8,
+      "y": 1237.1,
+      "throttle": 0.0,
+      "brake": true,
+      "gear": 1
+    },
+    {
+      "dist": 3201.6,
+      "speed": 84.6,
+      "time_s": 76.0,
+      "x": 168.4,
+      "y": 1440.3,
+      "throttle": 2.9,
+      "brake": false,
+      "gear": 1
+    },
+    {
+      "dist": 3223.0,
+      "speed": 85.4,
+      "time_s": 76.9,
+      "x": 11.4,
+      "y": 1601.4,
+      "throttle": 38.0,
+      "brake": false,
+      "gear": 1
+    },
+    {
+      "dist": 3244.3,
+      "speed": 97.1,
+      "time_s": 77.8,
+      "x": -160.4,
+      "y": 1694.4,
+      "throttle": 46.9,
+      "brake": false,
+      "gear": 1
+    },
+    {
+      "dist": 3265.7,
+      "speed": 112.0,
+      "time_s": 78.5,
+      "x": -337.0,
+      "y": 1762.9,
+      "throttle": 54.0,
+      "brake": false,
+      "gear": 2
+    },
+    {
+      "dist": 3287.0,
+      "speed": 123.3,
+      "time_s": 79.1,
+      "x": -538.2,
+      "y": 1827.2,
+      "throttle": 55.7,
+      "brake": false,
+      "gear": 2
+    },
+    {
+      "dist": 3308.4,
+      "speed": 133.2,
+      "time_s": 79.7,
+      "x": -793.8,
+      "y": 1874.8,
+      "throttle": 59.7,
+      "brake": false,
+      "gear": 2
+    },
+    {
+      "dist": 3329.7,
+      "speed": 146.8,
+      "time_s": 80.3,
+      "x": -951.8,
+      "y": 1885.1,
+      "throttle": 69.7,
+      "brake": false,
+      "gear": 3
+    },
+    {
+      "dist": 3351.0,
+      "speed": 161.0,
+      "time_s": 80.8,
+      "x": -1175.1,
+      "y": 1880.1,
+      "throttle": 80.0,
+      "brake": false,
+      "gear": 3
+    },
+    {
+      "dist": 3372.4,
+      "speed": 173.9,
+      "time_s": 81.2,
+      "x": -1383.9,
+      "y": 1857.4,
+      "throttle": 89.7,
+      "brake": false,
+      "gear": 3
+    },
+    {
+      "dist": 3393.7,
+      "speed": 185.6,
+      "time_s": 81.6,
+      "x": -1621.1,
+      "y": 1812.4,
+      "throttle": 90.3,
+      "brake": false,
+      "gear": 4
+    },
+    {
+      "dist": 3415.1,
+      "speed": 194.9,
+      "time_s": 82.0,
+      "x": -1794.5,
+      "y": 1767.4,
+      "throttle": 88.0,
+      "brake": false,
+      "gear": 4
+    },
+    {
+      "dist": 3436.4,
+      "speed": 205.5,
+      "time_s": 82.4,
+      "x": -2046.4,
+      "y": 1690.1,
+      "throttle": 99.4,
+      "brake": false,
+      "gear": 4
+    },
+    {
+      "dist": 3457.8,
+      "speed": 215.9,
+      "time_s": 82.8,
+      "x": -2192.6,
+      "y": 1634.1,
+      "throttle": 99.8,
+      "brake": false,
+      "gear": 4
+    },
+    {
+      "dist": 3479.1,
+      "speed": 220.9,
+      "time_s": 83.1,
+      "x": -2387.0,
+      "y": 1545.8,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 5
+    },
+    {
+      "dist": 3500.5,
+      "speed": 230.9,
+      "time_s": 83.5,
+      "x": -2573.7,
+      "y": 1444.6,
+      "throttle": 87.0,
+      "brake": false,
+      "gear": 5
+    },
+    {
+      "dist": 3521.8,
+      "speed": 234.4,
+      "time_s": 83.8,
+      "x": -2827.0,
+      "y": 1278.0,
+      "throttle": 69.6,
+      "brake": false,
+      "gear": 5
+    },
+    {
+      "dist": 3543.1,
+      "speed": 235.5,
+      "time_s": 84.1,
+      "x": -2934.9,
+      "y": 1189.7,
+      "throttle": 71.0,
+      "brake": false,
+      "gear": 6
+    },
+    {
+      "dist": 3564.5,
+      "speed": 232.7,
+      "time_s": 84.5,
+      "x": -3141.5,
+      "y": 991.4,
+      "throttle": 41.7,
+      "brake": false,
+      "gear": 6
+    },
+    {
+      "dist": 3585.8,
+      "speed": 232.0,
+      "time_s": 84.8,
+      "x": -3284.4,
+      "y": 815.9,
+      "throttle": 55.0,
+      "brake": false,
+      "gear": 6
+    },
+    {
+      "dist": 3607.2,
+      "speed": 234.4,
+      "time_s": 85.1,
+      "x": -3374.4,
+      "y": 692.5,
+      "throttle": 50.0,
+      "brake": false,
+      "gear": 6
+    },
+    {
+      "dist": 3628.5,
+      "speed": 236.4,
+      "time_s": 85.5,
+      "x": -3507.2,
+      "y": 467.9,
+      "throttle": 64.2,
+      "brake": false,
+      "gear": 6
+    },
+    {
+      "dist": 3649.9,
+      "speed": 232.1,
+      "time_s": 85.8,
+      "x": -3578.1,
+      "y": 320.7,
+      "throttle": 80.0,
+      "brake": false,
+      "gear": 6
+    },
+    {
+      "dist": 3671.2,
+      "speed": 238.6,
+      "time_s": 86.1,
+      "x": -3653.7,
+      "y": 150.4,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 6
+    },
+    {
+      "dist": 3692.6,
+      "speed": 245.6,
+      "time_s": 86.4,
+      "x": -3728.2,
+      "y": -48.3,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 6
+    },
+    {
+      "dist": 3713.9,
+      "speed": 252.0,
+      "time_s": 86.7,
+      "x": -3791.5,
+      "y": -250.2,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 6
+    },
+    {
+      "dist": 3735.2,
+      "speed": 256.3,
+      "time_s": 87.0,
+      "x": -3848.2,
+      "y": -464.6,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 6
+    },
+    {
+      "dist": 3756.6,
+      "speed": 263.1,
+      "time_s": 87.3,
+      "x": -3896.6,
+      "y": -676.7,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 6
+    },
+    {
+      "dist": 3777.9,
+      "speed": 268.1,
+      "time_s": 87.6,
+      "x": -3938.6,
+      "y": -869.6,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 6
+    },
+    {
+      "dist": 3799.3,
+      "speed": 272.0,
+      "time_s": 87.9,
+      "x": -3984.6,
+      "y": -1077.6,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 7
+    },
+    {
+      "dist": 3820.6,
+      "speed": 275.2,
+      "time_s": 88.2,
+      "x": -4027.8,
+      "y": -1285.6,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 7
+    },
+    {
+      "dist": 3842.0,
+      "speed": 278.5,
+      "time_s": 88.5,
+      "x": -4063.1,
+      "y": -1494.9,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 7
+    },
+    {
+      "dist": 3863.3,
+      "speed": 281.2,
+      "time_s": 88.7,
+      "x": -4096.5,
+      "y": -1745.6,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 7
+    },
+    {
+      "dist": 3884.6,
+      "speed": 283.6,
+      "time_s": 89.0,
+      "x": -4118.4,
+      "y": -1953.1,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 7
+    },
+    {
+      "dist": 3906.0,
+      "speed": 286.0,
+      "time_s": 89.3,
+      "x": -4129.6,
+      "y": -2130.1,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 7
+    },
+    {
+      "dist": 3927.3,
+      "speed": 287.3,
+      "time_s": 89.5,
+      "x": -4139.0,
+      "y": -2341.5,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 7
+    },
+    {
+      "dist": 3948.7,
+      "speed": 274.6,
+      "time_s": 89.8,
+      "x": -4139.2,
+      "y": -2656.7,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 7
+    },
+    {
+      "dist": 3970.0,
+      "speed": 270.1,
+      "time_s": 90.1,
+      "x": -4133.1,
+      "y": -2812.6,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 7
+    },
+    {
+      "dist": 3991.4,
+      "speed": 281.6,
+      "time_s": 90.3,
+      "x": -4120.5,
+      "y": -3002.1,
+      "throttle": 90.3,
+      "brake": false,
+      "gear": 7
+    },
+    {
+      "dist": 4012.7,
+      "speed": 292.3,
+      "time_s": 90.6,
+      "x": -4098.5,
+      "y": -3230.6,
+      "throttle": 78.0,
+      "brake": false,
+      "gear": 7
+    },
+    {
+      "dist": 4034.1,
+      "speed": 293.0,
+      "time_s": 90.9,
+      "x": -4080.5,
+      "y": -3374.8,
+      "throttle": 92.0,
+      "brake": false,
+      "gear": 7
+    },
+    {
+      "dist": 4055.4,
+      "speed": 293.3,
+      "time_s": 91.1,
+      "x": -4037.4,
+      "y": -3656.0,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 7
+    },
+    {
+      "dist": 4076.7,
+      "speed": 294.1,
+      "time_s": 91.4,
+      "x": -3996.4,
+      "y": -3883.3,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 7
+    },
+    {
+      "dist": 4098.1,
+      "speed": 295.0,
+      "time_s": 91.6,
+      "x": -3955.2,
+      "y": -4093.6,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 7
+    },
+    {
+      "dist": 4119.4,
+      "speed": 295.0,
+      "time_s": 91.9,
+      "x": -3913.6,
+      "y": -4290.7,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 7
+    },
+    {
+      "dist": 4140.8,
+      "speed": 298.6,
+      "time_s": 92.2,
+      "x": -3869.9,
+      "y": -4477.9,
+      "throttle": 100.0,
+      "brake": false,
+      "gear": 7
+    },
+    {
+      "dist": 4162.1,
+      "speed": 303.9,
+      "time_s": 92.4,
+      "x": -3824.1,
+      "y": -4672.0,
+      "throttle": 82.5,
+      "brake": false,
+      "gear": 7
+    },
+    {
+      "dist": 4183.5,
+      "speed": 301.8,
+      "time_s": 92.7,
+      "x": -3765.3,
+      "y": -4909.8,
+      "throttle": 54.0,
+      "brake": false,
+      "gear": 7
+    },
+    {
+      "dist": 4204.8,
+      "speed": 279.3,
+      "time_s": 92.9,
+      "x": -3711.4,
+      "y": -5123.8,
+      "throttle": 54.0,
+      "brake": false,
+      "gear": 7
+    },
+    {
+      "dist": 4226.2,
+      "speed": 246.0,
+      "time_s": 93.2,
+      "x": -3660.3,
+      "y": -5324.9,
+      "throttle": 98.0,
+      "brake": false,
+      "gear": 7
+    },
+    {
+      "dist": 4247.5,
+      "speed": 230.5,
+      "time_s": 93.4,
+      "x": -3618.9,
+      "y": -5487.4,
+      "throttle": 77.9,
+      "brake": false,
+      "gear": 7
+    }
+  ]
+}

@@ -1,0 +1,1604 @@
+{
+  "samples": [
+    {
+      "time_s": 0.0,
+      "air_temp": 16.3,
+      "track_temp": 43.6,
+      "humidity": 88.7,
+      "pressure": 930.0,
+      "rainfall": false,
+      "wind_direction": 178,
+      "wind_speed": 1.3
+    },
+    {
+      "time_s": 60.001,
+      "air_temp": 16.4,
+      "track_temp": 26.6,
+      "humidity": 89.2,
+      "pressure": 930.0,
+      "rainfall": false,
+      "wind_direction": 187,
+      "wind_speed": 2.9
+    },
+    {
+      "time_s": 119.989,
+      "air_temp": 16.5,
+      "track_temp": 28.6,
+      "humidity": 88.9,
+      "pressure": 929.9,
+      "rainfall": false,
+      "wind_direction": 188,
+      "wind_speed": 1.4
+    },
+    {
+      "time_s": 179.999,
+      "air_temp": 16.5,
+      "track_temp": 35.6,
+      "humidity": 88.2,
+      "pressure": 930.0,
+      "rainfall": false,
+      "wind_direction": 180,
+      "wind_speed": 2.4
+    },
+    {
+      "time_s": 240.0,
+      "air_temp": 16.4,
+      "track_temp": 36.6,
+      "humidity": 88.4,
+      "pressure": 929.9,
+      "rainfall": false,
+      "wind_direction": 172,
+      "wind_speed": 2.7
+    },
+    {
+      "time_s": 300.008,
+      "air_temp": 16.4,
+      "track_temp": 37.5,
+      "humidity": 88.7,
+      "pressure": 930.0,
+      "rainfall": false,
+      "wind_direction": 170,
+      "wind_speed": 3.0
+    },
+    {
+      "time_s": 359.992,
+      "air_temp": 16.4,
+      "track_temp": 35.1,
+      "humidity": 88.8,
+      "pressure": 930.0,
+      "rainfall": false,
+      "wind_direction": 186,
+      "wind_speed": 2.7
+    },
+    {
+      "time_s": 419.999,
+      "air_temp": 16.4,
+      "track_temp": 35.4,
+      "humidity": 87.9,
+      "pressure": 930.0,
+      "rainfall": false,
+      "wind_direction": 203,
+      "wind_speed": 2.3
+    },
+    {
+      "time_s": 480.02,
+      "air_temp": 16.3,
+      "track_temp": 35.5,
+      "humidity": 88.2,
+      "pressure": 930.0,
+      "rainfall": false,
+      "wind_direction": 156,
+      "wind_speed": 4.8
+    },
+    {
+      "time_s": 540.008,
+      "air_temp": 16.2,
+      "track_temp": 31.2,
+      "humidity": 88.3,
+      "pressure": 930.0,
+      "rainfall": true,
+      "wind_direction": 176,
+      "wind_speed": 5.5
+    },
+    {
+      "time_s": 600.018,
+      "air_temp": 16.1,
+      "track_temp": 33.4,
+      "humidity": 87.5,
+      "pressure": 930.1,
+      "rainfall": false,
+      "wind_direction": 165,
+      "wind_speed": 3.3
+    },
+    {
+      "time_s": 660.038,
+      "air_temp": 16.0,
+      "track_temp": 22.1,
+      "humidity": 88.7,
+      "pressure": 930.2,
+      "rainfall": false,
+      "wind_direction": 171,
+      "wind_speed": 1.8
+    },
+    {
+      "time_s": 720.038,
+      "air_temp": 16.0,
+      "track_temp": 23.5,
+      "humidity": 88.3,
+      "pressure": 930.3,
+      "rainfall": false,
+      "wind_direction": 181,
+      "wind_speed": 2.6
+    },
+    {
+      "time_s": 780.069,
+      "air_temp": 16.0,
+      "track_temp": 23.0,
+      "humidity": 89.3,
+      "pressure": 930.2,
+      "rainfall": false,
+      "wind_direction": 155,
+      "wind_speed": 1.6
+    },
+    {
+      "time_s": 840.06,
+      "air_temp": 16.0,
+      "track_temp": 22.8,
+      "humidity": 88.7,
+      "pressure": 930.3,
+      "rainfall": false,
+      "wind_direction": 139,
+      "wind_speed": 1.2
+    },
+    {
+      "time_s": 900.06,
+      "air_temp": 16.0,
+      "track_temp": 36.4,
+      "humidity": 88.9,
+      "pressure": 930.2,
+      "rainfall": false,
+      "wind_direction": 140,
+      "wind_speed": 1.6
+    },
+    {
+      "time_s": 960.09,
+      "air_temp": 16.0,
+      "track_temp": 23.3,
+      "humidity": 89.4,
+      "pressure": 930.1,
+      "rainfall": false,
+      "wind_direction": 183,
+      "wind_speed": 3.8
+    },
+    {
+      "time_s": 1020.093,
+      "air_temp": 16.0,
+      "track_temp": 33.5,
+      "humidity": 87.8,
+      "pressure": 930.1,
+      "rainfall": false,
+      "wind_direction": 168,
+      "wind_speed": 2.3
+    },
+    {
+      "time_s": 1080.095,
+      "air_temp": 16.0,
+      "track_temp": 20.0,
+      "humidity": 88.8,
+      "pressure": 930.2,
+      "rainfall": false,
+      "wind_direction": 196,
+      "wind_speed": 3.3
+    },
+    {
+      "time_s": 1140.098,
+      "air_temp": 15.9,
+      "track_temp": 36.3,
+      "humidity": 88.2,
+      "pressure": 930.2,
+      "rainfall": false,
+      "wind_direction": 185,
+      "wind_speed": 3.4
+    },
+    {
+      "time_s": 1200.114,
+      "air_temp": 15.9,
+      "track_temp": 34.4,
+      "humidity": 89.0,
+      "pressure": 930.2,
+      "rainfall": false,
+      "wind_direction": 188,
+      "wind_speed": 4.2
+    },
+    {
+      "time_s": 1260.143,
+      "air_temp": 15.8,
+      "track_temp": 36.1,
+      "humidity": 89.1,
+      "pressure": 930.3,
+      "rainfall": false,
+      "wind_direction": 166,
+      "wind_speed": 4.1
+    },
+    {
+      "time_s": 1320.141,
+      "air_temp": 15.7,
+      "track_temp": 34.9,
+      "humidity": 88.4,
+      "pressure": 930.2,
+      "rainfall": false,
+      "wind_direction": 173,
+      "wind_speed": 3.1
+    },
+    {
+      "time_s": 1380.141,
+      "air_temp": 15.7,
+      "track_temp": 34.8,
+      "humidity": 88.8,
+      "pressure": 930.2,
+      "rainfall": false,
+      "wind_direction": 197,
+      "wind_speed": 2.1
+    },
+    {
+      "time_s": 1440.136,
+      "air_temp": 15.7,
+      "track_temp": 34.8,
+      "humidity": 89.5,
+      "pressure": 930.2,
+      "rainfall": false,
+      "wind_direction": 168,
+      "wind_speed": 3.0
+    },
+    {
+      "time_s": 1500.131,
+      "air_temp": 15.7,
+      "track_temp": 25.3,
+      "humidity": 89.2,
+      "pressure": 930.2,
+      "rainfall": false,
+      "wind_direction": 180,
+      "wind_speed": 3.5
+    },
+    {
+      "time_s": 1560.137,
+      "air_temp": 15.7,
+      "track_temp": 23.2,
+      "humidity": 88.2,
+      "pressure": 930.2,
+      "rainfall": false,
+      "wind_direction": 176,
+      "wind_speed": 1.9
+    },
+    {
+      "time_s": 1620.141,
+      "air_temp": 15.6,
+      "track_temp": 25.1,
+      "humidity": 88.8,
+      "pressure": 930.3,
+      "rainfall": false,
+      "wind_direction": 163,
+      "wind_speed": 3.0
+    },
+    {
+      "time_s": 1680.132,
+      "air_temp": 15.6,
+      "track_temp": 34.1,
+      "humidity": 88.5,
+      "pressure": 930.3,
+      "rainfall": false,
+      "wind_direction": 177,
+      "wind_speed": 4.5
+    },
+    {
+      "time_s": 1740.143,
+      "air_temp": 15.6,
+      "track_temp": 32.2,
+      "humidity": 87.9,
+      "pressure": 930.3,
+      "rainfall": false,
+      "wind_direction": 168,
+      "wind_speed": 2.7
+    },
+    {
+      "time_s": 1800.138,
+      "air_temp": 15.6,
+      "track_temp": 34.4,
+      "humidity": 88.4,
+      "pressure": 930.2,
+      "rainfall": false,
+      "wind_direction": 167,
+      "wind_speed": 3.6
+    },
+    {
+      "time_s": 1860.142,
+      "air_temp": 15.6,
+      "track_temp": 27.6,
+      "humidity": 88.6,
+      "pressure": 930.2,
+      "rainfall": false,
+      "wind_direction": 157,
+      "wind_speed": 2.5
+    },
+    {
+      "time_s": 1920.15,
+      "air_temp": 15.7,
+      "track_temp": 22.3,
+      "humidity": 88.9,
+      "pressure": 930.3,
+      "rainfall": false,
+      "wind_direction": 187,
+      "wind_speed": 2.9
+    },
+    {
+      "time_s": 1980.132,
+      "air_temp": 15.7,
+      "track_temp": 24.7,
+      "humidity": 88.0,
+      "pressure": 930.3,
+      "rainfall": false,
+      "wind_direction": 173,
+      "wind_speed": 4.9
+    },
+    {
+      "time_s": 2040.132,
+      "air_temp": 15.6,
+      "track_temp": 23.5,
+      "humidity": 87.9,
+      "pressure": 930.3,
+      "rainfall": false,
+      "wind_direction": 175,
+      "wind_speed": 3.2
+    },
+    {
+      "time_s": 2100.154,
+      "air_temp": 15.6,
+      "track_temp": 22.3,
+      "humidity": 88.1,
+      "pressure": 930.4,
+      "rainfall": false,
+      "wind_direction": 148,
+      "wind_speed": 2.6
+    },
+    {
+      "time_s": 2160.181,
+      "air_temp": 15.7,
+      "track_temp": 23.1,
+      "humidity": 88.0,
+      "pressure": 930.5,
+      "rainfall": false,
+      "wind_direction": 149,
+      "wind_speed": 1.2
+    },
+    {
+      "time_s": 2220.193,
+      "air_temp": 15.6,
+      "track_temp": 32.5,
+      "humidity": 88.0,
+      "pressure": 930.4,
+      "rainfall": false,
+      "wind_direction": 174,
+      "wind_speed": 0.7
+    },
+    {
+      "time_s": 2280.193,
+      "air_temp": 15.7,
+      "track_temp": 34.0,
+      "humidity": 88.6,
+      "pressure": 930.3,
+      "rainfall": false,
+      "wind_direction": 166,
+      "wind_speed": 1.7
+    },
+    {
+      "time_s": 2340.194,
+      "air_temp": 15.7,
+      "track_temp": 24.0,
+      "humidity": 89.1,
+      "pressure": 930.4,
+      "rainfall": false,
+      "wind_direction": 166,
+      "wind_speed": 3.0
+    },
+    {
+      "time_s": 2400.194,
+      "air_temp": 15.7,
+      "track_temp": 35.5,
+      "humidity": 87.9,
+      "pressure": 930.3,
+      "rainfall": false,
+      "wind_direction": 156,
+      "wind_speed": 4.4
+    },
+    {
+      "time_s": 2460.188,
+      "air_temp": 15.7,
+      "track_temp": 25.7,
+      "humidity": 88.1,
+      "pressure": 930.3,
+      "rainfall": false,
+      "wind_direction": 158,
+      "wind_speed": 2.3
+    },
+    {
+      "time_s": 2520.186,
+      "air_temp": 15.7,
+      "track_temp": 25.4,
+      "humidity": 88.1,
+      "pressure": 930.2,
+      "rainfall": false,
+      "wind_direction": 161,
+      "wind_speed": 2.4
+    },
+    {
+      "time_s": 2580.201,
+      "air_temp": 15.7,
+      "track_temp": 35.5,
+      "humidity": 87.6,
+      "pressure": 930.2,
+      "rainfall": false,
+      "wind_direction": 184,
+      "wind_speed": 4.6
+    },
+    {
+      "time_s": 2640.191,
+      "air_temp": 15.7,
+      "track_temp": 35.2,
+      "humidity": 87.5,
+      "pressure": 930.1,
+      "rainfall": false,
+      "wind_direction": 184,
+      "wind_speed": 2.0
+    },
+    {
+      "time_s": 2700.198,
+      "air_temp": 15.8,
+      "track_temp": 27.0,
+      "humidity": 87.9,
+      "pressure": 930.2,
+      "rainfall": false,
+      "wind_direction": 191,
+      "wind_speed": 3.4
+    },
+    {
+      "time_s": 2760.198,
+      "air_temp": 15.8,
+      "track_temp": 26.4,
+      "humidity": 87.5,
+      "pressure": 930.2,
+      "rainfall": false,
+      "wind_direction": 164,
+      "wind_speed": 2.6
+    },
+    {
+      "time_s": 2820.194,
+      "air_temp": 15.8,
+      "track_temp": 24.6,
+      "humidity": 87.4,
+      "pressure": 930.2,
+      "rainfall": false,
+      "wind_direction": 162,
+      "wind_speed": 2.5
+    },
+    {
+      "time_s": 2880.192,
+      "air_temp": 15.8,
+      "track_temp": 26.0,
+      "humidity": 87.2,
+      "pressure": 930.2,
+      "rainfall": false,
+      "wind_direction": 172,
+      "wind_speed": 2.9
+    },
+    {
+      "time_s": 2940.204,
+      "air_temp": 15.8,
+      "track_temp": 24.6,
+      "humidity": 86.8,
+      "pressure": 930.1,
+      "rainfall": false,
+      "wind_direction": 171,
+      "wind_speed": 3.3
+    },
+    {
+      "time_s": 3000.203,
+      "air_temp": 15.9,
+      "track_temp": 26.0,
+      "humidity": 87.2,
+      "pressure": 930.2,
+      "rainfall": false,
+      "wind_direction": 183,
+      "wind_speed": 1.8
+    },
+    {
+      "time_s": 3060.203,
+      "air_temp": 15.9,
+      "track_temp": 33.8,
+      "humidity": 86.7,
+      "pressure": 930.2,
+      "rainfall": false,
+      "wind_direction": 183,
+      "wind_speed": 2.8
+    },
+    {
+      "time_s": 3120.197,
+      "air_temp": 15.9,
+      "track_temp": 26.0,
+      "humidity": 86.4,
+      "pressure": 930.1,
+      "rainfall": false,
+      "wind_direction": 172,
+      "wind_speed": 2.8
+    },
+    {
+      "time_s": 3180.209,
+      "air_temp": 16.0,
+      "track_temp": 24.7,
+      "humidity": 86.8,
+      "pressure": 930.1,
+      "rainfall": false,
+      "wind_direction": 183,
+      "wind_speed": 2.6
+    },
+    {
+      "time_s": 3240.209,
+      "air_temp": 16.0,
+      "track_temp": 25.8,
+      "humidity": 87.0,
+      "pressure": 930.0,
+      "rainfall": false,
+      "wind_direction": 161,
+      "wind_speed": 4.5
+    },
+    {
+      "time_s": 3300.212,
+      "air_temp": 16.0,
+      "track_temp": 25.7,
+      "humidity": 86.7,
+      "pressure": 930.0,
+      "rainfall": false,
+      "wind_direction": 174,
+      "wind_speed": 3.3
+    },
+    {
+      "time_s": 3360.232,
+      "air_temp": 16.1,
+      "track_temp": 26.3,
+      "humidity": 86.2,
+      "pressure": 930.1,
+      "rainfall": false,
+      "wind_direction": 189,
+      "wind_speed": 3.0
+    },
+    {
+      "time_s": 3420.25,
+      "air_temp": 16.1,
+      "track_temp": 26.2,
+      "humidity": 86.3,
+      "pressure": 930.1,
+      "rainfall": false,
+      "wind_direction": 169,
+      "wind_speed": 1.4
+    },
+    {
+      "time_s": 3480.26,
+      "air_temp": 16.1,
+      "track_temp": 25.2,
+      "humidity": 86.3,
+      "pressure": 930.0,
+      "rainfall": false,
+      "wind_direction": 148,
+      "wind_speed": 1.6
+    },
+    {
+      "time_s": 3540.266,
+      "air_temp": 16.1,
+      "track_temp": 26.6,
+      "humidity": 86.3,
+      "pressure": 930.0,
+      "rainfall": false,
+      "wind_direction": 152,
+      "wind_speed": 1.6
+    },
+    {
+      "time_s": 3600.26,
+      "air_temp": 16.3,
+      "track_temp": 24.9,
+      "humidity": 87.2,
+      "pressure": 930.1,
+      "rainfall": false,
+      "wind_direction": 172,
+      "wind_speed": 3.0
+    },
+    {
+      "time_s": 3660.256,
+      "air_temp": 16.3,
+      "track_temp": 27.3,
+      "humidity": 85.0,
+      "pressure": 930.0,
+      "rainfall": false,
+      "wind_direction": 176,
+      "wind_speed": 2.2
+    },
+    {
+      "time_s": 3720.248,
+      "air_temp": 16.2,
+      "track_temp": 26.7,
+      "humidity": 85.2,
+      "pressure": 930.0,
+      "rainfall": false,
+      "wind_direction": 179,
+      "wind_speed": 2.3
+    },
+    {
+      "time_s": 3780.264,
+      "air_temp": 16.3,
+      "track_temp": 26.0,
+      "humidity": 85.5,
+      "pressure": 930.0,
+      "rainfall": false,
+      "wind_direction": 189,
+      "wind_speed": 1.2
+    },
+    {
+      "time_s": 3840.267,
+      "air_temp": 16.3,
+      "track_temp": 25.8,
+      "humidity": 85.9,
+      "pressure": 930.0,
+      "rainfall": false,
+      "wind_direction": 178,
+      "wind_speed": 4.0
+    },
+    {
+      "time_s": 3900.268,
+      "air_temp": 16.2,
+      "track_temp": 26.4,
+      "humidity": 85.1,
+      "pressure": 930.1,
+      "rainfall": false,
+      "wind_direction": 166,
+      "wind_speed": 4.1
+    },
+    {
+      "time_s": 3960.311,
+      "air_temp": 16.2,
+      "track_temp": 26.8,
+      "humidity": 84.9,
+      "pressure": 930.2,
+      "rainfall": false,
+      "wind_direction": 167,
+      "wind_speed": 3.5
+    },
+    {
+      "time_s": 4020.287,
+      "air_temp": 16.2,
+      "track_temp": 26.1,
+      "humidity": 85.6,
+      "pressure": 930.2,
+      "rainfall": false,
+      "wind_direction": 153,
+      "wind_speed": 2.3
+    },
+    {
+      "time_s": 4080.287,
+      "air_temp": 16.2,
+      "track_temp": 25.0,
+      "humidity": 85.9,
+      "pressure": 930.1,
+      "rainfall": false,
+      "wind_direction": 161,
+      "wind_speed": 3.5
+    },
+    {
+      "time_s": 4140.288,
+      "air_temp": 16.3,
+      "track_temp": 25.6,
+      "humidity": 86.0,
+      "pressure": 930.2,
+      "rainfall": false,
+      "wind_direction": 169,
+      "wind_speed": 2.4
+    },
+    {
+      "time_s": 4200.287,
+      "air_temp": 16.3,
+      "track_temp": 26.9,
+      "humidity": 85.7,
+      "pressure": 930.2,
+      "rainfall": false,
+      "wind_direction": 158,
+      "wind_speed": 2.0
+    },
+    {
+      "time_s": 4260.299,
+      "air_temp": 16.2,
+      "track_temp": 25.8,
+      "humidity": 85.2,
+      "pressure": 930.2,
+      "rainfall": false,
+      "wind_direction": 179,
+      "wind_speed": 2.7
+    },
+    {
+      "time_s": 4320.294,
+      "air_temp": 16.2,
+      "track_temp": 24.8,
+      "humidity": 85.2,
+      "pressure": 930.2,
+      "rainfall": false,
+      "wind_direction": 198,
+      "wind_speed": 2.7
+    },
+    {
+      "time_s": 4380.294,
+      "air_temp": 16.2,
+      "track_temp": 24.5,
+      "humidity": 85.7,
+      "pressure": 930.2,
+      "rainfall": false,
+      "wind_direction": 167,
+      "wind_speed": 2.5
+    },
+    {
+      "time_s": 4440.31,
+      "air_temp": 16.2,
+      "track_temp": 23.8,
+      "humidity": 86.1,
+      "pressure": 930.2,
+      "rainfall": false,
+      "wind_direction": 168,
+      "wind_speed": 3.6
+    },
+    {
+      "time_s": 4500.299,
+      "air_temp": 16.2,
+      "track_temp": 0.0,
+      "humidity": 86.0,
+      "pressure": 930.2,
+      "rainfall": false,
+      "wind_direction": 188,
+      "wind_speed": 1.5
+    },
+    {
+      "time_s": 4560.336,
+      "air_temp": 16.2,
+      "track_temp": 26.2,
+      "humidity": 85.8,
+      "pressure": 930.2,
+      "rainfall": false,
+      "wind_direction": 181,
+      "wind_speed": 3.2
+    },
+    {
+      "time_s": 4620.307,
+      "air_temp": 16.2,
+      "track_temp": 27.4,
+      "humidity": 85.8,
+      "pressure": 930.1,
+      "rainfall": false,
+      "wind_direction": 192,
+      "wind_speed": 4.6
+    },
+    {
+      "time_s": 4680.307,
+      "air_temp": 16.1,
+      "track_temp": 24.0,
+      "humidity": 85.6,
+      "pressure": 930.1,
+      "rainfall": false,
+      "wind_direction": 181,
+      "wind_speed": 2.7
+    },
+    {
+      "time_s": 4740.3,
+      "air_temp": 16.1,
+      "track_temp": 26.8,
+      "humidity": 85.3,
+      "pressure": 930.0,
+      "rainfall": false,
+      "wind_direction": 172,
+      "wind_speed": 4.6
+    },
+    {
+      "time_s": 4800.298,
+      "air_temp": 16.2,
+      "track_temp": 24.5,
+      "humidity": 85.5,
+      "pressure": 930.0,
+      "rainfall": false,
+      "wind_direction": 190,
+      "wind_speed": 4.9
+    },
+    {
+      "time_s": 4860.308,
+      "air_temp": 16.2,
+      "track_temp": 26.5,
+      "humidity": 85.7,
+      "pressure": 930.0,
+      "rainfall": false,
+      "wind_direction": 188,
+      "wind_speed": 3.4
+    },
+    {
+      "time_s": 4920.302,
+      "air_temp": 16.2,
+      "track_temp": 26.2,
+      "humidity": 85.8,
+      "pressure": 930.1,
+      "rainfall": false,
+      "wind_direction": 179,
+      "wind_speed": 2.4
+    },
+    {
+      "time_s": 4980.318,
+      "air_temp": 16.2,
+      "track_temp": 25.6,
+      "humidity": 86.1,
+      "pressure": 930.1,
+      "rainfall": false,
+      "wind_direction": 187,
+      "wind_speed": 3.6
+    },
+    {
+      "time_s": 5040.315,
+      "air_temp": 16.2,
+      "track_temp": 25.9,
+      "humidity": 86.0,
+      "pressure": 930.2,
+      "rainfall": false,
+      "wind_direction": 156,
+      "wind_speed": 2.2
+    },
+    {
+      "time_s": 5100.325,
+      "air_temp": 16.1,
+      "track_temp": 25.8,
+      "humidity": 86.0,
+      "pressure": 930.2,
+      "rainfall": false,
+      "wind_direction": 167,
+      "wind_speed": 2.0
+    },
+    {
+      "time_s": 5160.343,
+      "air_temp": 16.1,
+      "track_temp": 26.9,
+      "humidity": 85.9,
+      "pressure": 930.2,
+      "rainfall": false,
+      "wind_direction": 192,
+      "wind_speed": 4.2
+    },
+    {
+      "time_s": 5220.345,
+      "air_temp": 16.2,
+      "track_temp": 25.8,
+      "humidity": 85.7,
+      "pressure": 930.3,
+      "rainfall": false,
+      "wind_direction": 220,
+      "wind_speed": 1.7
+    },
+    {
+      "time_s": 5280.36,
+      "air_temp": 16.2,
+      "track_temp": 26.3,
+      "humidity": 85.5,
+      "pressure": 930.2,
+      "rainfall": false,
+      "wind_direction": 176,
+      "wind_speed": 3.6
+    },
+    {
+      "time_s": 5340.354,
+      "air_temp": 16.3,
+      "track_temp": 24.8,
+      "humidity": 85.6,
+      "pressure": 930.2,
+      "rainfall": false,
+      "wind_direction": 189,
+      "wind_speed": 1.0
+    },
+    {
+      "time_s": 5400.361,
+      "air_temp": 16.2,
+      "track_temp": 25.9,
+      "humidity": 85.8,
+      "pressure": 930.3,
+      "rainfall": false,
+      "wind_direction": 187,
+      "wind_speed": 5.0
+    },
+    {
+      "time_s": 5460.353,
+      "air_temp": 16.2,
+      "track_temp": 24.4,
+      "humidity": 85.7,
+      "pressure": 930.3,
+      "rainfall": false,
+      "wind_direction": 189,
+      "wind_speed": 3.7
+    },
+    {
+      "time_s": 5520.361,
+      "air_temp": 16.2,
+      "track_temp": 24.4,
+      "humidity": 85.3,
+      "pressure": 930.3,
+      "rainfall": false,
+      "wind_direction": 177,
+      "wind_speed": 3.9
+    },
+    {
+      "time_s": 5580.388,
+      "air_temp": 16.2,
+      "track_temp": 23.8,
+      "humidity": 85.1,
+      "pressure": 930.3,
+      "rainfall": false,
+      "wind_direction": 170,
+      "wind_speed": 4.3
+    },
+    {
+      "time_s": 5640.373,
+      "air_temp": 16.1,
+      "track_temp": 25.2,
+      "humidity": 85.2,
+      "pressure": 930.4,
+      "rainfall": false,
+      "wind_direction": 190,
+      "wind_speed": 2.3
+    },
+    {
+      "time_s": 5700.367,
+      "air_temp": 16.1,
+      "track_temp": 24.1,
+      "humidity": 85.8,
+      "pressure": 930.4,
+      "rainfall": false,
+      "wind_direction": 163,
+      "wind_speed": 3.0
+    },
+    {
+      "time_s": 5760.382,
+      "air_temp": 16.1,
+      "track_temp": 24.5,
+      "humidity": 85.6,
+      "pressure": 930.5,
+      "rainfall": false,
+      "wind_direction": 187,
+      "wind_speed": 3.0
+    },
+    {
+      "time_s": 5820.398,
+      "air_temp": 16.1,
+      "track_temp": 24.3,
+      "humidity": 85.4,
+      "pressure": 930.4,
+      "rainfall": false,
+      "wind_direction": 183,
+      "wind_speed": 2.5
+    },
+    {
+      "time_s": 5880.395,
+      "air_temp": 16.2,
+      "track_temp": 24.7,
+      "humidity": 86.0,
+      "pressure": 930.4,
+      "rainfall": false,
+      "wind_direction": 175,
+      "wind_speed": 1.8
+    },
+    {
+      "time_s": 5940.404,
+      "air_temp": 16.2,
+      "track_temp": 24.7,
+      "humidity": 85.3,
+      "pressure": 930.5,
+      "rainfall": false,
+      "wind_direction": 168,
+      "wind_speed": 2.6
+    },
+    {
+      "time_s": 6000.419,
+      "air_temp": 16.2,
+      "track_temp": 25.3,
+      "humidity": 85.3,
+      "pressure": 930.4,
+      "rainfall": false,
+      "wind_direction": 183,
+      "wind_speed": 2.6
+    },
+    {
+      "time_s": 6060.421,
+      "air_temp": 16.2,
+      "track_temp": 23.8,
+      "humidity": 85.6,
+      "pressure": 930.4,
+      "rainfall": false,
+      "wind_direction": 182,
+      "wind_speed": 2.2
+    },
+    {
+      "time_s": 6120.432,
+      "air_temp": 16.2,
+      "track_temp": 23.8,
+      "humidity": 85.6,
+      "pressure": 930.5,
+      "rainfall": false,
+      "wind_direction": 238,
+      "wind_speed": 2.4
+    },
+    {
+      "time_s": 6180.447,
+      "air_temp": 16.2,
+      "track_temp": 24.3,
+      "humidity": 85.8,
+      "pressure": 930.4,
+      "rainfall": false,
+      "wind_direction": 211,
+      "wind_speed": 1.8
+    },
+    {
+      "time_s": 6240.449,
+      "air_temp": 16.3,
+      "track_temp": 25.0,
+      "humidity": 85.7,
+      "pressure": 930.4,
+      "rainfall": false,
+      "wind_direction": 160,
+      "wind_speed": 1.1
+    },
+    {
+      "time_s": 6300.444,
+      "air_temp": 16.3,
+      "track_temp": 24.7,
+      "humidity": 86.1,
+      "pressure": 930.3,
+      "rainfall": false,
+      "wind_direction": 234,
+      "wind_speed": 1.6
+    },
+    {
+      "time_s": 6360.447,
+      "air_temp": 16.3,
+      "track_temp": 24.0,
+      "humidity": 86.0,
+      "pressure": 930.4,
+      "rainfall": false,
+      "wind_direction": 157,
+      "wind_speed": 1.9
+    },
+    {
+      "time_s": 6420.457,
+      "air_temp": 16.3,
+      "track_temp": 24.1,
+      "humidity": 84.8,
+      "pressure": 930.4,
+      "rainfall": false,
+      "wind_direction": 166,
+      "wind_speed": 2.5
+    },
+    {
+      "time_s": 6480.45,
+      "air_temp": 16.3,
+      "track_temp": 25.2,
+      "humidity": 85.7,
+      "pressure": 930.4,
+      "rainfall": false,
+      "wind_direction": 179,
+      "wind_speed": 3.8
+    },
+    {
+      "time_s": 6540.447,
+      "air_temp": 16.3,
+      "track_temp": 24.0,
+      "humidity": 84.9,
+      "pressure": 930.5,
+      "rainfall": false,
+      "wind_direction": 175,
+      "wind_speed": 3.0
+    },
+    {
+      "time_s": 6600.45,
+      "air_temp": 16.3,
+      "track_temp": 24.5,
+      "humidity": 85.1,
+      "pressure": 930.3,
+      "rainfall": false,
+      "wind_direction": 150,
+      "wind_speed": 1.5
+    },
+    {
+      "time_s": 6660.448,
+      "air_temp": 16.3,
+      "track_temp": 24.1,
+      "humidity": 84.9,
+      "pressure": 930.5,
+      "rainfall": false,
+      "wind_direction": 206,
+      "wind_speed": 1.9
+    },
+    {
+      "time_s": 6720.454,
+      "air_temp": 16.4,
+      "track_temp": 24.9,
+      "humidity": 85.7,
+      "pressure": 930.5,
+      "rainfall": false,
+      "wind_direction": 171,
+      "wind_speed": 2.0
+    },
+    {
+      "time_s": 6780.462,
+      "air_temp": 16.4,
+      "track_temp": 24.5,
+      "humidity": 85.3,
+      "pressure": 930.5,
+      "rainfall": false,
+      "wind_direction": 199,
+      "wind_speed": 1.8
+    },
+    {
+      "time_s": 6840.469,
+      "air_temp": 16.5,
+      "track_temp": 23.2,
+      "humidity": 85.7,
+      "pressure": 930.5,
+      "rainfall": false,
+      "wind_direction": 321,
+      "wind_speed": 0.8
+    },
+    {
+      "time_s": 6900.463,
+      "air_temp": 16.5,
+      "track_temp": 23.3,
+      "humidity": 85.2,
+      "pressure": 930.4,
+      "rainfall": false,
+      "wind_direction": 148,
+      "wind_speed": 2.9
+    },
+    {
+      "time_s": 6960.497,
+      "air_temp": 16.6,
+      "track_temp": 24.7,
+      "humidity": 85.1,
+      "pressure": 930.5,
+      "rainfall": false,
+      "wind_direction": 0,
+      "wind_speed": 0.0
+    },
+    {
+      "time_s": 7020.479,
+      "air_temp": 16.5,
+      "track_temp": 23.9,
+      "humidity": 84.8,
+      "pressure": 930.5,
+      "rainfall": false,
+      "wind_direction": 148,
+      "wind_speed": 1.2
+    },
+    {
+      "time_s": 7080.497,
+      "air_temp": 16.6,
+      "track_temp": 23.3,
+      "humidity": 84.6,
+      "pressure": 930.4,
+      "rainfall": false,
+      "wind_direction": 156,
+      "wind_speed": 0.5
+    },
+    {
+      "time_s": 7140.519,
+      "air_temp": 16.6,
+      "track_temp": 23.9,
+      "humidity": 84.5,
+      "pressure": 930.3,
+      "rainfall": false,
+      "wind_direction": 16,
+      "wind_speed": 0.8
+    },
+    {
+      "time_s": 7200.523,
+      "air_temp": 16.7,
+      "track_temp": 23.7,
+      "humidity": 84.7,
+      "pressure": 930.4,
+      "rainfall": false,
+      "wind_direction": 178,
+      "wind_speed": 1.6
+    },
+    {
+      "time_s": 7260.524,
+      "air_temp": 16.6,
+      "track_temp": 23.6,
+      "humidity": 83.7,
+      "pressure": 930.3,
+      "rainfall": false,
+      "wind_direction": 178,
+      "wind_speed": 2.1
+    },
+    {
+      "time_s": 7320.554,
+      "air_temp": 16.6,
+      "track_temp": 23.6,
+      "humidity": 82.8,
+      "pressure": 930.3,
+      "rainfall": false,
+      "wind_direction": 169,
+      "wind_speed": 1.7
+    },
+    {
+      "time_s": 7380.575,
+      "air_temp": 16.5,
+      "track_temp": 23.7,
+      "humidity": 82.8,
+      "pressure": 930.2,
+      "rainfall": false,
+      "wind_direction": 185,
+      "wind_speed": 3.8
+    },
+    {
+      "time_s": 7440.55,
+      "air_temp": 16.5,
+      "track_temp": 23.3,
+      "humidity": 82.4,
+      "pressure": 930.2,
+      "rainfall": false,
+      "wind_direction": 176,
+      "wind_speed": 2.6
+    },
+    {
+      "time_s": 7500.551,
+      "air_temp": 16.5,
+      "track_temp": 23.3,
+      "humidity": 82.9,
+      "pressure": 930.3,
+      "rainfall": false,
+      "wind_direction": 194,
+      "wind_speed": 2.8
+    },
+    {
+      "time_s": 7560.552,
+      "air_temp": 16.5,
+      "track_temp": 24.7,
+      "humidity": 83.7,
+      "pressure": 930.2,
+      "rainfall": false,
+      "wind_direction": 185,
+      "wind_speed": 1.2
+    },
+    {
+      "time_s": 7620.561,
+      "air_temp": 16.5,
+      "track_temp": 24.9,
+      "humidity": 83.9,
+      "pressure": 930.2,
+      "rainfall": false,
+      "wind_direction": 230,
+      "wind_speed": 0.4
+    },
+    {
+      "time_s": 7680.557,
+      "air_temp": 16.6,
+      "track_temp": 24.2,
+      "humidity": 84.4,
+      "pressure": 930.2,
+      "rainfall": false,
+      "wind_direction": 199,
+      "wind_speed": 1.1
+    },
+    {
+      "time_s": 7740.571,
+      "air_temp": 16.6,
+      "track_temp": 24.6,
+      "humidity": 84.0,
+      "pressure": 930.2,
+      "rainfall": false,
+      "wind_direction": 162,
+      "wind_speed": 2.5
+    },
+    {
+      "time_s": 7800.603,
+      "air_temp": 16.5,
+      "track_temp": 25.3,
+      "humidity": 82.5,
+      "pressure": 930.1,
+      "rainfall": false,
+      "wind_direction": 97,
+      "wind_speed": 0.6
+    },
+    {
+      "time_s": 7860.588,
+      "air_temp": 16.4,
+      "track_temp": 24.2,
+      "humidity": 84.1,
+      "pressure": 930.2,
+      "rainfall": false,
+      "wind_direction": 257,
+      "wind_speed": 0.6
+    },
+    {
+      "time_s": 7920.589,
+      "air_temp": 16.4,
+      "track_temp": 23.9,
+      "humidity": 85.1,
+      "pressure": 930.2,
+      "rainfall": false,
+      "wind_direction": 254,
+      "wind_speed": 0.4
+    },
+    {
+      "time_s": 7980.589,
+      "air_temp": 16.5,
+      "track_temp": 23.7,
+      "humidity": 84.6,
+      "pressure": 930.2,
+      "rainfall": false,
+      "wind_direction": 184,
+      "wind_speed": 4.0
+    },
+    {
+      "time_s": 8040.582,
+      "air_temp": 16.4,
+      "track_temp": 22.4,
+      "humidity": 83.1,
+      "pressure": 930.3,
+      "rainfall": false,
+      "wind_direction": 189,
+      "wind_speed": 3.4
+    },
+    {
+      "time_s": 8100.596,
+      "air_temp": 16.3,
+      "track_temp": 23.6,
+      "humidity": 84.3,
+      "pressure": 930.2,
+      "rainfall": false,
+      "wind_direction": 174,
+      "wind_speed": 2.0
+    },
+    {
+      "time_s": 8160.597,
+      "air_temp": 16.2,
+      "track_temp": 20.5,
+      "humidity": 85.3,
+      "pressure": 930.2,
+      "rainfall": true,
+      "wind_direction": 184,
+      "wind_speed": 4.6
+    },
+    {
+      "time_s": 8220.598,
+      "air_temp": 16.1,
+      "track_temp": 30.3,
+      "humidity": 85.7,
+      "pressure": 930.3,
+      "rainfall": false,
+      "wind_direction": 192,
+      "wind_speed": 2.6
+    },
+    {
+      "time_s": 8280.597,
+      "air_temp": 16.1,
+      "track_temp": 22.1,
+      "humidity": 86.5,
+      "pressure": 930.3,
+      "rainfall": false,
+      "wind_direction": 174,
+      "wind_speed": 1.8
+    },
+    {
+      "time_s": 8340.601,
+      "air_temp": 16.1,
+      "track_temp": 23.1,
+      "humidity": 87.0,
+      "pressure": 930.3,
+      "rainfall": false,
+      "wind_direction": 183,
+      "wind_speed": 2.4
+    },
+    {
+      "time_s": 8400.601,
+      "air_temp": 15.9,
+      "track_temp": 23.4,
+      "humidity": 87.5,
+      "pressure": 930.3,
+      "rainfall": false,
+      "wind_direction": 195,
+      "wind_speed": 0.8
+    },
+    {
+      "time_s": 8460.602,
+      "air_temp": 15.9,
+      "track_temp": 21.3,
+      "humidity": 88.2,
+      "pressure": 930.3,
+      "rainfall": false,
+      "wind_direction": 180,
+      "wind_speed": 2.6
+    },
+    {
+      "time_s": 8520.604,
+      "air_temp": 15.9,
+      "track_temp": 22.0,
+      "humidity": 87.9,
+      "pressure": 930.5,
+      "rainfall": false,
+      "wind_direction": 151,
+      "wind_speed": 1.8
+    },
+    {
+      "time_s": 8580.605,
+      "air_temp": 15.8,
+      "track_temp": 22.6,
+      "humidity": 88.4,
+      "pressure": 930.3,
+      "rainfall": false,
+      "wind_direction": 163,
+      "wind_speed": 1.4
+    },
+    {
+      "time_s": 8640.593,
+      "air_temp": 15.8,
+      "track_temp": 21.1,
+      "humidity": 88.7,
+      "pressure": 930.4,
+      "rainfall": false,
+      "wind_direction": 96,
+      "wind_speed": 0.9
+    },
+    {
+      "time_s": 8700.594,
+      "air_temp": 15.8,
+      "track_temp": 22.7,
+      "humidity": 88.8,
+      "pressure": 930.3,
+      "rainfall": false,
+      "wind_direction": 182,
+      "wind_speed": 2.2
+    },
+    {
+      "time_s": 8760.604,
+      "air_temp": 15.8,
+      "track_temp": 21.3,
+      "humidity": 89.3,
+      "pressure": 930.3,
+      "rainfall": false,
+      "wind_direction": 127,
+      "wind_speed": 0.6
+    },
+    {
+      "time_s": 8820.597,
+      "air_temp": 15.9,
+      "track_temp": 22.4,
+      "humidity": 89.7,
+      "pressure": 930.3,
+      "rainfall": false,
+      "wind_direction": 161,
+      "wind_speed": 1.5
+    },
+    {
+      "time_s": 8880.603,
+      "air_temp": 15.8,
+      "track_temp": 21.5,
+      "humidity": 89.6,
+      "pressure": 930.3,
+      "rainfall": false,
+      "wind_direction": 180,
+      "wind_speed": 2.7
+    },
+    {
+      "time_s": 8940.606,
+      "air_temp": 15.8,
+      "track_temp": 21.5,
+      "humidity": 88.9,
+      "pressure": 930.3,
+      "rainfall": true,
+      "wind_direction": 199,
+      "wind_speed": 2.5
+    },
+    {
+      "time_s": 9000.597,
+      "air_temp": 15.7,
+      "track_temp": 29.7,
+      "humidity": 89.2,
+      "pressure": 930.3,
+      "rainfall": true,
+      "wind_direction": 194,
+      "wind_speed": 2.4
+    },
+    {
+      "time_s": 9060.605,
+      "air_temp": 15.7,
+      "track_temp": 21.6,
+      "humidity": 89.5,
+      "pressure": 930.2,
+      "rainfall": true,
+      "wind_direction": 189,
+      "wind_speed": 3.2
+    },
+    {
+      "time_s": 9120.597,
+      "air_temp": 15.7,
+      "track_temp": 35.4,
+      "humidity": 89.3,
+      "pressure": 930.2,
+      "rainfall": true,
+      "wind_direction": 192,
+      "wind_speed": 2.6
+    },
+    {
+      "time_s": 9180.598,
+      "air_temp": 15.7,
+      "track_temp": 22.0,
+      "humidity": 90.0,
+      "pressure": 930.1,
+      "rainfall": true,
+      "wind_direction": 188,
+      "wind_speed": 2.8
+    },
+    {
+      "time_s": 9240.606,
+      "air_temp": 15.7,
+      "track_temp": 22.1,
+      "humidity": 90.3,
+      "pressure": 930.1,
+      "rainfall": false,
+      "wind_direction": 184,
+      "wind_speed": 1.2
+    },
+    {
+      "time_s": 9300.602,
+      "air_temp": 15.7,
+      "track_temp": 21.2,
+      "humidity": 90.4,
+      "pressure": 930.1,
+      "rainfall": false,
+      "wind_direction": 192,
+      "wind_speed": 3.3
+    },
+    {
+      "time_s": 9360.614,
+      "air_temp": 15.7,
+      "track_temp": 21.9,
+      "humidity": 90.3,
+      "pressure": 930.1,
+      "rainfall": false,
+      "wind_direction": 166,
+      "wind_speed": 1.1
+    },
+    {
+      "time_s": 9420.612,
+      "air_temp": 15.7,
+      "track_temp": 21.1,
+      "humidity": 91.1,
+      "pressure": 930.1,
+      "rainfall": false,
+      "wind_direction": 185,
+      "wind_speed": 3.2
+    },
+    {
+      "time_s": 9480.612,
+      "air_temp": 15.6,
+      "track_temp": 21.1,
+      "humidity": 90.5,
+      "pressure": 930.0,
+      "rainfall": false,
+      "wind_direction": 181,
+      "wind_speed": 3.1
+    },
+    {
+      "time_s": 9540.609,
+      "air_temp": 15.6,
+      "track_temp": 22.2,
+      "humidity": 90.1,
+      "pressure": 930.0,
+      "rainfall": false,
+      "wind_direction": 181,
+      "wind_speed": 3.0
+    }
+  ]
+}

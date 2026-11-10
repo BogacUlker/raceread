@@ -22,6 +22,7 @@ import json
 import math
 import re
 import sys
+import unicodedata
 from pathlib import Path
 from typing import Any
 
@@ -149,6 +150,9 @@ def _derive_event_slug(event_name: str) -> str:
 
     # Remove "Grand Prix" suffix (case insensitive)
     cleaned = re.sub(r"\s*grand\s*prix\s*$", "", name, flags=re.IGNORECASE).strip()
+
+    # Fold accents so "São Paulo" matches the "sao paulo" override.
+    cleaned = unicodedata.normalize("NFKD", cleaned).encode("ascii", "ignore").decode("ascii")
 
     # Check overrides first
     lower_cleaned = cleaned.lower()

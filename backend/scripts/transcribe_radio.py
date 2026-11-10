@@ -16,6 +16,7 @@ import json
 import os
 import re
 import subprocess
+import urllib.parse
 import urllib.request
 from pathlib import Path
 
@@ -238,7 +239,8 @@ def main() -> None:
         mp3 = work / "{:02d}_{}.mp3".format(i, code)
         if not mp3.exists():
             try:
-                urllib.request.urlretrieve(clip["url"], mp3)
+                # São Paulo-style paths: urllib only sends ASCII, so percent-encode.
+                urllib.request.urlretrieve(urllib.parse.quote(clip["url"], safe=":/"), mp3)
             except Exception as exc:
                 out.append({"index": i, "driver": code, "lap": lap, "decision": "drop",
                             "reason": "download failed: {}".format(exc)})

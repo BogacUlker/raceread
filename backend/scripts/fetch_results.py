@@ -88,7 +88,8 @@ def fetch_one(race_id: str):
                 total_time = t
         rows.append({
             "position": int(entry["position"]),
-            "driver": entry["Driver"].get("code"),
+            # Stand-ins can lack a code (Camara, Sao Paulo 2026); same fallback as fetch_standings.
+            "driver": entry["Driver"].get("code") or entry["Driver"]["familyName"][:3].upper(),
             "team": entry["Constructor"]["name"],
             "grid": int(entry["grid"]),
             "laps": int(entry["laps"]),
