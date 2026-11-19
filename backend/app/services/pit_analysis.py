@@ -47,6 +47,76 @@ def _compute_race_wide_baseline(
 # stationary time (~2-3s) plus pit lane speed-limit delta (~20s).
 _FALLBACK_PIT_LOSS_S = 22.0
 
+# A lap this many times longer than the driver's clean pace can only be a
+# lap that carries a red-flag suspension (Mexico 2026 lap 45: 2278s).
+_SUSPENDED_LAP_FACTOR = 3.0
+
+
+def _extract_red_flag_laps(race_control_data: dict) -> list[int]:
+    """Leader lap numbers on which race control showed a red flag."""
+    laps: set[int] = set()
+    for msg in race_control_data.get("messages", []) or []:
+        text = (msg.get("message") or "").upper()
+        flag = (msg.get("flag") or "").upper()
+        if flag == "RED" or text.startswith("RED FLAG"):
+            lap = msg.get("lap")
+            if isinstance(lap, int):
+                laps.add(lap)
+    return sorted(laps)
+
+
+def _tyres_changed(before: dict | None, after: dict | None) -> bool:
+    """True if the compound changes or tyre age resets between two laps."""
+    if not before or not after:
+        return False
+    if before.get("compound") and after.get("compound") and before["compound"] != after["compound"]:
+        return True
+    age_b, age_a = before.get("tire_age"), after.get("tire_age")
+    return age_b is not None and age_a is not None and age_a < age_b
+
+
+def _is_red_flag_pit(
+    pit_lap: int,
+    lap_by_number: dict[int, dict],
+    red_flag_laps: list[int],
+    suspended_laps: set[int],
+) -> bool:
+    """True if a pit_laps entry is the red-flag pit-lane entry, not a stop.
+
+    During a suspension every car is sent down the pit lane, so the feed
+    records a "pit" for the whole field (Monza 2026 lap 3, Mexico 2026
+    lap 45). Such an entry is not a pit stop and carries no pit loss.
+    A lap "holds the suspension" if its time is >= 3x clean pace
+    (Mexico 2026: 2278s) or, next to the red-flag lap, it is untimed
+    (FastF1 leaves suspended laps without a time).
+
+    - On the red-flag lap itself: always the pit-lane entry.
+    - Out-lap holds the suspension: the car entered the pit lane and the
+      race was stopped (lapped cars see this one lap earlier, PER lap 44).
+    - In-lap holds the suspension: before the red-flag lap it is still the
+      pit-lane entry; after it, it is a real stop at the restart only if
+      the tyres changed (Hungary 2021 lap 3, everyone to slicks).
+    """
+    if not red_flag_laps:
+        return False
+
+    def holds_suspension(lap_num: int) -> bool:
+        if lap_num in suspended_laps:
+            return True
+        lap = lap_by_number.get(lap_num)
+        near = any(rf - 1 <= lap_num <= rf + 1 for rf in red_flag_laps)
+        return near and (lap is None or lap.get("time_s") is None)
+
+    if pit_lap in red_flag_laps:
+        return True
+    if holds_suspension(pit_lap + 1):
+        return True
+    if holds_suspension(pit_lap):
+        if any(pit_lap <= rf for rf in red_flag_laps if rf - 1 <= pit_lap):
+            return True
+        return not _tyres_changed(lap_by_number.get(pit_lap), lap_by_number.get(pit_lap + 1))
+    return False
+
 
 def compute_pit_stats(
     laps_data: dict,
@@ -60,19 +130,27 @@ def compute_pit_stats(
     2. For each driver in strategy_data, look up their pit_laps.
     3. Build a set of "clean" lap times by excluding:
        - Lap 1 (standing start distortion)
-       - SC/VSC laps
+       - SC/VSC laps and red-flag laps (the red-flag lap and the one after)
        - Pit laps and the lap immediately after each pit (pit_lap + 1)
     4. Median clean pace becomes the baseline.
        Falls back to race-wide median, then a fixed estimate (~22s).
-    5. Time loss per pit = lap[pit_lap].time_s + lap[pit_lap+1].time_s - 2 * baseline.
-    6. Track compound changes and SC/VSC status for each stop.
+    5. Drop red-flag pit-lane entries (see _is_red_flag_pit): they are
+       not stops and their laps hold the suspension time.
+    6. Time loss per pit = lap[pit_lap].time_s + lap[pit_lap+1].time_s - 2 * baseline.
+       A lap already charged to the previous stop is not charged again
+       (back-to-back pit laps), so no lap counts twice.
+    7. Track compound changes and SC/VSC status for each stop.
 
     Returns:
         {"drivers": [DriverPitStats, ...]} sorted by total_time_lost_s descending.
     """
     vsc_laps = set(_extract_vsc_laps(race_control_data))
     sc_laps = set(_extract_sc_laps(race_control_data))
+    red_flag_laps = _extract_red_flag_laps(race_control_data)
+    red_flag_window = {lap for rf in red_flag_laps for lap in (rf, rf + 1)}
     neutralized_laps = vsc_laps | sc_laps
+    # Laps excluded from every pace baseline
+    baseline_excluded = neutralized_laps | red_flag_window
 
     # Build per-driver lap lookup from laps_data.
     # laps_data format: {"drivers": [...], "teams": {...}, "laps": {"VER": [{...}], ...}}
@@ -91,7 +169,7 @@ def compute_pit_stats(
 
     # Compute race-wide baseline once (used as fallback)
     race_wide_baseline = _compute_race_wide_baseline(
-        driver_laps_map, neutralized_laps, all_pit_adjacent
+        driver_laps_map, baseline_excluded, all_pit_adjacent
     )
 
     # Process each driver from strategy data
@@ -137,7 +215,7 @@ def compute_pit_stats(
                 continue
             if time_s is None:
                 continue
-            if lap_num in neutralized_laps:
+            if lap_num in baseline_excluded:
                 continue
             if lap_num in pit_adjacent:
                 continue
@@ -163,11 +241,27 @@ def compute_pit_stats(
             baseline = statistics.median(clean_times)
             baseline_is_fallback = True
 
+        # Laps that hold a red-flag suspension for this driver
+        suspended_laps: set[int] = set()
+        pace_ref = baseline if baseline is not None else race_wide_baseline
+        if red_flag_laps and pace_ref:
+            for lap_num, lap in lap_by_number.items():
+                near = any(rf - 1 <= lap_num <= rf + 2 for rf in red_flag_laps)
+                t = lap.get("time_s")
+                if near and t is not None and t >= _SUSPENDED_LAP_FACTOR * pace_ref:
+                    suspended_laps.add(lap_num)
+
+        real_pit_laps = [
+            pl for pl in pit_laps_list
+            if not _is_red_flag_pit(pl, lap_by_number, red_flag_laps, suspended_laps)
+        ]
+
         # Compute time loss per pit stop
         pit_details: list[dict[str, Any]] = []
         total_loss = 0.0
+        charged_laps: set[int] = set()
 
-        for pl in pit_laps_list:
+        for pl in real_pit_laps:
             pit_lap_data = lap_by_number.get(pl)
             out_lap_data = lap_by_number.get(pl + 1)
 
@@ -188,6 +282,12 @@ def compute_pit_stats(
 
             pit_time = pit_lap_data.get("time_s") if pit_lap_data else None
             out_time = out_lap_data.get("time_s") if out_lap_data else None
+            # Back-to-back pit laps: the in-lap of this stop is the out-lap
+            # of the previous one and is already charged there.
+            in_lap_charged = pl in charged_laps
+            if in_lap_charged:
+                pit_time = None
+            charged_laps.update((pl, pl + 1))
 
             if baseline is not None and pit_time is not None and out_time is not None:
                 # Normal case: both pit lap and out lap available
@@ -199,6 +299,11 @@ def compute_pit_stats(
             elif baseline is not None and pit_time is None and out_time is not None:
                 # Missing pit lap time (e.g., lap 1 pit) - single lap estimate
                 time_loss = _round(out_time - baseline)
+                estimated = True
+            elif in_lap_charged:
+                # Back-to-back stop whose only new lap is untimed: its loss
+                # is already in the previous stop's figure.
+                time_loss = 0.0
                 estimated = True
             else:
                 # No baseline or no lap times at all - use fixed fallback
@@ -221,7 +326,7 @@ def compute_pit_stats(
             "team": team,
             "pits": pit_details,
             "total_time_lost_s": _round(total_loss),
-            "num_stops": len(pit_laps_list),
+            "num_stops": len(real_pit_laps),
         })
 
     # Sort by total_time_lost_s descending
